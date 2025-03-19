@@ -12,11 +12,17 @@ fusion-fission
 }
 
 
+:: a bright light {"position":"1175,275","size":"100,100"}
+a bright light is ahead
+[[close your eyes|go south]]
+
+
 :: cave {"position":"750,350","size":"100,100"}
 hello world
 
 [[go north|dark forest]]
 [[go south]]
+[[wait patiently|a bright light]]
 
 
 :: dark forest {"position":"650,550","size":"100,100"}
