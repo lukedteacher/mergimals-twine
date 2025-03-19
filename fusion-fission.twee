@@ -7,17 +7,21 @@ fusion-fission
   "ifid": "77E7D003-4B58-46AB-846A-76557BAF6CBF",
   "format": "Harlowe",
   "format-version": "3.3.9",
-  "start": "Untitled Passage",
+  "start": "start here",
   "zoom": 1
 }
 
 
-:: Untitled Passage {"position":"750,350","size":"100,100"}
+:: go north {"position":"750,475","size":"100,100"}
+
+
+
+:: go south {"position":"875,475","size":"100,100"}
+
+
+
+:: start here {"position":"750,350","size":"100,100"}
 hello world
 
 [[go north]]
-
-
-
-:: go north {"position":"750,475","size":"100,100"}
-
+[[go south]]
