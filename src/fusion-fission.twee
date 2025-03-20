@@ -5,8 +5,8 @@ fusion-fission
 :: StoryData
 {
   "ifid": "77E7D003-4B58-46AB-846A-76557BAF6CBF",
-  "format": "Harlowe",
-  "format-version": "3.3.9",
+  "format": "SugarCube",
+  "format-version": "2.37.3",
   "start": "cave",
   "zoom": 1
 }
