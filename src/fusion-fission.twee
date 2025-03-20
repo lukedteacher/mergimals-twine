@@ -1,37 +1,449 @@
 :: StoryTitle
-fusion-fission
+MERGIMALS
 
 
 :: StoryData
 {
-  "ifid": "77E7D003-4B58-46AB-846A-76557BAF6CBF",
+  "ifid": "90E729E4-A877-4D86-B308-9E22C917BB4A",
   "format": "SugarCube",
   "format-version": "2.37.3",
-  "start": "cave",
+  "start": "001",
   "zoom": 1
 }
 
+:: 704 [story]
+You look out over the cliff and take in the beauty. You can see Littlemoose from here, on the other side of a tall, dark forest. To the West, you can see Blue Urf. You notice that the lights that usually dot the city don't seem to be working. Further in that direction, the swamps of Raven Wing and the desert of Cedar Oasis are visible.
 
-:: a bright light {"position":"1175,275","size":"100,100"}
-a bright light is ahead
-[[close your eyes|go south]]
+[[See what else is up here: Explore Crystal Caverns Entrance.|008]]
+
+:: 131 [worksheet]
+You found a bottle floating in the water. It has a message inside! You unroll it and find a strange script.
+
+Do Worksheet $$$.
+
+[[Decode the message later: Continue exploring the bookmarked map.|004]]
+
+:: 141 [reward]
+After a short while, you seem to find a pattern in the crabs' movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.
+
+[[Success: Gain Card  I-20. Continue exploring the bookmarked map.|004]]
+
+:: 443 [reward]
+You find a crumpled piece of paper.
+
+[[Pick it up: Take Card I-44. Continue exploring Map ??.|404]]
+
+:: 932 [worksheet]
+Parts of this cliff seem worn off into handholds. You can attempt to climb up it if you'd like. A small cave is visible about halfway up. It might be worth checking out.
+
+Do Worksheet 13.4.
+
+[[Maybe later: Continue exploring the bookmarked map.|003]]
+[[We scaled the cliff!: Read 687.|687]]
+[[Explore the cave: Read 345.|345]]
+
+:: 065 [story]
+You enter…
+In front of you on the table…
+
+Inspect the three starting Mergimal cards
+
+[[Pick the red one: Gain Card M-001. Read 239|239]]
+[[Pick the blue one: Gain Card M-002. Read 239|239]]
+[[Pick the green one: Gain Card M-003. Read 239|239]]
+[[Pick the yellow one: Gain Card M-004. Read 239|239]]
+[[Ask if there are any others: 404|404]]
+
+:: 223 [forest check]
+Time passes.
+
+The path leads to a bramble of thorns and mushrooms. You have no choice but to turn around. The day grows longer and the forest gets darker.
+
+Roll EMPATHY x GRIT.
+
+If you roll...
+
+[[12 or lower, you get lost on your way back to the path. Time passes: Read 222|222]]
+[[...above 30, you find your way back to the path quickly: Read 222|222]]
+
+:: 224 [forest]
+The sound of music greets your ears. At first, you're excited, but soon the song seems to shift and echo. Where are you?
+
+The path splits again.
+
+[[Go straight: Read 225|225]]
+[[Go left: Read 226|226]]
+
+:: 219 [forest check]
+Now if only you could remember your way back.
+
+Roll ATTENION x MEMORY
+
+If you rolled...
+
+[[...lower than 25, you feel confused and lost: Read 214|214]]
+[[...25 or higher, you find your way back to the path with ease: Read 217|217]]
+
+:: 218 [forest]
+The path seems to double back on itself and you feel like you're going in circles. It ends abruptly, at the base of a large tree with a large crevice. Inside the hole, you find some charms and trainer coins.
+
+[[Gain 2 charms and 3 trainer coins.: Read 219|219]]
+
+:: 221 [forest]
 
 
-:: cave {"position":"750,350","size":"100,100"}
-hello world
+[[Go left: Read 223|223]]
+[[Go right: Read 222|222]]
 
-[[go north|dark forest]]
-[[go south]]
-[[wait patiently|a bright light]]
+:: 217 [forest]
+A Four Way Intersection
 
+[[Go straight: Read 220|220]]
+[[Go left: Read 220|220]]
+[[Go right: Read 221|221]]
 
-:: dark forest {"position":"650,550","size":"100,100"}
-you're in a forest.
+:: 229 [forest]
+four way
 
-[[go south|cave]]
+[[Go left: Read 228|228]]
+[[Go straight: 404|404]]
+[[Go right: 404|404]]
 
+:: 214 [forest]
+This forest seems quite dark, even in the middle of the day. You follow the path deeper into the woods until you come to a split.
 
-:: go south {"position":"875,475","size":"100,100"}
-you're on a beach.
+[[Go left: Read 215|215]]
+[[Go right: Read 216|216]]
 
-[[go north|cave]]
+:: 220 [forest]
+This path looks familiar, you think. You come to a split.
+
+[[Go left.: Read 224|224]]
+[[Go right.: Read 217|217]]
+
+:: 225 [forest]
+You know you're close, but the path ahead has been blocked. If you had a mergimal who was strong enough, they could move it out of the way.
+
+[[Have your Mergimal move the fallen tree: Read 228|228]]
+[[Turn around: Read 224|224]]
+
+:: 215 [forest]
+The leaves of the trees crunch underfoot as you make your way further into the forest. You have the feeling that you're being watched. Up ahead, a small path splits of to the right.
+
+[[Go straight: Read 217|217]]
+[[Follow the small path: Read 218|218]]
+
+:: 216 [forest]
+You walk a ways until the path fades into the ground. The branches are thick and it would be impossible to go on.
+
+[[Turn around and go back to the entrance: Read 214|214]]
+
+:: 222 [forest check]
+The birds have stopped chirping. Even the sound of your footsteps seems muted. A crack of a twig behind you startles you.
+
+Roll ATTENTION + GRIT.
+
+If you rolled...
+
+[[30 or lower, you trip and fall into a pile of thorns: Gain two injuries. Read 229|229]]
+[[...between 30 and 60, you fall into some thorns, but catch yourself at the last minute: Gain one injury. Read 229|229]]
+[[...above 60, your quick-thinking allows you to narrowly avoid walking into a wicked patch of thorns: Gain one injury. Read 229|229]]
+
+:: 226 [forest encounter]
+A little person with a long beard and pointy hat sits on a mushroom, drinking tea. A tiny pig-like Mergimal sits next to them with a cup of their own.
+
+[expand this encounter]
+
+[[Try your luck: Read 227|227]]
+[[Nevermind: Read 224|224]]
+
+:: 002 [story]
+Stop! This isn't like a regular story. You don't read this book from left-to-right, page by page. Instead, you choose one of the options at the bottom of each entry and find the indicated passage to read.
+
+Sometimes you might have to skip a lot of pages, but you never know, you might come back. Now, go back to entry 001 and try again!
+
+[[001]]
+
+:: 241 [tamed]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art boxin.png" />
+
+This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.
+
+[[Your Mergipedia grows: Add Mergipedia page N-02 to your journal. Gain Card N-02. Continue exploring the bookmarked map.|003]]
+
+:: 505 [tamed]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art corwhal.png" />
+
+You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
+
+[[Your Mergipedia grows: Add Mergipedia page W-07 to your journal. Gain Card W-07. Continue exploring the bookmarked map.|004]]
+
+:: 161 [tamed]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art krustwo.png" />
+
+You've seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.
+
+[[Your Mergipedia grows: Add Mergipedia page W-02 to your journal. Gain Card W-02. Continue exploring the bookmarked map.|004]]
+
+:: 799 [tamed]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art tidefly.png" />
+
+This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
+
+[[Your Mergipedia grows: Add Mergipedia page W-10 to your journal. Gain Card W-10. Continue exploring the bookmarked map.|004]]
+
+:: 007 [tamed]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art treethorn.png" />
+
+This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).
+
+[[Your Mergipedia grows: Add Mergipedia page B-03 to your journal. Gain Card B-03. Continue exploring the bookmarked map.|003]]
+
+:: 136 [tamed]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art zipper.png" />
+
+This Mergimal is named Zipper. They're cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.
+
+[[Your Mergipedia grows: Add Mergipedia page J-03 to your journal. Gain Card J-03. Continue exploring the bookmarked map.|239]]
+
+:: 004 [map]
+<img src="../images/map - story - b5.png" />
+
+Pretty Rock Bay stretches out before you. The white sand feels warm to the touch. A large, imposing lighthouse stands at the North end of the beach.
+
+Someone seems to have built a sandcastle. Nearby, a Mergimal trainer casts their fishing line into the clear water.
+
+The South end of the beach appears to be blocked off.
+
+[[Look out into the ocean: Read 881.|881]]
+[[Talk to the trainer with a fishing rod: Read 137.|137]]
+[[Go East toward Route 001: Read 239.|239]]
+[[Investigate the sand castle: Read 010|010]]
+[[That lighthouse looks interesting: 404|404]]
+[[What about the blocked off area?: 404|404]]
+
+:: 010 [worksheet]
+A group of crab-like Mergimals seems to be protecting a large sand castle. An old fishing pole sticks out of the center tower, holding a flag.
+
+Maybe you can figure out some way to avoid the creatures and grab it?
+
+Do Worksheet $$$.
+
+[[You got past them: Read 141.|141]]
+[[Leave them alone for now: Continue exploring the bookmarked map.|004]]
+
+:: 012 [stray]
+You cast your rod into Pretty Rock Bay: The Deep Blue Sea. After only a short while, you feel something pulling your line.
+
+[[If you rolled 4 or less, find a common Mergimal: Read 013.|013]]
+[[5 < n < 7: Read 015.|015]]
+[[n > 7: Read 014.|014]]
+
+:: 881 [detail]
+You look out over the sea. Waves crash against the shore. You can see a boat off in the distance. This might be a good fishing spot.
+
+[[Go fishing: Read 012.|012]]
+[[Ride your mergimal out to the boat: 404|404]]
+[[See what else is around here: Continue exploring the bookmarked map.|004]]
+
+:: 137 [trainer]
+<img src="dontay.png" />
+
+A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.
+
+[expand this encounter]
+
+[[Challenge them to a contest: 404|404]]
+[[Ask them how the fish are biting: 404|404]]
+[[Leave them alone for now: Continue exploring the bookmarked map.|004]]
+
+:: 239 [map]
+<img src="file:///Users/luke/My Drive/game design/mergimals/maps/exported/route 001.png" />
+
+Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the West. A Mergimal trainer is posed near an apple tree, looking hungry for a contest. You can hear cooing noises coming from the long grass.
+
+[[Check the long grass: Read 126.|126]]
+[[Challenge the trainer: Read 113.|113]]
+[[Go West on the sandy path: Read 004.|004]]
+[[Go East toward Great River Road: Read 003.|003]]
+
+:: 126 [stray]
+The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!
+
+Roll ATTENTION x MEMORY
+
+If you rolled...
+
+[[...30 or less, find a common Mergimal: Read 036.|036]]
+[[...between 30 and 80, find an uncommon Mergimal: Read 009.|009]]
+[[...above an 80, you find a rare Mergimal: 404|404]]
+
+:: 113 [trainer]
+<img src="bucky.png" />
+
+"Hey, you!" a friendly voice calls. The trainer standing near the tree is wearing clothes of some sort. "Are you ready to have a contest?"
+
+[[Start the contest: 404|404]]
+[[Ask for information: 404|404]]
+[[Another time: Continue exploring the bookmarked map.|239]]
+
+:: 003 [map]
+<img src="file:///Users/luke/My Drive/game design/mergimals/maps/exported/route 002.png" />
+
+Route 002 connects the Great River Road and Crystal Village. To the East, you can see the road get wider and more well-traveled.
+
+A bored looking Mergimal trainer eyes you with a yawn. Next to them, you can see a stretch of climbable rocks that lead up the cliff face. There is a small cave on an outcrop of rocks.
+
+A small pathway leads South into the forest. Maybe it’s a shortcut to Littlemoose?
+
+[[Check the long grass: Read 005.|005]]
+[[Challenge the trainer: Read 356.|356]]
+[[Go South into the dark forest: Read 214.|214]]
+[[Go East toward Great River Road: 404|404]]
+[[Go West toward Route 001: Read 239.|239]]
+
+:: 005 [stray]
+You can tell this long grass is full of Mergimals. You just need to see which ones you can find!
+
+Roll ATTENTION x EMPATHY
+
+If you rolled...
+
+[[...40 or less, find a common Mergimal: Read 006.|006]]
+[[...between 40 and 80, find an uncommon Mergimal: 404|404]]
+[[...above 80, you find a rare Mergimal: 404|404]]
+
+:: 356 [trainer]
+<img src="jessie.png" />
+
+There is a Mergimal Trainer standing near the base of the cliff. They yawn and roll their eyes as you approach. "I suppose you want to have a contest?"
+
+[[Absolutely!: 404|404]]
+[[Ask them what's new: 404|404]]
+[[Maybe another time: Continue exploring the bookmarked map.|003]]
+
+:: 228 [transition]
+You made it to Littlemoose.
+
+[[Explore the town: Explore Littlemoose Map|404]]
+
+:: 036 [encounter]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art boxin.png" />
+
+The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
+
+Do worksheeet 2.1
+
+[[You've tamed it: Read 241|241]]
+[[It got away: Continue exploring the bookmarked map.|239]]
+
+:: 320 [encounter]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art corwhal.png" />
+
+This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
+
+Do worksheeet 7.4
+
+[[You've tamed it: Read 505|505]]
+[[It got away: Continue exploring the bookmarked map.|004]]
+
+:: 013 [encounter]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art krustwo.png" />
+
+When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.
+
+Do worksheeet 2.5
+
+[[You've tamed it: Read 161|161]]
+[[It got away: Continue exploring the bookmarked map.|004]]
+
+:: 014 [encounter]
+You reel your line in and it nearly snaps.
+
+Roll GRIT x ATTENTION
+
+If you rolled...
+
+[[...20 or less, it got away: Continue exploring the bookmarked map.|004]]
+[[...between 21 and 63, you're able to pull it up but get really tired.: Gain TIRED. Read 320.|320]]
+[[...above 64, you pulled it up swiftly and with care. Gain a +2 bonus to catching it.: Read 320.|320]]
+
+:: 015 [encounter]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art tidefly.png" />
+
+A tiny snail with wings hangs from the line as you reel it in.
+
+Do worksheeet 10.3
+
+[[You've tamed it: Read 799|799]]
+[[It got away: Continue exploring the bookmarked map.|004]]
+
+:: 006 [encounter]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art treethorn.png" />
+
+You're looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That's no bush: that's a Mergimal!
+
+Do worksheeet 3.3
+
+[[You've tamed it: Read 007|007]]
+[[It got away: Continue exploring the bookmarked map.|003]]
+
+:: 009 [encounter]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art zipper.png" />
+
+You're looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
+
+Do worksheeet 3.4
+
+[[You've tamed it: Read 136.|136]]
+[[It got away: Continue exploring the bookmarked map.|239]]
+
+:: 011 [swim]
+You ride your Mergimal out to the boat. The water is calm at first, but gets rougher as you go.
+
+Do Worksheet $$$.
+
+[[Success: 404|404]]
+[[Failure: 404|404]]
+
+:: 632 [transition]
+The sun shines brightly as you begin your trek along Route 001. Nothing much happens.
+
+[[Continue on your way: Explore Map: Route 002.|003]]
+
+:: 059 [story]
+Professor Tamarack’s office is on the Eastern edge of town. It’s the biggest building in the village and what mysteries fill all three floors are as good as anyone’s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
+
+“Great, you’re here! No, I wasn’t waiting at the window all morning for you. I have, um, lots and lots of work to do to keep me busy. I’m, like, super duper busy. So, please…come inside and we’ll get you set up. You’ve been waiting 10 years for this, how exciting!
+
+[[Follow the professor inside: Read 065.|065]]
+
+:: 345 [reward]
+This cave isn't very deep, but it was worth the climb! You find a few batteries in an old bird's nest. There's also a single challenge coin.
+
+[[Gather the items: Gain 3 Batteries and 1 Coin. Return to the cliff.|932]]
+
+:: 687 [transition]
+You made it to the top.
+
+[[Admire the view: Read 704.|704]]
+[[See what else is up here: Explore Map: Crystal Cavern Entrance.|404]]
+
+:: 001 [start]
+Today is the first day of your Mergimals journey!
+
+[expand this entry]
+
+[[Get started: Read 059.|059]]
+
+:: StoryStylesheet [stylesheet]
+.encounter img {
+  width: 75%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map img {
+  width: 75%;
+}
