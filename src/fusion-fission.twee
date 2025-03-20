@@ -9,7 +9,54 @@ MERGIMALS
   "format-version": "2.37.3",
   "start": "001",
   "zoom": 1
-}
+} 
+
+:: Story JavaScript [script]
+Config.ui.stowBarInitially = false;
+Config.passages.nobr = true;
+
+:: StoryInit [nobr]
+<<set $backpack to {
+  coins: 0, 
+  mergiballs: 0
+}>>
+
+:: StoryMenu
+<<link "backpack">>
+    <<run Dialog.wiki(Story.get("BackpackInventory").text); Dialog.open()>>
+<</link>>
+
+:: StoryCaption
+<<include BackpackInventory>>
+
+:: BackpackInventory [nobr]
+<div id="backpack">
+  <div>
+    <img src="../images/items/coin.svg" />
+    <span>$backpack.coins</span>
+  </div>
+  <div>
+    <img src="../images/items/mergiball.svg">
+    <span>$backpack.coins</span>
+  </div>
+</div>
+
+:: 001 [start]
+Today is the first day of your Mergimals journey!
+
+[expand this entry]
+
+<<button "get a mergiball">>
+    <<pickup $backpack "mergiball" 1>>
+<</button>>
+testing1
+
+<<button "get a coin">>
+    <<pickup $backpack "coin" 1>>
+<</button>>\
+testing2
+
+[[go see professor Tamrack|059]]
 
 :: 704 [story]
 You look out over the cliff and take in the beauty. You can see Littlemoose from here, on the other side of a tall, dark forest. To the West, you can see Blue Urf. You notice that the lights that usually dot the city don't seem to be working. Further in that direction, the swamps of Raven Wing and the desert of Cedar Oasis are visible.
@@ -429,13 +476,6 @@ You made it to the top.
 [[Admire the view: Read 704.|704]]
 [[See what else is up here: Explore Map: Crystal Cavern Entrance.|404]]
 
-:: 001 [start]
-Today is the first day of your Mergimals journey!
-
-[expand this entry]
-
-[[Get started: Read 059.|059]]
-
 :: StoryStylesheet [stylesheet]
 .encounter img {
   width: 75%;
@@ -446,4 +486,11 @@ Today is the first day of your Mergimals journey!
 
 .map img {
   width: 75%;
+  aspect-ratio: square;
+}
+
+#backpack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
 }
