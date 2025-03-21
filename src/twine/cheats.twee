@@ -1,0 +1,30 @@
+:: cheats
+<<button "get a coin">>
+    <<set $backpack.coins ++>>
+    <<replace ".display-coins">>$backpack.coins<</replace>>
+<</button>>
+
+<<button "get a mergiball">>
+    <<set $backpack.mergiballs ++>>
+    <<replace ".display-mergiballs">>$backpack.mergiballs<</replace>>
+<</button>>
+
+<<button "get a bandage">>
+    <<set $backpack.bandages ++>>
+    <<replace ".display-bandages">>$backpack.bandages<</replace>>
+<</button>>
+
+<<button "get a charm">>
+    <<set $backpack.charms ++>>
+    <<replace ".display-charms">>$backpack.charms<</replace>>
+<</button>>
+
+<<button "get a battery">>
+    <<set $backpack.batteries ++>>
+    <<replace ".display-batteries">>$backpack.batteries<</replace>>
+<</button>>
+
+<<button "get a tool">>
+    <<set $backpack.tools ++>>
+    <<replace ".display-tools">>$backpack.tools<</replace>>
+<</button>>

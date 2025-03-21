@@ -1,7 +1,6 @@
 :: StoryTitle
 MERGIMALS
 
-
 :: StoryData
 {
   "ifid": "90E729E4-A877-4D86-B308-9E22C917BB4A",
@@ -24,9 +23,11 @@ Config.ui.stowBarInitially = false;
   batteries: 0
 }>>
 
+<<character 'tam' 'Prof. Tamarack' '../images/characters/tam.png'>>
+
 :: StoryMenu
-<<link "backpack">>
-    <<run Dialog.wiki(Story.get("BackpackInventory").text); Dialog.open()>>
+<<link "cheats">>
+    <<run Dialog.wiki(Story.get("cheats").text); Dialog.open()>>
 <</link>>
 
 :: StoryCaption
@@ -34,23 +35,8 @@ Config.ui.stowBarInitially = false;
 
 :: 001 [start]
 Today is the first day of your Mergimals journey!
-<details>
-  <summary>
-    test
-  </summary>
-</details>
 
 [expand this entry]
-
-<<button "get a mergiball">>
-    <<pickup $backpack "mergiball" 1>>
-<</button>>
-testing1
-
-<<button "get a coin">>
-    <<pickup $backpack "coin" 1>>
-<</button>>\
-testing2
 
 [[go see professor Tamrack|059]]
 
@@ -457,9 +443,9 @@ The sun shines brightly as you begin your trek along Route 001. Nothing much hap
 :: 059 [story]
 Professor Tamarack’s office is on the Eastern edge of town. It’s the biggest building in the village and what mysteries fill all three floors are as good as anyone’s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
 
-“Great, you’re here! No, I wasn’t waiting at the window all morning for you. I have, um, lots and lots of work to do to keep me busy. I’m, like, super duper busy. So, please…come inside and we’ll get you set up. You’ve been waiting 10 years for this, how exciting!
+<<tam>>“Great, you’re here! No, I wasn’t waiting at the window all morning for you. I have, um, lots and lots of work to do to keep me busy. I’m, like, super duper busy. So, please… come inside and we’ll get you set up. You’ve been waiting 10 years for this, how exciting!<</tam>>
 
-[[Follow the professor inside: Read 065.|065]]
+[[Follow the professor inside.|065]]
 
 :: 345 [reward]
 This cave isn't very deep, but it was worth the climb! You find a few batteries in an old bird's nest. There's also a single challenge coin.
