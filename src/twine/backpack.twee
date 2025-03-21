@@ -1,0 +1,27 @@
+:: BackpackInventory [nobr]
+<div id='backpack'>
+  <div class='backpack-item'>
+      <img class='image-item' src='../images/items/coin.svg' />
+      <p>$backpack.coins</p>
+  </div>
+  <div class='backpack-item'>
+      <img class='image-item' src='../images/items/mergiball.svg' />
+      <p>$backpack.coins</p>
+  </div>
+      <div class='backpack-item'>
+      <img class='image-item' src='../images/items/bandage.svg' />
+      <p>$backpack.coins</p>
+  </div>
+      <div class='backpack-item'>
+      <img class='image-item' src='../images/items/charm.svg' />
+      <p>$backpack.coins</p>
+  </div>
+      <div class='backpack-item'>
+      <img class='image-item' src='../images/items/battery.svg' />
+      <p>$backpack.coins</p>
+  </div>
+      <div class='backpack-item'>
+      <img class='image-item' src='../images/items/tool.svg' />
+      <p>$backpack.coins</p>
+  </div>
+</div>

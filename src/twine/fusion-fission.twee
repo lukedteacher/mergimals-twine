@@ -13,12 +13,15 @@ MERGIMALS
 
 :: Story JavaScript [script]
 Config.ui.stowBarInitially = false;
-Config.passages.nobr = true;
 
-:: StoryInit [nobr]
+:: StoryInit
 <<set $backpack to {
   coins: 0, 
-  mergiballs: 0
+  mergiballs: 0,
+  tools: 0,
+  bandages: 0,
+  charms: 0,
+  batteries: 0
 }>>
 
 :: StoryMenu
@@ -29,20 +32,13 @@ Config.passages.nobr = true;
 :: StoryCaption
 <<include BackpackInventory>>
 
-:: BackpackInventory [nobr]
-<div id="backpack">
-  <div>
-    <img src="../images/items/coin.svg" />
-    <span>$backpack.coins</span>
-  </div>
-  <div>
-    <img src="../images/items/mergiball.svg">
-    <span>$backpack.coins</span>
-  </div>
-</div>
-
 :: 001 [start]
 Today is the first day of your Mergimals journey!
+<details>
+  <summary>
+    test
+  </summary>
+</details>
 
 [expand this entry]
 
@@ -477,20 +473,3 @@ You made it to the top.
 [[See what else is up here: Explore Map: Crystal Cavern Entrance.|404]]
 
 :: StoryStylesheet [stylesheet]
-.encounter img {
-  width: 75%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.map img {
-  width: 75%;
-  aspect-ratio: square;
-}
-
-#backpack {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-}

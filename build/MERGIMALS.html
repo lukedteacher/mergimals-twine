@@ -104,25 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="5" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
-.encounter img {
-  width: 75%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.map img {
-  width: 75%;
-  aspect-ratio: square;
-}
-
-#backpack {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-}
-/* twine-user-stylesheet #2: "simple-inventory.css" */
+	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="5" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "simple-inventory.css" */
 /* Simple Inventory, for SugarCube 2, by Chapel
 v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26 */
 ul.simple-inventory-list {
@@ -169,10 +151,41 @@ ul.simple-inventory-list {
   display: inline-block;
 }
 
-/* End Simple Inventory */</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "Story JavaScript" */
-Config.ui.stowBarInitially = false;
-Config.passages.nobr = true;
-/* twine-user-script #2: "simple-inventory.js" */
+/* End Simple Inventory */
+/* twine-user-stylesheet #2: "global.css" */
+/*  @/styles/global.css  */
+
+.encounter img {
+  width: 75%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+  
+.map img {
+  width: 75%;
+  aspect-ratio: square;
+}
+
+#backpack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.backpack-item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-item {
+  width: 4rem;
+  aspect-ratio: square;
+}
+/* twine-user-stylesheet #3: "StoryStylesheet" */
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "simple-inventory.js" */
 // Simple Inventory, for SugarCube 2, by Chapel
 // v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26
 ("use strict");
@@ -1427,21 +1440,47 @@ function _toPrimitive(t, e) {
       });
   })();
 // End Simple Inventory
-</script><tw-passagedata pid="1" name="StoryInit" tags="nobr" position="100,100" size="100,100">&lt;&lt;set $backpack to {
+/* twine-user-script #2: "Story JavaScript" */
+Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="BackpackInventory" tags="nobr" position="100,100" size="100,100">&lt;div id=&#39;backpack&#39;&gt;
+  &lt;div class=&#39;backpack-item&#39;&gt;
+      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/coin.svg&#39; /&gt;
+      &lt;p&gt;$backpack.coins&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&#39;backpack-item&#39;&gt;
+      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/mergiball.svg&#39; /&gt;
+      &lt;p&gt;$backpack.coins&lt;/p&gt;
+  &lt;/div&gt;
+      &lt;div class=&#39;backpack-item&#39;&gt;
+      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/bandage.svg&#39; /&gt;
+      &lt;p&gt;$backpack.coins&lt;/p&gt;
+  &lt;/div&gt;
+      &lt;div class=&#39;backpack-item&#39;&gt;
+      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/charm.svg&#39; /&gt;
+      &lt;p&gt;$backpack.coins&lt;/p&gt;
+  &lt;/div&gt;
+      &lt;div class=&#39;backpack-item&#39;&gt;
+      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/battery.svg&#39; /&gt;
+      &lt;p&gt;$backpack.coins&lt;/p&gt;
+  &lt;/div&gt;
+      &lt;div class=&#39;backpack-item&#39;&gt;
+      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/tool.svg&#39; /&gt;
+      &lt;p&gt;$backpack.coins&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="StoryInit" tags="" position="225,100" size="100,100">&lt;&lt;set $backpack to {
   coins: 0, 
-  mergiballs: 0
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StoryMenu" tags="" position="225,100" size="100,100">&lt;&lt;link &quot;backpack&quot;&gt;&gt;
+  mergiballs: 0,
+  tools: 0,
+  bandages: 0,
+  charms: 0,
+  batteries: 0
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryMenu" tags="" position="350,100" size="100,100">&lt;&lt;link &quot;backpack&quot;&gt;&gt;
     &lt;&lt;run Dialog.wiki(Story.get(&quot;BackpackInventory&quot;).text); Dialog.open()&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryCaption" tags="" position="350,100" size="100,100">&lt;&lt;include BackpackInventory&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="BackpackInventory" tags="nobr" position="475,100" size="100,100">&lt;div id=&quot;backpack&quot;&gt;
-  &lt;div&gt;
-    &lt;img src=&quot;../images/items/coin.svg&quot; /&gt;
-    &lt;span&gt;$backpack.coins&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-    &lt;img src=&quot;../images/items/mergiball.svg&quot;&gt;
-    &lt;span&gt;$backpack.coins&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="5" name="001" tags="start" position="600,100" size="100,100">Today is the first day of your Mergimals journey!
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="StoryCaption" tags="" position="475,100" size="100,100">&lt;&lt;include BackpackInventory&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="001" tags="start" position="600,100" size="100,100">Today is the first day of your Mergimals journey!
+&lt;details&gt;
+  &lt;summary&gt;
+    test
+  &lt;/summary&gt;
+&lt;/details&gt;
 
 [expand this entry]
 
