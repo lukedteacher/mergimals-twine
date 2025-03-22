@@ -8,7 +8,7 @@ Route 001 leads out of Cascade Village and towards the Great River Road to the E
 [[Say 'hello' to the trainer.|Trainer: Bucky]]
 !!!!NAVIGATE
 [[Go South on the sandy path.|b5]]
-[[Go East toward Great River Road.|003]]
+[[Go East toward Great River Road.|c4]]
 
 :: Trainer: Bucky [trainer]
 <img src="bucky.png" />
@@ -18,13 +18,3 @@ Route 001 leads out of Cascade Village and towards the Great River Road to the E
 [[Start the contest.|404]]
 [[Ask for information.|404]]
 [[Another time: Continue exploring Route 001.|b4]]
-
-:: 009 [encounter]
-<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art zipper.png" />
-
-You're looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
-
-Do worksheeet 3.4
-
-[[You've tamed it: Read 136.|136]]
-[[It got away: Continue exploring the bookmarked map.|b4]]
