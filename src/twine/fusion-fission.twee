@@ -23,7 +23,7 @@ Config.ui.stowBarInitially = false;
 
 :: StoryMenu
 <<link 'cheats'>>
-  <<dialog 'cheats'>>
+  <<dialog 'cheats'>>\
     <<include 'cheats'>>
   <</dialog>>
 <</link>>
@@ -58,14 +58,14 @@ Finally, you’re here!
         So, please… come inside and we’ll get you set up.
         You’ve been waiting 10 years for this, how exciting!
       <</tam>>\
-      <<link 'Follow the professor inside the Lab' '065'>><</link>>
+      <<link 'Follow the professor inside the Lab.' '065'>><</link>>
     <</replace>>
   <</link>>
   <<link 'Say: Let\'s go!'>>
     <<replace '#response'>>\
       <<player>>Let's go!<</player>>\
       <<tam>>You’ve been waiting 10 years for this, how exciting!<</tam>>\
-      <<link 'Follow the professor inside the Lab' '065'>><</link>>
+      <<link 'Follow the professor inside the Lab.' '065'>><</link>>
     <</replace>>
   <</link>>
 </div>

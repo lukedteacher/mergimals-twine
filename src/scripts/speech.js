@@ -27,26 +27,32 @@
         var $box = $(document.createElement('div'))
             .addClass(Util.slugify(character) + ' say');
 
-			
         // portrait
-        var _img = characters.has(character) ? characters.get(character).image : null;        
+        var _img = characters.has(character) ? characters.get(character).image : null;  
+        var $imgBox = $(document.createElement('div'))
+            .addClass('portrait-box');      
         var $img = $(document.createElement('img'))
-            .attr('src', imgSrc || _img || '');
+            .attr('src', imgSrc || _img || '')
+            .addClass('portrait-img');
 
         if ($img.attr('src') && $img.attr('src').trim()) {
-            $box.append($img);
+            $imgBox.append($img);
+            $box.append($imgBox);
         }
 
         // name and content boxes
-		var _name =  character.toUpperFirst();
+		var _name =  character;
 		if (characters.has(character) && characters.get(character).displayName) {
             _name = characters.get(character).displayName;
         }
-
-        $box.append($(document.createElement('p'))
-            .wiki(_name))
-            .append($(document.createElement('p'))
-                .wiki(text));
+        var $nameBox = $(document.createElement('div'))
+            .addClass('name-box')
+            .wiki(_name);
+        var $speechBox = $(document.createElement('div'))
+            .addClass('speech-box')
+            .wiki(text);
+        $box.append($nameBox);
+        $box.append($speechBox);
 
         if ($output) {
             if (!($output instanceof $)) {

@@ -1,22 +1,30 @@
 .say {
     border: 1px solid #eee;
     overflow: auto;
+    display: grid;
+    grid: 2rem auto / 8rem auto;
 }
 
-.say > img {
+.portrait-box {
+    grid-area: 1 / 1 / span 2 / span 1;
     height: 8rem;
-    max-width: 20%;
-    float: left;
-    margin-right: 1em;
 }
 
-.say > p:first-of-type {
+.portrait-img {
+    height: 8rem;
+}
+
+.name-box {
+    grid-area: 1 / 2;
+    display: flex;
+    align-items: center;
     font-weight: bold;
-    margin: 0.2em 0;
+    padding-left: 0.6em;
     border-bottom: 1px solid #eee;
 }
 
-.say > p:last-of-type {
-    padding: 0.5em;
+.speech-box {
+    grid-area: 2 / 2;
+    padding: 0.6rem;
     margin: 0;
 }

@@ -1,0 +1,17 @@
+:: e3 [map]
+<div class='map-div'>\
+    <img class='map-image' src='../images/maps/map - story - e3.png' />\
+</div>\
+!!!!EXPLORE
+[[Check the long grass.|e3: long grass]]
+[[Approach the trainers.|e3: trainer]]
+!!!!NAVIGATE
+[[Go North and enter Blue Urf.|e2]]
+[[Go West towards Mooberry Farm.|d3]]
+[[Go South.|e4]]
+
+:: e3: long grass
+Some mergimals are here probably.
+
+:: e3: trainer
+Two trainers even!

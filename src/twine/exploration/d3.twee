@@ -1,0 +1,16 @@
+:: d3 [map]
+<div class='map-div'>\
+    <img class='map-image' src='../images/maps/map - story - d3.png' />\
+</div>\
+!!!!EXPLORE
+[[Check the long grass.|d3: long grass]]
+[[Approach the scientist|d3: trainer]]
+[[Check out the well.|d3: well]]
+!!!!NAVIGATE
+[[Go East towards the path to Blue Urf.|e3]]
+
+:: d3: long grass
+Some mergimals are here probably.
+
+:: d3: trainer
+Two trainers even!
