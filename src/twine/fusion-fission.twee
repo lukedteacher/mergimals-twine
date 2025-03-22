@@ -35,12 +35,12 @@ Config.ui.stowBarInitially = false;
 Today is the first day of your Mergimals journey!
 
 Enter your name:
-<<textbox "$player.name" "">>
+<<textbox '$player.name' ''>>
 
 [[Go see professor Tamrack|059]]
 
 :: 059 [story]
-<<if $player.name is "">><<set $player.name to 'Ash'>><</if>>
+<<if $player.name is ''>><<set $player.name to 'Ash'>><</if>>
 <<widget 'player' container>>\
   <<say $player.name '../images/characters/player.png'>>_contents<</say>>\
 <</widget>>\

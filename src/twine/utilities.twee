@@ -18,3 +18,10 @@ You don't have enough coins to buy that!
 <<link 'Nevermind.'>>
   <<run Dialog.close()>>
 <</link>>
+
+:: already purchased
+You already have one!
+
+<<link 'Nevermind.'>>
+  <<run Dialog.close()>>
+<</link>>

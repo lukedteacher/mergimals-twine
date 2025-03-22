@@ -1685,35 +1685,47 @@ Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="Backpa
     &lt;img class=&#39;image-item&#39; src=&#39;../images/items/battery.svg&#39; /&gt;
     &lt;p class=&#39;backpack-label display-batteries&#39;&gt;$backpack.batteries&lt;/p&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="cheats" tags="" position="225,100" size="100,100">&lt;&lt;button &#39;get 10 coins&#39;&gt;&gt;
-    &lt;&lt;set $backpack.coins += 10&gt;&gt;
-    &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &#39;get a mergiball&#39;&gt;&gt;
-    &lt;&lt;set $backpack.mergiballs ++&gt;&gt;
-    &lt;&lt;replace &#39;.display-mergiballs&#39;&gt;&gt;$backpack.mergiballs&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="cheats" tags="nobr" position="225,100" size="100,100">&lt;h3&gt;items&lt;/h3&gt;
+&lt;div style=&#39;display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;&#39;&gt;
+  &lt;div&gt;
+    &lt;&lt;button &#39;get 10 coins&#39;&gt;&gt;
+      &lt;&lt;set $backpack.coins += 10&gt;&gt;
+      &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;&lt;button &#39;get a mergiball&#39;&gt;&gt;
+      &lt;&lt;set $backpack.mergiballs ++&gt;&gt;
+      &lt;&lt;replace &#39;.display-mergiballs&#39;&gt;&gt;$backpack.mergiballs&lt;&lt;/replace&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
 &lt;&lt;button &#39;get a bandage&#39;&gt;&gt;
     &lt;&lt;set $backpack.bandages ++&gt;&gt;
     &lt;&lt;replace &#39;.display-bandages&#39;&gt;&gt;$backpack.bandages&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-
+  &lt;/div&gt;
+  &lt;div&gt;
 &lt;&lt;button &#39;get a charm&#39;&gt;&gt;
     &lt;&lt;set $backpack.charms ++&gt;&gt;
     &lt;&lt;replace &#39;.display-charms&#39;&gt;&gt;$backpack.charms&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-
+  &lt;/div&gt;
+  &lt;div&gt;
 &lt;&lt;button &#39;get a battery&#39;&gt;&gt;
     &lt;&lt;set $backpack.batteries ++&gt;&gt;
     &lt;&lt;replace &#39;.display-batteries&#39;&gt;&gt;$backpack.batteries&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-
+  &lt;/div&gt;
+  &lt;div&gt;
 &lt;&lt;button &#39;get a tool&#39;&gt;&gt;
     &lt;&lt;set $backpack.tools ++&gt;&gt;
     &lt;&lt;replace &#39;.display-tools&#39;&gt;&gt;$backpack.tools&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="b4" tags="map" position="350,100" size="100,100">&lt;div class=&#39;map-div&#39;&gt;\
+&lt;&lt;/button&gt;&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;teleport&lt;/h3&gt;
+Enter grid coords: &lt;&lt;textbox &#39;$_destination&#39; &#39;&#39;&gt;&gt;&lt;&lt;button &#39;go&#39;&gt;&gt;&lt;&lt;run Dialog.close();&gt;&gt;&lt;&lt;goto $_destination&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="b4" tags="map" position="350,100" size="100,100">&lt;div class=&#39;map-div&#39;&gt;\
     &lt;img class=&#39;map-image&#39; src=&#39;../images/maps/map - story - b4.png&#39; /&gt;\
 &lt;/div&gt;\
 Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South. A Mergimal trainer is posed near an apple tree, looking hungry for a contest. You can hear cooing noises coming from the long grass.
@@ -2052,6 +2064,22 @@ If you rolled...
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
+&lt;&lt;button &#39;buy a flashlight 10c&#39;&gt;&gt;
+  &lt;&lt;if $keyword.flashlight == true&gt;&gt;
+    &lt;&lt;dialog &#39;already purchased&#39;&gt;&gt;
+      &lt;&lt;include &#39;already purchased&#39;&gt;&gt;
+    &lt;&lt;/dialog&gt;&gt;
+  &lt;&lt;elseif $backpack.coins &lt; 10&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+      &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;/dialog&gt;&gt;
+  &lt;&lt;else&gt;&gt;
+    &lt;&lt;set $backpack.coins -= 10&gt;&gt;
+    &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
+    &lt;&lt;set $keyword.flashlight to true&gt;&gt;
+  &lt;&lt;/if&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
 [[Look around Littlemoose.|d6]]</tw-passagedata><tw-passagedata pid="48" name="d6: veil school" tags="" position="975,600" size="100,100">The school is closed?!?
 
 Motherf***.
@@ -2070,9 +2098,9 @@ Motherf***.
 &lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="StoryCaption" tags="" position="100,725" size="100,100">&lt;&lt;include BackpackInventory&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="001" tags="start" position="225,725" size="100,100">Today is the first day of your Mergimals journey!
 
 Enter your name:
-&lt;&lt;textbox &quot;$player.name&quot; &quot;&quot;&gt;&gt;
+&lt;&lt;textbox &#39;$player.name&#39; &#39;&#39;&gt;&gt;
 
-[[Go see professor Tamrack|059]]</tw-passagedata><tw-passagedata pid="53" name="059" tags="story" position="350,725" size="100,100">&lt;&lt;if $player.name is &quot;&quot;&gt;&gt;&lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;&lt;&lt;/if&gt;&gt;
+[[Go see professor Tamrack|059]]</tw-passagedata><tw-passagedata pid="53" name="059" tags="story" position="350,725" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;&lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;widget &#39;player&#39; container&gt;&gt;\
   &lt;&lt;say $player.name &#39;../images/characters/player.png&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;\
 &lt;&lt;/widget&gt;&gt;\
@@ -2181,6 +2209,10 @@ You finally caught this tough Mergimal! Their name is Corwhal, because of their 
 &lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;
   &lt;&lt;run Dialog.close()&gt;&gt;
 &lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="not enough coins" tags="" position="1100,850" size="100,100">You don&#39;t have enough coins to buy that!
+
+&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;
+  &lt;&lt;run Dialog.close()&gt;&gt;
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="already purchased" tags="" position="1225,850" size="100,100">You already have one!
 
 &lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;
   &lt;&lt;run Dialog.close()&gt;&gt;
