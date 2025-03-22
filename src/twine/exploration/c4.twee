@@ -1,0 +1,46 @@
+:: 003 [map]
+<div class="map-div">\
+    <img class="map-image" src="../images/maps/map - story - c4.png" />\
+</div>\
+Route 002 connects the Great River Road and Cascade Village. To the East, you can see the road get wider and more well-traveled.
+
+A bored looking Mergimal trainer eyes you with a yawn. Next to them, you can see a stretch of climbable rocks that lead up the cliff face. There is a small cave on an outcrop of rocks.
+
+A small pathway leads South into the forest. Maybe it’s a shortcut to Littlemoose?
+!!!!EXPLORE
+[[Check the long grass.|005]]
+[[Greet the trainer.|356]]
+!!!!NAVIGATE
+[[Go South into the dark forest.|214]]
+[[Go East toward Great River Road.|d4]]
+[[Go West toward Route 001.|b4]]
+
+:: 005 [stray]
+You can tell this long grass is full of Mergimals. You just need to see which ones you can find!
+
+Roll ATTENTION x EMPATHY
+
+If you rolled...
+
+[[...40 or less, find a common Mergimal: Read 006.|006]]
+[[...between 40 and 80, find an uncommon Mergimal: 404|404]]
+[[...above 80, you find a rare Mergimal: 404|404]]
+
+:: 356 [trainer]
+<img src="jessie.png" />
+
+There is a Mergimal Trainer standing near the base of the cliff. They yawn and roll their eyes as you approach. "I suppose you want to have a contest?"
+
+[[Absolutely!|404]]
+[[Ask them what's new.|404]]
+[[Maybe another time: Continue exploring Route 002.|c4]]
+
+:: 006 [encounter]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art treethorn.png" />
+
+You're looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That's no bush: that's a Mergimal!
+
+Do worksheeet 3.3
+
+[[You've tamed it: Read 007|007]]
+[[It got away: Continue exploring the bookmarked map.|003]]

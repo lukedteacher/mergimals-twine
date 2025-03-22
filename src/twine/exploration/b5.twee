@@ -35,18 +35,38 @@ The water is cool and inviting. You look out over the sea. You can see a boat of
     <</link>>
 </div>
 [[Go fishing. (requires keyword: ROD)|012]]
-[[Ride your mergimal out to the boat. (requires keyword: PADDLE)|404]]
+[[Ride your mergimal out to the boat. (requires keyword: PADDLE)|011]]
 [[See what else is around here: Continue exploring Pretty Rock Bay.|b5]]
 
 :: Crabby Critters [worksheet]
+<<set _$correct to false>>\
 A group of crab-like Mergimals seems to be protecting a large sand castle. An old fishing pole sticks out of the center tower, holding a flag.
 
 Maybe you can figure out some way to avoid the creatures and grab it?
 
 Do Worksheet 'Crabby Critters'.
 
-[[You got past them: Read 141.|141]]
+Enter the code:  <<textbox '_$code' ''>>
+
+<<link 'See if you got past them.'>>
+    <<if _$code != 141>>
+        <<dialog 'incorrect'>>\
+            <<include 'incorrect'>>
+        <</dialog>>
+    <<else>>
+        <<dialog 'correct'>>\
+            <<include 'correct'>>
+            <<onclose>>
+                <<goto '141'>>
+        <</dialog>>
+    <</if>>
+<</link>>
 [[Leave them alone for now: continue exploring Pretty Rock Bay.|b5]]
+
+:: 141 [reward]
+After a short while, you seem to find a pattern in the crabs' movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.
+
+[[Success: Gain Card I-20. Continue exploring Pretty Rock Bay.|b5]]
 
 :: Trainer: Dontay [trainer]
 <img src="dontay.png" />
@@ -72,3 +92,11 @@ You found a bottle floating in the water. It has a message inside! You unroll it
 Do Worksheet 'Message in a Botttle'.
 
 [[Decode the message later: Continue exploring the bookmarked map.|b5]]
+
+:: 011 [swim]
+You ride your Mergimal out to the boat. The water is calm at first, but gets rougher as you go.
+
+Do Worksheet SKIP COUNT 4.
+
+[[Success: 404|404]]
+[[Failure: 404|404]]

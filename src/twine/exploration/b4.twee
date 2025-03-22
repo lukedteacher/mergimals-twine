@@ -5,7 +5,7 @@
 Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South. A Mergimal trainer is posed near an apple tree, looking hungry for a contest. You can hear cooing noises coming from the long grass.
 !!!!EXPLORE
 [[Check the long grass.|126]]
-[[Challenge the trainer.|Trainer: Bucky]]
+[[Say 'hello' to the trainer.|Trainer: Bucky]]
 !!!!NAVIGATE
 [[Go South on the sandy path.|b5]]
 [[Go East toward Great River Road.|003]]
@@ -18,3 +18,13 @@ Route 001 leads out of Cascade Village and towards the Great River Road to the E
 [[Start the contest.|404]]
 [[Ask for information.|404]]
 [[Another time: Continue exploring Route 001.|b4]]
+
+:: 009 [encounter]
+<img src="file:///Users/luke/My Drive/game design/mergimals/publisher files/art/card art/card art zipper.png" />
+
+You're looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
+
+Do worksheeet 3.4
+
+[[You've tamed it: Read 136.|136]]
+[[It got away: Continue exploring the bookmarked map.|b4]]
