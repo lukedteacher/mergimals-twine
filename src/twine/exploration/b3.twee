@@ -1,8 +1,5 @@
 :: b3 [map]
-<div class='map-div'>\
-    <img class='map-image' src='../images/maps/map - story - b3.png' />\
-</div>\
-
+<<map 'b3'>>\
 !!!!EXPLORE
 [[Look around|b3: description]]
 [[Stop at home.|b3: home]]

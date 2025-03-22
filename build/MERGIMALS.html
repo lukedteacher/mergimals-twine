@@ -155,7 +155,21 @@ h4 {
   width: 3rem;
   aspect-ratio: square;
 }
-/* twine-user-stylesheet #2: "simple-inventory.css" */
+/* twine-user-stylesheet #2: "map.css" */
+.map-container {
+    display: flex;
+    justify-content: center;
+}
+
+.map-grid {
+    display: grid;
+    grid: repeat(32, 1fr) / repeat(32, 1fr)
+}
+
+.map-img {
+    grid-area: 1 / 1 / span 32 / span 32;
+}
+/* twine-user-stylesheet #3: "simple-inventory.css" */
 /* Simple Inventory, for SugarCube 2, by Chapel
 v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26 */
 ul.simple-inventory-list {
@@ -203,7 +217,7 @@ ul.simple-inventory-list {
 }
 
 /* End Simple Inventory */
-/* twine-user-stylesheet #3: "speech.css" */
+/* twine-user-stylesheet #4: "speech.css" */
 .say {
     border: 1px solid #eee;
     overflow: auto;
@@ -323,7 +337,50 @@ Macro.add('dialogclose', {
         Dialog.close();
     } 
 });
-/* twine-user-script #2: "simple-inventory.js" */
+/* twine-user-script #2: "map.js" */
+(function () {
+    // v0.1
+    'use strict';
+
+    function createMap ($output, coord) {
+        console.log(coord);
+        var $box = $(document.createElement('div'))
+            .addClass('map-container');
+         
+        var $mapGrid = $(document.createElement('div'))
+            .addClass('map-grid');     
+
+        const src = '../images/maps/map - story - ' + coord + '.png';
+
+        var $img = $(document.createElement('img'))
+            .attr('src', src)
+            .addClass('map-img');
+
+        if ($img.attr('src') && $img.attr('src').trim()) {
+            $mapGrid.append($img);
+            $box.append($mapGrid);
+        };
+
+        if ($output) {
+            if (!($output instanceof $)) {
+                $output = $($output);
+            }
+            $box.appendTo($output);
+        };
+
+        return $box;
+    }
+
+    setup.map = createMap;
+
+    Macro.add('map', {
+        // map macro
+        handler : function () {
+            createMap(this.output, this.args[0]);
+        }
+    });
+}());
+/* twine-user-script #3: "simple-inventory.js" */
 // Simple Inventory, for SugarCube 2, by Chapel
 // v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26
 ("use strict");
@@ -1578,7 +1635,7 @@ function _toPrimitive(t, e) {
       });
   })();
 // End Simple Inventory
-/* twine-user-script #3: "speech.js" */
+/* twine-user-script #4: "speech.js" */
 (function () {
     // v1.1.1
     'use strict';
@@ -1672,7 +1729,7 @@ function _toPrimitive(t, e) {
         });
     });
 }());
-/* twine-user-script #4: "Story JavaScript" */
+/* twine-user-script #5: "Story JavaScript" */
 Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="BackpackInventory" tags="nobr" position="100,100" size="100,100">&lt;h3&gt;backpack&lt;/h3&gt;
 &lt;div id=&#39;backpack&#39;&gt;
   &lt;div class=&#39;backpack-item&#39;&gt;
@@ -1739,10 +1796,7 @@ Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="Backpa
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;h3&gt;teleport&lt;/h3&gt;
-Enter grid coords: &lt;&lt;textbox &#39;$_destination&#39; &#39;&#39;&gt;&gt;&lt;&lt;button &#39;go&#39;&gt;&gt;&lt;&lt;run Dialog.close();&gt;&gt;&lt;&lt;goto $_destination&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="b3" tags="map" position="350,100" size="100,100">&lt;div class=&#39;map-div&#39;&gt;\
-    &lt;img class=&#39;map-image&#39; src=&#39;../images/maps/map - story - b3.png&#39; /&gt;\
-&lt;/div&gt;\
-
+Enter grid coords: &lt;&lt;textbox &#39;$_destination&#39; &#39;&#39;&gt;&gt;&lt;&lt;button &#39;go&#39;&gt;&gt;&lt;&lt;run Dialog.close();&gt;&gt;&lt;&lt;goto $_destination&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="b3" tags="map" position="350,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;\
 !!!!EXPLORE
 [[Look around|b3: description]]
 [[Stop at home.|b3: home]]
@@ -2294,14 +2348,14 @@ Finally, you’re here!
         So, please… come inside and we’ll get you set up.
         You’ve been waiting 10 years for this, how exciting!
       &lt;&lt;/tam&gt;&gt;\
-      &lt;&lt;link &#39;Follow the professor inside the Lab&#39; &#39;065&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+      &lt;&lt;link &#39;Follow the professor inside the Lab.&#39; &#39;065&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
   &lt;&lt;/link&gt;&gt;
   &lt;&lt;link &#39;Say: Let\&#39;s go!&#39;&gt;&gt;
     &lt;&lt;replace &#39;#response&#39;&gt;&gt;\
       &lt;&lt;player&gt;&gt;Let&#39;s go!&lt;&lt;/player&gt;&gt;\
       &lt;&lt;tam&gt;&gt;You’ve been waiting 10 years for this, how exciting!&lt;&lt;/tam&gt;&gt;\
-      &lt;&lt;link &#39;Follow the professor inside the Lab&#39; &#39;065&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+      &lt;&lt;link &#39;Follow the professor inside the Lab.&#39; &#39;065&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
   &lt;&lt;/link&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="71" name="065" tags="story" position="100,975" size="100,100">You enter…
