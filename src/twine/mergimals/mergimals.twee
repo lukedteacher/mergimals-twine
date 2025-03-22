@@ -1,5 +1,5 @@
 :: 036 [encounter]
-<img src="../images/mergimals/card art boxin.png" />
+<img class='mergimal-image' src='../images/mergimals/card art boxin.png' />
 
 The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 
@@ -9,14 +9,14 @@ Do worksheeet 2.1
 [[It got away: Continue exploring the bookmarked map.|b4]]
 
 :: 241 [tamed]
-<img src="../images/mergimals/card art boxin.png" />
+<img class='mergimal-image' src='../images/mergimals/card art boxin.png' />
 
 This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.
 
 [[Your Mergipedia grows: Add Mergipedia page N-02 to your journal. Gain Card N-02. Continue exploring the bookmarked map.|b4]]
 
 :: 009 [encounter]
-<img src="../images/mergimals/card art zipper.png" />
+<img class='mergimal-image' src='../images/mergimals/card art zipper.png' />
 
 You're looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
 
@@ -26,8 +26,74 @@ Do worksheeet 3.4
 [[It got away: Continue exploring the bookmarked map.|b4]]
 
 :: 136 [tamed]
-<img src="../images/mergimals/card art zipper.png" />
+<img class='mergimal-image' src='../images/mergimals/card art zipper.png' />
 
 This Mergimal is named Zipper. They're cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.
 
 [[Your Mergipedia grows: Add Mergipedia page J-03 to your journal. Gain Card J-03. Continue exploring the bookmarked map.|b4]]
+
+:: 015 [b5 encounter]
+<img class='mergimal-image' src='../images/mergimals/card art tidefly.png' />
+
+A tiny snail with wings hangs from the line as you reel it in.
+
+Do worksheeet 10.3
+
+[[You've tamed it: Read 799|799]]
+[[It got away: Continue exploring the bookmarked map.|b5]]
+
+:: 013 [b5 encounter]
+<img class="mergimal-image" src="../images/mergimals/card art krustwo.png" />
+
+When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.
+
+Do worksheeet 2.5
+
+[[You've tamed it: Read 161|161]]
+[[It got away: Continue exploring the bookmarked map.|b5]]
+
+:: 320 [b5 encounter]
+<img class="mergimal-image" src="../images/mergimals/card art corwhal.png" />
+
+This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
+
+Do worksheeet 7.4
+
+[[You've tamed it: Read 505|505]]
+[[It got away: Continue exploring the bookmarked map.|b5]]
+
+:: 799 [b4 tamed]
+<img class="mergimal-image" src="../images/mergimals/card art tidefly.png" />
+
+This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
+
+[[Your Mergipedia grows: Add Mergipedia page W-10 to your journal. Gain Card W-10. Continue exploring the bookmarked map.|b4]]
+
+:: 006 [c4 encounter]
+<img class='mergimal-image' src='../images/mergimals/card art treethorn.png' />
+
+You're looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That's no bush: that's a Mergimal!
+
+Do worksheeet 3.3
+
+:: 007 [c4 tamed]
+<img class="mergimal-image" src="../images/mergimals/card art treethorn.png" />
+
+This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).
+
+[[Your Mergipedia grows: Add Mergipedia page B-03 to your journal. Gain Card B-03. Continue exploring the bookmarked map.|c4]]
+
+:: 161 [tamed]
+<img class="mergimal-image" src="../images/mergimals/card art krustwo.png" />
+
+You've seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.
+
+[[Your Mergipedia grows: Add Mergipedia page W-02 to your journal. Gain Card W-02. Continue exploring the bookmarked map.|b5]]
+
+:: 505 [tamed]
+<img class="mergimal-image" src="../images/mergimals/card art corwhal.png" />
+
+You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
+
+[[Your Mergipedia grows: Add Mergipedia page W-07 to your journal. Gain Card W-07. Continue exploring the bookmarked map.|004]]
+

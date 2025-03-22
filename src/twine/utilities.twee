@@ -1,0 +1,20 @@
+:: incorrect
+Not quite!
+
+<<link 'Try again.'>>
+  <<run Dialog.close()>>
+<</link>>
+
+:: correct
+Nice!
+
+<<link 'Continue on your way.'>>
+  <<run Dialog.close()>>
+<</link>>
+
+:: not enough coins
+You don't have enough coins to buy that!
+
+<<link 'Nevermind.'>>
+  <<run Dialog.close()>>
+<</link>>

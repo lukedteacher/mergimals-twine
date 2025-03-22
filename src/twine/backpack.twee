@@ -2,27 +2,27 @@
 <h3>backpack</h3>
 <div id='backpack'>
   <div class='backpack-item'>
-      <img class='image-item' src='../images/items/coin.svg' />
-      <p class='backpack-label display-coins'>$backpack.coins</p>
+    <img class='image-item' src='../images/items/coin.svg' />
+    <p class='backpack-label display-coins'>$backpack.coins</p>
   </div>
   <div class='backpack-item'>
-      <img class='image-item' src='../images/items/mergiball.svg' />
-      <p class='backpack-label display-mergiballs'>$backpack.mergiballs</p>
+    <img class='image-item' src='../images/items/mergiball.svg' />
+    <p class='backpack-label display-mergiballs'>$backpack.mergiballs</p>
   </div>
-      <div class='backpack-item'>
-      <img class='image-item' src='../images/items/bandage.svg' />
-      <p class='backpack-label display-bandages'>$backpack.bandages</p>
+  <div class='backpack-item'>
+    <img class='image-item' src='../images/items/charm.svg' />
+    <p class='backpack-label display-charms'>$backpack.charms</p>
   </div>
-      <div class='backpack-item'>
-      <img class='image-item' src='../images/items/charm.svg' />
-      <p class='backpack-label display-charms'>$backpack.charms</p>
+  <div class='backpack-item'>
+    <img class='image-item' src='../images/items/bandage.svg' />
+    <p class='backpack-label display-bandages'>$backpack.bandages</p>
   </div>
-      <div class='backpack-item'>
-      <img class='image-item' src='../images/items/battery.svg' />
-      <p class='backpack-label display-batteries'>$backpack.batteries</p>
+  <div class='backpack-item'>
+    <img class='image-item' src='../images/items/tool.svg' />
+    <p class='backpack-label display-tools'>$backpack.tools</p>
   </div>
-      <div class='backpack-item'>
-      <img class='image-item' src='../images/items/tool.svg' />
-      <p class='backpack-label display-tools'>$backpack.tools</p>
+  <div class='backpack-item'>
+    <img class='image-item' src='../images/items/battery.svg' />
+    <p class='backpack-label display-batteries'>$backpack.batteries</p>
   </div>
 </div>

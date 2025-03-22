@@ -1,0 +1,22 @@
+:: c3 [map]
+<div class='map-div'>\
+    <img class='map-image' src='../images/maps/map - story - c3.png' />\
+</div>\
+!!!!EXPLORE
+[[Take in the view|c3: the view]]
+[[Rummage around in the long grass|c3: long grass]]
+[[Talk to the scientist.|c3: scientist]]
+!!!!NAVIGATE
+[[Climb back down.|c4]]
+[[Enter the cave|c2]]
+
+:: c3: the view [c3 story]
+You look out over the cliff and take in the beauty.
+
+You can see Littlemoose from here, on the other side of a dense forest.
+
+To the West, you can see Blue Urf. You notice that the lights that usually dot the city don't seem to be working.
+
+Further in that direction, the peaks of Raven Wing mountain are barely visible.
+
+[[See what else is up here: Explore Crystal Caverns Entrance.|c3]]

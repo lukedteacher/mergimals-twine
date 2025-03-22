@@ -1,0 +1,101 @@
+:: d6 [map littlemoose]
+<div class='map-div'>\
+    <img class='map-image' src='../images/maps/map - story - d6.png' />\
+</div>\
+!!!!EXPLORE
+[[Visit the Mergimal Challenge Vending Machine.|d6: vending machine]]
+[[Talk to the dude standing there.|d6: trainer]]
+<<if $keyword.closed == false>>\
+  <<link 'Deliver the Mergiballs to the Veil School.' 'd6: veil school'>><</link>>
+<<else>>\
+  <<link 'Check out the closed school.' 'd6: veil school: closed'>><</link>>
+<</if>>\
+!!!!NAVIGATE
+[[Go North into Littlemoose Forest.|d5]]
+[[Go West along the dirt path.|e4]]
+
+:: d6: vending machine [vend littlemoose]
+<div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>\
+  <div style='background-image: url(../images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;'></div>\
+  <div style='grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/battery.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/bandage.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/tool.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/flashlight.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/mergiball.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/charm.svg' style='height: 100%;' /></div>\
+</div>\
+<<button 'buy a mergiball 1c'>>
+  <<if $backpack.coins < 1>>
+    <<dialog 'not enough coins'>>
+      <<include 'not enough coins'>>
+    <</dialog>>
+  <<else>>
+    <<set $backpack.coins -= 1>>
+    <<replace '.display-coins'>>$backpack.coins<</replace>>
+    <<set $backpack.mergiballs ++>>
+    <<replace '.display-mergiballs'>>$backpack.mergiballs<</replace>>
+  <</if>>
+<</button>>
+
+<<button 'buy a charm 2c'>>
+  <<if $backpack.coins < 2>>
+    <<dialog 'not enough coins'>>
+      <<include 'not enough coins'>>
+    <</dialog>>
+  <<else>>
+    <<set $backpack.coins -= 2>>
+    <<replace '.display-coins'>>$backpack.coins<</replace>>
+    <<set $backpack.charms ++>>
+    <<replace '.display-charms'>>$backpack.charms<</replace>>
+  <</if>>
+<</button>>
+
+<<button 'buy a bandage 3c'>>
+  <<if $backpack.coins < 3>>
+    <<dialog 'not enough coins'>>
+      <<include 'not enough coins'>>
+    <</dialog>>
+  <<else>>
+    <<set $backpack.coins -= 3>>
+    <<replace '.display-coins'>>$backpack.coins<</replace>>
+    <<set $backpack.bandages ++>>
+    <<replace '.display-bandages'>>$backpack.bandages<</replace>>
+  <</if>>
+<</button>>
+
+<<button 'buy a tool 4c'>>
+  <<if $backpack.coins < 4>>
+    <<dialog 'not enough coins'>>
+      <<include 'not enough coins'>>
+    <</dialog>>
+  <<else>>
+    <<set $backpack.coins -= 4>>
+    <<replace '.display-coins'>>$backpack.coins<</replace>>
+    <<set $backpack.tools ++>>
+    <<replace '.display-tools'>>$backpack.tools<</replace>>
+  <</if>>
+<</button>>
+
+<<button 'buy a battery 5c'>>
+  <<if $backpack.coins < 5>>
+    <<dialog 'not enough coins'>>
+      <<include 'not enough coins'>>
+    <</dialog>>
+  <<else>>
+    <<set $backpack.coins -= 5>>
+    <<replace '.display-coins'>>$backpack.coins<</replace>>
+    <<set $backpack.batteries ++>>
+    <<replace '.display-batteries'>>$backpack.batteries<</replace>>
+  <</if>>
+<</button>>
+
+[[Look around Littlemoose.|d6]]
+
+:: d6: veil school
+The school is closed?!?
+
+Motherf***.
+
+<<link 'Gain keyword: CLOSED. Return to exploring.' 'd6'>>
+  <<set $keyword.closed to true>>
+<</link>>

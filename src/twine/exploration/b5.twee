@@ -1,6 +1,6 @@
 :: b5 [map]
-<div class="map-div">\
-    <img class="map-image" src="../images/maps/map - story - b5.png" />\
+<div class='map-div'>\
+    <img class='map-image' src='../images/maps/map - story - b5.png' />\
 </div>\
 !!!!EXPLORE
 [[Look around the bay|Pretty Rock Bay]]
@@ -69,7 +69,7 @@ After a short while, you seem to find a pattern in the crabs' movements. You wai
 [[Success: Gain Card I-20. Continue exploring Pretty Rock Bay.|b5]]
 
 :: Trainer: Dontay [trainer]
-<img src="dontay.png" />
+<img class='trainer-image' src='dontay.png' />
 
 A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.
 
@@ -100,3 +100,14 @@ Do Worksheet SKIP COUNT 4.
 
 [[Success: 404|404]]
 [[Failure: 404|404]]
+
+:: 014 [encounter]
+You reel your line in and it nearly snaps.
+
+Roll GRIT x ATTENTION
+
+If you rolled...
+
+[[...20 or less, it got away: Continue exploring the bookmarked map.|004]]
+[[...between 21 and 63, you're able to pull it up but get really tired.: Gain TIRED. Read 320.|320]]
+[[...above 64, you pulled it up swiftly and with care. Gain a +2 bonus to catching it.: Read 320.|320]]

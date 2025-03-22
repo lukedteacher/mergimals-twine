@@ -1,0 +1,16 @@
+:: d5 [map littlemooseforest]
+<div class='map-div'>\
+    <img class='map-image' src='../images/maps/map - story - d5.png' />\
+</div>\
+!!!!EXPLORE
+[[Check the long grass.|d5: long grass]]
+[[Approach the trainers.|d5: trainer]]
+!!!!NAVIGATE
+[[Go North to Route 003|d4]]
+[[Go South to Littlemoose.|d6]]
+
+:: d5: long grass
+Some mergimals are here probably.
+
+:: d5: trainer
+This trainer is...

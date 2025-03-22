@@ -1,6 +1,6 @@
 :: b4 [map]
-<div class="map-div">\
-    <img class="map-image" src="../images/maps/map - story - b4.png" />\
+<div class='map-div'>\
+    <img class='map-image' src='../images/maps/map - story - b4.png' />\
 </div>\
 Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South. A Mergimal trainer is posed near an apple tree, looking hungry for a contest. You can hear cooing noises coming from the long grass.
 !!!!EXPLORE
@@ -11,10 +11,21 @@ Route 001 leads out of Cascade Village and towards the Great River Road to the E
 [[Go East toward Great River Road.|c4]]
 
 :: Trainer: Bucky [trainer]
-<img src="bucky.png" />
+<img class='trainer-image' src='bucky.png' />
 
-"Hey, you!" a friendly voice calls. The trainer standing near the tree is wearing clothes of some sort. "Are you ready to have a contest?"
+'Hey, you!' a friendly voice calls. The trainer standing near the tree is wearing clothes of some sort. 'Are you ready to have a contest?'
 
 [[Start the contest.|404]]
 [[Ask for information.|404]]
 [[Another time: Continue exploring Route 001.|b4]]
+
+:: 126 [stray]
+The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!
+
+Roll ATTENTION x MEMORY
+
+If you rolled...
+
+[[...30 or less, find a common Mergimal: Read 036.|036]]
+[[...between 30 and 80, find an uncommon Mergimal: Read 009.|009]]
+[[...above an 80, you find a rare Mergimal: 404|404]]
