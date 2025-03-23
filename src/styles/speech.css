@@ -1,6 +1,6 @@
 .say {
     border: 1px solid #eee;
-    overflow: auto;
+    overflow: none;
     display: grid;
     grid: 2rem auto / 8rem auto;
 }
