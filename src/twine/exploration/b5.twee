@@ -90,12 +90,10 @@ A serious-looking Mergimal trainer is standing on the beach. They have a fishing
 
 :: 012 [stray]
 <<if not $keywords.has('rusty')>>\
-    You don't have a fishing rod.
-
-    [[Continue exploring.->b5]]
+    <<include 'no rod'>>
 <<else>>\
     (Keyword RUSTY detected)
-    
+
     You cast your rod into Pretty Rock Bay: The Deep Blue Sea. After only a short while, you feel something pulling your line.
 
     [[If you rolled 4 or less, find a common Mergimal: Read 013.->013]]
@@ -112,9 +110,7 @@ Do Worksheet 'Message in a Botttle'.
 
 :: 011 [swim]
 <<if not $keywords.has('paddle')>>\
-    You don't know how to swim with a Mergimal yet.
-
-    [[At least the water is nice.->881]]
+  <<include 'no paddle'>>
 <<else>>\
     (Keyword PADDLE detected)
 

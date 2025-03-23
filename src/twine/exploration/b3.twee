@@ -31,9 +31,7 @@ The beach is small, but tidy. If you knew how to ride a Mergimal, you could go o
 
 :: b3: swimming
 <<if not $keywords.has('paddle')>>\
-  You don't know how to swim with your Mergimal yet.
-
-  [[Continue exploring.->b3]]
+  <<include 'no paddle'>>
 <<else>>\
   (Keyword PADDLE detected)
 

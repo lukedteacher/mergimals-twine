@@ -6,7 +6,7 @@
 !!!!NAVIGATE
 [[Go North towards the Wave School Stadium.->e1]]
 [[Go West towards the Beach District.->d2]]
-[[Go South out of town.->e4]]
+[[Go South out of town.->e3]]
 
 :: e2: vending machine [vend blueurf]
 <div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>\

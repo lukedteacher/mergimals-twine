@@ -1,7 +1,22 @@
 :: d2 [map]
 <<map 'd2'>><</map>>\
 !!!!EXPLORE
-[add stuff to explore]
+[TODO add stuff to explore]
 [[Go fishing.->d2: fishing]]
 !!!!NAVIGATE
 [[Go East towards Downtown.->e2]]
+
+:: d2: fishing
+<<if not $keywords.has('rusty')>>\
+    <<include 'no rod'>>
+<<else>>\
+    (Keyword RUSTY detected)
+
+    Fishing is fun!
+
+    Too bad nothing is biting.
+
+    [TODO fix this]
+
+    [[Continue exploring.->d2]]
+<</if>>
