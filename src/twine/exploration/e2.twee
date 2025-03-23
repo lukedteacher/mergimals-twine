@@ -1,14 +1,12 @@
 :: e2 [map]
-<div class='map-div'>\
-    <img class='map-image' src='../images/maps/map - story - e2.png' />\
-</div>\
+<<map 'e2'>><</map>>\
 !!!!EXPLORE
-[[Read the community bulletin board.|e2: bulletin board]]
-[[Buy something at the vending machine|e2: vending machine]]
+[[Read the community bulletin board.->e2: bulletin board]]
+[[Buy something at the vending machine->e2: vending machine]]
 !!!!NAVIGATE
-[[Go North towards the Wave School Stadium.|e1]]
-[[Go West towards the Beach District.|d2]]
-[[Go South out of town.|e4]]
+[[Go North towards the Wave School Stadium.->e1]]
+[[Go West towards the Beach District.->d2]]
+[[Go South out of town.->e4]]
 
 :: e2: vending machine [vend blueurf]
 <div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>\
@@ -101,4 +99,4 @@
   <</if>>
 <</button>>
 
-[[Look around Blue Urf.|e2]]
+[[Look around Blue Urf.->e2]]

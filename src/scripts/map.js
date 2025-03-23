@@ -2,8 +2,7 @@
     // v0.1
     'use strict';
 
-    function createMap ($output, coord) {
-        console.log(coord);
+    function createMap ($output, coord, contents) {
         var $box = $(document.createElement('div'))
             .addClass('map-container');
          
@@ -21,6 +20,11 @@
             $box.append($mapGrid);
         };
 
+        if (contents) {
+            console.log($.wiki(contents));
+            $mapGrid.append(contents); // ← Convert wikitext to HTML
+          }
+
         if ($output) {
             if (!($output instanceof $)) {
                 $output = $($output);
@@ -35,8 +39,9 @@
 
     Macro.add('map', {
         // map macro
+        tags: null,
         handler : function () {
-            createMap(this.output, this.args[0]);
+            createMap(this.output, this.args[0], this.payload[0].contents);
         }
     });
 }());

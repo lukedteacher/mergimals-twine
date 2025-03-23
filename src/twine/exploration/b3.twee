@@ -1,31 +1,46 @@
 :: b3 [map]
-<<map 'b3'>>\
+<<map 'b3'>><</map>>\
 !!!!EXPLORE
-[[Look around|b3: description]]
-[[Stop at home.|b3: home]]
-[[Visit the Mergimal Lab|b3: lab]]
-[[Go to the beach.|b3: beach]]
+[[Look around->b3: description]]
+[[Stop at home.->b3: home]]
+[[Visit the Mergimal Lab->b3: lab]]
+[[Go to the beach.->b3: beach]]
 !!!!NAVIGATE
-[[Go South to Route 001|b4]]
+[[Go South to Route 001->b4]]
 
 :: b3: description
 Cascade Village rests quietly on the sandy shores of Ho’onui Peninsula, where five cozy homes overlook the sparkling waves. The Mergimal Research Center stands at the edge of the beach, its sleek design contrasting with the warm, rustic charm of the village.
 
 Life moves at a gentle pace here, with the ocean breeze carrying the sound of laughter and the faint scent of salt and fresh bread. It’s a peaceful place to live—but for those eager to explore, Cascade Village feels like the calm before an unforgettable adventure.
 
-[[Keep exploring the village.|b3]]
+[[Keep exploring the village.->b3]]
 
 :: b3: lab
 This is the world-famous Mergimal Research Center. It is also the home of your mentor, Professor Tamarack.
 
 If you want, you can see if he’s available to talk.
-If keyword CLOSED, read ###.
 
-[[(if you have keyword: CLOSED) Tell him about the delivery.|tamarack: delivery]]
-[[Keep exploring the village.|b3]]
+[[(requires keyword: CLOSED) Tell him about the delivery.->tamarack: delivery]]
+[[Keep exploring the village.->b3]]
 
 :: b3: beach
 The beach is small, but tidy. If you knew how to ride a Mergimal, you could go out on the water.
 
-[[(if keyword: PADDLE) Brave the waters.|b3 to b5]]
-[[Keep exploring the village.|b3]]
+[[(requires keyword: PADDLE) Brave the waters.->b3: swimming]]
+[[Keep exploring the village.->b3]]
+
+:: b3: swimming
+<<if not $keywords.has('paddle')>>\
+  You don't know how to swim with your Mergimal yet.
+
+  [[Continue exploring.->b3]]
+<<else>>\
+  (Keyword PADDLE detected)
+
+  The water is great.
+
+  Do Worksheet SKIP COUNT 8.
+
+  [[Success.->b5]]
+  [[Failure.->404]]
+<</if>>

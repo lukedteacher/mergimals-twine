@@ -74,6 +74,7 @@
         }
     });
 
+    //creates the macros from the list of character names and say
     $(document).one(':passagestart', function () {
         // construct array of character names
         var names = Array.from(characters.keys());

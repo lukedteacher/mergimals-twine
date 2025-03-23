@@ -1,8 +1,6 @@
 :: e1 [map]
-<div class='map-div'>\
-    <img class='map-image' src='../images/maps/map - story - e1.png' />\
-</div>\
+<<map 'e1'>><</map>>\
 !!!!EXPLORE
-[[Go to the Wave School|e1: wave school]]
+[[Go to the Wave School->e1: wave school]]
 !!!!NAVIGATE
-[[Go South towards Downtown.|e2]]
+[[Go South towards Downtown.->e2]]

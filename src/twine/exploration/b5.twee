@@ -1,15 +1,13 @@
 :: b5 [map]
-<div class='map-div'>\
-    <img class='map-image' src='../images/maps/map - story - b5.png' />\
-</div>\
+<<map 'b5'>><</map>>\
 !!!!EXPLORE
-[[Look around the bay|Pretty Rock Bay]]
-[[Dip your toe in the water.|881]]
-[[Investigate the sand castle.|Crabby Critters]]
-[[Talk to the trainer.|Trainer: Dontay]]
-[[That lighthouse looks interesting.|404]]
+[[Look around the bay->Pretty Rock Bay]]
+[[Dip your toe in the water.->881]]
+[[Investigate the sand castle.->Crabby Critters]]
+[[Talk to the trainer.->Trainer: Dontay]]
+[[That lighthouse looks interesting.->404]]
 !!!!NAVIGATE
-[[Go North toward Route 001.|b4]]
+[[Go North toward Route 001.->b4]]
 
 :: Pretty Rock Bay [description]
 A serene beach stretches out before you. The white sand feels warm to the touch. The ocean waves crash against the shore.
@@ -20,7 +18,7 @@ A Mergimal trainer is near the south end of the beach. You watch them skillfully
 
 A large, imposing lighthouse stands on a small island just off the coast.
 
-[[Continue exploring.|b5]]
+[[Continue exploring.->b5]]
 
 :: 881 [detail]
 The water is cool and inviting. You look out over the sea. You can see a boat off in the distance. This might be a good fishing spot.
@@ -34,12 +32,12 @@ The water is cool and inviting. You look out over the sea. You can see a boat of
         <<replace '.test'>>Nothing to see here.<</replace>>
     <</link>>
 </div>
-[[Go fishing. (requires keyword: ROD)|012]]
-[[Ride your mergimal out to the boat. (requires keyword: PADDLE)|011]]
-[[See what else is around here: Continue exploring Pretty Rock Bay.|b5]]
+[[Go fishing. (requires keyword: ROD)->012]]
+[[Ride your mergimal out to the boat. (requires keyword: PADDLE)->011]]
+[[See what else is around here: Continue exploring Pretty Rock Bay.->b5]]
 
 :: Crabby Critters [worksheet]
-<<set _$correct to false>>\
+<<if not $keywords.has('rusty')>>\
 A group of crab-like Mergimals seems to be protecting a large sand castle. An old fishing pole sticks out of the center tower, holding a flag.
 
 Maybe you can figure out some way to avoid the creatures and grab it?
@@ -61,12 +59,23 @@ Enter the code:  <<textbox '_$code' ''>>
         <</dialog>>
     <</if>>
 <</link>>
-[[Leave them alone for now: continue exploring Pretty Rock Bay.|b5]]
+[[Leave them alone for now and continue exploring.->b5]]
+<<else>>\
+    (Keyword RUSTY detected)
+
+    Nothing to see here.
+
+    [[Continue exploring.->b5]]
+<</if>>
 
 :: 141 [reward]
 After a short while, you seem to find a pattern in the crabs' movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.
 
-[[Success: Gain Card I-20. Continue exploring Pretty Rock Bay.|b5]]
+Gain keyword RUSTY.<<set $keyword.rusty = true>>
+
+Gain Card I-20 (Rusty Rod).
+
+[[Continue exploring.->b5]]
 
 :: Trainer: Dontay [trainer]
 <img class='trainer-image' src='dontay.png' />
@@ -75,31 +84,47 @@ A serious-looking Mergimal trainer is standing on the beach. They have a fishing
 
 [expand this encounter]
 
-[[Challenge them to a contest.|404]]
-[[Ask them how the fish are biting.|404]]
-[[Leave them alone for now: Continue exploring Pretty Rock Bay.|b5]]
+[[Challenge them to a contest.->404]]
+[[Ask them how the fish are biting.->404]]
+[[Leave them alone for now and continue exploring.->b5]]
 
 :: 012 [stray]
-You cast your rod into Pretty Rock Bay: The Deep Blue Sea. After only a short while, you feel something pulling your line.
+<<if not $keywords.has('rusty')>>\
+    You don't have a fishing rod.
 
-[[If you rolled 4 or less, find a common Mergimal: Read 013.|013]]
-[[5 < n < 7: Read 015.|015]]
-[[n > 7: Read 014.|014]]
+    [[Continue exploring.->b5]]
+<<else>>\
+    (Keyword RUSTY detected)
+    
+    You cast your rod into Pretty Rock Bay: The Deep Blue Sea. After only a short while, you feel something pulling your line.
+
+    [[If you rolled 4 or less, find a common Mergimal: Read 013.->013]]
+    [[5 < n < 7: Read 015.->015]]
+    [[n > 7: Read 014.->014]]
+<</if>>
 
 :: 131 [worksheet secret]
 You found a bottle floating in the water. It has a message inside! You unroll it and find a strange script.
 
 Do Worksheet 'Message in a Botttle'.
 
-[[Decode the message later: Continue exploring the bookmarked map.|b5]]
+[[Decode the message later: Continue exploring the bookmarked map.->b5]]
 
 :: 011 [swim]
-You ride your Mergimal out to the boat. The water is calm at first, but gets rougher as you go.
+<<if not $keywords.has('paddle')>>\
+    You don't know how to swim with a Mergimal yet.
 
-Do Worksheet SKIP COUNT 4.
+    [[At least the water is nice.->881]]
+<<else>>\
+    (Keyword PADDLE detected)
 
-[[Success: 404|404]]
-[[Failure: 404|404]]
+    You ride your Mergimal out to the boat. The water is calm at first, but gets rougher as you go.
+
+    Do Worksheet SKIP COUNT 4.
+
+    [[Success.->b3]]
+    [[Failure: 404->404]]
+<</if>>
 
 :: 014 [encounter]
 You reel your line in and it nearly snaps.
@@ -108,6 +133,6 @@ Roll GRIT x ATTENTION
 
 If you rolled...
 
-[[...20 or less, it got away: Continue exploring the bookmarked map.|004]]
-[[...between 21 and 63, you're able to pull it up but get really tired.: Gain TIRED. Read 320.|320]]
-[[...above 64, you pulled it up swiftly and with care. Gain a +2 bonus to catching it.: Read 320.|320]]
+[[...20 or less, it got away: Continue exploring the bookmarked map.->004]]
+[[...between 21 and 63, you're able to pull it up but get really tired.: Gain TIRED. Read 320.->320]]
+[[...above 64, you pulled it up swiftly and with care. Gain a +2 bonus to catching it.: Read 320.->320]]

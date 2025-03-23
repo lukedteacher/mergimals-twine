@@ -1,9 +1,7 @@
 :: d2 [map]
-<div class='map-div'>\
-    <img class='map-image' src='../images/maps/map - story - d2.png' />\
-</div>\
+<<map 'd2'>><</map>>\
 !!!!EXPLORE
 [add stuff to explore]
-[[Go fishing.|d2: fishing]]
+[[Go fishing.->d2: fishing]]
 !!!!NAVIGATE
-[[Go East towards Downtown.|e2]]
+[[Go East towards Downtown.->e2]]

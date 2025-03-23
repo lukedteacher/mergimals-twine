@@ -1,14 +1,12 @@
 :: d4 [map]
-<div class='map-div'>\
-    <img class='map-image' src='../images/maps/map - story - d4.png' />\
-</div>\
+<<map 'd4'>><</map>>\
 !!!!EXPLORE
-[[Check the long grass.|d4: long grass]]
-[[Approach the trainers.|d4: trainer]]
+[[Check the long grass.->d4: long grass]]
+[[Approach the trainers.->d4: trainer]]
 !!!!NAVIGATE
-[[Go South into Littlemoose Forest.|d5]]
-[[Go East across the bridge.|e4]]
-[[Go West toward Route 002.|c4]]
+[[Go South into Littlemoose Forest.->d5]]
+[[Go East across the bridge.->e4]]
+[[Go West toward Route 002.->c4]]
 
 :: d4: long grass
 Some mergimals are here probably.

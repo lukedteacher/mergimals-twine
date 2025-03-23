@@ -16,10 +16,10 @@ Config.ui.stowBarInitially = false;
 :: StoryInit
 <<set $player to {name: 'none set', age: 10, difficulty: 'easy'}>>
 <<set $backpack to {coins: 0, mergiballs: 0, tools: 0, bandages: 0, charms: 0, batteries: 0}>>
-<<set $keyword to {challenge: false, closed: false, rusty: false}>>
 <<widget 'tam' container>>
   <<say 'Prof. Tamarack' '../images/characters/tam.png'>>_contents<</say>>
 <</widget>>
+<<newinv $keywords>>
 
 :: StoryMenu
 <<link 'cheats'>>
@@ -37,7 +37,7 @@ Today is the first day of your Mergimals journey!
 Enter your name:
 <<textbox '$player.name' ''>>
 
-[[Go see professor Tamrack|059]]
+[[Go see professor Tamrack->059]]
 
 :: 059 [story]
 <<if $player.name is ''>><<set $player.name to 'Ash'>><</if>>
@@ -82,8 +82,8 @@ In front of you on the table…
 
 Inspect the three starting Mergimal cards
 
-[[Pick the red one: Gain Card M-001|b4]]
-[[Pick the blue one: Gain Card M-002|b4]]
-[[Pick the green one: Gain Card M-003|b4]]
-[[Pick the yellow one: Gain Card M-004|b4]]
-[[Ask if there are any others: 404|404]]
+[[Pick the red one: Gain Card M-001->b4]]
+[[Pick the blue one: Gain Card M-002->b4]]
+[[Pick the green one: Gain Card M-003->b4]]
+[[Pick the yellow one: Gain Card M-004->b4]]
+[[Ask if there are any others: 404->404]]

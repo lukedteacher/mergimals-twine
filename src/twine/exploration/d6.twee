@@ -1,18 +1,12 @@
 :: d6 [map littlemoose]
-<div class='map-div'>\
-    <img class='map-image' src='../images/maps/map - story - d6.png' />\
-</div>\
+<<map 'd6'>><</map>>\
 !!!!EXPLORE
-[[Visit the Mergimal Challenge Vending Machine.|d6: vending machine]]
-[[Talk to the dude standing there.|d6: trainer]]
-<<if $keyword.closed == false>>\
-  <<link 'Deliver the Mergiballs to the Veil School.' 'd6: veil school'>><</link>>
-<<else>>\
-  <<link 'Check out the closed school.' 'd6: veil school: closed'>><</link>>
-<</if>>\
+[[Visit the Mergimal Challenge Vending Machine.->d6: vending machine]]
+[[Talk to the dude standing there.->d6: trainer]]
+[[Check out Veil School->d6: veil school]]
 !!!!NAVIGATE
-[[Go North into Littlemoose Forest.|d5]]
-[[Go West along the dirt path.|e4]]
+[[Go North into Littlemoose Forest.->d5]]
+[[Go West along the dirt path.->e4]]
 
 :: d6: vending machine [vend littlemoose]
 <div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>\
@@ -90,7 +84,7 @@
 <</button>>
 
 <<button 'buy a flashlight 10c'>>
-  <<if $keyword.flashlight == true>>
+  <<if $keywords.has('flashlight')>>
     <<dialog 'already purchased'>>
       <<include 'already purchased'>>
     <</dialog>>
@@ -101,17 +95,25 @@
   <<else>>
     <<set $backpack.coins -= 10>>
     <<replace '.display-coins'>>$backpack.coins<</replace>>
-    <<set $keyword.flashlight to true>>
+    <<pickup $keywords 'flashlight' 1>>
   <</if>>
 <</button>>
 
-[[Look around Littlemoose.|d6]]
+[[Look around Littlemoose.->d6]]
 
 :: d6: veil school
-The school is closed?!?
+<<if not $keywords.has('closed')>>\
+  The school is closed?!?
 
-Motherf***.
+  Motherf***.
 
-<<link 'Gain keyword: CLOSED. Return to exploring.' 'd6'>>
-  <<set $keyword.closed to true>>
-<</link>>
+  Gain keyword CLOSED.<<pickup $keywords 'closed' 1>>
+
+  [[Continue exploring.->d6]]
+<<else>>\
+  (Keyword CLOSED detected)
+
+  The school is dark. No one seems to be here.
+
+  [[Continue exploring.->d6]]
+<</if>>

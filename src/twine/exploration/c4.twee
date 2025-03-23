@@ -1,20 +1,18 @@
 :: c4 [map]
-<div class='map-div'>\
-    <img class='map-image' src='../images/maps/map - story - c4.png' />\
-</div>\
+<<map 'c4'>><</map>>\
 Route 002 connects the Great River Road and Cascade Village. To the East, you can see the road get wider and more well-traveled.
 
 A bored looking Mergimal trainer eyes you with a yawn. Next to them, you can see a stretch of climbable rocks that lead up the cliff face. There is a small cave on an outcrop of rocks.
 
 A small pathway leads South into the forest. Maybe it’s a shortcut to Littlemoose?
 !!!!EXPLORE
-[[Check the long grass.|005]]
-[[Greet the trainer.|356]]
-[[Check out the cliff|932]]
+[[Check the long grass.->005]]
+[[Greet the trainer.->356]]
+[[Check out the cliff->932]]
 !!!!NAVIGATE
-[[Go South into the dark forest.|214]]
-[[Go East toward Great River Road.|d4]]
-[[Go West toward Route 001.|b4]]
+[[Go South into the dark forest.->214]]
+[[Go East toward Great River Road.->d4]]
+[[Go West toward Route 001.->b4]]
 
 :: 005 [stray]
 You can tell this long grass is full of Mergimals. You just need to see which ones you can find!
@@ -23,30 +21,30 @@ Roll ATTENTION x EMPATHY
 
 If you rolled...
 
-[[...40 or less, find a common Mergimal: Read 006.|006]]
-[[...between 40 and 80, find an uncommon Mergimal: 404|404]]
-[[...above 80, you find a rare Mergimal: 404|404]]
+[[...40 or less, find a common Mergimal: Read 006.->006]]
+[[...between 40 and 80, find an uncommon Mergimal: 404->404]]
+[[...above 80, you find a rare Mergimal: 404->404]]
 
 :: 356 [trainer]
 <img class='trainer-image' src='jessie.png' />
 
 There is a Mergimal Trainer standing near the base of the cliff. They yawn and roll their eyes as you approach. 'I suppose you want to have a contest?'
 
-[[Absolutely!|404]]
-[[Ask them what's new.|404]]
-[[Maybe another time: Continue exploring Route 002.|c4]]
+[[Absolutely!->404]]
+[[Ask them what's new.->404]]
+[[Maybe another time: Continue exploring Route 002.->c4]]
 
-[[You've tamed it: Read 007|007]]
-[[It got away: Continue exploring the bookmarked map.|c4]]
+[[You've tamed it: Read 007->007]]
+[[It got away: Continue exploring the bookmarked map.->c4]]
 
 :: 932 [worksheet]
 Parts of this cliff seem worn off into handholds. You can attempt to climb up it if you'd like. A small cave is visible about halfway up. It might be worth checking out.
 
 Do Worksheet 13.4.
 
-[[Maybe later: Continue exploring the bookmarked map.|c4]]
-[[We scaled the cliff!: Read 687.|c3]]
-[[Explore the cave: Read 345.|345]]
+[[Maybe later: Continue exploring the bookmarked map.->c4]]
+[[We scaled the cliff!: Read 687.->c3]]
+[[Explore the cave: Read 345.->345]]
 
 :: 345 [reward]
 This cave isn't very deep, but it was worth the climb! You find a few batteries in an old bird's nest. There's also a single challenge coin.
