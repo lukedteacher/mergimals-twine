@@ -15,6 +15,12 @@ Life moves at a gentle pace here, with the ocean breeze carrying the sound of la
 
 [[Keep exploring the village.->b3]]
 
+:: b3: home
+You live here!
+
+<<link 'Eat a home cooked meal.'>><<set $rested to true>><</link>>
+[[Continue exploring.->b3]]
+
 :: b3: lab
 This is the world-famous Mergimal Research Center. It is also the home of your mentor, Professor Tamarack.
 

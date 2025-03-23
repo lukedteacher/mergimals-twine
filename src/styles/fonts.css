@@ -1,0 +1,11 @@
+/* main body font */
+@font-face {
+    font-family: 'lexend';
+    src: url('assets/lexend.ttf') format('truetype');
+}
+
+/* main title font */
+@font-face {
+    font-family: 'pineapple';
+    src: url('assets/pineappledemo.ttf') format('truetype');
+}

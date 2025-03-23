@@ -1,15 +1,27 @@
 /*  @/styles/global.css  */
-
-@import url('https://fonts.cdnfonts.com/css/lexend');
-
 body {
-  font-family: 'Lexend', sans-serif;
+  background-color: var(--background-color);
+  color: var(--background-text);
+  font-family: var(--text-font);
+}
+
+body h1,
+body h2,
+body h3,
+body h4 {
+    font-family: var(--title-font);
 }
 
 h4 {
   margin-bottom: 0.3rem;
 }
 
+body a,
+body a:hover {
+    color: var(--accent-color);
+}
+
+/* TODO change this */
 .mergimal-image {
   width: 36rem;
   display: block;
@@ -17,34 +29,3 @@ h4 {
   margin-right: auto;
 }
 
-.map-div {
-  display: flex;
-  justify-content: center;
-}
-
-.map-image {
-  height: 36rem;
-  aspect-ratio: square;
-}
-
-#backpack {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-}
-
-.backpack-item {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.backpack-label {
-  margin-top: 0;
-}
-
-.image-item {
-  width: 3rem;
-  aspect-ratio: square;
-}
