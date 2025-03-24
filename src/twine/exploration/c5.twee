@@ -1,3 +1,20 @@
+:: 214 [forest]
+This forest seems quite dark, even in the middle of the day. You follow the path deeper into the woods until you come to a split.
+
+[[Go left.->215]]
+[[Go right.->216]]
+
+:: 215 [forest]
+The leaves of the trees crunch underfoot as you make your way further into the forest. You have the feeling that you're being watched. Up ahead, a small path splits of to the right.
+
+[[Go straight.->217]]
+[[Follow the small path.->218]]
+
+:: 216 [forest]
+You walk a ways until the path fades into the ground. The branches are thick and it would be impossible to go on.
+
+[[Turn around and go back to the entrance.->214]]
+
 :: 223 [forest check]
 Time passes.
 
@@ -7,16 +24,21 @@ Roll EMPATHY x GRIT.
 
 If you roll...
 
-[[12 or lower, you get lost on your way back to the path. Time passes: Read 222->222]]
-[[...above 30, you find your way back to the path quickly: Read 222->222]]
+[[12 or lower, you get lost on your way back to the path. Time passes.->222]]
+[[...above 30, you find your way back to the path quickly.->222]]
 
 :: 224 [forest]
 The sound of music greets your ears. At first, you're excited, but soon the song seems to shift and echo. Where are you?
 
 The path splits again.
 
-[[Go straight: Read 225->225]]
-[[Go left: Read 226->226]]
+[[Go straight.->225]]
+[[Go left.->226]]
+
+:: 218 [forest]
+The path seems to double back on itself and you feel like you're going in circles. It ends abruptly, at the base of a large tree with a large crevice. Inside the hole, you find some charms and trainer coins.
+
+[[Gain 2 charms and 3 trainer coins.->219]]
 
 :: 219 [forest check]
 Now if only you could remember your way back.
@@ -25,61 +47,39 @@ Roll ATTENION x MEMORY
 
 If you rolled...
 
-[[...lower than 25, you feel confused and lost: Read 214->214]]
-[[...25 or higher, you find your way back to the path with ease: Read 217->217]]
-
-:: 218 [forest]
-The path seems to double back on itself and you feel like you're going in circles. It ends abruptly, at the base of a large tree with a large crevice. Inside the hole, you find some charms and trainer coins.
-
-[[Gain 2 charms and 3 trainer coins.: Read 219->219]]
+[[...lower than 25, you feel confused and lost.->214]]
+[[...25 or higher, you find your way back to the path with ease.->217]]
 
 :: 221 [forest]
 
-[[Go left: Read 223->223]]
-[[Go right: Read 222->222]]
+[[Go left.->223]]
+[[Go right.->222]]
 
 :: 217 [forest]
 A Four Way Intersection
 
-[[Go straight: Read 220->220]]
-[[Go left: Read 220->220]]
-[[Go right: Read 221->221]]
+[[Go straight.->220]]
+[[Go left.->220]]
+[[Go right.->221]]
 
 :: 229 [forest]
 four way
 
-[[Go left: Read 228->228]]
-[[Go straight: 404->404]]
-[[Go right: 404->404]]
-
-:: 214 [forest]
-This forest seems quite dark, even in the middle of the day. You follow the path deeper into the woods until you come to a split.
-
-[[Go left: Read 215->215]]
-[[Go right: Read 216->216]]
+[[Go left.->228]]
+[[Go straight.->404]]
+[[Go right.->404]]
 
 :: 220 [forest]
 This path looks familiar, you think. You come to a split.
 
-[[Go left.: Read 224->224]]
-[[Go right.: Read 217->217]]
+[[Go left.->224]]
+[[Go right.->217]]
 
 :: 225 [forest]
 You know you're close, but the path ahead has been blocked. If you had a mergimal who was strong enough, they could move it out of the way.
 
-[[Have your Mergimal move the fallen tree: Read 228->228]]
-[[Turn around: Read 224->224]]
-
-:: 215 [forest]
-The leaves of the trees crunch underfoot as you make your way further into the forest. You have the feeling that you're being watched. Up ahead, a small path splits of to the right.
-
-[[Go straight: Read 217->217]]
-[[Follow the small path: Read 218->218]]
-
-:: 216 [forest]
-You walk a ways until the path fades into the ground. The branches are thick and it would be impossible to go on.
-
-[[Turn around and go back to the entrance: Read 214->214]]
+[[(requires keyword STRENGTH) Have your Mergimal move the fallen tree.->228]]
+[[Turn around.->224]]
 
 :: 222 [forest test]
 The birds have stopped chirping. Even the sound of your footsteps seems muted. A crack of a twig behind you startles you.
@@ -97,10 +97,18 @@ A little person with a long beard and pointy hat sits on a mushroom, drinking te
 
 [expand this encounter]
 
-[[Try your luck: Read 227->227]]
-[[Nevermind: Read 224->224]]
+[[Try your luck.->227]]
+[[Nevermind.->224]]
 
 :: 228 [transition]
-You made it to Littlemoose.
+<<if not $keywords.has('strength')>>
+  You're not strong enough to move it and neither are your Mergimals.
 
-[[Explore the town: Explore Littlemoose Map->d6]]
+  <<previous 'Go back.'>>
+<<else>>
+  Your Mergimal moves the tree. What strength!
+
+  You finally made it to Littlemoose.
+
+  [[Explore Littlemoose.->d6]]
+<</if>>

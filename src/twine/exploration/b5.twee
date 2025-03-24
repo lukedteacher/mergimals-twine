@@ -1,7 +1,7 @@
 :: b5 [map]
 <<map 'b5'>><</map>>\
 !!!!EXPLORE
-[[Look around the bay->Pretty Rock Bay]]
+[[Look around.->b5: description]]
 [[Dip your toe in the water.->881]]
 [[Investigate the sand castle.->Crabby Critters]]
 [[Talk to the trainer.->Trainer: Dontay]]
@@ -9,7 +9,7 @@
 !!!!NAVIGATE
 [[Go North toward Route 001.->b4]]
 
-:: Pretty Rock Bay [description]
+:: b5: description
 A serene beach stretches out before you. The white sand feels warm to the touch. The ocean waves crash against the shore.
 
 Someone seems to have built a sandcastle. You can see movement nearby.
@@ -78,11 +78,9 @@ Gain Card I-20 (Rusty Rod).
 [[Continue exploring.->b5]]
 
 :: Trainer: Dontay [trainer]
-<img class='trainer-image' src='dontay.png' />
-
 A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.
 
-[expand this encounter]
+<<say 'Dontay' '../images/characters/player.png'>>Woah! I almost had that one.<</say>>\
 
 [[Challenge them to a contest.->404]]
 [[Ask them how the fish are biting.->404]]

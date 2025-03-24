@@ -1,12 +1,26 @@
 :: d6 [map littlemoose]
 <<map 'd6'>><</map>>\
 !!!!EXPLORE
+[[Look around->d6: description]]
 [[Visit the Mergimal Challenge Vending Machine.->d6: vending machine]]
 [[Talk to the dude standing there.->d6: trainer]]
 [[Check out Veil School->d6: veil school]]
 !!!!NAVIGATE
 [[Go North into Littlemoose Forest.->d5]]
-[[Go West along the dirt path.->e4]]
+[[Go West along the dirt path.->c6]]
+
+:: d6: description
+<img class='concept' src='../images/story/littlemoose.png'>\
+
+Littlemoose is a sleepy town, nestled in a tall forest. It is the home of the Veil School and its leader, Grace.
+
+The path to the north leads out of the town and into Littlemoose forest. A dirt path to the west is blocked by a heavy iron gate.
+
+A Mergimal Challenge Vending machine is here, where you can spend your hard-earned challenge coins.
+
+There's also a person standing around. They look confused.
+
+[[Continue exploring.->d6]]
 
 :: d6: vending machine [vend littlemoose]
 <div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>\

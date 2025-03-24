@@ -1,0 +1,19 @@
+:: keywords [nobr]
+<<do tag 'keywords'>>
+  <div class='keywords-box'>
+    <h2>keywords</h2>
+    <<for _item, _amount range $keywords.table>>
+      <div class='item-listing'>_item</div>
+    <</for>>
+  </div>
+<</do>>
+
+:: no paddle
+You don't know how to swim with your Mergimal yet.
+
+<<return 'Oh well.'>>
+
+:: no rod
+You don't have a fishing rod.
+
+<<return 'Dangit.'>>

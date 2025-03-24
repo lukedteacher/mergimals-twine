@@ -1,0 +1,12 @@
+:: incorrect
+Not quite!
+
+<<link 'Try again.'>><<run Dialog.close()>><</link>>
+
+:: correct
+Nice!
+
+<<link 'Continue on your way.'>><<run Dialog.close()>><</link>>
+
+
+

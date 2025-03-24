@@ -9,6 +9,8 @@
 [[Go South on the sandy path.->b5]]
 [[Go East toward Great River Road.->c4]]
 
+<<link 'test'>><<pickup $keywords 'test' 1>><<redo 'keywords'>><</link>>
+
 :: b4: description
 Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South.
 

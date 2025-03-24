@@ -15,11 +15,17 @@ Config.ui.stowBarInitially = false;
 
 :: StoryInit
 <<set $player to {name: 'none set', age: 10, difficulty: 'easy'}>>
+<<set $stats to {attention: 0, grit: 0, memory: 0, empathy: 0}>>
 <<set $backpack to {coins: 0, mergiballs: 0, tools: 0, bandages: 0, charms: 0, batteries: 0}>>
 <<widget 'tam' container>>
   <<say 'Prof. Tamarack' '../images/characters/tam.png'>>_contents<</say>>
 <</widget>>
 <<newinv $keywords>>
+
+:: StoryCaption
+<<include stats>>
+<<include backpack>>
+<<include keywords>>
 
 :: StoryMenu
 <<link 'cheats'>>
@@ -27,9 +33,6 @@ Config.ui.stowBarInitially = false;
     <<include 'cheats'>>
   <</dialog>>
 <</link>>
-
-:: StoryCaption
-<<include BackpackInventory>>
 
 :: 001 [start]
 Today is the first day of your Mergimals journey!

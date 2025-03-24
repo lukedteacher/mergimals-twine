@@ -10,6 +10,7 @@ body h2,
 body h3,
 body h4 {
     font-family: var(--title-font);
+    font-weight: normal;
 }
 
 h4 {
@@ -23,9 +24,15 @@ body a:hover {
 
 /* TODO change this */
 .mergimal-image {
-  width: 36rem;
+  width: 32rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
+.concept {
+  width: 32rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

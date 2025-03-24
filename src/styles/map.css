@@ -5,9 +5,10 @@
 
 .map-grid {
     display: grid;
-    grid: repeat(32, 1fr) / repeat(32, 1fr)
+    grid: repeat(32, 1fr) / repeat(32, 1fr);
 }
 
 .map-img {
+    width: 32rem;
     grid-area: 1 / 1 / span 32 / span 32;
 }
