@@ -1,0 +1,39 @@
+:: cc: part 1
+What's your name?
+<<textbox '$player.name' ''>>
+
+[[Continue.->cc: part 2]]
+
+:: cc: part 2
+What are your pronouns?
+
+<<link 'they / them' 'cc: part 3'>><<set $pronouns to 'they'>><</link>>
+<<link 'she / her' 'cc: part 3'>><<set $pronouns to 'she'>><</link>>
+<<link 'he / him' 'cc: part 3'>><<set $pronouns to 'he'>><</link>>
+
+:: cc: part 3
+What do you like most about Mergimals?
+
+<<link 'Competing in contests.' 'cc: part 4'>><<set $player.noun to 'trainer'>><</link>>
+<<link 'Collecting as many as I can.' 'cc: part 4'>><<set $player.noun to 'explorer'>><</link>>
+<<link 'Merging them to make new ones.' 'cc: part 4'>><<set $player.noun to 'scientist'>><</link>>
+<<link 'Being a good friend to them.' 'cc: part 4'>><<set $player.noun to 'companion'>><</link>>
+
+:: cc: part 4
+Which of these statements fits you best?
+
+<<link 'I notice every detail.' 'cc: part 5'>><<set $stats.attention to 'd8'>><<set $high to 'attention'>><</link>>
+<<link 'I never give up.' 'cc: part 5'>><<set $stats.grit to 'd8'>><<set $high to 'grit'>><</link>>
+<<link 'I remember everything.' 'cc: part 5'>><<set $stats.memory to 'd8'>><<set $high to 'memory'>><</link>>
+<<link 'I understand emotions.' 'cc: part 5'>><<set $stats.empathy to 'd8'>><<set $high to 'empathy'>><</link>>
+
+:: cc: part 5
+Which of these statements fits you best?
+
+<<if $high != 'attention'>><<link 'I can\'t stay still.' 'cc: part 6'>><<set $stats.attention to 'd4'>><</link>><</if>>
+<<if $high != 'grit'>><<link 'I don\'t like to fail.' 'cc: part 6'>><<set $stats.grit to 'd4'>><</link>><</if>>
+<<if $high != 'memory'>><<link 'I lose things often.' 'cc: part 6'>><<set $stats.memory to 'd4'>><</link>><</if>>
+<<if $high != 'empathy'>><<link 'I don\'t understand emotions.' 'cc: part 6'>><<set $stats.empathy to 'd4'>><</link>><</if>>
+
+:: cc: part 6
+test

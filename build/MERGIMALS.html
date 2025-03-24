@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="73" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "backpack.css" */
+	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="76" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "backpack.css" */
 .backpack {
     display: flex;
     justify-content: center;
@@ -1971,9 +1971,7 @@ If you want, you can see if he’s available to talk.
 !!!!NAVIGATE
 [[Go North to Cascade Village-&gt;b3]]
 [[Go South on the sandy path.-&gt;b5]]
-[[Go East toward Great River Road.-&gt;c4]]
-
-&lt;&lt;link &#39;test&#39;&gt;&gt;&lt;&lt;pickup $keywords &#39;test&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="b4: description" tags="" position="975,100" size="100,100">Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South.
+[[Go East toward Great River Road.-&gt;c4]]</tw-passagedata><tw-passagedata pid="8" name="b4: description" tags="" position="975,100" size="100,100">Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South.
 
 A Mergimal trainer is posed near an apple tree, looking hungry for a contest.
 
@@ -2053,7 +2051,7 @@ Enter the code:  &lt;&lt;textbox &#39;_$code&#39; &#39;&#39;&gt;&gt;
     [[Continue exploring.-&gt;b5]]
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="141" tags="reward" position="600,225" size="100,100">After a short while, you seem to find a pattern in the crabs&#39; movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.
 
-Gain keyword RUSTY.&lt;&lt;set $keyword.rusty = true&gt;&gt;
+Gain keyword RUSTY.&lt;&lt;pickup $keywords &#39;rusty&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;
 
 Gain Card I-20 (Rusty Rod).
 
@@ -2296,7 +2294,7 @@ There&#39;s also a person standing around. They look confused.
 &lt;/div&gt;\
 &lt;&lt;button &#39;buy a mergiball 1c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coins &lt; 1&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
@@ -2309,7 +2307,7 @@ There&#39;s also a person standing around. They look confused.
 
 &lt;&lt;button &#39;buy a charm 2c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coins &lt; 2&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
@@ -2322,7 +2320,7 @@ There&#39;s also a person standing around. They look confused.
 
 &lt;&lt;button &#39;buy a bandage 3c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coins &lt; 3&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
@@ -2335,7 +2333,7 @@ There&#39;s also a person standing around. They look confused.
 
 &lt;&lt;button &#39;buy a tool 4c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coins &lt; 4&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
@@ -2348,7 +2346,7 @@ There&#39;s also a person standing around. They look confused.
 
 &lt;&lt;button &#39;buy a battery 5c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coins &lt; 5&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
@@ -2361,17 +2359,17 @@ There&#39;s also a person standing around. They look confused.
 
 &lt;&lt;button &#39;buy a flashlight 10c&#39;&gt;&gt;
   &lt;&lt;if $keywords.has(&#39;flashlight&#39;)&gt;&gt;
-    &lt;&lt;dialog &#39;already purchased&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;already purchased&#39;&gt;&gt;\
       &lt;&lt;include &#39;already purchased&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;elseif $backpack.coins &lt; 10&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
     &lt;&lt;set $backpack.coins -= 10&gt;&gt;
     &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
-    &lt;&lt;pickup $keywords &#39;flashlight&#39; 1&gt;&gt;
+    &lt;&lt;pickup $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
@@ -2380,7 +2378,7 @@ There&#39;s also a person standing around. They look confused.
 
   Motherf***.
 
-  Gain keyword CLOSED.&lt;&lt;pickup $keywords &#39;closed&#39; 1&gt;&gt;
+  Gain keyword CLOSED.&lt;&lt;pickup $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;
 
   [[Continue exploring.-&gt;d6]]
 &lt;&lt;else&gt;&gt;\
@@ -2393,14 +2391,47 @@ There&#39;s also a person standing around. They look confused.
 !!!!EXPLORE
 [[Go to the Wave School-&gt;e1: wave school]]
 !!!!NAVIGATE
-[[Go South towards Downtown.-&gt;e2]]</tw-passagedata><tw-passagedata pid="62" name="e2" tags="map" position="225,850" size="100,100">&lt;&lt;map &#39;e2&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[[Go South towards Downtown.-&gt;e2]]</tw-passagedata><tw-passagedata pid="62" name="e1: wave school" tags="blue-urf" position="225,850" size="100,100">&lt;&lt;if not $keywords.has(&#39;paddle&#39;)&gt;&gt;\
+A large group of people seems to be standing in line, waiting to get in.
+
+Thankfully, you don&#39;t have to wait long before a figure steps out of the building and addresses the crowd.
+&lt;&lt;rhia&gt;&gt;Hello, everyone.
+&lt;&lt;cont keypress append&gt;&gt;I know that many of you are here to complete your Wave School challenge.
+&lt;&lt;cont keypress append&gt;&gt;Unfortunately, I am going to have to close the school until further notice.
+&lt;&lt;cont keypress&gt;&gt;&lt;&lt;replace &#39;#response-1&#39;&gt;&gt;&lt;&lt;link &#39;Oh f***. Not this again.&#39; &#39;e2: wave school closed&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/cont&gt;&gt;\
+&lt;&lt;/cont&gt;&gt;&lt;&lt;/cont&gt;&gt;&lt;&lt;/rhia&gt;&gt;\
+&lt;span id=&#39;response-1&#39;&gt;&lt;/span&gt;
+&lt;&lt;else&gt;&gt;
+You&#39;ve already done this challenge!
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="e2: wave school closed" tags="" position="350,850" size="100,100">First Veil School and now this?!
+
+How are you supposed to complete the Mergimal Challenge if all the schools keep closing?
+
+You decide to go talk to Rhia to see what is going on.
+
+&lt;span id=&#39;response-1&#39;&gt;&lt;&lt;link &#39;What is going on?&#39;&gt;&gt;&lt;&lt;replace &#39;#response-1&#39;&gt;&gt;&lt;&lt;say $player.name $player.image&gt;&gt;What is going on?&lt;&lt;/say&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
+
+[TODO finish this encounter]</tw-passagedata><tw-passagedata pid="64" name="e2" tags="map" position="475,850" size="100,100">&lt;&lt;map &#39;e2&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
+[[Look around-&gt;e2: description]]
 [[Read the community bulletin board.-&gt;e2: bulletin board]]
 [[Buy something at the vending machine-&gt;e2: vending machine]]
 !!!!NAVIGATE
 [[Go North towards the Wave School Stadium.-&gt;e1]]
 [[Go West towards the Beach District.-&gt;d2]]
-[[Go South out of town.-&gt;e3]]</tw-passagedata><tw-passagedata pid="63" name="e2: vending machine" tags="vend blueurf" position="350,850" size="100,100">&lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;\
+[[Go South out of town.-&gt;e3]]</tw-passagedata><tw-passagedata pid="65" name="e2: description" tags="" position="600,850" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;../images/story/blue-urf.png&#39;&gt;\
+
+Blue Urf is a bustling city that loves fashion and beach life.
+
+It is the home of the Wave School and its leader, Rhia, which is to the North.
+
+The path to the South leads out of the city and on [TODO name this]. There is a path to the west toward the beach.
+
+A Mergimal Challenge Vending machine is here, where you can spend your hard-earned challenge coins.
+
+A bunch of people seem to be waving fans and complaining about how their air conditioners are on the fritz.
+
+[[Continue exploring.-&gt;e2]]</tw-passagedata><tw-passagedata pid="66" name="e2: vending machine" tags="vend blue-urf" position="725,850" size="100,100">&lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;\
   &lt;div style=&#39;background-image: url(../images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;\
   &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
   &lt;div style=&#39;grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/bandage.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
@@ -2411,7 +2442,7 @@ There&#39;s also a person standing around. They look confused.
 &lt;/div&gt;\
 &lt;&lt;button &#39;buy a mergiball 1c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coins &lt; 1&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
@@ -2424,7 +2455,7 @@ There&#39;s also a person standing around. They look confused.
 
 &lt;&lt;button &#39;buy a charm 2c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coins &lt; 2&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
@@ -2437,7 +2468,7 @@ There&#39;s also a person standing around. They look confused.
 
 &lt;&lt;button &#39;buy a bandage 3c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coins &lt; 3&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
@@ -2450,7 +2481,7 @@ There&#39;s also a person standing around. They look confused.
 
 &lt;&lt;button &#39;buy a tool 4c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coins &lt; 4&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
@@ -2463,7 +2494,7 @@ There&#39;s also a person standing around. They look confused.
 
 &lt;&lt;button &#39;buy a battery 5c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coins &lt; 5&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
@@ -2475,64 +2506,69 @@ There&#39;s also a person standing around. They look confused.
 &lt;&lt;/button&gt;&gt;
 
 &lt;&lt;button &#39;buy a flashlight 10c&#39;&gt;&gt;
-  &lt;&lt;if $keyword.flashlight == true&gt;&gt;
-    &lt;&lt;dialog &#39;already purchased&#39;&gt;&gt;
+  &lt;&lt;if $keywords.has(&#39;flashlight&#39;)&gt;&gt;
+    &lt;&lt;dialog &#39;already purchased&#39;&gt;&gt;\
       &lt;&lt;include &#39;already purchased&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;elseif $backpack.coins &lt; 10&gt;&gt;
-    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
+    &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
   &lt;&lt;else&gt;&gt;
     &lt;&lt;set $backpack.coins -= 10&gt;&gt;
     &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
-    &lt;&lt;set $keyword.flashlight to true&gt;&gt;
+    &lt;&lt;pickup $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-[[Look around Blue Urf.-&gt;e2]]</tw-passagedata><tw-passagedata pid="64" name="e3" tags="map" position="475,850" size="100,100">&lt;&lt;map &#39;e3&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[[Look around Blue Urf.-&gt;e2]]</tw-passagedata><tw-passagedata pid="67" name="e3" tags="map" position="850,850" size="100,100">&lt;&lt;map &#39;e3&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Check the long grass.-&gt;e3: long grass]]
 [[Approach the trainers.-&gt;e3: trainer]]
 !!!!NAVIGATE
 [[Go North and enter Blue Urf.-&gt;e2]]
 [[Go West towards Mooberry Farm.-&gt;d3]]
-[[Go South.-&gt;e4]]</tw-passagedata><tw-passagedata pid="65" name="e3: long grass" tags="" position="600,850" size="100,100">Some mergimals are here probably.
+[[Go South.-&gt;e4]]</tw-passagedata><tw-passagedata pid="68" name="e3: long grass" tags="" position="975,850" size="100,100">Some mergimals are here probably.
 
 [TODO add stuff]
 
-[[Continue exploring.-&gt;e3]]</tw-passagedata><tw-passagedata pid="66" name="e3: trainer" tags="" position="725,850" size="100,100">Probably there are trainers too.
+[[Continue exploring.-&gt;e3]]</tw-passagedata><tw-passagedata pid="69" name="e3: trainer" tags="" position="1100,850" size="100,100">Probably there are trainers too.
 
 [TODO add stuff]
 
-[[Continue exploring.-&gt;e3]]</tw-passagedata><tw-passagedata pid="67" name="e4" tags="map" position="850,850" size="100,100">&lt;&lt;map &#39;e4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[[Continue exploring.-&gt;e3]]</tw-passagedata><tw-passagedata pid="70" name="e4" tags="map" position="1225,850" size="100,100">&lt;&lt;map &#39;e4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Check the long grass.-&gt;e4: long grass]]
 [[Approach the trainers.-&gt;e4: trainer]]
 !!!!NAVIGATE
 [[Go North towards Blue Urf.-&gt;e3]]
 [[Go East towards Raven Wing.-&gt;f4]]
-[[Go West across the bridge.-&gt;d4]]</tw-passagedata><tw-passagedata pid="68" name="e4: long grass" tags="" position="975,850" size="100,100">Some mergimals are here probably.</tw-passagedata><tw-passagedata pid="69" name="e4: trainer" tags="" position="1100,850" size="100,100">Two trainers even!</tw-passagedata><tw-passagedata pid="70" name="StoryInit" tags="" position="1225,850" size="100,100">&lt;&lt;set $player to {name: &#39;none set&#39;, age: 10, difficulty: &#39;easy&#39;}&gt;&gt;
-&lt;&lt;set $stats to {attention: 0, grit: 0, memory: 0, empathy: 0}&gt;&gt;
+[[Go West across the bridge.-&gt;d4]]</tw-passagedata><tw-passagedata pid="71" name="e4: long grass" tags="" position="100,975" size="100,100">Some mergimals are here probably.</tw-passagedata><tw-passagedata pid="72" name="e4: trainer" tags="" position="225,975" size="100,100">Two trainers even!</tw-passagedata><tw-passagedata pid="73" name="StoryInit" tags="" position="350,975" size="100,100">&lt;&lt;set $player to {name: &#39;none set&#39;, image: &#39;../images/characters/player.png&#39;, difficulty: &#39;easy&#39;}&gt;&gt;
+&lt;&lt;set $stats to {attention: &#39;d6&#39;, grit: &#39;d6&#39;, memory: &#39;d6&#39;, empathy: &#39;d6&#39;}&gt;&gt;
 &lt;&lt;set $backpack to {coins: 0, mergiballs: 0, tools: 0, bandages: 0, charms: 0, batteries: 0}&gt;&gt;
+
 &lt;&lt;widget &#39;tam&#39; container&gt;&gt;
   &lt;&lt;say &#39;Prof. Tamarack&#39; &#39;../images/characters/tam.png&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
-&lt;&lt;newinv $keywords&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="StoryCaption" tags="" position="100,975" size="100,100">&lt;&lt;include stats&gt;&gt;
+&lt;&lt;widget &#39;rhia&#39; container&gt;&gt;
+  &lt;&lt;say &#39;Rhia (Wave School Leader)&#39; &#39;../images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;newinv $keywords&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="StoryCaption" tags="" position="475,975" size="100,100">&lt;&lt;include stats&gt;&gt;
 &lt;&lt;include backpack&gt;&gt;
-&lt;&lt;include keywords&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="StoryMenu" tags="" position="225,975" size="100,100">&lt;&lt;link &#39;cheats&#39;&gt;&gt;
+&lt;&lt;include keywords&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="StoryMenu" tags="" position="600,975" size="100,100">&lt;&lt;link &#39;cheats&#39;&gt;&gt;
   &lt;&lt;dialog &#39;cheats&#39;&gt;&gt;\
     &lt;&lt;include &#39;cheats&#39;&gt;&gt;
   &lt;&lt;/dialog&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="001" tags="start" position="350,975" size="100,100">Today is the first day of your Mergimals journey!
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="001" tags="start" position="725,975" size="100,100">Today is the first day of your Mergimals journey!
 
 Enter your name:
 &lt;&lt;textbox &#39;$player.name&#39; &#39;&#39;&gt;&gt;
 
-[[Go see professor Tamrack-&gt;059]]</tw-passagedata><tw-passagedata pid="74" name="059" tags="story" position="475,975" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;&lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;widget &#39;player&#39; container&gt;&gt;\
-  &lt;&lt;say $player.name &#39;../images/characters/player.png&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;\
-&lt;&lt;/widget&gt;&gt;\
+[[Create a character.-&gt;cc: part 1]]
+[[Go see professor Tamrack-&gt;059]]</tw-passagedata><tw-passagedata pid="77" name="059" tags="story" position="850,975" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
+  &lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;\
+&lt;&lt;/if&gt;&gt;\
 Professor Tamarack’s office is on the Eastern edge of town. It’s the biggest building in the village and what mysteries fill all three floors are as good as anyone’s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
 &lt;&lt;tam&gt;&gt;$player.name!
 Finally, you’re here!
@@ -2540,7 +2576,7 @@ Finally, you’re here!
 &lt;div id=&#39;response&#39;&gt;\
   &lt;&lt;link &#39;Say: Were you waiting for me?&#39;&gt;&gt;
     &lt;&lt;replace &#39;#response&#39;&gt;&gt;\
-      &lt;&lt;player&gt;&gt;Were you waiting for me?&lt;&lt;/player&gt;&gt;\
+      &lt;&lt;say $player.name $player.image&gt;&gt;Were you waiting for me?&lt;&lt;/say&gt;&gt;\
       &lt;&lt;tam&gt;&gt;No, I wasn’t waiting at the window all morning for you.
         &lt;&lt;cont keypress append&gt;&gt;I have, um, lots and lots of work to do to keep me busy.
           &lt;&lt;cont keypress append&gt;&gt;I’m, like, super duper busy.
@@ -2558,12 +2594,12 @@ Finally, you’re here!
   &lt;&lt;/link&gt;&gt;
   &lt;&lt;link &#39;Say: Let\&#39;s go!&#39;&gt;&gt;
     &lt;&lt;replace &#39;#response&#39;&gt;&gt;\
-      &lt;&lt;player&gt;&gt;Let&#39;s go!&lt;&lt;/player&gt;&gt;\
+      &lt;&lt;say $player.name $player.image&gt;&gt;Let&#39;s go!&lt;&lt;/say&gt;&gt;\
       &lt;&lt;tam&gt;&gt;You’ve been waiting 10 years for this, how exciting!&lt;&lt;/tam&gt;&gt;\
       &lt;&lt;link &#39;Follow the professor inside the Lab.&#39; &#39;065&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
   &lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="75" name="065" tags="story" position="600,975" size="100,100">You enter…
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="78" name="065" tags="story" position="975,975" size="100,100">You enter…
 In front of you on the table…
 
 Inspect the three starting Mergimal cards
@@ -2572,70 +2608,92 @@ Inspect the three starting Mergimal cards
 [[Pick the blue one: Gain Card M-002-&gt;b4]]
 [[Pick the green one: Gain Card M-003-&gt;b4]]
 [[Pick the yellow one: Gain Card M-004-&gt;b4]]
-[[Ask if there are any others: 404-&gt;404]]</tw-passagedata><tw-passagedata pid="76" name="036" tags="encounter" position="725,975" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art boxin.png&#39; /&gt;
+[[Ask if there are any others: 404-&gt;404]]</tw-passagedata><tw-passagedata pid="79" name="036" tags="encounter" position="1100,975" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art boxin.png&#39; /&gt;
 
 The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 
 Do worksheeet 2.1
 
 [[You&#39;ve tamed it: Read 241|241]]
-[[It got away: Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="77" name="241" tags="tamed" position="850,975" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art boxin.png&#39; /&gt;
+[[It got away: Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="80" name="241" tags="tamed" position="1225,975" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art boxin.png&#39; /&gt;
 
 This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.
 
-[[Your Mergipedia grows: Add Mergipedia page N-02 to your journal. Gain Card N-02. Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="78" name="009" tags="encounter" position="975,975" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art zipper.png&#39; /&gt;
+[[Your Mergipedia grows: Add Mergipedia page N-02 to your journal. Gain Card N-02. Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="81" name="009" tags="encounter" position="100,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art zipper.png&#39; /&gt;
 
 You&#39;re looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
 
 Do worksheeet 3.4
 
 [[You&#39;ve tamed it: Read 136.|136]]
-[[It got away: Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="79" name="136" tags="tamed" position="1100,975" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art zipper.png&#39; /&gt;
+[[It got away: Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="82" name="136" tags="tamed" position="225,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art zipper.png&#39; /&gt;
 
 This Mergimal is named Zipper. They&#39;re cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.
 
-[[Your Mergipedia grows: Add Mergipedia page J-03 to your journal. Gain Card J-03. Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="80" name="015" tags="b5 encounter" position="1225,975" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art tidefly.png&#39; /&gt;
+[[Your Mergipedia grows: Add Mergipedia page J-03 to your journal. Gain Card J-03. Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="83" name="015" tags="b5 encounter" position="350,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art tidefly.png&#39; /&gt;
 
 A tiny snail with wings hangs from the line as you reel it in.
 
 Do worksheeet 10.3
 
 [[You&#39;ve tamed it: Read 799|799]]
-[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="81" name="013" tags="b5 encounter" position="100,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art krustwo.png&quot; /&gt;
+[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="84" name="013" tags="b5 encounter" position="475,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art krustwo.png&quot; /&gt;
 
 When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.
 
 Do worksheeet 2.5
 
 [[You&#39;ve tamed it: Read 161|161]]
-[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="82" name="320" tags="b5 encounter" position="225,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art corwhal.png&quot; /&gt;
+[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="85" name="320" tags="b5 encounter" position="600,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art corwhal.png&quot; /&gt;
 
 This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
 
 Do worksheeet 7.4
 
 [[You&#39;ve tamed it: Read 505|505]]
-[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="83" name="799" tags="b4 tamed" position="350,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art tidefly.png&quot; /&gt;
+[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="86" name="799" tags="b4 tamed" position="725,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art tidefly.png&quot; /&gt;
 
 This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
 
-[[Your Mergipedia grows: Add Mergipedia page W-10 to your journal. Gain Card W-10. Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="84" name="006" tags="c4 encounter" position="475,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art treethorn.png&#39; /&gt;
+[[Your Mergipedia grows: Add Mergipedia page W-10 to your journal. Gain Card W-10. Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="87" name="006" tags="c4 encounter" position="850,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art treethorn.png&#39; /&gt;
 
 You&#39;re looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That&#39;s no bush: that&#39;s a Mergimal!
 
-Do worksheeet 3.3</tw-passagedata><tw-passagedata pid="85" name="007" tags="c4 tamed" position="600,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art treethorn.png&quot; /&gt;
+Do worksheeet 3.3</tw-passagedata><tw-passagedata pid="88" name="007" tags="c4 tamed" position="975,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art treethorn.png&quot; /&gt;
 
 This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).
 
-[[Your Mergipedia grows: Add Mergipedia page B-03 to your journal. Gain Card B-03. Continue exploring the bookmarked map.|c4]]</tw-passagedata><tw-passagedata pid="86" name="161" tags="tamed" position="725,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art krustwo.png&quot; /&gt;
+[[Your Mergipedia grows: Add Mergipedia page B-03 to your journal. Gain Card B-03. Continue exploring the bookmarked map.|c4]]</tw-passagedata><tw-passagedata pid="89" name="161" tags="tamed" position="1100,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art krustwo.png&quot; /&gt;
 
 You&#39;ve seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.
 
-[[Your Mergipedia grows: Add Mergipedia page W-02 to your journal. Gain Card W-02. Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="87" name="505" tags="tamed" position="850,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art corwhal.png&quot; /&gt;
+[[Your Mergipedia grows: Add Mergipedia page W-02 to your journal. Gain Card W-02. Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="90" name="505" tags="tamed" position="1225,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art corwhal.png&quot; /&gt;
 
 You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
 
-[[Your Mergipedia grows: Add Mergipedia page W-07 to your journal. Gain Card W-07. Continue exploring the bookmarked map.|004]]</tw-passagedata><tw-passagedata pid="88" name="backpack" tags="nobr" position="975,1100" size="100,100">&lt;div class=&#39;backpack&#39;&gt;
+[[Your Mergipedia grows: Add Mergipedia page W-07 to your journal. Gain Card W-07. Continue exploring the bookmarked map.|004]]</tw-passagedata><tw-passagedata pid="91" name="cc: part 1" tags="" position="100,1225" size="100,100">What&#39;s your name?
+&lt;&lt;textbox &#39;$player.name&#39; &#39;&#39;&gt;&gt;
+
+[[Continue.-&gt;cc: part 2]]</tw-passagedata><tw-passagedata pid="92" name="cc: part 2" tags="" position="225,1225" size="100,100">What are your pronouns?
+
+&lt;&lt;link &#39;they / them&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;they&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;she / her&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;she&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;he / him&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;he&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="cc: part 3" tags="" position="350,1225" size="100,100">What do you like most about Mergimals?
+
+&lt;&lt;link &#39;Competing in contests.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;trainer&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;Collecting as many as I can.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;explorer&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;Merging them to make new ones.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;scientist&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;Being a good friend to them.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;companion&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="cc: part 4" tags="" position="475,1225" size="100,100">Which of these statements fits you best?
+
+&lt;&lt;link &#39;I notice every detail.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;attention&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;I never give up.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;grit&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;I remember everything.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;memory&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;I understand emotions.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;empathy&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="cc: part 5" tags="" position="600,1225" size="100,100">Which of these statements fits you best?
+
+&lt;&lt;if $high != &#39;attention&#39;&gt;&gt;&lt;&lt;link &#39;I can\&#39;t stay still.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $high != &#39;grit&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t like to fail.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $high != &#39;memory&#39;&gt;&gt;&lt;&lt;link &#39;I lose things often.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="cc: part 6" tags="" position="725,1225" size="100,100">test</tw-passagedata><tw-passagedata pid="97" name="backpack" tags="nobr" position="850,1225" size="100,100">&lt;div class=&#39;backpack&#39;&gt;
   &lt;h2 class=&#39;backpack-heading&#39;&gt;backpack&lt;/h2&gt;
   &lt;div class=&#39;backpack-items&#39;&gt;
     &lt;div class=&#39;backpack-item&#39;&gt;
@@ -2663,7 +2721,7 @@ You finally caught this tough Mergimal! Their name is Corwhal, because of their 
       &lt;p class=&#39;backpack-label display-batteries&#39;&gt;$backpack.batteries&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="89" name="cheats" tags="nobr" position="1100,1100" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="98" name="cheats" tags="nobr" position="975,1225" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
 &lt;div style=&#39;display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;&#39;&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain 10 coins&#39;&gt;&gt;
@@ -2707,22 +2765,23 @@ Enter grid coords: &lt;&lt;textbox &#39;$_destination&#39; &#39;&#39;&gt;&gt; &l
 &lt;h2&gt;keywords&lt;/h2&gt;
 PADDLE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;pickup $keywords &#39;paddle&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;paddle&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 RUSTY &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;pickup $keywords &#39;rusty&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;rusty&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
-CLOSED &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;pickup $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;</tw-passagedata><tw-passagedata pid="90" name="incorrect" tags="" position="1225,1100" size="100,100">Not quite!
+CLOSED &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;pickup $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
+FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;pickup $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;</tw-passagedata><tw-passagedata pid="99" name="incorrect" tags="" position="1100,1225" size="100,100">Not quite!
 
-&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="correct" tags="" position="100,1225" size="100,100">Nice!
+&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="correct" tags="" position="1225,1225" size="100,100">Nice!
 
-&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="keywords" tags="nobr" position="225,1225" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
+&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="keywords" tags="nobr" position="100,1350" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
   &lt;div class=&#39;keywords-box&#39;&gt;
     &lt;h2&gt;keywords&lt;/h2&gt;
     &lt;&lt;for _item, _amount range $keywords.table&gt;&gt;
       &lt;div class=&#39;item-listing&#39;&gt;_item&lt;/div&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="no paddle" tags="" position="350,1225" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="no paddle" tags="" position="225,1350" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
 
-&lt;&lt;return &#39;Oh well.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="no rod" tags="" position="475,1225" size="100,100">You don&#39;t have a fishing rod.
+&lt;&lt;return &#39;Oh well.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="no rod" tags="" position="350,1350" size="100,100">You don&#39;t have a fishing rod.
 
-&lt;&lt;return &#39;Dangit.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="stats" tags="nobr" position="600,1225" size="100,100">&lt;div class=&#39;stats&#39;&gt;
+&lt;&lt;return &#39;Dangit.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="stats" tags="nobr" position="475,1350" size="100,100">&lt;div class=&#39;stats&#39;&gt;
   &lt;h2 class=&#39;stats-heading&#39;&gt;stats&lt;/h2&gt;
   &lt;div class=&#39;stats-box&#39;&gt;
     &lt;div class=&#39;stat-box&#39;&gt;
@@ -2742,9 +2801,9 @@ CLOSED &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;pickup $keywords &#39;closed&#39;
       &lt;p class=&#39;stat-label display-empathy&#39;&gt;$stats.empathy&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="96" name="not enough coins" tags="" position="725,1225" size="100,100">You don&#39;t have enough coins to buy that!
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="105" name="not enough coins" tags="" position="600,1350" size="100,100">You don&#39;t have enough coins to buy that!
 
-&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="already purchased" tags="" position="850,1225" size="100,100">You already have one!
+&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="already purchased" tags="" position="725,1350" size="100,100">You already have one!
 
 &lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">

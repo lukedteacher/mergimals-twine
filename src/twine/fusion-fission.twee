@@ -14,12 +14,17 @@ MERGIMALS
 Config.ui.stowBarInitially = false;
 
 :: StoryInit
-<<set $player to {name: 'none set', age: 10, difficulty: 'easy'}>>
-<<set $stats to {attention: 0, grit: 0, memory: 0, empathy: 0}>>
+<<set $player to {name: 'none set', image: '../images/characters/player.png', difficulty: 'easy'}>>
+<<set $stats to {attention: 'd6', grit: 'd6', memory: 'd6', empathy: 'd6'}>>
 <<set $backpack to {coins: 0, mergiballs: 0, tools: 0, bandages: 0, charms: 0, batteries: 0}>>
+
 <<widget 'tam' container>>
   <<say 'Prof. Tamarack' '../images/characters/tam.png'>>_contents<</say>>
 <</widget>>
+<<widget 'rhia' container>>
+  <<say 'Rhia (Wave School Leader)' '../images/characters/rhia.webp'>>_contents<</say>>
+<</widget>>
+
 <<newinv $keywords>>
 
 :: StoryCaption
@@ -40,13 +45,13 @@ Today is the first day of your Mergimals journey!
 Enter your name:
 <<textbox '$player.name' ''>>
 
+[[Create a character.->cc: part 1]]
 [[Go see professor Tamrack->059]]
 
 :: 059 [story]
-<<if $player.name is ''>><<set $player.name to 'Ash'>><</if>>
-<<widget 'player' container>>\
-  <<say $player.name '../images/characters/player.png'>>_contents<</say>>\
-<</widget>>\
+<<if $player.name is ''>>\
+  <<set $player.name to 'Ash'>>\
+<</if>>\
 Professor Tamarack’s office is on the Eastern edge of town. It’s the biggest building in the village and what mysteries fill all three floors are as good as anyone’s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
 <<tam>>$player.name!
 Finally, you’re here!
@@ -54,7 +59,7 @@ Finally, you’re here!
 <div id='response'>\
   <<link 'Say: Were you waiting for me?'>>
     <<replace '#response'>>\
-      <<player>>Were you waiting for me?<</player>>\
+      <<say $player.name $player.image>>Were you waiting for me?<</say>>\
       <<tam>>No, I wasn’t waiting at the window all morning for you.
         <<cont keypress append>>I have, um, lots and lots of work to do to keep me busy.
           <<cont keypress append>>I’m, like, super duper busy.
@@ -72,7 +77,7 @@ Finally, you’re here!
   <</link>>
   <<link 'Say: Let\'s go!'>>
     <<replace '#response'>>\
-      <<player>>Let's go!<</player>>\
+      <<say $player.name $player.image>>Let's go!<</say>>\
       <<tam>>You’ve been waiting 10 years for this, how exciting!<</tam>>\
       <<link 'Follow the professor inside the Lab.' '065'>><</link>>
     <</replace>>

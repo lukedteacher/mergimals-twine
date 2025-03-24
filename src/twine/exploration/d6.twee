@@ -34,7 +34,7 @@ There's also a person standing around. They look confused.
 </div>\
 <<button 'buy a mergiball 1c'>>
   <<if $backpack.coins < 1>>
-    <<dialog 'not enough coins'>>
+    <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
     <</dialog>>
   <<else>>
@@ -47,7 +47,7 @@ There's also a person standing around. They look confused.
 
 <<button 'buy a charm 2c'>>
   <<if $backpack.coins < 2>>
-    <<dialog 'not enough coins'>>
+    <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
     <</dialog>>
   <<else>>
@@ -60,7 +60,7 @@ There's also a person standing around. They look confused.
 
 <<button 'buy a bandage 3c'>>
   <<if $backpack.coins < 3>>
-    <<dialog 'not enough coins'>>
+    <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
     <</dialog>>
   <<else>>
@@ -73,7 +73,7 @@ There's also a person standing around. They look confused.
 
 <<button 'buy a tool 4c'>>
   <<if $backpack.coins < 4>>
-    <<dialog 'not enough coins'>>
+    <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
     <</dialog>>
   <<else>>
@@ -86,7 +86,7 @@ There's also a person standing around. They look confused.
 
 <<button 'buy a battery 5c'>>
   <<if $backpack.coins < 5>>
-    <<dialog 'not enough coins'>>
+    <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
     <</dialog>>
   <<else>>
@@ -99,17 +99,17 @@ There's also a person standing around. They look confused.
 
 <<button 'buy a flashlight 10c'>>
   <<if $keywords.has('flashlight')>>
-    <<dialog 'already purchased'>>
+    <<dialog 'already purchased'>>\
       <<include 'already purchased'>>
     <</dialog>>
   <<elseif $backpack.coins < 10>>
-    <<dialog 'not enough coins'>>
+    <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
     <</dialog>>
   <<else>>
     <<set $backpack.coins -= 10>>
     <<replace '.display-coins'>>$backpack.coins<</replace>>
-    <<pickup $keywords 'flashlight' 1>>
+    <<pickup $keywords 'flashlight' 1>><<redo 'keywords'>>
   <</if>>
 <</button>>
 
@@ -121,7 +121,7 @@ There's also a person standing around. They look confused.
 
   Motherf***.
 
-  Gain keyword CLOSED.<<pickup $keywords 'closed' 1>>
+  Gain keyword CLOSED.<<pickup $keywords 'closed' 1>><<redo 'keywords'>>
 
   [[Continue exploring.->d6]]
 <<else>>\

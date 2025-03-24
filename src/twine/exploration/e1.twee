@@ -4,3 +4,29 @@
 [[Go to the Wave School->e1: wave school]]
 !!!!NAVIGATE
 [[Go South towards Downtown.->e2]]
+
+:: e1: wave school [blue-urf]
+<<if not $keywords.has('paddle')>>\
+A large group of people seems to be standing in line, waiting to get in.
+
+Thankfully, you don't have to wait long before a figure steps out of the building and addresses the crowd.
+<<rhia>>Hello, everyone.
+<<cont keypress append>>I know that many of you are here to complete your Wave School challenge.
+<<cont keypress append>>Unfortunately, I am going to have to close the school until further notice.
+<<cont keypress>><<replace '#response-1'>><<link 'Oh f***. Not this again.' 'e2: wave school closed'>><</link>><</replace>><</cont>>\
+<</cont>><</cont>><</rhia>>\
+<span id='response-1'></span>
+<<else>>
+You've already done this challenge!
+<</if>>
+
+:: e2: wave school closed
+First Veil School and now this?!
+
+How are you supposed to complete the Mergimal Challenge if all the schools keep closing?
+
+You decide to go talk to Rhia to see what is going on.
+
+<span id='response-1'><<link 'What is going on?'>><<replace '#response-1'>><<say $player.name $player.image>>What is going on?<</say>><</replace>><</link>></span>
+
+[TODO finish this encounter]

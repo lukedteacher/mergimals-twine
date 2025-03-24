@@ -7,6 +7,3 @@ Not quite!
 Nice!
 
 <<link 'Continue on your way.'>><<run Dialog.close()>><</link>>
-
-
-
