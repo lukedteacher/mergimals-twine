@@ -1,0 +1,19 @@
+:: StoryInit
+<<set $player to {name: 'none set', image: '../images/characters/player.png', difficulty: 'easy'}>>
+<<set $stats to {attention: 'd6', grit: 'd6', memory: 'd6', empathy: 'd6'}>>
+
+<<widget 'tam' container>>
+  <<say 'Prof. Tamarack' '../images/characters/tam.png'>>_contents<</say>>
+<</widget>>
+<<widget 'rhia' container>>
+  <<say 'Rhia (Wave School Leader)' '../images/characters/rhia.webp'>>_contents<</say>>
+<</widget>>
+
+<<newinv $keywords>>
+<<newinv $backpack>>
+<<gain $backpack 'coin' 1>>
+<<gain $backpack 'mergiball' 1>>
+<<gain $backpack 'charm' 1>>
+<<gain $backpack 'bandage' 1>>
+<<gain $backpack 'tool' 1>>
+<<gain $backpack 'battery' 1>>

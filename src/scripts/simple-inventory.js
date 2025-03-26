@@ -1,28 +1,13 @@
 // Simple Inventory, for SugarCube 2, by Chapel
 // v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26
+// changes: changed 'pickup' to 'gain'
+// added default quantity of 1 for 'gain'
+// removed typeof legacy function
 ("use strict");
-function _typeof(t) {
-  return (
-    (_typeof =
-      "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
-        ? function (t) {
-            return typeof t;
-          }
-        : function (t) {
-            return t &&
-              "function" == typeof Symbol &&
-              t.constructor === Symbol &&
-              t !== Symbol.prototype
-              ? "symbol"
-              : typeof t;
-          }),
-    _typeof(t)
-  );
-}
 
 function _classCallCheck(t, e) {
   if (!(t instanceof e))
-    throw new TypeError("Cannot call a class as a function");
+    throw new TypeError("cannot call a class as a function");
 }
 
 function _defineProperties(t, e) {
@@ -46,15 +31,15 @@ function _createClass(t, e, n) {
 
 function _toPropertyKey(t) {
   var e = _toPrimitive(t, "string");
-  return "symbol" == _typeof(e) ? e : String(e);
+  return "symbol" == typeof e ? e : String(e);
 }
 
 function _toPrimitive(t, e) {
-  if ("object" != _typeof(t) || !t) return t;
+  if ("object" != typeof t || !t) return t;
   var n = t[Symbol.toPrimitive];
   if (void 0 !== n) {
     var i = n.call(t, e || "default");
-    if ("object" != _typeof(i)) return i;
+    if ("object" != typeof i) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === e ? String : Number)(t);
@@ -82,7 +67,7 @@ function _toPrimitive(t, e) {
             arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : [];
         if ((_classCallCheck(this, n), !e || "string" != typeof e))
           throw new Error("invalid item ID");
-        if ("object" !== _typeof(i)) throw new Error("invalid item definition");
+        if ("object" !== typeof i) throw new Error("invalid item definition");
         Object.assign(this, Object.assign({}, t, i)),
           (this.id = e),
           (this._tags =
@@ -197,11 +182,11 @@ function _toPrimitive(t, e) {
       n = "&hellip;",
       i = {
         inspect: "Inspect",
-        use: "Use",
-        drop: "Drop",
+        use: "use",
+        drop: "drop",
         stack: "stack",
-        take: "Take",
-        give: "Give",
+        take: "take",
+        give: "give",
         stackPre: "&nbsp;&times;&nbsp;",
         stackPost: "&nbsp;",
       },
@@ -381,7 +366,7 @@ function _toPrimitive(t, e) {
               },
             },
             {
-              key: "pickup",
+              key: "gain",
               value: function () {
                 var t = this.merge(s.parseArgList.apply(null, arguments));
                 return this.emit("update", { delta: t }), this;
@@ -502,7 +487,7 @@ function _toPrimitive(t, e) {
                 return Object.assign(clone(i), r);
               },
               set: function (t) {
-                "object" === _typeof(t) && (r = Object.assign(r, clone(t)));
+                "object" === typeof t && (r = Object.assign(r, clone(t)));
               },
             },
             {
@@ -518,7 +503,7 @@ function _toPrimitive(t, e) {
                     arguments[3];
                 if (0 !== i) {
                   if (
-                    (e instanceof s && (e = e.data), "object" !== _typeof(e))
+                    (e instanceof s && (e = e.data), "object" !== typeof e)
                   ) {
                     if (e) throw new TypeError("cannot access inventory data");
                     e = {};
@@ -561,7 +546,7 @@ function _toPrimitive(t, e) {
                   arguments.length > 0 && void 0 !== arguments[0]
                     ? arguments[0]
                     : {};
-                if ((s.is(t) && (t = t.data), "object" !== _typeof(t)))
+                if (s.is(t) && (t = t.data), "object" !== typeof t)
                   return {};
                 var e = {};
                 return (
@@ -578,12 +563,12 @@ function _toPrimitive(t, e) {
             {
               key: "parseArgList",
               value: function () {
-                var t = [].slice.call(arguments).flat(1 / 0);
-                if (t.length % 2 != 0)
+                var t = [].slice.call(arguments).flat(1 / 0); // flatten arguments into a single level array
+                if (t.length % 2 != 0) // ensure there are an even number of arguments
                   throw new Error(
                     "item sets should be pairs of item IDs and numbers"
                   );
-                var e = {};
+                var e = {}; // convert each pair into an object
                 return (
                   t.forEach(function (n, i) {
                     i % 2 == 0 && (e[n] = t[i + 1]);
@@ -678,8 +663,8 @@ function _toPrimitive(t, e) {
       else t();
     }
     function i(t) {
-      var e = $(document.createElement("span")).addClass("spacer");
-      return t && e.wiki("" + t), e;
+      var span = $(document.createElement("span")).addClass("spacer");
+      return t && span.wiki("" + t), span;
     }
     function r(t, i) {
       var r = arguments.length > 2 && void 0 !== arguments[2] && arguments[2],
@@ -710,6 +695,7 @@ function _toPrimitive(t, e) {
           })
       );
     }
+
     function a(a) {
       var s,
         o =
@@ -893,6 +879,7 @@ function _toPrimitive(t, e) {
           .append($(document.createElement("span")).wiki(e.emptyMessage));
       return u.append(s), u;
     }
+
     e.prototype.interface = function () {
       var t,
         e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
@@ -1138,29 +1125,39 @@ function _toPrimitive(t, e) {
     }),
       Macro.add("newinv", {
         handler: function () {
-          var t = this.args.raw
+          var variableName = this.args.raw
             .trim()
             .split(" ")
             .first()
             .replace(/["']/g, "")
             .trim();
-          if (!n(t))
+          if (!n(variableName))
             return this.error(
               "argument must be a story or temporary variable!"
             );
-          State.setVar(t, new e({}, this.args.flat(1 / 0).slice(1)));
+          State.setVar(variableName, new e({}, this.args.flat(1 / 0).slice(1)));
         },
       }),
-      Macro.add(["pickup", "drop"], {
+      Macro.add(["gain", "drop"], {
         handler: function () {
-          var t = i(this.args[0]);
-          return t
-            ? this.args.length < 3
-              ? this.error("no items to pick up were provided")
-              : void t[this.name](this.args.slice(1))
-            : this.error("first argument must be a valid inventory!");
+          const inventory = i(this.args[0]); // validate the inventory object
+          
+          if (!inventory) {
+            return this.error("first argument must be a valid inventory!");
+          }
+      
+          // check if at least the ITEM is provided (minimum 2 arguments: inventory + item)
+          if (this.args.length < 2) {
+            return this.error("no item specified!");
+          }
+      
+          // extract item and quantity (or default to 1)
+          const [item, quantity = 1] = this.args.slice(1);
+          
+          // call the inventory method (gain/drop) with item and resolved quantity
+          return void inventory[this.name](item, quantity);
         },
-      }),
+      });
       Macro.add("dropall", {
         handler: function () {
           var t = i(this.args[0]);
@@ -1213,16 +1210,17 @@ function _toPrimitive(t, e) {
     var t = setup.Item,
       e = setup.Inventory;
     function n(t, e, n) {
-      if ("object" !== _typeof(e))
+      if ("object" !== typeof e)
         throw new TypeError(
           "the extension should be a plain generic object holding the properties and methods you want to add"
         );
       Object.keys(e).forEach(function (i) {
         if (t[i] && !n)
-          throw new Error('Cannot override existing property "' + i + '"!');
+          throw new Error('cannot override existing property "' + i + '"!');
         t[i] = e[i];
       });
     }
+    
     Object.assign(e, {
       extend: function (t) {
         n(
@@ -1251,4 +1249,4 @@ function _toPrimitive(t, e) {
         },
       });
   })();
-// End Simple Inventory
+// end simple inventory

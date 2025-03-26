@@ -71,7 +71,7 @@ Enter the code:  <<textbox '_$code' ''>>
 :: 141 [reward]
 After a short while, you seem to find a pattern in the crabs' movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.
 
-Gain keyword RUSTY.<<pickup $keywords 'rusty' 1>><<redo 'keywords'>>
+Gain keyword RUSTY.<<gain $keywords 'rusty' 1>><<redo 'keywords'>>
 
 Gain Card I-20 (Rusty Rod).
 

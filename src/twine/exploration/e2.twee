@@ -111,7 +111,7 @@ A bunch of people seem to be waving fans and complaining about how their air con
   <<else>>
     <<set $backpack.coins -= 10>>
     <<replace '.display-coins'>>$backpack.coins<</replace>>
-    <<pickup $keywords 'flashlight' 1>><<redo 'keywords'>>
+    <<gain $keywords 'flashlight' 1>><<redo 'keywords'>>
   <</if>>
 <</button>>
 

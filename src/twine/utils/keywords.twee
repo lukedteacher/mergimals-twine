@@ -2,7 +2,7 @@
 <<do tag 'keywords'>>
   <div class='keywords-box'>
     <h2>keywords</h2>
-    <<for _item, _amount range $keywords.table>>
+    <<for _item range $keywords.list>>
       <div class='item-listing'>_item</div>
     <</for>>
   </div>

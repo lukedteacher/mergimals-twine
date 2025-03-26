@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="76" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "backpack.css" */
+	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="75" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "backpack.css" */
 .backpack {
     display: flex;
     justify-content: center;
@@ -134,7 +134,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     margin-top: 0;
 }
 
-.image-item {
+.backpack-item-img {
     width: 3rem;
     aspect-ratio: square;
 }
@@ -582,29 +582,14 @@ Macro.add('dialogclose', {
 /* twine-user-script #4: "simple-inventory.js" */
 // Simple Inventory, for SugarCube 2, by Chapel
 // v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26
+// changes: changed 'pickup' to 'gain'
+// added default quantity of 1 for 'gain'
+// removed typeof legacy function
 ("use strict");
-function _typeof(t) {
-  return (
-    (_typeof =
-      "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
-        ? function (t) {
-            return typeof t;
-          }
-        : function (t) {
-            return t &&
-              "function" == typeof Symbol &&
-              t.constructor === Symbol &&
-              t !== Symbol.prototype
-              ? "symbol"
-              : typeof t;
-          }),
-    _typeof(t)
-  );
-}
 
 function _classCallCheck(t, e) {
   if (!(t instanceof e))
-    throw new TypeError("Cannot call a class as a function");
+    throw new TypeError("cannot call a class as a function");
 }
 
 function _defineProperties(t, e) {
@@ -628,15 +613,15 @@ function _createClass(t, e, n) {
 
 function _toPropertyKey(t) {
   var e = _toPrimitive(t, "string");
-  return "symbol" == _typeof(e) ? e : String(e);
+  return "symbol" == typeof e ? e : String(e);
 }
 
 function _toPrimitive(t, e) {
-  if ("object" != _typeof(t) || !t) return t;
+  if ("object" != typeof t || !t) return t;
   var n = t[Symbol.toPrimitive];
   if (void 0 !== n) {
     var i = n.call(t, e || "default");
-    if ("object" != _typeof(i)) return i;
+    if ("object" != typeof i) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === e ? String : Number)(t);
@@ -664,7 +649,7 @@ function _toPrimitive(t, e) {
             arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : [];
         if ((_classCallCheck(this, n), !e || "string" != typeof e))
           throw new Error("invalid item ID");
-        if ("object" !== _typeof(i)) throw new Error("invalid item definition");
+        if ("object" !== typeof i) throw new Error("invalid item definition");
         Object.assign(this, Object.assign({}, t, i)),
           (this.id = e),
           (this._tags =
@@ -779,11 +764,11 @@ function _toPrimitive(t, e) {
       n = "&hellip;",
       i = {
         inspect: "Inspect",
-        use: "Use",
-        drop: "Drop",
+        use: "use",
+        drop: "drop",
         stack: "stack",
-        take: "Take",
-        give: "Give",
+        take: "take",
+        give: "give",
         stackPre: "&nbsp;&times;&nbsp;",
         stackPost: "&nbsp;",
       },
@@ -963,7 +948,7 @@ function _toPrimitive(t, e) {
               },
             },
             {
-              key: "pickup",
+              key: "gain",
               value: function () {
                 var t = this.merge(s.parseArgList.apply(null, arguments));
                 return this.emit("update", { delta: t }), this;
@@ -1084,7 +1069,7 @@ function _toPrimitive(t, e) {
                 return Object.assign(clone(i), r);
               },
               set: function (t) {
-                "object" === _typeof(t) && (r = Object.assign(r, clone(t)));
+                "object" === typeof t && (r = Object.assign(r, clone(t)));
               },
             },
             {
@@ -1100,7 +1085,7 @@ function _toPrimitive(t, e) {
                     arguments[3];
                 if (0 !== i) {
                   if (
-                    (e instanceof s && (e = e.data), "object" !== _typeof(e))
+                    (e instanceof s && (e = e.data), "object" !== typeof e)
                   ) {
                     if (e) throw new TypeError("cannot access inventory data");
                     e = {};
@@ -1143,7 +1128,7 @@ function _toPrimitive(t, e) {
                   arguments.length > 0 && void 0 !== arguments[0]
                     ? arguments[0]
                     : {};
-                if ((s.is(t) && (t = t.data), "object" !== _typeof(t)))
+                if (s.is(t) && (t = t.data), "object" !== typeof t)
                   return {};
                 var e = {};
                 return (
@@ -1160,12 +1145,12 @@ function _toPrimitive(t, e) {
             {
               key: "parseArgList",
               value: function () {
-                var t = [].slice.call(arguments).flat(1 / 0);
-                if (t.length % 2 != 0)
+                var t = [].slice.call(arguments).flat(1 / 0); // flatten arguments into a single level array
+                if (t.length % 2 != 0) // ensure there are an even number of arguments
                   throw new Error(
                     "item sets should be pairs of item IDs and numbers"
                   );
-                var e = {};
+                var e = {}; // convert each pair into an object
                 return (
                   t.forEach(function (n, i) {
                     i % 2 == 0 && (e[n] = t[i + 1]);
@@ -1260,8 +1245,8 @@ function _toPrimitive(t, e) {
       else t();
     }
     function i(t) {
-      var e = $(document.createElement("span")).addClass("spacer");
-      return t && e.wiki("" + t), e;
+      var span = $(document.createElement("span")).addClass("spacer");
+      return t && span.wiki("" + t), span;
     }
     function r(t, i) {
       var r = arguments.length > 2 && void 0 !== arguments[2] && arguments[2],
@@ -1292,6 +1277,7 @@ function _toPrimitive(t, e) {
           })
       );
     }
+
     function a(a) {
       var s,
         o =
@@ -1475,6 +1461,7 @@ function _toPrimitive(t, e) {
           .append($(document.createElement("span")).wiki(e.emptyMessage));
       return u.append(s), u;
     }
+
     e.prototype.interface = function () {
       var t,
         e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
@@ -1720,29 +1707,39 @@ function _toPrimitive(t, e) {
     }),
       Macro.add("newinv", {
         handler: function () {
-          var t = this.args.raw
+          var variableName = this.args.raw
             .trim()
             .split(" ")
             .first()
             .replace(/["']/g, "")
             .trim();
-          if (!n(t))
+          if (!n(variableName))
             return this.error(
               "argument must be a story or temporary variable!"
             );
-          State.setVar(t, new e({}, this.args.flat(1 / 0).slice(1)));
+          State.setVar(variableName, new e({}, this.args.flat(1 / 0).slice(1)));
         },
       }),
-      Macro.add(["pickup", "drop"], {
+      Macro.add(["gain", "drop"], {
         handler: function () {
-          var t = i(this.args[0]);
-          return t
-            ? this.args.length < 3
-              ? this.error("no items to pick up were provided")
-              : void t[this.name](this.args.slice(1))
-            : this.error("first argument must be a valid inventory!");
+          const inventory = i(this.args[0]); // validate the inventory object
+          
+          if (!inventory) {
+            return this.error("first argument must be a valid inventory!");
+          }
+      
+          // check if at least the ITEM is provided (minimum 2 arguments: inventory + item)
+          if (this.args.length < 2) {
+            return this.error("no item specified!");
+          }
+      
+          // extract item and quantity (or default to 1)
+          const [item, quantity = 1] = this.args.slice(1);
+          
+          // call the inventory method (gain/drop) with item and resolved quantity
+          return void inventory[this.name](item, quantity);
         },
-      }),
+      });
       Macro.add("dropall", {
         handler: function () {
           var t = i(this.args[0]);
@@ -1795,16 +1792,17 @@ function _toPrimitive(t, e) {
     var t = setup.Item,
       e = setup.Inventory;
     function n(t, e, n) {
-      if ("object" !== _typeof(e))
+      if ("object" !== typeof e)
         throw new TypeError(
           "the extension should be a plain generic object holding the properties and methods you want to add"
         );
       Object.keys(e).forEach(function (i) {
         if (t[i] && !n)
-          throw new Error('Cannot override existing property "' + i + '"!');
+          throw new Error('cannot override existing property "' + i + '"!');
         t[i] = e[i];
       });
     }
+    
     Object.assign(e, {
       extend: function (t) {
         n(
@@ -1833,7 +1831,7 @@ function _toPrimitive(t, e) {
         },
       });
   })();
-// End Simple Inventory
+// end simple inventory
 /* twine-user-script #5: "speech.js" */
 (function () {
     // v1.1.1
@@ -1937,7 +1935,8 @@ Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" ta
 [[Visit the Mergimal Lab-&gt;b3: lab]]
 [[Go to the beach.-&gt;b3: beach]]
 !!!!NAVIGATE
-[[Go South to Route 001-&gt;b4]]</tw-passagedata><tw-passagedata pid="2" name="b3: description" tags="" position="225,100" size="100,100">Cascade Village rests quietly on the sandy shores of Ho’onui Peninsula, where five cozy homes overlook the sparkling waves. The Mergimal Research Center stands at the edge of the beach, its sleek design contrasting with the warm, rustic charm of the village.
+[[Go South to Route 001-&gt;b4]]</tw-passagedata><tw-passagedata pid="2" name="b3: description" tags="" position="225,100" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;../images/story/cascade-village.png&#39;&gt;
+Cascade Village rests quietly on the sandy shores of Ho’onui Peninsula, where five cozy homes overlook the sparkling waves. The Mergimal Research Center stands at the edge of the beach, its sleek design contrasting with the warm, rustic charm of the village.
 
 Life moves at a gentle pace here, with the ocean breeze carrying the sound of laughter and the faint scent of salt and fresh bread. It’s a peaceful place to live—but for those eager to explore, Cascade Village feels like the calm before an unforgettable adventure.
 
@@ -2051,7 +2050,7 @@ Enter the code:  &lt;&lt;textbox &#39;_$code&#39; &#39;&#39;&gt;&gt;
     [[Continue exploring.-&gt;b5]]
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="141" tags="reward" position="600,225" size="100,100">After a short while, you seem to find a pattern in the crabs&#39; movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.
 
-Gain keyword RUSTY.&lt;&lt;pickup $keywords &#39;rusty&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;
+Gain keyword RUSTY.&lt;&lt;gain $keywords &#39;rusty&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;
 
 Gain Card I-20 (Rusty Rod).
 
@@ -2293,67 +2292,57 @@ There&#39;s also a person standing around. They look confused.
   &lt;div style=&#39;grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/charm.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
 &lt;/div&gt;\
 &lt;&lt;button &#39;buy a mergiball 1c&#39;&gt;&gt;
-  &lt;&lt;if $backpack.coins &lt; 1&gt;&gt;
+  &lt;&lt;if $backpack.has(&#39;coin&#39;, 1)&gt;&gt;
+    &lt;&lt;drop $backpack &#39;coin&#39; 1&gt;&gt;
+    &lt;&lt;gain $backpack &#39;mergiball&#39;&gt;&gt;
+  &lt;&lt;else&gt;&gt;
     &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
-  &lt;&lt;else&gt;&gt;
-    &lt;&lt;set $backpack.coins -= 1&gt;&gt;
-    &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
-    &lt;&lt;set $backpack.mergiballs ++&gt;&gt;
-    &lt;&lt;replace &#39;.display-mergiballs&#39;&gt;&gt;$backpack.mergiballs&lt;&lt;/replace&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
 &lt;&lt;button &#39;buy a charm 2c&#39;&gt;&gt;
-  &lt;&lt;if $backpack.coins &lt; 2&gt;&gt;
+  &lt;&lt;if $backpack.has(&#39;coin&#39;, 2)&gt;&gt;
+    &lt;&lt;drop $backpack &#39;coin&#39; 2&gt;&gt;
+    &lt;&lt;gain $backpack &#39;charm&#39;&gt;&gt;
+  &lt;&lt;else&gt;&gt;
     &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
-  &lt;&lt;else&gt;&gt;
-    &lt;&lt;set $backpack.coins -= 2&gt;&gt;
-    &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
-    &lt;&lt;set $backpack.charms ++&gt;&gt;
-    &lt;&lt;replace &#39;.display-charms&#39;&gt;&gt;$backpack.charms&lt;&lt;/replace&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
 &lt;&lt;button &#39;buy a bandage 3c&#39;&gt;&gt;
-  &lt;&lt;if $backpack.coins &lt; 3&gt;&gt;
+  &lt;&lt;if $backpack.has(&#39;coin&#39;, 3)&gt;&gt;
+    &lt;&lt;drop $backpack &#39;coin&#39; 3&gt;&gt;
+    &lt;&lt;gain $backpack &#39;bandage&#39;&gt;&gt;
+  &lt;&lt;else&gt;&gt;
     &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
-  &lt;&lt;else&gt;&gt;
-    &lt;&lt;set $backpack.coins -= 3&gt;&gt;
-    &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
-    &lt;&lt;set $backpack.bandages ++&gt;&gt;
-    &lt;&lt;replace &#39;.display-bandages&#39;&gt;&gt;$backpack.bandages&lt;&lt;/replace&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
 &lt;&lt;button &#39;buy a tool 4c&#39;&gt;&gt;
-  &lt;&lt;if $backpack.coins &lt; 4&gt;&gt;
+  &lt;&lt;if $backpack.has(&#39;coin&#39;, 4)&gt;&gt;
+    &lt;&lt;drop $backpack &#39;coin&#39; 4&gt;&gt;
+    &lt;&lt;gain $backpack &#39;tool&#39;&gt;&gt;
+  &lt;&lt;else&gt;&gt;
     &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
-  &lt;&lt;else&gt;&gt;
-    &lt;&lt;set $backpack.coins -= 4&gt;&gt;
-    &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
-    &lt;&lt;set $backpack.tools ++&gt;&gt;
-    &lt;&lt;replace &#39;.display-tools&#39;&gt;&gt;$backpack.tools&lt;&lt;/replace&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
 &lt;&lt;button &#39;buy a battery 5c&#39;&gt;&gt;
-  &lt;&lt;if $backpack.coins &lt; 5&gt;&gt;
+  &lt;&lt;if $backpack.has(&#39;coin&#39;, 5)&gt;&gt;
+    &lt;&lt;drop $backpack &#39;coin&#39; 5&gt;&gt;
+    &lt;&lt;gain $backpack &#39;battery&#39;&gt;&gt;
+  &lt;&lt;else&gt;&gt;
     &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
-  &lt;&lt;else&gt;&gt;
-    &lt;&lt;set $backpack.coins -= 5&gt;&gt;
-    &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
-    &lt;&lt;set $backpack.batteries ++&gt;&gt;
-    &lt;&lt;replace &#39;.display-batteries&#39;&gt;&gt;$backpack.batteries&lt;&lt;/replace&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
@@ -2362,14 +2351,14 @@ There&#39;s also a person standing around. They look confused.
     &lt;&lt;dialog &#39;already purchased&#39;&gt;&gt;\
       &lt;&lt;include &#39;already purchased&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
-  &lt;&lt;elseif $backpack.coins &lt; 10&gt;&gt;
+  &lt;&lt;elseif $backpack.has(&#39;coin&#39;, 10)&gt;&gt;
+    &lt;&lt;drop $backpack &#39;coin&#39; 10&gt;&gt;
+    &lt;&lt;gain $keywords &#39;flashlight&#39; 1&gt;&gt;
+    &lt;&lt;redo &#39;keywords&#39;&gt;&gt;
+  &lt;&lt;else&gt;&gt;
     &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
       &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
     &lt;&lt;/dialog&gt;&gt;
-  &lt;&lt;else&gt;&gt;
-    &lt;&lt;set $backpack.coins -= 10&gt;&gt;
-    &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
-    &lt;&lt;pickup $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
@@ -2378,7 +2367,7 @@ There&#39;s also a person standing around. They look confused.
 
   Motherf***.
 
-  Gain keyword CLOSED.&lt;&lt;pickup $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;
+  Gain keyword CLOSED.&lt;&lt;gain $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;
 
   [[Continue exploring.-&gt;d6]]
 &lt;&lt;else&gt;&gt;\
@@ -2517,7 +2506,7 @@ A bunch of people seem to be waving fans and complaining about how their air con
   &lt;&lt;else&gt;&gt;
     &lt;&lt;set $backpack.coins -= 10&gt;&gt;
     &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
-    &lt;&lt;pickup $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;
+    &lt;&lt;gain $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
@@ -2543,30 +2532,21 @@ A bunch of people seem to be waving fans and complaining about how their air con
 !!!!NAVIGATE
 [[Go North towards Blue Urf.-&gt;e3]]
 [[Go East towards Raven Wing.-&gt;f4]]
-[[Go West across the bridge.-&gt;d4]]</tw-passagedata><tw-passagedata pid="71" name="e4: long grass" tags="" position="100,975" size="100,100">Some mergimals are here probably.</tw-passagedata><tw-passagedata pid="72" name="e4: trainer" tags="" position="225,975" size="100,100">Two trainers even!</tw-passagedata><tw-passagedata pid="73" name="StoryInit" tags="" position="350,975" size="100,100">&lt;&lt;set $player to {name: &#39;none set&#39;, image: &#39;../images/characters/player.png&#39;, difficulty: &#39;easy&#39;}&gt;&gt;
-&lt;&lt;set $stats to {attention: &#39;d6&#39;, grit: &#39;d6&#39;, memory: &#39;d6&#39;, empathy: &#39;d6&#39;}&gt;&gt;
-&lt;&lt;set $backpack to {coins: 0, mergiballs: 0, tools: 0, bandages: 0, charms: 0, batteries: 0}&gt;&gt;
-
-&lt;&lt;widget &#39;tam&#39; container&gt;&gt;
-  &lt;&lt;say &#39;Prof. Tamarack&#39; &#39;../images/characters/tam.png&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-&lt;&lt;widget &#39;rhia&#39; container&gt;&gt;
-  &lt;&lt;say &#39;Rhia (Wave School Leader)&#39; &#39;../images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;newinv $keywords&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="StoryCaption" tags="" position="475,975" size="100,100">&lt;&lt;include stats&gt;&gt;
+[[Go West across the bridge.-&gt;d4]]</tw-passagedata><tw-passagedata pid="71" name="e4: long grass" tags="" position="100,975" size="100,100">Some mergimals are here probably.</tw-passagedata><tw-passagedata pid="72" name="e4: trainer" tags="" position="225,975" size="100,100">Two trainers even!</tw-passagedata><tw-passagedata pid="73" name="StoryCaption" tags="" position="350,975" size="100,100">&lt;&lt;include stats&gt;&gt;
 &lt;&lt;include backpack&gt;&gt;
-&lt;&lt;include keywords&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="StoryMenu" tags="" position="600,975" size="100,100">&lt;&lt;link &#39;cheats&#39;&gt;&gt;
+&lt;&lt;include keywords&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="StoryMenu" tags="" position="475,975" size="100,100">&lt;&lt;link &#39;cheats&#39;&gt;&gt;
   &lt;&lt;dialog &#39;cheats&#39;&gt;&gt;\
     &lt;&lt;include &#39;cheats&#39;&gt;&gt;
   &lt;&lt;/dialog&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="001" tags="start" position="725,975" size="100,100">Today is the first day of your Mergimals journey!
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="001" tags="start" position="600,975" size="100,100">Today is the first day of your Mergimals journey!
 
 Enter your name:
 &lt;&lt;textbox &#39;$player.name&#39; &#39;&#39;&gt;&gt;
 
 [[Create a character.-&gt;cc: part 1]]
-[[Go see professor Tamrack-&gt;059]]</tw-passagedata><tw-passagedata pid="77" name="059" tags="story" position="850,975" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
+[[Go see professor Tamrack-&gt;059]]
+
+DEBUG: &lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="059" tags="story" position="725,975" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
   &lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
 Professor Tamarack’s office is on the Eastern edge of town. It’s the biggest building in the village and what mysteries fill all three floors are as good as anyone’s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
@@ -2599,7 +2579,7 @@ Finally, you’re here!
       &lt;&lt;link &#39;Follow the professor inside the Lab.&#39; &#39;065&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
   &lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="78" name="065" tags="story" position="975,975" size="100,100">You enter…
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="77" name="065" tags="story" position="850,975" size="100,100">You enter…
 In front of you on the table…
 
 Inspect the three starting Mergimal cards
@@ -2608,7 +2588,24 @@ Inspect the three starting Mergimal cards
 [[Pick the blue one: Gain Card M-002-&gt;b4]]
 [[Pick the green one: Gain Card M-003-&gt;b4]]
 [[Pick the yellow one: Gain Card M-004-&gt;b4]]
-[[Ask if there are any others: 404-&gt;404]]</tw-passagedata><tw-passagedata pid="79" name="036" tags="encounter" position="1100,975" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art boxin.png&#39; /&gt;
+[[Ask if there are any others: 404-&gt;404]]</tw-passagedata><tw-passagedata pid="78" name="StoryInit" tags="" position="975,975" size="100,100">&lt;&lt;set $player to {name: &#39;none set&#39;, image: &#39;../images/characters/player.png&#39;, difficulty: &#39;easy&#39;}&gt;&gt;
+&lt;&lt;set $stats to {attention: &#39;d6&#39;, grit: &#39;d6&#39;, memory: &#39;d6&#39;, empathy: &#39;d6&#39;}&gt;&gt;
+
+&lt;&lt;widget &#39;tam&#39; container&gt;&gt;
+  &lt;&lt;say &#39;Prof. Tamarack&#39; &#39;../images/characters/tam.png&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &#39;rhia&#39; container&gt;&gt;
+  &lt;&lt;say &#39;Rhia (Wave School Leader)&#39; &#39;../images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;newinv $keywords&gt;&gt;
+&lt;&lt;newinv $backpack&gt;&gt;
+&lt;&lt;gain $backpack &#39;coin&#39; 1&gt;&gt;
+&lt;&lt;gain $backpack &#39;mergiball&#39; 1&gt;&gt;
+&lt;&lt;gain $backpack &#39;charm&#39; 1&gt;&gt;
+&lt;&lt;gain $backpack &#39;bandage&#39; 1&gt;&gt;
+&lt;&lt;gain $backpack &#39;tool&#39; 1&gt;&gt;
+&lt;&lt;gain $backpack &#39;battery&#39; 1&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="036" tags="encounter" position="1100,975" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art boxin.png&#39; /&gt;
 
 The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 
@@ -2693,87 +2690,71 @@ You finally caught this tough Mergimal! Their name is Corwhal, because of their 
 &lt;&lt;if $high != &#39;attention&#39;&gt;&gt;&lt;&lt;link &#39;I can\&#39;t stay still.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;grit&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t like to fail.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;memory&#39;&gt;&gt;&lt;&lt;link &#39;I lose things often.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="cc: part 6" tags="" position="725,1225" size="100,100">test</tw-passagedata><tw-passagedata pid="97" name="backpack" tags="nobr" position="850,1225" size="100,100">&lt;div class=&#39;backpack&#39;&gt;
-  &lt;h2 class=&#39;backpack-heading&#39;&gt;backpack&lt;/h2&gt;
-  &lt;div class=&#39;backpack-items&#39;&gt;
-    &lt;div class=&#39;backpack-item&#39;&gt;
-      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/coin.svg&#39; /&gt;
-      &lt;p class=&#39;backpack-label display-coins&#39;&gt;$backpack.coins&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&#39;backpack-item&#39;&gt;
-      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/mergiball.svg&#39; /&gt;
-      &lt;p class=&#39;backpack-label display-mergiballs&#39;&gt;$backpack.mergiballs&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&#39;backpack-item&#39;&gt;
-      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/charm.svg&#39; /&gt;
-      &lt;p class=&#39;backpack-label display-charms&#39;&gt;$backpack.charms&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&#39;backpack-item&#39;&gt;
-      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/bandage.svg&#39; /&gt;
-      &lt;p class=&#39;backpack-label display-bandages&#39;&gt;$backpack.bandages&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&#39;backpack-item&#39;&gt;
-      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/tool.svg&#39; /&gt;
-      &lt;p class=&#39;backpack-label display-tools&#39;&gt;$backpack.tools&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&#39;backpack-item&#39;&gt;
-      &lt;img class=&#39;image-item&#39; src=&#39;../images/items/battery.svg&#39; /&gt;
-      &lt;p class=&#39;backpack-label display-batteries&#39;&gt;$backpack.batteries&lt;/p&gt;
+&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="cc: part 6" tags="" position="725,1225" size="100,100">test</tw-passagedata><tw-passagedata pid="97" name="backpack" tags="nobr" position="850,1225" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
+  &lt;div class=&#39;backpack&#39;&gt;
+    &lt;h2 class=&#39;backpack-heading&#39;&gt;backpack&lt;/h2&gt;
+    &lt;div class=&#39;backpack-items&#39;&gt;
+        &lt;&lt;for _item, _amount range $backpack.table&gt;&gt;
+          &lt;div&gt;
+            &lt;&lt;print &#39;&lt;img class=&quot;backpack-item-img&quot; src=&quot;../images/items/&#39; + _item + &#39;.svg&quot;&gt;&#39;&gt;&gt;&lt;br /&gt;
+            _amount
+          &lt;/div&gt;
+        &lt;&lt;/for&gt;&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="98" name="cheats" tags="nobr" position="975,1225" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="cheats" tags="nobr" position="975,1225" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
 &lt;div style=&#39;display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;&#39;&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain 10 coins&#39;&gt;&gt;
-      &lt;&lt;set $backpack.coins += 10&gt;&gt;
-      &lt;&lt;replace &#39;.display-coins&#39;&gt;&gt;$backpack.coins&lt;&lt;/replace&gt;&gt;
+      &lt;&lt;gain $backpack &#39;coin&#39; 10&gt;&gt;
+      &lt;&lt;redo &#39;backpack&#39;&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain a mergiball&#39;&gt;&gt;
-      &lt;&lt;set $backpack.mergiballs ++&gt;&gt;
-      &lt;&lt;replace &#39;.display-mergiballs&#39;&gt;&gt;$backpack.mergiballs&lt;&lt;/replace&gt;&gt;
+      &lt;&lt;gain $backpack &#39;mergiball&#39;&gt;&gt;
+      &lt;&lt;redo &#39;backpack&#39;&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain a charm&#39;&gt;&gt;
-      &lt;&lt;set $backpack.charms ++&gt;&gt;
-      &lt;&lt;replace &#39;.display-charms&#39;&gt;&gt;$backpack.charms&lt;&lt;/replace&gt;&gt;
+      &lt;&lt;gain $backpack &#39;charm&#39;&gt;&gt;
+      &lt;&lt;redo &#39;backpack&#39;&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain a bandage&#39;&gt;&gt;
-      &lt;&lt;set $backpack.bandages ++&gt;&gt;
-      &lt;&lt;replace &#39;.display-bandages&#39;&gt;&gt;$backpack.bandages&lt;&lt;/replace&gt;&gt;
+      &lt;&lt;gain $backpack &#39;bandage&#39;&gt;&gt;
+      &lt;&lt;redo &#39;backpack&#39;&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain a tool&#39;&gt;&gt;
-      &lt;&lt;set $backpack.tools ++&gt;&gt;
-      &lt;&lt;replace &#39;.display-tools&#39;&gt;&gt;$backpack.tools&lt;&lt;/replace&gt;&gt;
+      &lt;&lt;gain $backpack &#39;tool&#39;&gt;&gt;
+      &lt;&lt;redo &#39;backpack&#39;&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain a battery&#39;&gt;&gt;
-      &lt;&lt;set $backpack.batteries ++&gt;&gt;
-      &lt;&lt;replace &#39;.display-batteries&#39;&gt;&gt;$backpack.batteries&lt;&lt;/replace&gt;&gt;
+      &lt;&lt;gain $backpack &#39;battery&#39;&gt;&gt;
+      &lt;&lt;redo &#39;backpack&#39;&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2&gt;teleport&lt;/h2&gt;
 Enter grid coords: &lt;&lt;textbox &#39;$_destination&#39; &#39;&#39;&gt;&gt; &lt;&lt;button &#39;go&#39;&gt;&gt;&lt;&lt;run Dialog.close();&gt;&gt;&lt;&lt;goto $_destination&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;h2&gt;keywords&lt;/h2&gt;
-PADDLE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;pickup $keywords &#39;paddle&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;paddle&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
-RUSTY &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;pickup $keywords &#39;rusty&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;rusty&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
-CLOSED &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;pickup $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
-FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;pickup $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;</tw-passagedata><tw-passagedata pid="99" name="incorrect" tags="" position="1100,1225" size="100,100">Not quite!
+PADDLE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;gain $keywords &#39;paddle&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;paddle&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
+RUSTY &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;gain $keywords &#39;rusty&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;rusty&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
+CLOSED &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;gain $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
+FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;gain $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;</tw-passagedata><tw-passagedata pid="99" name="incorrect" tags="" position="1100,1225" size="100,100">Not quite!
 
 &lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="correct" tags="" position="1225,1225" size="100,100">Nice!
 
 &lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="keywords" tags="nobr" position="100,1350" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
   &lt;div class=&#39;keywords-box&#39;&gt;
     &lt;h2&gt;keywords&lt;/h2&gt;
-    &lt;&lt;for _item, _amount range $keywords.table&gt;&gt;
+    &lt;&lt;for _item range $keywords.list&gt;&gt;
       &lt;div class=&#39;item-listing&#39;&gt;_item&lt;/div&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;/div&gt;
