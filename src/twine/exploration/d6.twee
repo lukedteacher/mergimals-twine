@@ -36,6 +36,7 @@ There's also a person standing around. They look confused.
   <<if $backpack.has('coin', 1)>>
     <<drop $backpack 'coin' 1>>
     <<gain $backpack 'mergiball'>>
+    <<redo 'backpack'>>
   <<else>>
     <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
@@ -47,6 +48,7 @@ There's also a person standing around. They look confused.
   <<if $backpack.has('coin', 2)>>
     <<drop $backpack 'coin' 2>>
     <<gain $backpack 'charm'>>
+    <<redo 'backpack'>>
   <<else>>
     <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
@@ -58,6 +60,7 @@ There's also a person standing around. They look confused.
   <<if $backpack.has('coin', 3)>>
     <<drop $backpack 'coin' 3>>
     <<gain $backpack 'bandage'>>
+    <<redo 'backpack'>>
   <<else>>
     <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
@@ -69,6 +72,7 @@ There's also a person standing around. They look confused.
   <<if $backpack.has('coin', 4)>>
     <<drop $backpack 'coin' 4>>
     <<gain $backpack 'tool'>>
+    <<redo 'backpack'>>
   <<else>>
     <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
@@ -80,6 +84,7 @@ There's also a person standing around. They look confused.
   <<if $backpack.has('coin', 5)>>
     <<drop $backpack 'coin' 5>>
     <<gain $backpack 'battery'>>
+    <<redo 'backpack'>>
   <<else>>
     <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
