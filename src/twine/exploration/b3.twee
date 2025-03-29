@@ -1,5 +1,5 @@
 :: b3 [map]
-<<map 'b3'>><<move 'up'>><</map>>\
+<<map 'b3'>><<north>><<south 'b4'>><<east>><<west>><</map>>\
 !!!!EXPLORE
 [[Look around->b3: description]]
 [[Stop at home.->b3: home]]
@@ -7,6 +7,8 @@
 [[Go to the beach.->b3: beach]]
 !!!!NAVIGATE
 [[Go South to Route 001->b4]]
+<<button 'test' 'b4'>><</button>>
+
 
 :: b3: description
 <img class='concept' src='../images/story/cascade-village.png'>

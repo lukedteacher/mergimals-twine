@@ -1,5 +1,5 @@
 (function () {
-    // v0.1
+    // v0.2
     'use strict';
 
     function createMap ($output, coord, contents) {
@@ -31,35 +31,36 @@
             $box.appendTo($output);
         };
         
-        return $box;
+        return $mapGrid;
     }
 
     Macro.add('map', {
         // map macro
-        tags: ['move'],
+        tags: ['north', 'east', 'west', 'south'],
         handler : function () {
-            var mapBox = createMap(this.output, this.args[0], this.payload[0].contents);
-            var move = this.args.includes('move');
-            createMoveButton(mapBox, this.payload[1]);
+            const mapGrid = createMap(this.output, this.args[0], this.payload[0].contents);
+            createMoveButton(mapGrid, this.payload.slice(1));
         }
     });
 
-    function createMoveButton ($output, direction) {
-        var buttonImage = '../images/svg/' + direction + '.svg';
-
-        var $button = $(document.createElement('button'))
-            .addClass('move-btn');
-
-        console.log($button);
-
-        if ($output) {
-            if (!($output instanceof $)) {
-                $output = $($output);
+    function createMoveButton (mapGrid, directions) {
+        directions.forEach(direction => {
+            var $button = $(document.createElement('button'))
+                .addClass('move-btn ' + direction.name);
+        
+            if (direction.args[0]) {
+                console.log(direction.args[0]);
+                $button.click(Engine.play(direction.args[0]));
+                $button.attr('data-passage', 'b4');
             }
-            $button.appendTo($output);
-        };
 
-        return $button;
+            var $button = $(document.createElement('button'))
+                .addClass('move-btn ' + direction.name);
+            
+            if (mapGrid) {
+                $button.appendTo(mapGrid);
+            };
+        });
     }
 
     setup.map = createMap;

@@ -203,16 +203,37 @@ body a:hover {
 
 .map-grid {
     display: grid;
-    grid: repeat(38, 1fr) / repeat(38, 1fr);
+    grid: repeat(40, 1fr) / repeat(40, 1fr);
 }
 
 .map-img {
     width: 32rem;
-    grid-area: 4 / 4 / span 32 / span 32;
+    grid-area: 5 / 5 / span 32 / span 32;
 }
 
 .move-btn {
-    grid-area: 1 / 1 / span 4 / span 4;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.north {
+    grid-area: 1 / 19 / span 3 / span 4;
+    background-image: url('../images/svg/north.svg');
+}
+
+.east {
+    grid-area: 19 / 38 / span 4 / span 3;
+    background-image: url('../images/svg/east.svg');
+}
+
+.west {
+    grid-area: 19 / 1 / span 4 / span 3;
+    background-image: url('../images/svg/west.svg');
+}
+
+.south {
+    grid-area: 38 / 19 / span 3 / span 4;
+    background-image: url('../images/svg/south.svg');
 }
 /* twine-user-stylesheet #6: "root.css" */
 /* customizer variables */
@@ -572,7 +593,7 @@ Macro.add('dialogclose', {
 }());
 /* twine-user-script #4: "map.js" */
 (function () {
-    // v0.1
+    // v0.2
     'use strict';
 
     function createMap ($output, coord, contents) {
@@ -604,35 +625,36 @@ Macro.add('dialogclose', {
             $box.appendTo($output);
         };
         
-        return $box;
+        return $mapGrid;
     }
 
     Macro.add('map', {
         // map macro
-        tags: ['move'],
+        tags: ['north', 'east', 'west', 'south'],
         handler : function () {
-            var mapBox = createMap(this.output, this.args[0], this.payload[0].contents);
-            var move = this.args.includes('move');
-            createMoveButton(mapBox, this.payload[1]);
+            const mapGrid = createMap(this.output, this.args[0], this.payload[0].contents);
+            createMoveButton(mapGrid, this.payload.slice(1));
         }
     });
 
-    function createMoveButton ($output, direction) {
-        var buttonImage = '../images/svg/' + direction + '.svg';
-
-        var $button = $(document.createElement('button'))
-            .addClass('move-btn');
-
-        console.log($button);
-
-        if ($output) {
-            if (!($output instanceof $)) {
-                $output = $($output);
+    function createMoveButton (mapGrid, directions) {
+        directions.forEach(direction => {
+            var $button = $(document.createElement('button'))
+                .addClass('move-btn ' + direction.name);
+        
+            if (direction.args[0]) {
+                console.log(direction.args[0]);
+                $button.click(Engine.play(direction.args[0]));
+                $button.attr('data-passage', 'b4');
             }
-            $button.appendTo($output);
-        };
 
-        return $button;
+            var $button = $(document.createElement('button'))
+                .addClass('move-btn ' + direction.name);
+            
+            if (mapGrid) {
+                $button.appendTo(mapGrid);
+            };
+        });
     }
 
     setup.map = createMap;
@@ -1996,14 +2018,15 @@ function _toPrimitive(t, e) {
     });
 }());
 /* twine-user-script #8: "Story JavaScript" */
-Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" tags="map" position="100,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;move &#39;up&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" tags="map" position="100,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;north&gt;&gt;&lt;&lt;south &#39;b4&#39;&gt;&gt;&lt;&lt;east&gt;&gt;&lt;&lt;west&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around-&gt;b3: description]]
 [[Stop at home.-&gt;b3: home]]
 [[Visit the Mergimal Lab-&gt;b3: lab]]
 [[Go to the beach.-&gt;b3: beach]]
 !!!!NAVIGATE
-[[Go South to Route 001-&gt;b4]]</tw-passagedata><tw-passagedata pid="2" name="b3: description" tags="" position="225,100" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;../images/story/cascade-village.png&#39;&gt;
+[[Go South to Route 001-&gt;b4]]
+&lt;&lt;button &#39;test&#39; &#39;b4&#39;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="b3: description" tags="" position="225,100" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;../images/story/cascade-village.png&#39;&gt;
 Cascade Village rests quietly on the sandy shores of Ho’onui Peninsula, where five cozy homes overlook the sparkling waves. The Mergimal Research Center stands at the edge of the beach, its sleek design contrasting with the warm, rustic charm of the village.
 
 Life moves at a gentle pace here, with the ocean breeze carrying the sound of laughter and the faint scent of salt and fresh bread. It’s a peaceful place to live—but for those eager to explore, Cascade Village feels like the calm before an unforgettable adventure.

@@ -5,14 +5,35 @@
 
 .map-grid {
     display: grid;
-    grid: repeat(38, 1fr) / repeat(38, 1fr);
+    grid: repeat(40, 1fr) / repeat(40, 1fr);
 }
 
 .map-img {
     width: 32rem;
-    grid-area: 4 / 4 / span 32 / span 32;
+    grid-area: 5 / 5 / span 32 / span 32;
 }
 
 .move-btn {
-    grid-area: 1 / 1 / span 4 / span 4;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.north {
+    grid-area: 1 / 19 / span 3 / span 4;
+    background-image: url('../images/svg/north.svg');
+}
+
+.east {
+    grid-area: 19 / 38 / span 4 / span 3;
+    background-image: url('../images/svg/east.svg');
+}
+
+.west {
+    grid-area: 19 / 1 / span 4 / span 3;
+    background-image: url('../images/svg/west.svg');
+}
+
+.south {
+    grid-area: 38 / 19 / span 3 / span 4;
+    background-image: url('../images/svg/south.svg');
 }
