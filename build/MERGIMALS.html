@@ -189,7 +189,13 @@ body a:hover {
   margin-left: auto;
   margin-right: auto;
 }
-/* twine-user-stylesheet #4: "map.css" */
+/* twine-user-stylesheet #4: "keyword.css" */
+.keyword-span {
+    background-color: blue;
+    font-weight: bold;
+    padding: 0.3rem;
+}
+/* twine-user-stylesheet #5: "map.css" */
 .map-container {
     display: flex;
     justify-content: center;
@@ -197,14 +203,18 @@ body a:hover {
 
 .map-grid {
     display: grid;
-    grid: repeat(32, 1fr) / repeat(32, 1fr);
+    grid: repeat(38, 1fr) / repeat(38, 1fr);
 }
 
 .map-img {
     width: 32rem;
-    grid-area: 1 / 1 / span 32 / span 32;
+    grid-area: 4 / 4 / span 32 / span 32;
 }
-/* twine-user-stylesheet #5: "root.css" */
+
+.move-btn {
+    grid-area: 1 / 1 / span 4 / span 4;
+}
+/* twine-user-stylesheet #6: "root.css" */
 /* customizer variables */
 :root {
     --text-font: lexend;
@@ -216,7 +226,7 @@ body a:hover {
     --accent-color: hsl(37, 100.0%, 58.0%);
     --accent-text: hsl(36, 55.6%, 1.8%);
   }
-/* twine-user-stylesheet #6: "simple-inventory.css" */
+/* twine-user-stylesheet #7: "simple-inventory.css" */
 /* Simple Inventory, for SugarCube 2, by Chapel
 v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26 */
 ul.simple-inventory-list {
@@ -264,7 +274,7 @@ ul.simple-inventory-list {
 }
 
 /* End Simple Inventory */
-/* twine-user-stylesheet #7: "speech.css" */
+/* twine-user-stylesheet #8: "speech.css" */
 .say {
     border: 1px solid #eee;
     overflow: none;
@@ -295,7 +305,7 @@ ul.simple-inventory-list {
     padding: 0.6rem;
     margin: 0;
 }
-/* twine-user-stylesheet #8: "stats.css" */
+/* twine-user-stylesheet #9: "stats.css" */
 .stats {
     display: flex;
     justify-content: center;
@@ -531,7 +541,36 @@ Macro.add('dialogclose', {
         Dialog.close();
     } 
 });
-/* twine-user-script #3: "map.js" */
+/* twine-user-script #3: "keyword.js" */
+(function () {
+    // v0.1
+    'use strict';
+
+    function createKeyword ($output, keyword) {
+        var $span = $(document.createElement('span'))
+            .addClass('keyword-span')
+            .text(keyword);
+
+        if ($output) {
+            if (!($output instanceof $)) {
+                $output = $($output);
+            }
+            $span.appendTo($output);
+        };
+
+        return $span;
+    }
+
+    Macro.add('keyword', {
+        handler : function () {
+            createKeyword(this.output, this.args[0]);
+        }
+    });
+
+    setup.keyword = createKeyword;
+
+}());
+/* twine-user-script #4: "map.js" */
 (function () {
     // v0.1
     'use strict';
@@ -541,7 +580,7 @@ Macro.add('dialogclose', {
             .addClass('map-container');
          
         var $mapGrid = $(document.createElement('div'))
-            .addClass('map-grid');     
+            .addClass('map-grid');
 
         const src = '../images/maps/map - story - ' + coord + '.png';
 
@@ -555,9 +594,8 @@ Macro.add('dialogclose', {
         };
 
         if (contents) {
-            console.log($.wiki(contents));
-            $mapGrid.append(contents); // ← Convert wikitext to HTML
-          }
+            $mapGrid.append(contents);
+        };
 
         if ($output) {
             if (!($output instanceof $)) {
@@ -565,21 +603,51 @@ Macro.add('dialogclose', {
             }
             $box.appendTo($output);
         };
-
+        
         return $box;
     }
 
-    setup.map = createMap;
-
     Macro.add('map', {
         // map macro
-        tags: null,
+        tags: ['move'],
         handler : function () {
-            createMap(this.output, this.args[0], this.payload[0].contents);
+            var mapBox = createMap(this.output, this.args[0], this.payload[0].contents);
+            var move = this.args.includes('move');
+            createMoveButton(mapBox, this.payload[1]);
         }
     });
+
+    function createMoveButton ($output, direction) {
+        var buttonImage = '../images/svg/' + direction + '.svg';
+
+        var $button = $(document.createElement('button'))
+            .addClass('move-btn');
+
+        console.log($button);
+
+        if ($output) {
+            if (!($output instanceof $)) {
+                $output = $($output);
+            }
+            $button.appendTo($output);
+        };
+
+        return $button;
+    }
+
+    setup.map = createMap;
+    setup.move = createMoveButton;
+
 }());
-/* twine-user-script #4: "simple-inventory.js" */
+/* twine-user-script #5: "move.js" */
+(function () {
+    // v0.1
+    'use strict';
+
+
+
+}());
+/* twine-user-script #6: "simple-inventory.js" */
 // Simple Inventory, for SugarCube 2, by Chapel
 // v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26
 // changes: changed 'pickup' to 'gain'
@@ -1832,7 +1900,7 @@ function _toPrimitive(t, e) {
       });
   })();
 // end simple inventory
-/* twine-user-script #5: "speech.js" */
+/* twine-user-script #7: "speech.js" */
 (function () {
     // v1.1.1
     'use strict';
@@ -1927,8 +1995,8 @@ function _toPrimitive(t, e) {
         });
     });
 }());
-/* twine-user-script #6: "Story JavaScript" */
-Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" tags="map" position="100,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+/* twine-user-script #8: "Story JavaScript" */
+Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" tags="map" position="100,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;move &#39;up&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around-&gt;b3: description]]
 [[Stop at home.-&gt;b3: home]]
@@ -2551,7 +2619,9 @@ Enter your name:
 [[Create a character.-&gt;cc: part 1]]
 [[Go see professor Tamrack-&gt;059]]
 
-DEBUG: &lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="059" tags="story" position="725,975" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
+&lt;&lt;keyword &#39;paddle&#39;&gt;&gt; &lt;&lt;keyword &#39;rusty&#39;&gt;&gt;
+
+DEBUG: &lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;keyword &#39;test&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; requires: &lt;&lt;keyword &#39;rusty&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="059" tags="story" position="725,975" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
   &lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
 Professor Tamarack’s office is on the Eastern edge of town. It’s the biggest building in the village and what mysteries fill all three floors are as good as anyone’s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.

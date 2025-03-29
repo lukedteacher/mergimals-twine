@@ -1,5 +1,5 @@
 :: b3 [map]
-<<map 'b3'>><</map>>\
+<<map 'b3'>><<move 'up'>><</map>>\
 !!!!EXPLORE
 [[Look around->b3: description]]
 [[Stop at home.->b3: home]]

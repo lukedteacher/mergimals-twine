@@ -7,7 +7,7 @@
             .addClass('map-container');
          
         var $mapGrid = $(document.createElement('div'))
-            .addClass('map-grid');     
+            .addClass('map-grid');
 
         const src = '../images/maps/map - story - ' + coord + '.png';
 
@@ -21,9 +21,8 @@
         };
 
         if (contents) {
-            console.log($.wiki(contents));
-            $mapGrid.append(contents); // ← Convert wikitext to HTML
-          }
+            $mapGrid.append(contents);
+        };
 
         if ($output) {
             if (!($output instanceof $)) {
@@ -31,17 +30,39 @@
             }
             $box.appendTo($output);
         };
-
+        
         return $box;
     }
 
-    setup.map = createMap;
-
     Macro.add('map', {
         // map macro
-        tags: null,
+        tags: ['move'],
         handler : function () {
-            createMap(this.output, this.args[0], this.payload[0].contents);
+            var mapBox = createMap(this.output, this.args[0], this.payload[0].contents);
+            var move = this.args.includes('move');
+            createMoveButton(mapBox, this.payload[1]);
         }
     });
+
+    function createMoveButton ($output, direction) {
+        var buttonImage = '../images/svg/' + direction + '.svg';
+
+        var $button = $(document.createElement('button'))
+            .addClass('move-btn');
+
+        console.log($button);
+
+        if ($output) {
+            if (!($output instanceof $)) {
+                $output = $($output);
+            }
+            $button.appendTo($output);
+        };
+
+        return $button;
+    }
+
+    setup.map = createMap;
+    setup.move = createMoveButton;
+
 }());
