@@ -214,6 +214,11 @@ body a:hover {
 .move-btn {
     background-repeat: no-repeat;
     background-position: center;
+    background-color: hsl(56, 100%, 50%);
+}
+
+.move-btn:hover {
+    background-color: hsl(60, 100%, 81%);
 }
 
 .north {
@@ -2018,10 +2023,7 @@ Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" ta
 [[Look around-&gt;b3: description]]
 [[Stop at home.-&gt;b3: home]]
 [[Visit the Mergimal Lab-&gt;b3: lab]]
-[[Go to the beach.-&gt;b3: beach]]
-!!!!NAVIGATE
-[[Go South to Route 001-&gt;b4]]
-&lt;&lt;button &#39;test&#39; &#39;b4&#39;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="b3: description" tags="" position="225,100" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;../images/story/cascade-village.png&#39;&gt;
+[[Go to the beach.-&gt;b3: beach]]</tw-passagedata><tw-passagedata pid="2" name="b3: description" tags="" position="225,100" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;../images/story/cascade-village.png&#39;&gt;
 Cascade Village rests quietly on the sandy shores of Ho’onui Peninsula, where five cozy homes overlook the sparkling waves. The Mergimal Research Center stands at the edge of the beach, its sleek design contrasting with the warm, rustic charm of the village.
 
 Life moves at a gentle pace here, with the ocean breeze carrying the sound of laughter and the faint scent of salt and fresh bread. It’s a peaceful place to live—but for those eager to explore, Cascade Village feels like the calm before an unforgettable adventure.
@@ -2637,9 +2639,7 @@ Enter your name:
 [[Create a character.-&gt;cc: part 1]]
 [[Go see professor Tamrack-&gt;059]]
 
-&lt;&lt;keyword &#39;paddle&#39;&gt;&gt; &lt;&lt;keyword &#39;rusty&#39;&gt;&gt;
-
-DEBUG: &lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;keyword &#39;test&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; requires: &lt;&lt;keyword &#39;rusty&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="059" tags="story" position="725,975" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
+DEBUG: &lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="059" tags="story" position="725,975" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
   &lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
 Professor Tamarack’s office is on the Eastern edge of town. It’s the biggest building in the village and what mysteries fill all three floors are as good as anyone’s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.

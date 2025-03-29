@@ -34,9 +34,7 @@ Enter your name:
 [[Create a character.->cc: part 1]]
 [[Go see professor Tamrack->059]]
 
-<<keyword 'paddle'>> <<keyword 'rusty'>>
-
-DEBUG: <<link 'jump to exploring' 'b3'>><<keyword 'test'>><</link>> requires: <<keyword 'rusty'>>
+DEBUG: <<link 'jump to exploring' 'b3'>><</link>>
 
 :: 059 [story]
 <<if $player.name is ''>>\

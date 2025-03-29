@@ -5,10 +5,6 @@
 [[Stop at home.->b3: home]]
 [[Visit the Mergimal Lab->b3: lab]]
 [[Go to the beach.->b3: beach]]
-!!!!NAVIGATE
-[[Go South to Route 001->b4]]
-<<button 'test' 'b4'>><</button>>
-
 
 :: b3: description
 <img class='concept' src='../images/story/cascade-village.png'>

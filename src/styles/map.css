@@ -16,6 +16,11 @@
 .move-btn {
     background-repeat: no-repeat;
     background-position: center;
+    background-color: hsl(56, 100%, 50%);
+}
+
+.move-btn:hover {
+    background-color: hsl(60, 100%, 81%);
 }
 
 .north {
