@@ -1,5 +1,5 @@
 :: e4 [map]
-<<map 'e4'>><</map>>\
+<<map 'e4'>><<north 'e3'>><<east 'f4'>><<west 'd4'>><</map>>\
 !!!!EXPLORE
 [[Check the long grass.->e4: long grass]]
 [[Approach the trainers.->e4: trainer]]

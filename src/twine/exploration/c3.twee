@@ -1,5 +1,5 @@
 :: c3 [map]
-<<map 'c3'>><</map>>\
+<<map 'c3'>><<south 'c4'>><</map>>\
 !!!!EXPLORE
 [[Take in the view->c3: the view]]
 [[Rummage around in the long grass->c3: long grass]]

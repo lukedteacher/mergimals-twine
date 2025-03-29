@@ -1,5 +1,5 @@
 :: d5 [map littlemooseforest]
-<<map 'd5'>><</map>>\
+<<map 'd5'>><<north 'd4'>><<south 'd6'>><</map>>\
 !!!!EXPLORE
 [[Check the long grass.->d5: long grass]]
 [[Approach the trainers.->d5: trainer]]

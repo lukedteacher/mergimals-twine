@@ -1,5 +1,5 @@
 :: e1 [map]
-<<map 'e1'>><</map>>\
+<<map 'e1'>><<south 'e2'>><</map>>\
 !!!!EXPLORE
 [[Go to the Wave School->e1: wave school]]
 !!!!NAVIGATE

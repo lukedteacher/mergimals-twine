@@ -1,5 +1,5 @@
 :: d6 [map littlemoose]
-<<map 'd6'>><</map>>\
+<<map 'd6'>><<north 'd5'>><</map>>\
 !!!!EXPLORE
 [[Look around->d6: description]]
 [[Visit the Mergimal Challenge Vending Machine.->d6: vending machine]]

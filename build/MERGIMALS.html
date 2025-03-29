@@ -633,23 +633,18 @@ Macro.add('dialogclose', {
         tags: ['north', 'east', 'west', 'south'],
         handler : function () {
             const mapGrid = createMap(this.output, this.args[0], this.payload[0].contents);
-            createMoveButton(mapGrid, this.payload.slice(1));
+            createMoveButtons(mapGrid, this.payload.slice(1));
         }
     });
 
-    function createMoveButton (mapGrid, directions) {
+    function createMoveButtons (mapGrid, directions) {
         directions.forEach(direction => {
             var $button = $(document.createElement('button'))
                 .addClass('move-btn ' + direction.name);
         
             if (direction.args[0]) {
-                console.log(direction.args[0]);
-                $button.click(Engine.play(direction.args[0]));
-                $button.attr('data-passage', 'b4');
+                $button.click(() => Engine.play(direction.args[0]));
             }
-
-            var $button = $(document.createElement('button'))
-                .addClass('move-btn ' + direction.name);
             
             if (mapGrid) {
                 $button.appendTo(mapGrid);
@@ -658,7 +653,7 @@ Macro.add('dialogclose', {
     }
 
     setup.map = createMap;
-    setup.move = createMoveButton;
+    setup.move = createMoveButtons;
 
 }());
 /* twine-user-script #5: "move.js" */
@@ -2018,7 +2013,7 @@ function _toPrimitive(t, e) {
     });
 }());
 /* twine-user-script #8: "Story JavaScript" */
-Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" tags="map" position="100,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;north&gt;&gt;&lt;&lt;south &#39;b4&#39;&gt;&gt;&lt;&lt;east&gt;&gt;&lt;&lt;west&gt;&gt;&lt;&lt;/map&gt;&gt;\
+Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" tags="map" position="100,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;south &#39;b4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around-&gt;b3: description]]
 [[Stop at home.-&gt;b3: home]]
@@ -2053,7 +2048,7 @@ If you want, you can see if he’s available to talk.
 
   [[Success.-&gt;b5]]
   [[Failure.-&gt;404]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="b4" tags="map" position="850,100" size="100,100">&lt;&lt;map &#39;b4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="b4" tags="map" position="850,100" size="100,100">&lt;&lt;map &#39;b4&#39;&gt;&gt;&lt;&lt;north &#39;b3&#39;&gt;&gt;&lt;&lt;east &#39;c4&#39;&gt;&gt;&lt;&lt;south &#39;b5&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around-&gt;b4: description]]
 [[Check the long grass.-&gt;126]]
@@ -2081,7 +2076,7 @@ If you rolled...
 
 [[...30 or less, find a common Mergimal.-&gt;036]]
 [[...between 30 and 80, find an uncommon Mergimal.-&gt;009]]
-[[...above an 80, you find a rare Mergimal.-&gt;404]]</tw-passagedata><tw-passagedata pid="11" name="b5" tags="map" position="100,225" size="100,100">&lt;&lt;map &#39;b5&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[[...above an 80, you find a rare Mergimal.-&gt;404]]</tw-passagedata><tw-passagedata pid="11" name="b5" tags="map" position="100,225" size="100,100">&lt;&lt;map &#39;b5&#39;&gt;&gt;&lt;&lt;north &#39;b4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around.-&gt;b5: description]]
 [[Dip your toe in the water.-&gt;881]]
@@ -2194,7 +2189,7 @@ You stumble around, trying to feel your way through the darkness. Your hand touc
 roll OPENNESS x DEEP
 [[success-&gt;404]]
 [[failure-&gt;404]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="c3" tags="map" position="350,350" size="100,100">&lt;&lt;map &#39;c3&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="c3" tags="map" position="350,350" size="100,100">&lt;&lt;map &#39;c3&#39;&gt;&gt;&lt;&lt;south &#39;c4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Take in the view-&gt;c3: the view]]
 [[Rummage around in the long grass-&gt;c3: long grass]]
@@ -2209,7 +2204,7 @@ To the West, you can see Blue Urf. You notice that the lights that usually dot t
 
 Further in that direction, the peaks of Raven Wing mountain are barely visible.
 
-[[See what else is up here: Explore Crystal Caverns Entrance.-&gt;c3]]</tw-passagedata><tw-passagedata pid="25" name="c4" tags="map" position="600,350" size="100,100">&lt;&lt;map &#39;c4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[[See what else is up here: Explore Crystal Caverns Entrance.-&gt;c3]]</tw-passagedata><tw-passagedata pid="25" name="c4" tags="map" position="600,350" size="100,100">&lt;&lt;map &#39;c4&#39;&gt;&gt;&lt;&lt;west &#39;b4&#39;&gt;&gt;&lt;&lt;east &#39;d4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around.-&gt;c4: description]]
 [[Check the long grass.-&gt;005]]
@@ -2315,7 +2310,7 @@ If you rolled...
   You finally made it to Littlemoose.
 
   [[Explore Littlemoose.-&gt;d6]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="d2" tags="map" position="725,600" size="100,100">&lt;&lt;map &#39;d2&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="d2" tags="map" position="725,600" size="100,100">&lt;&lt;map &#39;d2&#39;&gt;&gt;&lt;&lt;east &#39;e2&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [TODO add stuff to explore]
 [[Go fishing.-&gt;d2: fishing]]
@@ -2332,7 +2327,7 @@ If you rolled...
     [TODO fix this]
 
     [[Continue exploring.-&gt;d2]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="d3" tags="map" position="975,600" size="100,100">&lt;&lt;map &#39;d3&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="d3" tags="map" position="975,600" size="100,100">&lt;&lt;map &#39;d3&#39;&gt;&gt;&lt;&lt;east &#39;e3&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Check the long grass.-&gt;d3: long grass]]
 [[Approach the scientist-&gt;d3: trainer]]
@@ -2342,20 +2337,20 @@ If you rolled...
 
 [[Continue exploring.-&gt;d3]]</tw-passagedata><tw-passagedata pid="50" name="d3: trainer" tags="" position="1225,600" size="100,100">Two trainers even!
 
-[[Continue exploring.-&gt;d3]]</tw-passagedata><tw-passagedata pid="51" name="d4" tags="map" position="100,725" size="100,100">&lt;&lt;map &#39;d4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[[Continue exploring.-&gt;d3]]</tw-passagedata><tw-passagedata pid="51" name="d4" tags="map" position="100,725" size="100,100">&lt;&lt;map &#39;d4&#39;&gt;&gt;&lt;&lt;east &#39;e4&#39;&gt;&gt;&lt;&lt;west &#39;c4&#39;&gt;&gt;&lt;&lt;south &#39;d5&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Check the long grass.-&gt;d4: long grass]]
 [[Approach the trainers.-&gt;d4: trainer]]
 !!!!NAVIGATE
 [[Go South into Littlemoose Forest.-&gt;d5]]
 [[Go East across the bridge.-&gt;e4]]
-[[Go West toward Route 002.-&gt;c4]]</tw-passagedata><tw-passagedata pid="52" name="d4: long grass" tags="" position="225,725" size="100,100">Some mergimals are here probably.</tw-passagedata><tw-passagedata pid="53" name="d4: trainer" tags="" position="350,725" size="100,100">Two trainers even!</tw-passagedata><tw-passagedata pid="54" name="d5" tags="map littlemooseforest" position="475,725" size="100,100">&lt;&lt;map &#39;d5&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[[Go West toward Route 002.-&gt;c4]]</tw-passagedata><tw-passagedata pid="52" name="d4: long grass" tags="" position="225,725" size="100,100">Some mergimals are here probably.</tw-passagedata><tw-passagedata pid="53" name="d4: trainer" tags="" position="350,725" size="100,100">Two trainers even!</tw-passagedata><tw-passagedata pid="54" name="d5" tags="map littlemooseforest" position="475,725" size="100,100">&lt;&lt;map &#39;d5&#39;&gt;&gt;&lt;&lt;north &#39;d4&#39;&gt;&gt;&lt;&lt;south &#39;d6&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Check the long grass.-&gt;d5: long grass]]
 [[Approach the trainers.-&gt;d5: trainer]]
 !!!!NAVIGATE
 [[Go North to Route 003-&gt;d4]]
-[[Go South to Littlemoose.-&gt;d6]]</tw-passagedata><tw-passagedata pid="55" name="d5: long grass" tags="" position="600,725" size="100,100">Some mergimals are here probably.</tw-passagedata><tw-passagedata pid="56" name="d5: trainer" tags="" position="725,725" size="100,100">This trainer is...</tw-passagedata><tw-passagedata pid="57" name="d6" tags="map littlemoose" position="850,725" size="100,100">&lt;&lt;map &#39;d6&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[[Go South to Littlemoose.-&gt;d6]]</tw-passagedata><tw-passagedata pid="55" name="d5: long grass" tags="" position="600,725" size="100,100">Some mergimals are here probably.</tw-passagedata><tw-passagedata pid="56" name="d5: trainer" tags="" position="725,725" size="100,100">This trainer is...</tw-passagedata><tw-passagedata pid="57" name="d6" tags="map littlemoose" position="850,725" size="100,100">&lt;&lt;map &#39;d6&#39;&gt;&gt;&lt;&lt;north &#39;d5&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around-&gt;d6: description]]
 [[Visit the Mergimal Challenge Vending Machine.-&gt;d6: vending machine]]
@@ -2472,7 +2467,7 @@ There&#39;s also a person standing around. They look confused.
   The school is dark. No one seems to be here.
 
   [[Continue exploring.-&gt;d6]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="e1" tags="map" position="100,850" size="100,100">&lt;&lt;map &#39;e1&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="e1" tags="map" position="100,850" size="100,100">&lt;&lt;map &#39;e1&#39;&gt;&gt;&lt;&lt;south &#39;e2&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Go to the Wave School-&gt;e1: wave school]]
 !!!!NAVIGATE
@@ -2496,7 +2491,7 @@ You decide to go talk to Rhia to see what is going on.
 
 &lt;span id=&#39;response-1&#39;&gt;&lt;&lt;link &#39;What is going on?&#39;&gt;&gt;&lt;&lt;replace &#39;#response-1&#39;&gt;&gt;&lt;&lt;say $player.name $player.image&gt;&gt;What is going on?&lt;&lt;/say&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
 
-[TODO finish this encounter]</tw-passagedata><tw-passagedata pid="64" name="e2" tags="map" position="475,850" size="100,100">&lt;&lt;map &#39;e2&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[TODO finish this encounter]</tw-passagedata><tw-passagedata pid="64" name="e2" tags="map" position="475,850" size="100,100">&lt;&lt;map &#39;e2&#39;&gt;&gt;&lt;&lt;north &#39;e1&#39;&gt;&gt;&lt;&lt;west &#39;d2&#39;&gt;&gt;&lt;&lt;south &#39;e3&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around-&gt;e2: description]]
 [[Read the community bulletin board.-&gt;e2: bulletin board]]
@@ -2606,7 +2601,7 @@ A bunch of people seem to be waving fans and complaining about how their air con
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-[[Look around Blue Urf.-&gt;e2]]</tw-passagedata><tw-passagedata pid="67" name="e3" tags="map" position="850,850" size="100,100">&lt;&lt;map &#39;e3&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[[Look around Blue Urf.-&gt;e2]]</tw-passagedata><tw-passagedata pid="67" name="e3" tags="map" position="850,850" size="100,100">&lt;&lt;map &#39;e3&#39;&gt;&gt;&lt;&lt;north &#39;e2&#39;&gt;&gt;&lt;&lt;west &#39;d3&#39;&gt;&gt;&lt;&lt;south &#39;e4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Check the long grass.-&gt;e3: long grass]]
 [[Approach the trainers.-&gt;e3: trainer]]
@@ -2621,7 +2616,7 @@ A bunch of people seem to be waving fans and complaining about how their air con
 
 [TODO add stuff]
 
-[[Continue exploring.-&gt;e3]]</tw-passagedata><tw-passagedata pid="70" name="e4" tags="map" position="1225,850" size="100,100">&lt;&lt;map &#39;e4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[[Continue exploring.-&gt;e3]]</tw-passagedata><tw-passagedata pid="70" name="e4" tags="map" position="1225,850" size="100,100">&lt;&lt;map &#39;e4&#39;&gt;&gt;&lt;&lt;north &#39;e3&#39;&gt;&gt;&lt;&lt;east &#39;f4&#39;&gt;&gt;&lt;&lt;west &#39;d4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Check the long grass.-&gt;e4: long grass]]
 [[Approach the trainers.-&gt;e4: trainer]]

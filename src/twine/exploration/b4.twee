@@ -1,5 +1,5 @@
 :: b4 [map]
-<<map 'b4'>><</map>>\
+<<map 'b4'>><<north 'b3'>><<east 'c4'>><<south 'b5'>><</map>>\
 !!!!EXPLORE
 [[Look around->b4: description]]
 [[Check the long grass.->126]]

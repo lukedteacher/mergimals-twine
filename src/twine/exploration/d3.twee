@@ -1,5 +1,5 @@
 :: d3 [map]
-<<map 'd3'>><</map>>\
+<<map 'd3'>><<east 'e3'>><</map>>\
 !!!!EXPLORE
 [[Check the long grass.->d3: long grass]]
 [[Approach the scientist->d3: trainer]]

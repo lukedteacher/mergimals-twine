@@ -1,5 +1,5 @@
 :: b5 [map]
-<<map 'b5'>><</map>>\
+<<map 'b5'>><<north 'b4'>><</map>>\
 !!!!EXPLORE
 [[Look around.->b5: description]]
 [[Dip your toe in the water.->881]]

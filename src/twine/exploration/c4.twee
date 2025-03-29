@@ -1,5 +1,5 @@
 :: c4 [map]
-<<map 'c4'>><</map>>\
+<<map 'c4'>><<west 'b4'>><<east 'd4'>><</map>>\
 !!!!EXPLORE
 [[Look around.->c4: description]]
 [[Check the long grass.->005]]

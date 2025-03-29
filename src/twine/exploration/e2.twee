@@ -1,5 +1,5 @@
 :: e2 [map]
-<<map 'e2'>><</map>>\
+<<map 'e2'>><<north 'e1'>><<west 'd2'>><<south 'e3'>><</map>>\
 !!!!EXPLORE
 [[Look around->e2: description]]
 [[Read the community bulletin board.->e2: bulletin board]]

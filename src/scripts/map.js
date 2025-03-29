@@ -39,23 +39,18 @@
         tags: ['north', 'east', 'west', 'south'],
         handler : function () {
             const mapGrid = createMap(this.output, this.args[0], this.payload[0].contents);
-            createMoveButton(mapGrid, this.payload.slice(1));
+            createMoveButtons(mapGrid, this.payload.slice(1));
         }
     });
 
-    function createMoveButton (mapGrid, directions) {
+    function createMoveButtons (mapGrid, directions) {
         directions.forEach(direction => {
             var $button = $(document.createElement('button'))
                 .addClass('move-btn ' + direction.name);
         
             if (direction.args[0]) {
-                console.log(direction.args[0]);
-                $button.click(Engine.play(direction.args[0]));
-                $button.attr('data-passage', 'b4');
+                $button.click(() => Engine.play(direction.args[0]));
             }
-
-            var $button = $(document.createElement('button'))
-                .addClass('move-btn ' + direction.name);
             
             if (mapGrid) {
                 $button.appendTo(mapGrid);
@@ -64,6 +59,6 @@
     }
 
     setup.map = createMap;
-    setup.move = createMoveButton;
+    setup.move = createMoveButtons;
 
 }());

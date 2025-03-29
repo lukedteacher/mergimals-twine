@@ -1,5 +1,5 @@
 :: d2 [map]
-<<map 'd2'>><</map>>\
+<<map 'd2'>><<east 'e2'>><</map>>\
 !!!!EXPLORE
 [TODO add stuff to explore]
 [[Go fishing.->d2: fishing]]
