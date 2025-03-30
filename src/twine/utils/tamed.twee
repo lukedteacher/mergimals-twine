@@ -2,8 +2,15 @@
 <<do tag 'tamed'>>
   <div class='tamed-box'>
     <h2>mergimals</h2>
-    <<for _mergimal range $mergimals.list>>
-      <div class='mergimal-listing'>_mergimal</div>
+    <<for _mergimal, _object range $mergimals>>
+      <<if _object.tamed == true>>
+        <div class='mergimal-listing'>_mergimal</div>
+      <</if>>
     <</for>>
   </div>
+  <<link 'Mergipedia'>>
+    <<dialog mergipedia>>
+      <<include mergipedia>>
+    <</dialog>>
+  <</link>>
 <</do>>

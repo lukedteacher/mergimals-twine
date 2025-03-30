@@ -3,10 +3,10 @@
   <div class='backpack'>
     <h2 class='backpack-heading'>backpack</h2>
     <div class='backpack-items'>
-        <<for _item, _amount range $backpack.table>>
+        <<for _item, _quantity range $backpack>>
           <div>
             <<print '<img class="backpack-item-img" src="../images/items/' + _item + '.svg">'>><br />
-            _amount
+            _quantity
           </div>
         <</for>>
     </div>

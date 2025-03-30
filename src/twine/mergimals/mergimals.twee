@@ -1,33 +1,49 @@
-:: melodrake
-<<card 'melodrake'>>
+:: no mergiballs
+You don't have any mergiballs!
 
-This Mergimal is can play music with their body.
+Go to a store or something, dude.
 
-<<return 'Inspect another.'>>
-<<link 'Choose this one.' 'start: part 3'>><<gain $mergimals 'melodrake'>><</link>>
+<<button 'Okay'>><<run Dialog.close()>><</button>>
 
-:: scorchilla
-<<card 'scorchilla  '>>
+:: tame attempt [nobr]
+<<drop $backpack 'mergiball' 1>>
+<<redo 'backpack'>>
+You throw a mergiball.<br /><br />
 
-This Mergimal dances like no one's watching.
+Enter your roll:  <<numberbox '_$roll' 0>><br /><br />
 
-<<return 'Inspect another.'>>
-<<link 'Choose this one.' 'start: part 3'>><<gain $mergimals 'scorchilla'>><</link>>
+<<button 'See what happens'>>
+    <<if  _$roll < 10>>
+        <<dialog>>
+            <<include 'tame attempt failed'>>
+        <</dialog>>
+    <<else>>
+        <<dialog>>
+            <<include 'tame attempt succeeded'>>
+        <</dialog>>
+    <</if>>
+<</button>>
 
-:: penguwaiian
-<<card 'penguwaiian'>>
+:: tame attempt failed
+The Mergimal doesn't seem very friendly.
 
-This Mergimal loves to eat pineapple and surf.
+Solve some more problems or try throwing another Mergiball!
 
-<<return 'Inspect another.'>>
-<<link 'Choose this one.' 'start: part 3'>><<gain $mergimals 'penguwaiian'>><</link>>
+<<button 'Okay'>><<run Dialog.close()>><</button>>
+
+:: tame attempt succeeded
+The Mergimal loves the mergiball!
+
+They want to be your friend.
+
+<<button 'Okay'>><<run Dialog.close()>><</button>>
 
 :: stray: boxin [b4 stray common]
-<img class='mergimal-image' src='../images/mergimals/card art boxin.png' />
+<img class='mergimal-image' src='../images/mergimals/boxin.png' />
 
 The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 
-Do worksheeet 2.1
+Do Worksheet 2.1
 
 [[You've tamed them.->tamed: boxin]]
 [[It got away: Continue exploring the bookmarked map.->b4]]
@@ -36,40 +52,52 @@ Do worksheeet 2.1
 <<card 'boxin'>>
 This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.
 
-<<link 'You tamed them.' b4>><<gain $mergimals 'boxin'>><</link>>
+<<link 'You tamed them.' b4>><<set $mergimals.boxin.tamed = true>><</link>>
 
 :: stray: zipper [b4 stray uncommon]
-<img class='mergimal-image' src='../images/mergimals/card art zipper.png' />
+<img class='mergimal-image' src='../images/mergimals/zipper.png' />
 
 You're looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
 
-Do worksheeet 3.4
+Do Worksheet 3.4
 
-[[You've tamed them.|tamed: zipper]]
+<<nobr>>
+    <<link 'Throw a mergiball!'>>
+        <<if $backpack.has('mergiball', 1)>>
+            <<dialog>>
+                <<include 'tame attempt'>>
+            <</dialog>>
+        <<else>>
+            <<dialog>>
+                <<include 'no mergiballs'>>
+            <</dialog>>
+        <</if>>
+    <</link>>
+<</nobr>>
 [[It got away: Continue exploring the bookmarked map.|b4]]
 
 :: tamed: zipper [b4 tamed]
 <<card 'zipper'>>
 This Mergimal is named Zipper. They're cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.
 
-<<link 'You tamed them.' b4>><<gain $mergimals 'zipper'>><</link>>
+<<link 'You tamed them.' b4>><<set $mergimals.zipper.tamed = true>><</link>>
 
 :: stray: tidefly [b5 encounter]
-<img class='mergimal-image' src='../images/mergimals/card art tidefly.png' />
+<img class='mergimal-image' src='../images/mergimals/tidefly.png' />
 
 A tiny snail with wings hangs from the line as you reel it in.
 
-Do worksheeet 10.3
+Do Worksheet 10.3
 
 [[You've tamed them.|799]]
 [[It got away: Continue exploring the bookmarked map.|b5]]
 
 :: stray: krustwo [b5 encounter]
-<img class="mergimal-image" src="../images/mergimals/card art krustwo.png" />
+<img class="mergimal-image" src="../images/mergimals/krustwo.png" />
 
 When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.
 
-Do worksheeet 2.5
+Do Worksheet 2.5
 
 [[You've tamed them.|161]]
 [[It got away: Continue exploring the bookmarked map.|b5]]
@@ -79,16 +107,14 @@ Do worksheeet 2.5
 
 You've seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.
 
-<<link 'You tamed them.' b5>><<gain $mergimals 'krustwo'>><</link>>
-
-
+<<link 'You tamed them.' b5>><<set $mergimals.krustwo.tamed = true>><</link>>
 
 :: tamed: tidefly [b5 tamed]
 <<card 'tidefly'>>
 
 This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
 
-<<link 'You tamed them.' b5>><<gain $mergimals 'tidefly'>><</link>>
+<<link 'You tamed them.' b5>><<set $mergimals.tidefly.tamed = true>><</link>>
 
 :: treethorn
 <<card 'treethorn'>>
@@ -98,11 +124,11 @@ What a cute, prickly little dude.
 <<return 'Okay.'>>
 
 :: stray: treethorn [c4 encounter]
-<img class='mergimal-image' src='../images/mergimals/card art treethorn.png' />
+<img class='mergimal-image' src='../images/mergimals/treethorn.png' />
 
 You're looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That's no bush: that's a Mergimal!
 
-Do worksheeet 3.3
+Do Worksheet 3.3
 
 [[You've tamed them.|tamed: treethorn]]
 [[It got away: Continue exploring the bookmarked map.|c4]]
@@ -112,22 +138,22 @@ Do worksheeet 3.3
 
 This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).
 
-<<link 'You tamed them.' c4>><<gain $mergimals 'treethorn'>><</link>>
+<<link 'You tamed them.' c4>><<set $mergimals.treethorn.tamed = true>><</link>>
 
 :: stray: corwhal [b5 encounter rare]
-<img class="mergimal-image" src="../images/mergimals/card art corwhal.png" />
+<img class="mergimal-image" src="../images/mergimals/corwhal.png" />
 
 This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
 
-Do worksheeet 7.4
+Do Worksheet 7.4
 
 [[You've tamed them.|tamed: corwhal]]
 [[It got away: Continue exploring the bookmarked map.|b5]]
 
 :: tamed: corwhal [b5 tamed]
-<img class="mergimal-image" src="../images/mergimals/card art corwhal.png" />
+<img class="mergimal-image" src="../images/mergimals/corwhal.png" />
 
 You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
 
-<<link 'You tamed them.' b5>><<gain $mergimals 'corwhal'>><</link>>
+<<link 'You tamed them.' b5>><<set $mergimals.corwhal.tamed = true>><</link>>
 

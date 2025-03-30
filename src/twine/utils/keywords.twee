@@ -2,8 +2,10 @@
 <<do tag 'keywords'>>
   <div class='keywords-box'>
     <h2>keywords</h2>
-    <<for _item range $keywords.list>>
-      <div class='item-listing'>_item</div>
+    <<for _keyword, _boolean range $keywords>>
+      <<if _boolean == true>>
+        <div class='item-listing'>_keyword</div>
+      <</if>>
     <</for>>
   </div>
 <</do>>

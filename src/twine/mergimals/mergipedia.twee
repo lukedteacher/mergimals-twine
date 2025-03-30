@@ -1,0 +1,52 @@
+:: mergipedia [nobr]
+<div style='display: grid; grid: repeat(2, 1fr) / repeat(4, 1fr); gap: 1rem;'>
+    <<for _mergimal, _object range $mergimals>>
+        <<if _object.tamed == true>>
+            <<card _mergimal false 'medium'>>
+        <<elseif _object.seen == true>>
+             <<card _mergimal false 'medium' true>>
+        <<else>>
+            <<card 'unknown' false 'medium'>>
+        <</if>>
+    <</for>>
+</div>
+<<button 'Done.'>><<run Dialog.close()>><</button>>
+
+:: melodrake
+<<card 'melodrake'>>
+
+Name: Melodrake
+Type: Root
+Number: 2
+Strategy: Produce a pair.
+Description: This Mergimal is can play music with their body.
+Found: ???
+
+<<return 'Inspect another.'>>
+<<link 'Choose this one.' 'start: part 3'>><<set $mergimals.melodrake.tamed = true>><</link>>
+
+:: scorchilla
+<<card 'scorchilla  '>>
+
+Name: Scorchilla
+Type: Forge
+Number: 4
+Strategy: Establish equal groups.
+Description: This Mergimal dances like no one's watching.
+Found: ???
+
+<<return 'Inspect another.'>>
+<<link 'Choose this one.' 'start: part 3'>><<set $mergimals.scorchilla.tamed = true>><</link>>
+
+:: penguwaiian
+<<card 'penguwaiian'>>
+
+Name: Penguwaiian
+Type: Wave
+Number: 10
+Strategy: Skip count.
+Description: This Mergimal loves to eat pineapple and surf.
+Found: ???
+
+<<return 'Inspect another.'>>
+<<link 'Choose this one.' 'start: part 3'>><<set $mergimals.penguwaiian.tamed = true>><</link>>

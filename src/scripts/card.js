@@ -4,7 +4,7 @@
 
     let mergimals = new Map();
 
-    const artDir = '../images/mergimals/card art ';
+    const artDir = '../images/mergimals/';
 
     function createMergimal (type, name, strategy, number) {
         mergimals.set(name, {type: type, strategy: strategy, number: number, image: artDir + name + '.png'});
@@ -17,11 +17,11 @@
         }
     });
 
-    function createCard ($output, name, selectable = false) {
+    function createCard ($output, name, selectable = false, size = 'large', partial = false) {
         
         console.log('test: ' + name);
         const $cardBox = $(document.createElement('div'))
-            .addClass('card-box');
+            .addClass('card-box card-' + size);
         
         if (selectable) {
             $cardBox.addClass('selectable');
@@ -60,6 +60,12 @@
             .text(mergimals.get(name).number)
             .appendTo($cardFooter);
 
+        if (partial == true) {
+            $cardType.addClass('grayscale');
+            $cardImage.addClass('grayscale');
+            $cardText.text('not tamed');
+        }
+
         if ($output) {
             if (!($output instanceof $)) {
                 $output = $($output);
@@ -75,7 +81,7 @@
                 selectable = this.args[1];
             };
 
-            createCard(this.output, this.args[0], selectable);
+            createCard(this.output, this.args[0], selectable, this.args[2], this.args[3]);
         }
     });
 

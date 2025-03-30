@@ -1,5 +1,4 @@
 .card-box {
-    width: 16rem;
     aspect-ratio: 63 / 88;
     display: flex;
     flex-direction: column;
@@ -9,6 +8,18 @@
     border: 3px solid #111;
     overflow: hidden;
     user-select: none;
+}
+
+.card-large {
+    width: 18rem;
+}
+
+.card-medium {
+    width: 12rem;
+}
+
+.card-small {
+    width: 6rem;
 }
 
 .selectable:hover {
@@ -23,7 +34,7 @@
 }
 
 .card-type {
-    width: 2.6rem;
+    width: 16%;
 }
 
 .card-title {
@@ -96,4 +107,8 @@
     padding: 0.5rem 1rem;
     background-color: #eee;
     color: #111;
+}
+
+.grayscale {
+    filter: grayscale(1);
 }

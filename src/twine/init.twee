@@ -1,6 +1,46 @@
 :: StoryInit
-<<set $player to {name: 'none set', image: '../images/characters/player.png', difficulty: 'easy'}>>
-<<set $stats to {attention: 'd6', grit: 'd6', memory: 'd6', empathy: 'd6'}>>
+<<set $player to {
+  name: 'none set',
+  image: '../images/characters/player.png',
+  difficulty: 'easy'
+}>>
+
+<<set $stats to {
+  attention: 'd6',
+  grit: 'd6',
+  memory: 'd6',
+  empathy: 'd6'
+}>>
+
+<<set $backpack to {
+  coin: 0,
+  mergiball: 0,
+  charm: 0,
+  bandage: 0,
+  tool: 0,
+  battery: 0
+}>>
+
+<<set $keywords to {
+  flashlight: false,
+  paddle: false,
+  rusty: false,
+  closed: false,
+  shine: false,
+  discount: false
+}>>
+
+<<set $mergimals to {
+  algelly: {seen: false, tamed: false},
+  scorchilla: {seen: false, tamed: false},
+  penguwaiian: {seen: false, tamed: false},
+  melodrake: {seen: false, tamed: false},
+  zipper: {seen: false, tamed: false},
+  boxin: {seen: false, tamed: false},
+  corwhal: {seen: false, tamed: false},
+  sheetly: {seen: false, tamed: false},
+  bakewing: {seen: false, tamed: false}
+}>>
 
 <<widget 'tam' container>>
   <<say 'Prof. Tamarack' '../images/characters/tam.png'>>_contents<</say>>
@@ -9,19 +49,14 @@
   <<say 'Rhia (Wave School Leader)' '../images/characters/rhia.webp'>>_contents<</say>>
 <</widget>>
 
+<<mergimal 'null' 'unknown' '???' '?'>>
 <<mergimal 'root' 'melodrake' 'produce a pair' '2'>>
 <<mergimal 'forge' 'scorchilla' 'make a model' '5'>>
 <<mergimal 'wave' 'penguwaiian' 'skip count' '0'>>
 <<mergimal 'null' 'boxin' 'check a chart' '8'>>
 <<mergimal 'spark' 'zipper' 'apply an algorithm' '3'>>
-
-<<newinv $keywords>>
-<<newinv $backpack>>
-<<newinv $mergimals>>
-
-<<gain $backpack 'coin'>>
-<<gain $backpack 'mergiball' 1>>
-<<gain $backpack 'charm' 1>>
-<<gain $backpack 'bandage' 1>>
-<<gain $backpack 'tool' 1>>
-<<gain $backpack 'battery' 1>>
+<<mergimal 'wave' 'corwhal' 'skip count' '7'>>
+<<mergimal 'veil' 'sheetly' 'find a familiar fact' '1/2'>>
+<<mergimal 'forge' 'bakewing' 'make a model' '84'>>
+<<mergimal 'root' 'treethorn' 'label a line' '3'>>
+<<mergimal 'wave' 'algelly' 'skip count' '6'>>

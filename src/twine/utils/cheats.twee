@@ -3,37 +3,37 @@
 <div style='display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;'>
   <div>
     <<button 'gain 10 coins'>>
-      <<gain $backpack 'coin' 10>>
+      <<set $backpack.coin += 10>>
       <<redo 'backpack'>>
     <</button>>
   </div>
   <div>
     <<button 'gain a mergiball'>>
-      <<gain $backpack 'mergiball'>>
+      <<set $backpack.mergiball ++>>
       <<redo 'backpack'>>
     <</button>>
   </div>
   <div>
     <<button 'gain a charm'>>
-      <<gain $backpack 'charm'>>
+      <<set $backpack.charm ++>>
       <<redo 'backpack'>>
     <</button>>
   </div>
   <div>
     <<button 'gain a bandage'>>
-      <<gain $backpack 'bandage'>>
+      <<set $backpack.bandage ++>>
       <<redo 'backpack'>>
     <</button>>
   </div>
   <div>
     <<button 'gain a tool'>>
-      <<gain $backpack 'tool'>>
+      <<set $backpack.tool ++>>
       <<redo 'backpack'>>
     <</button>>
   </div>
   <div>
     <<button 'gain a battery'>>
-      <<gain $backpack 'battery'>>
+      <<set $backpack.battery ++>>
       <<redo 'backpack'>>
     <</button>>
   </div>
@@ -41,7 +41,7 @@
 <h2>teleport</h2>
 Enter grid coords: <<textbox '$_destination' ''>> <<button 'go'>><<run Dialog.close();>><<goto $_destination>><</button>>
 <h2>keywords</h2>
-PADDLE <<link '+'>><<gain $keywords 'paddle' 1>><<redo 'keywords'>><</link>> <<link 'x'>><<drop $keywords 'paddle' 1>><<redo 'keywords'>><</link>><br />
-RUSTY <<link '+'>><<gain $keywords 'rusty' 1>><<redo 'keywords'>><</link>> <<link 'x'>><<drop $keywords 'rusty' 1>><<redo 'keywords'>><</link>><br />
-CLOSED <<link '+'>><<gain $keywords 'closed' 1>><<redo 'keywords'>><</link>> <<link 'x'>><<drop $keywords 'closed' 1>><<redo 'keywords'>><</link>><br />
-FLASHLIGHT <<link '+'>><<gain $keywords 'flashlight' 1>><<redo 'keywords'>><</link>> <<link 'x'>><<drop $keywords 'flashlight' 1>><<redo 'keywords'>><</link>><br />
+PADDLE <<link '+'>><<set $keywords.paddle = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.paddle = false>><<redo 'keywords'>><</link>><br />
+RUSTY <<link '+'>><<set $keywords.rusty = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.rusty = false>><<redo 'keywords'>><</link>><br />
+CLOSED <<link '+'>><<set $keywords.closed = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.closed = false>><<redo 'keywords'>><</link>><br />
+FLASHLIGHT <<link '+'>><<set $keywords.flashlight = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.flashlight = false>><<redo 'keywords'>><</link>><br />
