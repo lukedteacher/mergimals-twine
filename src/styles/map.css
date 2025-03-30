@@ -5,11 +5,11 @@
 
 .map-grid {
     display: grid;
-    grid: repeat(40, 1fr) / repeat(40, 1fr);
+    grid: repeat(4, 1rem) repeat(32, 1fr) repeat(4, 1rem) / repeat(4, 1rem) repeat(32, 1fr) repeat(4, 1rem);
 }
 
 .map-img {
-    width: 32rem;
+    width: 48rem;
     grid-area: 5 / 5 / span 32 / span 32;
 }
 
@@ -17,6 +17,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: hsl(56, 100%, 50%);
+    border-radius: 0.5rem;
 }
 
 .move-btn:hover {

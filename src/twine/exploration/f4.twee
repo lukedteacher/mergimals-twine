@@ -1,0 +1,63 @@
+:: f4 [map]
+<<map 'f4'>><<north 'f3'>><<east 'g4'>><<west 'e4'>><</map>>\
+!!!!EXPLORE
+[[Talk to the merchant.->f4: merchant]]
+[[Check the long grass.->f4: long grass]]
+[[Approach the trainer.->f4: trainer]]
+
+:: f4: merchant
+There's a merchant here!
+
+She seems friendly.
+
+"We have e-bikes in stock! For the low price of 1000 coins."
+
+[[That seems quite absurd.->f4: haggle]]
+[[Another time.->f4]]
+
+:: f4: haggle
+<<if $keywords.has('shine')>>
+    "You already tackled the Forge School challenge and won?!"
+
+    "You must be quite skilled with Mergimals. How about a discount?"
+
+    "How about the low price of 100 coins?"
+
+    <<nobr>>
+        <<link 'Sure!'>>
+            <<if $backpack.has('coin', 100)>>
+                <<gain $keywords 'ebike'>>
+            <<else>>
+                <<dialog 'not enough coins'>>\
+                    <<include 'not enough coins'>>
+                <</dialog>>
+            <</if>>
+        <</link>>
+    <</nobr>>
+    [[Nevermind.->f4]]
+<<else>>
+    "Sorry to say, I can't do any better."
+
+    <<nobr>>
+        <<link 'Alright, I guess.'>>
+            <<if $backpack.has('coin', 1000)>>
+                <<gain $keywords 'ebike'>>
+            <<else>>
+                <<dialog 'not enough coins'>>\
+                    <<include 'not enough coins'>>
+                <</dialog>>
+            <</if>>
+        <</link>>
+    <</nobr>>
+    [[Nevermind.->f4]]
+<</if>>
+
+:: f4: long grass
+Some mergimals are here probably.
+
+[[Another time.->f4]]
+
+:: f4: trainer
+A trainer!
+
+[[Another time.->f4]]

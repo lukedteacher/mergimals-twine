@@ -23,7 +23,7 @@
     }
 
     function say ($output, character, text, imgSrc) {
-        // 
+        // speech box
         var $box = $(document.createElement('div'))
             .addClass(Util.slugify(character) + ' say');
 

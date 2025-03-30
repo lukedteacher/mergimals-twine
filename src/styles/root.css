@@ -8,4 +8,12 @@
     --sidebar-text: hsl(0, 0.0%, 79.6%);
     --accent-color: hsl(37, 100.0%, 58.0%);
     --accent-text: hsl(36, 55.6%, 1.8%);
+    --red: hsl(26, 100%, 42%);
+    --orange: hsl(41, 100%, 45%);
+    --yellow: hsl(56, 85%, 60%);
+    --green: hsl(164, 100%, 31%);
+    --cyan: hsl(202, 77%, 63%);
+    --indigo: hsl(222, 100%, 35%);
+    --violet: hsl(270, 100%, 30%);
+    --magenta: hsl(300, 100%, 30%);
   }

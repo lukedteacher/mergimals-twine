@@ -36,11 +36,15 @@ Enter your name:
 
 DEBUG: <<link 'jump to exploring' 'b3'>><</link>>
 
+!!!TESTING
+
+<div style='display: flex; gap: 1rem;'><<card 'root' 'melodrake' 'produce a pair' '2'>> <<card 'forge' 'scorchilla' 'make a model' '5'>> <<card 'wave' 'penguwaiian' 'skip count' '0'>></div>
+
 :: 059 [story]
 <<if $player.name is ''>>\
   <<set $player.name to 'Ash'>>\
 <</if>>\
-Professor Tamarack’s office is on the Eastern edge of town. It’s the biggest building in the village and what mysteries fill all three floors are as good as anyone’s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
+Professor Tamarack's office is on the Eastern edge of town. It's the biggest building in the village and what mysteries fill all three floors are as good as anyone's guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
 <<tam>>$player.name!
 Finally, you’re here!
 <</tam>>\
@@ -51,7 +55,7 @@ Finally, you’re here!
       <<tam>>No, I wasn’t waiting at the window all morning for you.
         <<cont keypress append>>I have, um, lots and lots of work to do to keep me busy.
           <<cont keypress append>>I’m, like, super duper busy.
-            <<cont keypress append>>So, please… come inside and we’ll get you set up.
+            <<cont keypress append>>So, please… come inside and we'll get you set up.
               <<cont keypress append>>You’ve been waiting 10 years for this, how exciting!
                 <<cont keypress>><<replace '#link'>><<link 'Follow the professor inside the Lab.' '065'>><</link>><</replace>>\
                 <</cont>>\

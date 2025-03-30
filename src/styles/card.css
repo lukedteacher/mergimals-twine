@@ -1,0 +1,91 @@
+.card-box {
+    width: 16rem;
+    aspect-ratio: 63 / 88;
+    display: flex;
+    flex-direction: column;
+    color: #111;
+    background-color: #ccc;
+    border-radius: 0.5rem;
+    border: 3px solid #111;
+    overflow: hidden;
+}
+
+.selectable:hover {
+    border: 3px solid red;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card-type {
+    width: 2.6rem;
+}
+
+.card-title {
+    padding: 0.3rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: right;
+}
+
+.card-number {
+    font-weight: bold;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    width: 2.6rem;
+    background-color: #999;
+}
+
+.forge {
+    background-color: var(--red);
+    background-image: url('../images/svg/forge.svg');
+    background-position: center;
+}
+
+.spark {
+    background-color: var(--yellow);
+    background-image: url('../images/svg/spark.svg');
+    background-position: center;
+}
+
+.root {
+    background-color: var(--green);
+    background-image: url('../images/svg/root.svg');
+    background-position: center;
+}
+
+.wave {
+    background-color: var(--cyan);
+    background-image: url('../images/svg/wave.svg');
+    background-position: center;
+}
+
+.deep {
+    background-color: var(--indigo);
+    background-image: url('../images/svg/deep.svg');
+    background-position: center;
+}
+
+.veil {
+    background-color: var(--violet);
+    background-image: url('../images/svg/veil.svg');
+    background-position: center;
+}
+
+.card-text {
+    display: block;
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    background-color: #eee;
+    color: #111;
+}

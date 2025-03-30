@@ -3,10 +3,6 @@
 !!!!EXPLORE
 [[Check the long grass.->e4: long grass]]
 [[Approach the trainers.->e4: trainer]]
-!!!!NAVIGATE
-[[Go North towards Blue Urf.->e3]]
-[[Go East towards Raven Wing.->f4]]
-[[Go West across the bridge.->d4]]
 
 :: e4: long grass
 Some mergimals are here probably.
