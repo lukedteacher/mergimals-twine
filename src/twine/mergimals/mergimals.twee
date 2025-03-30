@@ -22,100 +22,112 @@ This Mergimal loves to eat pineapple and surf.
 <<return 'Inspect another.'>>
 <<link 'Choose this one.' 'start: part 3'>><<gain $mergimals 'penguwaiian'>><</link>>
 
-:: 036 [encounter]
+:: stray: boxin [b4 stray common]
 <img class='mergimal-image' src='../images/mergimals/card art boxin.png' />
 
 The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 
 Do worksheeet 2.1
 
-[[You've tamed it: Read 241|241]]
-[[It got away: Continue exploring the bookmarked map.|b4]]
+[[You've tamed them.->tamed: boxin]]
+[[It got away: Continue exploring the bookmarked map.->b4]]
 
-:: 241 [tamed]
+:: tamed: boxin [b4 tamed]
 <<card 'boxin'>>
 This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.
 
-<<link 'You tamed it.' b4>><<gain $mergimals 'boxin'>><</link>>
+<<link 'You tamed them.' b4>><<gain $mergimals 'boxin'>><</link>>
 
-:: 009 [encounter]
+:: stray: zipper [b4 stray uncommon]
 <img class='mergimal-image' src='../images/mergimals/card art zipper.png' />
 
 You're looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
 
 Do worksheeet 3.4
 
-[[You've tamed it: Read 136.|136]]
+[[You've tamed them.|tamed: zipper]]
 [[It got away: Continue exploring the bookmarked map.|b4]]
 
-:: 136 [tamed]
+:: tamed: zipper [b4 tamed]
 <<card 'zipper'>>
 This Mergimal is named Zipper. They're cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.
 
-<<link 'You tamed it.' b4>><<gain $mergimals 'zipper'>><</link>>
+<<link 'You tamed them.' b4>><<gain $mergimals 'zipper'>><</link>>
 
-:: 015 [b5 encounter]
+:: stray: tidefly [b5 encounter]
 <img class='mergimal-image' src='../images/mergimals/card art tidefly.png' />
 
 A tiny snail with wings hangs from the line as you reel it in.
 
 Do worksheeet 10.3
 
-[[You've tamed it: Read 799|799]]
+[[You've tamed them.|799]]
 [[It got away: Continue exploring the bookmarked map.|b5]]
 
-:: 013 [b5 encounter]
+:: stray: krustwo [b5 encounter]
 <img class="mergimal-image" src="../images/mergimals/card art krustwo.png" />
 
 When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.
 
 Do worksheeet 2.5
 
-[[You've tamed it: Read 161|161]]
+[[You've tamed them.|161]]
 [[It got away: Continue exploring the bookmarked map.|b5]]
 
-:: 320 [b5 encounter]
-<img class="mergimal-image" src="../images/mergimals/card art corwhal.png" />
+:: tamed: krustwo [b5 tamed]
+<<card 'krustwo'>>
 
-This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
+You've seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.
 
-Do worksheeet 7.4
+<<link 'You tamed them.' b5>><<gain $mergimals 'krustwo'>><</link>>
 
-[[You've tamed it: Read 505|505]]
-[[It got away: Continue exploring the bookmarked map.|b5]]
 
-:: 799 [b4 tamed]
-<img class="mergimal-image" src="../images/mergimals/card art tidefly.png" />
+
+:: tamed: tidefly [b5 tamed]
+<<card 'tidefly'>>
 
 This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
 
-[[Your Mergipedia grows: Add Mergipedia page W-10 to your journal. Gain Card W-10. Continue exploring the bookmarked map.|b4]]
+<<link 'You tamed them.' b5>><<gain $mergimals 'tidefly'>><</link>>
 
-:: 006 [c4 encounter]
+:: treethorn
+<<card 'treethorn'>>
+
+What a cute, prickly little dude.
+
+<<return 'Okay.'>>
+
+:: stray: treethorn [c4 encounter]
 <img class='mergimal-image' src='../images/mergimals/card art treethorn.png' />
 
 You're looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That's no bush: that's a Mergimal!
 
 Do worksheeet 3.3
 
-:: 007 [c4 tamed]
-<img class="mergimal-image" src="../images/mergimals/card art treethorn.png" />
+[[You've tamed them.|tamed: treethorn]]
+[[It got away: Continue exploring the bookmarked map.|c4]]
+
+:: tamed: treethorn [c4 tamed]
+<<card 'treethorn'>>
 
 This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).
 
-[[Your Mergipedia grows: Add Mergipedia page B-03 to your journal. Gain Card B-03. Continue exploring the bookmarked map.|c4]]
+<<link 'You tamed them.' c4>><<gain $mergimals 'treethorn'>><</link>>
 
-:: 161 [tamed]
-<img class="mergimal-image" src="../images/mergimals/card art krustwo.png" />
+:: stray: corwhal [b5 encounter rare]
+<img class="mergimal-image" src="../images/mergimals/card art corwhal.png" />
 
-You've seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.
+This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
 
-[[Your Mergipedia grows: Add Mergipedia page W-02 to your journal. Gain Card W-02. Continue exploring the bookmarked map.|b5]]
+Do worksheeet 7.4
 
-:: 505 [tamed]
+[[You've tamed them.|tamed: corwhal]]
+[[It got away: Continue exploring the bookmarked map.|b5]]
+
+:: tamed: corwhal [b5 tamed]
 <img class="mergimal-image" src="../images/mergimals/card art corwhal.png" />
 
 You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
 
-[[Your Mergipedia grows: Add Mergipedia page W-07 to your journal. Gain Card W-07. Continue exploring the bookmarked map.|004]]
+<<link 'You tamed them.' b5>><<gain $mergimals 'corwhal'>><</link>>
 

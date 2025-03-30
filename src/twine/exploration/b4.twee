@@ -30,10 +30,10 @@ You can hear cooing noises coming from the long grass.
 :: 126 [stray]
 The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!
 
-Roll ATTENTION x MEMORY
+Test ATTENTION x MEMORY
 
 If you rolled...
 
-[[...30 or less, find a common Mergimal.->036]]
-[[...between 30 and 80, find an uncommon Mergimal.->009]]
-[[...above an 80, you find a rare Mergimal.->404]]
+[[...30 or less, find a common Mergimal.->stray: boxin]]
+[[...between 30 and 80, find an uncommon Mergimal.->stray: zipper]]
+[[...above an 80, you find a rare Mergimal.->stray: sheetly]]

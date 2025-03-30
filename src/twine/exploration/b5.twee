@@ -94,8 +94,8 @@ A serious-looking Mergimal trainer is standing on the beach. They have a fishing
 
     You cast your rod into Pretty Rock Bay: The Deep Blue Sea. After only a short while, you feel something pulling your line.
 
-    [[If you rolled 4 or less, find a common Mergimal: Read 013.->013]]
-    [[5 < n < 7: Read 015.->015]]
+    [[If you rolled 4 or less, find a common Mergimal: Read 013.->stray: krustwo]]
+    [[5 < n < 7: Read 015.->stray: tidefly]]
     [[n > 7: Read 014.->014]]
 <</if>>
 
@@ -116,17 +116,14 @@ Do Worksheet 'Message in a Botttle'.
 
     Do Worksheet SKIP COUNT 4.
 
+    [[Failure: Gain an INJURY.->b3]]
     [[Success.->b3]]
-    [[Failure: 404->404]]
 <</if>>
 
 :: 014 [encounter]
 You reel your line in and it nearly snaps.
 
-Roll GRIT x ATTENTION
+*Test* GRIT x 7.
 
-If you rolled...
-
-[[...20 or less, it got away: Continue exploring the bookmarked map.->004]]
-[[...between 21 and 63, you're able to pull it up but get really tired.: Gain TIRED. Read 320.->320]]
-[[...above 64, you pulled it up swiftly and with care. Gain a +2 bonus to catching it.: Read 320.->320]]
+[[Failure: Gain TIRED.->stray: corwhal]]
+[[Success: +2 to TAME.->stray: corwhal]]
