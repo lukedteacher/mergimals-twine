@@ -1,0 +1,9 @@
+:: tamed [nobr]
+<<do tag 'tamed'>>
+  <div class='tamed-box'>
+    <h2>mergimals</h2>
+    <<for _mergimal range $mergimals.list>>
+      <div class='mergimal-listing'>_mergimal</div>
+    <</for>>
+  </div>
+<</do>>

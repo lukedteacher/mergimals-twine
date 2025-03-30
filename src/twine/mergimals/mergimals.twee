@@ -1,3 +1,27 @@
+:: melodrake
+<<card 'melodrake'>>
+
+This Mergimal is can play music with their body.
+
+<<return 'Inspect another.'>>
+<<link 'Choose this one.' 'start: part 3'>><<gain $mergimals 'melodrake'>><</link>>
+
+:: scorchilla
+<<card 'scorchilla  '>>
+
+This Mergimal dances like no one's watching.
+
+<<return 'Inspect another.'>>
+<<link 'Choose this one.' 'start: part 3'>><<gain $mergimals 'scorchilla'>><</link>>
+
+:: penguwaiian
+<<card 'penguwaiian'>>
+
+This Mergimal loves to eat pineapple and surf.
+
+<<return 'Inspect another.'>>
+<<link 'Choose this one.' 'start: part 3'>><<gain $mergimals 'penguwaiian'>><</link>>
+
 :: 036 [encounter]
 <img class='mergimal-image' src='../images/mergimals/card art boxin.png' />
 
@@ -9,11 +33,10 @@ Do worksheeet 2.1
 [[It got away: Continue exploring the bookmarked map.|b4]]
 
 :: 241 [tamed]
-<img class='mergimal-image' src='../images/mergimals/card art boxin.png' />
-
+<<card 'boxin'>>
 This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.
 
-[[Your Mergipedia grows: Add Mergipedia page N-02 to your journal. Gain Card N-02. Continue exploring the bookmarked map.|b4]]
+<<link 'You tamed it.' b4>><<gain $mergimals 'boxin'>><</link>>
 
 :: 009 [encounter]
 <img class='mergimal-image' src='../images/mergimals/card art zipper.png' />
@@ -26,11 +49,10 @@ Do worksheeet 3.4
 [[It got away: Continue exploring the bookmarked map.|b4]]
 
 :: 136 [tamed]
-<img class='mergimal-image' src='../images/mergimals/card art zipper.png' />
-
+<<card 'zipper'>>
 This Mergimal is named Zipper. They're cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.
 
-[[Your Mergipedia grows: Add Mergipedia page J-03 to your journal. Gain Card J-03. Continue exploring the bookmarked map.|b4]]
+<<link 'You tamed it.' b4>><<gain $mergimals 'zipper'>><</link>>
 
 :: 015 [b5 encounter]
 <img class='mergimal-image' src='../images/mergimals/card art tidefly.png' />

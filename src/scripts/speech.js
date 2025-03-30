@@ -20,7 +20,7 @@
             console.error('addCharacter() -> overwriting character "' + name + '"');
         }
         characters.set(name, {displayName: displayname, image: icon});
-    }
+    };
 
     function say ($output, character, text, imgSrc) {
         // speech box
@@ -64,8 +64,8 @@
         return $box;
     }
 
-    setup.say = say;
     setup.addCharacter = addCharacter;
+    setup.say = say;
 
     Macro.add('character', {
         // character macro

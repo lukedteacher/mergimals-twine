@@ -8,10 +8,12 @@
     border-radius: 0.5rem;
     border: 3px solid #111;
     overflow: hidden;
+    user-select: none;
 }
 
 .selectable:hover {
     border: 3px solid red;
+    cursor: pointer;
 }
 
 .card-header {
@@ -79,6 +81,12 @@
 .veil {
     background-color: var(--violet);
     background-image: url('../images/svg/veil.svg');
+    background-position: center;
+}
+
+.null {
+    background-color: #999;
+    background-image: url('../images/svg/null.svg');
     background-position: center;
 }
 

@@ -9,9 +9,17 @@
   <<say 'Rhia (Wave School Leader)' '../images/characters/rhia.webp'>>_contents<</say>>
 <</widget>>
 
+<<mergimal 'root' 'melodrake' 'produce a pair' '2'>>
+<<mergimal 'forge' 'scorchilla' 'make a model' '5'>>
+<<mergimal 'wave' 'penguwaiian' 'skip count' '0'>>
+<<mergimal 'null' 'boxin' 'check a chart' '8'>>
+<<mergimal 'spark' 'zipper' 'apply an algorithm' '3'>>
+
 <<newinv $keywords>>
 <<newinv $backpack>>
-<<gain $backpack 'coin' 1>>
+<<newinv $mergimals>>
+
+<<gain $backpack 'coin'>>
 <<gain $backpack 'mergiball' 1>>
 <<gain $backpack 'charm' 1>>
 <<gain $backpack 'bandage' 1>>

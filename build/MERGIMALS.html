@@ -149,10 +149,12 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     border-radius: 0.5rem;
     border: 3px solid #111;
     overflow: hidden;
+    user-select: none;
 }
 
 .selectable:hover {
     border: 3px solid red;
+    cursor: pointer;
 }
 
 .card-header {
@@ -220,6 +222,12 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 .veil {
     background-color: var(--violet);
     background-image: url('../images/svg/veil.svg');
+    background-position: center;
+}
+
+.null {
+    background-color: #999;
+    background-image: url('../images/svg/null.svg');
     background-position: center;
 }
 
@@ -472,31 +480,51 @@ ul.simple-inventory-list {
 
     let mergimals = new Map();
 
-    function createCard ($output, type, mergimal, strategy, number) {
+    const artDir = '../images/mergimals/card art ';
+
+    function createMergimal (type, name, strategy, number) {
+        mergimals.set(name, {type: type, strategy: strategy, number: number, image: artDir + name + '.png'});
+        console.log('create mergimal: ' + mergimals);
+    }
+
+    Macro.add('mergimal', {
+        handler : function () {
+            createMergimal(this.args[0], this.args[1], this.args[2], this.args[3]);
+        }
+    });
+
+    function createCard ($output, name, selectable = false) {
+        
+        console.log('test: ' + name);
         const $cardBox = $(document.createElement('div'))
             .addClass('card-box');
+        
+        if (selectable) {
+            $cardBox.addClass('selectable');
+            $cardBox.click(() => Engine.play(name));
+        }
 
         const $cardHeader = $(document.createElement('div'))
             .addClass('card-header')
             .appendTo($cardBox);
 
         const $cardType = $(document.createElement('div'))
-            .addClass('card-type ' + type)
+            .addClass('card-type ' + mergimals.get(name).type)
             .appendTo($cardHeader);
         
         const $cardTitle = $(document.createElement('div'))
             .addClass('card-title')
-            .text(mergimal)
+            .text(name)
             .appendTo($cardHeader);
 
         const $cardImage = $(document.createElement('img'))
             .addClass('card-img')
-            .attr('src', '../images/mergimals/card art ' + mergimal + '.png')
+            .attr('src', mergimals.get(name).image)
             .appendTo($cardBox);
 
         const $cardText = $(document.createElement('div'))
             .addClass('card-text')
-            .text(strategy)
+            .text(mergimals.get(name).strategy)
             .appendTo($cardBox);
 
         const $cardFooter = $(document.createElement('div'))
@@ -505,7 +533,7 @@ ul.simple-inventory-list {
         
         const $cardNumber = $(document.createElement('div'))
             .addClass('card-number')
-            .text(number)
+            .text(mergimals.get(name).number)
             .appendTo($cardFooter);
 
         if ($output) {
@@ -518,11 +546,16 @@ ul.simple-inventory-list {
 
     Macro.add('card', {
         handler : function () {
-            console.log(this);
-            createCard(this.output, this.args[0], this.args[1], this.args[2], this.args[3]);
+            let selectable = false;
+            if (this.args[1]) {
+                selectable = this.args[1];
+            };
+
+            createCard(this.output, this.args[0], selectable);
         }
     });
 
+    setup.mergimal = createMergimal;
     setup.card = createCard;
 
 }());
@@ -2107,7 +2140,7 @@ function _toPrimitive(t, e) {
             console.error('addCharacter() -> overwriting character "' + name + '"');
         }
         characters.set(name, {displayName: displayname, image: icon});
-    }
+    };
 
     function say ($output, character, text, imgSrc) {
         // speech box
@@ -2151,8 +2184,8 @@ function _toPrimitive(t, e) {
         return $box;
     }
 
-    setup.say = say;
     setup.addCharacter = addCharacter;
+    setup.say = say;
 
     Macro.add('character', {
         // character macro
@@ -2185,9 +2218,7 @@ Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" ta
 [[Look around-&gt;b3: description]]
 [[Stop at home.-&gt;b3: home]]
 [[Visit the Mergimal Lab-&gt;b3: lab]]
-[[Go to the beach.-&gt;b3: beach]]
-
-&lt;&lt;card &#39;melodrake&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="b3: description" tags="" position="225,100" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;../images/story/cascade-village.png&#39;&gt;
+[[Go to the beach.-&gt;b3: beach]]</tw-passagedata><tw-passagedata pid="2" name="b3: description" tags="" position="225,100" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;../images/story/cascade-village.png&#39;&gt;
 Cascade Village rests quietly on the sandy shores of Ho’onui Peninsula, where five cozy homes overlook the sparkling waves. The Mergimal Research Center stands at the edge of the beach, its sleek design contrasting with the warm, rustic charm of the village.
 
 Life moves at a gentle pace here, with the ocean breeze carrying the sound of laughter and the faint scent of salt and fresh bread. It’s a peaceful place to live—but for those eager to explore, Cascade Village feels like the calm before an unforgettable adventure.
@@ -2836,6 +2867,7 @@ She seems friendly.
 
 [[Another time.-&gt;f4]]</tw-passagedata><tw-passagedata pid="78" name="StoryCaption" tags="" position="975,975" size="100,100">&lt;&lt;include stats&gt;&gt;
 &lt;&lt;include backpack&gt;&gt;
+&lt;&lt;include tamed&gt;&gt;
 &lt;&lt;include keywords&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="StoryMenu" tags="" position="1100,975" size="100,100">&lt;&lt;link &#39;cheats&#39;&gt;&gt;
   &lt;&lt;dialog &#39;cheats&#39;&gt;&gt;\
     &lt;&lt;include &#39;cheats&#39;&gt;&gt;
@@ -2846,13 +2878,9 @@ Enter your name:
 &lt;&lt;textbox &#39;$player.name&#39; &#39;&#39;&gt;&gt;
 
 [[Create a character.-&gt;cc: part 1]]
-[[Go see professor Tamrack-&gt;059]]
+[[Go see professor Tamrack-&gt;start: part 1]]
 
-DEBUG: &lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-
-!!!TESTING
-
-&lt;div style=&#39;display: flex; gap: 1rem;&#39;&gt;&lt;&lt;card &#39;root&#39; &#39;melodrake&#39; &#39;produce a pair&#39; &#39;2&#39;&gt;&gt; &lt;&lt;card &#39;forge&#39; &#39;scorchilla&#39; &#39;make a model&#39; &#39;5&#39;&gt;&gt; &lt;&lt;card &#39;wave&#39; &#39;penguwaiian&#39; &#39;skip count&#39; &#39;0&#39;&gt;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="81" name="059" tags="story" position="100,1100" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
+DEBUG: &lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="start: part 1" tags="story" position="100,1100" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
   &lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
 Professor Tamarack&#39;s office is on the Eastern edge of town. It&#39;s the biggest building in the village and what mysteries fill all three floors are as good as anyone&#39;s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
@@ -2868,7 +2896,7 @@ Finally, you’re here!
           &lt;&lt;cont keypress append&gt;&gt;I’m, like, super duper busy.
             &lt;&lt;cont keypress append&gt;&gt;So, please… come inside and we&#39;ll get you set up.
               &lt;&lt;cont keypress append&gt;&gt;You’ve been waiting 10 years for this, how exciting!
-                &lt;&lt;cont keypress&gt;&gt;&lt;&lt;replace &#39;#link&#39;&gt;&gt;&lt;&lt;link &#39;Follow the professor inside the Lab.&#39; &#39;065&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/replace&gt;&gt;\
+                &lt;&lt;cont keypress&gt;&gt;&lt;&lt;replace &#39;#link&#39;&gt;&gt;&lt;&lt;link &#39;Follow the professor inside the Lab.&#39; &#39;start: part 2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/replace&gt;&gt;\
                 &lt;&lt;/cont&gt;&gt;\
               &lt;&lt;/cont&gt;&gt;\
             &lt;&lt;/cont&gt;&gt;\
@@ -2882,19 +2910,17 @@ Finally, you’re here!
     &lt;&lt;replace &#39;#response&#39;&gt;&gt;\
       &lt;&lt;say $player.name $player.image&gt;&gt;Let&#39;s go!&lt;&lt;/say&gt;&gt;\
       &lt;&lt;tam&gt;&gt;You’ve been waiting 10 years for this, how exciting!&lt;&lt;/tam&gt;&gt;\
-      &lt;&lt;link &#39;Follow the professor inside the Lab.&#39; &#39;065&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+      &lt;&lt;link &#39;Follow the professor inside the Lab.&#39; &#39;start: part 2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
   &lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="82" name="065" tags="story" position="225,1100" size="100,100">You enter…
-In front of you on the table…
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="82" name="start: part 2" tags="story" position="225,1100" size="100,100">You enter.
 
-Inspect the three starting Mergimal cards
+It&#39;s time to pick a Mergimal!
 
-[[Pick the red one: Gain Card M-001-&gt;b4]]
-[[Pick the blue one: Gain Card M-002-&gt;b4]]
-[[Pick the green one: Gain Card M-003-&gt;b4]]
-[[Pick the yellow one: Gain Card M-004-&gt;b4]]
-[[Ask if there are any others: 404-&gt;404]]</tw-passagedata><tw-passagedata pid="83" name="StoryInit" tags="" position="350,1100" size="100,100">&lt;&lt;set $player to {name: &#39;none set&#39;, image: &#39;../images/characters/player.png&#39;, difficulty: &#39;easy&#39;}&gt;&gt;
+&lt;div style=&#39;display: flex; gap: 1rem;&#39;&gt;&lt;&lt;card &#39;melodrake&#39; true&gt;&gt;&lt;&lt;card &#39;scorchilla&#39; true&gt;&gt;&lt;&lt;card &#39;penguwaiian&#39; true&gt;&gt;&lt;/div&gt;
+[[Ask if there are any others.-&gt;404]]</tw-passagedata><tw-passagedata pid="83" name="start: part 3" tags="" position="350,1100" size="100,100">It&#39;s time to start your journey.
+
+[[Start the adventure.-&gt;b3]]</tw-passagedata><tw-passagedata pid="84" name="StoryInit" tags="" position="475,1100" size="100,100">&lt;&lt;set $player to {name: &#39;none set&#39;, image: &#39;../images/characters/player.png&#39;, difficulty: &#39;easy&#39;}&gt;&gt;
 &lt;&lt;set $stats to {attention: &#39;d6&#39;, grit: &#39;d6&#39;, memory: &#39;d6&#39;, empathy: &#39;d6&#39;}&gt;&gt;
 
 &lt;&lt;widget &#39;tam&#39; container&gt;&gt;
@@ -2904,99 +2930,120 @@ Inspect the three starting Mergimal cards
   &lt;&lt;say &#39;Rhia (Wave School Leader)&#39; &#39;../images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
+&lt;&lt;mergimal &#39;root&#39; &#39;melodrake&#39; &#39;produce a pair&#39; &#39;2&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;forge&#39; &#39;scorchilla&#39; &#39;make a model&#39; &#39;5&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;wave&#39; &#39;penguwaiian&#39; &#39;skip count&#39; &#39;0&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;null&#39; &#39;boxin&#39; &#39;check a chart&#39; &#39;8&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;spark&#39; &#39;zipper&#39; &#39;apply an algorithm&#39; &#39;3&#39;&gt;&gt;
+
 &lt;&lt;newinv $keywords&gt;&gt;
 &lt;&lt;newinv $backpack&gt;&gt;
-&lt;&lt;gain $backpack &#39;coin&#39; 1&gt;&gt;
+&lt;&lt;newinv $mergimals&gt;&gt;
+
+&lt;&lt;gain $backpack &#39;coin&#39;&gt;&gt;
 &lt;&lt;gain $backpack &#39;mergiball&#39; 1&gt;&gt;
 &lt;&lt;gain $backpack &#39;charm&#39; 1&gt;&gt;
 &lt;&lt;gain $backpack &#39;bandage&#39; 1&gt;&gt;
 &lt;&lt;gain $backpack &#39;tool&#39; 1&gt;&gt;
-&lt;&lt;gain $backpack &#39;battery&#39; 1&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="036" tags="encounter" position="475,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art boxin.png&#39; /&gt;
+&lt;&lt;gain $backpack &#39;battery&#39; 1&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="melodrake" tags="" position="600,1100" size="100,100">&lt;&lt;card &#39;melodrake&#39;&gt;&gt;
+
+This Mergimal is can play music with their body.
+
+&lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
+&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;gain $mergimals &#39;melodrake&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="scorchilla" tags="" position="725,1100" size="100,100">&lt;&lt;card &#39;scorchilla  &#39;&gt;&gt;
+
+This Mergimal dances like no one&#39;s watching.
+
+&lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
+&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;gain $mergimals &#39;scorchilla&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="penguwaiian" tags="" position="850,1100" size="100,100">&lt;&lt;card &#39;penguwaiian&#39;&gt;&gt;
+
+This Mergimal loves to eat pineapple and surf.
+
+&lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
+&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;gain $mergimals &#39;penguwaiian&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="036" tags="encounter" position="975,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art boxin.png&#39; /&gt;
 
 The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 
 Do worksheeet 2.1
 
 [[You&#39;ve tamed it: Read 241|241]]
-[[It got away: Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="85" name="241" tags="tamed" position="600,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art boxin.png&#39; /&gt;
-
+[[It got away: Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="89" name="241" tags="tamed" position="1100,1100" size="100,100">&lt;&lt;card &#39;boxin&#39;&gt;&gt;
 This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.
 
-[[Your Mergipedia grows: Add Mergipedia page N-02 to your journal. Gain Card N-02. Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="86" name="009" tags="encounter" position="725,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art zipper.png&#39; /&gt;
+&lt;&lt;link &#39;You tamed it.&#39; b4&gt;&gt;&lt;&lt;gain $mergimals &#39;boxin&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="009" tags="encounter" position="1225,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art zipper.png&#39; /&gt;
 
 You&#39;re looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
 
 Do worksheeet 3.4
 
 [[You&#39;ve tamed it: Read 136.|136]]
-[[It got away: Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="87" name="136" tags="tamed" position="850,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art zipper.png&#39; /&gt;
-
+[[It got away: Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="91" name="136" tags="tamed" position="100,1225" size="100,100">&lt;&lt;card &#39;zipper&#39;&gt;&gt;
 This Mergimal is named Zipper. They&#39;re cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.
 
-[[Your Mergipedia grows: Add Mergipedia page J-03 to your journal. Gain Card J-03. Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="88" name="015" tags="b5 encounter" position="975,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art tidefly.png&#39; /&gt;
+&lt;&lt;link &#39;You tamed it.&#39; b4&gt;&gt;&lt;&lt;gain $mergimals &#39;zipper&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="015" tags="b5 encounter" position="225,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art tidefly.png&#39; /&gt;
 
 A tiny snail with wings hangs from the line as you reel it in.
 
 Do worksheeet 10.3
 
 [[You&#39;ve tamed it: Read 799|799]]
-[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="89" name="013" tags="b5 encounter" position="1100,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art krustwo.png&quot; /&gt;
+[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="93" name="013" tags="b5 encounter" position="350,1225" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art krustwo.png&quot; /&gt;
 
 When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.
 
 Do worksheeet 2.5
 
 [[You&#39;ve tamed it: Read 161|161]]
-[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="90" name="320" tags="b5 encounter" position="1225,1100" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art corwhal.png&quot; /&gt;
+[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="94" name="320" tags="b5 encounter" position="475,1225" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art corwhal.png&quot; /&gt;
 
 This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
 
 Do worksheeet 7.4
 
 [[You&#39;ve tamed it: Read 505|505]]
-[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="91" name="799" tags="b4 tamed" position="100,1225" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art tidefly.png&quot; /&gt;
+[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="95" name="799" tags="b4 tamed" position="600,1225" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art tidefly.png&quot; /&gt;
 
 This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
 
-[[Your Mergipedia grows: Add Mergipedia page W-10 to your journal. Gain Card W-10. Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="92" name="006" tags="c4 encounter" position="225,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art treethorn.png&#39; /&gt;
+[[Your Mergipedia grows: Add Mergipedia page W-10 to your journal. Gain Card W-10. Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="96" name="006" tags="c4 encounter" position="725,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/card art treethorn.png&#39; /&gt;
 
 You&#39;re looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That&#39;s no bush: that&#39;s a Mergimal!
 
-Do worksheeet 3.3</tw-passagedata><tw-passagedata pid="93" name="007" tags="c4 tamed" position="350,1225" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art treethorn.png&quot; /&gt;
+Do worksheeet 3.3</tw-passagedata><tw-passagedata pid="97" name="007" tags="c4 tamed" position="850,1225" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art treethorn.png&quot; /&gt;
 
 This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).
 
-[[Your Mergipedia grows: Add Mergipedia page B-03 to your journal. Gain Card B-03. Continue exploring the bookmarked map.|c4]]</tw-passagedata><tw-passagedata pid="94" name="161" tags="tamed" position="475,1225" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art krustwo.png&quot; /&gt;
+[[Your Mergipedia grows: Add Mergipedia page B-03 to your journal. Gain Card B-03. Continue exploring the bookmarked map.|c4]]</tw-passagedata><tw-passagedata pid="98" name="161" tags="tamed" position="975,1225" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art krustwo.png&quot; /&gt;
 
 You&#39;ve seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.
 
-[[Your Mergipedia grows: Add Mergipedia page W-02 to your journal. Gain Card W-02. Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="95" name="505" tags="tamed" position="600,1225" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art corwhal.png&quot; /&gt;
+[[Your Mergipedia grows: Add Mergipedia page W-02 to your journal. Gain Card W-02. Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="99" name="505" tags="tamed" position="1100,1225" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/card art corwhal.png&quot; /&gt;
 
 You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
 
-[[Your Mergipedia grows: Add Mergipedia page W-07 to your journal. Gain Card W-07. Continue exploring the bookmarked map.|004]]</tw-passagedata><tw-passagedata pid="96" name="cc: part 1" tags="" position="725,1225" size="100,100">What&#39;s your name?
+[[Your Mergipedia grows: Add Mergipedia page W-07 to your journal. Gain Card W-07. Continue exploring the bookmarked map.|004]]</tw-passagedata><tw-passagedata pid="100" name="cc: part 1" tags="" position="1225,1225" size="100,100">What&#39;s your name?
 &lt;&lt;textbox &#39;$player.name&#39; &#39;&#39;&gt;&gt;
 
-[[Continue.-&gt;cc: part 2]]</tw-passagedata><tw-passagedata pid="97" name="cc: part 2" tags="" position="850,1225" size="100,100">What are your pronouns?
+[[Continue.-&gt;cc: part 2]]</tw-passagedata><tw-passagedata pid="101" name="cc: part 2" tags="" position="100,1350" size="100,100">What are your pronouns?
 
 &lt;&lt;link &#39;they / them&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;they&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;she / her&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;she&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;he / him&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;he&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="cc: part 3" tags="" position="975,1225" size="100,100">What do you like most about Mergimals?
+&lt;&lt;link &#39;he / him&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;he&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="cc: part 3" tags="" position="225,1350" size="100,100">What do you like most about Mergimals?
 
 &lt;&lt;link &#39;Competing in contests.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;trainer&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;Collecting as many as I can.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;explorer&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;Merging them to make new ones.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;scientist&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;Being a good friend to them.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;companion&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="cc: part 4" tags="" position="1100,1225" size="100,100">Which of these statements fits you best?
+&lt;&lt;link &#39;Being a good friend to them.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;companion&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="cc: part 4" tags="" position="350,1350" size="100,100">Which of these statements fits you best?
 
 &lt;&lt;link &#39;I notice every detail.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;attention&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;I never give up.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;grit&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;I remember everything.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;memory&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;I understand emotions.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;empathy&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="cc: part 5" tags="" position="1225,1225" size="100,100">Which of these statements fits you best?
+&lt;&lt;link &#39;I understand emotions.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;empathy&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="cc: part 5" tags="" position="475,1350" size="100,100">Which of these statements fits you best?
 
 &lt;&lt;if $high != &#39;attention&#39;&gt;&gt;&lt;&lt;link &#39;I can\&#39;t stay still.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;grit&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t like to fail.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;memory&#39;&gt;&gt;&lt;&lt;link &#39;I lose things often.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="cc: part 6" tags="" position="100,1350" size="100,100">test</tw-passagedata><tw-passagedata pid="102" name="backpack" tags="nobr" position="225,1350" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
+&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="cc: part 6" tags="" position="600,1350" size="100,100">test</tw-passagedata><tw-passagedata pid="106" name="backpack" tags="nobr" position="725,1350" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
   &lt;div class=&#39;backpack&#39;&gt;
     &lt;h2 class=&#39;backpack-heading&#39;&gt;backpack&lt;/h2&gt;
     &lt;div class=&#39;backpack-items&#39;&gt;
@@ -3008,7 +3055,7 @@ You finally caught this tough Mergimal! Their name is Corwhal, because of their 
         &lt;&lt;/for&gt;&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="cheats" tags="nobr" position="350,1350" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="cheats" tags="nobr" position="850,1350" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
 &lt;div style=&#39;display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;&#39;&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain 10 coins&#39;&gt;&gt;
@@ -3053,22 +3100,22 @@ Enter grid coords: &lt;&lt;textbox &#39;$_destination&#39; &#39;&#39;&gt;&gt; &l
 PADDLE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;gain $keywords &#39;paddle&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;paddle&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 RUSTY &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;gain $keywords &#39;rusty&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;rusty&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 CLOSED &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;gain $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;closed&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
-FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;gain $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;</tw-passagedata><tw-passagedata pid="104" name="incorrect" tags="" position="475,1350" size="100,100">Not quite!
+FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;gain $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;drop $keywords &#39;flashlight&#39; 1&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;</tw-passagedata><tw-passagedata pid="108" name="incorrect" tags="" position="975,1350" size="100,100">Not quite!
 
-&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="correct" tags="" position="600,1350" size="100,100">Nice!
+&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="109" name="correct" tags="" position="1100,1350" size="100,100">Nice!
 
-&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="keywords" tags="nobr" position="725,1350" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
+&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="keywords" tags="nobr" position="1225,1350" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
   &lt;div class=&#39;keywords-box&#39;&gt;
     &lt;h2&gt;keywords&lt;/h2&gt;
     &lt;&lt;for _item range $keywords.list&gt;&gt;
       &lt;div class=&#39;item-listing&#39;&gt;_item&lt;/div&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="no paddle" tags="" position="850,1350" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="no paddle" tags="" position="100,1475" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
 
-&lt;&lt;return &#39;Oh well.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="no rod" tags="" position="975,1350" size="100,100">You don&#39;t have a fishing rod.
+&lt;&lt;return &#39;Oh well.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="no rod" tags="" position="225,1475" size="100,100">You don&#39;t have a fishing rod.
 
-&lt;&lt;return &#39;Dangit.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="109" name="stats" tags="nobr" position="1100,1350" size="100,100">&lt;div class=&#39;stats&#39;&gt;
+&lt;&lt;return &#39;Dangit.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="stats" tags="nobr" position="350,1475" size="100,100">&lt;div class=&#39;stats&#39;&gt;
   &lt;h2 class=&#39;stats-heading&#39;&gt;stats&lt;/h2&gt;
   &lt;div class=&#39;stats-box&#39;&gt;
     &lt;div class=&#39;stat-box&#39;&gt;
@@ -3088,9 +3135,16 @@ FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;gain $keywords &#39;flashligh
       &lt;p class=&#39;stat-label display-empathy&#39;&gt;$stats.empathy&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="110" name="not enough coins" tags="" position="1225,1350" size="100,100">You don&#39;t have enough coins to buy that!
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="114" name="tamed" tags="nobr" position="475,1475" size="100,100">&lt;&lt;do tag &#39;tamed&#39;&gt;&gt;
+  &lt;div class=&#39;tamed-box&#39;&gt;
+    &lt;h2&gt;mergimals&lt;/h2&gt;
+    &lt;&lt;for _mergimal range $mergimals.list&gt;&gt;
+      &lt;div class=&#39;mergimal-listing&#39;&gt;_mergimal&lt;/div&gt;
+    &lt;&lt;/for&gt;&gt;
+  &lt;/div&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="not enough coins" tags="" position="600,1475" size="100,100">You don&#39;t have enough coins to buy that!
 
-&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="already purchased" tags="" position="100,1475" size="100,100">You already have one!
+&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="already purchased" tags="" position="725,1475" size="100,100">You already have one!
 
 &lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">

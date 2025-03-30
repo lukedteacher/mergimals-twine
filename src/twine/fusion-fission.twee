@@ -16,6 +16,7 @@ Config.ui.stowBarInitially = false;
 :: StoryCaption
 <<include stats>>
 <<include backpack>>
+<<include tamed>>
 <<include keywords>>
 
 :: StoryMenu
@@ -32,15 +33,12 @@ Enter your name:
 <<textbox '$player.name' ''>>
 
 [[Create a character.->cc: part 1]]
-[[Go see professor Tamrack->059]]
+[[Go see professor Tamrack->start: part 1]]
 
 DEBUG: <<link 'jump to exploring' 'b3'>><</link>>
 
-!!!TESTING
 
-<div style='display: flex; gap: 1rem;'><<card 'root' 'melodrake' 'produce a pair' '2'>> <<card 'forge' 'scorchilla' 'make a model' '5'>> <<card 'wave' 'penguwaiian' 'skip count' '0'>></div>
-
-:: 059 [story]
+:: start: part 1 [story]
 <<if $player.name is ''>>\
   <<set $player.name to 'Ash'>>\
 <</if>>\
@@ -57,7 +55,7 @@ Finally, you’re here!
           <<cont keypress append>>I’m, like, super duper busy.
             <<cont keypress append>>So, please… come inside and we'll get you set up.
               <<cont keypress append>>You’ve been waiting 10 years for this, how exciting!
-                <<cont keypress>><<replace '#link'>><<link 'Follow the professor inside the Lab.' '065'>><</link>><</replace>>\
+                <<cont keypress>><<replace '#link'>><<link 'Follow the professor inside the Lab.' 'start: part 2'>><</link>><</replace>>\
                 <</cont>>\
               <</cont>>\
             <</cont>>\
@@ -71,19 +69,20 @@ Finally, you’re here!
     <<replace '#response'>>\
       <<say $player.name $player.image>>Let's go!<</say>>\
       <<tam>>You’ve been waiting 10 years for this, how exciting!<</tam>>\
-      <<link 'Follow the professor inside the Lab.' '065'>><</link>>
+      <<link 'Follow the professor inside the Lab.' 'start: part 2'>><</link>>
     <</replace>>
   <</link>>
 </div>
 
-:: 065 [story]
-You enter…
-In front of you on the table…
+:: start: part 2 [story]
+You enter.
 
-Inspect the three starting Mergimal cards
+It's time to pick a Mergimal!
 
-[[Pick the red one: Gain Card M-001->b4]]
-[[Pick the blue one: Gain Card M-002->b4]]
-[[Pick the green one: Gain Card M-003->b4]]
-[[Pick the yellow one: Gain Card M-004->b4]]
-[[Ask if there are any others: 404->404]]
+<div style='display: flex; gap: 1rem;'><<card 'melodrake' true>><<card 'scorchilla' true>><<card 'penguwaiian' true>></div>
+[[Ask if there are any others.->404]]
+
+:: start: part 3
+It's time to start your journey.
+
+[[Start the adventure.->b3]]
