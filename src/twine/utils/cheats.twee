@@ -38,6 +38,9 @@
     <</button>>
   </div>
 </div>
+<h2>injuries</h2>
+<<link 'ouch'>><<set $player.injuries ++>><<redo 'injuries'>><</link>>
+<<link 'ahhh...'>><<set $player.injuries -->><<redo 'injuries'>><</link>>
 <h2>teleport</h2>
 Enter grid coords: <<textbox '$_destination' ''>> <<button 'go'>><<run Dialog.close();>><<goto $_destination>><</button>>
 <h2>keywords</h2>
@@ -72,11 +75,14 @@ TAMED
     <<set _object.tamed = false>>
   <</for>>
 <</link>> <br />
-bakewing 
-<<link 'seen'>>
-  <<set $mergimals.bakewing.seen = !$mergimals.bakewing.seen>>
-<</link>> 
-<<link 'tamed'>>
-  <<set $mergimals.bakewing.tamed = !$mergimals.bakewing.tamed>>
-<</link>>
+NOT WORKING YET
+<<listbox '_$cheatbox'>>
+  <<optionsfrom $mergimals>>
+<</listbox>>
+<<button 'toggle seen'>>
+    <<set $mergimals[_$cheatbox].seen = !$mergimals[_$cheatbox].seen>>
+<</button>> 
+<<button 'toggle tamed'>>
+    <<set $mergimals[_$cheatbox].tamed = !$mergimals[_$cheatbox].tamed>>
+<</button>>
 <</nobr>>

@@ -1134,7 +1134,7 @@ Gain Card I-20 (Rusty Rod).
 
 [[If you rolled 4 or less, find a common Mergimal.-&gt;stray: krustwo]]
 [[5 &lt; n &lt; 7: you find an uncommon Mergimal.-&gt;stray: tidefly]]
-[[n &gt; 7: Read 014.-&gt;b5: strained line]]</tw-passagedata><tw-passagedata pid="19" name="131" tags="worksheet secret" position="1100,225" size="100,100">You found a bottle floating in the water. It has a message inside! You unroll it and find a strange script.
+[[n &gt; 7.-&gt;b5: strained line]]</tw-passagedata><tw-passagedata pid="19" name="131" tags="worksheet secret" position="1100,225" size="100,100">You found a bottle floating in the water. It has a message inside! You unroll it and find a strange script.
 
 Do Worksheet &#39;Message in a Botttle&#39;.
 
@@ -1142,7 +1142,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
 
 Do Worksheet SKIP COUNT 4.
 
-[[Failure: Gain an INJURY.-&gt;b3]]
+&lt;&lt;link &#39;Failure: GAIN an INJURY&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;set $player.injuries ++&gt;&gt;&lt;&lt;redo &#39;injuries&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 [[Success.-&gt;b3]]</tw-passagedata><tw-passagedata pid="21" name="b5: strained line" tags="encounter" position="100,350" size="100,100">You reel your line in and it nearly snaps.
 
 &lt;strong&gt;Test&lt;/strong&gt; GRIT x 7.
@@ -1287,9 +1287,9 @@ Roll ATTENTION + GRIT.
 
 If you rolled...
 
-[[30 or lower, you trip and fall into a pile of thorns: Gain two injuries. Read 229-&gt;229]]
-[[...between 30 and 60, you fall into some thorns, but catch yourself at the last minute: Gain one injury. Read 229-&gt;229]]
-[[...above 60, your quick-thinking allows you to narrowly avoid walking into a wicked patch of thorns: Gain one injury. Read 229-&gt;229]]</tw-passagedata><tw-passagedata pid="49" name="226" tags="forest encounter" position="1100,600" size="100,100">A little person with a long beard and pointy hat sits on a mushroom, drinking tea. A tiny pig-like Mergimal sits next to them with a cup of their own.
+[[30 or lower, you trip and fall into a pile of thorns: Gain two injuries.-&gt;229]]
+[[...between 30 and 60, you fall into some thorns, but catch yourself at the last minute: Gain one injury.-&gt;229]]
+[[...above 60, your quick-thinking allows you to narrowly avoid walking into a wicked patch of thorns: Gain one injury.-&gt;229]]</tw-passagedata><tw-passagedata pid="49" name="226" tags="forest encounter" position="1100,600" size="100,100">A little person with a long beard and pointy hat sits on a mushroom, drinking tea. A tiny pig-like Mergimal sits next to them with a cup of their own.
 
 [expand this encounter]
 
@@ -1703,8 +1703,7 @@ Enter your name:
 [[Go see professor Tamrack-&gt;start: part 1]]
 
 !!!!DEBUG:
-&lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;ouch&#39;&gt;&gt;&lt;&lt;if $player.injuries &lt; 4&gt;&gt;&lt;&lt;set $player.injuries ++&gt;&gt;&lt;&lt;redo &#39;injuries&#39;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="start: part 1" tags="story" position="1225,1100" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
+&lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="start: part 1" tags="story" position="1225,1100" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
   &lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
 Professor Tamarack&#39;s office is on the Eastern edge of town. It&#39;s the biggest building in the village and what mysteries fill all three floors are as good as anyone&#39;s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
@@ -2106,6 +2105,9 @@ Found: ???
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+&lt;h2&gt;injuries&lt;/h2&gt;
+&lt;&lt;link &#39;ouch&#39;&gt;&gt;&lt;&lt;set $player.injuries ++&gt;&gt;&lt;&lt;redo &#39;injuries&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;ahhh...&#39;&gt;&gt;&lt;&lt;set $player.injuries --&gt;&gt;&lt;&lt;redo &#39;injuries&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;h2&gt;teleport&lt;/h2&gt;
 Enter grid coords: &lt;&lt;textbox &#39;$_destination&#39; &#39;&#39;&gt;&gt; &lt;&lt;button &#39;go&#39;&gt;&gt;&lt;&lt;run Dialog.close();&gt;&gt;&lt;&lt;goto $_destination&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;h2&gt;keywords&lt;/h2&gt;
@@ -2140,13 +2142,16 @@ TAMED
     &lt;&lt;set _object.tamed = false&gt;&gt;
   &lt;&lt;/for&gt;&gt;
 &lt;&lt;/link&gt;&gt; &lt;br /&gt;
-bakewing 
-&lt;&lt;link &#39;seen&#39;&gt;&gt;
-  &lt;&lt;set $mergimals.bakewing.seen = !$mergimals.bakewing.seen&gt;&gt;
-&lt;&lt;/link&gt;&gt; 
-&lt;&lt;link &#39;tamed&#39;&gt;&gt;
-  &lt;&lt;set $mergimals.bakewing.tamed = !$mergimals.bakewing.tamed&gt;&gt;
-&lt;&lt;/link&gt;&gt;
+NOT WORKING YET
+&lt;&lt;listbox &#39;_$cheatbox&#39;&gt;&gt;
+  &lt;&lt;optionsfrom $mergimals&gt;&gt;
+&lt;&lt;/listbox&gt;&gt;
+&lt;&lt;button &#39;toggle seen&#39;&gt;&gt;
+    &lt;&lt;set $mergimals[_$cheatbox].seen = !$mergimals[_$cheatbox].seen&gt;&gt;
+&lt;&lt;/button&gt;&gt; 
+&lt;&lt;button &#39;toggle tamed&#39;&gt;&gt;
+    &lt;&lt;set $mergimals[_$cheatbox].tamed = !$mergimals[_$cheatbox].tamed&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="incorrect" tags="" position="600,1600" size="100,100">Not quite!
 
 &lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="correct" tags="" position="725,1600" size="100,100">Nice!
@@ -2157,6 +2162,9 @@ bakewing
     &lt;/div&gt;
     &lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
         &lt;div class=&#39;injury-tracker-box&#39;&gt;
+                &lt;&lt;if $player.injuries &gt; 4&gt;&gt;
+                    &lt;&lt;set $player.injuries = 4&gt;&gt;
+                &lt;&lt;/if&gt;&gt;
                 &lt;&lt;for _count range $player.injuries&gt;&gt;
                     &lt;div class=&#39;injury-tracker injured&#39;&gt;&lt;/div&gt;
                 &lt;&lt;/for&gt;&gt;

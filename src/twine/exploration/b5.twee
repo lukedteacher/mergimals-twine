@@ -92,7 +92,7 @@ You cast your rod into the clear, blue water. After only a short while, you feel
 
 [[If you rolled 4 or less, find a common Mergimal.->stray: krustwo]]
 [[5 < n < 7: you find an uncommon Mergimal.->stray: tidefly]]
-[[n > 7: Read 014.->b5: strained line]]
+[[n > 7.->b5: strained line]]
 
 :: 131 [worksheet secret]
 You found a bottle floating in the water. It has a message inside! You unroll it and find a strange script.
@@ -106,7 +106,7 @@ You ride your Mergimal out to sea. The water is calm at first, but gets rougher 
 
 Do Worksheet SKIP COUNT 4.
 
-[[Failure: Gain an INJURY.->b3]]
+<<link 'Failure: GAIN an INJURY' 'b3'>><<set $player.injuries ++>><<redo 'injuries'>><</link>>
 [[Success.->b3]]
 
 :: b5: strained line [encounter]

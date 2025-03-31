@@ -38,7 +38,6 @@ Enter your name:
 
 !!!!DEBUG:
 <<link 'jump to exploring' 'b3'>><</link>>
-<<link 'ouch'>><<if $player.injuries < 4>><<set $player.injuries ++>><<redo 'injuries'>><</if>><</link>>
 
 :: start: part 1 [story]
 <<if $player.name is ''>>\

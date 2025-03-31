@@ -5,6 +5,9 @@
     </div>
     <<do tag 'injuries'>>
         <div class='injury-tracker-box'>
+                <<if $player.injuries > 4>>
+                    <<set $player.injuries = 4>>
+                <</if>>
                 <<for _count range $player.injuries>>
                     <div class='injury-tracker injured'></div>
                 <</for>>
