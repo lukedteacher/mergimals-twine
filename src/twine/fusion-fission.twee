@@ -35,8 +35,8 @@ Enter your name:
 [[Create a character.->cc: part 1]]
 [[Go see professor Tamrack->start: part 1]]
 
-DEBUG: <<link 'jump to exploring' 'b3'>><</link>>
-
+!!!!DEBUG:
+<<link 'jump to exploring' 'b3'>><</link>>
 
 :: start: part 1 [story]
 <<if $player.name is ''>>\

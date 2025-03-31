@@ -1,0 +1,33 @@
+:: volcano [mt-boom-boom map]
+<<map 'volcano'>><<east 'volcano'>><<west 'f5'>><</map>>\
+!!!!EXPLORE
+[[You see some sparks coming from behind a rock.->'stray: bakewing']]
+
+:: stray: bakewing [mt-boom-boom stray rare]
+<img class='mergimal-image' src='../images/mergimals/bakewing.png' />
+
+You see a small, red Mergimal that is chewing on some branches.
+
+Do Worksheet 84.1
+
+<<nobr>>
+    <<set $tamedPassage = 'tamed: bakewing'>>
+    <<link 'Throw a mergiball!'>>
+        <<if $backpack.mergiball < 1>>
+            <<dialog>>
+                <<include 'no mergiballs'>>
+            <</dialog>>
+        <<else>>
+            <<dialog>>
+                <<include 'tame attempt'>>
+            <</dialog>>
+        <</if>>
+    <</link>>
+<</nobr>>
+[[They got away: continue exploring.->volcano]]
+
+:: tamed: bakewing [mt-boom-boom tamed]
+<<card 'bakewing'>>
+This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, which they use to make pizza. Yum!
+
+<<link 'You tamed them.' 'volcano'>><<set $mergimals.bakewing.tamed = true>><<set $tamedPassage = ''>><</link>>

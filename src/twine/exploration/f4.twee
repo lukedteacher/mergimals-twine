@@ -1,5 +1,5 @@
 :: f4 [map]
-<<map 'f4'>><<north 'f3'>><<east 'g4'>><<west 'e4'>><</map>>\
+<<map 'f4'>><<north 'f3'>><<east 'g4'>><<west 'e4'>><<south 'f5'>><</map>>\
 !!!!EXPLORE
 [[Talk to the merchant.->f4: merchant]]
 [[Check the long grass.->f4: long grass]]

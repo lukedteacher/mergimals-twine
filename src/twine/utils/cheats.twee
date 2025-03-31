@@ -41,7 +41,9 @@
 <h2>teleport</h2>
 Enter grid coords: <<textbox '$_destination' ''>> <<button 'go'>><<run Dialog.close();>><<goto $_destination>><</button>>
 <h2>keywords</h2>
-PADDLE <<link '+'>><<set $keywords.paddle = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.paddle = false>><<redo 'keywords'>><</link>><br />
-RUSTY <<link '+'>><<set $keywords.rusty = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.rusty = false>><<redo 'keywords'>><</link>><br />
 CLOSED <<link '+'>><<set $keywords.closed = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.closed = false>><<redo 'keywords'>><</link>><br />
 FLASHLIGHT <<link '+'>><<set $keywords.flashlight = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.flashlight = false>><<redo 'keywords'>><</link>><br />
+DISCOUNT <<link '+'>><<set $keywords.discount = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.discount = false>><<redo 'keywords'>><</link>><br />
+PADDLE <<link '+'>><<set $keywords.paddle = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.paddle = false>><<redo 'keywords'>><</link>><br />
+RUSTY <<link '+'>><<set $keywords.rusty = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.rusty = false>><<redo 'keywords'>><</link>><br />
+SHINE <<link '+'>><<set $keywords.shine = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.shine = false>><<redo 'keywords'>><</link>><br />

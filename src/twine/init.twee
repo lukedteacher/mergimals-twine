@@ -31,18 +31,25 @@
 }>>
 
 <<set $mergimals to {
-  algelly: {seen: false, tamed: false},
-  bakewing: {seen: false, tamed: false},
-  boxin: {seen: false, tamed: false},
-  corwhal: {seen: false, tamed: false},
-  krustwo: {seen: false, tamed: false},
-  melodrake: {seen: false, tamed: false},
-  penguwaiian: {seen: false, tamed: false},
-  scorchilla: {seen: false, tamed: false},
-  sheetly: {seen: false, tamed: false},
-  treethorn: {seen: false, tamed: false},
-  zipper: {seen: false, tamed: false}
+  algelly: {type: 'wave', strategy: 'skip count', number: '6', seen: false, tamed: false},
+  bakewing: {type: 'forge', strategy: 'make a model', number: '84', seen: false, tamed: false},
+  boxin: {type: 'null', strategy: 'check a chart', number: '8', seen: false, tamed: false},
+  corwhal: {type: 'wave', strategy: 'skip count', number: '7', seen: false, tamed: false},
+  gemble: {type: 'deep', strategy: 'draw a diagram', number: '11', seen: false, tamed: false},
+  krustwo: {type: 'wave', strategy: 'skip count', number: '2', seen: false, tamed: false},
+  melodrake: {type: 'root', strategy: 'skip count', number: '2', seen: false, tamed: false},
+  penguwaiian: {type: 'wave', strategy: 'skip count', number: '10', seen: false, tamed: false},
+  scorchilla: {type: 'forge', strategy: 'make a model', number: '4', seen: false, tamed: false},
+  sheetly: {type: 'veil', strategy: 'find a familiar fact', number: '1/2', seen: false, tamed: false},
+  treethorn: {type: 'root', strategy: 'label a line', number: '3', seen: false, tamed: false},
+  zipper: {type: 'spark', strategy: 'repeated addition', number: '3', seen: false, tamed: false}
 }>>
+
+<<mergimal 'unknown' 'unknown' 'unknown' '?'>>
+
+<<for _name, _stats range $mergimals>>
+  <<mergimal _name _stats.type _stats.strategy _stats.number>>
+<</for>>
 
 <<widget 'tam' container>>
   <<say 'Prof. Tamarack' '../images/characters/tam.png'>>_contents<</say>>
@@ -50,16 +57,3 @@
 <<widget 'rhia' container>>
   <<say 'Rhia (Wave School Leader)' '../images/characters/rhia.webp'>>_contents<</say>>
 <</widget>>
-
-<<mergimal 'null' 'unknown' '???' '?'>>
-<<mergimal 'wave' 'algelly' 'skip count' '6'>>
-<<mergimal 'forge' 'bakewing' 'make a model' '84'>>
-<<mergimal 'null' 'boxin' 'check a chart' '8'>>
-<<mergimal 'wave' 'corwhal' 'skip count' '7'>>
-<<mergimal 'wave' 'krustwo' 'skip count' '2'>>
-<<mergimal 'root' 'melodrake' 'produce a pair' '2'>>
-<<mergimal 'wave' 'penguwaiian' 'skip count' '0'>>
-<<mergimal 'forge' 'scorchilla' 'make a model' '5'>>
-<<mergimal 'veil' 'sheetly' 'find a familiar fact' '1/2'>>
-<<mergimal 'root' 'treethorn' 'label a line' '3'>>
-<<mergimal 'spark' 'zipper' 'apply an algorithm' '3'>>

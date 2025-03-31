@@ -1,0 +1,4 @@
+:: f5 [map]
+<<map 'f5'>><<north 'f4'>><<east 'volcano'>><</map>>\
+!!!!EXPLORE
+[[Nothing here yet.->'404']]

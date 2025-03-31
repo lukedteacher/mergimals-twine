@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="85" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "backpack.css" */
+	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="89" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "backpack.css" */
 .backpack {
     display: flex;
     justify-content: center;
@@ -376,55 +376,7 @@ body a:hover {
     --violet: hsl(270, 100%, 30%);
     --magenta: hsl(300, 100%, 30%);
   }
-/* twine-user-stylesheet #8: "simple-inventory.css" */
-/* Simple Inventory, for SugarCube 2, by Chapel
-v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26 */
-ul.simple-inventory-list {
-  margin: 0 auto;
-  padding: 0;
-}
-
-.simple-inventory-listing {
-  list-style: none;
-  padding: 0.3rem 0.3rem 0.3rem 1rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}
-
-.simple-inventory-listing:nth-child(2n) {
-  background-color: #000;
-}
-
-.simple-inventory-listing > a,
-.simple-inventory-listing > span {
-  display: inline-block;
-}
-
-.all-listing.simple-inventory-listing {
-  border-top: 1px solid #fafafa;
-  background-color: transparent;
-}
-
-.drop-link {
-  color: #e33;
-}
-
-.drop-link:active,
-.drop-link:focus,
-.drop-link:hover {
-  color: #f88;
-}
-
-.simple-inventory-filter {
-  text-align: right;
-}
-
-.simple-inventory-filter input {
-  display: inline-block;
-}
-
-/* End Simple Inventory */
-/* twine-user-stylesheet #9: "speech.css" */
+/* twine-user-stylesheet #8: "speech.css" */
 .say {
     border: 1px solid #eee;
     overflow: none;
@@ -455,7 +407,7 @@ ul.simple-inventory-list {
     padding: 0.6rem;
     margin: 0;
 }
-/* twine-user-stylesheet #10: "stats.css" */
+/* twine-user-stylesheet #9: "stats.css" */
 .stats {
     display: flex;
     justify-content: center;
@@ -497,7 +449,7 @@ ul.simple-inventory-list {
 
     const artDir = '../images/mergimals/';
 
-    function createMergimal (type, name, strategy, number) {
+    function createMergimal (name, type, strategy, number) {
         mergimals.set(name, {type: type, strategy: strategy, number: number, image: artDir + name + '.png'});
         console.log('create mergimal: ' + mergimals);
     }
@@ -885,1260 +837,7 @@ Macro.add('dialogclose', {
 
 
 }());
-/* twine-user-script #7: "simple-inventory.js" */
-// Simple Inventory, for SugarCube 2, by Chapel
-// v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26
-// changes: changed 'pickup' to 'gain'
-// added default quantity of 1 for 'gain'
-// removed typeof legacy function
-("use strict");
-
-function _classCallCheck(t, e) {
-  if (!(t instanceof e))
-    throw new TypeError("cannot call a class as a function");
-}
-
-function _defineProperties(t, e) {
-  for (var n = 0; n < e.length; n++) {
-    var i = e[n];
-    (i.enumerable = i.enumerable || !1),
-      (i.configurable = !0),
-      "value" in i && (i.writable = !0),
-      Object.defineProperty(t, _toPropertyKey(i.key), i);
-  }
-}
-
-function _createClass(t, e, n) {
-  return (
-    e && _defineProperties(t.prototype, e),
-    n && _defineProperties(t, n),
-    Object.defineProperty(t, "prototype", { writable: !1 }),
-    t
-  );
-}
-
-function _toPropertyKey(t) {
-  var e = _toPrimitive(t, "string");
-  return "symbol" == typeof e ? e : String(e);
-}
-
-function _toPrimitive(t, e) {
-  if ("object" != typeof t || !t) return t;
-  var n = t[Symbol.toPrimitive];
-  if (void 0 !== n) {
-    var i = n.call(t, e || "default");
-    if ("object" != typeof i) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === e ? String : Number)(t);
-}
-
-!(function () {
-  var t = {
-      description: "",
-      handler: null,
-      displayName: "",
-      consumable: !0,
-      unique: !1,
-      permanent: !1,
-    },
-    e = new Map(),
-    n = (function () {
-      function n() {
-        var e =
-            arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "",
-          i =
-            arguments.length > 1 && void 0 !== arguments[1]
-              ? arguments[1]
-              : clone(t),
-          r =
-            arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : [];
-        if ((_classCallCheck(this, n), !e || "string" != typeof e))
-          throw new Error("invalid item ID");
-        if ("object" !== typeof i) throw new Error("invalid item definition");
-        Object.assign(this, Object.assign({}, t, i)),
-          (this.id = e),
-          (this._tags =
-            r instanceof Array ? r : "string" == typeof r ? [r] : []);
-      }
-      return (
-        _createClass(
-          n,
-          [
-            {
-              key: "tags",
-              get: function () {
-                return this._tags;
-              },
-            },
-            {
-              key: "hasTag",
-              value: function (t) {
-                return this._tags.includes(t);
-              },
-            },
-            {
-              key: "hasAllTags",
-              value: function () {
-                return this._tags.includesAll(
-                  [].slice.call(arguments).flat(1 / 0)
-                );
-              },
-            },
-            {
-              key: "hasAnyTags",
-              value: function () {
-                return this._tags.includesAny(
-                  [].slice.call(arguments).flat(1 / 0)
-                );
-              },
-            },
-            {
-              key: "name",
-              get: function () {
-                return this.displayName || this.id;
-              },
-              set: function (t) {
-                this.displayName = t;
-              },
-            },
-            {
-              key: "use",
-              value: function () {
-                return (
-                  "string" == typeof this.handler
-                    ? $.wiki(this.handler)
-                    : "function" == typeof this.handler && this.handler(this),
-                  this
-                );
-              },
-            },
-            {
-              key: "inspect",
-              value: function () {
-                return (
-                  Dialog.setup(this.name, "simple-inventory item-description"),
-                  Dialog.wiki(this.description),
-                  Dialog.open(),
-                  this
-                );
-              },
-            },
-          ],
-          [
-            {
-              key: "is",
-              value: function (t) {
-                return t instanceof n;
-              },
-            },
-            {
-              key: "add",
-              value: function (t, i, r) {
-                var a = new n(t, i, r);
-                return e.set(t, a), a;
-              },
-            },
-            {
-              key: "get",
-              value: function (t) {
-                return e.get(t);
-              },
-            },
-            {
-              key: "has",
-              value: function (t) {
-                return e.has(t);
-              },
-            },
-            {
-              key: "list",
-              get: function () {
-                return e;
-              },
-            },
-          ]
-        ),
-        n
-      );
-    })();
-  (setup.Item = n), (window.Item = window.Item || n);
-})(),
-  (function () {
-    var t = setup.Item,
-      e = !1,
-      n = "&hellip;",
-      i = {
-        inspect: "Inspect",
-        use: "use",
-        drop: "drop",
-        stack: "stack",
-        take: "take",
-        give: "give",
-        stackPre: "&nbsp;&times;&nbsp;",
-        stackPost: "&nbsp;",
-      },
-      r = {};
-    function a(e) {
-      return t.has(e) && t.get(e).unique;
-    }
-    var s = (function () {
-      function s() {
-        var t =
-            arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
-          e =
-            arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : [];
-        _classCallCheck(this, s),
-          (this.data = clone(t)),
-          (this._tags =
-            e instanceof Array ? e : "string" == typeof e ? [e] : []);
-      }
-      return (
-        _createClass(
-          s,
-          [
-            {
-              key: "emit",
-              value: function (t) {
-                var e =
-                  arguments.length > 1 && void 0 !== arguments[1]
-                    ? arguments[1]
-                    : {};
-                return s.emit(t, this, e), this;
-              },
-            },
-            {
-              key: "array",
-              get: function () {
-                var t = this,
-                  e = [];
-                return (
-                  Object.keys(this.data).forEach(function (n) {
-                    if ((e.push(n), t.data[n] > 1))
-                      for (var i = 1; i < t.data[n]; i++) e.push(n);
-                  }),
-                  e
-                );
-              },
-            },
-            {
-              key: "list",
-              get: function () {
-                return Object.keys(this.data);
-              },
-            },
-            {
-              key: "length",
-              get: function () {
-                return this.array.length;
-              },
-            },
-            {
-              key: "uniqueLength",
-              get: function () {
-                return this.list.length;
-              },
-            },
-            {
-              key: "table",
-              get: function () {
-                return this.data;
-              },
-            },
-            {
-              key: "tags",
-              get: function () {
-                return this._tags;
-              },
-            },
-            {
-              key: "hasTag",
-              value: function (t) {
-                return this._tags.includes(t);
-              },
-            },
-            {
-              key: "hasAllTags",
-              value: function () {
-                return this._tags.includesAll(
-                  [].slice.call(arguments).flat(1 / 0)
-                );
-              },
-            },
-            {
-              key: "hasAnyTags",
-              value: function () {
-                return this._tags.includesAny(
-                  [].slice.call(arguments).flat(1 / 0)
-                );
-              },
-            },
-            {
-              key: "count",
-              value: function (t) {
-                return t ? this.data[t] || 0 : this.length;
-              },
-            },
-            {
-              key: "has",
-              value: function (t) {
-                var e =
-                  arguments.length > 1 && void 0 !== arguments[1]
-                    ? arguments[1]
-                    : 1;
-                return this.data[t] >= e;
-              },
-            },
-            {
-              key: "hasAll",
-              value: function () {
-                var t = this;
-                return [].slice
-                  .call(arguments)
-                  .flat(1 / 0)
-                  .every(function (e) {
-                    return t.has(e);
-                  });
-              },
-            },
-            {
-              key: "hasAny",
-              value: function () {
-                var t = this;
-                return [].slice
-                  .call(arguments)
-                  .flat(1 / 0)
-                  .some(function (e) {
-                    return t.has(e);
-                  });
-              },
-            },
-            {
-              key: "compare",
-              value: function (t) {
-                var e = this,
-                  n = s.itemset(t);
-                return Object.keys(n).every(function (t) {
-                  return e.has(t, n[t]);
-                });
-              },
-            },
-            {
-              key: "merge",
-              value: function (t) {
-                var e = this,
-                  n = s.itemset(t);
-                return (
-                  Object.keys(n).forEach(function (t) {
-                    s.change(e, t, n[t]);
-                  }),
-                  n
-                );
-              },
-            },
-            {
-              key: "unmerge",
-              value: function (t) {
-                var e = this,
-                  n = {},
-                  i = s.itemset(t);
-                return (
-                  Object.keys(i).forEach(function (t) {
-                    e.has(t, i[t])
-                      ? (n[t] = i[t])
-                      : e.has(t) && (n[t] = e.count(t)),
-                      s.change(e, t, i[t], !0);
-                  }),
-                  n
-                );
-              },
-            },
-            {
-              key: "gain",
-              value: function () {
-                var t = this.merge(s.parseArgList.apply(null, arguments));
-                return this.emit("update", { delta: t }), this;
-              },
-            },
-            {
-              key: "drop",
-              value: function () {
-                var t = this.unmerge(s.parseArgList.apply(null, arguments));
-                return this.emit("update", { delta: t }), this;
-              },
-            },
-            {
-              key: "empty",
-              value: function () {
-                var t = clone(this.data);
-                return (
-                  (this.data = {}), this.emit("update", { delta: t }), this
-                );
-              },
-            },
-            {
-              key: "transfer",
-              value: function (t) {
-                var e = s.parseArgList.apply(
-                  null,
-                  [].slice.call(arguments).slice(1)
-                );
-                if (!s.is(t))
-                  throw new TypeError(
-                    "target inventory is not an inventory instance"
-                  );
-                var n = this.unmerge(e);
-                return (
-                  t.merge(n), this.emit("update", { target: t, delta: n }), this
-                );
-              },
-            },
-            {
-              key: "isEmpty",
-              value: function () {
-                return 0 === this.length;
-              },
-            },
-            {
-              key: "iterate",
-              value: function (t) {
-                var e = this;
-                return (
-                  "function" != typeof t ||
-                    this.list.forEach(function (n) {
-                      t(n, e.data[n]);
-                    }),
-                  this
-                );
-              },
-            },
-            {
-              key: "use",
-              value: function (e) {
-                if (t.has(e)) {
-                  var n = t.get(e);
-                  if ((n.use(), n.consumable)) {
-                    s.change(this, e, 1, !0);
-                    var i = {};
-                    (i[e] = 1), this.emit("update", { delta: i });
-                  }
-                  return this.emit("use", { item: n }), this;
-                }
-              },
-            },
-            {
-              key: "clone",
-              value: function () {
-                return new s(this.data || {}, this._tags || []);
-              },
-            },
-            {
-              key: "toJSON",
-              value: function () {
-                return JSON.reviveWrapper(
-                  "new setup.Inventory(" +
-                    JSON.stringify(this.data) +
-                    ", " +
-                    JSON.stringify(this._tags) +
-                    ")"
-                );
-              },
-            },
-          ],
-          [
-            {
-              key: "confirm",
-              get: function () {
-                return e;
-              },
-              set: function (t) {
-                e =
-                  "string" == typeof t && "all" === t.trim().toLowerCase()
-                    ? "all"
-                    : "string" == typeof t && "stack" === t.trim().toLowerCase()
-                    ? "stack"
-                    : !!t;
-              },
-            },
-            {
-              key: "emptyMessage",
-              get: function () {
-                return n;
-              },
-              set: function (t) {
-                "string" == typeof t && (n = t);
-              },
-            },
-            {
-              key: "strings",
-              get: function () {
-                return Object.assign(clone(i), r);
-              },
-              set: function (t) {
-                "object" === typeof t && (r = Object.assign(r, clone(t)));
-              },
-            },
-            {
-              key: "change",
-              value: function (e, n) {
-                var i =
-                    arguments.length > 2 && void 0 !== arguments[2]
-                      ? arguments[2]
-                      : 1,
-                  r =
-                    arguments.length > 3 &&
-                    void 0 !== arguments[3] &&
-                    arguments[3];
-                if (0 !== i) {
-                  if (
-                    (e instanceof s && (e = e.data), "object" !== typeof e)
-                  ) {
-                    if (e) throw new TypeError("cannot access inventory data");
-                    e = {};
-                  }
-                  if (!(o = n) || "string" != typeof o || !o.trim())
-                    throw new TypeError("invalid item name/id");
-                  var o;
-                  if (
-                    (("number" == typeof i &&
-                      !Number.isNaN(i) &&
-                      Number.isInteger(i)) ||
-                      (i = 1),
-                    r && (i *= -1),
-                    i > 0)
-                  ) {
-                    if (Object.keys(e).includes(n) && a(n)) return;
-                    i > 1 && a(n) && (i = 1),
-                      Object.keys(e).includes(n) || (e[n] = 0),
-                      (e[n] += i);
-                  } else {
-                    if (
-                      (function (e) {
-                        return t.has(e) && t.get(e).permanent;
-                      })(n)
-                    )
-                      return;
-                    Object.keys(e).includes(n) &&
-                      "number" == typeof e[n] &&
-                      (e[n] += i),
-                      e[n] <= 0 && delete e[n];
-                  }
-                  return e;
-                }
-              },
-            },
-            {
-              key: "itemset",
-              value: function () {
-                var t =
-                  arguments.length > 0 && void 0 !== arguments[0]
-                    ? arguments[0]
-                    : {};
-                if (s.is(t) && (t = t.data), "object" !== typeof t)
-                  return {};
-                var e = {};
-                return (
-                  Object.keys(t).forEach(function (n) {
-                    "number" == typeof t[n] &&
-                      Number.isInteger(t[n]) &&
-                      0 !== t[n] &&
-                      (e[n] = t[n]);
-                  }),
-                  e
-                );
-              },
-            },
-            {
-              key: "parseArgList",
-              value: function () {
-                var t = [].slice.call(arguments).flat(1 / 0); // flatten arguments into a single level array
-                if (t.length % 2 != 0) // ensure there are an even number of arguments
-                  throw new Error(
-                    "item sets should be pairs of item IDs and numbers"
-                  );
-                var e = {}; // convert each pair into an object
-                return (
-                  t.forEach(function (n, i) {
-                    i % 2 == 0 && (e[n] = t[i + 1]);
-                  }),
-                  e
-                );
-              },
-            },
-            {
-              key: "is",
-              value: function (t) {
-                return t instanceof s;
-              },
-            },
-            {
-              key: "emit",
-              value: function (t, e) {
-                var n =
-                  arguments.length > 2 && void 0 !== arguments[2]
-                    ? arguments[2]
-                    : {};
-                $(document).trigger(
-                  Object.assign(
-                    {
-                      type: ":inventory-" + t + ".simple-inventory",
-                      inventory: e,
-                      target: null,
-                      delta: {},
-                      item: null,
-                    },
-                    n
-                  )
-                );
-              },
-            },
-            {
-              key: "create",
-              value: function (t, e) {
-                return new s(t, e);
-              },
-            },
-          ]
-        ),
-        s
-      );
-    })();
-    (setup.Inventory = s), (window.Inventory = window.Inventory || s);
-  })(),
-  (function () {
-    var t = setup.Item,
-      e = setup.Inventory;
-    function n(t) {
-      var n =
-          arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null,
-        i = arguments.length > 2 && void 0 !== arguments[2] && arguments[2],
-        r =
-          arguments.length > 3 && void 0 !== arguments[3]
-            ? arguments[3]
-            : "Alert",
-        a =
-          arguments.length > 4 && void 0 !== arguments[4]
-            ? arguments[4]
-            : "Are you sure?";
-      if (!t || "function" != typeof t)
-        throw new Error("Invalid confirmation callback!");
-      if (e.confirm)
-        if ("all" !== e.confirm || "all" === i)
-          if ("stack" !== e.confirm || i) {
-            var s = { display: "inline-block", float: "right" },
-              o = $(document.createElement("div")),
-              u = $(document.createElement("p")).append(a),
-              l = $(document.createElement("div")).addClass(
-                "confirmation-buttons"
-              ),
-              c = $(document.createElement("button"))
-                .append("Okay")
-                .addClass("confirm-yes")
-                .css(Object.assign(s, { "margin-right": "0.5rem" })),
-              d = $(document.createElement("button"))
-                .append("Cancel")
-                .addClass("confirm-no")
-                .css(s);
-            t && "function" == typeof t && c.ariaClick(t),
-              n && "function" == typeof n && d.ariaClick(n),
-              l.append(d, c),
-              o.append(u, l),
-              Dialog.setup(r, "simple-inventory confirmation"),
-              Dialog.append(o),
-              Dialog.open();
-          } else t();
-        else t();
-      else t();
-    }
-    function i(t) {
-      var span = $(document.createElement("span")).addClass("spacer");
-      return t && span.wiki("" + t), span;
-    }
-    function r(t, i) {
-      var r = arguments.length > 2 && void 0 !== arguments[2] && arguments[2],
-        a =
-          arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : null;
-      return (
-        "give" === String(i).toLowerCase().trim()
-          ? (i = e.strings.give)
-          : "take" === String(i).toLowerCase().trim()
-          ? (i = e.strings.take)
-          : (i && "drop" !== String(i).toLowerCase().trim()) ||
-            (i = e.strings.drop),
-        $(document.createElement(r ? "button" : "a"))
-          .addClass("all-link drop-link")
-          .wiki(i + " all")
-          .ariaClick(function () {
-            t.isEmpty() ||
-              n(
-                function () {
-                  a && e.is(a) ? (a.merge(t), t.empty()) : t.empty(),
-                    Dialog.close();
-                },
-                function () {
-                  Dialog.close();
-                },
-                !0
-              );
-          })
-      );
-    }
-
-    function a(a) {
-      var s,
-        o =
-          arguments.length > 1 && void 0 !== arguments[1]
-            ? arguments[1]
-            : {
-                description: !0,
-                use: !0,
-                transfer: null,
-                drop: !0,
-                all: !0,
-                stack: !0,
-                dropActionText: "",
-                classes: "",
-              },
-        u = $(document.createElement("ul")).addClass("simple-inventory-list");
-      if (a.length) {
-        if (
-          ((s = a.list.map(function (r) {
-            var s = [],
-              u = r;
-            t.has(r) && (u = t.get(r).name),
-              o.description && t.has(r) && t.get(r).description
-                ? s.push(
-                    (function (n, i, r) {
-                      var a =
-                        arguments.length > 3 &&
-                        void 0 !== arguments[3] &&
-                        arguments[3];
-                      return (
-                        (r = r || e.strings.inspect),
-                        $(document.createElement(a ? "button" : "a"))
-                          .addClass("inspect-link")
-                          .wiki("" + r)
-                          .ariaClick(function () {
-                            t.get(i).inspect();
-                          })
-                      );
-                    })(a, r, u)
-                  )
-                : s.push(
-                    $(document.createElement("span"))
-                      .append(t.has(r) ? t.get(r).name : r)
-                      .addClass("item-name")
-                  ),
-              s.push(
-                (function (t, n, i, r) {
-                  var a = $(document.createElement("span")),
-                    s = t.count(n);
-                  return (
-                    (i = i || e.strings.stackPre),
-                    (r = r || e.strings.stackPost),
-                    1 == s
-                      ? a.addClass("item-count single")
-                      : a.addClass("item-count multi"),
-                    a.append("" + i + (s || 0) + r)
-                  );
-                })(a, r)
-              ),
-              o.use && t.has(r) && t.get(r).handler
-                ? s.push(
-                    (function (t, n, i) {
-                      var r =
-                        arguments.length > 3 &&
-                        void 0 !== arguments[3] &&
-                        arguments[3];
-                      return (
-                        (i = i || e.strings.use),
-                        $(document.createElement(r ? "button" : "a"))
-                          .addClass("use-link")
-                          .wiki("" + i)
-                          .ariaClick(function () {
-                            t.use(n);
-                          })
-                      );
-                    })(a, r)
-                  )
-                : s.push(i()),
-              ((o.transfer && e.is(o.transfer)) || o.drop) &&
-              !(function (e) {
-                return t.has(e) && t.get(e).permanent;
-              })(r)
-                ? (s.push(
-                    (function (t, i, r) {
-                      var a =
-                          arguments.length > 3 &&
-                          void 0 !== arguments[3] &&
-                          arguments[3],
-                        s =
-                          arguments.length > 4 && void 0 !== arguments[4]
-                            ? arguments[4]
-                            : null;
-                      return (
-                        "give" === String(r).toLowerCase().trim()
-                          ? (r = e.strings.give)
-                          : "take" === String(r).toLowerCase().trim()
-                          ? (r = e.strings.take)
-                          : (r && "drop" !== String(r).toLowerCase().trim()) ||
-                            (r = e.strings.drop),
-                        $(document.createElement(a ? "button" : "a"))
-                          .addClass("drop-link")
-                          .wiki("" + r)
-                          .ariaClick(function () {
-                            n(
-                              function () {
-                                s && e.is(s)
-                                  ? t.transfer(s, i, 1)
-                                  : t.drop(i, 1),
-                                  Dialog.close();
-                              },
-                              function () {
-                                Dialog.close();
-                              }
-                            );
-                          })
-                      );
-                    })(a, r, o.dropActionText, !1, o.transfer || null)
-                  ),
-                  a.count(r) > 1 && o.stack
-                    ? s.push(
-                        (function (t, i, r) {
-                          var a =
-                              arguments.length > 3 &&
-                              void 0 !== arguments[3] &&
-                              arguments[3],
-                            s =
-                              arguments.length > 4 && void 0 !== arguments[4]
-                                ? arguments[4]
-                                : null;
-                          return (
-                            "give" === String(r).toLowerCase().trim()
-                              ? (r = e.strings.give)
-                              : "take" === String(r).toLowerCase().trim()
-                              ? (r = e.strings.take)
-                              : (r &&
-                                  "drop" !== String(r).toLowerCase().trim()) ||
-                                (r = e.strings.drop),
-                            (r = r + "&nbsp;" + e.strings.stack),
-                            $(document.createElement(a ? "button" : "a"))
-                              .addClass("stack-link drop-link")
-                              .wiki("" + r)
-                              .ariaClick(function () {
-                                n(
-                                  function () {
-                                    s && e.is(s)
-                                      ? t.transfer(s, i, t.count(i))
-                                      : t.drop(i, t.count(i)),
-                                      Dialog.close();
-                                  },
-                                  function () {
-                                    Dialog.close();
-                                  }
-                                );
-                              })
-                          );
-                        })(a, r, o.dropActionText, !1, o.transfer || null)
-                      )
-                    : s.push(i()))
-                : s.push(i());
-            var l = r.normalize().toLowerCase().replace(/\s+/g, "-");
-            return $(document.createElement("li"))
-              .append(s)
-              .addClass("simple-inventory-listing")
-              .attr({ "data-item-id": l, "data-keyword": u });
-          })),
-          o.all)
-        ) {
-          var l = $(document.createElement("li"))
-            .addClass("all-listing simple-inventory-listing")
-            .append([
-              i("&mdash;"),
-              i(),
-              i(),
-              r(a, o.dropActionText, !1, o.transfer || null),
-            ]);
-          s.push(l);
-        }
-      } else
-        s = $(document.createElement("li"))
-          .addClass("simple-inventory-listing")
-          .append($(document.createElement("span")).wiki(e.emptyMessage));
-      return u.append(s), u;
-    }
-
-    e.prototype.interface = function () {
-      var t,
-        e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
-        n =
-          arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null,
-        i = this,
-        r = $(document.createElement("div")).addClass(
-          "simple-inventory-wrapper"
-        );
-      return (
-        e.filter &&
-          r.append(
-            (function () {
-              var t = $(document.createElement("div")).addClass(
-                  "simple-inventory-filter"
-                ),
-                e = $(document.createElement("input"))
-                  .attr({ type: "text", placeholder: "Filter..." })
-                  .on("input", function () {
-                    var n = e.val().trim().toLowerCase(),
-                      i = t
-                        .parent()
-                        .find(
-                          "ul.simple-inventory-list li.simple-inventory-listing:not(.all-listing)"
-                        );
-                    n
-                      ? i.each(function (t, e) {
-                          var i = $(e);
-                          i &&
-                            i.length &&
-                            (i
-                              .attr("data-keyword")
-                              .substring(0, n.length)
-                              .trim()
-                              .toLowerCase() !== n
-                              ? i.hide()
-                              : i.show());
-                        })
-                      : i.show();
-                  });
-              return t.append(e), t;
-            })()
-          ),
-        r.append(a(this, e)),
-        $(document).on(
-          ":inventory-update.simple-inventory.gui-built-in",
-          function () {
-            r.length
-              ? r.empty().append(a(i, e))
-              : $(document).off(
-                  ":inventory-update.simple-inventory.gui-built-in"
-                );
-          }
-        ),
-        n && n instanceof $ ? (t = n) : n && (t = $(n)),
-        t && r.appendTo(t),
-        r
-      );
-    };
-  })(),
-  (function () {
-    setup.Inventory, setup.Item;
-    var t = ".simple-inventory-userland",
-      e = ":inventory-update.simple-inventory" + t,
-      n = ":inventory-use.simple-inventory" + t;
-    function i(t) {
-      return t && "function" == typeof t;
-    }
-    Object.assign(setup.Inventory, {
-      events: {
-        update: {
-          on: function () {
-            var t =
-                arguments.length > 0 && void 0 !== arguments[0]
-                  ? arguments[0]
-                  : null,
-              n =
-                arguments.length > 1 && void 0 !== arguments[1]
-                  ? arguments[1]
-                  : "";
-            i(t) && $(document).on(e + n, t);
-          },
-          one: function () {
-            var t =
-                arguments.length > 0 && void 0 !== arguments[0]
-                  ? arguments[0]
-                  : null,
-              n =
-                arguments.length > 1 && void 0 !== arguments[1]
-                  ? arguments[1]
-                  : "";
-            i(t) && $(document).one(e + n, t);
-          },
-          off: function () {
-            var t =
-              arguments.length > 0 && void 0 !== arguments[0]
-                ? arguments[0]
-                : "";
-            $(document).off(e + t);
-          },
-        },
-        use: {
-          on: function () {
-            var t =
-                arguments.length > 0 && void 0 !== arguments[0]
-                  ? arguments[0]
-                  : null,
-              e =
-                arguments.length > 1 && void 0 !== arguments[1]
-                  ? arguments[1]
-                  : "";
-            i(t) && $(document).on(n + e, t);
-          },
-          one: function () {
-            var t =
-                arguments.length > 0 && void 0 !== arguments[0]
-                  ? arguments[0]
-                  : null,
-              e =
-                arguments.length > 1 && void 0 !== arguments[1]
-                  ? arguments[1]
-                  : "";
-            i(t) && $(document).one(n + e, t);
-          },
-          off: function () {
-            var t =
-              arguments.length > 0 && void 0 !== arguments[0]
-                ? arguments[0]
-                : "";
-            $(document).off(n + t);
-          },
-        },
-      },
-    });
-  })(),
-  (function () {
-    var t = ":";
-    function e(e) {
-      var n = (function (t) {
-          return t
-            .replace(/\r+/g, "\n")
-            .replace(/\n+/, "\n")
-            .replace(/ +/g, " ")
-            .trim()
-            .split(/\n/g);
-        })(e),
-        i = {};
-      return (
-        n.forEach(function (e) {
-          if (e && e.trim() && e.includes(t)) {
-            var n = e.trim().split(t);
-            i[n[0].trim()] = n[1].trim();
-          }
-        }),
-        i
-      );
-    }
-    var n = (function (t) {
-      try {
-        return Story.has(t) ? e(Story.get(t).text) : {};
-      } catch (t) {
-        return console.error(t.message, t), {};
-      }
-    })("inventory.strings");
-    n.empty &&
-      "string" == typeof n.empty &&
-      n.empty.trim() &&
-      ((setup.Inventory.emptyMessage = n.empty), delete n.empty),
-      (setup.Inventory.strings = n || {});
-  })(),
-  (function () {
-    var t = setup.Item,
-      e = setup.Inventory;
-    function n(t) {
-      return (
-        t &&
-        "string" == typeof t &&
-        t.length >= 2 &&
-        ("$" === t[0] || "_" === t[0])
-      );
-    }
-    function i(t) {
-      if ((n(t) && (t = State.getVar(t)), e.is(t))) return t;
-    }
-    Macro.add(["item", "consumable"], {
-      tags: ["description", "tags", "unique", "permanent"],
-      handler: function () {
-        var e,
-          n,
-          i,
-          r,
-          a = null,
-          s = !1,
-          o = !1,
-          u = !1;
-        if (State.length > 0)
-          return this.error(
-            "items must be defined in `StoryInit` or story JavaScript!"
-          );
-        if (
-          !this.args[0] ||
-          "string" != typeof this.args[0] ||
-          !this.args[0].trim()
-        )
-          return this.error("invalid item ID");
-        if (
-          ((e = this.args[0].trim()),
-          "consumable" === this.name &&
-            ((a = this.payload[0].contents || null), (s = !0)),
-          this.args[1] && (n = this.args[1]),
-          this.payload.length > 1)
-        ) {
-          var l = this.payload.find(function (t) {
-              return "description" === t.name;
-            }),
-            c = this.payload.find(function (t) {
-              return "tags" === t.name;
-            }),
-            d = this.payload.find(function (t) {
-              return "unique" === t.name;
-            }),
-            f = this.payload.find(function (t) {
-              return "permanent" === t.name;
-            });
-          l && (i = l.contents.trim()),
-            c && (r = c.args.flat(1 / 0)),
-            d && (o = !0),
-            f && (u = !0);
-        }
-        t.add(
-          e,
-          {
-            displayName: n || "",
-            description: i || "",
-            handler: a,
-            consumable: s,
-            unique: o,
-            permanent: u,
-          },
-          r
-        );
-      },
-    }),
-      Macro.add("newinv", {
-        handler: function () {
-          var variableName = this.args.raw
-            .trim()
-            .split(" ")
-            .first()
-            .replace(/["']/g, "")
-            .trim();
-          if (!n(variableName))
-            return this.error(
-              "argument must be a story or temporary variable!"
-            );
-          State.setVar(variableName, new e({}, this.args.flat(1 / 0).slice(1)));
-        },
-      }),
-      Macro.add(["gain", "drop"], {
-        handler: function () {
-          const inventory = i(this.args[0]); // validate the inventory object
-          
-          if (!inventory) {
-            return this.error("first argument must be a valid inventory!");
-          }
-      
-          // check if at least the ITEM is provided (minimum 2 arguments: inventory + item)
-          if (this.args.length < 2) {
-            return this.error("no item specified!");
-          }
-      
-          // extract item and quantity (or default to 1)
-          const [item, quantity = 1] = this.args.slice(1);
-          
-          // call the inventory method (gain/drop) with item and resolved quantity
-          return void inventory[this.name](item, quantity);
-        },
-      });
-      Macro.add("dropall", {
-        handler: function () {
-          var t = i(this.args[0]);
-          if (!t)
-            return this.error("first argument must be a valid inventory!");
-          t.empty();
-        },
-      }),
-      Macro.add(["transfer", "merge", "unmerge"], {
-        handler: function () {
-          var t = i(this.args[0]);
-          if (!t)
-            return this.error("first argument must be a valid inventory!");
-          var e = i(this.args[1]);
-          if (!e)
-            return this.error("second argument must be a valid inventory!");
-          if ("transfer" === this.name) {
-            if (this.args.length < 4)
-              return this.error("no items to transfer were provided");
-            t.transfer(e, this.args.slice(2));
-          } else t[this.name](e);
-        },
-      }),
-      Macro.add(["inv", "take", "give"], {
-        handler: function () {
-          var t = null,
-            n = i(this.args[0]);
-          if (!n)
-            return this.error("first argument must be a valid inventory!");
-          this.args[1] && i(this.args[1]) && (t = i(this.args[1]));
-          var r = {
-            description: this.args.includesAny("inspect", "description"),
-            use: this.args.includes("use"),
-            transfer: t,
-            drop: this.args.includes("drop"),
-            all: this.args.includes("all"),
-            stack: this.args.includes("stack"),
-            filter: this.args.includes("filter"),
-            dropActionText:
-              "inv" === this.name
-                ? "Drop"
-                : e.strings[this.name.trim().toLowerCase()],
-            classes: "macro-".concat(this.name),
-          };
-          n.interface(r, $(this.output));
-        },
-      });
-  })(),
-  (function () {
-    var t = setup.Item,
-      e = setup.Inventory;
-    function n(t, e, n) {
-      if ("object" !== typeof e)
-        throw new TypeError(
-          "the extension should be a plain generic object holding the properties and methods you want to add"
-        );
-      Object.keys(e).forEach(function (i) {
-        if (t[i] && !n)
-          throw new Error('cannot override existing property "' + i + '"!');
-        t[i] = e[i];
-      });
-    }
-    
-    Object.assign(e, {
-      extend: function (t) {
-        n(
-          e,
-          t,
-          arguments.length > 1 && void 0 !== arguments[1] && arguments[1]
-        );
-      },
-      extendPrototype: function (t) {
-        var i = arguments.length > 1 && void 0 !== arguments[1] && arguments[1];
-        n(e.prototype, t, i);
-      },
-    }),
-      Object.assign(t, {
-        extend: function (e) {
-          n(
-            t,
-            e,
-            arguments.length > 1 && void 0 !== arguments[1] && arguments[1]
-          );
-        },
-        extendPrototype: function (e) {
-          var i =
-            arguments.length > 1 && void 0 !== arguments[1] && arguments[1];
-          n(t.prototype, e, i);
-        },
-      });
-  })();
-// end simple inventory
-/* twine-user-script #8: "speech.js" */
+/* twine-user-script #7: "speech.js" */
 (function () {
     // v1.1.1
     'use strict';
@@ -2233,7 +932,7 @@ function _toPrimitive(t, e) {
         });
     });
 }());
-/* twine-user-script #9: "Story JavaScript" */
+/* twine-user-script #8: "Story JavaScript" */
 Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" tags="map" position="100,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;south &#39;b4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around-&gt;b3: description]]
@@ -2840,7 +1539,7 @@ A bunch of people seem to be waving fans and complaining about how their air con
 [[Continue exploring.-&gt;e3]]</tw-passagedata><tw-passagedata pid="75" name="e4" tags="map" position="600,975" size="100,100">&lt;&lt;map &#39;e4&#39;&gt;&gt;&lt;&lt;north &#39;e3&#39;&gt;&gt;&lt;&lt;east &#39;f4&#39;&gt;&gt;&lt;&lt;west &#39;d4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Check the long grass.-&gt;e4: long grass]]
-[[Approach the trainers.-&gt;e4: trainer]]</tw-passagedata><tw-passagedata pid="76" name="e4: long grass" tags="" position="725,975" size="100,100">Some mergimals are here probably.</tw-passagedata><tw-passagedata pid="77" name="e4: trainer" tags="" position="850,975" size="100,100">Two trainers even!</tw-passagedata><tw-passagedata pid="78" name="f4" tags="map" position="975,975" size="100,100">&lt;&lt;map &#39;f4&#39;&gt;&gt;&lt;&lt;north &#39;f3&#39;&gt;&gt;&lt;&lt;east &#39;g4&#39;&gt;&gt;&lt;&lt;west &#39;e4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+[[Approach the trainers.-&gt;e4: trainer]]</tw-passagedata><tw-passagedata pid="76" name="e4: long grass" tags="" position="725,975" size="100,100">Some mergimals are here probably.</tw-passagedata><tw-passagedata pid="77" name="e4: trainer" tags="" position="850,975" size="100,100">Two trainers even!</tw-passagedata><tw-passagedata pid="78" name="f4" tags="map" position="975,975" size="100,100">&lt;&lt;map &#39;f4&#39;&gt;&gt;&lt;&lt;north &#39;f3&#39;&gt;&gt;&lt;&lt;east &#39;g4&#39;&gt;&gt;&lt;&lt;west &#39;e4&#39;&gt;&gt;&lt;&lt;south &#39;f5&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Talk to the merchant.-&gt;f4: merchant]]
 [[Check the long grass.-&gt;f4: long grass]]
@@ -2891,14 +1590,41 @@ She seems friendly.
 
 [[Another time.-&gt;f4]]</tw-passagedata><tw-passagedata pid="82" name="f4: trainer" tags="" position="225,1100" size="100,100">A trainer!
 
-[[Another time.-&gt;f4]]</tw-passagedata><tw-passagedata pid="83" name="StoryCaption" tags="" position="350,1100" size="100,100">&lt;&lt;include stats&gt;&gt;
+[[Another time.-&gt;f4]]</tw-passagedata><tw-passagedata pid="83" name="f5" tags="map" position="350,1100" size="100,100">&lt;&lt;map &#39;f5&#39;&gt;&gt;&lt;&lt;north &#39;f4&#39;&gt;&gt;&lt;&lt;east &#39;volcano&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+!!!!EXPLORE
+[[Nothing here yet.-&gt;&#39;404&#39;]]</tw-passagedata><tw-passagedata pid="84" name="volcano" tags="mt-boom-boom map" position="475,1100" size="100,100">&lt;&lt;map &#39;volcano&#39;&gt;&gt;&lt;&lt;east &#39;volcano&#39;&gt;&gt;&lt;&lt;west &#39;f5&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
+!!!!EXPLORE
+[[You see some sparks coming from behind a rock.-&gt;&#39;stray: bakewing&#39;]]</tw-passagedata><tw-passagedata pid="85" name="stray: bakewing" tags="mt-boom-boom stray rare" position="600,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/bakewing.png&#39; /&gt;
+
+You see a small, red Mergimal that is chewing on some branches.
+
+Do Worksheet 84.1
+
+&lt;&lt;nobr&gt;&gt;
+    &lt;&lt;set $tamedPassage = &#39;tamed: bakewing&#39;&gt;&gt;
+    &lt;&lt;link &#39;Throw a mergiball!&#39;&gt;&gt;
+        &lt;&lt;if $backpack.mergiball &lt; 1&gt;&gt;
+            &lt;&lt;dialog&gt;&gt;
+                &lt;&lt;include &#39;no mergiballs&#39;&gt;&gt;
+            &lt;&lt;/dialog&gt;&gt;
+        &lt;&lt;else&gt;&gt;
+            &lt;&lt;dialog&gt;&gt;
+                &lt;&lt;include &#39;tame attempt&#39;&gt;&gt;
+            &lt;&lt;/dialog&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+[[They got away: continue exploring.-&gt;volcano]]</tw-passagedata><tw-passagedata pid="86" name="tamed: bakewing" tags="mt-boom-boom tamed" position="725,1100" size="100,100">&lt;&lt;card &#39;bakewing&#39;&gt;&gt;
+This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, which they use to make pizza. Yum!
+
+&lt;&lt;link &#39;You tamed them.&#39; &#39;volcano&#39;&gt;&gt;&lt;&lt;set $mergimals.bakewing.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="StoryCaption" tags="" position="850,1100" size="100,100">&lt;&lt;include stats&gt;&gt;
 &lt;&lt;include backpack&gt;&gt;
 &lt;&lt;include tamed&gt;&gt;
-&lt;&lt;include keywords&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="StoryMenu" tags="" position="475,1100" size="100,100">&lt;&lt;link &#39;cheats&#39;&gt;&gt;
+&lt;&lt;include keywords&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="StoryMenu" tags="" position="975,1100" size="100,100">&lt;&lt;link &#39;cheats&#39;&gt;&gt;
   &lt;&lt;dialog &#39;cheats&#39;&gt;&gt;\
     &lt;&lt;include &#39;cheats&#39;&gt;&gt;
   &lt;&lt;/dialog&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="001" tags="start" position="600,1100" size="100,100">Today is the first day of your Mergimals journey!
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="001" tags="start" position="1100,1100" size="100,100">Today is the first day of your Mergimals journey!
 
 Enter your name:
 &lt;&lt;textbox &#39;$player.name&#39; &#39;&#39;&gt;&gt;
@@ -2906,7 +1632,8 @@ Enter your name:
 [[Create a character.-&gt;cc: part 1]]
 [[Go see professor Tamrack-&gt;start: part 1]]
 
-DEBUG: &lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="start: part 1" tags="story" position="725,1100" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
+!!!!DEBUG:
+&lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="start: part 1" tags="story" position="1225,1100" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
   &lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
 Professor Tamarack&#39;s office is on the Eastern edge of town. It&#39;s the biggest building in the village and what mysteries fill all three floors are as good as anyone&#39;s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
@@ -2939,23 +1666,23 @@ Finally, you’re here!
       &lt;&lt;link &#39;Follow the professor inside the Lab.&#39; &#39;start: part 2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;/replace&gt;&gt;
   &lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="87" name="start: part 2" tags="story" position="850,1100" size="100,100">You enter.
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="91" name="start: part 2" tags="story" position="100,1225" size="100,100">You enter.
 
 It&#39;s time to pick a Mergimal!
 
 &lt;div style=&#39;display: flex; gap: 1rem;&#39;&gt;&lt;&lt;card &#39;melodrake&#39; true&gt;&gt;&lt;&lt;set $mergimals.melodrake.seen = true&gt;&gt;&lt;&lt;card &#39;scorchilla&#39; true&gt;&gt;&lt;&lt;set $mergimals.scorchilla.seen = true&gt;&gt;&lt;&lt;card &#39;penguwaiian&#39; true&gt;&gt;&lt;&lt;set $mergimals.penguwaiian.seen = true&gt;&gt;&lt;/div&gt;
-[[Ask if there are any others.-&gt;404]]</tw-passagedata><tw-passagedata pid="88" name="start: part 3" tags="" position="975,1100" size="100,100">&lt;&lt;tam&gt;&gt;Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.&lt;&lt;/tam&gt;&gt;\
+[[Ask if there are any others.-&gt;404]]</tw-passagedata><tw-passagedata pid="92" name="start: part 3" tags="" position="225,1225" size="100,100">&lt;&lt;tam&gt;&gt;Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.&lt;&lt;/tam&gt;&gt;\
 You got 5 mergiballs.&lt;&lt;set $backpack.mergiball += 5&gt;&gt;
 
 They have been added to your backpack.
 
 It&#39;s time to start your journey.
 
-[[Let&#39;s go!-&gt;start: part 4]]</tw-passagedata><tw-passagedata pid="89" name="start: part 4" tags="" position="1100,1100" size="100,100">&lt;&lt;tam&gt;&gt;Wait!
+[[Let&#39;s go!-&gt;start: part 4]]</tw-passagedata><tw-passagedata pid="93" name="start: part 4" tags="" position="350,1225" size="100,100">&lt;&lt;tam&gt;&gt;Wait!
 
 Do you need me to show you how to catch Mergimals?&lt;&lt;/tam&gt;&gt;\
 &lt;&lt;link &#39;Say: Yes, please.&#39; &#39;tutorial: part 1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;Say: No, thanks. I already know how.&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="StoryInit" tags="" position="1225,1100" size="100,100">&lt;&lt;set $player to {
+&lt;&lt;link &#39;Say: No, thanks. I already know how.&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="StoryInit" tags="" position="475,1225" size="100,100">&lt;&lt;set $player to {
   name: &#39;none set&#39;,
   image: &#39;../images/characters/player.png&#39;,
   difficulty: &#39;easy&#39;
@@ -2987,42 +1714,36 @@ Do you need me to show you how to catch Mergimals?&lt;&lt;/tam&gt;&gt;\
 }&gt;&gt;
 
 &lt;&lt;set $mergimals to {
-  algelly: {seen: false, tamed: false},
-  bakewing: {seen: false, tamed: false},
-  boxin: {seen: false, tamed: false},
-  corwhal: {seen: false, tamed: false},
-  krustwo: {seen: false, tamed: false},
-  melodrake: {seen: false, tamed: false},
-  penguwaiian: {seen: false, tamed: false},
-  scorchilla: {seen: false, tamed: false},
-  sheetly: {seen: false, tamed: false},
-  treethorn: {seen: false, tamed: false},
-  zipper: {seen: false, tamed: false}
+  algelly: {type: &#39;wave&#39;, strategy: &#39;skip count&#39;, number: &#39;6&#39;, seen: false, tamed: false},
+  bakewing: {type: &#39;forge&#39;, strategy: &#39;make a model&#39;, number: &#39;84&#39;, seen: false, tamed: false},
+  boxin: {type: &#39;null&#39;, strategy: &#39;check a chart&#39;, number: &#39;8&#39;, seen: false, tamed: false},
+  corwhal: {type: &#39;wave&#39;, strategy: &#39;skip count&#39;, number: &#39;7&#39;, seen: false, tamed: false},
+  gemble: {type: &#39;deep&#39;, strategy: &#39;draw a diagram&#39;, number: &#39;11&#39;, seen: false, tamed: false},
+  krustwo: {type: &#39;wave&#39;, strategy: &#39;skip count&#39;, number: &#39;2&#39;, seen: false, tamed: false},
+  melodrake: {type: &#39;root&#39;, strategy: &#39;skip count&#39;, number: &#39;2&#39;, seen: false, tamed: false},
+  penguwaiian: {type: &#39;wave&#39;, strategy: &#39;skip count&#39;, number: &#39;10&#39;, seen: false, tamed: false},
+  scorchilla: {type: &#39;forge&#39;, strategy: &#39;make a model&#39;, number: &#39;4&#39;, seen: false, tamed: false},
+  sheetly: {type: &#39;veil&#39;, strategy: &#39;find a familiar fact&#39;, number: &#39;1/2&#39;, seen: false, tamed: false},
+  treethorn: {type: &#39;root&#39;, strategy: &#39;label a line&#39;, number: &#39;3&#39;, seen: false, tamed: false},
+  zipper: {type: &#39;spark&#39;, strategy: &#39;repeated addition&#39;, number: &#39;3&#39;, seen: false, tamed: false}
 }&gt;&gt;
+
+&lt;&lt;mergimal &#39;unknown&#39; &#39;unknown&#39; &#39;unknown&#39; &#39;?&#39;&gt;&gt;
+
+&lt;&lt;for _name, _stats range $mergimals&gt;&gt;
+  &lt;&lt;mergimal _name _stats.type _stats.strategy _stats.number&gt;&gt;
+&lt;&lt;/for&gt;&gt;
 
 &lt;&lt;widget &#39;tam&#39; container&gt;&gt;
   &lt;&lt;say &#39;Prof. Tamarack&#39; &#39;../images/characters/tam.png&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 &lt;&lt;widget &#39;rhia&#39; container&gt;&gt;
   &lt;&lt;say &#39;Rhia (Wave School Leader)&#39; &#39;../images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;mergimal &#39;null&#39; &#39;unknown&#39; &#39;???&#39; &#39;?&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;wave&#39; &#39;algelly&#39; &#39;skip count&#39; &#39;6&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;forge&#39; &#39;bakewing&#39; &#39;make a model&#39; &#39;84&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;null&#39; &#39;boxin&#39; &#39;check a chart&#39; &#39;8&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;wave&#39; &#39;corwhal&#39; &#39;skip count&#39; &#39;7&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;wave&#39; &#39;krustwo&#39; &#39;skip count&#39; &#39;2&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;root&#39; &#39;melodrake&#39; &#39;produce a pair&#39; &#39;2&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;wave&#39; &#39;penguwaiian&#39; &#39;skip count&#39; &#39;0&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;forge&#39; &#39;scorchilla&#39; &#39;make a model&#39; &#39;5&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;veil&#39; &#39;sheetly&#39; &#39;find a familiar fact&#39; &#39;1/2&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;root&#39; &#39;treethorn&#39; &#39;label a line&#39; &#39;3&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;spark&#39; &#39;zipper&#39; &#39;apply an algorithm&#39; &#39;3&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="no mergiballs" tags="" position="100,1225" size="100,100">You don&#39;t have any mergiballs!
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="no mergiballs" tags="" position="600,1225" size="100,100">You don&#39;t have any mergiballs!
 
 Go to a store or something, dude.
 
-&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="tame attempt" tags="nobr" position="225,1225" size="100,100">&lt;&lt;set $backpack.mergiball --&gt;&gt;
+&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="tame attempt" tags="nobr" position="725,1225" size="100,100">&lt;&lt;set $backpack.mergiball --&gt;&gt;
 &lt;&lt;redo &#39;backpack&#39;&gt;&gt;
 You throw a mergiball.&lt;br /&gt;&lt;br /&gt;
 
@@ -3038,18 +1759,18 @@ Enter your roll:  &lt;&lt;numberbox &#39;_$roll&#39; 0&gt;&gt;&lt;br /&gt;&lt;br
             &lt;&lt;include &#39;tame attempt succeeded&#39;&gt;&gt;
         &lt;&lt;/dialog&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="tame attempt failed" tags="" position="350,1225" size="100,100">The Mergimal doesn&#39;t seem very friendly.
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="tame attempt failed" tags="" position="850,1225" size="100,100">The Mergimal doesn&#39;t seem very friendly.
 
 Solve some more problems or try throwing another Mergiball!
 
-&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="tame attempt succeeded" tags="" position="475,1225" size="100,100">The Mergimal loves playing with the mergiball!
+&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="tame attempt succeeded" tags="" position="975,1225" size="100,100">The Mergimal loves playing with the mergiball!
 
 They want to be your friend.
 
 &lt;&lt;button &#39;Okay&#39;&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
     &lt;&lt;goto $tamedPassage&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="stray: boxin" tags="b4 stray common" position="600,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/boxin.png&#39; /&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="stray: boxin" tags="b4 stray common" position="1100,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/boxin.png&#39; /&gt;
 
 The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 
@@ -3069,10 +1790,10 @@ Do Worksheet 2.1
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[They got away: continue exploring.-&gt;b4]]</tw-passagedata><tw-passagedata pid="96" name="tamed: boxin" tags="b4 tamed" position="725,1225" size="100,100">&lt;&lt;card &#39;boxin&#39;&gt;&gt;
+[[They got away: continue exploring.-&gt;b4]]</tw-passagedata><tw-passagedata pid="100" name="tamed: boxin" tags="b4 tamed" position="1225,1225" size="100,100">&lt;&lt;card &#39;boxin&#39;&gt;&gt;
 This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.
 
-&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.boxin.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="stray: zipper" tags="b4 stray uncommon" position="850,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/zipper.png&#39; /&gt;&lt;&lt;set $mergimals.zipper.seen = true&gt;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.boxin.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="stray: zipper" tags="b4 stray uncommon" position="100,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/zipper.png&#39; /&gt;&lt;&lt;set $mergimals.zipper.seen = true&gt;&gt;
 
 You&#39;re looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
 
@@ -3092,10 +1813,10 @@ Do Worksheet 3.4
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[They got away: continue exploring.|b4]]</tw-passagedata><tw-passagedata pid="98" name="tamed: zipper" tags="b4 tamed" position="975,1225" size="100,100">&lt;&lt;card &#39;zipper&#39;&gt;&gt;
+[[They got away: continue exploring.|b4]]</tw-passagedata><tw-passagedata pid="102" name="tamed: zipper" tags="b4 tamed" position="225,1350" size="100,100">&lt;&lt;card &#39;zipper&#39;&gt;&gt;
 This Mergimal is named Zipper. They&#39;re cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.
 
-&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.zipper.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="stray: tidefly" tags="b5 encounter" position="1100,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/tidefly.png&#39; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.zipper.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="stray: tidefly" tags="b5 encounter" position="350,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/tidefly.png&#39; /&gt;
 
 A tiny snail with wings hangs from the line as you reel it in.
 
@@ -3115,10 +1836,10 @@ Do Worksheet 10.3
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="100" name="tamed: tidefly" tags="b5 tamed" position="1225,1225" size="100,100">&lt;&lt;card &#39;tidefly&#39;&gt;&gt;
+[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="104" name="tamed: tidefly" tags="b5 tamed" position="475,1350" size="100,100">&lt;&lt;card &#39;tidefly&#39;&gt;&gt;
 This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
 
-&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.tidefly.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="stray: krustwo" tags="b5 encounter" position="100,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/krustwo.png&quot; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.tidefly.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="stray: krustwo" tags="b5 encounter" position="600,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/krustwo.png&quot; /&gt;
 
 When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.
 
@@ -3138,13 +1859,13 @@ Do Worksheet 2.5
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="102" name="tamed: krustwo" tags="b5 tamed" position="225,1350" size="100,100">&lt;&lt;card &#39;krustwo&#39;&gt;&gt;
+[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="106" name="tamed: krustwo" tags="b5 tamed" position="725,1350" size="100,100">&lt;&lt;card &#39;krustwo&#39;&gt;&gt;
 You&#39;ve seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.
 
-&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.krustwo.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="treethorn" tags="" position="350,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.krustwo.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="treethorn" tags="" position="850,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
 What a cute, prickly little dude.
 
-&lt;&lt;return &#39;Okay.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="stray: treethorn" tags="c4 encounter" position="475,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/treethorn.png&#39; /&gt;
+&lt;&lt;return &#39;Okay.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="stray: treethorn" tags="c4 encounter" position="975,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/treethorn.png&#39; /&gt;
 
 You&#39;re looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That&#39;s no bush: that&#39;s a Mergimal!
 
@@ -3164,21 +1885,21 @@ Do Worksheet 3.3
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[They got away: continue exploring.|c4]]</tw-passagedata><tw-passagedata pid="105" name="tamed: treethorn" tags="c4 tamed" position="600,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
+[[They got away: continue exploring.|c4]]</tw-passagedata><tw-passagedata pid="109" name="tamed: treethorn" tags="c4 tamed" position="1100,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
 This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).
 
-&lt;&lt;link &#39;You tamed them.&#39; c4&gt;&gt;&lt;&lt;set $mergimals.treethorn.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="stray: corwhal" tags="b5 encounter rare" position="725,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/corwhal.png&quot; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; c4&gt;&gt;&lt;&lt;set $mergimals.treethorn.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="stray: corwhal" tags="b5 encounter rare" position="1225,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/corwhal.png&quot; /&gt;
 
 This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
 
 Do Worksheet 7.4
 
 [[You&#39;ve tamed them.|tamed: corwhal]]
-[[They got away: continue exploring.|b5]]</tw-passagedata><tw-passagedata pid="107" name="tamed: corwhal" tags="b5 tamed" position="850,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/corwhal.png&quot; /&gt;
+[[They got away: continue exploring.|b5]]</tw-passagedata><tw-passagedata pid="111" name="tamed: corwhal" tags="b5 tamed" position="100,1475" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/corwhal.png&quot; /&gt;
 
 You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
 
-&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.corwhal.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="mergipedia" tags="nobr" position="975,1350" size="100,100">&lt;div style=&#39;display: grid; grid: repeat(2, 1fr) / repeat(4, 1fr); gap: 1rem;&#39;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.corwhal.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="mergipedia" tags="nobr" position="225,1475" size="100,100">&lt;div style=&#39;display: grid; grid: repeat(2, 1fr) / repeat(4, 1fr); gap: 1rem;&#39;&gt;
     &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
         &lt;&lt;if _object.tamed == true&gt;&gt;
             &lt;&lt;card _mergimal false &#39;medium&#39;&gt;&gt;
@@ -3189,7 +1910,7 @@ You finally caught this tough Mergimal! Their name is Corwhal, because of their 
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/for&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;button &#39;Done.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="109" name="melodrake" tags="" position="1100,1350" size="100,100">&lt;&lt;card &#39;melodrake&#39;&gt;&gt;
+&lt;&lt;button &#39;Done.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="melodrake" tags="" position="350,1475" size="100,100">&lt;&lt;card &#39;melodrake&#39;&gt;&gt;
 Name: Melodrake
 Type: Root
 Number: 2
@@ -3198,7 +1919,7 @@ Description: This Mergimal is can play music with their body.
 Found: ???
 
 &lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
-&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.melodrake.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="scorchilla" tags="" position="1225,1350" size="100,100">&lt;&lt;card &#39;scorchilla&#39;&gt;&gt;
+&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.melodrake.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="scorchilla" tags="" position="475,1475" size="100,100">&lt;&lt;card &#39;scorchilla&#39;&gt;&gt;
 Name: Scorchilla
 Type: Forge
 Number: 4
@@ -3207,7 +1928,7 @@ Description: This Mergimal dances like no one&#39;s watching.
 Found: ???
 
 &lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
-&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.scorchilla.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="penguwaiian" tags="" position="100,1475" size="100,100">&lt;&lt;card &#39;penguwaiian&#39;&gt;&gt;
+&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.scorchilla.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="penguwaiian" tags="" position="600,1475" size="100,100">&lt;&lt;card &#39;penguwaiian&#39;&gt;&gt;
 Name: Penguwaiian
 Type: Wave
 Number: 10
@@ -3216,29 +1937,29 @@ Description: This Mergimal loves to eat pineapple and surf.
 Found: ???
 
 &lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
-&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.penguwaiian.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="cc: part 1" tags="" position="225,1475" size="100,100">What&#39;s your name?
+&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.penguwaiian.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="cc: part 1" tags="" position="725,1475" size="100,100">What&#39;s your name?
 &lt;&lt;textbox &#39;$player.name&#39; &#39;&#39;&gt;&gt;
 
-[[Continue.-&gt;cc: part 2]]</tw-passagedata><tw-passagedata pid="113" name="cc: part 2" tags="" position="350,1475" size="100,100">What are your pronouns?
+[[Continue.-&gt;cc: part 2]]</tw-passagedata><tw-passagedata pid="117" name="cc: part 2" tags="" position="850,1475" size="100,100">What are your pronouns?
 
 &lt;&lt;link &#39;they / them&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;they&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;she / her&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;she&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;he / him&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;he&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="cc: part 3" tags="" position="475,1475" size="100,100">What do you like most about Mergimals?
+&lt;&lt;link &#39;he / him&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;he&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="cc: part 3" tags="" position="975,1475" size="100,100">What do you like most about Mergimals?
 
 &lt;&lt;link &#39;Competing in contests.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;trainer&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;Collecting as many as I can.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;explorer&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;Merging them to make new ones.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;scientist&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;Being a good friend to them.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;companion&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="cc: part 4" tags="" position="600,1475" size="100,100">Which of these statements fits you best?
+&lt;&lt;link &#39;Being a good friend to them.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;companion&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="cc: part 4" tags="" position="1100,1475" size="100,100">Which of these statements fits you best?
 
 &lt;&lt;link &#39;I notice every detail.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;attention&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;I never give up.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;grit&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;I remember everything.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;memory&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;I understand emotions.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;empathy&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="cc: part 5" tags="" position="725,1475" size="100,100">Which of these statements fits you best?
+&lt;&lt;link &#39;I understand emotions.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;empathy&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="cc: part 5" tags="" position="1225,1475" size="100,100">Which of these statements fits you best?
 
 &lt;&lt;if $high != &#39;attention&#39;&gt;&gt;&lt;&lt;link &#39;I can\&#39;t stay still.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;grit&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t like to fail.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;memory&#39;&gt;&gt;&lt;&lt;link &#39;I lose things often.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="cc: part 6" tags="" position="850,1475" size="100,100">test</tw-passagedata><tw-passagedata pid="118" name="backpack" tags="nobr" position="975,1475" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
+&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="cc: part 6" tags="" position="100,1600" size="100,100">test</tw-passagedata><tw-passagedata pid="122" name="backpack" tags="nobr" position="225,1600" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
   &lt;div class=&#39;backpack&#39;&gt;
     &lt;h2 class=&#39;backpack-heading&#39;&gt;backpack&lt;/h2&gt;
     &lt;div class=&#39;backpack-items&#39;&gt;
@@ -3250,9 +1971,9 @@ Found: ???
         &lt;&lt;/for&gt;&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="no batteries" tags="" position="1100,1475" size="100,100">You don&#39;t have any batteries!
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="no batteries" tags="" position="350,1600" size="100,100">You don&#39;t have any batteries!
 
-&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="cheats" tags="nobr" position="1225,1475" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
+&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="cheats" tags="nobr" position="475,1600" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
 &lt;div style=&#39;display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;&#39;&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain 10 coins&#39;&gt;&gt;
@@ -3294,14 +2015,16 @@ Found: ???
 &lt;h2&gt;teleport&lt;/h2&gt;
 Enter grid coords: &lt;&lt;textbox &#39;$_destination&#39; &#39;&#39;&gt;&gt; &lt;&lt;button &#39;go&#39;&gt;&gt;&lt;&lt;run Dialog.close();&gt;&gt;&lt;&lt;goto $_destination&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;h2&gt;keywords&lt;/h2&gt;
+CLOSED &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.closed = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.closed = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
+FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.flashlight = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.flashlight = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
+DISCOUNT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.discount = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.discount = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 PADDLE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.paddle = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.paddle = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 RUSTY &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.rusty = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.rusty = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
-CLOSED &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.closed = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.closed = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
-FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.flashlight = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.flashlight = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;</tw-passagedata><tw-passagedata pid="121" name="incorrect" tags="" position="100,1600" size="100,100">Not quite!
+SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.shine = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;</tw-passagedata><tw-passagedata pid="125" name="incorrect" tags="" position="600,1600" size="100,100">Not quite!
 
-&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="correct" tags="" position="225,1600" size="100,100">Nice!
+&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="correct" tags="" position="725,1600" size="100,100">Nice!
 
-&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="keywords" tags="nobr" position="350,1600" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
+&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="keywords" tags="nobr" position="850,1600" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
   &lt;div class=&#39;keywords-box&#39;&gt;
     &lt;h2&gt;keywords&lt;/h2&gt;
     &lt;&lt;for _keyword, _boolean range $keywords&gt;&gt;
@@ -3310,13 +2033,13 @@ FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.flashlight = tr
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="no paddle" tags="" position="475,1600" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="no paddle" tags="" position="975,1600" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
 
-&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="no rod" tags="" position="600,1600" size="100,100">You don&#39;t have a fishing rod.
+&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="no rod" tags="" position="1100,1600" size="100,100">You don&#39;t have a fishing rod.
 
-&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="no keyword" tags="" position="725,1600" size="100,100">You don&#39;t have that keyword!
+&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="no keyword" tags="" position="1225,1600" size="100,100">You don&#39;t have that keyword!
 
-&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="stats" tags="nobr" position="850,1600" size="100,100">&lt;div class=&#39;stats&#39;&gt;
+&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="stats" tags="nobr" position="100,1725" size="100,100">&lt;div class=&#39;stats&#39;&gt;
   &lt;h2 class=&#39;stats-heading&#39;&gt;stats&lt;/h2&gt;
   &lt;div class=&#39;stats-box&#39;&gt;
     &lt;div class=&#39;stat-box&#39;&gt;
@@ -3336,23 +2059,17 @@ FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.flashlight = tr
       &lt;p class=&#39;stat-label display-empathy&#39;&gt;$stats.empathy&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="128" name="tamed" tags="nobr" position="975,1600" size="100,100">&lt;&lt;do tag &#39;tamed&#39;&gt;&gt;
-  &lt;div class=&#39;tamed-box&#39;&gt;
-    &lt;h2&gt;mergimals&lt;/h2&gt;
-    &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
-      &lt;&lt;if _object.tamed == true&gt;&gt;
-        &lt;div class=&#39;mergimal-listing&#39;&gt;_mergimal&lt;/div&gt;
-      &lt;&lt;/if&gt;&gt;
-    &lt;&lt;/for&gt;&gt;
-  &lt;/div&gt;
-  &lt;&lt;link &#39;Mergipedia&#39;&gt;&gt;
-    &lt;&lt;dialog mergipedia&gt;&gt;
-      &lt;&lt;include mergipedia&gt;&gt;
-    &lt;&lt;/dialog&gt;&gt;
-  &lt;&lt;/link&gt;&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="not enough coins" tags="" position="1100,1600" size="100,100">You don&#39;t have enough coins to buy that!
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="132" name="tamed" tags="nobr" position="225,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
+  &lt;h2&gt;
+    &lt;&lt;link &#39;Mergipedia&#39;&gt;&gt;
+      &lt;&lt;dialog mergipedia&gt;&gt;
+        &lt;&lt;include mergipedia&gt;&gt;
+      &lt;&lt;/dialog&gt;&gt;
+    &lt;&lt;/link&gt;&gt;
+  &lt;/h2&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="133" name="not enough coins" tags="" position="350,1725" size="100,100">You don&#39;t have enough coins to buy that!
 
-&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="already purchased" tags="" position="1225,1600" size="100,100">You already have one!
+&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="already purchased" tags="" position="475,1725" size="100,100">You already have one!
 
 &lt;&lt;link &#39;Oops.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
