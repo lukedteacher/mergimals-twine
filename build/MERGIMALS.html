@@ -2449,7 +2449,7 @@ Roll ATTENTION x EMPATHY
 
 If you rolled...
 
-[[...40 or less, find a common Mergimal.-&gt;006]]
+[[...40 or less, find a common Mergimal.-&gt;stray: treethorn]]
 [[...between 40 and 80, find an uncommon Mergimal.-&gt;404]]
 [[...above 80, you find a rare Mergimal.-&gt;404]]</tw-passagedata><tw-passagedata pid="33" name="356" tags="trainer" position="350,475" size="100,100">There is a Mergimal Trainer standing near the base of the cliff. They yawn and roll their eyes as you approach.
 
@@ -2457,11 +2457,11 @@ If you rolled...
 
 [[Absolutely!-&gt;404]]
 [[Ask them what&#39;s new.-&gt;404]]
-[[Maybe another time: Continue exploring Route 002.-&gt;c4]]</tw-passagedata><tw-passagedata pid="34" name="932" tags="worksheet" position="475,475" size="100,100">Parts of this cliff seem worn off into handholds. You can attempt to climb up it if you&#39;d like. A small cave is visible about halfway up. It might be worth checking out.
+[[Maybe another time: continue exploring Route 002.-&gt;c4]]</tw-passagedata><tw-passagedata pid="34" name="932" tags="worksheet" position="475,475" size="100,100">Parts of this cliff seem worn off into handholds. You can attempt to climb up it if you&#39;d like. A small cave is visible about halfway up. It might be worth checking out.
 
 Do Worksheet 13.4.
 
-[[Maybe later: Continue exploring the bookmarked map.-&gt;c4]]
+[[Maybe later: continue exploring.-&gt;c4]]
 [[We scaled the cliff!-&gt;c3]]
 [[Explore the cave.-&gt;345]]</tw-passagedata><tw-passagedata pid="35" name="345" tags="reward" position="600,475" size="100,100">This cave isn&#39;t very deep, but it was worth the climb! You find a few batteries in an old bird&#39;s nest. There&#39;s also a single challenge coin.
 
@@ -2988,14 +2988,16 @@ Do you need me to show you how to catch Mergimals?&lt;&lt;/tam&gt;&gt;\
 
 &lt;&lt;set $mergimals to {
   algelly: {seen: false, tamed: false},
-  scorchilla: {seen: false, tamed: false},
-  penguwaiian: {seen: false, tamed: false},
-  melodrake: {seen: false, tamed: false},
-  zipper: {seen: false, tamed: false},
+  bakewing: {seen: false, tamed: false},
   boxin: {seen: false, tamed: false},
   corwhal: {seen: false, tamed: false},
+  krustwo: {seen: false, tamed: false},
+  melodrake: {seen: false, tamed: false},
+  penguwaiian: {seen: false, tamed: false},
+  scorchilla: {seen: false, tamed: false},
   sheetly: {seen: false, tamed: false},
-  bakewing: {seen: false, tamed: false}
+  treethorn: {seen: false, tamed: false},
+  zipper: {seen: false, tamed: false}
 }&gt;&gt;
 
 &lt;&lt;widget &#39;tam&#39; container&gt;&gt;
@@ -3006,16 +3008,17 @@ Do you need me to show you how to catch Mergimals?&lt;&lt;/tam&gt;&gt;\
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;mergimal &#39;null&#39; &#39;unknown&#39; &#39;???&#39; &#39;?&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;root&#39; &#39;melodrake&#39; &#39;produce a pair&#39; &#39;2&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;forge&#39; &#39;scorchilla&#39; &#39;make a model&#39; &#39;5&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;wave&#39; &#39;penguwaiian&#39; &#39;skip count&#39; &#39;0&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;null&#39; &#39;boxin&#39; &#39;check a chart&#39; &#39;8&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;spark&#39; &#39;zipper&#39; &#39;apply an algorithm&#39; &#39;3&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;wave&#39; &#39;corwhal&#39; &#39;skip count&#39; &#39;7&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;veil&#39; &#39;sheetly&#39; &#39;find a familiar fact&#39; &#39;1/2&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;wave&#39; &#39;algelly&#39; &#39;skip count&#39; &#39;6&#39;&gt;&gt;
 &lt;&lt;mergimal &#39;forge&#39; &#39;bakewing&#39; &#39;make a model&#39; &#39;84&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;null&#39; &#39;boxin&#39; &#39;check a chart&#39; &#39;8&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;wave&#39; &#39;corwhal&#39; &#39;skip count&#39; &#39;7&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;wave&#39; &#39;krustwo&#39; &#39;skip count&#39; &#39;2&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;root&#39; &#39;melodrake&#39; &#39;produce a pair&#39; &#39;2&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;wave&#39; &#39;penguwaiian&#39; &#39;skip count&#39; &#39;0&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;forge&#39; &#39;scorchilla&#39; &#39;make a model&#39; &#39;5&#39;&gt;&gt;
+&lt;&lt;mergimal &#39;veil&#39; &#39;sheetly&#39; &#39;find a familiar fact&#39; &#39;1/2&#39;&gt;&gt;
 &lt;&lt;mergimal &#39;root&#39; &#39;treethorn&#39; &#39;label a line&#39; &#39;3&#39;&gt;&gt;
-&lt;&lt;mergimal &#39;wave&#39; &#39;algelly&#39; &#39;skip count&#39; &#39;6&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="no mergiballs" tags="" position="100,1225" size="100,100">You don&#39;t have any mergiballs!
+&lt;&lt;mergimal &#39;spark&#39; &#39;zipper&#39; &#39;apply an algorithm&#39; &#39;3&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="no mergiballs" tags="" position="100,1225" size="100,100">You don&#39;t have any mergiballs!
 
 Go to a store or something, dude.
 
@@ -3039,27 +3042,44 @@ Enter your roll:  &lt;&lt;numberbox &#39;_$roll&#39; 0&gt;&gt;&lt;br /&gt;&lt;br
 
 Solve some more problems or try throwing another Mergiball!
 
-&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="tame attempt succeeded" tags="" position="475,1225" size="100,100">The Mergimal loves the mergiball!
+&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="tame attempt succeeded" tags="" position="475,1225" size="100,100">The Mergimal loves playing with the mergiball!
 
 They want to be your friend.
 
-&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="stray: boxin" tags="b4 stray common" position="600,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/boxin.png&#39; /&gt;
+&lt;&lt;button &#39;Okay&#39;&gt;&gt;
+    &lt;&lt;run Dialog.close()&gt;&gt;
+    &lt;&lt;goto $tamedPassage&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="stray: boxin" tags="b4 stray common" position="600,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/boxin.png&#39; /&gt;
 
 The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 
 Do Worksheet 2.1
 
-[[You&#39;ve tamed them.-&gt;tamed: boxin]]
-[[It got away: Continue exploring the bookmarked map.-&gt;b4]]</tw-passagedata><tw-passagedata pid="96" name="tamed: boxin" tags="b4 tamed" position="725,1225" size="100,100">&lt;&lt;card &#39;boxin&#39;&gt;&gt;
+&lt;&lt;nobr&gt;&gt;
+    &lt;&lt;set $tamedPassage = &#39;tamed: boxin&#39;&gt;&gt;
+    &lt;&lt;link &#39;Throw a mergiball!&#39;&gt;&gt;
+        &lt;&lt;if $backpack.mergiball &lt; 1&gt;&gt;
+            &lt;&lt;dialog&gt;&gt;
+                &lt;&lt;include &#39;no mergiballs&#39;&gt;&gt;
+            &lt;&lt;/dialog&gt;&gt;
+        &lt;&lt;else&gt;&gt;
+            &lt;&lt;dialog&gt;&gt;
+                &lt;&lt;include &#39;tame attempt&#39;&gt;&gt;
+            &lt;&lt;/dialog&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+[[They got away: continue exploring.-&gt;b4]]</tw-passagedata><tw-passagedata pid="96" name="tamed: boxin" tags="b4 tamed" position="725,1225" size="100,100">&lt;&lt;card &#39;boxin&#39;&gt;&gt;
 This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.
 
-&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.boxin.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="stray: zipper" tags="b4 stray uncommon" position="850,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/zipper.png&#39; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.boxin.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="stray: zipper" tags="b4 stray uncommon" position="850,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/zipper.png&#39; /&gt;&lt;&lt;set $mergimals.zipper.seen = true&gt;&gt;
 
 You&#39;re looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
 
 Do Worksheet 3.4
 
 &lt;&lt;nobr&gt;&gt;
+    &lt;&lt;set $tamedPassage = &#39;tamed: zipper&#39;&gt;&gt;
     &lt;&lt;link &#39;Throw a mergiball!&#39;&gt;&gt;
         &lt;&lt;if $backpack.mergiball &lt; 1&gt;&gt;
             &lt;&lt;dialog&gt;&gt;
@@ -3071,17 +3091,18 @@ Do Worksheet 3.4
             &lt;&lt;/dialog&gt;&gt;
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;&gt;
-[[It got away: Continue exploring the bookmarked map.|b4]]</tw-passagedata><tw-passagedata pid="98" name="tamed: zipper" tags="b4 tamed" position="975,1225" size="100,100">&lt;&lt;card &#39;zipper&#39;&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+[[They got away: continue exploring.|b4]]</tw-passagedata><tw-passagedata pid="98" name="tamed: zipper" tags="b4 tamed" position="975,1225" size="100,100">&lt;&lt;card &#39;zipper&#39;&gt;&gt;
 This Mergimal is named Zipper. They&#39;re cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.
 
-&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.zipper.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="stray: tidefly" tags="b5 encounter" position="1100,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/tidefly.png&#39; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.zipper.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="stray: tidefly" tags="b5 encounter" position="1100,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/tidefly.png&#39; /&gt;
 
 A tiny snail with wings hangs from the line as you reel it in.
 
 Do Worksheet 10.3
 
 &lt;&lt;nobr&gt;&gt;
+    &lt;&lt;set $tamedPassage = &#39;tamed: tidefly&#39;&gt;&gt;
     &lt;&lt;link &#39;Throw a mergiball!&#39;&gt;&gt;
         &lt;&lt;if $backpack.mergiball &lt; 1&gt;&gt;
             &lt;&lt;dialog&gt;&gt;
@@ -3094,13 +3115,17 @@ Do Worksheet 10.3
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="100" name="stray: krustwo" tags="b5 encounter" position="1225,1225" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/krustwo.png&quot; /&gt;
+[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="100" name="tamed: tidefly" tags="b5 tamed" position="1225,1225" size="100,100">&lt;&lt;card &#39;tidefly&#39;&gt;&gt;
+This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
+
+&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.tidefly.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="stray: krustwo" tags="b5 encounter" position="100,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/krustwo.png&quot; /&gt;
 
 When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.
 
 Do Worksheet 2.5
 
 &lt;&lt;nobr&gt;&gt;
+    &lt;&lt;set $tamedPassage = &#39;tamed: krustwo&#39;&gt;&gt;
     &lt;&lt;link &#39;Throw a mergiball!&#39;&gt;&gt;
         &lt;&lt;if $backpack.mergiball &lt; 1&gt;&gt;
             &lt;&lt;dialog&gt;&gt;
@@ -3113,16 +3138,10 @@ Do Worksheet 2.5
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="101" name="tamed: krustwo" tags="b5 tamed" position="100,1350" size="100,100">&lt;&lt;card &#39;krustwo&#39;&gt;&gt;
-
+[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="102" name="tamed: krustwo" tags="b5 tamed" position="225,1350" size="100,100">&lt;&lt;card &#39;krustwo&#39;&gt;&gt;
 You&#39;ve seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.
 
-&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.krustwo.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="tamed: tidefly" tags="b5 tamed" position="225,1350" size="100,100">&lt;&lt;card &#39;tidefly&#39;&gt;&gt;
-
-This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
-
-&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.tidefly.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="treethorn" tags="" position="350,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
-
+&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.krustwo.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="treethorn" tags="" position="350,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
 What a cute, prickly little dude.
 
 &lt;&lt;return &#39;Okay.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="stray: treethorn" tags="c4 encounter" position="475,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/treethorn.png&#39; /&gt;
@@ -3131,19 +3150,31 @@ You&#39;re looking around in the grass and bump into a prickly bush. Surprisingl
 
 Do Worksheet 3.3
 
-[[You&#39;ve tamed them.|tamed: treethorn]]
-[[It got away: Continue exploring the bookmarked map.|c4]]</tw-passagedata><tw-passagedata pid="105" name="tamed: treethorn" tags="c4 tamed" position="600,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
-
+&lt;&lt;nobr&gt;&gt;
+    &lt;&lt;set $tamedPassage = &#39;tamed: treethorn&#39;&gt;&gt;
+    &lt;&lt;link &#39;Throw a mergiball!&#39;&gt;&gt;
+        &lt;&lt;if $backpack.mergiball &lt; 1&gt;&gt;
+            &lt;&lt;dialog&gt;&gt;
+                &lt;&lt;include &#39;no mergiballs&#39;&gt;&gt;
+            &lt;&lt;/dialog&gt;&gt;
+        &lt;&lt;else&gt;&gt;
+            &lt;&lt;dialog&gt;&gt;
+                &lt;&lt;include &#39;tame attempt&#39;&gt;&gt;
+            &lt;&lt;/dialog&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+[[They got away: continue exploring.|c4]]</tw-passagedata><tw-passagedata pid="105" name="tamed: treethorn" tags="c4 tamed" position="600,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
 This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).
 
-&lt;&lt;link &#39;You tamed them.&#39; c4&gt;&gt;&lt;&lt;set $mergimals.treethorn.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="stray: corwhal" tags="b5 encounter rare" position="725,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/corwhal.png&quot; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; c4&gt;&gt;&lt;&lt;set $mergimals.treethorn.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="stray: corwhal" tags="b5 encounter rare" position="725,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/corwhal.png&quot; /&gt;
 
 This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
 
 Do Worksheet 7.4
 
 [[You&#39;ve tamed them.|tamed: corwhal]]
-[[It got away: Continue exploring the bookmarked map.|b5]]</tw-passagedata><tw-passagedata pid="107" name="tamed: corwhal" tags="b5 tamed" position="850,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/corwhal.png&quot; /&gt;
+[[They got away: continue exploring.|b5]]</tw-passagedata><tw-passagedata pid="107" name="tamed: corwhal" tags="b5 tamed" position="850,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/corwhal.png&quot; /&gt;
 
 You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
 
@@ -3159,7 +3190,6 @@ You finally caught this tough Mergimal! Their name is Corwhal, because of their 
     &lt;&lt;/for&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;button &#39;Done.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="109" name="melodrake" tags="" position="1100,1350" size="100,100">&lt;&lt;card &#39;melodrake&#39;&gt;&gt;
-
 Name: Melodrake
 Type: Root
 Number: 2
@@ -3168,8 +3198,7 @@ Description: This Mergimal is can play music with their body.
 Found: ???
 
 &lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
-&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.melodrake.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="scorchilla" tags="" position="1225,1350" size="100,100">&lt;&lt;card &#39;scorchilla  &#39;&gt;&gt;
-
+&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.melodrake.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="scorchilla" tags="" position="1225,1350" size="100,100">&lt;&lt;card &#39;scorchilla&#39;&gt;&gt;
 Name: Scorchilla
 Type: Forge
 Number: 4
@@ -3179,7 +3208,6 @@ Found: ???
 
 &lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
 &lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.scorchilla.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="penguwaiian" tags="" position="100,1475" size="100,100">&lt;&lt;card &#39;penguwaiian&#39;&gt;&gt;
-
 Name: Penguwaiian
 Type: Wave
 Number: 10

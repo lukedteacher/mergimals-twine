@@ -32,14 +32,16 @@
 
 <<set $mergimals to {
   algelly: {seen: false, tamed: false},
-  scorchilla: {seen: false, tamed: false},
-  penguwaiian: {seen: false, tamed: false},
-  melodrake: {seen: false, tamed: false},
-  zipper: {seen: false, tamed: false},
+  bakewing: {seen: false, tamed: false},
   boxin: {seen: false, tamed: false},
   corwhal: {seen: false, tamed: false},
+  krustwo: {seen: false, tamed: false},
+  melodrake: {seen: false, tamed: false},
+  penguwaiian: {seen: false, tamed: false},
+  scorchilla: {seen: false, tamed: false},
   sheetly: {seen: false, tamed: false},
-  bakewing: {seen: false, tamed: false}
+  treethorn: {seen: false, tamed: false},
+  zipper: {seen: false, tamed: false}
 }>>
 
 <<widget 'tam' container>>
@@ -50,13 +52,14 @@
 <</widget>>
 
 <<mergimal 'null' 'unknown' '???' '?'>>
-<<mergimal 'root' 'melodrake' 'produce a pair' '2'>>
-<<mergimal 'forge' 'scorchilla' 'make a model' '5'>>
-<<mergimal 'wave' 'penguwaiian' 'skip count' '0'>>
-<<mergimal 'null' 'boxin' 'check a chart' '8'>>
-<<mergimal 'spark' 'zipper' 'apply an algorithm' '3'>>
-<<mergimal 'wave' 'corwhal' 'skip count' '7'>>
-<<mergimal 'veil' 'sheetly' 'find a familiar fact' '1/2'>>
-<<mergimal 'forge' 'bakewing' 'make a model' '84'>>
-<<mergimal 'root' 'treethorn' 'label a line' '3'>>
 <<mergimal 'wave' 'algelly' 'skip count' '6'>>
+<<mergimal 'forge' 'bakewing' 'make a model' '84'>>
+<<mergimal 'null' 'boxin' 'check a chart' '8'>>
+<<mergimal 'wave' 'corwhal' 'skip count' '7'>>
+<<mergimal 'wave' 'krustwo' 'skip count' '2'>>
+<<mergimal 'root' 'melodrake' 'produce a pair' '2'>>
+<<mergimal 'wave' 'penguwaiian' 'skip count' '0'>>
+<<mergimal 'forge' 'scorchilla' 'make a model' '5'>>
+<<mergimal 'veil' 'sheetly' 'find a familiar fact' '1/2'>>
+<<mergimal 'root' 'treethorn' 'label a line' '3'>>
+<<mergimal 'spark' 'zipper' 'apply an algorithm' '3'>>

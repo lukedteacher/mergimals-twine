@@ -14,7 +14,6 @@
 
 :: melodrake
 <<card 'melodrake'>>
-
 Name: Melodrake
 Type: Root
 Number: 2
@@ -26,8 +25,7 @@ Found: ???
 <<link 'Choose this one.' 'start: part 3'>><<set $mergimals.melodrake.tamed = true>><</link>>
 
 :: scorchilla
-<<card 'scorchilla  '>>
-
+<<card 'scorchilla'>>
 Name: Scorchilla
 Type: Forge
 Number: 4
@@ -40,7 +38,6 @@ Found: ???
 
 :: penguwaiian
 <<card 'penguwaiian'>>
-
 Name: Penguwaiian
 Type: Wave
 Number: 10
