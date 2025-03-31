@@ -6,4 +6,4 @@ You don't have enough coins to buy that!
 :: already purchased
 You already have one!
 
-<<link 'Nevermind.'>><<run Dialog.close()>><</link>>
+<<link 'Oops.'>><<run Dialog.close()>><</link>>

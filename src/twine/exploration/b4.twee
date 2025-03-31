@@ -4,10 +4,6 @@
 [[Look around->b4: description]]
 [[Check the long grass.->126]]
 [[Say 'hello' to the trainer.->Trainer: Bucky]]
-!!!!NAVIGATE
-[[Go North to Cascade Village->b3]]
-[[Go South on the sandy path.->b5]]
-[[Go East toward Great River Road.->c4]]
 
 :: b4: description
 Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South.

@@ -25,12 +25,13 @@ She seems friendly.
 
     <<nobr>>
         <<link 'Sure!'>>
-            <<if $backpack.has('coin', 100)>>
-                <<gain $keywords 'ebike'>>
-            <<else>>
+            <<if $backpack.coin < 100>>
                 <<dialog 'not enough coins'>>\
                     <<include 'not enough coins'>>
                 <</dialog>>
+            <<else>>
+                <<set $backpack.coin -= 100>>
+                <<set $keywords.ebike = true>>
             <</if>>
         <</link>>
     <</nobr>>
@@ -40,12 +41,13 @@ She seems friendly.
 
     <<nobr>>
         <<link 'Alright, I guess.'>>
-            <<if $backpack.has('coin', 1000)>>
-                <<gain $keywords 'ebike'>>
-            <<else>>
+            <<if $backpack.coin < 1000>>
                 <<dialog 'not enough coins'>>\
                     <<include 'not enough coins'>>
                 <</dialog>>
+            <<else>>
+                <<set $backpack.coin -= 1000>>
+                <<set $keywords.ebike = true>>
             <</if>>
         <</link>>
     <</nobr>>

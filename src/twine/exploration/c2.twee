@@ -1,15 +1,52 @@
-:: c2 [cave]
+:: c2 [c2 crystal-cavern]
 This cave is quite dark. It probably wouldn't be a good idea to explore further without a source of light.
 
 [[Try your luck in the darkness.->c2: dark]]
-[[Shine a light on the situation. (requires keyword LIGHT or BRIGHT)->c2: lit]]
+[[Shine a light on the situation. (requires keyword SHINE)->c2: light it up]]
 [[Come back another time.->c3]]
 
-:: c2: dark [cave]
-<<if not $keywords.has('light')>>\
+:: c2: dark [c2 crystal-cavern]
 You stumble around, trying to feel your way through the darkness. Your hand touches something squishy and warm and you recoil in surprise.
 
-roll OPENNESS x DEEP
-[[success->404]]
-[[failure->404]]
+Test ATTENTION x 9
+
+[[success->c2: dark result]]
+[[failure->c2: dark result]]
+
+:: c2: dark result
+Whatever it was seems to be gone now. You were able to find something in the dark though.
+
+GAIN 1 charm.<<set $backpack.charm ++>>
+
+[[Get out of here while you still can.->c2]]
+
+:: c2: light it up
+<<if $keywords.flashlight == true && $keywords.shine == false>>\
+    You could go further if you used a battery to power your flashlight.
+
+    <<link 'Turn on your flashlight.'>><<if $backpack.battery < 1>><<dialog 'no batteries'>><<include 'no batteries'>><</dialog>><<else>><<set $backpack.battery -->><<goto 'c2: lit'>><</if>><</link>>
+    [[Nevermind.->c2]]
+<<elseif $keywords.shine == true>>
+    <<goto 'c2: lit'>>
+<<else>>
+    You don't have a source of light!
+
+    [[Oh well.->c2]]
 <</if>>
+
+:: c2: lit
+It's quite spooky, even with a source of light. You follow the path deeper into the cave.
+
+Eventually, you come to a large underground river.
+
+You could get to the other side, if you had a Wave Mergimal that knew how to PADDLE.
+
+<<link 'Swim to the other side (requires: keyword PADDLE)'>><<if $keywords.paddle == false>><<dialog 'no keyword paddle'>><<include 'no paddle'>><</dialog>><<else>><<goto 'c2: river crossed'>><</if>><</link>>
+[[Head back to the entrance of the cave.->c2]]
+
+:: c2: river crossed
+What a trip!
+
+You find a treasure chest with some strange symbols on it.
+
+[[Leave.->c2]]

@@ -12,3 +12,8 @@
     </div>
   </div>
 <</do>>
+
+:: no batteries
+You don't have any batteries!
+
+<<link 'Darnit.'>><<run Dialog.close()>><</link>>

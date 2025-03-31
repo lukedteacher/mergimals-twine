@@ -56,35 +56,35 @@ There's also a person standing around. They look confused.
 <</button>>
 <<button 'buy a bandage 3c'>>
   <<if $backpack.coin < 3>>>
-    <<drop $backpack 'coin' 3>>
-    <<set $backpack.bandage ++>>
-    <<redo 'backpack'>>
-  <<else>>
     <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
     <</dialog>>
+  <<else>>
+    <<set $backpack.coin -= 3>>
+    <<set $backpack.bandage ++>>
+    <<redo 'backpack'>>
   <</if>>
 <</button>>
 <<button 'buy a tool 4c'>>
   <<if $backpack.coin < 4>>>
-    <<drop $backpack 'coin' 4>>
-    <<set $backpack.tool ++>>
-    <<redo 'backpack'>>
-  <<else>>
     <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
     <</dialog>>
+  <<else>>
+    <<set $backpack.coin -= 4>>
+    <<set $backpack.tool ++>>
+    <<redo 'backpack'>>
   <</if>>
 <</button>>
 <<button 'buy a battery 5c'>>
   <<if $backpack.coin < 5>>>
-    <<drop $backpack 'coin' 5>>
-    <<gain $backpack 'battery'>>
-    <<redo 'backpack'>>
-  <<else>>
     <<dialog 'not enough coins'>>\
       <<include 'not enough coins'>>
     <</dialog>>
+  <<else>>
+    <<set $backpack.coin -= 5>>
+    <<set $backpack.battery ++>>
+    <<redo 'backpack'>>
   <</if>>
 <</button>>
 <<button 'buy a flashlight 10c'>>
@@ -106,12 +106,12 @@ There's also a person standing around. They look confused.
 [[Look around Littlemoose.->d6]]
 
 :: d6: veil school
-<<if not $keywords.has('closed')>>\
+<<if $keywords.closed == false>>\
   The school is closed?!?
 
-  Motherf***.
+  Oh dear.
 
-  Gain keyword CLOSED.<<gain $keywords 'closed' 1>><<redo 'keywords'>>
+  GAIN keyword CLOSED.<<set $keywords.closed = true>><<redo 'keywords'>>
 
   [[Continue exploring.->d6]]
 <<else>>\

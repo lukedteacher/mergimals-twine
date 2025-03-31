@@ -38,7 +38,7 @@ The path splits again.
 :: 218 [forest]
 The path seems to double back on itself and you feel like you're going in circles. It ends abruptly, at the base of a large tree with a large crevice. Inside the hole, you find some charms and trainer coins.
 
-[[Gain 2 charms and 3 trainer coins.->219]]
+<<link 'GAIN 3 challenge coins and a charm' '219'>><<set $backpack.coin += 3>><<set $backpack.charm ++>><</link>>
 
 :: 219 [forest check]
 Now if only you could remember your way back.
@@ -101,10 +101,10 @@ A little person with a long beard and pointy hat sits on a mushroom, drinking te
 [[Nevermind.->224]]
 
 :: 228 [transition]
-<<if not $keywords.has('strength')>>
+<<if $keywords.strength == false>>
   You're not strong enough to move it and neither are your Mergimals.
 
-  <<previous 'Go back.'>>
+  <<return 'Go back.'>>
 <<else>>
   Your Mergimal moves the tree. What strength!
 

@@ -6,7 +6,7 @@ Go to a store or something, dude.
 <<button 'Okay'>><<run Dialog.close()>><</button>>
 
 :: tame attempt [nobr]
-<<drop $backpack 'mergiball' 1>>
+<<set $backpack.mergiball -->>
 <<redo 'backpack'>>
 You throw a mergiball.<br /><br />
 
@@ -63,17 +63,17 @@ Do Worksheet 3.4
 
 <<nobr>>
     <<link 'Throw a mergiball!'>>
-        <<if $backpack.has('mergiball', 1)>>
-            <<dialog>>
-                <<include 'tame attempt'>>
-            <</dialog>>
-        <<else>>
+        <<if $backpack.mergiball < 1>>
             <<dialog>>
                 <<include 'no mergiballs'>>
             <</dialog>>
+        <<else>>
+            <<dialog>>
+                <<include 'tame attempt'>>
+            <</dialog>>
         <</if>>
     <</link>>
-<</nobr>>
+<</nobr>>>
 [[It got away: Continue exploring the bookmarked map.|b4]]
 
 :: tamed: zipper [b4 tamed]
@@ -89,8 +89,20 @@ A tiny snail with wings hangs from the line as you reel it in.
 
 Do Worksheet 10.3
 
-[[You've tamed them.|799]]
-[[It got away: Continue exploring the bookmarked map.|b5]]
+<<nobr>>
+    <<link 'Throw a mergiball!'>>
+        <<if $backpack.mergiball < 1>>
+            <<dialog>>
+                <<include 'no mergiballs'>>
+            <</dialog>>
+        <<else>>
+            <<dialog>>
+                <<include 'tame attempt'>>
+            <</dialog>>
+        <</if>>
+    <</link>>
+<</nobr>>
+[[Let them get away.|b5]]
 
 :: stray: krustwo [b5 encounter]
 <img class="mergimal-image" src="../images/mergimals/krustwo.png" />
@@ -99,8 +111,20 @@ When you pull up the line, a funny-looking crab Mergimal has grabbed onto the ba
 
 Do Worksheet 2.5
 
-[[You've tamed them.|161]]
-[[It got away: Continue exploring the bookmarked map.|b5]]
+<<nobr>>
+    <<link 'Throw a mergiball!'>>
+        <<if $backpack.mergiball < 1>>
+            <<dialog>>
+                <<include 'no mergiballs'>>
+            <</dialog>>
+        <<else>>
+            <<dialog>>
+                <<include 'tame attempt'>>
+            <</dialog>>
+        <</if>>
+    <</link>>
+<</nobr>>
+[[Let them get away.|b5]]
 
 :: tamed: krustwo [b5 tamed]
 <<card 'krustwo'>>

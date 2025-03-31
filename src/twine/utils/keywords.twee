@@ -13,9 +13,14 @@
 :: no paddle
 You don't know how to swim with your Mergimal yet.
 
-<<return 'Oh well.'>>
+<<link 'Oh well.'>><<run Dialog.close()>><</link>>
 
 :: no rod
 You don't have a fishing rod.
 
-<<return 'Dangit.'>>
+<<link 'Dangit.'>><<run Dialog.close()>><</link>>
+
+:: no keyword
+You don't have that keyword!
+
+<<link 'It was worth a try.'>><<run Dialog.close()>><</link>>

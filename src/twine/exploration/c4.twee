@@ -35,20 +35,20 @@ There is a Mergimal Trainer standing near the base of the cliff. They yawn and r
 
 [[Absolutely!->404]]
 [[Ask them what's new.->404]]
-[[Maybe another time: Continue exploring Route 002.->c4]]
+[[Maybe another time: continue exploring Route 002.->c4]]
 
 :: 932 [worksheet]
 Parts of this cliff seem worn off into handholds. You can attempt to climb up it if you'd like. A small cave is visible about halfway up. It might be worth checking out.
 
 Do Worksheet 13.4.
 
-[[Maybe later: Continue exploring the bookmarked map.->c4]]
+[[Maybe later: continue exploring.->c4]]
 [[We scaled the cliff!->c3]]
 [[Explore the cave.->345]]
 
 :: 345 [reward]
 This cave isn't very deep, but it was worth the climb! You find a few batteries in an old bird's nest. There's also a single challenge coin.
 
-<<link 'Gain 1 coin and 2 battteries. Return to the cliff.' '932'>>
+<<link 'Gain 1 coin and 2 batteries. Return to the cliff.' '932'>>
     <<set $backpack.coins += 1>><<set $backpack.batteries += 2>>
 <</link>>

@@ -25,25 +25,30 @@ This is the world-famous Mergimal Research Center. It is also the home of your m
 
 If you want, you can see if he’s available to talk.
 
-[[(requires keyword: CLOSED) Tell him about the delivery.->tamarack: delivery]]
+<<link 'Tell him about the delivery. (requires: keyword CLOSED)'>><<if $keywords.closed == false>><<dialog 'no keyword CLOSED'>><<include 'no keyword'>><</dialog>><<else>><<goto 'tamarack: delivery'>><</if>><</link>>
 [[Keep exploring the village.->b3]]
 
 :: b3: beach
 The beach is small, but tidy. If you knew how to ride a Mergimal, you could go out on the water.
 
-[[(requires keyword: PADDLE) Brave the waters.->b3: swimming]]
+<<link 'Brave the waters (requires: keyword PADDLE)'>><<if $keywords.paddle == false>><<dialog 'no keyword paddle'>><<include 'no paddle'>><</dialog>><<else>><<goto 'b3: out to sea'>><</if>><</link>>
 [[Keep exploring the village.->b3]]
 
-:: b3: swimming
-<<if not $keywords.has('paddle')>>\
-  <<include 'no paddle'>>
-<<else>>\
-  (Keyword PADDLE detected)
+:: b3: out to sea
+(Keyword PADDLE detected)
 
-  The water is great.
+The water is great.
 
-  Do Worksheet SKIP COUNT 8.
+Do Worksheet SKIP COUNT 8.
 
-  [[Success.->b5]]
-  [[Failure.->404]]
-<</if>>
+[[Success.->b5]]
+[[Failure.->404]]
+
+:: tamarack: delivery
+<<tam>>Grace wasn't at the veil school?
+And it was closed?
+How odd!
+Perhaps you'll have to start your Mergimal challenge in Blue Urf or Raven Wing instead.
+<</tam>>
+
+[[Okay.->b3]]
