@@ -251,7 +251,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 }
 
 .grayscale {
-    filter: grayscale(1);
+    filter: grayscale(0.75);
 }
 /* twine-user-stylesheet #3: "fonts.css" */
 /* main body font */
@@ -829,7 +829,36 @@ Macro.add('dialogclose', {
     setup.move = createMoveButtons;
 
 }());
-/* twine-user-script #6: "move.js" */
+/* twine-user-script #6: "mergipedia.js" */
+(function () {
+    // v0.1
+    'use strict';
+
+    function createKeyword ($output, keyword) {
+        var $span = $(document.createElement('span'))
+            .addClass('keyword-span')
+            .text(keyword);
+
+        if ($output) {
+            if (!($output instanceof $)) {
+                $output = $($output);
+            }
+            $span.appendTo($output);
+        };
+
+        return $span;
+    }
+
+    Macro.add('mergipedia', {
+        handler : function () {
+            createKeyword(this.output, this.args[0]);
+        }
+    });
+
+    setup.keyword = createKeyword;
+
+}());
+/* twine-user-script #7: "move.js" */
 (function () {
     // v0.1
     'use strict';
@@ -837,7 +866,7 @@ Macro.add('dialogclose', {
 
 
 }());
-/* twine-user-script #7: "speech.js" */
+/* twine-user-script #8: "speech.js" */
 (function () {
     // v1.1.1
     'use strict';
@@ -932,7 +961,7 @@ Macro.add('dialogclose', {
         });
     });
 }());
-/* twine-user-script #8: "Story JavaScript" */
+/* twine-user-script #9: "Story JavaScript" */
 Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" tags="map" position="100,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;south &#39;b4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around-&gt;b3: description]]
@@ -1617,9 +1646,9 @@ Do Worksheet 84.1
 [[They got away: continue exploring.-&gt;volcano]]</tw-passagedata><tw-passagedata pid="86" name="tamed: bakewing" tags="mt-boom-boom tamed" position="725,1100" size="100,100">&lt;&lt;card &#39;bakewing&#39;&gt;&gt;
 This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, which they use to make pizza. Yum!
 
-&lt;&lt;link &#39;You tamed them.&#39; &#39;volcano&#39;&gt;&gt;&lt;&lt;set $mergimals.bakewing.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="StoryCaption" tags="" position="850,1100" size="100,100">&lt;&lt;include stats&gt;&gt;
-&lt;&lt;include backpack&gt;&gt;
-&lt;&lt;include tamed&gt;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; &#39;volcano&#39;&gt;&gt;&lt;&lt;set $mergimals.bakewing.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="StoryCaption" tags="" position="850,1100" size="100,100">&lt;&lt;include stats&gt;&gt;\
+&lt;&lt;include backpack&gt;&gt;\
+&lt;&lt;include tamed&gt;&gt;\
 &lt;&lt;include keywords&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="StoryMenu" tags="" position="975,1100" size="100,100">&lt;&lt;link &#39;cheats&#39;&gt;&gt;
   &lt;&lt;dialog &#39;cheats&#39;&gt;&gt;\
     &lt;&lt;include &#39;cheats&#39;&gt;&gt;
@@ -1705,12 +1734,12 @@ Do you need me to show you how to catch Mergimals?&lt;&lt;/tam&gt;&gt;\
 }&gt;&gt;
 
 &lt;&lt;set $keywords to {
+  closed: false,
+  discount: false,
   flashlight: false,
   paddle: false,
   rusty: false,
-  closed: false,
-  shine: false,
-  discount: false
+  shine: false
 }&gt;&gt;
 
 &lt;&lt;set $mergimals to {
@@ -1725,7 +1754,8 @@ Do you need me to show you how to catch Mergimals?&lt;&lt;/tam&gt;&gt;\
   scorchilla: {type: &#39;forge&#39;, strategy: &#39;make a model&#39;, number: &#39;4&#39;, seen: false, tamed: false},
   sheetly: {type: &#39;veil&#39;, strategy: &#39;find a familiar fact&#39;, number: &#39;1/2&#39;, seen: false, tamed: false},
   treethorn: {type: &#39;root&#39;, strategy: &#39;label a line&#39;, number: &#39;3&#39;, seen: false, tamed: false},
-  zipper: {type: &#39;spark&#39;, strategy: &#39;repeated addition&#39;, number: &#39;3&#39;, seen: false, tamed: false}
+  twindle: {type: &#39;spark&#39;, strategy: &#39;apply an algorithm&#39;, number: &#39;3&#39;, seen: false, tamed: false},
+  zipper: {type: &#39;spark&#39;, strategy: &#39;repeated addition&#39;, number: &#39;6&#39;, seen: false, tamed: false}
 }&gt;&gt;
 
 &lt;&lt;mergimal &#39;unknown&#39; &#39;unknown&#39; &#39;unknown&#39; &#39;?&#39;&gt;&gt;
@@ -1899,18 +1929,39 @@ Do Worksheet 7.4
 
 You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
 
-&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.corwhal.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="mergipedia" tags="nobr" position="225,1475" size="100,100">&lt;div style=&#39;display: grid; grid: repeat(2, 1fr) / repeat(4, 1fr); gap: 1rem;&#39;&gt;
-    &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
-        &lt;&lt;if _object.tamed == true&gt;&gt;
-            &lt;&lt;card _mergimal false &#39;medium&#39;&gt;&gt;
-        &lt;&lt;elseif _object.seen == true&gt;&gt;
-             &lt;&lt;card _mergimal false &#39;medium&#39; true&gt;&gt;
-        &lt;&lt;else&gt;&gt;
-            &lt;&lt;card &#39;unknown&#39; false &#39;medium&#39;&gt;&gt;
-        &lt;&lt;/if&gt;&gt;
-    &lt;&lt;/for&gt;&gt;
-&lt;/div&gt;
-&lt;&lt;button &#39;Done.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="melodrake" tags="" position="350,1475" size="100,100">&lt;&lt;card &#39;melodrake&#39;&gt;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.corwhal.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="mergipedia" tags="nobr" position="225,1475" size="100,100">&lt;&lt;set _$start = 0&gt;&gt;
+&lt;&lt;do tag &#39;mergipedia&#39;&gt;&gt;
+    &lt;div style=&#39;display: grid; grid: repeat(2, 1fr) / repeat(3, 1fr); gap: 1rem;&#39;&gt;
+        &lt;&lt;set _$temp to Object.fromEntries(Object.entries($mergimals).slice(_$start, _$start + 6))&gt;&gt;
+        &lt;&lt;for _mergimal, _object range _$temp&gt;&gt;
+            &lt;&lt;if _object.tamed == true&gt;&gt;
+                &lt;&lt;card _mergimal false &#39;medium&#39;&gt;&gt;
+            &lt;&lt;elseif _object.seen == true&gt;&gt;
+                &lt;&lt;card _mergimal false &#39;medium&#39; true&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+                &lt;&lt;card &#39;unknown&#39; false &#39;medium&#39;&gt;&gt;
+            &lt;&lt;/if&gt;&gt;
+        &lt;&lt;/for&gt;&gt;
+    &lt;/div&gt;
+_$start through &lt;&lt;-_$start + 6&gt;&gt;&lt;br /&gt;
+&lt;&lt;/do&gt;&gt;
+&lt;&lt;button &#39;Done.&#39;&gt;&gt;
+    &lt;&lt;run Dialog.close()&gt;&gt;
+&lt;&lt;/button&gt;&gt; 
+&lt;&lt;button &#39;&lt;&#39;&gt;&gt;
+    &lt;&lt;set _$start -= 6&gt;&gt;
+    &lt;&lt;if _$start &lt; 0&gt;&gt;
+        &lt;&lt;set _$start = 0&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+    &lt;&lt;redo &#39;mergipedia&#39;&gt;&gt;
+&lt;&lt;/button&gt;&gt; 
+&lt;&lt;button &#39;&gt;&#39;&gt;&gt;
+    &lt;&lt;set _$start += 6&gt;&gt;
+    &lt;&lt;if _$start &gt; Object.entries($mergimals).length - 6&gt;&gt;
+        &lt;&lt;set _$start = Object.entries($mergimals).length - 6&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+    &lt;&lt;redo &#39;mergipedia&#39;&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="melodrake" tags="" position="350,1475" size="100,100">&lt;&lt;card &#39;melodrake&#39;&gt;&gt;
 Name: Melodrake
 Type: Root
 Number: 2
@@ -2020,7 +2071,40 @@ FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.flashlight = tr
 DISCOUNT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.discount = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.discount = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 PADDLE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.paddle = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.paddle = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 RUSTY &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.rusty = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.rusty = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
-SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.shine = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;</tw-passagedata><tw-passagedata pid="125" name="incorrect" tags="" position="600,1600" size="100,100">Not quite!
+SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.shine = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
+&lt;h2&gt;mergimals&lt;/h2&gt;
+&lt;&lt;nobr&gt;&gt;
+ALL
+SEEN 
+&lt;&lt;link &#39;+&#39;&gt;&gt;
+  &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
+    &lt;&lt;set _object.seen = true&gt;&gt;
+  &lt;&lt;/for&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;-&#39;&gt;&gt;
+  &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
+    &lt;&lt;set _object.seen = false&gt;&gt;
+  &lt;&lt;/for&gt;&gt;
+&lt;&lt;/link&gt;&gt; 
+TAMED 
+&lt;&lt;link &#39;+&#39;&gt;&gt;
+  &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
+    &lt;&lt;set _object.tamed = true&gt;&gt;
+  &lt;&lt;/for&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;-&#39;&gt;&gt;
+  &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
+    &lt;&lt;set _object.tamed = false&gt;&gt;
+  &lt;&lt;/for&gt;&gt;
+&lt;&lt;/link&gt;&gt; &lt;br /&gt;
+bakewing 
+&lt;&lt;link &#39;seen&#39;&gt;&gt;
+  &lt;&lt;set $mergimals.bakewing.seen = !$mergimals.bakewing.seen&gt;&gt;
+&lt;&lt;/link&gt;&gt; 
+&lt;&lt;link &#39;tamed&#39;&gt;&gt;
+  &lt;&lt;set $mergimals.bakewing.tamed = !$mergimals.bakewing.tamed&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="incorrect" tags="" position="600,1600" size="100,100">Not quite!
 
 &lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="correct" tags="" position="725,1600" size="100,100">Nice!
 

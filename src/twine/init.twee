@@ -22,12 +22,12 @@
 }>>
 
 <<set $keywords to {
+  closed: false,
+  discount: false,
   flashlight: false,
   paddle: false,
   rusty: false,
-  closed: false,
-  shine: false,
-  discount: false
+  shine: false
 }>>
 
 <<set $mergimals to {
@@ -42,7 +42,8 @@
   scorchilla: {type: 'forge', strategy: 'make a model', number: '4', seen: false, tamed: false},
   sheetly: {type: 'veil', strategy: 'find a familiar fact', number: '1/2', seen: false, tamed: false},
   treethorn: {type: 'root', strategy: 'label a line', number: '3', seen: false, tamed: false},
-  zipper: {type: 'spark', strategy: 'repeated addition', number: '3', seen: false, tamed: false}
+  twindle: {type: 'spark', strategy: 'apply an algorithm', number: '3', seen: false, tamed: false},
+  zipper: {type: 'spark', strategy: 'repeated addition', number: '6', seen: false, tamed: false}
 }>>
 
 <<mergimal 'unknown' 'unknown' 'unknown' '?'>>

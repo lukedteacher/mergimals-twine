@@ -47,3 +47,36 @@ DISCOUNT <<link '+'>><<set $keywords.discount = true>><<redo 'keywords'>><</link
 PADDLE <<link '+'>><<set $keywords.paddle = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.paddle = false>><<redo 'keywords'>><</link>><br />
 RUSTY <<link '+'>><<set $keywords.rusty = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.rusty = false>><<redo 'keywords'>><</link>><br />
 SHINE <<link '+'>><<set $keywords.shine = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.shine = false>><<redo 'keywords'>><</link>><br />
+<h2>mergimals</h2>
+<<nobr>>
+ALL
+SEEN 
+<<link '+'>>
+  <<for _mergimal, _object range $mergimals>>
+    <<set _object.seen = true>>
+  <</for>>
+<</link>>
+<<link '-'>>
+  <<for _mergimal, _object range $mergimals>>
+    <<set _object.seen = false>>
+  <</for>>
+<</link>> 
+TAMED 
+<<link '+'>>
+  <<for _mergimal, _object range $mergimals>>
+    <<set _object.tamed = true>>
+  <</for>>
+<</link>>
+<<link '-'>>
+  <<for _mergimal, _object range $mergimals>>
+    <<set _object.tamed = false>>
+  <</for>>
+<</link>> <br />
+bakewing 
+<<link 'seen'>>
+  <<set $mergimals.bakewing.seen = !$mergimals.bakewing.seen>>
+<</link>> 
+<<link 'tamed'>>
+  <<set $mergimals.bakewing.tamed = !$mergimals.bakewing.tamed>>
+<</link>>
+<</nobr>>

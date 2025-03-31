@@ -14,9 +14,9 @@ MERGIMALS
 Config.ui.stowBarInitially = false;
 
 :: StoryCaption
-<<include stats>>
-<<include backpack>>
-<<include tamed>>
+<<include stats>>\
+<<include backpack>>\
+<<include tamed>>\
 <<include keywords>>
 
 :: StoryMenu

@@ -1,16 +1,37 @@
 :: mergipedia [nobr]
-<div style='display: grid; grid: repeat(2, 1fr) / repeat(4, 1fr); gap: 1rem;'>
-    <<for _mergimal, _object range $mergimals>>
-        <<if _object.tamed == true>>
-            <<card _mergimal false 'medium'>>
-        <<elseif _object.seen == true>>
-             <<card _mergimal false 'medium' true>>
-        <<else>>
-            <<card 'unknown' false 'medium'>>
-        <</if>>
-    <</for>>
-</div>
-<<button 'Done.'>><<run Dialog.close()>><</button>>
+<<set _$start = 0>>
+<<do tag 'mergipedia'>>
+    <div style='display: grid; grid: repeat(2, 1fr) / repeat(3, 1fr); gap: 1rem;'>
+        <<set _$temp to Object.fromEntries(Object.entries($mergimals).slice(_$start, _$start + 6))>>
+        <<for _mergimal, _object range _$temp>>
+            <<if _object.tamed == true>>
+                <<card _mergimal false 'medium'>>
+            <<elseif _object.seen == true>>
+                <<card _mergimal false 'medium' true>>
+            <<else>>
+                <<card 'unknown' false 'medium'>>
+            <</if>>
+        <</for>>
+    </div>
+_$start through <<-_$start + 6>><br />
+<</do>>
+<<button 'Done.'>>
+    <<run Dialog.close()>>
+<</button>> 
+<<button '<'>>
+    <<set _$start -= 6>>
+    <<if _$start < 0>>
+        <<set _$start = 0>>
+    <</if>>
+    <<redo 'mergipedia'>>
+<</button>> 
+<<button '>'>>
+    <<set _$start += 6>>
+    <<if _$start > Object.entries($mergimals).length - 6>>
+        <<set _$start = Object.entries($mergimals).length - 6>>
+    <</if>>
+    <<redo 'mergipedia'>>
+<</button>>
 
 :: melodrake
 <<card 'melodrake'>>
