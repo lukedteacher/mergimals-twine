@@ -35,6 +35,8 @@
 
 .card-type {
     width: 16%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .card-title {
@@ -61,44 +63,37 @@
 
 .forge {
     background-color: var(--red);
-    background-image: url('../images/svg/forge.svg');
-    background-position: center;
+    background-image: url('/images/svg/forge.svg');
 }
 
 .spark {
     background-color: var(--yellow);
-    background-image: url('../images/svg/spark.svg');
-    background-position: center;
+    background-image: url('/images/svg/spark.svg');
 }
 
 .root {
     background-color: var(--green);
-    background-image: url('../images/svg/root.svg');
-    background-position: center;
+    background-image: url('/images/svg/root.svg');
 }
 
 .wave {
     background-color: var(--cyan);
-    background-image: url('../images/svg/wave.svg');
-    background-position: center;
+    background-image: url('/images/svg/wave.svg');
 }
 
 .deep {
     background-color: var(--indigo);
-    background-image: url('../images/svg/deep.svg');
-    background-position: center;
+    background-image: url('/images/svg/deep.svg');
 }
 
 .veil {
     background-color: var(--violet);
-    background-image: url('../images/svg/veil.svg');
-    background-position: center;
+    background-image: url('/images/svg/veil.svg');
 }
 
 .null {
     background-color: #999;
-    background-image: url('../images/svg/null.svg');
-    background-position: center;
+    background-image: url('/images/svg/null.svg');
 }
 
 .card-text {

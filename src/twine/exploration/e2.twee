@@ -10,7 +10,7 @@
 [[Go South out of town.->e3]]
 
 :: e2: description
-<img class='concept' src='../images/story/blue-urf.png'>\
+<img class='concept' src='/images/story/blue-urf.png'>\
 
 Blue Urf is a bustling city that loves fashion and beach life.
 
@@ -26,13 +26,13 @@ A bunch of people seem to be waving fans and complaining about how their air con
 
 :: e2: vending machine [vend blue-urf]
 <div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>\
-  <div style='background-image: url(../images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;'></div>\
-  <div style='grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/battery.svg' style='height: 100%;' /></div>\
-  <div style='grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/bandage.svg' style='height: 100%;' /></div>\
-  <div style='grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/tool.svg' style='height: 100%;' /></div>\
-  <div style='grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/flashlight.svg' style='height: 100%;' /></div>\
-  <div style='grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/mergiball.svg' style='height: 100%;' /></div>\
-  <div style='grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='../images/items/charm.svg' style='height: 100%;' /></div>\
+  <div style='background-image: url(/images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;'></div>\
+  <div style='grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='/images/items/battery.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='/images/items/bandage.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='/images/items/tool.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='/images/items/flashlight.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='/images/items/mergiball.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='/images/items/charm.svg' style='height: 100%;' /></div>\
 </div>\
 <<button 'buy a mergiball 1c'>>
   <<if $backpack.coins < 1>>

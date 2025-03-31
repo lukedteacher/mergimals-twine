@@ -176,6 +176,8 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 .card-type {
     width: 16%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .card-title {
@@ -202,44 +204,37 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 .forge {
     background-color: var(--red);
-    background-image: url('../images/svg/forge.svg');
-    background-position: center;
+    background-image: url('/images/svg/forge.svg');
 }
 
 .spark {
     background-color: var(--yellow);
-    background-image: url('../images/svg/spark.svg');
-    background-position: center;
+    background-image: url('/images/svg/spark.svg');
 }
 
 .root {
     background-color: var(--green);
-    background-image: url('../images/svg/root.svg');
-    background-position: center;
+    background-image: url('/images/svg/root.svg');
 }
 
 .wave {
     background-color: var(--cyan);
-    background-image: url('../images/svg/wave.svg');
-    background-position: center;
+    background-image: url('/images/svg/wave.svg');
 }
 
 .deep {
     background-color: var(--indigo);
-    background-image: url('../images/svg/deep.svg');
-    background-position: center;
+    background-image: url('/images/svg/deep.svg');
 }
 
 .veil {
     background-color: var(--violet);
-    background-image: url('../images/svg/veil.svg');
-    background-position: center;
+    background-image: url('/images/svg/veil.svg');
 }
 
 .null {
     background-color: #999;
-    background-image: url('../images/svg/null.svg');
-    background-position: center;
+    background-image: url('/images/svg/null.svg');
 }
 
 .card-text {
@@ -339,22 +334,22 @@ body a:hover {
 
 .north {
     grid-area: 1 / 19 / span 3 / span 4;
-    background-image: url('../images/svg/north.svg');
+    background-image: url('/images/svg/north.svg');
 }
 
 .east {
     grid-area: 19 / 38 / span 4 / span 3;
-    background-image: url('../images/svg/east.svg');
+    background-image: url('/images/svg/east.svg');
 }
 
 .west {
     grid-area: 19 / 1 / span 4 / span 3;
-    background-image: url('../images/svg/west.svg');
+    background-image: url('/images/svg/west.svg');
 }
 
 .south {
     grid-area: 38 / 19 / span 3 / span 4;
-    background-image: url('../images/svg/south.svg');
+    background-image: url('/images/svg/south.svg');
 }
 /* twine-user-stylesheet #7: "root.css" */
 /* customizer variables */
@@ -447,7 +442,7 @@ body a:hover {
 
     let mergimals = new Map();
 
-    const artDir = '../images/mergimals/';
+    const artDir = '/images/mergimals/';
 
     function createMergimal (name, type, strategy, number) {
         mergimals.set(name, {type: type, strategy: strategy, number: number, image: artDir + name + '.png'});
@@ -776,7 +771,7 @@ Macro.add('dialogclose', {
         var $mapGrid = $(document.createElement('div'))
             .addClass('map-grid');
 
-        const src = '../images/maps/map - story - ' + coord + '.png';
+        const src = '/images/maps/map - story - ' + coord + '.png';
 
         var $img = $(document.createElement('img'))
             .attr('src', src)
@@ -967,7 +962,7 @@ Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" ta
 [[Look around-&gt;b3: description]]
 [[Stop at home.-&gt;b3: home]]
 [[Visit the Mergimal Lab-&gt;b3: lab]]
-[[Go to the beach.-&gt;b3: beach]]</tw-passagedata><tw-passagedata pid="2" name="b3: description" tags="" position="225,100" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;../images/story/cascade-village.png&#39;&gt;
+[[Go to the beach.-&gt;b3: beach]]</tw-passagedata><tw-passagedata pid="2" name="b3: description" tags="" position="225,100" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;/images/story/cascade-village.png&#39;&gt;
 Cascade Village rests quietly on the sandy shores of Ho’onui Peninsula, where five cozy homes overlook the sparkling waves. The Mergimal Research Center stands at the edge of the beach, its sleek design contrasting with the warm, rustic charm of the village.
 
 Life moves at a gentle pace here, with the ocean breeze carrying the sound of laughter and the faint scent of salt and fresh bread. It’s a peaceful place to live—but for those eager to explore, Cascade Village feels like the calm before an unforgettable adventure.
@@ -1084,7 +1079,7 @@ Gain Card I-20 (Rusty Rod).
 
 [[Continue exploring.-&gt;b5]]</tw-passagedata><tw-passagedata pid="17" name="b5: trainer" tags="b5 trainer" position="850,225" size="100,100">A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.
 
-&lt;&lt;say &#39;Dontay&#39; &#39;../images/characters/player.png&#39;&gt;&gt;Woah! I almost had that one.&lt;&lt;/say&gt;&gt;\
+&lt;&lt;say &#39;Dontay&#39; &#39;/images/characters/player.png&#39;&gt;&gt;Woah! I almost had that one.&lt;&lt;/say&gt;&gt;\
 
 [[Challenge them to a contest.-&gt;404]]
 [[Ask them how the fish are biting.-&gt;404]]
@@ -1181,7 +1176,7 @@ If you rolled...
 [[...between 40 and 80, find an uncommon Mergimal.-&gt;404]]
 [[...above 80, you find a rare Mergimal.-&gt;404]]</tw-passagedata><tw-passagedata pid="33" name="356" tags="trainer" position="350,475" size="100,100">There is a Mergimal Trainer standing near the base of the cliff. They yawn and roll their eyes as you approach.
 
-&lt;&lt;say &#39;Jessie&#39; &#39;../images/characters/player.png&#39;&gt;&gt;I suppose you want to have a contest?&lt;&lt;/say&gt;&gt;\
+&lt;&lt;say &#39;Jessie&#39; &#39;/images/characters/player.png&#39;&gt;&gt;I suppose you want to have a contest?&lt;&lt;/say&gt;&gt;\
 
 [[Absolutely!-&gt;404]]
 [[Ask them what&#39;s new.-&gt;404]]
@@ -1312,7 +1307,7 @@ If you rolled...
 [[Check out Veil School-&gt;d6: veil school]]
 !!!!NAVIGATE
 [[Go North into Littlemoose Forest.-&gt;d5]]
-[[Go West along the dirt path.-&gt;c6]]</tw-passagedata><tw-passagedata pid="63" name="d6: description" tags="" position="350,850" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;../images/story/littlemoose.png&#39;&gt;\
+[[Go West along the dirt path.-&gt;c6]]</tw-passagedata><tw-passagedata pid="63" name="d6: description" tags="" position="350,850" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;/images/story/littlemoose.png&#39;&gt;\
 
 Littlemoose is a sleepy town, nestled in a tall forest. It is the home of the Veil School and its leader, Grace.
 
@@ -1323,13 +1318,13 @@ A Mergimal Challenge Vending machine is here, where you can spend your hard-earn
 There&#39;s also a person standing around. They look confused.
 
 [[Continue exploring.-&gt;d6]]</tw-passagedata><tw-passagedata pid="64" name="d6: vending machine" tags="vend littlemoose" position="475,850" size="100,100">&lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;\
-  &lt;div style=&#39;background-image: url(../images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/bandage.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/tool.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/flashlight.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/mergiball.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/charm.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;background-image: url(/images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/bandage.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/tool.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/flashlight.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/mergiball.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/charm.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
 &lt;/div&gt;\
 &lt;&lt;button &#39;buy a mergiball 1c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coin &lt; 1&gt;&gt;&gt;
@@ -1448,7 +1443,7 @@ You decide to go talk to Rhia to see what is going on.
 !!!!NAVIGATE
 [[Go North towards the Wave School Stadium.-&gt;e1]]
 [[Go West towards the Beach District.-&gt;d2]]
-[[Go South out of town.-&gt;e3]]</tw-passagedata><tw-passagedata pid="70" name="e2: description" tags="" position="1225,850" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;../images/story/blue-urf.png&#39;&gt;\
+[[Go South out of town.-&gt;e3]]</tw-passagedata><tw-passagedata pid="70" name="e2: description" tags="" position="1225,850" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;/images/story/blue-urf.png&#39;&gt;\
 
 Blue Urf is a bustling city that loves fashion and beach life.
 
@@ -1461,13 +1456,13 @@ A Mergimal Challenge Vending machine is here, where you can spend your hard-earn
 A bunch of people seem to be waving fans and complaining about how their air conditioners are on the fritz.
 
 [[Continue exploring.-&gt;e2]]</tw-passagedata><tw-passagedata pid="71" name="e2: vending machine" tags="vend blue-urf" position="100,975" size="100,100">&lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;\
-  &lt;div style=&#39;background-image: url(../images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/bandage.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/tool.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/flashlight.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/mergiball.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
-  &lt;div style=&#39;grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;../images/items/charm.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;background-image: url(/images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/bandage.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/tool.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/flashlight.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/mergiball.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
+  &lt;div style=&#39;grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;/images/items/charm.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
 &lt;/div&gt;\
 &lt;&lt;button &#39;buy a mergiball 1c&#39;&gt;&gt;
   &lt;&lt;if $backpack.coins &lt; 1&gt;&gt;
@@ -1623,7 +1618,7 @@ She seems friendly.
 !!!!EXPLORE
 [[Nothing here yet.-&gt;&#39;404&#39;]]</tw-passagedata><tw-passagedata pid="84" name="volcano" tags="mt-boom-boom map" position="475,1100" size="100,100">&lt;&lt;map &#39;volcano&#39;&gt;&gt;&lt;&lt;east &#39;volcano&#39;&gt;&gt;&lt;&lt;west &#39;f5&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
-[[You see some sparks coming from behind a rock.-&gt;&#39;stray: bakewing&#39;]]</tw-passagedata><tw-passagedata pid="85" name="stray: bakewing" tags="mt-boom-boom stray rare" position="600,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/bakewing.png&#39; /&gt;
+[[You see some sparks coming from behind a rock.-&gt;&#39;stray: bakewing&#39;]]</tw-passagedata><tw-passagedata pid="85" name="stray: bakewing" tags="mt-boom-boom stray rare" position="600,1100" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;/images/mergimals/bakewing.png&#39; /&gt;
 
 You see a small, red Mergimal that is chewing on some branches.
 
@@ -1713,7 +1708,7 @@ Do you need me to show you how to catch Mergimals?&lt;&lt;/tam&gt;&gt;\
 &lt;&lt;link &#39;Say: Yes, please.&#39; &#39;tutorial: part 1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;Say: No, thanks. I already know how.&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="StoryInit" tags="" position="475,1225" size="100,100">&lt;&lt;set $player to {
   name: &#39;none set&#39;,
-  image: &#39;../images/characters/player.png&#39;,
+  image: &#39;/images/characters/player.png&#39;,
   difficulty: &#39;easy&#39;
 }&gt;&gt;
 
@@ -1765,10 +1760,10 @@ Do you need me to show you how to catch Mergimals?&lt;&lt;/tam&gt;&gt;\
 &lt;&lt;/for&gt;&gt;
 
 &lt;&lt;widget &#39;tam&#39; container&gt;&gt;
-  &lt;&lt;say &#39;Prof. Tamarack&#39; &#39;../images/characters/tam.png&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+  &lt;&lt;say &#39;Prof. Tamarack&#39; &#39;/images/characters/tam.png&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 &lt;&lt;widget &#39;rhia&#39; container&gt;&gt;
-  &lt;&lt;say &#39;Rhia (Wave School Leader)&#39; &#39;../images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+  &lt;&lt;say &#39;Rhia (Wave School Leader)&#39; &#39;/images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="no mergiballs" tags="" position="600,1225" size="100,100">You don&#39;t have any mergiballs!
 
 Go to a store or something, dude.
@@ -1800,7 +1795,7 @@ They want to be your friend.
 &lt;&lt;button &#39;Okay&#39;&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
     &lt;&lt;goto $tamedPassage&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="stray: boxin" tags="b4 stray common" position="1100,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/boxin.png&#39; /&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="stray: boxin" tags="b4 stray common" position="1100,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;/images/mergimals/boxin.png&#39; /&gt;
 
 The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 
@@ -1823,7 +1818,7 @@ Do Worksheet 2.1
 [[They got away: continue exploring.-&gt;b4]]</tw-passagedata><tw-passagedata pid="100" name="tamed: boxin" tags="b4 tamed" position="1225,1225" size="100,100">&lt;&lt;card &#39;boxin&#39;&gt;&gt;
 This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.
 
-&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.boxin.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="stray: zipper" tags="b4 stray uncommon" position="100,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/zipper.png&#39; /&gt;&lt;&lt;set $mergimals.zipper.seen = true&gt;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.boxin.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="stray: zipper" tags="b4 stray uncommon" position="100,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;/images/mergimals/zipper.png&#39; /&gt;&lt;&lt;set $mergimals.zipper.seen = true&gt;&gt;
 
 You&#39;re looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
 
@@ -1846,7 +1841,7 @@ Do Worksheet 3.4
 [[They got away: continue exploring.|b4]]</tw-passagedata><tw-passagedata pid="102" name="tamed: zipper" tags="b4 tamed" position="225,1350" size="100,100">&lt;&lt;card &#39;zipper&#39;&gt;&gt;
 This Mergimal is named Zipper. They&#39;re cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.
 
-&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.zipper.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="stray: tidefly" tags="b5 encounter" position="350,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/tidefly.png&#39; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.zipper.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="stray: tidefly" tags="b5 encounter" position="350,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;/images/mergimals/tidefly.png&#39; /&gt;
 
 A tiny snail with wings hangs from the line as you reel it in.
 
@@ -1869,7 +1864,7 @@ Do Worksheet 10.3
 [[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="104" name="tamed: tidefly" tags="b5 tamed" position="475,1350" size="100,100">&lt;&lt;card &#39;tidefly&#39;&gt;&gt;
 This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
 
-&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.tidefly.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="stray: krustwo" tags="b5 encounter" position="600,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/krustwo.png&quot; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.tidefly.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="stray: krustwo" tags="b5 encounter" position="600,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;/images/mergimals/krustwo.png&quot; /&gt;
 
 When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.
 
@@ -1895,7 +1890,7 @@ You&#39;ve seen these mischevious Mergimals around before. They are named Krustw
 &lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.krustwo.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="treethorn" tags="" position="850,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
 What a cute, prickly little dude.
 
-&lt;&lt;return &#39;Okay.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="stray: treethorn" tags="c4 encounter" position="975,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;../images/mergimals/treethorn.png&#39; /&gt;
+&lt;&lt;return &#39;Okay.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="stray: treethorn" tags="c4 encounter" position="975,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;/images/mergimals/treethorn.png&#39; /&gt;
 
 You&#39;re looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That&#39;s no bush: that&#39;s a Mergimal!
 
@@ -1918,14 +1913,14 @@ Do Worksheet 3.3
 [[They got away: continue exploring.|c4]]</tw-passagedata><tw-passagedata pid="109" name="tamed: treethorn" tags="c4 tamed" position="1100,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
 This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).
 
-&lt;&lt;link &#39;You tamed them.&#39; c4&gt;&gt;&lt;&lt;set $mergimals.treethorn.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="stray: corwhal" tags="b5 encounter rare" position="1225,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/corwhal.png&quot; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; c4&gt;&gt;&lt;&lt;set $mergimals.treethorn.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="stray: corwhal" tags="b5 encounter rare" position="1225,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;/images/mergimals/corwhal.png&quot; /&gt;
 
 This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
 
 Do Worksheet 7.4
 
 [[You&#39;ve tamed them.|tamed: corwhal]]
-[[They got away: continue exploring.|b5]]</tw-passagedata><tw-passagedata pid="111" name="tamed: corwhal" tags="b5 tamed" position="100,1475" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;../images/mergimals/corwhal.png&quot; /&gt;
+[[They got away: continue exploring.|b5]]</tw-passagedata><tw-passagedata pid="111" name="tamed: corwhal" tags="b5 tamed" position="100,1475" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;/images/mergimals/corwhal.png&quot; /&gt;
 
 You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
 
@@ -2016,7 +2011,7 @@ Found: ???
     &lt;div class=&#39;backpack-items&#39;&gt;
         &lt;&lt;for _item, _quantity range $backpack&gt;&gt;
           &lt;div&gt;
-            &lt;&lt;print &#39;&lt;img class=&quot;backpack-item-img&quot; src=&quot;../images/items/&#39; + _item + &#39;.svg&quot;&gt;&#39;&gt;&gt;&lt;br /&gt;
+            &lt;&lt;print &#39;&lt;img class=&quot;backpack-item-img&quot; src=&quot;/images/items/&#39; + _item + &#39;.svg&quot;&gt;&#39;&gt;&gt;&lt;br /&gt;
             _quantity
           &lt;/div&gt;
         &lt;&lt;/for&gt;&gt;
@@ -2127,19 +2122,19 @@ bakewing
   &lt;h2 class=&#39;stats-heading&#39;&gt;stats&lt;/h2&gt;
   &lt;div class=&#39;stats-box&#39;&gt;
     &lt;div class=&#39;stat-box&#39;&gt;
-      &lt;img class=&#39;stat-img&#39; title=&#39;attention&#39; src=&#39;../images/stats/attention.svg&#39; /&gt;
+      &lt;img class=&#39;stat-img&#39; title=&#39;attention&#39; src=&#39;/images/stats/attention.svg&#39; /&gt;
       &lt;p class=&#39;stat-label display-attention&#39;&gt;$stats.attention&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class=&#39;stat-box&#39;&gt;
-      &lt;img class=&#39;stat-img&#39; title=&#39;grit&#39; src=&#39;../images/stats/grit.svg&#39; /&gt;
+      &lt;img class=&#39;stat-img&#39; title=&#39;grit&#39; src=&#39;/images/stats/grit.svg&#39; /&gt;
       &lt;p class=&#39;stat-label display-grit&#39;&gt;$stats.grit&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class=&#39;stat-box&#39;&gt;
-      &lt;img class=&#39;stat-img&#39; title=&#39;memory&#39; src=&#39;../images/stats/memory.svg&#39; /&gt;
+      &lt;img class=&#39;stat-img&#39; title=&#39;memory&#39; src=&#39;/images/stats/memory.svg&#39; /&gt;
       &lt;p class=&#39;stat-label display-memory&#39;&gt;$stats.memory&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class=&#39;stat-box&#39;&gt;
-      &lt;img class=&#39;stat-img&#39; title=&#39;empathy&#39; src=&#39;../images/stats/empathy.svg&#39; /&gt;
+      &lt;img class=&#39;stat-img&#39; title=&#39;empathy&#39; src=&#39;/images/stats/empathy.svg&#39; /&gt;
       &lt;p class=&#39;stat-label display-empathy&#39;&gt;$stats.empathy&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;

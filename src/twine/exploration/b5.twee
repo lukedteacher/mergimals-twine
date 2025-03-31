@@ -78,7 +78,7 @@ Gain Card I-20 (Rusty Rod).
 :: b5: trainer [b5 trainer]
 A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.
 
-<<say 'Dontay' '../images/characters/player.png'>>Woah! I almost had that one.<</say>>\
+<<say 'Dontay' '/images/characters/player.png'>>Woah! I almost had that one.<</say>>\
 
 [[Challenge them to a contest.->404]]
 [[Ask them how the fish are biting.->404]]

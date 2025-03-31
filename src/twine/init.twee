@@ -1,7 +1,7 @@
 :: StoryInit
 <<set $player to {
   name: 'none set',
-  image: '../images/characters/player.png',
+  image: '/images/characters/player.png',
   difficulty: 'easy'
 }>>
 
@@ -53,8 +53,8 @@
 <</for>>
 
 <<widget 'tam' container>>
-  <<say 'Prof. Tamarack' '../images/characters/tam.png'>>_contents<</say>>
+  <<say 'Prof. Tamarack' '/images/characters/tam.png'>>_contents<</say>>
 <</widget>>
 <<widget 'rhia' container>>
-  <<say 'Rhia (Wave School Leader)' '../images/characters/rhia.webp'>>_contents<</say>>
+  <<say 'Rhia (Wave School Leader)' '/images/characters/rhia.webp'>>_contents<</say>>
 <</widget>>
