@@ -1,0 +1,16 @@
+:: injuries [nobr injury-box]
+<div class='injury-box'>
+    <div class='injury-heading'>
+        <h2>injuries</h2>
+    </div>
+    <<do tag 'injuries'>>
+        <div class='injury-tracker-box'>
+                <<for _count range $player.injuries>>
+                    <div class='injury-tracker injured'></div>
+                <</for>>
+                <<for _count range (4 - $player.injuries)>>
+                    <div class='injury-tracker'></div>
+                <</for>>
+        </div>
+    <</do>>
+</div>

@@ -42,7 +42,7 @@ They want to be your friend.
 <</button>>
 
 :: stray: boxin [b4 stray common]
-<img class='mergimal-image' src='/images/mergimals/boxin.png' />
+<img class='mergimal-image' src='images/mergimals/boxin.png' />
 
 The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 
@@ -71,7 +71,7 @@ This cute little bird is called Boxin, after the box-like marks on their bodies.
 <<link 'You tamed them.' b4>><<set $mergimals.boxin.tamed = true>><<set $tamedPassage = ''>><</link>>
 
 :: stray: zipper [b4 stray uncommon]
-<img class='mergimal-image' src='/images/mergimals/zipper.png' /><<set $mergimals.zipper.seen = true>>
+<img class='mergimal-image' src='images/mergimals/zipper.png' /><<set $mergimals.zipper.seen = true>>
 
 You're looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
 
@@ -100,7 +100,7 @@ This Mergimal is named Zipper. They're cute and furry and like to be pet. Howeve
 <<link 'You tamed them.' b4>><<set $mergimals.zipper.tamed = true>><<set $tamedPassage = ''>><</link>>
 
 :: stray: tidefly [b5 encounter]
-<img class='mergimal-image' src='/images/mergimals/tidefly.png' />
+<img class='mergimal-image' src='images/mergimals/tidefly.png' />
 
 A tiny snail with wings hangs from the line as you reel it in.
 
@@ -129,7 +129,7 @@ This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
 <<link 'You tamed them.' b5>><<set $mergimals.tidefly.tamed = true>><<set $tamedPassage = ''>><</link>>
 
 :: stray: krustwo [b5 encounter]
-<img class="mergimal-image" src="/images/mergimals/krustwo.png" />
+<img class="mergimal-image" src="images/mergimals/krustwo.png" />
 
 When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.
 
@@ -164,7 +164,7 @@ What a cute, prickly little dude.
 <<return 'Okay.'>>
 
 :: stray: treethorn [c4 encounter]
-<img class='mergimal-image' src='/images/mergimals/treethorn.png' />
+<img class='mergimal-image' src='images/mergimals/treethorn.png' />
 
 You're looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That's no bush: that's a Mergimal!
 
@@ -193,7 +193,7 @@ This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns 
 <<link 'You tamed them.' c4>><<set $mergimals.treethorn.tamed = true>><<set $tamedPassage = ''>><</link>>
 
 :: stray: corwhal [b5 encounter rare]
-<img class="mergimal-image" src="/images/mergimals/corwhal.png" />
+<img class="mergimal-image" src="images/mergimals/corwhal.png" />
 
 This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
 
@@ -203,7 +203,7 @@ Do Worksheet 7.4
 [[They got away: continue exploring.|b5]]
 
 :: tamed: corwhal [b5 tamed]
-<img class="mergimal-image" src="/images/mergimals/corwhal.png" />
+<img class="mergimal-image" src="images/mergimals/corwhal.png" />
 
 You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
 

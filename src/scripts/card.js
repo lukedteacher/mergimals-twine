@@ -4,7 +4,7 @@
 
     let mergimals = new Map();
 
-    const artDir = '/images/mergimals/';
+    const artDir = 'images/mergimals/';
 
     function createMergimal (name, type, strategy, number) {
         mergimals.set(name, {type: type, strategy: strategy, number: number, image: artDir + name + '.png'});

@@ -31,7 +31,7 @@ If you rolled...
 :: 356 [trainer]
 There is a Mergimal Trainer standing near the base of the cliff. They yawn and roll their eyes as you approach.
 
-<<say 'Jessie' '/images/characters/player.png'>>I suppose you want to have a contest?<</say>>\
+<<say 'Jessie' 'images/characters/player.png'>>I suppose you want to have a contest?<</say>>\
 
 [[Absolutely!->404]]
 [[Ask them what's new.->404]]

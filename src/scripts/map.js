@@ -9,7 +9,7 @@
         var $mapGrid = $(document.createElement('div'))
             .addClass('map-grid');
 
-        const src = '/images/maps/map - story - ' + coord + '.png';
+        const src = 'images/maps/map - story - ' + coord + '.png';
 
         var $img = $(document.createElement('img'))
             .attr('src', src)

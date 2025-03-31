@@ -5,7 +5,7 @@
     <div class='backpack-items'>
         <<for _item, _quantity range $backpack>>
           <div>
-            <<print '<img class="backpack-item-img" src="/images/items/' + _item + '.svg">'>><br />
+            <<print '<img class="backpack-item-img" src="images/items/' + _item + '.svg">'>><br />
             _quantity
           </div>
         <</for>>

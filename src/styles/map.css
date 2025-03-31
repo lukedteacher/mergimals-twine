@@ -26,20 +26,20 @@
 
 .north {
     grid-area: 1 / 19 / span 3 / span 4;
-    background-image: url('/images/svg/north.svg');
+    background-image: url('images/svg/north.svg');
 }
 
 .east {
     grid-area: 19 / 38 / span 4 / span 3;
-    background-image: url('/images/svg/east.svg');
+    background-image: url('images/svg/east.svg');
 }
 
 .west {
     grid-area: 19 / 1 / span 4 / span 3;
-    background-image: url('/images/svg/west.svg');
+    background-image: url('images/svg/west.svg');
 }
 
 .south {
     grid-area: 38 / 19 / span 3 / span 4;
-    background-image: url('/images/svg/south.svg');
+    background-image: url('images/svg/south.svg');
 }
