@@ -344,6 +344,7 @@ body {
   background-color: var(--background-color);
   color: var(--background-text);
   font-family: var(--text-font);
+  box-sizing: border-box;
 }
 
 body h1,
@@ -550,6 +551,10 @@ body a:hover {
 
 .flex {
     display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "backpack.js" */
 /* twine-user-script #2: "card.js" */
 (function () {
@@ -4915,12 +4920,11 @@ Found: ???
 &lt;&lt;if $high != &#39;attention&#39;&gt;&gt;&lt;&lt;link &#39;I can\&#39;t stay still.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;grit&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t like to fail.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;memory&#39;&gt;&gt;&lt;&lt;link &#39;I lose things often.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="cc: part 6" tags="" position="225,1600" size="100,100">Make any final modifications:
+&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="cc: part 6" tags="" position="225,1600" size="100,100">You may allocate the following stats:&lt;&lt;set _newstats = {attention: &#39;&#39;, grit: &#39;&#39;, memory: &#39;&#39;, empathy: &#39;&#39;}&gt;&gt;
 
 &lt;&lt;nobr&gt;&gt;
-    &lt;div style=&#39;display: grid; grid-template: 1fr / repeat(4, 1fr); gap: 0.5rem; 
-        margin-bottom: 0.5rem; background-color: #ddd; height: 4rem; width: 16rem;
-        align-items: center; border-radius: 0.4rem; box-sizing: border-box; justify-items: center;&#39;&gt;
+    &lt;div class=&#39;grid bg-lighter rounded&#39; style=&#39;grid-template: 1fr / repeat(4, 1fr); gap: 0.5rem; 
+        margin-bottom: 0.5rem; align-items: center; justify-items: center; padding: 1rem; width: 16rem;&#39;&gt;
         &lt;div id=&#39;stat-1-drop&#39; style=&#39;grid-area: 1 / 1;&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
         &lt;div id=&#39;stat-2-drop&#39; style=&#39;grid-area: 1 / 2;&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
         &lt;div id=&#39;stat-3-drop&#39; style=&#39;grid-area: 1 / 3;&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
@@ -4938,7 +4942,16 @@ Found: ???
 
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;button &#39;submit&#39;&gt;&gt;
-
+    &lt;&lt;script&gt;&gt;
+        let _stats = State.getVar(&#39;_newstats&#39;);
+        let _$statDraggables = $(&#39;.draggable&#39;);
+        $.each(_$statDraggables, function (_index, _$statDraggable) {
+            console.log(_$statDraggable);
+            console.log(_$statDraggable.text());
+        });
+        //console.log(_statDraggables);
+        //console.log(_stats);
+    &lt;&lt;/script&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
 &lt;&lt;done&gt;&gt;
@@ -4952,14 +4965,12 @@ Found: ???
             });
 
             $(&#39;.droppable&#39;).droppable({
-                classes: {
-                   &#39;ui-droppable-active&#39;: &#39;droppable-active&#39;
-                },
                 drop: function(event, ui) {
                     // finds the offset of the droppable being called
                     const _pos = $(this).offset();
                     // sets the offset of the dropped item to the above value
                     ui.draggable.offset(_pos);
+                    console.log(State.getVar(&#39;$stats&#39;))
                 }
             });
         });
@@ -5019,13 +5030,13 @@ Found: ???
 	&lt;/div&gt;
 &lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="no batteries" tags="" position="725,1600" size="100,100">You don&#39;t have any batteries!
 
-&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="stat-box" tags="nobr" position="850,1600" size="100,100">&lt;div class=&#39;rounded flex text-darkest&#39; style=&#39;flex-direction: column;&#39;&gt;
-	&lt;div class=&#39;bg-lightest rounded&#39; style=&#39;align-self: center; padding: 0.4rem 2rem; margin-bottom: -0.3rem;&#39;&gt;
+&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="stat-box" tags="nobr" position="850,1600" size="100,100">&lt;div class=&#39;rounded flex text-darkest flex-col&#39; style=&#39;width: min-content;&#39;&gt;
+	&lt;div class=&#39;bg-lightest rounded&#39; style=&#39;align-self: center; padding: 0.4rem 1.8rem; margin-bottom: -0.3rem;&#39;&gt;
         &lt;h2 style=&#39;margin: 0;&#39;&gt;stats&lt;/h2&gt;
     &lt;/div&gt;
     &lt;div class=&#39;bg-lighter rounded grid&#39; style=&#39;
         grid-template: 1fr 1fr / 1fr 1fr;
-        padding: 1rem; 
+        padding: 1.4rem; 
         gap: 0.5rem;
         align-self: center;
     &#39;&gt;

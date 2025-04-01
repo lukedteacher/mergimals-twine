@@ -1,11 +1,11 @@
 :: stat-box [nobr]
-<div class='rounded flex text-darkest' style='flex-direction: column;'>
-	<div class='bg-lightest rounded' style='align-self: center; padding: 0.4rem 2rem; margin-bottom: -0.3rem;'>
+<div class='rounded flex text-darkest flex-col' style='width: min-content;'>
+	<div class='bg-lightest rounded' style='align-self: center; padding: 0.4rem 1.8rem; margin-bottom: -0.3rem;'>
         <h2 style='margin: 0;'>stats</h2>
     </div>
     <div class='bg-lighter rounded grid' style='
         grid-template: 1fr 1fr / 1fr 1fr;
-        padding: 1rem; 
+        padding: 1.4rem; 
         gap: 0.5rem;
         align-self: center;
     '>

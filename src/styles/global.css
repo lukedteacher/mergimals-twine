@@ -3,6 +3,7 @@ body {
   background-color: var(--background-color);
   color: var(--background-text);
   font-family: var(--text-font);
+  box-sizing: border-box;
 }
 
 body h1,

@@ -35,12 +35,11 @@ Which of these statements fits you best?<br /><br />
 <<if $high != 'empathy'>><<link 'I don\'t understand emotions.' 'cc: part 6'>><<set $stats.empathy to 'd4'>><</link>><</if>>
 
 :: cc: part 6
-Make any final modifications:
+You may allocate the following stats:<<set _newstats = {attention: '', grit: '', memory: '', empathy: ''}>>
 
 <<nobr>>
-    <div style='display: grid; grid-template: 1fr / repeat(4, 1fr); gap: 0.5rem; 
-        margin-bottom: 0.5rem; background-color: #ddd; height: 4rem; width: 16rem;
-        align-items: center; border-radius: 0.4rem; box-sizing: border-box; justify-items: center;'>
+    <div class='grid bg-lighter rounded' style='grid-template: 1fr / repeat(4, 1fr); gap: 0.5rem; 
+        margin-bottom: 0.5rem; align-items: center; justify-items: center; padding: 1rem; width: 16rem;'>
         <div id='stat-1-drop' style='grid-area: 1 / 1;' class='droppable'></div>
         <div id='stat-2-drop' style='grid-area: 1 / 2;' class='droppable'></div>
         <div id='stat-3-drop' style='grid-area: 1 / 3;' class='droppable'></div>
@@ -58,7 +57,16 @@ Make any final modifications:
 
 <</button>>
 <<button 'submit'>>
-
+    <<script>>
+        let _stats = State.getVar('_newstats');
+        let _$statDraggables = $('.draggable');
+        $.each(_$statDraggables, function (_index, _$statDraggable) {
+            console.log(_$statDraggable);
+            console.log(_$statDraggable.text());
+        });
+        //console.log(_statDraggables);
+        //console.log(_stats);
+    <</script>>
 <</button>>
 
 <<done>>
@@ -72,14 +80,12 @@ Make any final modifications:
             });
 
             $('.droppable').droppable({
-                classes: {
-                   'ui-droppable-active': 'droppable-active'
-                },
                 drop: function(event, ui) {
                     // finds the offset of the droppable being called
                     const _pos = $(this).offset();
                     // sets the offset of the dropped item to the above value
                     ui.draggable.offset(_pos);
+                    console.log(State.getVar('$stats'))
                 }
             });
         });
