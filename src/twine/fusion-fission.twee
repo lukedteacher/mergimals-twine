@@ -35,17 +35,18 @@ Today is the first day of your Mergimals journey!
 Enter your name:
 <<textbox '$player.name' ''>>
 
-[[Create a character.->cc: part 1]]
-[[Go see professor Tamrack->start: part 1]]
+<<link 'Create a character.' 'cc: part 1'>><</link>>
+<<link 'Go see professor Tamrack' 'start: part 1'>>\
+  <<if $player.name is ''>>\
+    <<set $player.name to 'Ash'>>\
+  <</if>>\
+<</link>>\
 
 !!!!DEBUG:
 <<link 'jump to exploring' 'b3'>><</link>>
-<span class='text-lg'>d</span><span class='dice text-xl'>d4</span>
 
 :: start: part 1 [story]
-<<if $player.name is ''>>\
-  <<set $player.name to 'Ash'>>\
-<</if>>\
+
 Professor Tamarack's office is on the Eastern edge of town. It's the biggest building in the village and what mysteries fill all three floors are as good as anyone's guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
 <<tam>>$player.name!
 Finally, you’re here!

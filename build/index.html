@@ -214,222 +214,18 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 .grayscale {
     filter: grayscale(0.75);
 }
-/* twine-user-stylesheet #2: "fonts.css" */
-/* main body font */
-@font-face {
-    font-family: 'lexend';
-    src: url('assets/fonts/lexend.ttf') format('truetype');
-}
-
-/* main title font */
-@font-face {
-    font-family: 'pineapple';
-    src: url('assets/fonts/pineappledemo.ttf') format('truetype');
-}
-
-/* dice font */
-@font-face {
-    font-family: 'polymath';
-    src: url('assets/fonts/polymath.otf') format('opentype')
-}
-
-.dice {
-    font-family: 'polymath'; 
-}
-/* twine-user-stylesheet #3: "global.css" */
-/*  @/styles/global.css  */
-body {
-  background-color: var(--background-color);
-  color: var(--background-text);
-  font-family: var(--text-font);
-}
-
-body h1,
-body h2,
-body h3,
-body h4 {
-    font-family: var(--title-font);
-    font-weight: normal;
-}
-
-h4 {
-  margin-bottom: 0.3rem;
-}
-
-body a,
-body a:hover {
-    color: var(--accent-color);
-}
-
-/* TODO change this */
-.mergimal-image {
-  width: 32rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.concept {
-  width: 32rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#ui-dialog-title {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.text-lg {
-  font-size: 1.5rem;
-}
-
-.text-xl {
-  font-size: 2rem;
-}
-
-.draggable {
-  border: 2px solid green;
-  height: 2.5rem;
-  aspect-ratio: 1 / 1;
-  border-radius: 0.4rem;
-  background-color: #fff;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  color: #111;
-  padding-top: 0.3rem;
-  cursor: pointer;
-  z-index: 100;
-}
-
-.droppable {
-  border: 2px dashed purple;
-  height: 2.5rem;
-  aspect-ratio: 1 / 1;
-  border-radius: 0.4rem;
-  background-color: #fff;
-}
-
-.droppable-hover {
-  border: 2px solid blue;
-}
-/* twine-user-stylesheet #4: "keyword.css" */
-.keyword-span {
-    background-color: blue;
-    font-weight: bold;
-    padding: 0.3rem;
-}
-/* twine-user-stylesheet #5: "map.css" */
-.map-container {
-    display: flex;
-    justify-content: center;
-}
-
-.map-grid {
-    display: grid;
-    grid: repeat(4, 1rem) repeat(32, 1fr) repeat(4, 1rem) / repeat(4, 1rem) repeat(32, 1fr) repeat(4, 1rem);
-}
-
-.map-img {
-    width: 48rem;
-    grid-area: 5 / 5 / span 32 / span 32;
-}
-
-.move-btn {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: hsl(56, 100%, 50%);
-    border-radius: 0.5rem;
-}
-
-.move-btn:hover {
-    background-color: hsl(60, 100%, 81%);
-}
-
-.north {
-    grid-area: 1 / 19 / span 3 / span 4;
-    background-image: url('images/svg/north.svg');
-}
-
-.east {
-    grid-area: 19 / 38 / span 4 / span 3;
-    background-image: url('images/svg/east.svg');
-}
-
-.west {
-    grid-area: 19 / 1 / span 4 / span 3;
-    background-image: url('images/svg/west.svg');
-}
-
-.south {
-    grid-area: 38 / 19 / span 3 / span 4;
-    background-image: url('images/svg/south.svg');
-}
-/* twine-user-stylesheet #6: "root.css" */
-/* customizer variables */
-:root {
-    --text-font: lexend;
-    --title-font: pineapple;
-    --background-color: hsl(240, 10.4%, 13.1%);
-    --background-text: hsl(240, 9.1%, 87.1%);
-    --sidebar-color: hsl(0, 0.0%, 4.7%);
-    --sidebar-text: hsl(0, 0.0%, 79.6%);
-    --accent-color: hsl(37, 100.0%, 58.0%);
-    --accent-text: hsl(36, 55.6%, 1.8%);
-    --red: hsl(26, 100%, 42%);
-    --orange: hsl(41, 100%, 45%);
-    --yellow: hsl(56, 85%, 60%);
-    --green: hsl(164, 100%, 31%);
-    --cyan: hsl(202, 77%, 63%);
-    --indigo: hsl(222, 100%, 35%);
-    --violet: hsl(270, 100%, 30%);
-    --magenta: hsl(300, 100%, 30%);
-  }
-/* twine-user-stylesheet #7: "speech.css" */
-.say {
-    border: 1px solid #eee;
-    overflow: none;
-    display: grid;
-    grid: 2rem auto / 8rem auto;
-}
-
-.portrait-box {
-    grid-area: 1 / 1 / span 2 / span 1;
-    height: 8rem;
-}
-
-.portrait-img {
-    height: 8rem;
-}
-
-.name-box {
-    grid-area: 1 / 2;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    padding-left: 0.6em;
-    border-bottom: 1px solid #eee;
-}
-
-.speech-box {
-    grid-area: 2 / 2;
-    padding: 0.6rem;
-    margin: 0;
-}
-/* twine-user-stylesheet #8: "story-caption.css" */
-/* story caption items
+/* twine-user-stylesheet #2: "char-sheet.css" */
+/* character sheet items
 including:
 stats
 injuries
 backpack  */
 
-.story-caption-box {
+.char-sheet-box {
     margin-bottom: 1rem;
 }
 
-.story-caption-header-box {
+.char-sheet-header-box {
     background-color: #eee;
     border-radius: 0.4rem;
     color: black;
@@ -439,7 +235,7 @@ backpack  */
     position: relative;
 }
 
-.story-caption-header-box h2 {
+.char-sheet-header-box h2 {
     margin: 0;
     padding-top: 0.5rem;
     padding-bottom: 0.8rem;
@@ -447,7 +243,7 @@ backpack  */
     padding-right: 1.4rem;
 }
 
-.story-caption-boxes {
+.char-sheet-boxes {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -519,6 +315,211 @@ backpack  */
 .backpack-item-img {
     height: 2.5rem;
     aspect-ratio: 1 / 1;
+}
+/* twine-user-stylesheet #3: "fonts.css" */
+/* main body font */
+@font-face {
+    font-family: 'lexend';
+    src: url('assets/fonts/lexend.ttf') format('truetype');
+}
+
+/* main title font */
+@font-face {
+    font-family: 'pineapple';
+    src: url('assets/fonts/pineappledemo.ttf') format('truetype');
+}
+
+/* dice font */
+@font-face {
+    font-family: 'polymath';
+    src: url('assets/fonts/polymath.otf') format('opentype')
+}
+
+.dice {
+    font-family: 'polymath'; 
+}
+/* twine-user-stylesheet #4: "global.css" */
+/*  @/styles/global.css  */
+body {
+  background-color: var(--background-color);
+  color: var(--background-text);
+  font-family: var(--text-font);
+}
+
+body h1,
+body h2,
+body h3,
+body h4 {
+    font-family: var(--title-font);
+    font-weight: normal;
+}
+
+h4 {
+  margin-bottom: 0.3rem;
+}
+
+body a,
+body a:hover {
+    color: var(--accent-color);
+}
+
+/* TODO change this */
+.mergimal-image {
+  width: 32rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.concept {
+  width: 32rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* this doesn't work? */
+
+#ui-dialog-title {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.text-lg {
+  font-size: 1.5rem;
+}
+
+.text-xl {
+  font-size: 2rem;
+}
+
+.draggable {
+  border: 2px solid green;
+  height: 2.5rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.4rem;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #111;
+  cursor: move;
+  z-index: 100;
+}
+
+.droppable {
+  border: 2px dashed purple;
+  height: 2.5rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.4rem;
+  background-color: #fff;
+}
+
+.droppable-hover {
+  border: 2px solid blue;
+}
+/* twine-user-stylesheet #5: "keyword.css" */
+.keyword-span {
+    background-color: blue;
+    font-weight: bold;
+    padding: 0.3rem;
+}
+/* twine-user-stylesheet #6: "map.css" */
+.map-container {
+    display: flex;
+    justify-content: center;
+}
+
+.map-grid {
+    display: grid;
+    grid: repeat(4, 1rem) repeat(32, 1fr) repeat(4, 1rem) / repeat(4, 1rem) repeat(32, 1fr) repeat(4, 1rem);
+}
+
+.map-img {
+    width: 48rem;
+    grid-area: 5 / 5 / span 32 / span 32;
+}
+
+.move-btn {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: hsl(56, 100%, 50%);
+    border-radius: 0.5rem;
+}
+
+.move-btn:hover {
+    background-color: hsl(60, 100%, 81%);
+}
+
+.north {
+    grid-area: 1 / 19 / span 3 / span 4;
+    background-image: url('images/svg/north.svg');
+}
+
+.east {
+    grid-area: 19 / 38 / span 4 / span 3;
+    background-image: url('images/svg/east.svg');
+}
+
+.west {
+    grid-area: 19 / 1 / span 4 / span 3;
+    background-image: url('images/svg/west.svg');
+}
+
+.south {
+    grid-area: 38 / 19 / span 3 / span 4;
+    background-image: url('images/svg/south.svg');
+}
+/* twine-user-stylesheet #7: "root.css" */
+/* customizer variables */
+:root {
+    --text-font: lexend;
+    --title-font: pineapple;
+    --background-color: hsl(240, 10.4%, 13.1%);
+    --background-text: hsl(240, 9.1%, 87.1%);
+    --sidebar-color: hsl(0, 0.0%, 4.7%);
+    --sidebar-text: hsl(0, 0.0%, 79.6%);
+    --accent-color: hsl(37, 100.0%, 58.0%);
+    --accent-text: hsl(36, 55.6%, 1.8%);
+    --red: hsl(26, 100%, 42%);
+    --orange: hsl(41, 100%, 45%);
+    --yellow: hsl(56, 85%, 60%);
+    --green: hsl(164, 100%, 31%);
+    --cyan: hsl(202, 77%, 63%);
+    --indigo: hsl(222, 100%, 35%);
+    --violet: hsl(270, 100%, 30%);
+    --magenta: hsl(300, 100%, 30%);
+  }
+/* twine-user-stylesheet #8: "speech.css" */
+.say {
+    border: 1px solid #eee;
+    overflow: none;
+    display: grid;
+    grid: 2rem auto / 8rem auto;
+}
+
+.portrait-box {
+    grid-area: 1 / 1 / span 2 / span 1;
+    height: 8rem;
+}
+
+.portrait-img {
+    height: 8rem;
+}
+
+.name-box {
+    grid-area: 1 / 2;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    padding-left: 0.6em;
+    border-bottom: 1px solid #eee;
+}
+
+.speech-box {
+    grid-area: 2 / 2;
+    padding: 0.6rem;
+    margin: 0;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "backpack.js" */
 /* twine-user-script #2: "card.js" */
 (function () {
@@ -4527,15 +4528,15 @@ Today is the first day of your Mergimals journey!
 Enter your name:
 &lt;&lt;textbox &#39;$player.name&#39; &#39;&#39;&gt;&gt;
 
-[[Create a character.-&gt;cc: part 1]]
-[[Go see professor Tamrack-&gt;start: part 1]]
+&lt;&lt;link &#39;Create a character.&#39; &#39;cc: part 1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;Go see professor Tamrack&#39; &#39;start: part 1&#39;&gt;&gt;\
+  &lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
+    &lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;\
+  &lt;&lt;/if&gt;&gt;\
+&lt;&lt;/link&gt;&gt;\
 
 !!!!DEBUG:
-&lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;span class=&#39;text-lg&#39;&gt;d&lt;/span&gt;&lt;span class=&#39;dice text-xl&#39;&gt;d4&lt;/span&gt;</tw-passagedata><tw-passagedata pid="90" name="start: part 1" tags="story" position="1225,1100" size="100,100">&lt;&lt;if $player.name is &#39;&#39;&gt;&gt;\
-  &lt;&lt;set $player.name to &#39;Ash&#39;&gt;&gt;\
-&lt;&lt;/if&gt;&gt;\
-Professor Tamarack&#39;s office is on the Eastern edge of town. It&#39;s the biggest building in the village and what mysteries fill all three floors are as good as anyone&#39;s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
+&lt;&lt;link &#39;jump to exploring&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="start: part 1" tags="story" position="1225,1100" size="100,100">Professor Tamarack&#39;s office is on the Eastern edge of town. It&#39;s the biggest building in the village and what mysteries fill all three floors are as good as anyone&#39;s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
 &lt;&lt;tam&gt;&gt;$player.name!
 Finally, you’re here!
 &lt;&lt;/tam&gt;&gt;\
@@ -4880,8 +4881,7 @@ Found: ???
 &lt;&lt;link &#39;I notice every detail.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;attention&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;I never give up.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;grit&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;I remember everything.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;memory&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;I understand emotions.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;empathy&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="cc: part 5" tags="nobr" position="100,1600" size="100,100">Which of these statements fits you best?
-
+&lt;&lt;link &#39;I understand emotions.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;empathy&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="cc: part 5" tags="nobr" position="100,1600" size="100,100">Which of these statements fits you best?&lt;br /&gt;&lt;br /&gt;
 &lt;&lt;if $high != &#39;attention&#39;&gt;&gt;&lt;&lt;link &#39;I can\&#39;t stay still.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;grit&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t like to fail.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;memory&#39;&gt;&gt;&lt;&lt;link &#39;I lose things often.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;&lt;&lt;/if&gt;&gt;
@@ -4889,20 +4889,24 @@ Found: ???
 
 &lt;&lt;nobr&gt;&gt;
     &lt;div style=&#39;display: flex; flex-direction: row; gap: 0.5rem; 
-        margin-bottom: 0.5rem; background-color: #ddd; height: 4rem; width: 16rem; justify-content: space-evenly; 
-        align-items: center;&#39;&gt;
+    margin-bottom: 0.5rem; background-color: #ddd; height: 4rem; width: 16rem; justify-content: space-evenly; 
+    align-items: center; padding: 0; border-radius: 0.4rem; margin: 0; margin-bottom: 1rem;&#39;&gt;
         &lt;div id=&#39;drop-attention&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
         &lt;div id=&#39;drop-grit&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
         &lt;div id=&#39;drop-memory&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
         &lt;div id=&#39;drop-empathy&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div style=&#39;display: flex; flex-direction: row; gap: 0.5rem; 
-        margin-bottom: 0.5rem; background-color: #ddd; height: 4rem; width: 16rem; justify-content: space-evenly; 
-        align-items: center;&#39;&gt;
-        &lt;div id=&#39;stat-1&#39; class=&#39;draggable dice text-xl&#39;&gt;d4&lt;/div&gt;
-        &lt;div id=&#39;stat-2&#39; class=&#39;draggable dice text-xl&#39;&gt;d6&lt;/div&gt;
-        &lt;div id=&#39;stat-3&#39; class=&#39;draggable dice text-xl&#39;&gt;d6&lt;/div&gt;
-        &lt;div id=&#39;stat-4&#39; class=&#39;draggable dice text-xl&#39;&gt;d8&lt;/div&gt;
+    &lt;div style=&#39;display: grid; grid-template: 1fr / repeat(4, 1fr); gap: 0.5rem; 
+    margin-bottom: 0.5rem; background-color: #ddd; height: 4rem; width: 16rem;
+    align-items: center; border-radius: 0.4rem; box-sizing: border-box; justify-items: center;&#39;&gt;
+        &lt;div id=&#39;stat-1-drop&#39; style=&#39;grid-area: 1 / 1;&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
+        &lt;div id=&#39;stat-2-drop&#39; style=&#39;grid-area: 1 / 2;&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
+        &lt;div id=&#39;stat-3-drop&#39; style=&#39;grid-area: 1 / 3;&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
+        &lt;div id=&#39;stat-4-drop&#39; style=&#39;grid-area: 1 / 4;&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
+        &lt;div id=&#39;stat-1&#39; style=&#39;grid-area: 1 / 1;&#39; class=&#39;draggable dice text-xl&#39;&gt;d4&lt;/div&gt;
+        &lt;div id=&#39;stat-2&#39; style=&#39;grid-area: 1 / 2;&#39; class=&#39;draggable dice text-xl&#39;&gt;d6&lt;/div&gt;
+        &lt;div id=&#39;stat-3&#39; style=&#39;grid-area: 1 / 3;&#39; class=&#39;draggable dice text-xl&#39;&gt;d6&lt;/div&gt;
+        &lt;div id=&#39;stat-4&#39; style=&#39;grid-area: 1 / 4;&#39; class=&#39;draggable dice text-xl&#39;&gt;d8&lt;/div&gt;
     &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
 
@@ -4923,18 +4927,77 @@ Found: ???
             });
 
             $(&#39;.droppable&#39;).droppable({
-                classes: {
-                    &#39;ui-droppable-hover&#39;: &#39;droppable-hover&#39;
+                drop: function(event, ui) {
+                    const _pos = $(this).offset();
+                    ui.draggable.offset(_pos);
+                    console.log(_pos);
+                    console.log(ui.draggable.offset());
                 },
-                drop: { function(event, ui) {
-                    resetStats();
-                }}
+                over: function(event, ui) {
+                    $(ui.draggable).draggable( &quot;option&quot;, &quot;grid&quot;, [ 20, 20 ] );
+                },
+                out: function(event, ui) {
+                    $(ui.draggable).draggable( &quot;option&quot;, &quot;grid&quot;, false);
+                }
             });
-
-            function resetStats() {console.log(&#39;yo&#39;);};
         });
     &lt;&lt;/script&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="cheats" tags="nobr" position="350,1600" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="stats" tags="nobr" position="350,1600" size="100,100">&lt;&lt;do tag &#39;stats&#39;&gt;&gt;
+	&lt;div class=&#39;char-sheet-box&#39;&gt;
+		&lt;div class=&#39;char-sheet-header-box&#39;&gt;
+			&lt;h2&gt;stats&lt;/h2&gt;
+		&lt;/div&gt;
+		&lt;div class=&#39;stat-boxes char-sheet-boxes&#39;&gt;
+			&lt;&lt;for _stat, _value range $stats&gt;&gt;
+				&lt;div class=&#39;stat-box&#39;&gt;
+					&lt;div class=&#39;stat-img-box&#39;&gt;
+						&lt;&lt;print &#39;&lt;img class=&quot;stat-img&quot; title=&quot;&#39; + _stat +&#39;&quot; src=&quot;images/stats/&#39; + _stat + &#39;.svg&quot;&gt;&#39;&gt;&gt;
+					&lt;/div&gt;
+					&lt;div class=&#39;stat-label-box dice text-xl&#39;&gt;
+						_value
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;&lt;/for&gt;&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="injuries" tags="nobr" position="475,1600" size="100,100">&lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
+    &lt;div class=&#39;char-sheet-box&#39;&gt;
+        &lt;div class=&#39;char-sheet-header-box&#39;&gt;
+            &lt;h2&gt;injuries&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&#39;injury-boxes char-sheet-boxes&#39;&gt;
+            &lt;&lt;if $player.injuries &gt; 4&gt;&gt;
+                &lt;&lt;set $player.injuries = 4&gt;&gt;
+            &lt;&lt;/if&gt;&gt;
+            &lt;&lt;for _count range $player.injuries&gt;&gt;
+                &lt;div class=&#39;injury-tracker injured&#39;&gt;&lt;/div&gt;
+            &lt;&lt;/for&gt;&gt;
+            &lt;&lt;for _count range (4 - $player.injuries)&gt;&gt;
+                &lt;div class=&#39;injury-tracker&#39;&gt;&lt;/div&gt;
+            &lt;&lt;/for&gt;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="backpack" tags="nobr" position="600,1600" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
+	&lt;div class=&#39;char-sheet-box&#39;&gt;
+		&lt;div class=&#39;char-sheet-header-box&#39;&gt;
+			&lt;h2&gt;backpack&lt;/h2&gt;
+		&lt;/div&gt;
+		&lt;div class=&#39;item-boxes char-sheet-boxes&#39;&gt;
+			&lt;&lt;for _item, _quantity range $backpack&gt;&gt;
+				&lt;div class=&#39;item-box&#39;&gt;
+					&lt;div class=&#39;item-img-box&#39;&gt;
+						&lt;&lt;print &#39;&lt;img class=&quot;backpack-item-img&quot; title=&quot;&#39; + _item + &#39;&quot; src=&quot;images/items/&#39; + _item + &#39;.svg&quot;&gt;&#39;&gt;&gt;
+					&lt;/div&gt;
+					&lt;div class=&#39;item-label-box&#39;&gt;
+						_quantity
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;&lt;/for&gt;&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="no batteries" tags="" position="725,1600" size="100,100">You don&#39;t have any batteries!
+
+&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="cheats" tags="nobr" position="850,1600" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
 &lt;div style=&#39;display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;&#39;&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain 10 coins&#39;&gt;&gt;
@@ -5010,11 +5073,11 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
       &lt;&lt;set _object.tamed = false&gt;&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="incorrect" tags="" position="475,1600" size="100,100">Not quite!
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="incorrect" tags="" position="975,1600" size="100,100">Not quite!
 
-&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="correct" tags="" position="600,1600" size="100,100">Nice!
+&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="correct" tags="" position="1100,1600" size="100,100">Nice!
 
-&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="keywords" tags="nobr" position="725,1600" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
+&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="keywords" tags="nobr" position="1225,1600" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
   &lt;div class=&#39;keywords-box&#39;&gt;
     &lt;h2&gt;keywords&lt;/h2&gt;
     &lt;&lt;for _keyword, _boolean range $keywords&gt;&gt;
@@ -5023,13 +5086,13 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="no paddle" tags="" position="850,1600" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="no paddle" tags="" position="100,1725" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
 
-&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="no rod" tags="" position="975,1600" size="100,100">You don&#39;t have a fishing rod.
+&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="no rod" tags="" position="225,1725" size="100,100">You don&#39;t have a fishing rod.
 
-&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="no keyword" tags="" position="1100,1600" size="100,100">You don&#39;t have that keyword!
+&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="no keyword" tags="" position="350,1725" size="100,100">You don&#39;t have that keyword!
 
-&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="testing listbox stuff" tags="" position="1225,1600" size="100,100">attention: &lt;&lt;listbox &#39;$stats.attention&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
+&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="testing listbox stuff" tags="" position="475,1725" size="100,100">attention: &lt;&lt;listbox &#39;$stats.attention&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
 grit: &lt;&lt;listbox &#39;$stats.grit&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
 memory: &lt;&lt;listbox &#39;$stats.memory&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
 empathy: &lt;&lt;listbox &#39;$stats.empathy&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
@@ -5041,62 +5104,7 @@ empathy: &lt;&lt;listbox &#39;$stats.empathy&#39;&gt;&gt;&lt;&lt;option &#39;d4&
             console.log($(this).find(&#39;:selected&#39;)[0].text);
         });
     &lt;&lt;/script&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="stats" tags="nobr" position="100,1725" size="100,100">&lt;&lt;do tag &#39;stats&#39;&gt;&gt;
-	&lt;div class=&#39;story-caption-box&#39;&gt;
-		&lt;div class=&#39;story-caption-header-box&#39;&gt;
-			&lt;h2&gt;stats&lt;/h2&gt;
-		&lt;/div&gt;
-		&lt;div class=&#39;stat-boxes story-caption-boxes&#39;&gt;
-			&lt;&lt;for _stat, _value range $stats&gt;&gt;
-				&lt;div class=&#39;stat-box&#39;&gt;
-					&lt;div class=&#39;stat-img-box&#39;&gt;
-						&lt;&lt;print &#39;&lt;img class=&quot;stat-img&quot; title=&quot;&#39; + _stat +&#39;&quot; src=&quot;images/stats/&#39; + _stat + &#39;.svg&quot;&gt;&#39;&gt;&gt;
-					&lt;/div&gt;
-					&lt;div class=&#39;stat-label-box dice text-xl&#39;&gt;
-						_value
-					&lt;/div&gt;
-				&lt;/div&gt;
-			&lt;&lt;/for&gt;&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="injuries" tags="nobr" position="225,1725" size="100,100">&lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
-    &lt;div class=&#39;story-caption-box&#39;&gt;
-        &lt;div class=&#39;story-caption-header-box&#39;&gt;
-            &lt;h2&gt;injuries&lt;/h2&gt;
-        &lt;/div&gt;
-        &lt;div class=&#39;injury-boxes story-caption-boxes&#39;&gt;
-            &lt;&lt;if $player.injuries &gt; 4&gt;&gt;
-                &lt;&lt;set $player.injuries = 4&gt;&gt;
-            &lt;&lt;/if&gt;&gt;
-            &lt;&lt;for _count range $player.injuries&gt;&gt;
-                &lt;div class=&#39;injury-tracker injured&#39;&gt;&lt;/div&gt;
-            &lt;&lt;/for&gt;&gt;
-            &lt;&lt;for _count range (4 - $player.injuries)&gt;&gt;
-                &lt;div class=&#39;injury-tracker&#39;&gt;&lt;/div&gt;
-            &lt;&lt;/for&gt;&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="backpack" tags="nobr" position="350,1725" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
-	&lt;div class=&#39;story-caption-box&#39;&gt;
-		&lt;div class=&#39;story-caption-header-box&#39;&gt;
-			&lt;h2&gt;backpack&lt;/h2&gt;
-		&lt;/div&gt;
-		&lt;div class=&#39;item-boxes story-caption-boxes&#39;&gt;
-			&lt;&lt;for _item, _quantity range $backpack&gt;&gt;
-				&lt;div class=&#39;item-box&#39;&gt;
-					&lt;div class=&#39;item-img-box&#39;&gt;
-						&lt;&lt;print &#39;&lt;img class=&quot;backpack-item-img&quot; title=&quot;&#39; + _item + &#39;&quot; src=&quot;images/items/&#39; + _item + &#39;.svg&quot;&gt;&#39;&gt;&gt;
-					&lt;/div&gt;
-					&lt;div class=&#39;item-label-box&#39;&gt;
-						_quantity
-					&lt;/div&gt;
-				&lt;/div&gt;
-			&lt;&lt;/for&gt;&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="no batteries" tags="" position="475,1725" size="100,100">You don&#39;t have any batteries!
-
-&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="tamed" tags="nobr" position="600,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="tamed" tags="nobr" position="600,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
   &lt;h2&gt;
     &lt;&lt;link &#39;Mergipedia&#39;&gt;&gt;
       &lt;&lt;dialog mergipedia&gt;&gt;

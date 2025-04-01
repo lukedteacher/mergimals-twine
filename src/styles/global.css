@@ -37,6 +37,8 @@ body a:hover {
   margin-right: auto;
 }
 
+/* this doesn't work? */
+
 #ui-dialog-title {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -60,8 +62,7 @@ body a:hover {
   align-items: center;
   display: flex;
   color: #111;
-  padding-top: 0.3rem;
-  cursor: pointer;
+  cursor: move;
   z-index: 100;
 }
 

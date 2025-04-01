@@ -1,14 +1,14 @@
-/* story caption items
+/* character sheet items
 including:
 stats
 injuries
 backpack  */
 
-.story-caption-box {
+.char-sheet-box {
     margin-bottom: 1rem;
 }
 
-.story-caption-header-box {
+.char-sheet-header-box {
     background-color: #eee;
     border-radius: 0.4rem;
     color: black;
@@ -18,7 +18,7 @@ backpack  */
     position: relative;
 }
 
-.story-caption-header-box h2 {
+.char-sheet-header-box h2 {
     margin: 0;
     padding-top: 0.5rem;
     padding-bottom: 0.8rem;
@@ -26,7 +26,7 @@ backpack  */
     padding-right: 1.4rem;
 }
 
-.story-caption-boxes {
+.char-sheet-boxes {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;

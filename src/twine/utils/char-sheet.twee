@@ -1,10 +1,10 @@
 :: stats [nobr]
 <<do tag 'stats'>>
-	<div class='story-caption-box'>
-		<div class='story-caption-header-box'>
+	<div class='char-sheet-box'>
+		<div class='char-sheet-header-box'>
 			<h2>stats</h2>
 		</div>
-		<div class='stat-boxes story-caption-boxes'>
+		<div class='stat-boxes char-sheet-boxes'>
 			<<for _stat, _value range $stats>>
 				<div class='stat-box'>
 					<div class='stat-img-box'>
@@ -21,11 +21,11 @@
 
 :: injuries [nobr]
 <<do tag 'injuries'>>
-    <div class='story-caption-box'>
-        <div class='story-caption-header-box'>
+    <div class='char-sheet-box'>
+        <div class='char-sheet-header-box'>
             <h2>injuries</h2>
         </div>
-        <div class='injury-boxes story-caption-boxes'>
+        <div class='injury-boxes char-sheet-boxes'>
             <<if $player.injuries > 4>>
                 <<set $player.injuries = 4>>
             <</if>>
@@ -41,11 +41,11 @@
 
 :: backpack [nobr]
 <<do tag 'backpack'>>
-	<div class='story-caption-box'>
-		<div class='story-caption-header-box'>
+	<div class='char-sheet-box'>
+		<div class='char-sheet-header-box'>
 			<h2>backpack</h2>
 		</div>
-		<div class='item-boxes story-caption-boxes'>
+		<div class='item-boxes char-sheet-boxes'>
 			<<for _item, _quantity range $backpack>>
 				<div class='item-box'>
 					<div class='item-img-box'>
