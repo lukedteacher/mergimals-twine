@@ -44,35 +44,51 @@
 <h2>teleport</h2>
 Enter grid coords: <<textbox '$_destination' ''>> <<button 'go'>><<run Dialog.close();>><<goto $_destination>><</button>>
 <h2>keywords</h2>
-CLOSED <<link '+'>><<set $keywords.closed = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.closed = false>><<redo 'keywords'>><</link>><br />
+CLOSED
+<<link '+'>>
+    <<set $keywords.closed = true>>
+    <<redo 'keywords'>>
+<</link>> 
+<<link 'x'>>
+    <<set $keywords.closed = false>>
+    <<redo 'keywords'>>
+<</link>><br />
 FLASHLIGHT <<link '+'>><<set $keywords.flashlight = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.flashlight = false>><<redo 'keywords'>><</link>><br />
 DISCOUNT <<link '+'>><<set $keywords.discount = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.discount = false>><<redo 'keywords'>><</link>><br />
 PADDLE <<link '+'>><<set $keywords.paddle = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.paddle = false>><<redo 'keywords'>><</link>><br />
 RUSTY <<link '+'>><<set $keywords.rusty = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.rusty = false>><<redo 'keywords'>><</link>><br />
 SHINE <<link '+'>><<set $keywords.shine = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.shine = false>><<redo 'keywords'>><</link>><br />
 <h2>mergimals</h2>
-<<nobr>>
-  ALL
-  SEEN 
-  <<link '+'>>
+ALL
+SEEN 
+<<link '+'>>
     <<for _mergimal, _object range $mergimals>>
-      <<set _object.seen = true>>
+    <<set _object.seen = true>>
     <</for>>
-  <</link>>
-  <<link '-'>>
+<</link>>
+<<link '-'>>
     <<for _mergimal, _object range $mergimals>>
-      <<set _object.seen = false>>
+    <<set _object.seen = false>>
     <</for>>
-  <</link>> 
-  TAMED 
-  <<link '+'>>
+<</link>> 
+TAMED 
+<<link '+'>>
     <<for _mergimal, _object range $mergimals>>
-      <<set _object.tamed = true>>
+    <<set _object.tamed = true>>
     <</for>>
-  <</link>>
-  <<link '-'>>
+<</link>>
+<<link '-'>>
     <<for _mergimal, _object range $mergimals>>
-      <<set _object.tamed = false>>
+    <<set _object.tamed = false>>
     <</for>>
-  <</link>>
-<</nobr>>
+<</link>><br />
+specific: 
+<<listbox '_mergimalToChange'>>
+    <<optionsfrom $mergimals>>
+<</listbox>> 
+<<button 'seen'>>
+    <<set _mergimalToChange.seen = !_mergimalToChange.seen>>
+<</button>>
+<<button 'tamed'>>
+    <<set _mergimalToChange.tamed = !_mergimalToChange.tamed>>
+<</button>>

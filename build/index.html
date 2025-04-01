@@ -577,7 +577,6 @@ body a:hover {
 
     function createCard ($output, name, selectable = false, size = 'large', partial = false) {
         
-        console.log('test: ' + name);
         const $cardBox = $(document.createElement('div'))
             .addClass('card-box card-' + size);
         
@@ -5124,38 +5123,54 @@ Found: ???
 &lt;h2&gt;teleport&lt;/h2&gt;
 Enter grid coords: &lt;&lt;textbox &#39;$_destination&#39; &#39;&#39;&gt;&gt; &lt;&lt;button &#39;go&#39;&gt;&gt;&lt;&lt;run Dialog.close();&gt;&gt;&lt;&lt;goto $_destination&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;h2&gt;keywords&lt;/h2&gt;
-CLOSED &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.closed = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.closed = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
+CLOSED
+&lt;&lt;link &#39;+&#39;&gt;&gt;
+    &lt;&lt;set $keywords.closed = true&gt;&gt;
+    &lt;&lt;redo &#39;keywords&#39;&gt;&gt;
+&lt;&lt;/link&gt;&gt; 
+&lt;&lt;link &#39;x&#39;&gt;&gt;
+    &lt;&lt;set $keywords.closed = false&gt;&gt;
+    &lt;&lt;redo &#39;keywords&#39;&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 FLASHLIGHT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.flashlight = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.flashlight = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 DISCOUNT &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.discount = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.discount = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 PADDLE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.paddle = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.paddle = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 RUSTY &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.rusty = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.rusty = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.shine = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 &lt;h2&gt;mergimals&lt;/h2&gt;
-&lt;&lt;nobr&gt;&gt;
-  ALL
-  SEEN 
-  &lt;&lt;link &#39;+&#39;&gt;&gt;
+ALL
+SEEN 
+&lt;&lt;link &#39;+&#39;&gt;&gt;
     &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
-      &lt;&lt;set _object.seen = true&gt;&gt;
+    &lt;&lt;set _object.seen = true&gt;&gt;
     &lt;&lt;/for&gt;&gt;
-  &lt;&lt;/link&gt;&gt;
-  &lt;&lt;link &#39;-&#39;&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;-&#39;&gt;&gt;
     &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
-      &lt;&lt;set _object.seen = false&gt;&gt;
+    &lt;&lt;set _object.seen = false&gt;&gt;
     &lt;&lt;/for&gt;&gt;
-  &lt;&lt;/link&gt;&gt; 
-  TAMED 
-  &lt;&lt;link &#39;+&#39;&gt;&gt;
+&lt;&lt;/link&gt;&gt; 
+TAMED 
+&lt;&lt;link &#39;+&#39;&gt;&gt;
     &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
-      &lt;&lt;set _object.tamed = true&gt;&gt;
+    &lt;&lt;set _object.tamed = true&gt;&gt;
     &lt;&lt;/for&gt;&gt;
-  &lt;&lt;/link&gt;&gt;
-  &lt;&lt;link &#39;-&#39;&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;-&#39;&gt;&gt;
     &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
-      &lt;&lt;set _object.tamed = false&gt;&gt;
+    &lt;&lt;set _object.tamed = false&gt;&gt;
     &lt;&lt;/for&gt;&gt;
-  &lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="incorrect" tags="" position="1225,1600" size="100,100">Not quite!
+&lt;&lt;/link&gt;&gt;&lt;br /&gt;
+specific: 
+&lt;&lt;listbox &#39;_mergimalToChange&#39;&gt;&gt;
+    &lt;&lt;optionsfrom $mergimals&gt;&gt;
+&lt;&lt;/listbox&gt;&gt; 
+&lt;&lt;button &#39;seen&#39;&gt;&gt;
+    &lt;&lt;set _mergimalToChange.seen = !_mergimalToChange.seen&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+&lt;&lt;button &#39;tamed&#39;&gt;&gt;
+    &lt;&lt;set _mergimalToChange.tamed = !_mergimalToChange.tamed&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="incorrect" tags="" position="1225,1600" size="100,100">Not quite!
 
 &lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="correct" tags="" position="100,1725" size="100,100">Nice!
 
@@ -5174,16 +5189,10 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
 
 &lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="no keyword" tags="" position="600,1725" size="100,100">You don&#39;t have that keyword!
 
-&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="testing listbox stuff" tags="" position="725,1725" size="100,100">attention: &lt;&lt;listbox &#39;$stats.attention&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
-grit: &lt;&lt;listbox &#39;$stats.grit&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
-memory: &lt;&lt;listbox &#39;$stats.memory&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
-empathy: &lt;&lt;listbox &#39;$stats.empathy&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
-
-&lt;&lt;done&gt;&gt;
+&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="testing listbox stuff" tags="" position="725,1725" size="100,100">&lt;&lt;done&gt;&gt;
     &lt;&lt;script&gt;&gt;
         $(&#39;.macro-listbox&#39;).on(&#39;change&#39;, function () {
-            console.log($(this));
-            console.log($(this).find(&#39;:selected&#39;)[0].text);
+            console.log($(this).find(&#39;:selected&#39;).text());
         });
     &lt;&lt;/script&gt;&gt;
 &lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="tamed" tags="nobr" position="850,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;

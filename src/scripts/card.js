@@ -18,7 +18,6 @@
 
     function createCard ($output, name, selectable = false, size = 'large', partial = false) {
         
-        console.log('test: ' + name);
         const $cardBox = $(document.createElement('div'))
             .addClass('card-box card-' + size);
         

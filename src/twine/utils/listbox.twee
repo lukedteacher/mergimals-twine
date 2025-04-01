@@ -1,14 +1,9 @@
 :: testing listbox stuff
-attention: <<listbox '$stats.attention'>><<option 'd4'>><<option 'd6'>><<option 'd8'>><</listbox>>
-grit: <<listbox '$stats.grit'>><<option 'd4'>><<option 'd6'>><<option 'd8'>><</listbox>>
-memory: <<listbox '$stats.memory'>><<option 'd4'>><<option 'd6'>><<option 'd8'>><</listbox>>
-empathy: <<listbox '$stats.empathy'>><<option 'd4'>><<option 'd6'>><<option 'd8'>><</listbox>>
 
 <<done>>
     <<script>>
         $('.macro-listbox').on('change', function () {
-            console.log($(this));
-            console.log($(this).find(':selected')[0].text);
+            console.log($(this).find(':selected').text());
         });
     <</script>>
 <</done>>
