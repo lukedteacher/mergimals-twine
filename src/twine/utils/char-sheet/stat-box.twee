@@ -12,7 +12,7 @@
         <<for _stat, _value range $stats>>
             <div class='grid' style='grid-template: 2fr 1fr / 1fr 1fr; align-items: center; justify-items: center; gap: 0.5rem;'>
                 <<print '<img class="stat-img" title="' + _stat +'" src="images/stats/' + _stat + '.svg">'>>
-                <div class='droppable'></div>
+                <<print '<div class="droppable" data-stat="' + _stat +'"></div>'>>
                 <div style='grid-area: 2 / 1 / span 1 / span 2;'>_stat</div>
             </div>
         <</for>>

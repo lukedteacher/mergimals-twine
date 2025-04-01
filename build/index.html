@@ -3863,7 +3863,25 @@ var widgetsDroppable = $.ui.droppable;
         });
     });
 }());
-/* twine-user-script #11: "Story JavaScript" */
+/* twine-user-script #11: "stats.js" */
+window.checkDraggables = function () {
+    // finds all draggables with data-stat attribute
+    let $statDraggables = $('.draggable[data-stat]');
+    if ($statDraggables.length < 4) {
+        return false;
+    } else {
+        // after validating, set stats to selected values
+        let stats = State.getVar('$stats');
+        $.each($statDraggables, function () {
+            let $this = $(this);
+            let stat = $this.attr('data-stat');
+            let value = $this.text();
+            stats[stat] = value;
+        });
+        return true;
+    };
+};
+/* twine-user-script #12: "Story JavaScript" */
 Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" tags="map" position="100,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;south &#39;b4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around-&gt;b3: description]]
@@ -4920,7 +4938,7 @@ Found: ???
 &lt;&lt;if $high != &#39;attention&#39;&gt;&gt;&lt;&lt;link &#39;I can\&#39;t stay still.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;grit&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t like to fail.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;memory&#39;&gt;&gt;&lt;&lt;link &#39;I lose things often.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="cc: part 6" tags="" position="225,1600" size="100,100">You may allocate the following stats:&lt;&lt;set _newstats = {attention: &#39;&#39;, grit: &#39;&#39;, memory: &#39;&#39;, empathy: &#39;&#39;}&gt;&gt;
+&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="cc: part 6" tags="" position="225,1600" size="100,100">You may allocate the following stats:
 
 &lt;&lt;nobr&gt;&gt;
     &lt;div class=&#39;grid bg-lighter rounded&#39; style=&#39;grid-template: 1fr / repeat(4, 1fr); gap: 0.5rem; 
@@ -4938,21 +4956,29 @@ Found: ???
 
 &lt;&lt;/nobr&gt;&gt;
 
-&lt;&lt;button &#39;reset&#39;&gt;&gt;
-
-&lt;&lt;/button&gt;&gt;
+&lt;&lt;button &#39;reset&#39;&gt;&gt;&lt;&lt;/button&gt;&gt;\ 
 &lt;&lt;button &#39;submit&#39;&gt;&gt;
-    &lt;&lt;script&gt;&gt;
-        let _stats = State.getVar(&#39;_newstats&#39;);
-        let _$statDraggables = $(&#39;.draggable&#39;);
-        $.each(_$statDraggables, function (_index, _$statDraggable) {
-            console.log(_$statDraggable);
-            console.log(_$statDraggable.text());
-        });
-        //console.log(_statDraggables);
-        //console.log(_stats);
-    &lt;&lt;/script&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+    &lt;&lt;set _temp to checkDraggables()&gt;&gt;
+    &lt;&lt;if _temp == false&gt;&gt;
+        &lt;&lt;dialog &#39;oops&#39;&gt;&gt;\
+            You didn&#39;t set all the stats.
+
+            &lt;&lt;button &#39;okay&#39;&gt;&gt;
+                &lt;&lt;run Dialog.close()&gt;&gt;
+            &lt;&lt;/button&gt;&gt;
+        &lt;&lt;/dialog&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;dialog &#39;woot&#39;&gt;&gt;\
+            You changed your stats.
+
+            &lt;&lt;button &#39;okay&#39;&gt;&gt;
+                &lt;&lt;run Dialog.close()&gt;&gt;
+                &lt;&lt;goto &#39;cc: part 7&#39;&gt;&gt;
+            &lt;&lt;/button&gt;&gt;
+        &lt;&lt;/dialog&gt;&gt;
+        &lt;&lt;redo &#39;stats&#39;&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/button&gt;&gt;\
 
 &lt;&lt;done&gt;&gt;
     &lt;&lt;script&gt;&gt;
@@ -4964,18 +4990,23 @@ Found: ???
                 snapMode: &#39;inner&#39;
             });
 
+            // creates a droppable with jquery ui
             $(&#39;.droppable&#39;).droppable({
                 drop: function(event, ui) {
-                    // finds the offset of the droppable being called
-                    const _pos = $(this).offset();
-                    // sets the offset of the dropped item to the above value
-                    ui.draggable.offset(_pos);
-                    console.log(State.getVar(&#39;$stats&#39;))
+                    let $this = $(this);
+
+                    // TODO fix minor positioning bug this creates
+                    ui.draggable.offset($this.offset());
+
+                    let stat = $this.attr(&#39;data-stat&#39;);
+                    // if the droppables data-stat attribute exists, set the draggable&#39;s attribute to the same
+                    // or just remove it
+                    stat ? ui.draggable.attr(&#39;data-stat&#39;, stat) : ui.draggable.removeAttr(&#39;data-stat&#39;);
                 }
             });
         });
     &lt;&lt;/script&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="stats" tags="nobr" position="350,1600" size="100,100">&lt;&lt;do tag &#39;stats&#39;&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="cc: part 7" tags="" position="350,1600" size="100,100">nothing yet</tw-passagedata><tw-passagedata pid="124" name="stats" tags="nobr" position="475,1600" size="100,100">&lt;&lt;do tag &#39;stats&#39;&gt;&gt;
 	&lt;div class=&#39;char-sheet-box&#39;&gt;
 		&lt;div class=&#39;char-sheet-header-box&#39;&gt;
 			&lt;h2&gt;stats&lt;/h2&gt;
@@ -4993,7 +5024,7 @@ Found: ???
 			&lt;&lt;/for&gt;&gt;
 		&lt;/div&gt;
 	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="injuries" tags="nobr" position="475,1600" size="100,100">&lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="injuries" tags="nobr" position="600,1600" size="100,100">&lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
     &lt;div class=&#39;char-sheet-box&#39;&gt;
         &lt;div class=&#39;char-sheet-header-box&#39;&gt;
             &lt;h2&gt;injuries&lt;/h2&gt;
@@ -5010,7 +5041,7 @@ Found: ???
             &lt;&lt;/for&gt;&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="backpack" tags="nobr" position="600,1600" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="backpack" tags="nobr" position="725,1600" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
 	&lt;div class=&#39;char-sheet-box&#39;&gt;
 		&lt;div class=&#39;char-sheet-header-box&#39;&gt;
 			&lt;h2&gt;backpack&lt;/h2&gt;
@@ -5028,9 +5059,9 @@ Found: ???
 			&lt;&lt;/for&gt;&gt;
 		&lt;/div&gt;
 	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="no batteries" tags="" position="725,1600" size="100,100">You don&#39;t have any batteries!
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="no batteries" tags="" position="850,1600" size="100,100">You don&#39;t have any batteries!
 
-&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="stat-box" tags="nobr" position="850,1600" size="100,100">&lt;div class=&#39;rounded flex text-darkest flex-col&#39; style=&#39;width: min-content;&#39;&gt;
+&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="stat-box" tags="nobr" position="975,1600" size="100,100">&lt;div class=&#39;rounded flex text-darkest flex-col&#39; style=&#39;width: min-content;&#39;&gt;
 	&lt;div class=&#39;bg-lightest rounded&#39; style=&#39;align-self: center; padding: 0.4rem 1.8rem; margin-bottom: -0.3rem;&#39;&gt;
         &lt;h2 style=&#39;margin: 0;&#39;&gt;stats&lt;/h2&gt;
     &lt;/div&gt;
@@ -5043,12 +5074,12 @@ Found: ???
         &lt;&lt;for _stat, _value range $stats&gt;&gt;
             &lt;div class=&#39;grid&#39; style=&#39;grid-template: 2fr 1fr / 1fr 1fr; align-items: center; justify-items: center; gap: 0.5rem;&#39;&gt;
                 &lt;&lt;print &#39;&lt;img class=&quot;stat-img&quot; title=&quot;&#39; + _stat +&#39;&quot; src=&quot;images/stats/&#39; + _stat + &#39;.svg&quot;&gt;&#39;&gt;&gt;
-                &lt;div class=&#39;droppable&#39;&gt;&lt;/div&gt;
+                &lt;&lt;print &#39;&lt;div class=&quot;droppable&quot; data-stat=&quot;&#39; + _stat +&#39;&quot;&gt;&lt;/div&gt;&#39;&gt;&gt;
                 &lt;div style=&#39;grid-area: 2 / 1 / span 1 / span 2;&#39;&gt;_stat&lt;/div&gt;
             &lt;/div&gt;
         &lt;&lt;/for&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="128" name="cheats" tags="nobr" position="975,1600" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="129" name="cheats" tags="nobr" position="1100,1600" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
 &lt;div style=&#39;display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;&#39;&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain 10 coins&#39;&gt;&gt;
@@ -5124,11 +5155,11 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
       &lt;&lt;set _object.tamed = false&gt;&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="incorrect" tags="" position="1100,1600" size="100,100">Not quite!
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="incorrect" tags="" position="1225,1600" size="100,100">Not quite!
 
-&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="correct" tags="" position="1225,1600" size="100,100">Nice!
+&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="correct" tags="" position="100,1725" size="100,100">Nice!
 
-&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="keywords" tags="nobr" position="100,1725" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
+&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="keywords" tags="nobr" position="225,1725" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
   &lt;div class=&#39;keywords-box&#39;&gt;
     &lt;h2&gt;keywords&lt;/h2&gt;
     &lt;&lt;for _keyword, _boolean range $keywords&gt;&gt;
@@ -5137,13 +5168,13 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="no paddle" tags="" position="225,1725" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="no paddle" tags="" position="350,1725" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
 
-&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="no rod" tags="" position="350,1725" size="100,100">You don&#39;t have a fishing rod.
+&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="no rod" tags="" position="475,1725" size="100,100">You don&#39;t have a fishing rod.
 
-&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="no keyword" tags="" position="475,1725" size="100,100">You don&#39;t have that keyword!
+&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="no keyword" tags="" position="600,1725" size="100,100">You don&#39;t have that keyword!
 
-&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="testing listbox stuff" tags="" position="600,1725" size="100,100">attention: &lt;&lt;listbox &#39;$stats.attention&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
+&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="testing listbox stuff" tags="" position="725,1725" size="100,100">attention: &lt;&lt;listbox &#39;$stats.attention&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
 grit: &lt;&lt;listbox &#39;$stats.grit&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
 memory: &lt;&lt;listbox &#39;$stats.memory&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
 empathy: &lt;&lt;listbox &#39;$stats.empathy&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
@@ -5155,7 +5186,7 @@ empathy: &lt;&lt;listbox &#39;$stats.empathy&#39;&gt;&gt;&lt;&lt;option &#39;d4&
             console.log($(this).find(&#39;:selected&#39;)[0].text);
         });
     &lt;&lt;/script&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="tamed" tags="nobr" position="725,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="tamed" tags="nobr" position="850,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
   &lt;h2&gt;
     &lt;&lt;link &#39;Mergipedia&#39;&gt;&gt;
       &lt;&lt;dialog mergipedia&gt;&gt;
@@ -5163,9 +5194,9 @@ empathy: &lt;&lt;listbox &#39;$stats.empathy&#39;&gt;&gt;&lt;&lt;option &#39;d4&
       &lt;&lt;/dialog&gt;&gt;
     &lt;&lt;/link&gt;&gt;
   &lt;/h2&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="137" name="not enough coins" tags="" position="850,1725" size="100,100">You don&#39;t have enough coins to buy that!
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="138" name="not enough coins" tags="" position="975,1725" size="100,100">You don&#39;t have enough coins to buy that!
 
-&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="already purchased" tags="" position="975,1725" size="100,100">You already have one!
+&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="already purchased" tags="" position="1100,1725" size="100,100">You already have one!
 
 &lt;&lt;link &#39;Oops.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">

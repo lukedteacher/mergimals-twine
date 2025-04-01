@@ -35,7 +35,7 @@ Which of these statements fits you best?<br /><br />
 <<if $high != 'empathy'>><<link 'I don\'t understand emotions.' 'cc: part 6'>><<set $stats.empathy to 'd4'>><</link>><</if>>
 
 :: cc: part 6
-You may allocate the following stats:<<set _newstats = {attention: '', grit: '', memory: '', empathy: ''}>>
+You may allocate the following stats:
 
 <<nobr>>
     <div class='grid bg-lighter rounded' style='grid-template: 1fr / repeat(4, 1fr); gap: 0.5rem; 
@@ -53,21 +53,29 @@ You may allocate the following stats:<<set _newstats = {attention: '', grit: '',
 
 <</nobr>>
 
-<<button 'reset'>>
-
-<</button>>
+<<button 'reset'>><</button>>\ 
 <<button 'submit'>>
-    <<script>>
-        let _stats = State.getVar('_newstats');
-        let _$statDraggables = $('.draggable');
-        $.each(_$statDraggables, function (_index, _$statDraggable) {
-            console.log(_$statDraggable);
-            console.log(_$statDraggable.text());
-        });
-        //console.log(_statDraggables);
-        //console.log(_stats);
-    <</script>>
-<</button>>
+    <<set _temp to checkDraggables()>>
+    <<if _temp == false>>
+        <<dialog 'oops'>>\
+            You didn't set all the stats.
+
+            <<button 'okay'>>
+                <<run Dialog.close()>>
+            <</button>>
+        <</dialog>>
+    <<else>>
+        <<dialog 'woot'>>\
+            You changed your stats.
+
+            <<button 'okay'>>
+                <<run Dialog.close()>>
+                <<goto 'cc: part 7'>>
+            <</button>>
+        <</dialog>>
+        <<redo 'stats'>>
+    <</if>>
+<</button>>\
 
 <<done>>
     <<script>>
@@ -79,15 +87,23 @@ You may allocate the following stats:<<set _newstats = {attention: '', grit: '',
                 snapMode: 'inner'
             });
 
+            // creates a droppable with jquery ui
             $('.droppable').droppable({
                 drop: function(event, ui) {
-                    // finds the offset of the droppable being called
-                    const _pos = $(this).offset();
-                    // sets the offset of the dropped item to the above value
-                    ui.draggable.offset(_pos);
-                    console.log(State.getVar('$stats'))
+                    let $this = $(this);
+
+                    // TODO fix minor positioning bug this creates
+                    ui.draggable.offset($this.offset());
+
+                    let stat = $this.attr('data-stat');
+                    // if the droppables data-stat attribute exists, set the draggable's attribute to the same
+                    // or just remove it
+                    stat ? ui.draggable.attr('data-stat', stat) : ui.draggable.removeAttr('data-stat');
                 }
             });
         });
     <</script>>
 <</done>>
+
+:: cc: part 7
+nothing yet
