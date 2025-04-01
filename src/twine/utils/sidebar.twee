@@ -1,0 +1,39 @@
+:: sidebar [nobr]
+<<include 'stats'>>
+<<include 'injuries'>>
+<<include 'backpack'>>
+<<include 'tamed'>>
+<<include 'keywords'>>
+<details id='1'>
+    <summary>test</summary>
+    Why is everything working now??!
+</details>
+
+<<done>>
+    <<script>>
+        (function() {
+            $('details').on('toggle', function(_event) {
+                var id = $(this).attr('id');
+                var isOpen = $(this).attr('open');
+                console.log(State.getVar('$sidebar'));
+                window.localStorage.setItem('details-'+id, isOpen);
+            });
+
+            function setDetailOpenStatus(item) {
+                if (item.includes('details-')) {
+                    var id = item.split('details-')[1];
+                    var status = window.localStorage.getItem(item);
+                    if (status == 'open'){
+                        $("#"+id).attr('open',true)
+                    };
+                };
+            };
+
+            $(function() {
+                for (var i = 0; i < localStorage.length; i++) {
+                    setDetailOpenStatus(localStorage.key(i));
+                };
+            });
+        })();
+    <</script>>
+<</done>>

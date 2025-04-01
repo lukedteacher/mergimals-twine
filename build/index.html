@@ -3880,7 +3880,8 @@ window.checkDraggables = function () {
         return true;
     };
 };
-/* twine-user-script #12: "Story JavaScript" */
+/* twine-user-script #12: "test.js" */
+/* twine-user-script #13: "Story JavaScript" */
 Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" tags="map" position="100,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;south &#39;b4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around-&gt;b3: description]]
@@ -4565,11 +4566,7 @@ Do Worksheet 84.1
 [[They got away: continue exploring.-&gt;volcano]]</tw-passagedata><tw-passagedata pid="86" name="tamed: bakewing" tags="mt-boom-boom tamed" position="725,1100" size="100,100">&lt;&lt;card &#39;bakewing&#39;&gt;&gt;
 This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, which they use to make pizza. Yum!
 
-&lt;&lt;link &#39;You tamed them.&#39; &#39;volcano&#39;&gt;&gt;&lt;&lt;set $mergimals.bakewing.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="StoryCaption" tags="" position="850,1100" size="100,100">&lt;&lt;include &#39;stats&#39;&gt;&gt;\
-&lt;&lt;include &#39;injuries&#39;&gt;&gt;\
-&lt;&lt;include &#39;backpack&#39;&gt;&gt;\
-&lt;&lt;include &#39;tamed&#39;&gt;&gt;\
-&lt;&lt;include &#39;keywords&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="StoryMenu" tags="" position="975,1100" size="100,100">&lt;&lt;link &#39;cheats&#39;&gt;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; &#39;volcano&#39;&gt;&gt;&lt;&lt;set $mergimals.bakewing.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="StoryCaption" tags="" position="850,1100" size="100,100">&lt;&lt;include &#39;sidebar&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="StoryMenu" tags="" position="975,1100" size="100,100">&lt;&lt;link &#39;cheats&#39;&gt;&gt;
   &lt;&lt;dialog &#39;cheats&#39;&gt;&gt;\
     &lt;&lt;include &#39;cheats&#39;&gt;&gt;
   &lt;&lt;/dialog&gt;&gt;
@@ -4697,7 +4694,9 @@ Do you need me to show you how to catch Mergimals?&lt;&lt;/tam&gt;&gt;\
 &lt;&lt;/widget&gt;&gt;
 &lt;&lt;widget &#39;rhia&#39; container&gt;&gt;
   &lt;&lt;say &#39;Rhia (Wave School Leader)&#39; &#39;images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="no mergiballs" tags="" position="725,1225" size="100,100">You don&#39;t have any mergiballs!
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;set $sidebar to false&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="no mergiballs" tags="" position="725,1225" size="100,100">You don&#39;t have any mergiballs!
 
 Go to a store or something, dude.
 
@@ -5195,7 +5194,44 @@ specific:
             console.log($(this).find(&#39;:selected&#39;).text());
         });
     &lt;&lt;/script&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="tamed" tags="nobr" position="850,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="sidebar" tags="nobr" position="850,1725" size="100,100">&lt;&lt;include &#39;stats&#39;&gt;&gt;
+&lt;&lt;include &#39;injuries&#39;&gt;&gt;
+&lt;&lt;include &#39;backpack&#39;&gt;&gt;
+&lt;&lt;include &#39;tamed&#39;&gt;&gt;
+&lt;&lt;include &#39;keywords&#39;&gt;&gt;
+&lt;details id=&#39;1&#39;&gt;
+    &lt;summary&gt;test&lt;/summary&gt;
+    Why is everything working now??!
+&lt;/details&gt;
+
+&lt;&lt;done&gt;&gt;
+    &lt;&lt;script&gt;&gt;
+        (function() {
+            $(&#39;details&#39;).on(&#39;toggle&#39;, function(_event) {
+                var id = $(this).attr(&#39;id&#39;);
+                var isOpen = $(this).attr(&#39;open&#39;);
+                console.log(State.getVar(&#39;$sidebar&#39;));
+                window.localStorage.setItem(&#39;details-&#39;+id, isOpen);
+            });
+
+            function setDetailOpenStatus(item) {
+                if (item.includes(&#39;details-&#39;)) {
+                    var id = item.split(&#39;details-&#39;)[1];
+                    var status = window.localStorage.getItem(item);
+                    if (status == &#39;open&#39;){
+                        $(&quot;#&quot;+id).attr(&#39;open&#39;,true)
+                    };
+                };
+            };
+
+            $(function() {
+                for (var i = 0; i &lt; localStorage.length; i++) {
+                    setDetailOpenStatus(localStorage.key(i));
+                };
+            });
+        })();
+    &lt;&lt;/script&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="tamed" tags="nobr" position="975,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
   &lt;h2&gt;
     &lt;&lt;link &#39;Mergipedia&#39;&gt;&gt;
       &lt;&lt;dialog mergipedia&gt;&gt;
@@ -5203,9 +5239,9 @@ specific:
       &lt;&lt;/dialog&gt;&gt;
     &lt;&lt;/link&gt;&gt;
   &lt;/h2&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="138" name="not enough coins" tags="" position="975,1725" size="100,100">You don&#39;t have enough coins to buy that!
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="139" name="not enough coins" tags="" position="1100,1725" size="100,100">You don&#39;t have enough coins to buy that!
 
-&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="already purchased" tags="" position="1100,1725" size="100,100">You already have one!
+&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="already purchased" tags="" position="1225,1725" size="100,100">You already have one!
 
 &lt;&lt;link &#39;Oops.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">

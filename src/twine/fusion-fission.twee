@@ -14,11 +14,7 @@ MERGIMALS
 Config.ui.stowBarInitially = false;
 
 :: StoryCaption
-<<include 'stats'>>\
-<<include 'injuries'>>\
-<<include 'backpack'>>\
-<<include 'tamed'>>\
-<<include 'keywords'>>
+<<include 'sidebar'>>
 
 :: StoryMenu
 <<link 'cheats'>>
