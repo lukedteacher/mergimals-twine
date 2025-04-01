@@ -9,3 +9,13 @@
     font-family: 'pineapple';
     src: url('assets/fonts/pineappledemo.ttf') format('truetype');
 }
+
+/* dice font */
+@font-face {
+    font-family: 'polymath';
+    src: url('assets/fonts/polymath.otf') format('opentype')
+}
+
+.dice {
+    font-family: 'polymath'; 
+}

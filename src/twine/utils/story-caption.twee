@@ -10,7 +10,7 @@
 					<div class='stat-img-box'>
 						<<print '<img class="stat-img" title="' + _stat +'" src="images/stats/' + _stat + '.svg">'>>
 					</div>
-					<div class='stat-label-box'>
+					<div class='stat-label-box dice text-xl'>
 						_value
 					</div>
 				</div>

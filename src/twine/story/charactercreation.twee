@@ -27,13 +27,62 @@ Which of these statements fits you best?
 <<link 'I remember everything.' 'cc: part 5'>><<set $stats.memory to 'd8'>><<set $high to 'memory'>><</link>>
 <<link 'I understand emotions.' 'cc: part 5'>><<set $stats.empathy to 'd8'>><<set $high to 'empathy'>><</link>>
 
-:: cc: part 5
+:: cc: part 5 [nobr]
 Which of these statements fits you best?
 
-<<if $high != 'attention'>><<link 'I can\'t stay still.' 'cc: part 6'>><<set $stats.attention to 'd4'>><</link>><</if>>
-<<if $high != 'grit'>><<link 'I don\'t like to fail.' 'cc: part 6'>><<set $stats.grit to 'd4'>><</link>><</if>>
-<<if $high != 'memory'>><<link 'I lose things often.' 'cc: part 6'>><<set $stats.memory to 'd4'>><</link>><</if>>
+<<if $high != 'attention'>><<link 'I can\'t stay still.' 'cc: part 6'>><<set $stats.attention to 'd4'>><</link>><br /><</if>>
+<<if $high != 'grit'>><<link 'I don\'t like to fail.' 'cc: part 6'>><<set $stats.grit to 'd4'>><</link>><br /><</if>>
+<<if $high != 'memory'>><<link 'I lose things often.' 'cc: part 6'>><<set $stats.memory to 'd4'>><</link>><br /><</if>>
 <<if $high != 'empathy'>><<link 'I don\'t understand emotions.' 'cc: part 6'>><<set $stats.empathy to 'd4'>><</link>><</if>>
 
 :: cc: part 6
-test
+Make any final modifications:
+
+<<nobr>>
+    <div style='display: flex; flex-direction: row; gap: 0.5rem; 
+        margin-bottom: 0.5rem; background-color: #ddd; height: 4rem; width: 16rem; justify-content: space-evenly; 
+        align-items: center;'>
+        <div id='drop-attention' class='droppable'></div>
+        <div id='drop-grit' class='droppable'></div>
+        <div id='drop-memory' class='droppable'></div>
+        <div id='drop-empathy' class='droppable'></div>
+    </div>
+    <div style='display: flex; flex-direction: row; gap: 0.5rem; 
+        margin-bottom: 0.5rem; background-color: #ddd; height: 4rem; width: 16rem; justify-content: space-evenly; 
+        align-items: center;'>
+        <div id='stat-1' class='draggable dice text-xl'>d4</div>
+        <div id='stat-2' class='draggable dice text-xl'>d6</div>
+        <div id='stat-3' class='draggable dice text-xl'>d6</div>
+        <div id='stat-4' class='draggable dice text-xl'>d8</div>
+    </div>
+<</nobr>>
+
+<<button 'reset'>>
+
+<</button>>
+<<button 'submit'>>
+
+<</button>>
+
+<<done>>
+    <<script>>
+        $( function() {
+            $('.draggable').draggable({
+                revert: 'invalid',
+                snap: '.droppable',
+                snapMode: 'inner'
+            });
+
+            $('.droppable').droppable({
+                classes: {
+                    'ui-droppable-hover': 'droppable-hover'
+                },
+                drop: { function(event, ui) {
+                    resetStats();
+                }}
+            });
+
+            function resetStats() {console.log('yo');};
+        });
+    <</script>>
+<</done>>

@@ -40,6 +40,7 @@ Enter your name:
 
 !!!!DEBUG:
 <<link 'jump to exploring' 'b3'>><</link>>
+<span class='text-lg'>d</span><span class='dice text-xl'>d4</span>
 
 :: start: part 1 [story]
 <<if $player.name is ''>>\

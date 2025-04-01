@@ -8,7 +8,6 @@
 
     function createMergimal (name, type, strategy, number) {
         mergimals.set(name, {type: type, strategy: strategy, number: number, image: artDir + name + '.png'});
-        console.log('create mergimal: ' + mergimals);
     }
 
     Macro.add('mergimal', {

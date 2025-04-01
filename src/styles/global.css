@@ -37,7 +37,42 @@ body a:hover {
   margin-right: auto;
 }
 
-!#ui-dialog-title {
+#ui-dialog-title {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.text-lg {
+  font-size: 1.5rem;
+}
+
+.text-xl {
+  font-size: 2rem;
+}
+
+.draggable {
+  border: 2px solid green;
+  height: 2.5rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.4rem;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #111;
+  padding-top: 0.3rem;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.droppable {
+  border: 2px dashed purple;
+  height: 2.5rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.4rem;
+  background-color: #fff;
+}
+
+.droppable-hover {
+  border: 2px solid blue;
 }
