@@ -385,16 +385,8 @@ body a:hover {
   padding-bottom: 0.5rem;
 }
 
-.text-lg {
-  font-size: 1.5rem;
-}
-
-.text-xl {
-  font-size: 2rem;
-}
-
 .draggable {
-  border: 2px solid green;
+  border: 2px solid black;
   height: 2.5rem;
   aspect-ratio: 1 / 1;
   border-radius: 0.4rem;
@@ -415,8 +407,8 @@ body a:hover {
   background-color: #fff;
 }
 
-.droppable-hover {
-  border: 2px solid blue;
+.droppable-active {
+  border: 2px solid purple;
 }
 /* twine-user-stylesheet #5: "keyword.css" */
 .keyword-span {
@@ -520,6 +512,44 @@ body a:hover {
     grid-area: 2 / 2;
     padding: 0.6rem;
     margin: 0;
+}
+/* twine-user-stylesheet #9: "utility-classes.css" */
+/* utility classes */
+
+.text-darkest {
+    color: #111;
+}
+
+.text-lg {
+    font-size: 1.5rem;
+}
+
+.text-xl {
+    font-size: 2rem;
+}
+
+.rounded {
+    border-radius: 0.4rem;
+}
+
+.bg-white {
+    background-color: #fff;;
+}
+
+.bg-lightest {
+    background-color: #eee;
+}
+
+.bg-lighter {
+    background-color: #ddd;
+}
+
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "backpack.js" */
 /* twine-user-script #2: "card.js" */
 (function () {
@@ -4888,17 +4918,9 @@ Found: ???
 &lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="cc: part 6" tags="" position="225,1600" size="100,100">Make any final modifications:
 
 &lt;&lt;nobr&gt;&gt;
-    &lt;div style=&#39;display: flex; flex-direction: row; gap: 0.5rem; 
-    margin-bottom: 0.5rem; background-color: #ddd; height: 4rem; width: 16rem; justify-content: space-evenly; 
-    align-items: center; padding: 0; border-radius: 0.4rem; margin: 0; margin-bottom: 1rem;&#39;&gt;
-        &lt;div id=&#39;drop-attention&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
-        &lt;div id=&#39;drop-grit&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
-        &lt;div id=&#39;drop-memory&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
-        &lt;div id=&#39;drop-empathy&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
-    &lt;/div&gt;
     &lt;div style=&#39;display: grid; grid-template: 1fr / repeat(4, 1fr); gap: 0.5rem; 
-    margin-bottom: 0.5rem; background-color: #ddd; height: 4rem; width: 16rem;
-    align-items: center; border-radius: 0.4rem; box-sizing: border-box; justify-items: center;&#39;&gt;
+        margin-bottom: 0.5rem; background-color: #ddd; height: 4rem; width: 16rem;
+        align-items: center; border-radius: 0.4rem; box-sizing: border-box; justify-items: center;&#39;&gt;
         &lt;div id=&#39;stat-1-drop&#39; style=&#39;grid-area: 1 / 1;&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
         &lt;div id=&#39;stat-2-drop&#39; style=&#39;grid-area: 1 / 2;&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
         &lt;div id=&#39;stat-3-drop&#39; style=&#39;grid-area: 1 / 3;&#39; class=&#39;droppable&#39;&gt;&lt;/div&gt;
@@ -4908,6 +4930,8 @@ Found: ???
         &lt;div id=&#39;stat-3&#39; style=&#39;grid-area: 1 / 3;&#39; class=&#39;draggable dice text-xl&#39;&gt;d6&lt;/div&gt;
         &lt;div id=&#39;stat-4&#39; style=&#39;grid-area: 1 / 4;&#39; class=&#39;draggable dice text-xl&#39;&gt;d8&lt;/div&gt;
     &lt;/div&gt;
+&lt;&lt;include &#39;stat-box&#39;&gt;&gt;
+
 &lt;&lt;/nobr&gt;&gt;
 
 &lt;&lt;button &#39;reset&#39;&gt;&gt;
@@ -4922,22 +4946,20 @@ Found: ???
         $( function() {
             $(&#39;.draggable&#39;).draggable({
                 revert: &#39;invalid&#39;,
+                revertDuration: 200,
                 snap: &#39;.droppable&#39;,
                 snapMode: &#39;inner&#39;
             });
 
             $(&#39;.droppable&#39;).droppable({
+                classes: {
+                   &#39;ui-droppable-active&#39;: &#39;droppable-active&#39;
+                },
                 drop: function(event, ui) {
+                    // finds the offset of the droppable being called
                     const _pos = $(this).offset();
+                    // sets the offset of the dropped item to the above value
                     ui.draggable.offset(_pos);
-                    console.log(_pos);
-                    console.log(ui.draggable.offset());
-                },
-                over: function(event, ui) {
-                    $(ui.draggable).draggable( &quot;option&quot;, &quot;grid&quot;, [ 20, 20 ] );
-                },
-                out: function(event, ui) {
-                    $(ui.draggable).draggable( &quot;option&quot;, &quot;grid&quot;, false);
                 }
             });
         });
@@ -4997,7 +5019,25 @@ Found: ???
 	&lt;/div&gt;
 &lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="no batteries" tags="" position="725,1600" size="100,100">You don&#39;t have any batteries!
 
-&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="cheats" tags="nobr" position="850,1600" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
+&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="stat-box" tags="nobr" position="850,1600" size="100,100">&lt;div class=&#39;rounded flex text-darkest&#39; style=&#39;flex-direction: column;&#39;&gt;
+	&lt;div class=&#39;bg-lightest rounded&#39; style=&#39;align-self: center; padding: 0.4rem 2rem; margin-bottom: -0.3rem;&#39;&gt;
+        &lt;h2 style=&#39;margin: 0;&#39;&gt;stats&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&#39;bg-lighter rounded grid&#39; style=&#39;
+        grid-template: 1fr 1fr / 1fr 1fr;
+        padding: 1rem; 
+        gap: 0.5rem;
+        align-self: center;
+    &#39;&gt;
+        &lt;&lt;for _stat, _value range $stats&gt;&gt;
+            &lt;div class=&#39;grid&#39; style=&#39;grid-template: 2fr 1fr / 1fr 1fr; align-items: center; justify-items: center; gap: 0.5rem;&#39;&gt;
+                &lt;&lt;print &#39;&lt;img class=&quot;stat-img&quot; title=&quot;&#39; + _stat +&#39;&quot; src=&quot;images/stats/&#39; + _stat + &#39;.svg&quot;&gt;&#39;&gt;&gt;
+                &lt;div class=&#39;droppable&#39;&gt;&lt;/div&gt;
+                &lt;div style=&#39;grid-area: 2 / 1 / span 1 / span 2;&#39;&gt;_stat&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;&lt;/for&gt;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="128" name="cheats" tags="nobr" position="975,1600" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
 &lt;div style=&#39;display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;&#39;&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain 10 coins&#39;&gt;&gt;
@@ -5073,11 +5113,11 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
       &lt;&lt;set _object.tamed = false&gt;&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="incorrect" tags="" position="975,1600" size="100,100">Not quite!
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="incorrect" tags="" position="1100,1600" size="100,100">Not quite!
 
-&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="correct" tags="" position="1100,1600" size="100,100">Nice!
+&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="correct" tags="" position="1225,1600" size="100,100">Nice!
 
-&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="keywords" tags="nobr" position="1225,1600" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
+&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="keywords" tags="nobr" position="100,1725" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
   &lt;div class=&#39;keywords-box&#39;&gt;
     &lt;h2&gt;keywords&lt;/h2&gt;
     &lt;&lt;for _keyword, _boolean range $keywords&gt;&gt;
@@ -5086,13 +5126,13 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="no paddle" tags="" position="100,1725" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="no paddle" tags="" position="225,1725" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
 
-&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="no rod" tags="" position="225,1725" size="100,100">You don&#39;t have a fishing rod.
+&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="no rod" tags="" position="350,1725" size="100,100">You don&#39;t have a fishing rod.
 
-&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="no keyword" tags="" position="350,1725" size="100,100">You don&#39;t have that keyword!
+&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="no keyword" tags="" position="475,1725" size="100,100">You don&#39;t have that keyword!
 
-&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="testing listbox stuff" tags="" position="475,1725" size="100,100">attention: &lt;&lt;listbox &#39;$stats.attention&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
+&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="testing listbox stuff" tags="" position="600,1725" size="100,100">attention: &lt;&lt;listbox &#39;$stats.attention&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
 grit: &lt;&lt;listbox &#39;$stats.grit&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
 memory: &lt;&lt;listbox &#39;$stats.memory&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
 empathy: &lt;&lt;listbox &#39;$stats.empathy&#39;&gt;&gt;&lt;&lt;option &#39;d4&#39;&gt;&gt;&lt;&lt;option &#39;d6&#39;&gt;&gt;&lt;&lt;option &#39;d8&#39;&gt;&gt;&lt;&lt;/listbox&gt;&gt;
@@ -5104,7 +5144,7 @@ empathy: &lt;&lt;listbox &#39;$stats.empathy&#39;&gt;&gt;&lt;&lt;option &#39;d4&
             console.log($(this).find(&#39;:selected&#39;)[0].text);
         });
     &lt;&lt;/script&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="tamed" tags="nobr" position="600,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="tamed" tags="nobr" position="725,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
   &lt;h2&gt;
     &lt;&lt;link &#39;Mergipedia&#39;&gt;&gt;
       &lt;&lt;dialog mergipedia&gt;&gt;
@@ -5112,9 +5152,9 @@ empathy: &lt;&lt;listbox &#39;$stats.empathy&#39;&gt;&gt;&lt;&lt;option &#39;d4&
       &lt;&lt;/dialog&gt;&gt;
     &lt;&lt;/link&gt;&gt;
   &lt;/h2&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="136" name="not enough coins" tags="" position="725,1725" size="100,100">You don&#39;t have enough coins to buy that!
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="137" name="not enough coins" tags="" position="850,1725" size="100,100">You don&#39;t have enough coins to buy that!
 
-&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="already purchased" tags="" position="850,1725" size="100,100">You already have one!
+&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="already purchased" tags="" position="975,1725" size="100,100">You already have one!
 
 &lt;&lt;link &#39;Oops.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">

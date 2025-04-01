@@ -1,0 +1,37 @@
+/* utility classes */
+
+.text-darkest {
+    color: #111;
+}
+
+.text-lg {
+    font-size: 1.5rem;
+}
+
+.text-xl {
+    font-size: 2rem;
+}
+
+.rounded {
+    border-radius: 0.4rem;
+}
+
+.bg-white {
+    background-color: #fff;;
+}
+
+.bg-lightest {
+    background-color: #eee;
+}
+
+.bg-lighter {
+    background-color: #ddd;
+}
+
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
+}
