@@ -130,7 +130,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 }
 
 .selectable:hover {
-    border: 3px solid red;
+    border: 3px solid var(--accent-color);
     cursor: pointer;
 }
 
@@ -264,6 +264,11 @@ body a:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+!#ui-dialog-title {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 /* twine-user-stylesheet #4: "keyword.css" */
 .keyword-span {
@@ -1732,18 +1737,22 @@ Finally, you’re here!
 It&#39;s time to pick a Mergimal!
 
 &lt;div style=&#39;display: flex; gap: 1rem;&#39;&gt;&lt;&lt;card &#39;melodrake&#39; true&gt;&gt;&lt;&lt;set $mergimals.melodrake.seen = true&gt;&gt;&lt;&lt;card &#39;scorchilla&#39; true&gt;&gt;&lt;&lt;set $mergimals.scorchilla.seen = true&gt;&gt;&lt;&lt;card &#39;penguwaiian&#39; true&gt;&gt;&lt;&lt;set $mergimals.penguwaiian.seen = true&gt;&gt;&lt;/div&gt;
-[[Ask if there are any others.-&gt;404]]</tw-passagedata><tw-passagedata pid="92" name="start: part 3" tags="" position="225,1225" size="100,100">&lt;&lt;tam&gt;&gt;Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.&lt;&lt;/tam&gt;&gt;\
+[[Ask if there are any others.-&gt;start: part 2b]]</tw-passagedata><tw-passagedata pid="92" name="start: part 2b" tags="" position="225,1225" size="100,100">Maybe someday! But not right now.
+
+So make a choice.
+
+&lt;&lt;return &#39;As you wish.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="start: part 3" tags="" position="350,1225" size="100,100">&lt;&lt;tam&gt;&gt;Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.&lt;&lt;/tam&gt;&gt;\
 You got 5 mergiballs.&lt;&lt;set $backpack.mergiball += 5&gt;&gt;
 
 They have been added to your backpack.
 
 It&#39;s time to start your journey.
 
-[[Let&#39;s go!-&gt;start: part 4]]</tw-passagedata><tw-passagedata pid="93" name="start: part 4" tags="" position="350,1225" size="100,100">&lt;&lt;tam&gt;&gt;Wait!
+[[Let&#39;s go!-&gt;start: part 4]]</tw-passagedata><tw-passagedata pid="94" name="start: part 4" tags="" position="475,1225" size="100,100">&lt;&lt;tam&gt;&gt;Wait!
 
 Do you need me to show you how to catch Mergimals?&lt;&lt;/tam&gt;&gt;\
-&lt;&lt;link &#39;Say: Yes, please.&#39; &#39;tutorial: part 1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;Say: No, thanks. I already know how.&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="StoryInit" tags="" position="475,1225" size="100,100">&lt;&lt;set $player to {
+&lt;&lt;link &#39;Say: Yes, please. (TUTORIAL)&#39; &#39;tutorial: part 1&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;Say: No, thanks. I already know how.&#39; &#39;b3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="StoryInit" tags="" position="600,1225" size="100,100">&lt;&lt;set $player to {
   name: &#39;none set&#39;,
   image: &#39;images/characters/player.png&#39;,
   injuries: 0,
@@ -1802,11 +1811,11 @@ Do you need me to show you how to catch Mergimals?&lt;&lt;/tam&gt;&gt;\
 &lt;&lt;/widget&gt;&gt;
 &lt;&lt;widget &#39;rhia&#39; container&gt;&gt;
   &lt;&lt;say &#39;Rhia (Wave School Leader)&#39; &#39;images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="no mergiballs" tags="" position="600,1225" size="100,100">You don&#39;t have any mergiballs!
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="no mergiballs" tags="" position="725,1225" size="100,100">You don&#39;t have any mergiballs!
 
 Go to a store or something, dude.
 
-&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="tame attempt" tags="nobr" position="725,1225" size="100,100">&lt;&lt;set $backpack.mergiball --&gt;&gt;
+&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="tame attempt" tags="nobr" position="850,1225" size="100,100">&lt;&lt;set $backpack.mergiball --&gt;&gt;
 &lt;&lt;redo &#39;backpack&#39;&gt;&gt;
 You throw a mergiball.&lt;br /&gt;&lt;br /&gt;
 
@@ -1822,18 +1831,18 @@ Enter your roll:  &lt;&lt;numberbox &#39;_$roll&#39; 0&gt;&gt;&lt;br /&gt;&lt;br
             &lt;&lt;include &#39;tame attempt succeeded&#39;&gt;&gt;
         &lt;&lt;/dialog&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="tame attempt failed" tags="" position="850,1225" size="100,100">The Mergimal doesn&#39;t seem very friendly.
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="tame attempt failed" tags="" position="975,1225" size="100,100">The Mergimal doesn&#39;t seem very friendly.
 
 Solve some more problems or try throwing another Mergiball!
 
-&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="tame attempt succeeded" tags="" position="975,1225" size="100,100">The Mergimal loves playing with the mergiball!
+&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="tame attempt succeeded" tags="" position="1100,1225" size="100,100">The Mergimal loves playing with the mergiball!
 
 They want to be your friend.
 
 &lt;&lt;button &#39;Okay&#39;&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
     &lt;&lt;goto $tamedPassage&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="stray: boxin" tags="b4 stray common" position="1100,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/boxin.png&#39; /&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="stray: boxin" tags="b4 stray common" position="1225,1225" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/boxin.png&#39; /&gt;
 
 The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 
@@ -1853,10 +1862,10 @@ Do Worksheet 2.1
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[They got away: continue exploring.-&gt;b4]]</tw-passagedata><tw-passagedata pid="100" name="tamed: boxin" tags="b4 tamed" position="1225,1225" size="100,100">&lt;&lt;card &#39;boxin&#39;&gt;&gt;
+[[They got away: continue exploring.-&gt;b4]]</tw-passagedata><tw-passagedata pid="101" name="tamed: boxin" tags="b4 tamed" position="100,1350" size="100,100">&lt;&lt;card &#39;boxin&#39;&gt;&gt;
 This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.
 
-&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.boxin.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="stray: zipper" tags="b4 stray uncommon" position="100,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/zipper.png&#39; /&gt;&lt;&lt;set $mergimals.zipper.seen = true&gt;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.boxin.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="stray: zipper" tags="b4 stray uncommon" position="225,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/zipper.png&#39; /&gt;&lt;&lt;set $mergimals.zipper.seen = true&gt;&gt;
 
 You&#39;re looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.
 
@@ -1876,10 +1885,10 @@ Do Worksheet 3.4
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[They got away: continue exploring.|b4]]</tw-passagedata><tw-passagedata pid="102" name="tamed: zipper" tags="b4 tamed" position="225,1350" size="100,100">&lt;&lt;card &#39;zipper&#39;&gt;&gt;
+[[They got away: continue exploring.|b4]]</tw-passagedata><tw-passagedata pid="103" name="tamed: zipper" tags="b4 tamed" position="350,1350" size="100,100">&lt;&lt;card &#39;zipper&#39;&gt;&gt;
 This Mergimal is named Zipper. They&#39;re cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.
 
-&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.zipper.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="stray: tidefly" tags="b5 encounter" position="350,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/tidefly.png&#39; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;&lt;&lt;set $mergimals.zipper.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="stray: tidefly" tags="b5 encounter" position="475,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/tidefly.png&#39; /&gt;
 
 A tiny snail with wings hangs from the line as you reel it in.
 
@@ -1899,10 +1908,10 @@ Do Worksheet 10.3
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="104" name="tamed: tidefly" tags="b5 tamed" position="475,1350" size="100,100">&lt;&lt;card &#39;tidefly&#39;&gt;&gt;
+[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="105" name="tamed: tidefly" tags="b5 tamed" position="600,1350" size="100,100">&lt;&lt;card &#39;tidefly&#39;&gt;&gt;
 This Mergimal is quite small, but they seem quite active. Their name is Tidefly.
 
-&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.tidefly.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="stray: krustwo" tags="b5 encounter" position="600,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;images/mergimals/krustwo.png&quot; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.tidefly.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="stray: krustwo" tags="b5 encounter" position="725,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;images/mergimals/krustwo.png&quot; /&gt;
 
 When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.
 
@@ -1922,13 +1931,13 @@ Do Worksheet 2.5
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="106" name="tamed: krustwo" tags="b5 tamed" position="725,1350" size="100,100">&lt;&lt;card &#39;krustwo&#39;&gt;&gt;
+[[Let them get away.|b5]]</tw-passagedata><tw-passagedata pid="107" name="tamed: krustwo" tags="b5 tamed" position="850,1350" size="100,100">&lt;&lt;card &#39;krustwo&#39;&gt;&gt;
 You&#39;ve seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.
 
-&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.krustwo.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="treethorn" tags="" position="850,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.krustwo.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="treethorn" tags="" position="975,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
 What a cute, prickly little dude.
 
-&lt;&lt;return &#39;Okay.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="stray: treethorn" tags="c4 encounter" position="975,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/treethorn.png&#39; /&gt;
+&lt;&lt;return &#39;Okay.&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="109" name="stray: treethorn" tags="c4 encounter" position="1100,1350" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/treethorn.png&#39; /&gt;
 
 You&#39;re looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That&#39;s no bush: that&#39;s a Mergimal!
 
@@ -1948,21 +1957,21 @@ Do Worksheet 3.3
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[They got away: continue exploring.|c4]]</tw-passagedata><tw-passagedata pid="109" name="tamed: treethorn" tags="c4 tamed" position="1100,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
+[[They got away: continue exploring.|c4]]</tw-passagedata><tw-passagedata pid="110" name="tamed: treethorn" tags="c4 tamed" position="1225,1350" size="100,100">&lt;&lt;card &#39;treethorn&#39;&gt;&gt;
 This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).
 
-&lt;&lt;link &#39;You tamed them.&#39; c4&gt;&gt;&lt;&lt;set $mergimals.treethorn.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="stray: corwhal" tags="b5 encounter rare" position="1225,1350" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;images/mergimals/corwhal.png&quot; /&gt;
+&lt;&lt;link &#39;You tamed them.&#39; c4&gt;&gt;&lt;&lt;set $mergimals.treethorn.tamed = true&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="stray: corwhal" tags="b5 encounter rare" position="100,1475" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;images/mergimals/corwhal.png&quot; /&gt;
 
 This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.
 
 Do Worksheet 7.4
 
 [[You&#39;ve tamed them.|tamed: corwhal]]
-[[They got away: continue exploring.|b5]]</tw-passagedata><tw-passagedata pid="111" name="tamed: corwhal" tags="b5 tamed" position="100,1475" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;images/mergimals/corwhal.png&quot; /&gt;
+[[They got away: continue exploring.|b5]]</tw-passagedata><tw-passagedata pid="112" name="tamed: corwhal" tags="b5 tamed" position="225,1475" size="100,100">&lt;img class=&quot;mergimal-image&quot; src=&quot;images/mergimals/corwhal.png&quot; /&gt;
 
 You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.
 
-&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.corwhal.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="mergipedia" tags="nobr" position="225,1475" size="100,100">&lt;&lt;set _$start = 0&gt;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; b5&gt;&gt;&lt;&lt;set $mergimals.corwhal.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="mergipedia" tags="nobr" position="350,1475" size="100,100">&lt;&lt;set _$start = 0&gt;&gt;
 &lt;&lt;do tag &#39;mergipedia&#39;&gt;&gt;
     &lt;div style=&#39;display: grid; grid: repeat(2, 1fr) / repeat(3, 1fr); gap: 1rem;&#39;&gt;
         &lt;&lt;set _$temp to Object.fromEntries(Object.entries($mergimals).slice(_$start, _$start + 6))&gt;&gt;
@@ -1994,7 +2003,7 @@ _$start through &lt;&lt;-_$start + 6&gt;&gt;&lt;br /&gt;
         &lt;&lt;set _$start = Object.entries($mergimals).length - 6&gt;&gt;
     &lt;&lt;/if&gt;&gt;
     &lt;&lt;redo &#39;mergipedia&#39;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="melodrake" tags="" position="350,1475" size="100,100">&lt;&lt;card &#39;melodrake&#39;&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="melodrake" tags="" position="475,1475" size="100,100">&lt;&lt;card &#39;melodrake&#39;&gt;&gt;
 Name: Melodrake
 Type: Root
 Number: 2
@@ -2003,7 +2012,7 @@ Description: This Mergimal is can play music with their body.
 Found: ???
 
 &lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
-&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.melodrake.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="scorchilla" tags="" position="475,1475" size="100,100">&lt;&lt;card &#39;scorchilla&#39;&gt;&gt;
+&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.melodrake.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="scorchilla" tags="" position="600,1475" size="100,100">&lt;&lt;card &#39;scorchilla&#39;&gt;&gt;
 Name: Scorchilla
 Type: Forge
 Number: 4
@@ -2012,7 +2021,7 @@ Description: This Mergimal dances like no one&#39;s watching.
 Found: ???
 
 &lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
-&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.scorchilla.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="penguwaiian" tags="" position="600,1475" size="100,100">&lt;&lt;card &#39;penguwaiian&#39;&gt;&gt;
+&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.scorchilla.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="penguwaiian" tags="" position="725,1475" size="100,100">&lt;&lt;card &#39;penguwaiian&#39;&gt;&gt;
 Name: Penguwaiian
 Type: Wave
 Number: 10
@@ -2021,29 +2030,29 @@ Description: This Mergimal loves to eat pineapple and surf.
 Found: ???
 
 &lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
-&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.penguwaiian.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="cc: part 1" tags="" position="725,1475" size="100,100">What&#39;s your name?
+&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $mergimals.penguwaiian.tamed = true&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="cc: part 1" tags="" position="850,1475" size="100,100">What&#39;s your name?
 &lt;&lt;textbox &#39;$player.name&#39; &#39;&#39;&gt;&gt;
 
-[[Continue.-&gt;cc: part 2]]</tw-passagedata><tw-passagedata pid="117" name="cc: part 2" tags="" position="850,1475" size="100,100">What are your pronouns?
+[[Continue.-&gt;cc: part 2]]</tw-passagedata><tw-passagedata pid="118" name="cc: part 2" tags="" position="975,1475" size="100,100">What are your pronouns?
 
 &lt;&lt;link &#39;they / them&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;they&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;she / her&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;she&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;he / him&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;he&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="cc: part 3" tags="" position="975,1475" size="100,100">What do you like most about Mergimals?
+&lt;&lt;link &#39;he / him&#39; &#39;cc: part 3&#39;&gt;&gt;&lt;&lt;set $pronouns to &#39;he&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="cc: part 3" tags="" position="1100,1475" size="100,100">What do you like most about Mergimals?
 
 &lt;&lt;link &#39;Competing in contests.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;trainer&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;Collecting as many as I can.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;explorer&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;Merging them to make new ones.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;scientist&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;Being a good friend to them.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;companion&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="cc: part 4" tags="" position="1100,1475" size="100,100">Which of these statements fits you best?
+&lt;&lt;link &#39;Being a good friend to them.&#39; &#39;cc: part 4&#39;&gt;&gt;&lt;&lt;set $player.noun to &#39;companion&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="cc: part 4" tags="" position="1225,1475" size="100,100">Which of these statements fits you best?
 
 &lt;&lt;link &#39;I notice every detail.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;attention&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;I never give up.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;grit&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;I remember everything.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;memory&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;I understand emotions.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;empathy&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="cc: part 5" tags="" position="1225,1475" size="100,100">Which of these statements fits you best?
+&lt;&lt;link &#39;I understand emotions.&#39; &#39;cc: part 5&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d8&#39;&gt;&gt;&lt;&lt;set $high to &#39;empathy&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="cc: part 5" tags="" position="100,1600" size="100,100">Which of these statements fits you best?
 
 &lt;&lt;if $high != &#39;attention&#39;&gt;&gt;&lt;&lt;link &#39;I can\&#39;t stay still.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;grit&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t like to fail.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;memory&#39;&gt;&gt;&lt;&lt;link &#39;I lose things often.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="cc: part 6" tags="" position="100,1600" size="100,100">test</tw-passagedata><tw-passagedata pid="122" name="cheats" tags="nobr" position="225,1600" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
+&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="cc: part 6" tags="" position="225,1600" size="100,100">test</tw-passagedata><tw-passagedata pid="123" name="cheats" tags="nobr" position="350,1600" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
 &lt;div style=&#39;display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;&#39;&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain 10 coins&#39;&gt;&gt;
@@ -2119,11 +2128,11 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
       &lt;&lt;set _object.tamed = false&gt;&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="incorrect" tags="" position="350,1600" size="100,100">Not quite!
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="incorrect" tags="" position="475,1600" size="100,100">Not quite!
 
-&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="correct" tags="" position="475,1600" size="100,100">Nice!
+&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="correct" tags="" position="600,1600" size="100,100">Nice!
 
-&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="keywords" tags="nobr" position="600,1600" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
+&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="keywords" tags="nobr" position="725,1600" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
   &lt;div class=&#39;keywords-box&#39;&gt;
     &lt;h2&gt;keywords&lt;/h2&gt;
     &lt;&lt;for _keyword, _boolean range $keywords&gt;&gt;
@@ -2132,13 +2141,13 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="no paddle" tags="" position="725,1600" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="no paddle" tags="" position="850,1600" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
 
-&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="no rod" tags="" position="850,1600" size="100,100">You don&#39;t have a fishing rod.
+&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="no rod" tags="" position="975,1600" size="100,100">You don&#39;t have a fishing rod.
 
-&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="no keyword" tags="" position="975,1600" size="100,100">You don&#39;t have that keyword!
+&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="no keyword" tags="" position="1100,1600" size="100,100">You don&#39;t have that keyword!
 
-&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="stats" tags="nobr" position="1100,1600" size="100,100">&lt;&lt;do tag &#39;stats&#39;&gt;&gt;
+&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="stats" tags="nobr" position="1225,1600" size="100,100">&lt;&lt;do tag &#39;stats&#39;&gt;&gt;
 	&lt;div class=&#39;story-caption-box&#39;&gt;
 		&lt;div class=&#39;story-caption-header-box&#39;&gt;
 			&lt;h2&gt;stats&lt;/h2&gt;
@@ -2156,7 +2165,7 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
 			&lt;&lt;/for&gt;&gt;
 		&lt;/div&gt;
 	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="injuries" tags="nobr" position="1225,1600" size="100,100">&lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="injuries" tags="nobr" position="100,1725" size="100,100">&lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
     &lt;div class=&#39;story-caption-box&#39;&gt;
         &lt;div class=&#39;story-caption-header-box&#39;&gt;
             &lt;h2&gt;injuries&lt;/h2&gt;
@@ -2173,7 +2182,7 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
             &lt;&lt;/for&gt;&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="backpack" tags="nobr" position="100,1725" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="backpack" tags="nobr" position="225,1725" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
 	&lt;div class=&#39;story-caption-box&#39;&gt;
 		&lt;div class=&#39;story-caption-header-box&#39;&gt;
 			&lt;h2&gt;backpack&lt;/h2&gt;
@@ -2191,9 +2200,9 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
 			&lt;&lt;/for&gt;&gt;
 		&lt;/div&gt;
 	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="no batteries" tags="" position="225,1725" size="100,100">You don&#39;t have any batteries!
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="no batteries" tags="" position="350,1725" size="100,100">You don&#39;t have any batteries!
 
-&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="tamed" tags="nobr" position="350,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
+&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="tamed" tags="nobr" position="475,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
   &lt;h2&gt;
     &lt;&lt;link &#39;Mergipedia&#39;&gt;&gt;
       &lt;&lt;dialog mergipedia&gt;&gt;
@@ -2201,9 +2210,9 @@ SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;
       &lt;&lt;/dialog&gt;&gt;
     &lt;&lt;/link&gt;&gt;
   &lt;/h2&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="134" name="not enough coins" tags="" position="475,1725" size="100,100">You don&#39;t have enough coins to buy that!
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="135" name="not enough coins" tags="" position="600,1725" size="100,100">You don&#39;t have enough coins to buy that!
 
-&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="already purchased" tags="" position="600,1725" size="100,100">You already have one!
+&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="already purchased" tags="" position="725,1725" size="100,100">You already have one!
 
 &lt;&lt;link &#39;Oops.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">

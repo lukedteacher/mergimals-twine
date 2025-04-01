@@ -83,7 +83,14 @@ You enter.
 It's time to pick a Mergimal!
 
 <div style='display: flex; gap: 1rem;'><<card 'melodrake' true>><<set $mergimals.melodrake.seen = true>><<card 'scorchilla' true>><<set $mergimals.scorchilla.seen = true>><<card 'penguwaiian' true>><<set $mergimals.penguwaiian.seen = true>></div>
-[[Ask if there are any others.->404]]
+[[Ask if there are any others.->start: part 2b]]
+
+:: start: part 2b
+Maybe someday! But not right now.
+
+So make a choice.
+
+<<return 'As you wish.'>>
 
 :: start: part 3
 <<tam>>Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.<</tam>>\
@@ -99,5 +106,5 @@ It's time to start your journey.
 <<tam>>Wait!
 
 Do you need me to show you how to catch Mergimals?<</tam>>\
-<<link 'Say: Yes, please.' 'tutorial: part 1'>><</link>>
+<<link 'Say: Yes, please. (TUTORIAL)' 'tutorial: part 1'>><</link>>
 <<link 'Say: No, thanks. I already know how.' 'b3'>><</link>>

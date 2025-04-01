@@ -36,3 +36,8 @@ body a:hover {
   margin-left: auto;
   margin-right: auto;
 }
+
+!#ui-dialog-title {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
