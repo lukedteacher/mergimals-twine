@@ -1,0 +1,66 @@
+:: stats [nobr]
+<<do tag 'stats'>>
+	<div class='story-caption-box'>
+		<div class='story-caption-header-box'>
+			<h2>stats</h2>
+		</div>
+		<div class='stat-boxes story-caption-boxes'>
+			<<for _stat, _value range $stats>>
+				<div class='stat-box'>
+					<div class='stat-img-box'>
+						<<print '<img class="stat-img" title="' + _stat +'" src="images/stats/' + _stat + '.svg">'>>
+					</div>
+					<div class='stat-label-box'>
+						_value
+					</div>
+				</div>
+			<</for>>
+		</div>
+	</div>
+<</do>>
+
+:: injuries [nobr]
+<<do tag 'injuries'>>
+    <div class='story-caption-box'>
+        <div class='story-caption-header-box'>
+            <h2>injuries</h2>
+        </div>
+        <div class='injury-boxes story-caption-boxes'>
+            <<if $player.injuries > 4>>
+                <<set $player.injuries = 4>>
+            <</if>>
+            <<for _count range $player.injuries>>
+                <div class='injury-tracker injured'></div>
+            <</for>>
+            <<for _count range (4 - $player.injuries)>>
+                <div class='injury-tracker'></div>
+            <</for>>
+        </div>
+    </div>
+<</do>>
+
+:: backpack [nobr]
+<<do tag 'backpack'>>
+	<div class='story-caption-box'>
+		<div class='story-caption-header-box'>
+			<h2>backpack</h2>
+		</div>
+		<div class='item-boxes story-caption-boxes'>
+			<<for _item, _quantity range $backpack>>
+				<div class='item-box'>
+					<div class='item-img-box'>
+						<<print '<img class="backpack-item-img" title="' + _item + '" src="images/items/' + _item + '.svg">'>>
+					</div>
+					<div class='item-label-box'>
+						_quantity
+					</div>
+				</div>
+			<</for>>
+		</div>
+	</div>
+<</do>>
+
+:: no batteries
+You don't have any batteries!
+
+<<link 'Darnit.'>><<run Dialog.close()>><</link>>

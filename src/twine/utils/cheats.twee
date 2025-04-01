@@ -52,37 +52,27 @@ RUSTY <<link '+'>><<set $keywords.rusty = true>><<redo 'keywords'>><</link>> <<l
 SHINE <<link '+'>><<set $keywords.shine = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.shine = false>><<redo 'keywords'>><</link>><br />
 <h2>mergimals</h2>
 <<nobr>>
-ALL
-SEEN 
-<<link '+'>>
-  <<for _mergimal, _object range $mergimals>>
-    <<set _object.seen = true>>
-  <</for>>
-<</link>>
-<<link '-'>>
-  <<for _mergimal, _object range $mergimals>>
-    <<set _object.seen = false>>
-  <</for>>
-<</link>> 
-TAMED 
-<<link '+'>>
-  <<for _mergimal, _object range $mergimals>>
-    <<set _object.tamed = true>>
-  <</for>>
-<</link>>
-<<link '-'>>
-  <<for _mergimal, _object range $mergimals>>
-    <<set _object.tamed = false>>
-  <</for>>
-<</link>> <br />
-NOT WORKING YET
-<<listbox '_$cheatbox'>>
-  <<optionsfrom $mergimals>>
-<</listbox>>
-<<button 'toggle seen'>>
-    <<set $mergimals[_$cheatbox].seen = !$mergimals[_$cheatbox].seen>>
-<</button>> 
-<<button 'toggle tamed'>>
-    <<set $mergimals[_$cheatbox].tamed = !$mergimals[_$cheatbox].tamed>>
-<</button>>
+  ALL
+  SEEN 
+  <<link '+'>>
+    <<for _mergimal, _object range $mergimals>>
+      <<set _object.seen = true>>
+    <</for>>
+  <</link>>
+  <<link '-'>>
+    <<for _mergimal, _object range $mergimals>>
+      <<set _object.seen = false>>
+    <</for>>
+  <</link>> 
+  TAMED 
+  <<link '+'>>
+    <<for _mergimal, _object range $mergimals>>
+      <<set _object.tamed = true>>
+    <</for>>
+  <</link>>
+  <<link '-'>>
+    <<for _mergimal, _object range $mergimals>>
+      <<set _object.tamed = false>>
+    <</for>>
+  <</link>>
 <</nobr>>

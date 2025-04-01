@@ -104,42 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="89" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "backpack.css" */
-.backpack {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-.backpack-heading {
-    margin-top: 0.3rem;
-}
-
-.backpack-items {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    width: 12rem;
-    gap: 0.5rem;
-}
-
-.backpack-item {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-.backpack-label {
-    margin-top: 0;
-}
-
-.backpack-item-img {
-    width: 3rem;
-    aspect-ratio: square;
-}
-/* twine-user-stylesheet #2: "card.css" */
+	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="89" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "card.css" */
 .card-box {
     aspect-ratio: 63 / 88;
     display: flex;
@@ -249,7 +214,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 .grayscale {
     filter: grayscale(0.75);
 }
-/* twine-user-stylesheet #3: "fonts.css" */
+/* twine-user-stylesheet #2: "fonts.css" */
 /* main body font */
 @font-face {
     font-family: 'lexend';
@@ -261,7 +226,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     font-family: 'pineapple';
     src: url('assets/fonts/pineappledemo.ttf') format('truetype');
 }
-/* twine-user-stylesheet #4: "global.css" */
+/* twine-user-stylesheet #3: "global.css" */
 /*  @/styles/global.css  */
 body {
   background-color: var(--background-color);
@@ -300,57 +265,13 @@ body a:hover {
   margin-left: auto;
   margin-right: auto;
 }
-/* twine-user-stylesheet #5: "injuries.css" */
-.injury-box {
-    margin-bottom: 1rem;
-}
-
-.injury-heading {
-    background-color: #eee;
-    border-radius: 0.4rem;
-    color: black;
-    display: inline-block;
-    margin-bottom: -0.4rem;
-    z-index: -1;
-    position: relative;
-}
-
-.injury-heading h2 {
-    margin: 0;
-    padding-top: 0.5rem;
-    padding-bottom: 0.8rem;
-    padding-left: 1.4rem;
-    padding-right: 1.4rem;
-}
-
-.injury-tracker-box {
-    height: 2rem;
-    display: flex;
-    justify-content: space-around;
-    background-color: #ddd;
-    border-radius: 0.4rem;
-    padding: 1rem;
-}
-
-.injury-tracker {
-    aspect-ratio: 1 / 1;
-    border: 3px solid black;
-    border-radius: 4rem;
-    color: black;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-.injured {
-    background-image: url('images/svg/injured.svg');
-}
-/* twine-user-stylesheet #6: "keyword.css" */
+/* twine-user-stylesheet #4: "keyword.css" */
 .keyword-span {
     background-color: blue;
     font-weight: bold;
     padding: 0.3rem;
 }
-/* twine-user-stylesheet #7: "map.css" */
+/* twine-user-stylesheet #5: "map.css" */
 .map-container {
     display: flex;
     justify-content: center;
@@ -396,7 +317,7 @@ body a:hover {
     grid-area: 38 / 19 / span 3 / span 4;
     background-image: url('images/svg/south.svg');
 }
-/* twine-user-stylesheet #8: "root.css" */
+/* twine-user-stylesheet #6: "root.css" */
 /* customizer variables */
 :root {
     --text-font: lexend;
@@ -416,7 +337,7 @@ body a:hover {
     --violet: hsl(270, 100%, 30%);
     --magenta: hsl(300, 100%, 30%);
   }
-/* twine-user-stylesheet #9: "speech.css" */
+/* twine-user-stylesheet #7: "speech.css" */
 .say {
     border: 1px solid #eee;
     overflow: none;
@@ -447,23 +368,48 @@ body a:hover {
     padding: 0.6rem;
     margin: 0;
 }
-/* twine-user-stylesheet #10: "stats.css" */
-.stats {
+/* twine-user-stylesheet #8: "story-caption.css" */
+/* story caption items
+including:
+stats
+injuries
+backpack  */
+
+.story-caption-box {
+    margin-bottom: 1rem;
+}
+
+.story-caption-header-box {
+    background-color: #eee;
+    border-radius: 0.4rem;
+    color: black;
+    display: inline-block;
+    margin-bottom: -0.4rem;
+    z-index: -1;
+    position: relative;
+}
+
+.story-caption-header-box h2 {
+    margin: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.8rem;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+}
+
+.story-caption-boxes {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-radius: 0.4rem;
+    padding: 1rem;
 }
 
-.stats-heading {
-    margin-top: 0.3rem;
-}
+/* stats stuff */
 
-.stats-box {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    width: 12rem;
+.stat-boxes {
+    gap: 1.4rem;
+    background-color: #ddd;
 }
 
 .stat-box {
@@ -473,14 +419,57 @@ body a:hover {
     align-items: center;
 }
 
-.stat-label {
+.stat-label-box {
+    color: #111;
     margin-top: 0;
 }
 
 .stat-img {
-    width: 3rem;
+    height: 3.3rem;
     aspect-ratio: square;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "card.js" */
+}
+
+/* injury stuff */
+
+.injury-boxes {
+    background-color: #ddd;
+}
+
+.injury-tracker {
+    height: 2rem;
+    aspect-ratio: 1 / 1;
+    border: 3px solid black;
+    border-radius: 4rem;
+}
+
+.injured {
+    background-image: url('images/svg/injured.svg');
+}
+
+/* backpack stuff */
+
+.item-boxes {
+    gap: 1rem;
+    background-color: #ddd;
+}
+
+.item-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-label-box {
+    color: #111;
+    margin-top: 0;
+}
+
+.backpack-item-img {
+    height: 2.5rem;
+    aspect-ratio: 1 / 1;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "backpack.js" */
+/* twine-user-script #2: "card.js" */
 (function () {
     // v0.3
     'use strict';
@@ -572,7 +561,7 @@ body a:hover {
     setup.card = createCard;
 
 }());
-/* twine-user-script #2: "continue.js" */
+/* twine-user-script #3: "continue.js" */
 (function () {
     // v1.0.1
     'use strict';
@@ -685,7 +674,7 @@ body a:hover {
     window.cont = window.cont || setup.cont;
 
 }());
-/* twine-user-script #3: "dialog-api-macro-set.js" */
+/* twine-user-script #4: "dialog-api-macro-set.js" */
 // dialog API macro set, by chapel; for sugarcube 2
 // version 1.3.0
 // see the documentation: https://github.com/ChapelR/custom-macros-for-sugarcube-2/blob/master/docs/dialog-api-macro-set.md
@@ -775,7 +764,7 @@ Macro.add('dialogclose', {
         Dialog.close();
     } 
 });
-/* twine-user-script #4: "keyword.js" */
+/* twine-user-script #5: "keyword.js" */
 (function () {
     // v0.1
     'use strict';
@@ -804,7 +793,7 @@ Macro.add('dialogclose', {
     setup.keyword = createKeyword;
 
 }());
-/* twine-user-script #5: "map.js" */
+/* twine-user-script #6: "map.js" */
 (function () {
     // v0.2
     'use strict';
@@ -869,7 +858,7 @@ Macro.add('dialogclose', {
     setup.move = createMoveButtons;
 
 }());
-/* twine-user-script #6: "mergipedia.js" */
+/* twine-user-script #7: "mergipedia.js" */
 (function () {
     // v0.1
     'use strict';
@@ -898,7 +887,7 @@ Macro.add('dialogclose', {
     setup.keyword = createKeyword;
 
 }());
-/* twine-user-script #7: "move.js" */
+/* twine-user-script #8: "move.js" */
 (function () {
     // v0.1
     'use strict';
@@ -906,7 +895,7 @@ Macro.add('dialogclose', {
 
 
 }());
-/* twine-user-script #8: "speech.js" */
+/* twine-user-script #9: "speech.js" */
 (function () {
     // v1.1.1
     'use strict';
@@ -1001,7 +990,7 @@ Macro.add('dialogclose', {
         });
     });
 }());
-/* twine-user-script #9: "Story JavaScript" */
+/* twine-user-script #10: "Story JavaScript" */
 Config.ui.stowBarInitially = false;</script><tw-passagedata pid="1" name="b3" tags="map" position="100,100" size="100,100">&lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;south &#39;b4&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;\
 !!!!EXPLORE
 [[Look around-&gt;b3: description]]
@@ -1694,7 +1683,9 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
   &lt;&lt;dialog &#39;cheats&#39;&gt;&gt;\
     &lt;&lt;include &#39;cheats&#39;&gt;&gt;
   &lt;&lt;/dialog&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="001" tags="start" position="1100,1100" size="100,100">Today is the first day of your Mergimals journey!
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="001" tags="start" position="1100,1100" size="100,100">!NOTE: THIS GAME IS STILL BEING DEVELOPED AND MAY REQUIRE YOU TO RESTART IF LARGE CHANGES ARE MADE.
+
+Today is the first day of your Mergimals journey!
 
 Enter your name:
 &lt;&lt;textbox &#39;$player.name&#39; &#39;&#39;&gt;&gt;
@@ -2052,21 +2043,7 @@ Found: ???
 &lt;&lt;if $high != &#39;attention&#39;&gt;&gt;&lt;&lt;link &#39;I can\&#39;t stay still.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.attention to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;grit&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t like to fail.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.grit to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $high != &#39;memory&#39;&gt;&gt;&lt;&lt;link &#39;I lose things often.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.memory to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="cc: part 6" tags="" position="100,1600" size="100,100">test</tw-passagedata><tw-passagedata pid="122" name="backpack" tags="nobr" position="225,1600" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
-  &lt;div class=&#39;backpack&#39;&gt;
-    &lt;h2 class=&#39;backpack-heading&#39;&gt;backpack&lt;/h2&gt;
-    &lt;div class=&#39;backpack-items&#39;&gt;
-        &lt;&lt;for _item, _quantity range $backpack&gt;&gt;
-          &lt;div&gt;
-            &lt;&lt;print &#39;&lt;img class=&quot;backpack-item-img&quot; src=&quot;images/items/&#39; + _item + &#39;.svg&quot;&gt;&#39;&gt;&gt;&lt;br /&gt;
-            _quantity
-          &lt;/div&gt;
-        &lt;&lt;/for&gt;&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="no batteries" tags="" position="350,1600" size="100,100">You don&#39;t have any batteries!
-
-&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="cheats" tags="nobr" position="475,1600" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
+&lt;&lt;if $high != &#39;empathy&#39;&gt;&gt;&lt;&lt;link &#39;I don\&#39;t understand emotions.&#39; &#39;cc: part 6&#39;&gt;&gt;&lt;&lt;set $stats.empathy to &#39;d4&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="cc: part 6" tags="" position="100,1600" size="100,100">test</tw-passagedata><tw-passagedata pid="122" name="cheats" tags="nobr" position="225,1600" size="100,100">&lt;h2&gt;items&lt;/h2&gt;
 &lt;div style=&#39;display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;&#39;&gt;
   &lt;div&gt;
     &lt;&lt;button &#39;gain 10 coins&#39;&gt;&gt;
@@ -2119,61 +2096,34 @@ RUSTY &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.rusty = true&gt;&gt;
 SHINE &lt;&lt;link &#39;+&#39;&gt;&gt;&lt;&lt;set $keywords.shine = true&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link &#39;x&#39;&gt;&gt;&lt;&lt;set $keywords.shine = false&gt;&gt;&lt;&lt;redo &#39;keywords&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br /&gt;
 &lt;h2&gt;mergimals&lt;/h2&gt;
 &lt;&lt;nobr&gt;&gt;
-ALL
-SEEN 
-&lt;&lt;link &#39;+&#39;&gt;&gt;
-  &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
-    &lt;&lt;set _object.seen = true&gt;&gt;
-  &lt;&lt;/for&gt;&gt;
-&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;-&#39;&gt;&gt;
-  &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
-    &lt;&lt;set _object.seen = false&gt;&gt;
-  &lt;&lt;/for&gt;&gt;
-&lt;&lt;/link&gt;&gt; 
-TAMED 
-&lt;&lt;link &#39;+&#39;&gt;&gt;
-  &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
-    &lt;&lt;set _object.tamed = true&gt;&gt;
-  &lt;&lt;/for&gt;&gt;
-&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;-&#39;&gt;&gt;
-  &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
-    &lt;&lt;set _object.tamed = false&gt;&gt;
-  &lt;&lt;/for&gt;&gt;
-&lt;&lt;/link&gt;&gt; &lt;br /&gt;
-NOT WORKING YET
-&lt;&lt;listbox &#39;_$cheatbox&#39;&gt;&gt;
-  &lt;&lt;optionsfrom $mergimals&gt;&gt;
-&lt;&lt;/listbox&gt;&gt;
-&lt;&lt;button &#39;toggle seen&#39;&gt;&gt;
-    &lt;&lt;set $mergimals[_$cheatbox].seen = !$mergimals[_$cheatbox].seen&gt;&gt;
-&lt;&lt;/button&gt;&gt; 
-&lt;&lt;button &#39;toggle tamed&#39;&gt;&gt;
-    &lt;&lt;set $mergimals[_$cheatbox].tamed = !$mergimals[_$cheatbox].tamed&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="incorrect" tags="" position="600,1600" size="100,100">Not quite!
+  ALL
+  SEEN 
+  &lt;&lt;link &#39;+&#39;&gt;&gt;
+    &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
+      &lt;&lt;set _object.seen = true&gt;&gt;
+    &lt;&lt;/for&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+  &lt;&lt;link &#39;-&#39;&gt;&gt;
+    &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
+      &lt;&lt;set _object.seen = false&gt;&gt;
+    &lt;&lt;/for&gt;&gt;
+  &lt;&lt;/link&gt;&gt; 
+  TAMED 
+  &lt;&lt;link &#39;+&#39;&gt;&gt;
+    &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
+      &lt;&lt;set _object.tamed = true&gt;&gt;
+    &lt;&lt;/for&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+  &lt;&lt;link &#39;-&#39;&gt;&gt;
+    &lt;&lt;for _mergimal, _object range $mergimals&gt;&gt;
+      &lt;&lt;set _object.tamed = false&gt;&gt;
+    &lt;&lt;/for&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="incorrect" tags="" position="350,1600" size="100,100">Not quite!
 
-&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="correct" tags="" position="725,1600" size="100,100">Nice!
+&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="correct" tags="" position="475,1600" size="100,100">Nice!
 
-&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="injuries" tags="nobr injury-box" position="850,1600" size="100,100">&lt;div class=&#39;injury-box&#39;&gt;
-    &lt;div class=&#39;injury-heading&#39;&gt;
-        &lt;h2&gt;injuries&lt;/h2&gt;
-    &lt;/div&gt;
-    &lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
-        &lt;div class=&#39;injury-tracker-box&#39;&gt;
-                &lt;&lt;if $player.injuries &gt; 4&gt;&gt;
-                    &lt;&lt;set $player.injuries = 4&gt;&gt;
-                &lt;&lt;/if&gt;&gt;
-                &lt;&lt;for _count range $player.injuries&gt;&gt;
-                    &lt;div class=&#39;injury-tracker injured&#39;&gt;&lt;/div&gt;
-                &lt;&lt;/for&gt;&gt;
-                &lt;&lt;for _count range (4 - $player.injuries)&gt;&gt;
-                    &lt;div class=&#39;injury-tracker&#39;&gt;&lt;/div&gt;
-                &lt;&lt;/for&gt;&gt;
-        &lt;/div&gt;
-    &lt;&lt;/do&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="128" name="keywords" tags="nobr" position="975,1600" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
+&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="keywords" tags="nobr" position="600,1600" size="100,100">&lt;&lt;do tag &#39;keywords&#39;&gt;&gt;
   &lt;div class=&#39;keywords-box&#39;&gt;
     &lt;h2&gt;keywords&lt;/h2&gt;
     &lt;&lt;for _keyword, _boolean range $keywords&gt;&gt;
@@ -2182,33 +2132,68 @@ NOT WORKING YET
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="no paddle" tags="" position="1100,1600" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="no paddle" tags="" position="725,1600" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
 
-&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="no rod" tags="" position="1225,1600" size="100,100">You don&#39;t have a fishing rod.
+&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="no rod" tags="" position="850,1600" size="100,100">You don&#39;t have a fishing rod.
 
-&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="no keyword" tags="" position="100,1725" size="100,100">You don&#39;t have that keyword!
+&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="no keyword" tags="" position="975,1600" size="100,100">You don&#39;t have that keyword!
 
-&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="stats" tags="nobr" position="225,1725" size="100,100">&lt;div class=&#39;stats&#39;&gt;
-  &lt;h2 class=&#39;stats-heading&#39;&gt;stats&lt;/h2&gt;
-  &lt;div class=&#39;stats-box&#39;&gt;
-    &lt;div class=&#39;stat-box&#39;&gt;
-      &lt;img class=&#39;stat-img&#39; title=&#39;attention&#39; src=&#39;images/stats/attention.svg&#39; /&gt;
-      &lt;p class=&#39;stat-label display-attention&#39;&gt;$stats.attention&lt;/p&gt;
+&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="stats" tags="nobr" position="1100,1600" size="100,100">&lt;&lt;do tag &#39;stats&#39;&gt;&gt;
+	&lt;div class=&#39;story-caption-box&#39;&gt;
+		&lt;div class=&#39;story-caption-header-box&#39;&gt;
+			&lt;h2&gt;stats&lt;/h2&gt;
+		&lt;/div&gt;
+		&lt;div class=&#39;stat-boxes story-caption-boxes&#39;&gt;
+			&lt;&lt;for _stat, _value range $stats&gt;&gt;
+				&lt;div class=&#39;stat-box&#39;&gt;
+					&lt;div class=&#39;stat-img-box&#39;&gt;
+						&lt;&lt;print &#39;&lt;img class=&quot;stat-img&quot; title=&quot;&#39; + _stat +&#39;&quot; src=&quot;images/stats/&#39; + _stat + &#39;.svg&quot;&gt;&#39;&gt;&gt;
+					&lt;/div&gt;
+					&lt;div class=&#39;stat-label-box&#39;&gt;
+						_value
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;&lt;/for&gt;&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="injuries" tags="nobr" position="1225,1600" size="100,100">&lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
+    &lt;div class=&#39;story-caption-box&#39;&gt;
+        &lt;div class=&#39;story-caption-header-box&#39;&gt;
+            &lt;h2&gt;injuries&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&#39;injury-boxes story-caption-boxes&#39;&gt;
+            &lt;&lt;if $player.injuries &gt; 4&gt;&gt;
+                &lt;&lt;set $player.injuries = 4&gt;&gt;
+            &lt;&lt;/if&gt;&gt;
+            &lt;&lt;for _count range $player.injuries&gt;&gt;
+                &lt;div class=&#39;injury-tracker injured&#39;&gt;&lt;/div&gt;
+            &lt;&lt;/for&gt;&gt;
+            &lt;&lt;for _count range (4 - $player.injuries)&gt;&gt;
+                &lt;div class=&#39;injury-tracker&#39;&gt;&lt;/div&gt;
+            &lt;&lt;/for&gt;&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class=&#39;stat-box&#39;&gt;
-      &lt;img class=&#39;stat-img&#39; title=&#39;grit&#39; src=&#39;images/stats/grit.svg&#39; /&gt;
-      &lt;p class=&#39;stat-label display-grit&#39;&gt;$stats.grit&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&#39;stat-box&#39;&gt;
-      &lt;img class=&#39;stat-img&#39; title=&#39;memory&#39; src=&#39;images/stats/memory.svg&#39; /&gt;
-      &lt;p class=&#39;stat-label display-memory&#39;&gt;$stats.memory&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&#39;stat-box&#39;&gt;
-      &lt;img class=&#39;stat-img&#39; title=&#39;empathy&#39; src=&#39;images/stats/empathy.svg&#39; /&gt;
-      &lt;p class=&#39;stat-label display-empathy&#39;&gt;$stats.empathy&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="133" name="tamed" tags="nobr" position="350,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="backpack" tags="nobr" position="100,1725" size="100,100">&lt;&lt;do tag &#39;backpack&#39;&gt;&gt;
+	&lt;div class=&#39;story-caption-box&#39;&gt;
+		&lt;div class=&#39;story-caption-header-box&#39;&gt;
+			&lt;h2&gt;backpack&lt;/h2&gt;
+		&lt;/div&gt;
+		&lt;div class=&#39;item-boxes story-caption-boxes&#39;&gt;
+			&lt;&lt;for _item, _quantity range $backpack&gt;&gt;
+				&lt;div class=&#39;item-box&#39;&gt;
+					&lt;div class=&#39;item-img-box&#39;&gt;
+						&lt;&lt;print &#39;&lt;img class=&quot;backpack-item-img&quot; title=&quot;&#39; + _item + &#39;&quot; src=&quot;images/items/&#39; + _item + &#39;.svg&quot;&gt;&#39;&gt;&gt;
+					&lt;/div&gt;
+					&lt;div class=&#39;item-label-box&#39;&gt;
+						_quantity
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;&lt;/for&gt;&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="no batteries" tags="" position="225,1725" size="100,100">You don&#39;t have any batteries!
+
+&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="tamed" tags="nobr" position="350,1725" size="100,100">&lt;div class=&#39;tamed-box&#39;&gt;
   &lt;h2&gt;
     &lt;&lt;link &#39;Mergipedia&#39;&gt;&gt;
       &lt;&lt;dialog mergipedia&gt;&gt;

@@ -1,0 +1,100 @@
+/* story caption items
+including:
+stats
+injuries
+backpack  */
+
+.story-caption-box {
+    margin-bottom: 1rem;
+}
+
+.story-caption-header-box {
+    background-color: #eee;
+    border-radius: 0.4rem;
+    color: black;
+    display: inline-block;
+    margin-bottom: -0.4rem;
+    z-index: -1;
+    position: relative;
+}
+
+.story-caption-header-box h2 {
+    margin: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.8rem;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+}
+
+.story-caption-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-radius: 0.4rem;
+    padding: 1rem;
+}
+
+/* stats stuff */
+
+.stat-boxes {
+    gap: 1.4rem;
+    background-color: #ddd;
+}
+
+.stat-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label-box {
+    color: #111;
+    margin-top: 0;
+}
+
+.stat-img {
+    height: 3.3rem;
+    aspect-ratio: square;
+}
+
+/* injury stuff */
+
+.injury-boxes {
+    background-color: #ddd;
+}
+
+.injury-tracker {
+    height: 2rem;
+    aspect-ratio: 1 / 1;
+    border: 3px solid black;
+    border-radius: 4rem;
+}
+
+.injured {
+    background-image: url('images/svg/injured.svg');
+}
+
+/* backpack stuff */
+
+.item-boxes {
+    gap: 1rem;
+    background-color: #ddd;
+}
+
+.item-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-label-box {
+    color: #111;
+    margin-top: 0;
+}
+
+.backpack-item-img {
+    height: 2.5rem;
+    aspect-ratio: 1 / 1;
+}
