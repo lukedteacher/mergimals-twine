@@ -1,0 +1,20 @@
+.dice-box {
+    color: black;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    height: 3rem;
+    width: 3rem;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.dice-span {
+    font-family: polymath;
+    font-size: 2rem;
+    position: relative;
+    transform-origin: center;
+}

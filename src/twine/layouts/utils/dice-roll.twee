@@ -1,0 +1,7 @@
+:: dice roll
+
+<<dice 'dice1' 'd8'>>\
+
+<<button 'reroll'>>
+    <<roll '#dice1'>>
+<</button>>
