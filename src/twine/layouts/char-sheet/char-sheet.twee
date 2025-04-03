@@ -1,3 +1,9 @@
+:: character sheet
+Name: $player.name
+<<include 'stats'>>
+<<include 'injuries'>>
+<<include 'backpack'>>
+
 :: stats [nobr]
 <<do tag 'stats'>>
 	<div class='char-sheet-box'>

@@ -1,0 +1,90 @@
+:: vending machine
+<div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>\
+  <div style='background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;'></div>\
+  <div style='grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/battery.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/bandage.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/tool.svg' style='height: 100%;' /></div>\
+  <<if $keywords.flashlight == false>><div style='grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/flashlight.svg' style='height: 100%;' /></div><</if>>\
+  <div style='grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/mergiball.svg' style='height: 100%;' /></div>\
+  <div style='grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/charm.svg' style='height: 100%;' /></div>\
+</div>\
+<<button 'buy a mergiball 1c'>>
+  <<if $backpack.coin < 1>>>
+    <<dialog 'not enough coins'>>
+      <<include 'not enough coins'>>
+    <</dialog>>
+  <<else>>
+    <<set $backpack.coin -->>
+    <<set $backpack.mergiball ++>>
+    <<redo 'backpack'>>
+  <</if>>
+<</button>>
+<<button 'buy a charm 2c'>>
+  <<if $backpack.coin < 2>>>
+    <<dialog 'not enough coins'>>\
+      <<include 'not enough coins'>>
+    <</dialog>>
+  <<else>>
+    <<set $backpack.coin -= 2>>
+    <<set $backpack.charm ++>>
+    <<redo 'backpack'>>
+  <</if>>
+<</button>>
+<<button 'buy a bandage 3c'>>
+  <<if $backpack.coin < 3>>>
+    <<dialog 'not enough coins'>>\
+      <<include 'not enough coins'>>
+    <</dialog>>
+  <<else>>
+    <<set $backpack.coin -= 3>>
+    <<set $backpack.bandage ++>>
+    <<redo 'backpack'>>
+  <</if>>
+<</button>>
+<<button 'buy a tool 4c'>>
+  <<if $backpack.coin < 4>>>
+    <<dialog 'not enough coins'>>\
+      <<include 'not enough coins'>>
+    <</dialog>>
+  <<else>>
+    <<set $backpack.coin -= 4>>
+    <<set $backpack.tool ++>>
+    <<redo 'backpack'>>
+  <</if>>
+<</button>>
+<<button 'buy a battery 5c'>>
+  <<if $backpack.coin < 5>>>
+    <<dialog 'not enough coins'>>\
+      <<include 'not enough coins'>>
+    <</dialog>>
+  <<else>>
+    <<set $backpack.coin -= 5>>
+    <<set $backpack.battery ++>>
+    <<redo 'backpack'>>
+  <</if>>
+<</button>>
+<<button 'buy a flashlight 10c'>>
+  <<if $keywords.flashlight == true>>
+    <<dialog 'already purchased'>>\
+      <<include 'sold out'>>
+    <</dialog>>
+  <<elseif $backpack.coin < 10>>>
+    <<dialog 'not enough coins'>>\
+      <<include 'not enough coins'>>
+    <</dialog>>
+  <<else>>
+    <<set $backpack.coin -= 10>>
+    <<set $keywords.flashlight = true>>
+    <<redo 'keywords'>>
+  <</if>>
+<</button>>
+
+:: not enough coins
+You don't have enough coins to buy that!
+
+<<link 'Nevermind.'>><<run Dialog.close()>><</link>>
+
+:: sold out
+This machine doesn't seem to have any more of those.
+
+<<link 'Alright.'>><<run Dialog.close()>><</link>>

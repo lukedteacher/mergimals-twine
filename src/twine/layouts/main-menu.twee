@@ -1,0 +1,8 @@
+:: main menu
+
+<<button 'NEW CHARACTER' 'cc: part 1'>><</button>>
+
+<<button 'NEW GAME' 'intro'>><</button>>
+
+!!!!DEBUG:
+<<link 'jump to exploring' 'b3'>><</link>>

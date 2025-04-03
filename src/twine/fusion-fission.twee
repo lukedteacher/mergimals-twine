@@ -6,12 +6,9 @@ MERGIMALS
   "ifid": "90E729E4-A877-4D86-B308-9E22C917BB4A",
   "format": "SugarCube",
   "format-version": "2.37.3",
-  "start": "001",
+  "start": "start",
   "zoom": 1
-} 
-
-:: Story JavaScript [script]
-Config.ui.stowBarInitially = false;
+}
 
 :: StoryCaption
 <<include 'sidebar'>>
@@ -23,86 +20,8 @@ Config.ui.stowBarInitially = false;
   <</dialog>>
 <</link>>
 
-:: 001 [start]
+:: start [start]
 !NOTE: THIS GAME IS STILL BEING DEVELOPED AND MAY REQUIRE YOU TO RESTART IF LARGE CHANGES ARE MADE.
+!!NOTE #2: none of the assets in this game are final. ai was used to generate some of the art for prototyping and concept art purposes.
 
-Today is the first day of your Mergimals journey!
-
-Enter your name:
-<<textbox '$player.name' ''>>
-
-<<link 'Create a character.' 'cc: part 1'>><</link>>
-<<link 'Go see professor Tamrack' 'start: part 1'>>\
-  <<if $player.name is ''>>\
-    <<set $player.name to 'Ash'>>\
-  <</if>>\
-<</link>>\
-
-!!!!DEBUG:
-<<link 'jump to exploring' 'b3'>><</link>>
-
-:: start: part 1 [story]
-
-Professor Tamarack's office is on the Eastern edge of town. It's the biggest building in the village and what mysteries fill all three floors are as good as anyone's guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
-<<tam>>$player.name!
-Finally, you’re here!
-<</tam>>\
-<div id='response'>\
-  <<link 'Say: Were you waiting for me?'>>
-    <<replace '#response'>>\
-      <<say $player.name $player.image>>Were you waiting for me?<</say>>\
-      <<tam>>No, I wasn’t waiting at the window all morning for you.
-        <<cont keypress append>>I have, um, lots and lots of work to do to keep me busy.
-          <<cont keypress append>>I’m, like, super duper busy.
-            <<cont keypress append>>So, please… come inside and we'll get you set up.
-              <<cont keypress append>>You’ve been waiting 10 years for this, how exciting!
-                <<cont keypress>><<replace '#link'>><<link 'Follow the professor inside the Lab.' 'start: part 2'>><</link>><</replace>>\
-                <</cont>>\
-              <</cont>>\
-            <</cont>>\
-          <</cont>>\
-        <</cont>>\
-              <</tam>>\
-              @@#link;@@
-    <</replace>>
-  <</link>>
-  <<link 'Say: Let\'s go!'>>
-    <<replace '#response'>>\
-      <<say $player.name $player.image>>Let's go!<</say>>\
-      <<tam>>You’ve been waiting 10 years for this, how exciting!<</tam>>\
-      <<link 'Follow the professor inside the Lab.' 'start: part 2'>><</link>>
-    <</replace>>
-  <</link>>
-</div>
-
-:: start: part 2 [story]
-You enter.
-
-It's time to pick a Mergimal!
-
-<div style='display: flex; gap: 1rem;'><<card 'melodrake' true>><<set $mergimals.melodrake.seen = true>><<card 'scorchilla' true>><<set $mergimals.scorchilla.seen = true>><<card 'penguwaiian' true>><<set $mergimals.penguwaiian.seen = true>></div>
-[[Ask if there are any others.->start: part 2b]]
-
-:: start: part 2b
-Maybe someday! But not right now.
-
-So make a choice.
-
-<<return 'As you wish.'>>
-
-:: start: part 3
-<<tam>>Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.<</tam>>\
-You got 5 mergiballs.<<set $backpack.mergiball += 5>>
-
-They have been added to your backpack.
-
-It's time to start your journey.
-
-[[Let's go!->start: part 4]]
-
-:: start: part 4
-<<tam>>Wait!
-
-Do you need me to show you how to catch Mergimals?<</tam>>\
-<<link 'Say: Yes, please. (TUTORIAL)' 'tutorial: part 1'>><</link>>
-<<link 'Say: No, thanks. I already know how.' 'b3'>><</link>>
+<<include 'main menu'>>

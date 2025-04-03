@@ -38,6 +38,11 @@ body a:hover {
   margin-right: auto;
 }
 
+.macro-button {
+  border-radius: 0.4rem;
+  padding: 0.8rem;
+}
+
 /* this doesn't work? */
 
 #ui-dialog-title {

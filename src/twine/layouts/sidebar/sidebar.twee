@@ -1,13 +1,11 @@
 :: sidebar [nobr]
-<<include 'stats'>>
-<<include 'injuries'>>
-<<include 'backpack'>>
-<<include 'tamed'>>
+<<button 'character sheet'>>
+    <<popup 'character sheet' 'character sheet'>>
+<</button>><br /><br />
+<<button 'mergipedia'>>
+    <<popup 'mergipedia' 'mergipedia'>>
+<</button>><br /><br />
 <<include 'keywords'>>
-<details id='1'>
-    <summary>test</summary>
-    Why is everything working now??!
-</details>
 
 <<done>>
     <<script>>
