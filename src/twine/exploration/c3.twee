@@ -1,12 +1,11 @@
 :: c3 [map]
-<<map 'c3'>><<south 'c4'>><</map>>\
+<<map 'c3'>><</map>>\
 !!!!EXPLORE
 [[Take in the view->c3: the view]]
 [[Rummage around in the long grass->c3: long grass]]
 [[Talk to the scientist.->c3: scientist]]
-!!!!NAVIGATE
-[[Climb back down.->c4]]
 [[Enter the cave->c2]]
+[[Climb back down.->c4]]
 
 :: c3: the view [c3 story]
 You look out over the cliff and take in the beauty.

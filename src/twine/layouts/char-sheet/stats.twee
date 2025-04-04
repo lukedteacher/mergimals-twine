@@ -1,0 +1,23 @@
+:: stats [nobr]
+<<do tag 'stats'>>
+	<div class='char-sheet-box'>
+		<div class='char-sheet-header-box'>
+			<h2>stats</h2>
+		</div>
+		<<include 'stat boxes'>>
+	</div>
+<</do>>
+
+:: stat boxes [nobr]
+<div class='stat-boxes char-sheet-boxes'>
+    <<for _stat, _value range $stats>>
+        <div class='stat-box'>
+            <div class='stat-img-box'>
+                <<print '<img class="stat-img" title="' + _stat +'" src="images/stats/' + _stat + '.svg">'>>
+            </div>
+            <div class='stat-label-box dice text-xl'>
+                _value
+            </div>
+        </div>
+    <</for>>
+</div>

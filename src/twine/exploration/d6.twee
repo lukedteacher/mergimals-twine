@@ -1,13 +1,10 @@
 :: d6 [map littlemoose]
-<<map 'd6'>><<north 'd5'>><</map>>\
+<<map 'd6'>><<north 'd5'>><<west 'c6'>><</map>>\
 !!!!EXPLORE
 [[Look around->d6: description]]
 [[Visit the Mergimal Challenge Vending Machine.->d6: vending machine]]
 [[Talk to the dude standing there.->d6: trainer]]
 [[Check out Veil School->d6: veil school]]
-!!!!NAVIGATE
-[[Go North into Littlemoose Forest.->d5]]
-[[Go West along the dirt path.->c6]]
 
 :: d6: description
 <img class='concept' src='images/story/littlemoose.png'>\

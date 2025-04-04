@@ -1,29 +1,26 @@
-:: character sheet
+:: character sheet [nobr]
 Name: $player.name
-<<include 'stats'>>
-<<include 'injuries'>>
-<<include 'backpack'>>
-
-:: stats [nobr]
-<<do tag 'stats'>>
-	<div class='char-sheet-box'>
-		<div class='char-sheet-header-box'>
-			<h2>stats</h2>
-		</div>
-		<div class='stat-boxes char-sheet-boxes'>
-			<<for _stat, _value range $stats>>
-				<div class='stat-box'>
-					<div class='stat-img-box'>
-						<<print '<img class="stat-img" title="' + _stat +'" src="images/stats/' + _stat + '.svg">'>>
-					</div>
-					<div class='stat-label-box dice text-xl'>
-						_value
-					</div>
-				</div>
-			<</for>>
-		</div>
-	</div>
-<</do>>
+<<script>>
+	$( function() {
+		$( "#tabs" ).tabs();
+	} );
+<</script>>
+<div id="tabs">
+  <ul>
+    <li><h2 style='margin: 0;'><a href="#tabs-1">stats</a></h2></li>
+    <li><h2 style='margin: 0;'><a href="#tabs-2">injuries</a></h2></li>
+    <li><h2 style='margin: 0;'><a href="#tabs-3">backpack</a></h2></li>
+  </ul>
+  <div id="tabs-1">
+    <<include 'stat boxes'>>
+  </div>
+  <div id="tabs-2">
+    <<include 'injury boxes'>>
+  </div>
+  <div id="tabs-3">
+    <<include 'backpack'>>
+  </div>
+</div>
 
 :: injuries [nobr]
 <<do tag 'injuries'>>
@@ -31,19 +28,22 @@ Name: $player.name
         <div class='char-sheet-header-box'>
             <h2>injuries</h2>
         </div>
-        <div class='injury-boxes char-sheet-boxes'>
-            <<if $player.injuries > 4>>
-                <<set $player.injuries = 4>>
-            <</if>>
-            <<for _count range $player.injuries>>
-                <div class='injury-tracker injured'></div>
-            <</for>>
-            <<for _count range (4 - $player.injuries)>>
-                <div class='injury-tracker'></div>
-            <</for>>
-        </div>
+		<<include 'injury boxes'>>
     </div>
 <</do>>
+
+:: injury boxes [nobr]
+<div class='injury-boxes char-sheet-boxes'>
+	<<if $player.injuries > 4>>
+		<<set $player.injuries = 4>>
+	<</if>>
+	<<for _count range $player.injuries>>
+		<div class='injury-tracker injured'></div>
+	<</for>>
+	<<for _count range (4 - $player.injuries)>>
+		<div class='injury-tracker'></div>
+	<</for>>
+</div>
 
 :: backpack [nobr]
 <<do tag 'backpack'>>

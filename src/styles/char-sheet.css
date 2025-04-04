@@ -81,6 +81,8 @@ backpack  */
 .item-boxes {
     gap: 1rem;
     background-color: #ddd;
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
 }
 
 .item-box {

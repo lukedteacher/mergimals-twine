@@ -32,7 +32,7 @@
     function roll(targetID) {
         const $target = $(targetID);
 
-        shake($target, 10, newResult);
+        shake($target, 5, newResult);
     }
 
     function shake($target, intensity = 5, callback = () => {}) {

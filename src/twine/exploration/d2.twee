@@ -3,8 +3,6 @@
 !!!!EXPLORE
 [TODO add stuff to explore]
 [[Go fishing.->d2: fishing]]
-!!!!NAVIGATE
-[[Go East towards Downtown.->e2]]
 
 :: d2: fishing
 <<if not $keywords.has('rusty')>>\

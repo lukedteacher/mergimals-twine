@@ -3,9 +3,6 @@
 !!!!EXPLORE
 [[Check the long grass.->d5: long grass]]
 [[Approach the trainers.->d5: trainer]]
-!!!!NAVIGATE
-[[Go North to Route 003->d4]]
-[[Go South to Littlemoose.->d6]]
 
 :: d5: long grass
 Some mergimals are here probably.

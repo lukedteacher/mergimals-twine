@@ -4,10 +4,6 @@
 [[Look around->e2: description]]
 [[Read the community bulletin board.->e2: bulletin board]]
 [[Buy something at the vending machine->e2: vending machine]]
-!!!!NAVIGATE
-[[Go North towards the Wave School Stadium.->e1]]
-[[Go West towards the Beach District.->d2]]
-[[Go South out of town.->e3]]
 
 :: e2: description
 <img class='concept' src='images/story/blue-urf.png'>\

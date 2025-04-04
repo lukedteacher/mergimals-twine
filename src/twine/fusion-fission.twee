@@ -24,7 +24,8 @@ MERGIMALS
 !NOTE: THIS GAME IS STILL BEING DEVELOPED AND MAY REQUIRE YOU TO RESTART IF LARGE CHANGES ARE MADE.
 !!NOTE #2: none of the assets in this game are final. ai was used to generate some of the art for prototyping and concept art purposes.
 
-<<roll 4>>
-
 <<include 'main menu'>>
+<<include 'demos'>>
 
+:: demos
+<<link 'dice roll' 'dice roll'>><</link>>

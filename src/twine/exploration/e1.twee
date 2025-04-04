@@ -2,8 +2,6 @@
 <<map 'e1'>><<south 'e2'>><</map>>\
 !!!!EXPLORE
 [[Go to the Wave School->e1: wave school]]
-!!!!NAVIGATE
-[[Go South towards Downtown.->e2]]
 
 :: e1: wave school [blue-urf]
 <<if not $keywords.has('paddle')>>\
