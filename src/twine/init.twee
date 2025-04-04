@@ -1,6 +1,9 @@
 :: StoryInit
 <<set $player to {
-  name: 'none set',
+  version: 'fusion',
+  versionLetter: 'a',
+  player: 'player',
+  name: 'Ash',
   image: 'images/characters/player.png',
   injuries: 0,
   difficulty: 'easy'
@@ -32,19 +35,19 @@
 }>>
 
 <<set $mergimals to {
-  algelly: {type: 'wave', strategy: 'skip count', number: '6', seen: false, tamed: false},
-  bakewing: {type: 'forge', strategy: 'make a model', number: '84', seen: false, tamed: false},
-  boxin: {type: 'null', strategy: 'check a chart', number: '8', seen: false, tamed: false},
-  corwhal: {type: 'wave', strategy: 'skip count', number: '7', seen: false, tamed: false},
-  gemble: {type: 'deep', strategy: 'draw a diagram', number: '11', seen: false, tamed: false},
-  krustwo: {type: 'wave', strategy: 'skip count', number: '2', seen: false, tamed: false},
-  melodrake: {type: 'root', strategy: 'skip count', number: '2', seen: false, tamed: false},
-  penguwaiian: {type: 'wave', strategy: 'skip count', number: '10', seen: false, tamed: false},
-  scorchilla: {type: 'forge', strategy: 'make a model', number: '4', seen: false, tamed: false},
-  sheetly: {type: 'veil', strategy: 'find a familiar fact', number: '1/2', seen: false, tamed: false},
-  treethorn: {type: 'root', strategy: 'label a line', number: '3', seen: false, tamed: false},
-  twindle: {type: 'spark', strategy: 'apply an algorithm', number: '3', seen: false, tamed: false},
-  zipper: {type: 'spark', strategy: 'repeated addition', number: '6', seen: false, tamed: false}
+  algelly: {name: 'algelly', type: 'wave', strategy: 'skip count', number: '6', rarity: 'common', seen: false, tamed: false},
+  bakewing: {name: 'bakewing', type: 'forge', strategy: 'make a model', number: '84', rarity: 'common', seen: false, tamed: false},
+  boxin: {name: 'boxin', type: 'null', strategy: 'check a chart', number: '8', rarity: 'common', seen: false, tamed: false},
+  corwhal: {name: 'corwhal', type: 'wave', strategy: 'skip count', number: '7', rarity: 'common', seen: false, tamed: false},
+  gemble: {name: 'gemble', type: 'deep', strategy: 'draw a diagram', number: '11', rarity: 'common', seen: false, tamed: false},
+  krustwo: {name: 'krustwo', type: 'wave', strategy: 'skip count', number: '2', rarity: 'common', seen: false, tamed: false},
+  melodrake: {name: 'melodrake', type: 'root', strategy: 'skip count', number: '2', rarity: 'common', seen: false, tamed: false},
+  penguwaiian: {name: 'penguwaiian', type: 'wave', strategy: 'skip count', number: '10', rarity: 'common', seen: false, tamed: false},
+  scorchilla: {name: 'scorchilla', type: 'forge', strategy: 'make a model', number: '4', rarity: 'common', seen: false, tamed: false},
+  sheetly: {name: 'sheetly', type: 'veil', strategy: 'find a familiar fact', number: '1/2', rarity: 'rare', seen: false, tamed: false},
+  treethorn: {name: 'treethorn', type: 'root', strategy: 'label a line', number: '3', rarity: 'common', seen: false, tamed: false},
+  twindle: {name: 'twindle', type: 'spark', strategy: 'apply an algorithm', number: '3', rarity: 'common', seen: false, tamed: false},
+  zipper: {name: 'zipper', type: 'spark', strategy: 'repeated addition', number: '6', rarity: 'uncommon', seen: false, tamed: false}
 }>>
 
 <<mergimal 'unknown' 'unknown' 'unknown' '?'>>

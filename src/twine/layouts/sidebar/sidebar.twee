@@ -1,11 +1,16 @@
 :: sidebar [nobr]
-<<button 'character sheet'>>
-    <<popup 'character sheet' 'character sheet'>>
+<<button 'character'>>
+    <<popup 'character sheet' 'character sheet' 'dialog-char-sheet'>>
+<</button>><br /><br />
+<<button 'backpack'>>
+    <<popup 'backpack items' 'backpack items'>>
+<</button>><br /><br />
+<<button 'keywords'>>
+    <<popup 'backpack keywords' 'keywords'>>
 <</button>><br /><br />
 <<button 'mergipedia'>>
     <<popup 'mergipedia' 'mergipedia'>>
 <</button>><br /><br />
-<<include 'keywords'>>
 
 <<done>>
     <<script>>

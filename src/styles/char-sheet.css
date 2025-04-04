@@ -25,13 +25,19 @@ backpack  */
 }
 
 .char-sheet-boxes {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-evenly;
     border-radius: 0.4rem;
     padding: 1rem;
     position: relative;
     z-index: 100;
+    width: min-content;
+}
+
+/* dialog box */
+
+.dialog-char-sheet {
+    width: 40rem;
+    aspect-ratio: 8.5 / 11;
 }
 
 /* stats stuff */
@@ -39,6 +45,9 @@ backpack  */
 .stat-boxes {
     gap: 1.4rem;
     background-color: #ddd;
+    display: grid;
+    grid-template: 1fr / repeat(4, 1fr);
+    flex-shrink: 1;
 }
 
 .stat-box {
@@ -63,6 +72,9 @@ backpack  */
 
 .injury-boxes {
     background-color: #ddd;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 .injury-tracker {
@@ -100,4 +112,22 @@ backpack  */
 .backpack-item-img {
     height: 2.5rem;
     aspect-ratio: 1 / 1;
+}
+
+.keyword-boxes {
+    background-color: #eee;
+    color: #111;
+}
+
+.keywords-ul {
+    list-style-type: none;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+}
+
+.keywords-li {
+    padding: 0.4rem 0.6rem;
+    text-transform: uppercase;
+    border-radius: 0.2rem;
 }

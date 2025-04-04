@@ -21,3 +21,26 @@
         </div>
     <</for>>
 </div>
+
+:: injuries [nobr]
+<<do tag 'injuries'>>
+    <div class='char-sheet-box'>
+        <div class='char-sheet-header-box'>
+            <h2>injuries</h2>
+        </div>
+		<<include 'injury boxes'>>
+    </div>
+<</do>>
+
+:: injury boxes [nobr]
+<div class='injury-boxes char-sheet-boxes'>
+	<<if $player.injuries > 4>>
+		<<set $player.injuries = 4>>
+	<</if>>
+	<<for _count range $player.injuries>>
+		<div class='injury-tracker injured'></div>
+	<</for>>
+	<<for _count range (4 - $player.injuries)>>
+		<div class='injury-tracker'></div>
+	<</for>>
+</div>

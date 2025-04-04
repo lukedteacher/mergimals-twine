@@ -29,7 +29,7 @@ Macro.add('dialog', {
         classes.push('macro-' + this.name);
         
         // dialog box
-        Dialog.setup(title, classes.join(' '));
+        Dialog.create(title, classes.join(' '));
         Dialog.wiki(content);
 
         // should these be shadowWrapper-aware?
@@ -72,6 +72,7 @@ Macro.add('popup', {
         classes.push('macro-' + this.name);
         
         // dialog box
+        // TODO fix this (.setup depreciated)
         Dialog.setup(title, classes.join(' '));
         Dialog.wiki(Story.get(psg).processText());
         Dialog.open();

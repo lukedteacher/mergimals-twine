@@ -26,10 +26,11 @@ You can hear cooing noises coming from the long grass.
 :: 126 [stray]
 The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!
 
-Test ATTENTION x MEMORY
+Test two cards.
 
-If you rolled...
+I got...
 
-[[...30 or less, find a common Mergimal.->stray: boxin]]
-[[...between 30 and 80, find an uncommon Mergimal.->stray: zipper]]
-[[...above an 80, you find a rare Mergimal.->stray: sheetly]]
+<<link '...zero correct.' 'stray encounter'>><<set $mergimalEncountered = $mergimals['zipper']>><</link>>
+[[...zero correct.->stray: boxin]]
+[[..one correct.->stray: zipper]]
+[[...two correct.->stray: sheetly]]

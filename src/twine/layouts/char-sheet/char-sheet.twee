@@ -1,72 +1,29 @@
 :: character sheet [nobr]
-Name: $player.name
+<div>Player Name: $player.player</div><div>Character Name: $player.name</div>
 <<script>>
 	$( function() {
-		$( "#tabs" ).tabs();
+		$( "#tabs" ).tabs({
+			classes: {
+				'ui-tabs': 'char-sheet-tabs'
+			}
+		});
 	} );
 <</script>>
-<div id="tabs">
-  <ul>
-    <li><h2 style='margin: 0;'><a href="#tabs-1">stats</a></h2></li>
-    <li><h2 style='margin: 0;'><a href="#tabs-2">injuries</a></h2></li>
-    <li><h2 style='margin: 0;'><a href="#tabs-3">backpack</a></h2></li>
-  </ul>
-  <div id="tabs-1">
-    <<include 'stat boxes'>>
-  </div>
-  <div id="tabs-2">
-    <<include 'injury boxes'>>
-  </div>
-  <div id="tabs-3">
-    <<include 'backpack'>>
-  </div>
-</div>
-
-:: injuries [nobr]
-<<do tag 'injuries'>>
-    <div class='char-sheet-box'>
-        <div class='char-sheet-header-box'>
-            <h2>injuries</h2>
-        </div>
-		<<include 'injury boxes'>>
-    </div>
-<</do>>
-
-:: injury boxes [nobr]
-<div class='injury-boxes char-sheet-boxes'>
-	<<if $player.injuries > 4>>
-		<<set $player.injuries = 4>>
-	<</if>>
-	<<for _count range $player.injuries>>
-		<div class='injury-tracker injured'></div>
-	<</for>>
-	<<for _count range (4 - $player.injuries)>>
-		<div class='injury-tracker'></div>
-	<</for>>
-</div>
-
-:: backpack [nobr]
-<<do tag 'backpack'>>
-	<div class='char-sheet-box'>
-		<div class='char-sheet-header-box'>
-			<h2>backpack</h2>
-		</div>
-		<div class='item-boxes char-sheet-boxes'>
-			<<for _item, _quantity range $backpack>>
-				<div class='item-box'>
-					<div class='item-img-box'>
-						<<print '<img class="backpack-item-img" title="' + _item + '" src="images/items/' + _item + '.svg">'>>
-					</div>
-					<div class='item-label-box'>
-						_quantity
-					</div>
-				</div>
-			<</for>>
-		</div>
+<div id='tabs' class='dialog-char-sheet-tabs'>
+	<ul>
+		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--character'>👤 character</a></h2></li>
+		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--backpack'>🎒 backpack</a></h2></li>
+		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--mergipedia'>📘 mergipedia</a></h2></li>
+	</ul>
+	<div id='dialog-char-sheet--character'>
+		<<include 'stats'>>
+		<<include 'injuries'>>
 	</div>
-<</do>>
-
-:: no batteries
-You don't have any batteries!
-
-<<link 'Darnit.'>><<run Dialog.close()>><</link>>
+	<div id='dialog-char-sheet--backpack'>
+		<<include 'backpack items'>>
+		<<include 'backpack keywords'>>
+	</div>
+	<div id='dialog-char-sheet--mergipedia'>
+		<<include 'mergipedia'>>		
+	</div>
+</div>

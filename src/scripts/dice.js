@@ -23,15 +23,9 @@
         return $diceBox;
     }
 
-    function randResult(dice) {
-        const max = Number(dice.slice(1));
-
-        return Math.floor(Math.random() * max) + 1;
-    }
-
     function roll(targetID) {
         const $target = $(targetID);
-
+        if (Object.keys($target).length == 0) throw new Error('make sure the roll macro is wrapped in a done macro');
         shake($target, 5, newResult);
     }
 
@@ -61,15 +55,25 @@
         nextFrame();
     }
 
-    function newResult($target) {
-        const diceType = $target.attr('data-dice');
-        const result = randResult(diceType);
-        const polymathString = `${result}_on_${diceType}`;
-        $target.text(polymathString);
-    }
-
     function randomRange(min, max) {
         return Math.random() * (max - min) + min;
+    }
+
+    function newResult($target) {
+        const diceType = $target.attr('data-dice');
+        if (!diceType) throw new Error('dice type undefined in newResult');
+        console.log(diceType);
+        const result = randResult(diceType);
+        const polymathString = `${result}_on_${diceType}`;
+        $target
+            .text(polymathString)
+            .attr('data-result', result);
+    }
+
+    function randResult(diceType) {
+        const max = Number(diceType.slice(1));
+
+        return Math.floor(Math.random() * max) + 1;
     }
 
     Macro.add('dice', {
@@ -82,7 +86,12 @@
 
     Macro.add('roll', {
         handler: function () {
-            const targetID = this.args[0];
+            let targetID = this.args[0];
+            if (!targetID) throw new Error('invalid target id in roll macro');
+            if (targetID.slice(0,1) !== '#') {
+                console.log('adding # to target of roll macro');
+                targetID = '#' + targetID;
+            }
             roll(targetID);
         },
     });

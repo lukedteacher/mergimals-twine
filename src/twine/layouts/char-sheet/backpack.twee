@@ -1,0 +1,91 @@
+:: backpack items [nobr]
+<<do tag 'backpack-items'>>
+	<div class='char-sheet-box'>
+		<div class='char-sheet-header-box'>
+			<h2>items</h2>
+		</div>
+		<<include 'backpack item boxes'>>
+	</div>
+<</do>>
+
+:: backpack item boxes [nobr]
+<div class='item-boxes char-sheet-boxes'>
+	<<for _item, _quantity range $backpack>>
+		<div class='item-box'>
+			<div class='item-img-box'>
+				<<print '<img class="backpack-item-img" title="' + _item + '" src="images/items/' + _item + '.svg">'>>
+			</div>
+			<div class='item-label-box'>
+				_quantity
+			</div>
+		</div>
+	<</for>>
+</div>
+
+:: backpack keywords [nobr]
+<<do tag 'backpack-keywords'>>
+	<div class='char-sheet-box'>
+		<div class='char-sheet-header-box'>
+			<h2>keywords</h2>
+		</div>
+		<<include 'backpack keyword list'>>
+	</div>
+<</do>>
+
+:: backpack keyword list [nobr]
+<div class='keyword-boxes char-sheet-boxes'>
+    <ul class='keywords-ul'>
+        <<set _keywordCount = 0>>
+        <<for _keyword, _boolean range $keywords>>
+            
+            <<if _boolean == true>>
+                <<set _keywordCount ++>>
+                <li class='keywords-li'>_keyword</li>
+            <</if>>
+        <</for>>
+        <<if _keywordCount == 0 >>
+            <li class='keywords-li'>no keywords found yet</li>
+        <</if>>
+    </ul>
+</div>
+
+:: no batteries
+You don't have any batteries!
+
+<<link 'Darnit.'>><<run Dialog.close()>><</link>>
+
+:: keywords [nobr]
+<<do tag 'keywords'>>
+    <details id='1' class='keywords-box'>
+        <summary>
+            <h2>keywords</h2>
+        </summary>
+        <<set _keywordCount = 0>>
+        <<for _keyword, _boolean range $keywords>>
+            <<if _boolean == true>>
+                <<set _keywordCount ++>>
+                <div class='item-listing'>_keyword</div>
+            <</if>>
+        <</for>>
+        <<if _keywordCount == 0 >>
+            no keywords found yet
+        <</if>>
+    </details>
+<</do>>
+
+
+
+:: no paddle
+You don't know how to swim with your Mergimal yet.
+
+<<link 'Oh well.'>><<run Dialog.close()>><</link>>
+
+:: no rod
+You don't have a fishing rod.
+
+<<link 'Dangit.'>><<run Dialog.close()>><</link>>
+
+:: no keyword
+You don't have that keyword!
+
+<<link 'It was worth a try.'>><<run Dialog.close()>><</link>>

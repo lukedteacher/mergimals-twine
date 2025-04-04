@@ -1,3 +1,26 @@
+:: stray encounter [nobr]
+<<print "<img class='mergimal-image' src='images/mergimals/" + $mergimalEncountered.name + ".png' />">>
+You encountered a stray Mergimal.<br /><br />
+
+''Do Worksheet $mergimalEncountered.number-$player.versionLetter.''<br /><br />
+
+<div id='stray-encounter-choices'>
+    <<link 'I am finished.'>>
+        <<replace '#stray-encounter-choices'>>
+            <<link 'Throw a mergiball!'>>
+                <<if $backpack.mergiball < 1>>
+                    <<dialog>>
+                        <<include 'no mergiballs'>>
+                    <</dialog>>
+                <<else>>
+                    <<goto 'tame attempt'>>
+                <</if>>
+            <</link>>
+        <</replace>>
+    <</link>>
+</div>
+[[Back away slowly: continue exploring.->b4]]
+
 :: no mergiballs
 You don't have any mergiballs!
 
@@ -8,12 +31,32 @@ Go to a store or something, dude.
 :: tame attempt [nobr]
 <<set $backpack.mergiball -->>
 <<redo 'backpack'>>
-You throw a mergiball.<br /><br />
+You throw the mergiball and it lands near the Mergimal.<br /><br />
+<<script>>
+    console.log(State.getVar('$mergimalEncountered'))
+<</script>>
+Target: $mergimalEncountered<br /><br />
+<<dice 'mergiball' 'd10'>><br />
 
-Enter your roll:  <<numberbox '_$roll' 0>><br /><br />
+<<button 'reroll'>>
+    <<if $backpack.mergiball < 1>>
+        <<dialog>>
+            <<include 'no mergiballs'>>
+        <</dialog>>
+    <<else>>
+        <<set $backpack.mergiball -->>
+        <<roll 'mergiball'>>
+    <</if>>
+<</button>>
 
 <<button 'See what happens'>>
-    <<if  _$roll < 10>>
+    <<set _roll to 0>>
+    <<script>>
+        let roll = $('#mergiball').attr('data-result');
+        console.log(roll);
+        State.setVar('_roll', roll);
+    <</script>>
+    <<if  _roll < $mergimalEncountered.number>>
         <<dialog>>
             <<include 'tame attempt failed'>>
         <</dialog>>
@@ -23,6 +66,10 @@ Enter your roll:  <<numberbox '_$roll' 0>><br /><br />
         <</dialog>>
     <</if>>
 <</button>>
+
+<<done>>
+    <<roll 'mergiball'>>
+<</done>>
 
 :: tame attempt failed
 The Mergimal doesn't seem very friendly.
@@ -38,7 +85,8 @@ They want to be your friend.
 
 <<button 'Okay'>>
     <<run Dialog.close()>>
-    <<goto $tamedPassage>>
+    <<set _tamedPassage = 'tamed: ' + $mergimalEncountered.name>>
+    <<goto _tamedPassage>>
 <</button>>
 
 :: stray: boxin [b4 stray common]
@@ -49,16 +97,14 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
 Do Worksheet 2.1
 
 <<nobr>>
-    <<set $tamedPassage = 'tamed: boxin'>>
+    <<set $mergimalEncountered = $mergimals['boxin']>>
     <<link 'Throw a mergiball!'>>
         <<if $backpack.mergiball < 1>>
             <<dialog>>
                 <<include 'no mergiballs'>>
             <</dialog>>
         <<else>>
-            <<dialog>>
-                <<include 'tame attempt'>>
-            <</dialog>>
+            <<goto 'tame attempt'>>
         <</if>>
     <</link>>
 <</nobr>>
