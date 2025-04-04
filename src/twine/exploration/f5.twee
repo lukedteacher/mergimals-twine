@@ -1,4 +1,25 @@
 :: f5 [map]
-<<map 'f5'>><<north 'f4'>><<east 'volcano'>><</map>>\
+<<map 'f5'>><<north 'f4'>><<east 'volcano'>><</map>><<set $currentLocation = 'f5'>>\
 !!!!EXPLORE
-[[Nothing here yet.->'404']]
+[[Check the long grass.->f5: long grass]]
+
+:: f5: long grass
+Test two cards.
+
+You got...
+
+<<link '...zero correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+<</link>>
+<<link '...one correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+<</link>>
+<<link '...two correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+<</link>>
+[[Continue exploring.->$currentLocation]]
+
+:: f4: trainer
+A trainer!
+
+[[Another time.->f4]]

@@ -1,11 +1,24 @@
 :: d5 [map littlemooseforest]
-<<map 'd5'>><<north 'd4'>><<south 'd6'>><</map>>\
+<<map 'd5'>><<north 'd4'>><<south 'd6'>><</map>><<set $currentLocation = 'd5'>>\
 !!!!EXPLORE
 [[Check the long grass.->d5: long grass]]
 [[Approach the trainers.->d5: trainer]]
 
 :: d5: long grass
-Some mergimals are here probably.
+Test two cards.
+
+You got...
+
+<<link '...zero correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+<</link>>
+<<link '...one correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+<</link>>
+<<link '...two correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+<</link>>
+[[Continue exploring.->$currentLocation]]
 
 :: d5: trainer
 This trainer is...

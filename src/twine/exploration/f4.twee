@@ -1,5 +1,5 @@
 :: f4 [map]
-<<map 'f4'>><<north 'f3'>><<east 'g4'>><<west 'e4'>><<south 'f5'>><</map>>\
+<<map 'f4'>><<north 'f3'>><<east 'g4'>><<west 'e4'>><<south 'f5'>><</map>><<set $currentLocation = 'f4'>>\
 !!!!EXPLORE
 [[Talk to the merchant.->f4: merchant]]
 [[Check the long grass.->f4: long grass]]
@@ -55,9 +55,20 @@ She seems friendly.
 <</if>>
 
 :: f4: long grass
-Some mergimals are here probably.
+Test two cards.
 
-[[Another time.->f4]]
+You got...
+
+<<link '...zero correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+<</link>>
+<<link '...one correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+<</link>>
+<<link '...two correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+<</link>>
+[[Continue exploring.->$currentLocation]]
 
 :: f4: trainer
 A trainer!

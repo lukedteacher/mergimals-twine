@@ -1,0 +1,409 @@
+:: mergimals data variable
+The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
+<<set $mergimals to {
+    algelly: {
+        name: 'algelly', 
+        type: 'wave', 
+        strategy: 'skip count', 
+        number: '6', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    arbordon: {
+        name: 'arbordon', 
+        type: 'root', 
+        strategy: 'draw a diagram', 
+        number: '55', 
+        rarity: 'uncommon', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    bakewing: {
+        name: 'bakewing', 
+        type: 'forge', 
+        strategy: 'make a model', 
+        number: '84', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    bouldung: {
+        name: 'bouldung', 
+        type: '?', 
+        strategy: '?', 
+        number: '?', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    boxin: {
+        name: 'boxin', 
+        type: 'null', 
+        strategy: 'check a chart', 
+        number: '8', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.',
+        tamedPassageText: 'This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.'
+    },
+    clocker: {
+        name: 'clocker', 
+        type: 'spark', 
+        strategy: 'repeated addition', 
+        number: '7', 
+        rarity: 'uncommon', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    corwhal: {
+        name: 'corwhal', 
+        type: 'wave', 
+        strategy: 'skip count', 
+        number: '7', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.',
+        tamedPassageText: 'You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.'
+    },
+    dracuno: {
+        name: 'dracuno', 
+        type: 'veil', 
+        strategy: 'find a familiar fact', 
+        number: '1', 
+        rarity: 'rare', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    flameberry: {
+        name: 'flameberry', 
+        type: '?', 
+        strategy: '?', 
+        number: '4', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    floraphor: {
+        name: 'floraphor', 
+        type: 'root', 
+        strategy: 'draw a diagram', 
+        number: '4', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'A dragon-fly the size of a toaster whizzes by your ear. They seem to have taken an interest in your backpack.',
+        tamedPassageText: 'Stronger than they look, Floraphor joins your crew. Just make sure to tell them stories and invite them to parties, or they\'ll get a bit annoyed.'
+    },
+    gearquin: {
+        name: 'gearquin', 
+        type: '?', 
+        strategy: '?', 
+        number: '5', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    gemble: {
+        name: 'gemble', 
+        type: 'deep', 
+        strategy: 'draw a diagram', 
+        number: '11', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'A small rodent scurries toward you. They seem to be holding a bag full of shiny rocks.',
+        tamedPassageText: 'You have tamed Gemble! They love to collect pretty looking rocks. No one is sure what they do with them though.'
+    },
+    glowbee: {
+        name: 'glowbee', 
+        type: 'forge', 
+        strategy: '?', 
+        number: '1', 
+        rarity: 'rare', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    guackurtle: {
+        name: 'guackurtle', 
+        type: 'wave', 
+        strategy: 'skip count', 
+        number: '8', 
+        rarity: 'uncommon', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    hextacle: {
+        name: 'hextacle', 
+        type: 'veil', 
+        strategy: '?', 
+        number: '6', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    inklume: {
+        name: 'inklume', 
+        type: 'deep', 
+        strategy: 'arrange an array', 
+        number: '7', 
+        rarity: 'uncommon', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    krustwo: {
+        name: 'krustwo', 
+        type: 'wave', 
+        strategy: 'skip count', 
+        number: '2', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.',
+        tamedPassageText: 'You\'ve seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.'
+    },
+    masquilt: {
+        name: 'masquilt', 
+        type: 'veil', 
+        strategy: '?', 
+        number: '?', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    melodrake: {
+        name: 'melodrake', 
+        type: 'root', 
+        strategy: 'skip count', 
+        number: '2', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    mooberry: {
+        name: 'mooberry', 
+        type: 'forge', 
+        strategy: 'arrange an array', 
+        number: '12', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    penguwaiian: {
+        name: 'penguwaiian', 
+        type: 'wave', 
+        strategy: 'skip count', 
+        number: '10', 
+        rarity: 'uncommon', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    pigmentine: {
+        name: 'pigmentine', 
+        type: 'deep', 
+        strategy: 'cute cup', 
+        number: '6', 
+        rarity: 'rare', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    scorchilla: {
+        name: 'scorchilla', 
+        type: 'forge', 
+        strategy: 'make a model', 
+        number: '4', 
+        rarity: 'uncommon', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    sheetly: {
+        name: 'sheetly', 
+        type: 'veil', 
+        strategy: 'find a familiar fact', 
+        number: '1/2', 
+        rarity: 'rare', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    slickster: {
+        name: 'slickster', 
+        type: 'wave', 
+        strategy: '?', 
+        number: '11', 
+        rarity: 'rare', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    tidefly: {
+        name: 'tidefly', 
+        type: 'wave', 
+        strategy: 'count a crest', 
+        number: '9', 
+        rarity: 'uncommon', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'A tiny snail with wings hangs from the line as you reel it in.',
+        tamedPassageText: 'This Mergimal is quite small, but they seem quite active. Their name is Tidefly.'
+    },
+    treethorn: {
+        name: 'treethorn', 
+        type: 'root', 
+        strategy: 'label a line', 
+        number: '3', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    twindle: {
+        name: 'twindle', 
+        type: 'spark', 
+        strategy: 'apply an algorithm', 
+        number: '3', 
+        rarity: 'uncommon', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'You\'re looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That\'s no bush: that\'s a Mergimal!',
+        tamedPassageText: 'This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).'
+    },
+    wefstrix: {
+        name: 'wefstrix', 
+        type: '?', 
+        strategy: '?', 
+        number: '?', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    yakster: {
+        name: 'yakster', 
+        type: 'null', 
+        strategy: '?',
+        number: '?', 
+        rarity: 'common', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'What a cool Mergimal.',
+        tamedPassageText: 'You tamed them.'
+    },
+    zipper: {
+        name: 'zipper', 
+        type: 'spark', 
+        strategy: 'repeated addition', 
+        number: '6', 
+        rarity: 'uncommon', 
+        seen: false, 
+        tamed: false,
+        strayPassageText: 'You\'re looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.',
+        tamedPassageText: 'This Mergimal is named Zipper. They\'re cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.'
+    }
+}>>
+
+:: mergimals encounter table
+<<set $encounterTable = {
+    b4 : {
+        name: 'route 001',
+        common: 'boxin',
+        uncommon: 'zipper',
+        rare: 'sheetly'
+    },
+    b5 : {
+        name: 'pretty rock bay',
+        common: 'krustwo',
+        uncommon: 'tidefly',
+        rare: 'corwhal'
+    },
+    c4 : {
+        name: 'route 002',
+        common: 'boxin',
+        uncommon: 'treethorn',
+        rare: 'dracuno'
+    },
+    d3 : {
+        name: 'mooberry farm',
+        common: 'mooberry',
+        uncommon: 'clocker',
+        rare: 'pigmentine'
+    },
+    d4 : {
+        name: 'west bridge',
+        common: 'floraphor',
+        uncommon: '?',
+        rare: '?'
+    },
+    d5 : {
+        name: 'littlemoose forest',
+        common: 'floraphor',
+        uncommon: 'twindle',
+        rare: 'wefstrix'
+    },
+    e3 : {
+        name: 'road to blue urf',
+        common: 'yakster',
+        uncommon: 'inklume',
+        rare: 'gearquin'
+    },
+    e4 : {
+        name: 'east bridge',
+        common: 'masquilt',
+        uncommon: 'guackurtle',
+        rare: 'slickster'
+    },
+    f4 : {
+        name: 'crossroad',
+        common: '?',
+        uncommon: '?',
+        rare: '?'
+    },
+    f5 : {
+        name: 'east of volcano',
+        common: 'bouldung',
+        uncommon: 'gemble',
+        rare: 'flameberry'
+    }
+}>>

@@ -1,5 +1,5 @@
 :: c3 [map]
-<<map 'c3'>><</map>>\
+<<map 'c3'>><</map>><<set $currentLocation = 'c3'>>\
 !!!!EXPLORE
 [[Take in the view->c3: the view]]
 [[Rummage around in the long grass->c3: long grass]]

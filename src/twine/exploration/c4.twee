@@ -1,5 +1,5 @@
 :: c4 [map]
-<<map 'c4'>><<west 'b4'>><<east 'd4'>><</map>>\
+<<map 'c4'>><<west 'b4'>><<east 'd4'>><</map>><<set $currentLocation = 'c4'>>\
 !!!!EXPLORE
 [[Look around.->c4: description]]
 [[Check the long grass.->005]]
@@ -17,13 +17,20 @@ A small pathway leads South into the forest. Maybe it's a shortcut to Littlemoos
 :: 005 [stray]
 You can tell this long grass is full of Mergimals. You just need to see which ones you can find!
 
-Roll ATTENTION x EMPATHY
+Test two cards.
 
-If you rolled...
+You got...
 
-[[...40 or less, find a common Mergimal.->stray: treethorn]]
-[[...between 40 and 80, find an uncommon Mergimal.->404]]
-[[...above 80, you find a rare Mergimal.->404]]
+<<link '...zero correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+<</link>>
+<<link '...one correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+<</link>>
+<<link '...two correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+<</link>>
+[[Continue exploring.->$currentLocation]]
 
 :: 356 [trainer]
 There is a Mergimal Trainer standing near the base of the cliff. They yawn and roll their eyes as you approach.

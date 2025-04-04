@@ -1,5 +1,5 @@
 :: d3 [map]
-<<map 'd3'>><<east 'e3'>><</map>>\
+<<map 'd3'>><<east 'e3'>><</map>><<set $currentLocation = 'd3'>>\
 !!!!EXPLORE
 [[Check the long grass.->d3: long grass]]
 [[Approach the scientist->d3: trainer]]
@@ -8,7 +8,20 @@
 :: d3: long grass
 Some mergimals are here probably.
 
-[[Continue exploring.->d3]]
+Test two cards.
+
+You got...
+
+<<link '...zero correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+<</link>>
+<<link '...one correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+<</link>>
+<<link '...two correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+<</link>>
+[[Continue exploring.->$currentLocation]]
 
 :: d3: trainer
 Two trainers even!

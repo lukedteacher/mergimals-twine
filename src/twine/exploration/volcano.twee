@@ -1,5 +1,5 @@
 :: volcano [mt-boom-boom map]
-<<map 'volcano'>><<east 'volcano'>><<west 'f5'>><</map>>\
+<<map 'volcano'>><<east 'volcano'>><<west 'f5'>><</map>><<set $currentLocation = 'volcano'>>\
 !!!!EXPLORE
 [[You see some sparks coming from behind a rock.->'stray: bakewing']]
 

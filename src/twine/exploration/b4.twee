@@ -1,5 +1,5 @@
 :: b4 [map]
-<<map 'b4'>><<north 'b3'>><<east 'c4'>><<south 'b5'>><</map>>\
+<<map 'b4'>><<north 'b3'>><<east 'c4'>><<south 'b5'>><</map>><<set $currentLocation = 'b4'>>\
 !!!!EXPLORE
 [[Look around->b4: description]]
 [[Check the long grass.->126]]
@@ -28,9 +28,15 @@ The noises you heard before are even louder now. You can tell this long grass is
 
 Test two cards.
 
-I got...
+You got...
 
-<<link '...zero correct.' 'stray encounter'>><<set $mergimalEncountered = $mergimals['zipper']>><</link>>
-[[...zero correct.->stray: boxin]]
-[[..one correct.->stray: zipper]]
-[[...two correct.->stray: sheetly]]
+<<link '...zero correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+<</link>>
+<<link '...one correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+<</link>>
+<<link '...two correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+<</link>>
+[[Continue exploring.->$currentLocation]]

@@ -1,5 +1,5 @@
 :: d6 [map littlemoose]
-<<map 'd6'>><<north 'd5'>><<west 'c6'>><</map>>\
+<<map 'd6'>><<north 'd5'>><<west 'c6'>><</map>><<set $currentLocation = 'd6'>>\
 !!!!EXPLORE
 [[Look around->d6: description]]
 [[Visit the Mergimal Challenge Vending Machine.->d6: vending machine]]
@@ -26,17 +26,17 @@ There's also a person standing around. They look confused.
 
 :: d6: veil school
 <<if $keywords.closed == false>>\
-  The school is closed?!?
+    The school is closed?!?
 
-  Oh dear.
+    Oh dear.
 
-  GAIN keyword CLOSED.<<set $keywords.closed = true>><<redo 'keywords'>>
+    GAIN keyword CLOSED.<<set $keywords.closed = true>><<redo 'keywords'>>
 
-  [[Continue exploring.->d6]]
+    [[Continue exploring.->d6]]
 <<else>>\
-  (Keyword CLOSED detected)
+    (Keyword CLOSED detected)
 
-  The school is dark. No one seems to be here.
+    The school is dark. No one seems to be here.
 
-  [[Continue exploring.->d6]]
+    [[Continue exploring.->d6]]
 <</if>>

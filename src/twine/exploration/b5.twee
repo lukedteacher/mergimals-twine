@@ -1,5 +1,5 @@
 :: b5 [map]
-<<map 'b5'>><<north 'b4'>><</map>>\
+<<map 'b5'>><<north 'b4'>><</map>><<set $currentLocation = 'b5'>>\
 !!!!EXPLORE
 [[Look around.->b5: description]]
 [[Dip your toe in the water.->b5: the sea]]
@@ -88,11 +88,20 @@ A serious-looking Mergimal trainer is standing on the beach. They have a fishing
 
 You cast your rod into the clear, blue water. After only a short while, you feel something pulling your line.
 
-<strong>Test</strong> MEMORY x 4
+Test two cards.
 
-[[If you rolled 4 or less, find a common Mergimal.->stray: krustwo]]
-[[5 < n < 7: you find an uncommon Mergimal.->stray: tidefly]]
-[[n > 7.->b5: strained line]]
+You got...
+
+<<link '...zero correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+<</link>>
+<<link '...one correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+<</link>>
+<<link '...two correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+<</link>>
+[[Continue exploring.->$currentLocation]]
 
 :: 131 [worksheet secret]
 You found a bottle floating in the water. It has a message inside! You unroll it and find a strange script.

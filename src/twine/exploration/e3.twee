@@ -1,5 +1,5 @@
 :: e3 [map]
-<<map 'e3'>><<north 'e2'>><<west 'd3'>><<south 'e4'>><</map>>\
+<<map 'e3'>><<north 'e2'>><<west 'd3'>><<south 'e4'>><</map>><<set $currentLocation = 'e3'>>\
 !!!!EXPLORE
 [[Check the long grass.->e3: long grass]]
 [[Approach the trainers.->e3: trainer]]
@@ -7,9 +7,20 @@
 :: e3: long grass
 Some mergimals are here probably.
 
-[TODO add stuff]
+Test two cards.
 
-[[Continue exploring.->e3]]
+You got...
+
+<<link '...zero correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+<</link>>
+<<link '...one correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+<</link>>
+<<link '...two correct.' 'stray encounter'>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+<</link>>
+[[Continue exploring.->$currentLocation]]
 
 :: e3: trainer
 Probably there are trainers too.

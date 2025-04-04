@@ -5,4 +5,7 @@
 <<button 'NEW GAME' 'intro'>><</button>>
 
 !!!!DEBUG:
-<<link 'jump to exploring' 'b3'>><</link>>
+<<link 'jump to exploring' 'b3'>>
+    <<set $backpack.coin = 10>>
+    <<set $backpack.mergiball = 10>>
+<</link>>
