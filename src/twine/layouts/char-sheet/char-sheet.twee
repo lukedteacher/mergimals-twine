@@ -1,5 +1,5 @@
 :: character sheet [nobr]
-<div>Player Name: $player.player</div><div>Character Name: $player.name</div>
+<div>Player Name: $activePlayer.name</div><div>Character Name: $activeCharacter.name</div>
 <<script>>
 	$( function() {
 		$( "#tabs" ).tabs({

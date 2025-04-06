@@ -54,7 +54,6 @@ Macro.add('dialog', {
 // <<popup>> macro
 Macro.add('popup', {
     handler : function () {
-        
         // errors
         if (this.args.length < 1) {
             return this.error('need at least one argument; the passage to display');
@@ -73,7 +72,7 @@ Macro.add('popup', {
         
         // dialog box
         // TODO fix this (.setup depreciated)
-        Dialog.setup(title, classes.join(' '));
+        Dialog.create(title, classes.join(' '));
         Dialog.wiki(Story.get(psg).processText());
         Dialog.open();
         

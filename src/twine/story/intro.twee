@@ -1,25 +1,20 @@
 :: intro
+Greetings, $activeCharacter.name!
+
 Today is the first day of your Mergimals journey!
 
-Enter your name:
-<<textbox '$player.name' ''>>
-
-<<link 'Go see professor Tamrack' 'start: part 1'>>\
-  <<if $player.name is ''>>\
-    <<set $player.name to 'Ash'>>\
-  <</if>>\
-<</link>>\
+<<link 'Go see professor Tamrack' 'start: part 1'>><</link>>\
 
 :: start: part 1 [story]
 
 Professor Tamarack's office is on the Eastern edge of town. It's the biggest building in the village and what mysteries fill all three floors are as good as anyone's guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
-<<tam>>$player.name!
+<<tam>>$activeCharacter.name!
 Finally, you’re here!
 <</tam>>\
 <div id='response'>\
   <<link 'Say: Were you waiting for me?'>>
     <<replace '#response'>>\
-      <<say $player.name $player.image>>Were you waiting for me?<</say>>\
+      <<say $activeCharacter.name $player.image>>Were you waiting for me?<</say>>\
       <<tam>>No, I wasn’t waiting at the window all morning for you.
         <<cont keypress append>>I have, um, lots and lots of work to do to keep me busy.
           <<cont keypress append>>I’m, like, super duper busy.
@@ -37,7 +32,7 @@ Finally, you’re here!
   <</link>>
   <<link 'Say: Let\'s go!'>>
     <<replace '#response'>>\
-      <<say $player.name $player.image>>Let's go!<</say>>\
+      <<say $activeCharacter.name $player.image>>Let's go!<</say>>\
       <<tam>>You’ve been waiting 10 years for this, how exciting!<</tam>>\
       <<link 'Follow the professor inside the Lab.' 'start: part 2'>><</link>>
     <</replace>>

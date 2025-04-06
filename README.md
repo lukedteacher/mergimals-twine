@@ -8,6 +8,5 @@ it will autocompile into the html with my current setup
 #TODO  
 help david set up vscode and autobuild  
 make backpack collapsible  
-add mergipedia  
 story stuff  
 styling  

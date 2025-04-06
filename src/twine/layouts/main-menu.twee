@@ -1,11 +1,67 @@
-:: main menu
+:: main menu [nobr]
 
-<<button 'NEW CHARACTER' 'cc: part 1'>><</button>>
+Choose player: 
+<<listbox '_selectedPlayer'>>
+  <<optionsfrom $players>>
+<</listbox>><br /><br />
+Choose character: 
+<<do tag 'character-selector'>>
+    <<if Object.keys(_selectedPlayer.characters) == 0>>
+        <<listbox '_selectedCharacter'>>
+            <<option 'none'>>
+        <</listbox>>
+    <<else>>
+        <<listbox '_selectedCharacter'>>
+            <<optionsfrom $players[_selectedPlayer.name].characters>>
+        <</listbox>>
+    <</if>>
+    <<button '+' 'character creation'>>
+        <<set $activePlayer = _selectedPlayer>>
+    <</button>><br /><br />
+<</do>>
+<<button 'NEW GAME'>>
+        <<script>>
+            console.log(State.temporary);
+        <</script>>
+    <<if _selectedCharacter == 'none'>>
+        <<dialog 'error'>>
+            create a character first!<br /><br />
+            <<button 'whoops'>>
+                <<run Dialog.close()>>
+            <</button>>
+        <</dialog>>
+    <<else>>
+        <<set $activePlayer = _selectedPlayer>>
+        <<set $activeCharacter = _selectedCharacter>>
+        <<goto 'intro'>>
+    <</if>>
+<</button>>
 
-<<button 'NEW GAME' 'intro'>><</button>>
+<<done>>
+    <<script>>
+        $('#listbox--selectedplayer').on('change', function () {
+            $(document).trigger({
+                type   : ':redo',
+                detail : { tags : [ 'character-selector' ] }
+            });
+        });
+    <</script>>
+<</done>>
 
+:: demos
+!!!!DEMO:
+<<link 'dice roll' 'dice roll'>><</link>>
+
+:: debug
 !!!!DEBUG:
 <<link 'jump to exploring' 'b3'>>
+    <<set $activePlayer = _selectedPlayer>>
+    <<set $activeCharacter = _selectedCharacter>>
     <<set $backpack.coin = 10>>
     <<set $backpack.mergiball = 10>>
+<</link>>
+<<link 'variables'>>
+    <<script>>
+        console.log(State.variables);
+    <</script>>
 <</link>>

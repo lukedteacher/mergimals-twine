@@ -26,6 +26,4 @@ MERGIMALS
 
 <<include 'main menu'>>
 <<include 'demos'>>
-
-:: demos
-<<link 'dice roll' 'dice roll'>><</link>>
+<<include 'debug'>>

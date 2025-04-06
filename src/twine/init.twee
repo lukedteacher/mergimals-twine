@@ -51,3 +51,9 @@
 <</widget>>
 
 <<set $sidebar to false>>
+
+<<newplayer 'luke'>>
+<<newplayer 'david'>>
+<<newplayer 'annie'>>
+<<newcharacter 'luke' 'foo'>>
+<<newcharacter 'david' 'bar'>>

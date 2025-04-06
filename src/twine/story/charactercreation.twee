@@ -1,18 +1,72 @@
-:: cc: part 1
-What's your name?
-<<textbox '$player.name' ''>>
+:: character creation
+!!create new character
+<div id='active-area'>
+    <<include 'character creation: name'>>
+</div>
 
-[[Continue.->cc: part 2]]
+:: character creation: name
+What is the new character's name?
+<<textbox '_newCharacterName' ''>>
+<<link 'create'>>
+    <<if _newCharacterName == ''>>
+        <<dialog 'no name entered'>>\
+            you didn't enter anything.
 
-:: cc: part 2
-What are your pronouns?
+            <<button 'whoops'>>
+                <<run Dialog.close()>>
+            <</button>>
+        <</dialog>>
+    <<elseif _newCharacterName in $activePlayer.characters>>
+        <<dialog 'error'>>\
+            that character name already exists.
 
-<<link 'they / them' 'cc: part 3'>><<set $pronouns to 'they'>><</link>>
-<<link 'she / her' 'cc: part 3'>><<set $pronouns to 'she'>><</link>>
-<<link 'he / him' 'cc: part 3'>><<set $pronouns to 'he'>><</link>>
+            choose a different one.
 
-:: cc: part 3
-What do you like most about Mergimals?
+            <<button 'okie dokie'>>
+                <<run Dialog.close()>>
+            <</button>>
+        <</dialog>>
+    <<else>>
+        <<set _tempNewCharacter = {
+            name: _newCharacterName, 
+            pronouns: 'they',
+            stats: {}
+        }>>\
+        <<replace '#active-area'>>
+            <<include 'character creation: pronouns'>>
+        <</replace>>
+    <</if>>
+<</link>>
+
+:: character creation: pronouns
+character: _tempNewCharacter.name
+
+What are this character's pronouns?
+
+<<link 'they / them'>>
+    <<set _tempNewCharacter.pronouns to 'they'>>
+    <<replace '#active-area'>>
+        <<include 'character creation: stats'>>
+    <</replace>>
+<</link>>
+<<link 'she / her'>>
+    <<set _tempNewCharacter.pronouns to 'she'>>
+    <<replace '#active-area'>>
+        <<include 'character creation: stats'>>
+    <</replace>>
+<</link>>
+<<link 'he / him'>>
+    <<set _tempNewCharacter.pronouns to 'he'>>
+    <<replace '#active-area'>>
+        <<include 'character creation: stats'>>
+    <</replace>>
+<</link>>
+
+:: character creation: job
+character: _tempNewCharacter.name
+pronouns: _tempNewCharacter.pronouns
+
+What does this character like most about Mergimals?
 
 <<link 'Competing in contests.' 'cc: part 4'>><<set $player.noun to 'trainer'>><</link>>
 <<link 'Collecting as many as I can.' 'cc: part 4'>><<set $player.noun to 'explorer'>><</link>>
@@ -20,6 +74,9 @@ What do you like most about Mergimals?
 <<link 'Being a good friend to them.' 'cc: part 4'>><<set $player.noun to 'companion'>><</link>>
 
 :: cc: part 4
+character: _tempNewCharacter.name
+pronouns: _tempNewCharacter.pronouns
+job: _tempNewCharacter.job
 Which of these statements fits you best?
 
 <<link 'I notice every detail.' 'cc: part 5'>><<set $stats.attention to 'd8'>><<set $high to 'attention'>><</link>>
@@ -34,8 +91,13 @@ Which of these statements fits you best?<br /><br />
 <<if $high != 'memory'>><<link 'I lose things often.' 'cc: part 6'>><<set $stats.memory to 'd4'>><</link>><br /><</if>>
 <<if $high != 'empathy'>><<link 'I don\'t understand emotions.' 'cc: part 6'>><<set $stats.empathy to 'd4'>><</link>><</if>>
 
-:: cc: part 6
+:: character creation: stats
+character: _tempNewCharacter.name
+pronouns: _tempNewCharacter.pronouns
+
 You may allocate the following stats:
+
+NOTE: THIS IS CURRENTLY BROKEN -> click 'continue to skip to the next step'
 
 <<nobr>>
     <div class='grid bg-lighter rounded' style='grid-template: 1fr / repeat(4, 1fr); gap: 0.5rem; 
@@ -49,12 +111,17 @@ You may allocate the following stats:
         <div id='stat-3' style='grid-area: 1 / 3;' class='draggable dice text-xl'>d6</div>
         <div id='stat-4' style='grid-area: 1 / 4;' class='draggable dice text-xl'>d8</div>
     </div>
-<<include 'stat-box'>>
+<<include 'stat boxes'>>
 
 <</nobr>>
 
-<<button 'reset'>><</button>>\ 
-<<button 'submit'>>
+<<button 'continue'>>
+    <<replace '#active-area'>>
+        <<include 'character creation: confirm'>>
+    <</replace>>
+<</button>>
+
+<<button 'submit (broken)'>>
     <<set _temp to checkDraggables()>>
     <<if _temp == false>>
         <<dialog 'oops'>>\
@@ -105,5 +172,34 @@ You may allocate the following stats:
     <</script>>
 <</done>>
 
-:: cc: part 7
-nothing yet
+:: character creation: confirm [nobr]
+Does this look right?<br /><br />
+
+character: _tempNewCharacter.name<br />
+pronouns: _tempNewCharacter.pronouns<br />
+<<include 'stats'>><br />
+
+<<button 'confirm' 'start'>>
+    <<newcharacter $activePlayer.name _tempNewCharacter.name>>\
+    <!--update $activePlayer and $activeCharacter -->
+    <<set $activePlayer = $players[$activePlayer.name]>>
+    <<set $activeCharacter = $activePlayer.characters[_tempNewCharacter.name]>>
+    <<dialog 'character created'>>\
+        $activeCharacter.name successfully created.
+        <<button 'okay'>>
+            <<run Dialog.close()>>
+        <</button>>
+    <</dialog>>
+<</button>> 
+<<button 'cancel'>>
+    <<dialog 'cancel'>>\
+        are you sure you want to cancel creating this character?<br /><br />
+        <<button 'yes'>>
+            <<run Dialog.close()>>
+            <<goto 'start'>>
+        <</button>> 
+        <<button 'no'>>
+            <<run Dialog.close()>>
+        <</button>>
+    <</dialog>>
+<</button>>
