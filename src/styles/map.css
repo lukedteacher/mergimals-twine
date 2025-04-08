@@ -43,3 +43,19 @@
     grid-area: 38 / 19 / span 3 / span 4;
     background-image: url('images/svg/south.svg');
 }
+
+.world-map-container {
+    display: flex;
+    justify-content: center;
+}
+
+.world-map-grid {
+    display: grid;
+    grid: repeat(10, 1rem) / repeat(10, 1rem);
+}
+
+.world-map-img {
+    height: 100%;
+    width: 100%;
+    grid-area: 1 / 1 / span 10 / span 10;
+}
