@@ -51,7 +51,7 @@
 
 .world-map-grid {
     display: grid;
-    grid: repeat(10, 1rem) / repeat(10, 1rem);
+    grid: repeat(10, 1fr) / repeat(10, 1fr);
 }
 
 .world-map-img {
