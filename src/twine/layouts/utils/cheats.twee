@@ -1,4 +1,10 @@
 :: cheats [nobr]
+<<link 'log variables'>>
+    <<script>>
+        console.log(State.variables);
+        console.log(State.temporary);
+    <</script>>
+<</link>>
 <h2>items</h2>
 <div style='display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr; gap: 0.3rem;'>
   <div>

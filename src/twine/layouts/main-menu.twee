@@ -2,25 +2,24 @@
 
 Choose player: 
 <<listbox '_selectedPlayer'>>
-  <<optionsfrom $players>>
+  <<optionsfrom Object.keys($players)>>
 <</listbox>><br /><br />
 Choose character: 
 <<do tag 'character-selector'>>
-    <<if Object.keys(_selectedPlayer.characters) == 0>>
+    <<set _selectedPlayersCharacters = Object.keys($players[_selectedPlayer].characters)>>
+    <<if _selectedPlayersCharacters == 0>>
         <<listbox '_selectedCharacter'>>
             <<option 'none'>>
         <</listbox>>
     <<else>>
         <<listbox '_selectedCharacter'>>
-            <<optionsfrom $players[_selectedPlayer.name].characters>>
+            <<optionsfrom _selectedPlayersCharacters>>
         <</listbox>>
     <</if>>
     <<button '+' 'character creation'>>
         <<set $activePlayer = _selectedPlayer>>
     <</button>><br /><br />
 <</do>><<button 'CONTINUE'>>
-    <<set $activePlayer = _selectedPlayer>>
-    <<set $activeCharacter = _selectedCharacter>>
     <<if _selectedCharacter == 'none'>>
         <<dialog 'error'>>
             create a character first!<br /><br />
@@ -28,7 +27,7 @@ Choose character:
                 <<run Dialog.close()>>
             <</button>>
         <</dialog>>
-    <<elseif $activeCharacter.lastPassage == ''>>
+    <<elseif $players[_selectedPlayer].characters[_selectedCharacter].lastPassage == ''>>
         <<dialog 'error'>>
             you haven't explored anything yet.<br /><br />
             <<button 'whoops'>>
@@ -36,7 +35,9 @@ Choose character:
             <</button>>
         <</dialog>>
     <<else>>
-        <<goto $activePlayer.lastPassage>>
+        <<set $activePlayer = _selectedPlayer>>
+        <<set $activeCharacter = _selectedCharacter>>
+        <<goto $players[_selectedPlayer].characters[_selectedCharacter].lastPassage>>
     <</if>>
 <</button>>
 <<button 'NEW GAME'>>
@@ -76,9 +77,4 @@ Choose character:
     <<set $activeCharacter = _selectedCharacter>>
     <<set $backpack.coin = 10>>
     <<set $backpack.mergiball = 10>>
-<</link>>
-<<link 'log variables'>>
-    <<script>>
-        console.log(State.variables);
-    <</script>>
 <</link>>

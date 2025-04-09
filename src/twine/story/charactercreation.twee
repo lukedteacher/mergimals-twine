@@ -16,7 +16,7 @@ What is the new character's name?
                 <<run Dialog.close()>>
             <</button>>
         <</dialog>>
-    <<elseif _newCharacterName in $activePlayer.characters>>
+    <<elseif _newCharacterName in $players[$activePlayer].characters>>
         <<dialog 'error'>>\
             that character name already exists.
 
@@ -180,12 +180,10 @@ pronouns: _tempNewCharacter.pronouns<br />
 <<include 'stats'>><br />
 
 <<button 'confirm' 'start'>>
-    <<newcharacter $activePlayer.name _tempNewCharacter.name>>\
-    <!--update $activePlayer and $activeCharacter -->
-    <<set $activePlayer = $players[$activePlayer.name]>>
-    <<set $activeCharacter = $activePlayer.characters[_tempNewCharacter.name]>>
+    <<newcharacter $activePlayer _tempNewCharacter.name>>\
+    <<set $activeCharacter = _tempNewCharacter.name>>
     <<dialog 'character created'>>\
-        $activeCharacter.name successfully created.
+        $activeCharacter successfully created.
         <<button 'okay'>>
             <<run Dialog.close()>>
         <</button>>

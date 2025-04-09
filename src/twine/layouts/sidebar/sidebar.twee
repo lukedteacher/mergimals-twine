@@ -2,7 +2,12 @@
 <<button 'main menu'>>
     <<dialog>>
         are you sure you want to return to the menu?<br />
+        the last passage will be saved.
         <<button 'yes'>>
+            <<set $players[$activePlayer].characters[$activeCharacter].lastPassage = State.passage>>
+            <<script>>
+                State.setVar('$activeCharacter.lastPassage', State.passage);
+            <</script>>
             <<run Dialog.close()>>
             <<goto 'main menu'>>
         <</button>>
@@ -23,32 +28,3 @@
 <<button 'mergipedia'>>
     <<popup 'mergipedia' 'mergipedia'>>
 <</button>><br /><br />
-
-<<done>>
-    <<script>>
-        (function() {
-            $('details').on('toggle', function(_event) {
-                var id = $(this).attr('id');
-                var isOpen = $(this).attr('open');
-                console.log(State.getVar('$sidebar'));
-                window.localStorage.setItem('details-'+id, isOpen);
-            });
-
-            function setDetailOpenStatus(item) {
-                if (item.includes('details-')) {
-                    var id = item.split('details-')[1];
-                    var status = window.localStorage.getItem(item);
-                    if (status == 'open'){
-                        $("#"+id).attr('open',true)
-                    };
-                };
-            };
-
-            $(function() {
-                for (var i = 0; i < localStorage.length; i++) {
-                    setDetailOpenStatus(localStorage.key(i));
-                };
-            });
-        })();
-    <</script>>
-<</done>>
