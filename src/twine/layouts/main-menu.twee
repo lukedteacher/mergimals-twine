@@ -77,7 +77,7 @@ Choose character:
     <<set $backpack.coin = 10>>
     <<set $backpack.mergiball = 10>>
 <</link>>
-<<link 'variables'>>
+<<link 'log variables'>>
     <<script>>
         console.log(State.variables);
     <</script>>

@@ -1,4 +1,16 @@
 :: sidebar [nobr]
+<<button 'main menu'>>
+    <<dialog>>
+        are you sure you want to return to the menu?<br />
+        <<button 'yes'>>
+            <<run Dialog.close()>>
+            <<goto 'main menu'>>
+        <</button>>
+        <<button 'no'>>
+            <<run Dialog.close()>>
+        <</button>>
+    <</dialog>>
+<</button>><br /><br />
 <<button 'character'>>
     <<popup 'character sheet' 'character sheet' 'dialog-char-sheet'>>
 <</button>><br /><br />
