@@ -18,11 +18,28 @@ Choose character:
     <<button '+' 'character creation'>>
         <<set $activePlayer = _selectedPlayer>>
     <</button>><br /><br />
-<</do>>
+<</do>><<button 'CONTINUE'>>
+    <<set $activePlayer = _selectedPlayer>>
+    <<set $activeCharacter = _selectedCharacter>>
+    <<if _selectedCharacter == 'none'>>
+        <<dialog 'error'>>
+            create a character first!<br /><br />
+            <<button 'whoops'>>
+                <<run Dialog.close()>>
+            <</button>>
+        <</dialog>>
+    <<elseif $activeCharacter.lastPassage == ''>>
+        <<dialog 'error'>>
+            you haven't explored anything yet.<br /><br />
+            <<button 'whoops'>>
+                <<run Dialog.close()>>
+            <</button>>
+        <</dialog>>
+    <<else>>
+        <<goto $activePlayer.lastPassage>>
+    <</if>>
+<</button>>
 <<button 'NEW GAME'>>
-        <<script>>
-            console.log(State.temporary);
-        <</script>>
     <<if _selectedCharacter == 'none'>>
         <<dialog 'error'>>
             create a character first!<br /><br />

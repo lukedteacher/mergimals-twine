@@ -41,6 +41,7 @@ window.Character = class Character {
         this.pronouns = 'they';
         this.version = props.version | 'fusion';
         this.difficulty = props.version | 'normal';
+		this.lastPassage = ''
 
 		// clone the given config object's own properties into our own properties.
 		//

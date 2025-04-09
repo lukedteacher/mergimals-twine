@@ -21346,6 +21346,7 @@ window.Character = class Character {
         this.pronouns = 'they';
         this.version = props.version | 'fusion';
         this.difficulty = props.version | 'normal';
+		this.lastPassage = ''
 
 		// clone the given config object's own properties into our own properties.
 		//
@@ -22538,11 +22539,28 @@ Choose character:
     &lt;&lt;button &#39;+&#39; &#39;character creation&#39;&gt;&gt;
         &lt;&lt;set $activePlayer = _selectedPlayer&gt;&gt;
     &lt;&lt;/button&gt;&gt;&lt;br /&gt;&lt;br /&gt;
-&lt;&lt;/do&gt;&gt;
+&lt;&lt;/do&gt;&gt;&lt;&lt;button &#39;CONTINUE&#39;&gt;&gt;
+    &lt;&lt;set $activePlayer = _selectedPlayer&gt;&gt;
+    &lt;&lt;set $activeCharacter = _selectedCharacter&gt;&gt;
+    &lt;&lt;if _selectedCharacter == &#39;none&#39;&gt;&gt;
+        &lt;&lt;dialog &#39;error&#39;&gt;&gt;
+            create a character first!&lt;br /&gt;&lt;br /&gt;
+            &lt;&lt;button &#39;whoops&#39;&gt;&gt;
+                &lt;&lt;run Dialog.close()&gt;&gt;
+            &lt;&lt;/button&gt;&gt;
+        &lt;&lt;/dialog&gt;&gt;
+    &lt;&lt;elseif $activeCharacter.lastPassage == &#39;&#39;&gt;&gt;
+        &lt;&lt;dialog &#39;error&#39;&gt;&gt;
+            you haven&#39;t explored anything yet.&lt;br /&gt;&lt;br /&gt;
+            &lt;&lt;button &#39;whoops&#39;&gt;&gt;
+                &lt;&lt;run Dialog.close()&gt;&gt;
+            &lt;&lt;/button&gt;&gt;
+        &lt;&lt;/dialog&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;goto $activePlayer.lastPassage&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &#39;NEW GAME&#39;&gt;&gt;
-        &lt;&lt;script&gt;&gt;
-            console.log(State.temporary);
-        &lt;&lt;/script&gt;&gt;
     &lt;&lt;if _selectedCharacter == &#39;none&#39;&gt;&gt;
         &lt;&lt;dialog &#39;error&#39;&gt;&gt;
             create a character first!&lt;br /&gt;&lt;br /&gt;
