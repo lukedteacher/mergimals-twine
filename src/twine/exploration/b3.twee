@@ -15,9 +15,14 @@ Life moves at a gentle pace here, with the ocean breeze carrying the sound of la
 [[Keep exploring the village.->b3]]
 
 :: b3: home
-You live here!
+This is your home. The cozy warmth tempts you to stay, but you know that adventure calls.
 
-<<link 'Eat a home cooked meal.'>><<set $rested to true>><</link>>
+<<linkreplace "Eat a home cooked meal." t8n>>\
+<<if $rested is false>>You slurp down a bowl of hearty soup and feel yourself regain some strength.\
+<<else>>You aren't hungry right now. Come back if you need some rest.\
+<</if>>\
+<<set $rested to true>>\
+<</linkreplace>>
 [[Continue exploring.->b3]]
 
 :: b3: lab
