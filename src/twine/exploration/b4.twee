@@ -25,7 +25,7 @@ You can hear cooing noises coming from the long grass.
 [[Another time: Continue exploring Route 001.->b4]]
 <</linkreplace>>
 
-:: b4: apples
+:: b4: apples [contest]
 <<set $appleNumber1 to random(4, 10)>>\
 <<set $appleNumber2 to random(4, 10)>>\
 <<set $appleNumber3 to random(2, 4)>>\
@@ -37,7 +37,7 @@ You can hear cooing noises coming from the long grass.
 <<numberbox "$appleGuess" 0 autofocus>>
 [[Tell him your answer.->b4: apple result]]
 
-:: b4: apple result
+:: b4: apple result [contest]
 <<set $appleAnswer = $appleNumber1 + $appleNumber2 - $appleNumber3>>\
 <<if $appleAnswer == $appleGuess>>"Correct! You win!" With a shake of his head all the apples come tumbling down. He catches one in his hand and tosses it your way. You pocket it.
 <<else>>"So close! But not the right answer. Try again."
