@@ -1,13 +1,15 @@
+:: dontay [trainer]
 <<if previous() is "dontay: biting">>\
-Dontay turns back to the water and casts his line again.
+Dontay turns back to the water and casts their line again.
 
-[[Challenge them to a contest.->b5: contest]]
+[[Challenge them to a contest.->dontay: contest]]
 [[Leave them alone for now and continue exploring.->b5]]
 
 <<else>>\
 A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.
 
-"Woah! I almost had that one. It would have been an easy catch if you didn't scare it off the hook. Oh, well. My name is Dontay, and this is my personal fishing spot."
+"Woah! I almost had that one. It would have been an easy catch if you didn't scare it off the hook. Oh, well.
+My name is Dontay, and this is my favorite fishing spot."
 
 [[Ask them how the fish are biting.->dontay: biting]]
 [[Challenge them to a contest.->dontay: contest]]
@@ -23,7 +25,7 @@ They beam with pride, looking at you for a reaction.
 
 [[Erm...cool story.->dontay]]
 
-:: dontay: contest
+:: dontay: contest [contest]
 "Well, if you insist.... Do you like skipping rocks? Personally, I love it. Step back and watch this."
 Dontay pulls three flat, triangular stones from their pocket and chucks one after the other into the waves.\
 
