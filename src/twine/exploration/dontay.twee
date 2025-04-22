@@ -1,26 +1,26 @@
 :: dontay [trainer]
 <<if previous() is "dontay: biting">>\
-Dontay turns back to the water and casts their line again.
+	Dontay turns back to the water and casts their line again.
 
-[[Challenge them to a contest.->dontay: contest]]
-[[Leave them alone for now and continue exploring.->b5]]
+	[[Challenge them to a contest.->dontay: contest]]
+	[[Leave them alone for now and continue exploring.->b5]]
 
 <<else>>\
-A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.
+	A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.
 
-"Woah! I almost had that one. It would have been an easy catch if you didn't scare it off the hook. Oh, well.
-My name is Dontay, and this is my favorite fishing spot."
+	"Woah! I almost had that one. It would have been an easy catch if you didn't scare it off the hook. Oh, well.
+	My name is Dontay, and this is my favorite fishing spot."
 
-[[Ask them how the fish are biting.->dontay: biting]]
-[[Challenge them to a contest.->dontay: contest]]
-[[Leave them alone for now and continue exploring.->b5]]
+	[[Ask them how the fish are biting.->dontay: biting]]
+	[[Challenge them to a contest.->dontay: contest]]
+	[[Leave them alone for now and continue exploring.->b5]]
 <</if>>
 
 :: dontay: biting
 "Oh, I'm catching all sorts of fish! That's why they call it 'catching' not 'fishing'!
-Dontay holds their hands out to measure the air. "The last one was this big."
-They pull their hands even further apart."No wait, THIS big!"
-The hands move another six inches apart. "Ok, fine, this big."
+
+Dontay holds their hands out to measure the air. "The last one was this big." They pull their hands even further apart. "No wait, THIS big!" The hands move another six inches apart. "Ok, fine, this big."
+
 They beam with pride, looking at you for a reaction.
 
 [[Erm...cool story.->dontay]]
@@ -29,112 +29,91 @@ They beam with pride, looking at you for a reaction.
 "Well, if you insist.... Do you like skipping rocks? Personally, I love it. Step back and watch this."
 Dontay pulls three flat, triangular stones from their pocket and chucks one after the other into the waves.\
 
-<<set $skip1 to random(4, 9)>>\
-<<set $skip2 to random(4, 9)>>\
-<<set $skip3 to random(4, 9)>>\
-<<set $skip4 to random(4, 9)>>\
-<<set $skip5 to random(4, 9)>>\
-<<set $skip6 to random(4, 9)>>\
-<<set $skip7 = $skip1 + $skip2 + $skip3>>\
-<<set $skip8 = $skip4 + $skip5 + $skip6>>\
+<<set $skip = []>>\
+<<for _i to 0; _i < 6; _i++>>\
+    <<run $skip.push(random(4, 9))>>\
+<</for>>\
+<<set $skipDontay = $skip[0] + $skip[1] + $skip[2]>>\
+<<set $skipPlayer = $skip[3] + $skip[4] + $skip[5]>>\
+<<set $skipWinner = "tie">>\
+<<if $skipDontay > $skipPlayer>>\
+	<<set $skipWinner = "dontay">>\
+<<elseif $skipDontay < $skipPlayer>>\
+	<<set $skipWinner = "player">>\
+<</if>>\
 
-The first one skips $skip1 times.
-The second one skips $skip2 times.
-The third one skips $skip3 times.
+The first one skips $skip[0] times.
+The second one skips $skip[1] times.
+The third one skips $skip[2] times.
 
 "See that? That was like a million skips!" Dontay hands you three stones. "Think you can get more than me?"
 
-<<linkreplace 'Take your turn.' t8n>>You crouch into your best skipping pose and let rip.
-Your first one skips $skip4 times.
-Your second one skips $skip5 times.
-Your third one skips $skip6 times.
+<<linkreplace 'Take your turn.' t8n>>\
+	You crouch into your best skipping pose and let one rip.
+	Your first one skips $skip[3] times.
+	Your second one skips $skip[4] times.
+	Your third one skips $skip[5] times.
 
-Not bad," Dontay says. "But I totally won, right?"
+	Not bad," Dontay says. "But I totally won, right?"
 
-[[You sure did.->dontay: lost]]
-[[Huh? No way. I won!->dontay: won]]
-[[Actually, it was a tie.->dontay: tie]]
+	[[You sure did.->dontay: lost]]
+	[[Huh? No way. I won!->dontay: won]]
+	[[Actually, it was a tie.->dontay: tie]]
 <</linkreplace>>
 
 :: dontay: lost
-<<if $skip7 < $skip8>><<set $skipDifference = $skip8 - $skip7>>\
-"Wait, did you not count my skips? I was joking. You actually won...
-But I'll give you another shot. If you can tell me how many more skips you had than me, I'll forgive your flub up."
-
-<<elseif $skip7 > $skip8>><<set $skipDifference = $skip7 - $skip8>>\
-"Sure, you lost, but I'll give you a chance to feel good about yourself.
-Can you tell me how many more skips I had than you?"
+<<if $skipWinner is "player">>\
+	"Wait, did you not count my skips? I was joking. You actually won.... But I'll give you another shot. If you can tell me how many more skips you had than me, I'll forgive your flub up."
+<<elseif $skipWinner is "dontay">>\
+	"Sure, you lost, but I'll give you a chance to feel good about yourself. Can you tell me how many more skips I had than you?"
 <</if>>\
 \
-<<if $skip7 == $skip8>>\
-"I was kidding! We actually tied with $skip7 each. What a coincidence, huh?
-Excuse me now, I have a ton of fishing to get to. Come back another time and we'll try again."
+<<if $skipWinner is "tie">>\
+	"I was kidding! We actually tied with $skipPlayer each. What a coincidence, huh? Excuse me now, I have a ton of fishing to get to. Come back another time and we'll try again."
 
-[[Continue exploring.->b5]]\
-
+    [[Continue exploring.->b5]]\
+\
 <<else>>\
-"My skips were $skip1, $skip2, and $skip3. You had $skip4, $skip5, and $skip6. What was the difference?"
-
-<<numberbox "$skipGuess" 0 autofocus>>
-[[Tell them your answer.->dontay: contest end]]
+	<<skipDifferenceChallenge>>
 <</if>>
 
 :: dontay: won
-<<if $skip7 > $skip8>><<set $skipDifference = $skip7 - $skip8>>\
-"Did you not count my skips? Of course I won... but I'll give you another shot.
-If you can tell me how many more skips I had than you, I'll forgive your flub up."
-\
-<<elseif $skip7 < $skip8>><<set $skipDifference = $skip8 - $skip7>>\
-Ok, fine. I was just kidding...you did win. But I have another challenge for you.
-Can you tell me how many more skips you had than me?""
+<<if $skipWinner is "dontay">>\
+	"Did you not count my skips? Of course I won.... But I'll give you another shot. If you can tell me how many more skips I had than you, I'll forgive your flub up."
+<<elseif $skipWinner is "player">>\
+	Ok, fine. I was just kidding.... You did win. But I have another challenge for you. Can you tell me how many more skips you had than me?""
 <</if>>\
 \
-<<if $skip7 == $skip8>>\
-"No way! I was kidding! We actually tied with $skip7 each. What a coincidence, huh?
-Excuse me now, I have a ton of fishing to get to. Come back another time and we'll try again."
+<<if $skipWinner is "tie">>\
+	"No way! I was kidding! We actually tied with $skipPlayer each. What a coincidence, huh? Excuse me now, I have a ton of fishing to get to. Come back another time and we'll try again."
 
-[[Continue exploring.->b5]]\
-\
+    [[Continue exploring.->b5]]\
 <<else>>\
-
-"My skips were $skip1, $skip2, and $skip3. You had $skip4, $skip5, and $skip6. What was the difference?"
-
-<<numberbox "$skipGuess" 0 autofocus>>
-[[Tell them your answer.->dontay: contest end]]
+	<<skipDifferenceChallenge>>
 <</if>>
 
 :: dontay: tie
-<<if $skip7 == $skip8>>\
-"Ah, my mistake. You're right, we tied with $skip7 each. What a coincidence, huh? 
-Excuse me now, I have a ton of fishing to get to. Come back another time and we'll try again."
-
-[[Continue exploring.->b5]]
-<<else>>\
-\
-<<if $skip7 < $skip8>><<set $skipDifference = $skip8 - $skip7>>\
-"Nope! And I was kidding...you actually won. But I'll give you another shot.
-If you can tell me how many more skips you had than me, I'll forgive your flub up."
-\
-<<else>><<set $skipDifference = $skip7 - $skip8>>\
-"Nope! I did actually win, but I'll give you a chance to feel good about yourself.
-Can you tell me how many more skips I had than you?"
+<<if $skipWinner is "player">>\
+	"Nope! And I was kidding.... You actually won. But I'll give you another shot. If you can tell me how many more skips you had than me, I'll forgive your flub up."
+<<elseif $skipWinner is 'dontay'>>\
+	"Nope! I did actually win, but I'll give you a chance to feel good about yourself. Can you tell me how many more skips I had than you?"
 <</if>>\
+\
+<<if $skipWinner is "tie">>\
+	"Ah, my mistake. You're right, we tied with $skipPlayer each. What a coincidence, huh? Excuse me now, I have a ton of fishing to get to. Come back another time and we'll try again."
 
-"My skips were $skip1, $skip2, and $skip3. You had $skip4, $skip5, and $skip6. What was the difference?"
-
-<<numberbox "$skipGuess" 0 autofocus>>
-[[Tell them your answer.->dontay: contest end]]
+    [[Continue exploring.->b5]]
+<<else>>\
+	<<skipDifferenceChallenge>>
 <</if>>
 
 :: dontay: contest end
 <<if $skipGuess == $skipDifference>>\
-"That's correct! Well, I'm impressed. Here, take this skipping stone.
-It's a perfect one- I've been holding onto it for a special ocassion."
+	"That's correct! Well, I'm impressed. Here, take this skipping stone. It's a perfect one- I've been holding onto it for a special ocassion."
 
-[[Thank them and continue exploring.->b5]]
+    [[Thank them and continue exploring.->b5]]
+<<else>>\
+	"Hmm, not quite. Listen, I'm pretty busy here catching like a million fish. If you don't mind coming back later, maybe we can play again."
 
-<<else>>"Hmm, not quite. Listen, I'm pretty busy here catching like a million fish.
-If you don't mind coming back later, maybe we can play again."
-
-[[Say goodbye and continue exploring.->b5]]
+	[[Say goodbye and continue exploring.->b5]]
 <</if>>

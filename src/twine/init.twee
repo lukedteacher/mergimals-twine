@@ -50,6 +50,16 @@
   <<say 'Rhia (Wave School Leader)' 'images/characters/rhia.webp'>>_contents<</say>>
 <</widget>>
 
+<<widget 'skipDifferenceChallenge'>>
+	<<set $skipDifference = Math.abs($skipDontay - $skipPlayer)>>\
+	"My skips were $skip[0], $skip[1], and $skip[2]. You had $skip[3], $skip[4], and $skip[5].
+  
+  "What was the difference?"
+
+	<<numberbox '$skipGuess' 0 autofocus>>
+	[[Tell them your answer.->dontay: contest end]]
+<</widget>>
+
 <<set $sidebar to false>>
 
 <<newplayer 'luke'>>
