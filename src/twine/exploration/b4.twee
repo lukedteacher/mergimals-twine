@@ -1,5 +1,5 @@
 :: b4 [map]
-<<map 'b4' 'nes'>><<n>><<e>><<s>><</map>><<set $currentLocation = 'b4'>>\
+<<map 'b4'>><<n>><<e>><<s>><</map>><<set $currentLocation = 'b4'>>\
 !!!!EXPLORE
 [[Look around->b4: description]]
 [[Check the long grass.->126]]
