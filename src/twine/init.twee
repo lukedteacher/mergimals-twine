@@ -50,6 +50,15 @@
   <<say 'Rhia (Wave School Leader)' 'images/characters/rhia.webp'>>_contents<</say>>
 <</widget>>
 
+<<widget 'skipDifferenceChallenge'>>
+	"The first stone I threw skipped $skip[0] times, right? Imagine that all of our skips skipped that many times.
+  
+	"How many skips would that be in total for all six of our throws?"
+
+	<<numberbox '$skipGuess' 0 "dontay: contest end" autofocus>>
+	[[Tell them your answer.->dontay: contest end]]
+<</widget>>
+
 <<set $sidebar to false>>
 
 <<newplayer 'luke'>>

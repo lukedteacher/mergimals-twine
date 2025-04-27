@@ -22192,16 +22192,7 @@ The third one skips $skip[2] times.
     &lt;&lt;numberbox &#39;$skipGuess&#39; 0 &quot;dontay: contest end&quot; autofocus&gt;&gt;
 	[[Tell them your answer.-&gt;dontay: contest end]]
 &lt;&lt;/if&gt;&gt;
-    [[Thank them and continue exploring.-&gt;b5]]
-
-&lt;&lt;widget &#39;skipDifferenceChallenge&#39;&gt;&gt;
-	&quot;The first stone I threw skipped $skip[0] times, right? Imagine that all of our skips skipped that many times.
-  
-	&quot;How many skips would that be in total for all six of our throws?&quot;
-
-	&lt;&lt;numberbox &#39;$skipGuess&#39; 0 &quot;dontay: contest end&quot; autofocus&gt;&gt;
-	[[Tell them your answer.-&gt;dontay: contest end]]
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="e1" tags="map" position="475,975" size="100,100">&lt;&lt;map &#39;e1&#39;&gt;&gt;&lt;&lt;south &#39;e2&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;e1&#39;&gt;&gt;\
+    [[Thank them and continue exploring.-&gt;b5]]</tw-passagedata><tw-passagedata pid="74" name="e1" tags="map" position="475,975" size="100,100">&lt;&lt;map &#39;e1&#39;&gt;&gt;&lt;&lt;south &#39;e2&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;e1&#39;&gt;&gt;\
 !!!!EXPLORE
 [[Go to the Wave School-&gt;e1: wave school]]</tw-passagedata><tw-passagedata pid="75" name="e1: wave school" tags="blue-urf" position="600,975" size="100,100">&lt;&lt;if not $keywords.has(&#39;paddle&#39;)&gt;&gt;\
 A large group of people seems to be standing in line, waiting to get in.
@@ -22488,6 +22479,15 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 &lt;&lt;/widget&gt;&gt;
 &lt;&lt;widget &#39;rhia&#39; container&gt;&gt;
   &lt;&lt;say &#39;Rhia (Wave School Leader)&#39; &#39;images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &#39;skipDifferenceChallenge&#39;&gt;&gt;
+	&quot;The first stone I threw skipped $skip[0] times, right? Imagine that all of our skips skipped that many times.
+  
+	&quot;How many skips would that be in total for all six of our throws?&quot;
+
+	&lt;&lt;numberbox &#39;$skipGuess&#39; 0 &quot;dontay: contest end&quot; autofocus&gt;&gt;
+	[[Tell them your answer.-&gt;dontay: contest end]]
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;set $sidebar to false&gt;&gt;

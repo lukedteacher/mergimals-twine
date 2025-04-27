@@ -106,12 +106,3 @@ The third one skips $skip[2] times.
 	[[Tell them your answer.->dontay: contest end]]
 <</if>>
     [[Thank them and continue exploring.->b5]]
-
-<<widget 'skipDifferenceChallenge'>>
-	"The first stone I threw skipped $skip[0] times, right? Imagine that all of our skips skipped that many times.
-  
-	"How many skips would that be in total for all six of our throws?"
-
-	<<numberbox '$skipGuess' 0 "dontay: contest end" autofocus>>
-	[[Tell them your answer.->dontay: contest end]]
-<</widget>>
