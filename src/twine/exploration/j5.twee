@@ -1,5 +1,5 @@
 :: j5 [j5 explore]
-<<map 'j5'>><<north 'j4'>><<west 'i5'>><</map>><<set $currentLocation = 'j5'>>\
+<<map 'j5'>><<n>><<w>><</map>><<set $currentLocation = 'j5'>>\
 !!!!EXPLORE
 This is something cool probably
 [[Nothing yet->blah]]

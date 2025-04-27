@@ -1,0 +1,5 @@
+:: i3 [i3 explore]
+<<map 'i3'>><<s>><</map>><<set $currentLocation = 'i3'>>\
+!!!!EXPLORE
+A random cave. or is it?
+[[Nothing yet->blah]]

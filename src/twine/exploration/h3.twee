@@ -1,5 +1,5 @@
 :: h3 [h3 explore]
-<<map 'h3'>><<north 'h2'>><<west 'g3'>><<south 'h4'>><</map>><<set $currentLocation = 'h3'>>\
+<<map 'h3'>><<n>><<w>><<s>><</map>><<set $currentLocation = 'h3'>>\
 !!!!EXPLORE
 This is on the way out of raven wing.
 [[Nothing yet->blah]]

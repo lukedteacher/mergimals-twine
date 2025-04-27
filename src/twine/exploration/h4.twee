@@ -1,5 +1,5 @@
 :: h4 [h4 explore]
-<<map 'h4'>><<north 'h3'>><<east 'i4'>><</map>><<set $currentLocation = 'h4'>>\
+<<map 'h4'>><<n>><<e>><</map>><<set $currentLocation = 'h4'>>\
 !!!!EXPLORE
 This is almost to Cedar Oasis!
 [[Nothing yet->blah]]

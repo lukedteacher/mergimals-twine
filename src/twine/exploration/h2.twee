@@ -1,5 +1,5 @@
 :: h2 [h2 explore]
-<<map 'h2'>><<south 'h3'>><</map>><<set $currentLocation = 'h2'>>\
+<<map 'h2'>><<s>><</map>><<set $currentLocation = 'h2'>>\
 !!!!EXPLORE
 There's a mysterious cave here!
 [[Nothing yet->blah]]

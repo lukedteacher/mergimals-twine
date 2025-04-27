@@ -1,5 +1,5 @@
 :: b3 [map]
-<<map 'b3'>><<south 'b4'>><</map>>\
+<<map 'b3'>><<s>><</map>><<set $currentLocation = 'b3'>>\
 !!!!EXPLORE
 [[Look around->b3: description]]
 [[Stop at home.->b3: home]]

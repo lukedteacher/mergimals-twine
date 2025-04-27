@@ -1,5 +1,5 @@
 :: g2 [g2 explore]
-<<map 'g2'>><<south 'g3'>><</map>><<set $currentLocation = 'g2'>>\
+<<map 'g2'>><<s>><</map>><<set $currentLocation = 'g2'>>\
 !!!!EXPLORE
 Oh dang what a cool castle! This must be The Forge Workshop.
 [[Nothing yet->blah]]
