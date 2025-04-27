@@ -3,7 +3,7 @@
 !!!!EXPLORE
 [[Look around.->c4: description]]
 [[Check the long grass.->005]]
-[[Greet the trainer.->356]]
+[[Greet the trainer.->jessie]]
 [[Check out the cliff->932]]
 [[Go South into the dark forest.->214]]
 
@@ -31,15 +31,6 @@ You got...
     <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
 <</link>>
 [[Continue exploring.->$currentLocation]]
-
-:: 356 [trainer]
-There is a Mergimal Trainer standing near the base of the cliff. They yawn and roll their eyes as you approach.
-
-<<say 'Jessie' 'images/characters/player.png'>>I suppose you want to have a contest?<</say>>\
-
-[[Absolutely!->jessie]]
-[[Ask them what's new.->404]]
-[[Maybe another time: continue exploring Route 002.->c4]]
 
 :: 932 [worksheet]
 Parts of this cliff seem worn off into handholds. You can attempt to climb up it if you'd like. A small cave is visible about halfway up. It might be worth checking out.

@@ -3,7 +3,7 @@
 !!!!EXPLORE
 [[Look around->b4: description]]
 [[Check the long grass.->126]]
-[[Say 'hello' to the trainer.->Trainer: Bucky]]
+[[Say 'hello' to the trainer.->bucky]]
 
 :: b4: description
 Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South.
@@ -13,18 +13,6 @@ A Mergimal trainer is posed near an apple tree, looking hungry for a contest.
 You can hear cooing noises coming from the long grass.
 
 [[Continue exploring.->b4]]
-
-:: Trainer: Bucky [trainer]
-<img class='trainer-image' src='bucky.png' />
-
-"Hey, you!" a friendly voice calls. The trainer is standing near the tree, balancing a stack of apples on their head. "Are you ready to have a contest?"
-
-<<linkreplace 'Ask about the contest.' t8n>>\
-    "It's an apple balancing contest, of course! Think you can balance more apples on your head than I can?"
-
-    [[Umm, sure.->bucky]]
-    [[Another time: Continue exploring Route 001.->b4]]
-<</linkreplace>>
 
 :: 126 [stray]
 The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!

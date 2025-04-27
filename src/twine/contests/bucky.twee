@@ -1,4 +1,4 @@
-:: bucky [trainer]
+:: bucky [b4 trainer]
 "Hey, you!" a friendly voice calls. The trainer is standing near the tree, balancing a stack of apples on their head. "Are you ready to have a contest?"
 
 <<linkreplace 'Ask about the contest.' t8n>>\
@@ -9,7 +9,7 @@
 <</linkreplace>>
 
 
-:: bucky: apples [contest]
+:: bucky: apples [b4 trainer contest]
 <<set $appleNumber1 to random(4, 10)>>\
 <<set $appleNumber2 to random(4, 10)>>\
 <<set $appleNumber3 to random(3, 5)>>\
@@ -27,7 +27,7 @@
 <<numberbox "$appleGuess" 0 autofocus>>
 [[Give your answer.->bucky: apple result]]
 
-:: bucky: apple result [contest]
+:: bucky: apple result [b4 trainer contest]
 <<if $appleAnswer == $appleGuess>>\
 	"Correct! You win!" With a shake of their head all the apples come tumbling down.
 

@@ -1,4 +1,13 @@
-:: jessie [trainer]
+:: jessie [c4 trainer]
+There is a Mergimal Trainer standing near the base of the cliff, playing with a fidget spinner. They yawn and roll their eyes as you approach.
+
+<<say 'Jessie' 'images/characters/player.png'>>I suppose you want to have a contest?<</say>>\
+
+[[Absolutely!->jessie: start]]
+[[Ask them what's new.->404]]
+[[Maybe another time: continue exploring Route 002->c4]]
+
+:: jessie: start [c4 trainer contest]
 "I was afraid you'd say that. Listen, there's not a ton to do around here, but there are a ton of rocks. Big ones, little ones, heavy metal or punk ones...get it? Because they're types of rock."
 
 <<linkreplace 'Oh...yeah, that\'s hilarious.' t8n>>\
@@ -14,7 +23,7 @@
 	<</linkreplace>>
 <</linkreplace>>
 
-:: jessie: stacking [contest]
+:: jessie: stacking [c4 trainer contest]
 <<if $rockPileNumber > 99>>\
 	<<set $rockPileNumber = 75>>\
     "Whoa, it's about to fall! You better stop right there...you're at $rockPileNumber now. Good."
@@ -32,7 +41,7 @@ Now go ahead and make some more piles with that same amount of rocks in each one
 <<numberbox '$rockPileAmount' 0 autofocus>>
 [[Tell them the number.->jessie: answer]]
 
-:: jessie: answer [contest]
+:: jessie: answer [c4 trainer contest]
 <<if $rockPileAmount > 99>>\
 	You ran out of rocks after 45 piles...
     <<set $rockPileAmount to 45>>
@@ -44,7 +53,7 @@ Now go ahead and make some more piles with that same amount of rocks in each one
 <<numberbox '$rockPileAnswer' 0 autofocus>>
 [[Tell them the number.->jessie: end]]
 
-:: jessie: end [contest]
+:: jessie: end [c4 trainer contest]
 <<if $rockPileAnswer == $rockPileNumber * $rockPileAmount>>\
     "That's right! Nice work. Here, take this fidget spinner. I have a few of them and they're great for when you're really bored, like I am."
 

@@ -1,14 +1,14 @@
 :: 214 [forest]
 This forest seems quite dark, even in the middle of the day. You follow the path deeper into the woods until you come to a split.
 
-[[Go left.->215]]
-[[Go right.->216]]
+[[Go East.->215]]
+[[Go West.->216]]
 
 :: 215 [forest]
-The leaves of the trees crunch underfoot as you make your way further into the forest. You have the feeling that you're being watched. Up ahead, a small path splits of to the right.
+The leaves of the trees crunch underfoot as you make your way further into the forest. You have the feeling that you're being watched. Up ahead, a small path splits of to the right, headed South.
 
-[[Go straight.->217]]
-[[Follow the small path.->218]]
+[[Continue going East.->217]]
+[[Follow the small path South.->218]]
 
 :: 216 [forest]
 You walk a ways until the path fades into the ground. The branches are thick and it would be impossible to go on.
@@ -32,8 +32,8 @@ The sound of music greets your ears. At first, you're excited, but soon the song
 
 The path splits again.
 
-[[Go straight.->225]]
-[[Go left.->226]]
+[[Go East.->225]]
+[[Go North.->226]]
 
 :: 218 [forest]
 The path seems to double back on itself and you feel like you're going in circles. It ends abruptly, at the base of a large tree with a large crevice. Inside the hole, you find some charms and trainer coins.
@@ -52,15 +52,15 @@ If you rolled...
 
 :: 221 [forest]
 
-[[Go left.->223]]
-[[Go right.->222]]
+[[Go West.->223]]
+[[Go East.->222]]
 
 :: 217 [forest]
 A Four Way Intersection
 
-[[Go straight.->220]]
-[[Go left.->220]]
-[[Go right.->221]]
+[[Go West.->220]]
+[[Go South.->220]]
+[[Go North.->221]]
 
 :: 229 [forest]
 four way
@@ -72,8 +72,8 @@ four way
 :: 220 [forest]
 This path looks familiar, you think. You come to a split.
 
-[[Go left.->224]]
-[[Go right.->217]]
+[[Go East.->224]]
+[[Go West.->217]]
 
 :: 225 [forest]
 You know you're close, but the path ahead has been blocked. If you had a mergimal who was strong enough, they could move it out of the way.

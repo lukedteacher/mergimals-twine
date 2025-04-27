@@ -1,4 +1,4 @@
-:: dontay [trainer]
+:: dontay [b5 trainer]
 <<if previous() is "dontay: biting">>\
 	Dontay turns back to the water and casts their line again.
     
@@ -13,16 +13,7 @@
 [[Challenge them to a contest.->dontay: contest]]
 [[Leave them alone for now and continue exploring.->b5]]
 
-<<widget 'skipDifferenceChallenge'>>
-	"The first stone I threw skipped $skip[0] times, right? Imagine that all of our skips skipped that many times.
-  
-  "How many skips would that be in total for all six of our throws?"
-
-	<<numberbox '$skipGuess' 0 "dontay: contest end" autofocus>>
-	[[Tell them your answer.->dontay: contest end]]
-<</widget>>
-
-:: dontay: biting
+:: dontay: biting [b5 trainer contest]
 "Oh, I'm catching all sorts of fish! That's why they call it 'catching' not 'fishing'!
 
 Dontay holds their hands out to measure the air. "The last one was this big." They pull their hands even further apart. "No wait, THIS big!" The hands move another six inches apart. "Ok, fine, this big."
@@ -31,7 +22,7 @@ They beam with pride, looking at you for a reaction.
 
 [[Erm...cool story.->dontay]]
 
-:: dontay: contest [contest]
+:: dontay: contest [b5 trainer contest]
 "Well, if you insist.... Do you like skipping rocks? Personally, I love it. Step back and watch this."
 Dontay pulls three flat, triangular stones from their pocket and chucks one after the other into the waves.\
 
@@ -67,7 +58,7 @@ The third one skips $skip[2] times.
 	[[Actually, it was a tie.->dontay: tie]]
 <</linkreplace>>
 
-:: dontay: lost
+:: dontay: lost [b5 trainer contest]
 <<if $skipWinner is "player">>\
 	"Wait, did you not count my skips? I was joking. You actually won.... But I'll give you another shot."
 <<elseif $skipWinner is "dontay">>\
@@ -77,7 +68,7 @@ The third one skips $skip[2] times.
 <</if>>\
 <<skipDifferenceChallenge>>
 
-:: dontay: won
+:: dontay: won [b5 trainer contest]
 <<if $skipWinner is "dontay">>\
 	"Did you not count my skips? Of course I won.... But I'll give you another shot."
 <<elseif $skipWinner is "player">>\
@@ -87,7 +78,7 @@ The third one skips $skip[2] times.
 <</if>>\
 <<skipDifferenceChallenge>>
 
-:: dontay: tie
+:: dontay: tie [b5 trainer contest]
 <<if $skipWinner is "player">>\
 	"Nope! And I was kidding.... You actually won. But I'll give you another shot."
 <<elseif $skipWinner is 'dontay'>>\
@@ -97,7 +88,7 @@ The third one skips $skip[2] times.
 <</if>>\
 <<skipDifferenceChallenge>>
 
-:: dontay: contest end
+:: dontay: contest end [b5 trainer contest]
 <<if $skipGuess == $skip[0] * 6>>\
 	"That's correct! Well, I'm impressed. Here, take this skipping stone. It's a perfect one- I've been holding onto it for a special ocassion."
 <<else>>\

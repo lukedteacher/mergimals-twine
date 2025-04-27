@@ -1,0 +1,35 @@
+::Asil [c5 trainer]
+The source of the hushing sound comes into view. You see a short, older lady with what could only be described as a witch's hat. She is looking left and right and shushing into the forest. A [add mergimal description] is sitting on a giant mushroom by the witch\'s side, looking pained.
+
+[[Ask what she is shooshing.-> Asil: shush]]
+[[Leave her alone.-> 221]]
+
+:: Asil: shoosh [c5 trainer contest]
+"I need to keep the forest quiet. My Mergimal is very sensitive to sound and everything is being way too loud!" Her voice is louder than anything else in the forest.
+
+"Can you help me? If you could find the source of all this racket, my Mergimal would be so grateful. No matter what I do, they are still so dsitressed!" The Mergimal winces and tries to cover their ears, but their arms are too short.
+
+[[Try to think of a solution.->Asil: worksheet]]
+[[Leave her alone.-> 221]]
+
+:: Asil: worksheet [c5 trainer contest]
+Something seems off about this whole thing. You think you can help, but need to gather your thoughts.
+
+Do worksheet 'The Loud Witch'.
+ --- this should be a stand alone worksheet (problem)  - wait on shushing solution
+
+Enter the code:  <<numberbox '_$code' 0>>
+<<link 'See if you have the solution. - code is 1 for now'>>
+    <<if _$code != 1>>
+        <<dialog 'incorrect'>>\
+            <<include 'incorrect'>>
+        <</dialog>>
+    <<else>>
+        <<dialog 'correct'>>\
+            <<include 'correct'>>
+            <<onclose>>
+                <<goto 'Asil: answer'>>
+        <</dialog>>
+    <</if>>
+<</link>>
+[[Leave her alone for now and continue exploring.->221]]
