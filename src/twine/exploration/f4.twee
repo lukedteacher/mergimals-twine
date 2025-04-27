@@ -3,25 +3,52 @@
 !!!!EXPLORE
 [[Talk to the merchant.->f4: merchant]]
 [[Check the long grass.->f4: long grass]]
-[[Approach the trainer.->f4: trainer]]
 
 :: f4: merchant
 There's a merchant here!
 
 She seems friendly.
 
-"We have e-bikes in stock! For the low price of 1000 coins."
+"I wait here to collect the rafts that people use to float down the Great River."
 
-[[That seems quite absurd.->f4: haggle]]
+"We also have e-bikes in stock! They're available for the low price of 1,000 coins."
+
+[[That seems quite absurd. Try to haggle.->f4: haggle]]
 [[Another time.->f4]]
 
 :: f4: haggle
-<<if $keywords.has('shine')>>
-    "You already tackled the Forge School challenge and won?!"
+<<if (($keywords.paddle == true) and ($keywords.shine == true))>>
+    "You've beaten Rhia *and* Matiu in the school challenge?"
 
-    "You must be quite skilled with Mergimals. How about a discount?"
+    You can have one for free!
 
-    "How about the low price of 100 coins?"
+    <<link 'You get an ebike!' 'f4'>><<set $keywords.ebike = true>><</link>>
+<<elseif $keywords.paddle == true>>
+    "You already tackled the Wave School challenge and won?!" she says.
+
+    "Rhia is so impressive. Don't you think? I wish I had half of her fashion sense."
+
+    She looks you up and down with a surprised look. "You must be quite skilled with Mergimals. I can give you a discount: only 1/10th of the normal price."
+
+    <<nobr>>
+        <<link 'Sure!'>>
+            <<if $backpack.coin < 100>>
+                <<dialog 'not enough coins'>>\
+                    <<include 'not enough coins'>>
+                <</dialog>>
+            <<else>>
+                <<set $backpack.coin -= 100>>
+                <<set $keywords.ebike = true>>
+            <</if>>
+        <</link>>
+    <</nobr>>
+    [[Nevermind.->f4]]
+<<elseif $keywords.shine == true>>
+    "You already tackled the Forge School challenge and won?!" she says.
+
+    "Matiu seems kinda scary. I don't know how you were able to work up the courage to even try!"
+
+    She looks you up and down with a surprised look. "You must be quite skilled with Mergimals. I can give you a discount: only 1/10th of the normal price."
 
     <<nobr>>
         <<link 'Sure!'>>
@@ -38,6 +65,8 @@ She seems friendly.
     [[Nevermind.->f4]]
 <<else>>
     "Sorry to say, I can't do any better."
+
+    "Come back when you've completed some school challenges."
 
     <<nobr>>
         <<link 'Alright, I guess.'>>
@@ -69,8 +98,3 @@ You got...
     <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
 <</link>>
 [[Continue exploring.->$currentLocation]]
-
-:: f4: trainer
-A trainer!
-
-[[Another time.->f4]]

@@ -2,4 +2,4 @@
 <<map 'h4'>><<n>><<e>><</map>><<set $currentLocation = 'h4'>>\
 !!!!EXPLORE
 This is almost to Cedar Oasis!
-[[Nothing yet->blah]]
+[[Swim down the river (requires KEYWORD PADDLE)->f4]]

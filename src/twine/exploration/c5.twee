@@ -3,6 +3,7 @@ This forest seems quite dark, even in the middle of the day. You follow the path
 
 [[Go East.->215]]
 [[Go West.->216]]
+[[Leave the forest->c4]]
 
 :: 215 [forest]
 The leaves of the trees crunch underfoot as you make your way further into the forest. You have the feeling that you're being watched. Up ahead, a small path splits of to the right, headed South.
@@ -51,6 +52,7 @@ If you rolled...
 [[...25 or higher, you find your way back to the path with ease.->217]]
 
 :: 221 [forest]
+A little bit of light shines through the canopy. You hope this is the right way.
 
 [[Go West.->223]]
 [[Go East.->222]]
@@ -63,7 +65,7 @@ A Four Way Intersection
 [[Go North.->221]]
 
 :: 229 [forest]
-four way
+Your compass seems to fail you here. Which way do you go?
 
 [[Go left.->228]]
 [[Go straight.->404]]
@@ -84,13 +86,10 @@ You know you're close, but the path ahead has been blocked. If you had a mergima
 :: 222 [forest test]
 The birds have stopped chirping. Even the sound of your footsteps seems muted. A crack of a twig behind you startles you.
 
-Roll ATTENTION + GRIT.
+Roll ATTENTION x GRIT.
 
-If you rolled...
-
-[[30 or lower, you trip and fall into a pile of thorns: Gain two injuries.->229]]
-[[...between 30 and 60, you fall into some thorns, but catch yourself at the last minute: Gain one injury.->229]]
-[[...above 60, your quick-thinking allows you to narrowly avoid walking into a wicked patch of thorns: Gain one injury.->229]]
+[[roll ≤ 30: You trip and fall into a pile of thorns. Gain an injury.->229]]
+[[roll > 30: You keep yourself steady and don't let the spooky sounds frighten you.->229]]
 
 :: 226 [forest encounter]
 A little person with a long beard and pointy hat sits on a mushroom, drinking tea. A tiny pig-like Mergimal sits next to them with a cup of their own.
