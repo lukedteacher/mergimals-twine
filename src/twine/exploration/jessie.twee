@@ -1,0 +1,58 @@
+:: jessie [trainer]
+"I was afraid you'd say that. Listen, there's not a ton to do around here, but there are a ton of rocks. Big ones, little ones, heavy metal or punk ones...get it? Because they're types of rock."
+
+<<linkreplace 'Oh...yeah, that\'s hilarious.' t8n>>\
+	Jessie yawns again. "Yeah, yeah.... Not the best joke. I told you, I'm bored, okay?" Jessie shakes themself awake and puts the fidget spinner in their pocket.
+    
+    "Well, you're going to stack some rocks. It's called nature art. If your art is artsy enough to make me feel it in my heart, you win. I can't join you in lifting any rocks because I'm far too artsy for that kind of labor."
+
+	<<linkreplace 'Get started.' t8n>>\
+    	"How many rocks are you putting in your stack?
+        
+		<<numberbox '$rockPileNumber' 0 autofocus>>
+		[[Tell them the number.->jessie: stacking]]
+	<</linkreplace>>
+<</linkreplace>>
+
+:: jessie: stacking [contest]
+<<if $rockPileNumber > 99>>\
+	<<set $rockPileNumber = 75>>\
+    "Whoa, it's about to fall! You better stop right there...you're at $rockPileNumber now. Good."
+<<elseif $rockPileNumber < 6>>\
+	<<set $rockPileNumber = 8>>\
+	"Hey, you should really keep going. That few is not so artsy! A bit more...yeah, $rockPileNumber should do the trick."
+<<else>>\
+	"Hey, that's a nice stack! Now there are... $rockPileNumber rocks on the pile, right?
+<</if>>\
+
+Now go ahead and make some more piles with that same amount of rocks in each one. Remember to make it really artsy looking, or I might fall asleep on you."
+
+"So how many piles of $rockPileNumber are you making?
+
+<<numberbox '$rockPileAmount' 0 autofocus>>
+[[Tell them the number.->jessie: answer]]
+
+:: jessie: answer [contest]
+<<if $rockPileAmount > 99>>\
+	You ran out of rocks after 45 piles...
+    <<set $rockPileAmount to 45>>
+<</if>>\
+	"Nice work! You made $rockPileAmount piles with $rockPileNumber in each one. How did you even have the energy to do that? That's a lot of rocks!"
+
+"Umm, help me out...I'll be able to tell you how artsy your work is once you tell me how many total rocks you used."
+
+<<numberbox '$rockPileAnswer' 0 autofocus>>
+[[Tell them the number.->jessie: end]]
+
+:: jessie: end [contest]
+<<if $rockPileAnswer == $rockPileNumber * $rockPileAmount>>\
+    "That's right! Nice work. Here, take this fidget spinner. I have a few of them and they're great for when you're really bored, like I am."
+
+    [[Say thanks and continue exploring.->c4]]
+<<else>>\
+    "Hmm...not quite. Do you want to try again? We're mupliplying $rockPileNumber by $rockPileAmount.
+
+    <<numberbox '$rockPileAnswer' 0 autofocus>>
+    [[Tell them the number.->jessie: end]]
+    [[Give up for now: Keep exploring Route 102.->c4]]
+<</if>>

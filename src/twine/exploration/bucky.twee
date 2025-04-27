@@ -1,0 +1,42 @@
+:: bucky [trainer]
+"Hey, you!" a friendly voice calls. The trainer is standing near the tree, balancing a stack of apples on their head. "Are you ready to have a contest?"
+
+<<linkreplace 'Ask about the contest.' t8n>>\
+    "It's an apple balancing contest, of course! Think you can balance more apples on your head than I can?"
+
+    [[Umm, sure.->bucky: apples]]
+    [[Another time: Continue exploring Route 001.->b4]]
+<</linkreplace>>
+
+
+:: bucky: apples [contest]
+<<set $appleNumber1 to random(4, 10)>>\
+<<set $appleNumber2 to random(4, 10)>>\
+<<set $appleNumber3 to random(3, 5)>>\
+<<set $appleAnswer = ($appleNumber1 + $appleNumber2) * $appleNumber3>>\
+"Listen close, my friend." The trainer points to the apples on their head.
+
+"I have $appleNumber1 apples on my head." Their arms move in a flash as they pick more apples from the tree.
+
+"And then I throw $appleNumber2 more apples up on top, like this!" You can't believe that none of them fall as they throw them up and onto their stack.
+
+"I'll tell you a secret about the apples from this tree...they all have $appleNumber3 worms in them. All of them! It's weird, right? And that's why I don't eat these. Worms are friends.
+
+"Here is your challenge. How many little friends do I have on my head right now?"
+
+<<numberbox "$appleGuess" 0 autofocus>>
+[[Give your answer.->bucky: apple result]]
+
+bucky: apple result [contest]
+<<if $appleAnswer == $appleGuess>>\
+	"Correct! You win!" With a shake of their head all the apples come tumbling down.
+
+    They catch one in their hand and toss it your way. You put it away and now you have $appleNumber3 little friends in your bag, quietly munching away on the apple.
+<<else>>\
+    "So close! But not the right answer. Try again."
+
+    Hint: The problem is ($appleNumber1 + $appleNumber2) and multiply by $appleNumber3.
+    <<numberbox "$appleGuess" 0 autofocus>>
+    [[Give your answer.->bucky: apple result]]
+<</if>>
+[[Continue exploring.->b4]]

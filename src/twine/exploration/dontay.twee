@@ -1,10 +1,7 @@
 :: dontay [trainer]
 <<if previous() is "dontay: biting">>\
 	Dontay turns back to the water and casts their line again.
-
-	[[Challenge them to a contest.->dontay: contest]]
-	[[Leave them alone for now and continue exploring.->b5]]
-
+    
 <<else>>\
 	A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.
 
@@ -12,9 +9,18 @@
 	My name is Dontay, and this is my favorite fishing spot."
 
 	[[Ask them how the fish are biting.->dontay: biting]]
-	[[Challenge them to a contest.->dontay: contest]]
-	[[Leave them alone for now and continue exploring.->b5]]
-<</if>>
+<</if>>\
+[[Challenge them to a contest.->dontay: contest]]
+[[Leave them alone for now and continue exploring.->b5]]
+
+<<widget 'skipDifferenceChallenge'>>
+	"The first stone I threw skipped $skip[0] times, right? Imagine that all of our skips skipped that many times.
+  
+  "How many skips would that be in total for all six of our throws?"
+
+	<<numberbox '$skipGuess' 0 "dontay: contest end" autofocus>>
+	[[Tell them your answer.->dontay: contest end]]
+<</widget>>
 
 :: dontay: biting
 "Oh, I'm catching all sorts of fish! That's why they call it 'catching' not 'fishing'!
@@ -31,7 +37,7 @@ Dontay pulls three flat, triangular stones from their pocket and chucks one afte
 
 <<set $skip = []>>\
 <<for _i to 0; _i < 6; _i++>>\
-    <<run $skip.push(random(4, 9))>>\
+    <<run $skip.push(random(6, 19))>>\
 <</for>>\
 <<set $skipDontay = $skip[0] + $skip[1] + $skip[2]>>\
 <<set $skipPlayer = $skip[3] + $skip[4] + $skip[5]>>\
@@ -53,7 +59,7 @@ The third one skips $skip[2] times.
 	Your first one skips $skip[3] times.
 	Your second one skips $skip[4] times.
 	Your third one skips $skip[5] times.
-
+    
 	Not bad," Dontay says. "But I totally won, right?"
 
 	[[You sure did.->dontay: lost]]
@@ -63,57 +69,49 @@ The third one skips $skip[2] times.
 
 :: dontay: lost
 <<if $skipWinner is "player">>\
-	"Wait, did you not count my skips? I was joking. You actually won.... But I'll give you another shot. If you can tell me how many more skips you had than me, I'll forgive your flub up."
+	"Wait, did you not count my skips? I was joking. You actually won.... But I'll give you another shot."
 <<elseif $skipWinner is "dontay">>\
-	"Sure, you lost, but I'll give you a chance to feel good about yourself. Can you tell me how many more skips I had than you?"
-<</if>>\
-\
-<<if $skipWinner is "tie">>\
-	"I was kidding! We actually tied with $skipPlayer each. What a coincidence, huh? Excuse me now, I have a ton of fishing to get to. Come back another time and we'll try again."
-
-    [[Continue exploring.->b5]]\
-\
+	"Sure, you lost, but I'll give you a chance to feel good about yourself."
 <<else>>\
-	<<skipDifferenceChallenge>>
-<</if>>
+	"I was kidding! We actually tied with $skipPlayer each. What a coincidence, huh? But here's the real challenge..."
+<</if>>\
+<<skipDifferenceChallenge>>
 
 :: dontay: won
 <<if $skipWinner is "dontay">>\
-	"Did you not count my skips? Of course I won.... But I'll give you another shot. If you can tell me how many more skips I had than you, I'll forgive your flub up."
+	"Did you not count my skips? Of course I won.... But I'll give you another shot."
 <<elseif $skipWinner is "player">>\
-	Ok, fine. I was just kidding.... You did win. But I have another challenge for you. Can you tell me how many more skips you had than me?""
-<</if>>\
-\
-<<if $skipWinner is "tie">>\
-	"No way! I was kidding! We actually tied with $skipPlayer each. What a coincidence, huh? Excuse me now, I have a ton of fishing to get to. Come back another time and we'll try again."
-
-    [[Continue exploring.->b5]]\
+	Ok, fine. I was just kidding.... You did win. But I have another challenge for you."
 <<else>>\
-	<<skipDifferenceChallenge>>
-<</if>>
+	"No way! I was kidding! We actually tied with $skipPlayer each. What a coincidence, huh? But here's the real challenge..."
+<</if>>\
+<<skipDifferenceChallenge>>
 
 :: dontay: tie
 <<if $skipWinner is "player">>\
-	"Nope! And I was kidding.... You actually won. But I'll give you another shot. If you can tell me how many more skips you had than me, I'll forgive your flub up."
+	"Nope! And I was kidding.... You actually won. But I'll give you another shot."
 <<elseif $skipWinner is 'dontay'>>\
-	"Nope! I did actually win, but I'll give you a chance to feel good about yourself. Can you tell me how many more skips I had than you?"
-<</if>>\
-\
-<<if $skipWinner is "tie">>\
-	"Ah, my mistake. You're right, we tied with $skipPlayer each. What a coincidence, huh? Excuse me now, I have a ton of fishing to get to. Come back another time and we'll try again."
-
-    [[Continue exploring.->b5]]
+	"Nope! I did actually win, but I'll give you another chance to feel good about yourself."
 <<else>>\
-	<<skipDifferenceChallenge>>
-<</if>>
+	"Ah, my mistake. You're right, we tied with $skipPlayer each. What a coincidence, huh? Now here's the real challenge..."
+<</if>>\
+<<skipDifferenceChallenge>>
 
 :: dontay: contest end
-<<if $skipGuess == $skipDifference>>\
+<<if $skipGuess == $skip[0] * 6>>\
 	"That's correct! Well, I'm impressed. Here, take this skipping stone. It's a perfect one- I've been holding onto it for a special ocassion."
-
-    [[Thank them and continue exploring.->b5]]
 <<else>>\
-	"Hmm, not quite. Listen, I'm pretty busy here catching like a million fish. If you don't mind coming back later, maybe we can play again."
-
-	[[Say goodbye and continue exploring.->b5]]
+	"Hmm, not quite. Remember, we're multiplying $skip[0] by 6." 
+    <<numberbox '$skipGuess' 0 "dontay: contest end" autofocus>>
+	[[Tell them your answer.->dontay: contest end]]
 <</if>>
+    [[Thank them and continue exploring.->b5]]
+
+<<widget 'skipDifferenceChallenge'>>
+	"The first stone I threw skipped $skip[0] times, right? Imagine that all of our skips skipped that many times.
+  
+	"How many skips would that be in total for all six of our throws?"
+
+	<<numberbox '$skipGuess' 0 "dontay: contest end" autofocus>>
+	[[Tell them your answer.->dontay: contest end]]
+<</widget>>

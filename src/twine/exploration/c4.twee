@@ -37,7 +37,7 @@ There is a Mergimal Trainer standing near the base of the cliff. They yawn and r
 
 <<say 'Jessie' 'images/characters/player.png'>>I suppose you want to have a contest?<</say>>\
 
-[[Absolutely!->404]]
+[[Absolutely!->jessie]]
 [[Ask them what's new.->404]]
 [[Maybe another time: continue exploring Route 002.->c4]]
 

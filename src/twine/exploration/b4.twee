@@ -22,40 +22,9 @@ You can hear cooing noises coming from the long grass.
 <<linkreplace 'Ask about the contest.' t8n>>\
     "It's an apple balancing contest, of course! Think you can balance more apples on your head than I can?"
 
-    [[Umm, sure.->b4: apples]]
+    [[Umm, sure.->bucky]]
     [[Another time: Continue exploring Route 001.->b4]]
 <</linkreplace>>
-
-:: b4: apples [contest]
-<<set $appleNumber1 to random(4, 10)>>\
-<<set $appleNumber2 to random(4, 10)>>\
-<<set $appleNumber3 to random(2, 4)>>\
-<<set $appleAnswer = $appleNumber1 + $appleNumber2 - $appleNumber3>>\
-"Listen close, my friend." The trainer points to the apples on their head.
-
-"I have $appleNumber1 apples on my head." Their arms move in a flash as they pick more apples from the tree.
-
-"And then I throw $appleNumber2 more apples up on top, like this!" You can't believe that none of them fall as they throw them up and onto their stack.
-
-"With all this apple picking, I'm hungry now. I think I'll eat...$appleNumber3 of these apples." They somehow pull the apples from the stack on their head without any of the other ones falling.
-
-"How many apples are now on my head?"
-
-<<numberbox "$appleGuess" 0 autofocus>>
-[[Give your answer.->b4: apple result]]
-
-:: b4: apple result [contest]
-<<if $appleAnswer == $appleGuess>>"Correct! You win!"
-    With a shake of their head all the apples come tumbling down.
-    They catch one in their hand and toss it your way. You pocket it.
-<<else>>\
-    "So close! But not the right answer. Try again."
-
-    Hint: The problem is $appleNumber1 + $appleNumber2 - $appleNumber3
-    <<numberbox "$appleGuess" 0 autofocus>>
-    [[Give your answer.->b4: apple result]]
-<</if>>
-[[Continue exploring.->b4]]
 
 :: 126 [stray]
 The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!
