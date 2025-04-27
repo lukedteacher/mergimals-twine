@@ -1,0 +1,5 @@
+:: f3 [f3 explore]
+<<map 'f3'>><<east 'g3'>><<south 'f4'>><</map>><<set $currentLocation = 'f3'>>\
+!!!!EXPLORE
+Welcome to Raven Wing!
+[[Nothing yet->blah]]

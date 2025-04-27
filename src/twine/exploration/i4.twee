@@ -1,0 +1,5 @@
+:: i4 [i4 explore]
+<<map 'i4'>><<north 'i3'>><<east 'j4'>><<west 'h4'>><<south 'i5'>><</map>><<set $currentLocation = 'i4'>>\
+!!!!EXPLORE
+Welcome to Cedar Oasis!
+[[Nothing yet->blah]]

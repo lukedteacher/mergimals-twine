@@ -1,0 +1,5 @@
+:: j3 [j3 explore]
+<<map 'j3'>><<north 'j2'>><<south 'j4'>><</map>><<set $currentLocation = 'j3'>>\
+!!!!EXPLORE
+This is something cool probably
+[[Nothing yet->blah]]

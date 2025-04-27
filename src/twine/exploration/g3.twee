@@ -1,0 +1,5 @@
+:: g3 [g3 explore]
+<<map 'g3'>><<north 'g2'>><<east 'h3'>><<west 'f3'>><</map>><<set $currentLocation = 'g3'>>\
+!!!!EXPLORE
+You're downtown now!
+[[Nothing yet->blah]]
