@@ -27,7 +27,7 @@
 <<numberbox "$appleGuess" 0 autofocus>>
 [[Give your answer.->bucky: apple result]]
 
-bucky: apple result [contest]
+:: bucky: apple result [contest]
 <<if $appleAnswer == $appleGuess>>\
 	"Correct! You win!" With a shake of their head all the apples come tumbling down.
 
