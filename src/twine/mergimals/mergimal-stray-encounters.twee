@@ -1,14 +1,15 @@
 :: stray encounter [nobr]
 <<print "<img class='mergimal-image' src='images/mergimals/" + $mergimalEncountered.name + ".png' />">>
 $mergimalEncountered.strayPassageText<br /><br />
+<<set $players[$activePlayer].characters[$activeCharacter].mergipedia[$mergimalEncountered.name] = 'seen'>>
 
-''Do Worksheet $mergimalEncountered.number-$player.versionLetter.''<br /><br />
+''Do Worksheet $mergimalEncountered.number''<br /><br />
 
 <div id='stray-encounter-choices'>
     <<link 'I am finished.'>>
         <<replace '#stray-encounter-choices'>>
             <<link 'Throw a mergiball!'>>
-                <<if $backpack.mergiball < 1>>
+                <<if $players[$activePlayer].characters[$activeCharacter].backpack.mergiball < 1>>
                     <<dialog>>
                         <<include 'no mergiballs'>>
                     <</dialog>>
@@ -31,22 +32,22 @@ Go to a store or something, dude.
 <<button 'Okay'>><<run Dialog.close()>><</button>>
 
 :: tame attempt [nobr]
-<<set $backpack.mergiball -->>
+<<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball -->>
 <<redo 'backpack'>>
 You throw the mergiball and it lands near the Mergimal.<br /><br />
 <<script>>
     console.log(State.getVar('$mergimalEncountered'))
 <</script>>
-Target: $mergimalEncountered<br /><br />
+Target: $mergimalEncountered.name<br /><br />
 <<dice 'mergiball' 'd10'>><br />
 
 <<button 'reroll'>>
-    <<if $backpack.mergiball < 1>>
+    <<if $players[$activePlayer].characters[$activeCharacter].backpack.mergiball < 1>>
         <<dialog>>
             <<include 'no mergiballs'>>
         <</dialog>>
     <<else>>
-        <<set $backpack.mergiball -->>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball -->>
         <<roll 'mergiball'>>
     <</if>>
 <</button>>
@@ -93,6 +94,6 @@ They want to be your friend.
 <<card $mergimalEncountered.name>><br />
 $mergimalEncountered.tamedPassageText<br /><br />
 <<link 'You tamed them.' b4>>
-    <<set $mergimals[$mergimalEncountered.name].tamed = true>>
+    <<set $players[$activePlayer].characters[$activeCharacter].mergipedia[$mergimalEncountered.name] = 'tamed'>>
     <<unset $mergimalEncountered>>
 <</link>>

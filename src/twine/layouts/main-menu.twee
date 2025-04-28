@@ -36,6 +36,10 @@ Choose character:
         <</dialog>>
     <<else>>
         <<set $activePlayer = _selectedPlayer>>
+        <<script>>
+            console.log(State.variables);
+            console.log(State.temporary);
+        <</script>>
         <<set $activeCharacter = _selectedCharacter>>
         <<goto $players[_selectedPlayer].characters[_selectedCharacter].lastPassage>>
     <</if>>
@@ -75,6 +79,6 @@ Choose character:
 <<link 'jump to exploring' 'b3'>>
     <<set $activePlayer = _selectedPlayer>>
     <<set $activeCharacter = _selectedCharacter>>
-    <<set $backpack.coin = 10>>
-    <<set $backpack.mergiball = 10>>
+    <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin = 10>>
+    <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball = 10>>
 <</link>>

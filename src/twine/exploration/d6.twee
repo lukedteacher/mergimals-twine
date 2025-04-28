@@ -25,12 +25,12 @@ There's also a person standing around. They look confused.
 [[Look around Littlemoose.->d6]]
 
 :: d6: veil school
-<<if $keywords.closed == false>>\
+<<if $players[$activePlayer].characters[$activeCharacter].keywords.closed == false>>\
     The school is closed?!?
 
     Oh dear.
 
-    GAIN keyword CLOSED.<<set $keywords.closed = true>><<redo 'keywords'>>
+    GAIN keyword CLOSED.<<set $players[$activePlayer].characters[$activeCharacter].keywords.closed = true>><<redo 'keywords'>>
 
     [[Continue exploring.->d6]]
 <<else>>\

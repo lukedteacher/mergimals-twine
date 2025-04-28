@@ -30,12 +30,12 @@ The water is cool and inviting. You look out over the sea. You can see a boat of
         <<replace '.test'>>Nothing to see here.<</replace>>
     <</link>>
 </div>
-<<link 'Go fishing. (requires keyword: ROD)'>><<if $keywords.rusty == false>><<dialog 'no rod'>><<include 'no rod'>><</dialog>><<else>><<goto 'b5: fishing'>><</if>><</link>>
-<<link 'Ride your Mergimal out to sea (requires: keyword PADDLE)'>><<if $keywords.paddle == false>><<dialog 'no keyword paddle'>><<include 'no paddle'>><</dialog>><<else>><<goto 'b5: paddling to sea'>><</if>><</link>>
+<<link 'Go fishing. (requires keyword: ROD)'>><<if $players[$activePlayer].characters[$activeCharacter].keywords.rusty == false>><<dialog 'no rod'>><<include 'no rod'>><</dialog>><<else>><<goto 'b5: fishing'>><</if>><</link>>
+<<link 'Ride your Mergimal out to sea (requires: keyword PADDLE)'>><<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>><<dialog 'no keyword paddle'>><<include 'no paddle'>><</dialog>><<else>><<goto 'b5: paddling to sea'>><</if>><</link>>
 [[See what else is around here: continue exploring Pretty Rock Bay.->b5]]
 
 :: crabby critters [worksheet]
-<<if $keywords.rusty == false>>\
+<<if $players[$activePlayer].characters[$activeCharacter].keywords.rusty == false>>\
 A group of crab-like Mergimals seems to be protecting a large sand castle. An old fishing pole sticks out of the center tower, holding a flag.
 
 Maybe you can figure out some way to avoid the creatures and grab it?
@@ -69,7 +69,7 @@ Enter the code:  <<numberbox '_$code' 0>>
 :: rusty rod reward [reward]
 After a short while, you seem to find a pattern in the crabs' movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.
 
-Gain keyword RUSTY.<<set $keywords.rusty = true>><<redo 'keywords'>>
+Gain keyword RUSTY.<<set $players[$activePlayer].characters[$activeCharacter].keywords.rusty = true>><<redo 'keywords'>>
 
 Gain Card I-20 (Rusty Rod).
 

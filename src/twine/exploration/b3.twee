@@ -31,13 +31,13 @@ This is the world-famous Mergimal Research Center. It is also the home of your m
 
 If you want, you can see if he’s available to talk.
 
-<<link 'Tell him about the delivery. (requires: keyword CLOSED)'>><<if $keywords.closed == false>><<dialog 'no keyword CLOSED'>><<include 'no keyword'>><</dialog>><<else>><<goto 'tamarack: delivery'>><</if>><</link>>
+<<link 'Tell him about the delivery. (requires: keyword CLOSED)'>><<if $players[$activePlayer].characters[$activeCharacter].keywords.closed == false>><<dialog 'no keyword CLOSED'>><<include 'no keyword'>><</dialog>><<else>><<goto 'tamarack: delivery'>><</if>><</link>>
 [[Keep exploring the village.->b3]]
 
 :: b3: beach
 The beach is small, but tidy. If you knew how to ride a Mergimal, you could go out on the water.
 
-<<link 'Brave the waters (requires: keyword PADDLE)'>><<if $keywords.paddle == false>><<dialog 'no keyword paddle'>><<include 'no paddle'>><</dialog>><<else>><<goto 'b3: out to sea'>><</if>><</link>>
+<<link 'Brave the waters (requires: keyword PADDLE)'>><<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>><<dialog 'no keyword paddle'>><<include 'no paddle'>><</dialog>><<else>><<goto 'b3: out to sea'>><</if>><</link>>
 [[Keep exploring the village.->b3]]
 
 :: b3: out to sea

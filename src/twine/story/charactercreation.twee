@@ -1,8 +1,27 @@
 :: character creation
 !!create new character
-<div id='active-area'>
-    <<include 'character creation: name'>>
-</div>
+<div id='active-area'>\
+    <<include 'character creation: name'>>\
+</div>\
+
+<<link 'fast version' 'character creation: fast'>><</link>>
+
+:: character creation: fast
+name: <<textbox '_newCharacterName' ''>>
+pronouns: <<listbox '_newCharacterPronouns'>>
+    <<option 'they'>>
+    <<option 'she'>>
+    <<option 'he'>>
+<</listbox>>
+<<set _newCharacterStats = {attention: '', grit: '', memory: '', empathy: ''}>>
+attention: <<textbox '_newCharacterStats.attention' 'd6'>>
+grit: <<textbox '_newCharacterStats.grit' 'd6'>>
+memory: <<textbox '_newCharacterStats.memory' 'd6'>>
+empathy: <<textbox '_newCharacterStats.empathy' 'd6'>>
+
+<<button 'submit' 'main menu'>>
+    <<newcharacter $activePlayer _newCharacterName _newCharacterStats>>\
+<</button>>
 
 :: character creation: name
 What is the new character's name?

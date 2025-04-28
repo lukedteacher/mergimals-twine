@@ -10,7 +10,7 @@
 
 :: backpack item boxes [nobr]
 <div class='item-boxes char-sheet-boxes'>
-	<<for _item, _quantity range $backpack>>
+	<<for _item, _quantity range $players[$activePlayer].characters[$activeCharacter].backpack>>
 		<div class='item-box'>
 			<div class='item-img-box'>
 				<<print '<img class="backpack-item-img" title="' + _item + '" src="images/items/' + _item + '.svg">'>>
@@ -36,7 +36,7 @@
 <div class='keyword-boxes char-sheet-boxes'>
     <ul class='keywords-ul'>
         <<set _keywordCount = 0>>
-        <<for _keyword, _boolean range $keywords>>
+        <<for _keyword, _boolean range $players[$activePlayer].characters[$activeCharacter].keywords>>
             
             <<if _boolean == true>>
                 <<set _keywordCount ++>>
@@ -61,7 +61,7 @@ You don't have any batteries!
             <h2>keywords</h2>
         </summary>
         <<set _keywordCount = 0>>
-        <<for _keyword, _boolean range $keywords>>
+        <<for _keyword, _boolean range $players[$activePlayer].characters[$activeCharacter].keywords>>
             <<if _boolean == true>>
                 <<set _keywordCount ++>>
                 <div class='item-listing'>_keyword</div>

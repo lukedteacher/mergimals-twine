@@ -1,39 +1,4 @@
 :: StoryInit
-<<set $player to {
-  version: 'fusion',
-  versionLetter: 'a',
-  player: 'player',
-  name: 'Ash',
-  image: 'images/characters/player.png',
-  injuries: 0,
-  difficulty: 'easy'
-}>>
-
-<<set $stats to {
-  attention: 'd6',
-  grit: 'd6',
-  memory: 'd6',
-  empathy: 'd6'
-}>>
-
-<<set $backpack to {
-  coin: 0,
-  mergiball: 0,
-  charm: 0,
-  bandage: 0,
-  tool: 0,
-  battery: 0
-}>>
-
-<<set $keywords to {
-  closed: false,
-  discount: false,
-  flashlight: false,
-  paddle: false,
-  rusty: false,
-  shine: false
-}>>
-
 <<include 'mergimals data variable'>>
 <<include 'mergimals encounter table'>>
 
@@ -62,10 +27,8 @@
 <<set $sidebar to false>>
 
 <<newplayer 'luke'>>
-<<newplayer 'david'>>
-<<newplayer 'annie'>>
-<<newcharacter 'luke' 'foo'>>
-<<newcharacter 'david' 'bar'>>
+<<set _defaultStats = {attention: 'd4', grit: 'd8', memory: 'd6', empathy: 'd10'} >>
+<<newcharacter 'luke' 'foo' _defaultStats>>
 
 <<set $position = [3,2]>>
 <<set $explored = [

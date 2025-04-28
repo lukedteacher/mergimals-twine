@@ -10,7 +10,7 @@
 
 :: stat boxes [nobr]
 <div class='stat-boxes char-sheet-boxes'>
-    <<for _stat, _value range $stats>>
+    <<for _stat, _value range $players[$activePlayer].characters[$activeCharacter].stats>>
         <div class='stat-box'>
             <div class='stat-img-box'>
                 <<print '<img class="stat-img" title="' + _stat +'" src="images/stats/' + _stat + '.svg">'>>
@@ -34,13 +34,13 @@
 
 :: injury boxes [nobr]
 <div class='injury-boxes char-sheet-boxes'>
-	<<if $player.injuries > 4>>
-		<<set $player.injuries = 4>>
+	<<if $players[$activePlayer].characters[$activeCharacter].injuries > 4>>
+		<<set $players[$activePlayer].characters[$activeCharacter].injuries = 4>>
 	<</if>>
-	<<for _count range $player.injuries>>
+	<<for _count range $players[$activePlayer].characters[$activeCharacter].injuries>>
 		<div class='injury-tracker injured'></div>
 	<</for>>
-	<<for _count range (4 - $player.injuries)>>
+	<<for _count range (4 - $players[$activePlayer].characters[$activeCharacter].injuries)>>
 		<div class='injury-tracker'></div>
 	<</for>>
 </div>

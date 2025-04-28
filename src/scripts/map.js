@@ -49,7 +49,6 @@
 
     function createMoveButtons ($mapGrid, directions, gridCoordinate) {
         const longDirections = {n: 'north', e: 'east', w: 'west', s: 'south'};
-        console.log(directions);
         directions.forEach(direction => {
             // direction is an object, so get the name
             const shortDirection = direction.name;

@@ -5,7 +5,7 @@
 [[Go fishing.->d2: fishing]]
 
 :: d2: fishing
-<<if not $keywords.has('rusty')>>\
+<<if not $players[$activePlayer].characters[$activeCharacter].keywords.has('rusty')>>\
     <<include 'no rod'>>
 <<else>>\
     (Keyword RUSTY detected)

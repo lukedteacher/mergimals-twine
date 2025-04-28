@@ -40,14 +40,33 @@ window.Character = class Character {
         this.name = props.name;
         this.pronouns = 'they';
         this.version = props.version | 'fusion';
-        this.difficulty = props.version | 'normal';
+        this.difficulty = props.difficulty | 'normal';
 		this.lastPassage = ''
+		this.stats = props.stats | {attention: 'd4', grit: 'd4', memory: 'd4', empathy: 'd4'};
+		this.energy = 4;
+		this.injuries = 0;
+		this.backpack = {coin: 0, mergiball: 0, charm: 0, bandage: 0, tool: 0, battery: 0};
+		this.keywords = {
+			closed: false,
+			discount: false,
+			ebike: false,
+			flashlight: false,
+			paddle: false,
+			rusty: false,
+			shine: false
+		};
+		this.mergipedia = {};
+		const mergimals = Object.keys(State.variables.mergimals);
+		mergimals.forEach(mergimal => {
+			this.mergipedia[mergimal] = 'unknown';
+		});
 
 		// clone the given config object's own properties into our own properties.
 		//
 		// NOTE: use the SugarCube built-in `clone()` function to make deep
 		// copies of each of the properties' values.
 		Object.keys(props).forEach(prop => {
+			// TODO figure out why this is being called a bunch
 			this[prop] = clone(props[prop]);
 		});
 	}
@@ -96,6 +115,9 @@ Macro.add('newcharacter', {
         if (State.variables.players[playerName].characters[characterName]) {
             throw new Error('character already created');
         }
-        State.variables.players[playerName].characters[characterName] = new Character({name:characterName});
+		let characterStats = this.args[2];
+		if (!characterStats) console.log('no stats entered; using default');
+        State.variables.players[playerName].characters[characterName] = new Character({name: characterName, stats: characterStats});
+		console.log(characterName + ' successfully created');
     }
 });

@@ -45,5 +45,5 @@ Do Worksheet 13.4.
 This cave isn't very deep, but it was worth the climb! You find a few batteries in an old bird's nest. There's also a single challenge coin.
 
 <<link 'Gain 1 coin and 2 batteries. Return to the cliff.' '932'>>
-    <<set $backpack.coins += 1>><<set $backpack.batteries += 2>>
+    <<set $players[$activePlayer].characters[$activeCharacter].backpack.coins += 1>><<set $players[$activePlayer].characters[$activeCharacter].backpack.batteries += 2>>
 <</link>>

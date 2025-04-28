@@ -4,9 +4,9 @@
     <div style='display: grid; grid: repeat(2, 1fr) / repeat(3, 1fr); gap: 1rem;'>
         <<set _$temp to Object.fromEntries(Object.entries($mergimals).slice(_$start, _$start + 6))>>
         <<for _mergimal, _object range _$temp>>
-            <<if _object.tamed == true>>
+            <<if $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] == 'tamed'>>
                 <<card _mergimal false 'medium'>>
-            <<elseif _object.seen == true>>
+            <<elseif $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] == 'seen'>>
                 <<card _mergimal false 'medium' true>>
             <<else>>
                 <<card 'unknown' false 'medium'>>
@@ -43,7 +43,7 @@ Description: This Mergimal is can play music with their body.
 Found: ???
 
 <<return 'Inspect another.'>>
-<<link 'Choose this one.' 'start: part 3'>><<set $mergimals.melodrake.tamed = true>><</link>>
+<<link 'Choose this one.' 'start: part 3'>><<set $players[$activePlayer].characters[$activeCharacter].mergipedia.melodrake = 'tamed'>><</link>>
 
 :: scorchilla
 <<card 'scorchilla'>>
@@ -55,7 +55,7 @@ Description: This Mergimal dances like no one's watching.
 Found: ???
 
 <<return 'Inspect another.'>>
-<<link 'Choose this one.' 'start: part 3'>><<set $mergimals.scorchilla.tamed = true>><</link>>
+<<link 'Choose this one.' 'start: part 3'>><<set $players[$activePlayer].characters[$activeCharacter].mergipedia.scorchilla = 'tamed'>><</link>>
 
 :: penguwaiian
 <<card 'penguwaiian'>>
@@ -67,4 +67,4 @@ Description: This Mergimal loves to eat pineapple and surf.
 Found: ???
 
 <<return 'Inspect another.'>>
-<<link 'Choose this one.' 'start: part 3'>><<set $mergimals.penguwaiian.tamed = true>><</link>>
+<<link 'Choose this one.' 'start: part 3'>><<set $players[$activePlayer].characters[$activeCharacter].mergipedia.penguwaiian = 'tamed'>><</link>>

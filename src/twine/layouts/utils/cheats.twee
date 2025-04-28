@@ -12,25 +12,25 @@
   </div>
   <div>
     <<link '=0'>>
-      <<set $backpack.coin = 0>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin = 0>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '-1'>>
-      <<set $backpack.coin -= 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+1'>>
-      <<set $backpack.coin += 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+10'>>
-      <<set $backpack.coin += 10>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 10>>
       <<redo 'backpack'>>
     <</link>>
   </div>
@@ -39,25 +39,25 @@
   </div>
   <div>
     <<link '=0'>>
-      <<set $backpack.mergiball = 0>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball = 0>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '-1'>>
-      <<set $backpack.mergiball -= 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball -= 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+1'>>
-      <<set $backpack.mergiball += 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+10'>>
-      <<set $backpack.mergiball += 10>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 10>>
       <<redo 'backpack'>>
     <</link>>
   </div>
@@ -66,25 +66,25 @@
   </div>
   <div>
     <<link '=0'>>
-      <<set $backpack.charm = 0>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm = 0>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '-1'>>
-      <<set $backpack.charm -= 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm -= 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+1'>>
-      <<set $backpack.charm += 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm += 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+10'>>
-      <<set $backpack.charm += 10>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm += 10>>
       <<redo 'backpack'>>
     <</link>>
   </div>
@@ -93,25 +93,25 @@
   </div>
   <div>
     <<link '=0'>>
-      <<set $backpack.bandage = 0>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage = 0>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '-1'>>
-      <<set $backpack.bandage -= 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage -= 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+1'>>
-      <<set $backpack.bandage += 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage += 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+10'>>
-      <<set $backpack.bandage += 10>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage += 10>>
       <<redo 'backpack'>>
     <</link>>
   </div>
@@ -120,25 +120,25 @@
   </div>
   <div>
     <<link '=0'>>
-      <<set $backpack.tool = 0>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool = 0>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '-1'>>
-      <<set $backpack.tool -= 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool -= 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+1'>>
-      <<set $backpack.tool += 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+10'>>
-      <<set $backpack.tool += 10>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 10>>
       <<redo 'backpack'>>
     <</link>>
   </div>
@@ -147,71 +147,79 @@
   </div>
   <div>
     <<link '=0'>>
-      <<set $backpack.battery = 0>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery = 0>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '-1'>>
-      <<set $backpack.battery -= 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery -= 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+1'>>
-      <<set $backpack.battery += 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery += 1>>
       <<redo 'backpack'>>
     <</link>>
   </div>
   <div>
     <<link '+10'>>
-      <<set $backpack.battery += 10>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery += 10>>
       <<redo 'backpack'>>
     <</link>>
   </div>
 </div>
 <h2>injuries</h2>
-<<link 'ouch'>><<set $player.injuries ++>><<redo 'injuries'>><</link>>
-<<link 'ahhh...'>><<set $player.injuries -->><<redo 'injuries'>><</link>>
+<<link 'ouch'>><<set $players[$activePlayer].characters[$activeCharacter].injuries ++>><<redo 'injuries'>><</link>>
+<<link 'ahhh...'>><<set $players[$activePlayer].characters[$activeCharacter].injuries -->><<redo 'injuries'>><</link>>
 <h2>teleport</h2>
 Enter grid coords: <<textbox '$_destination' ''>> <<button 'go'>><<run Dialog.close();>><<goto $_destination>><</button>>
 <h2>keywords</h2>
 CLOSED
 <<link '+'>>
-    <<set $keywords.closed = true>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.closed = true>>
     <<redo 'keywords'>>
 <</link>> 
 <<link 'x'>>
-    <<set $keywords.closed = false>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.closed = false>>
     <<redo 'keywords'>>
 <</link>><br />
-FLASHLIGHT <<link '+'>><<set $keywords.flashlight = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.flashlight = false>><<redo 'keywords'>><</link>><br />
-DISCOUNT <<link '+'>><<set $keywords.discount = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.discount = false>><<redo 'keywords'>><</link>><br />
-PADDLE <<link '+'>><<set $keywords.paddle = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.paddle = false>><<redo 'keywords'>><</link>><br />
-RUSTY <<link '+'>><<set $keywords.rusty = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.rusty = false>><<redo 'keywords'>><</link>><br />
-SHINE <<link '+'>><<set $keywords.shine = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $keywords.shine = false>><<redo 'keywords'>><</link>><br />
+FLASHLIGHT
+<<link '+'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.flashlight = true>>
+    <<redo 'keywords'>>
+<</link>> 
+<<link 'x'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.flashlight = false>>
+    <<redo 'keywords'>>
+<</link>><br />
+DISCOUNT <<link '+'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.discount = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.discount = false>><<redo 'keywords'>><</link>><br />
+PADDLE <<link '+'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.paddle = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.paddle = false>><<redo 'keywords'>><</link>><br />
+RUSTY <<link '+'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.rusty = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.rusty = false>><<redo 'keywords'>><</link>><br />
+SHINE <<link '+'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.shine = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.shine = false>><<redo 'keywords'>><</link>><br />
 <h2>mergimals</h2>
 ALL
 SEEN 
 <<link '+'>>
     <<for _mergimal, _object range $mergimals>>
-    <<set _object.seen = true>>
+    <<set $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] = 'seen'>>
     <</for>>
 <</link>>
 <<link '-'>>
     <<for _mergimal, _object range $mergimals>>
-    <<set _object.seen = false>>
+    <<set $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] = 'unknown'>>
     <</for>>
 <</link>> 
 TAMED 
 <<link '+'>>
     <<for _mergimal, _object range $mergimals>>
-    <<set _object.tamed = true>>
+    <<set $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] = 'tamed'>>
     <</for>>
 <</link>>
 <<link '-'>>
     <<for _mergimal, _object range $mergimals>>
-    <<set _object.tamed = false>>
+    <<set $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] = 'unknown'>>
     <</for>>
 <</link>><br />
 specific: 
@@ -219,8 +227,8 @@ specific:
     <<optionsfrom $mergimals>>
 <</listbox>> 
 <<button 'seen'>>
-    <<set _mergimalToChange.seen = !_mergimalToChange.seen>>
+    <<set $players[$activePlayer].characters[$activeCharacter].mergipedia[_mergimalToChange] = 'seen'>>
 <</button>>
 <<button 'tamed'>>
-    <<set _mergimalToChange.tamed = !_mergimalToChange.tamed>>
+    <<set $players[$activePlayer].characters[$activeCharacter].mergipedia[_mergimalToChange] = 'tamed'>>
 <</button>>

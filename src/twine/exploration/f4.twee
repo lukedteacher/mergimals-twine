@@ -17,13 +17,13 @@ She seems friendly.
 [[Another time.->f4]]
 
 :: f4: haggle
-<<if (($keywords.paddle == true) and ($keywords.shine == true))>>
+<<if (($players[$activePlayer].characters[$activeCharacter].keywords.paddle == true) and ($players[$activePlayer].characters[$activeCharacter].keywords.shine == true))>>
     "You've beaten Rhia *and* Matiu in the school challenge?"
 
     You can have one for free!
 
-    <<link 'You get an ebike!' 'f4'>><<set $keywords.ebike = true>><</link>>
-<<elseif $keywords.paddle == true>>
+    <<link 'You get an ebike!' 'f4'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.ebike = true>><</link>>
+<<elseif $players[$activePlayer].characters[$activeCharacter].keywords.paddle == true>>
     "You already tackled the Wave School challenge and won?!" she says.
 
     "Rhia is so impressive. Don't you think? I wish I had half of her fashion sense."
@@ -32,18 +32,18 @@ She seems friendly.
 
     <<nobr>>
         <<link 'Sure!'>>
-            <<if $backpack.coin < 100>>
+            <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 100>>
                 <<dialog 'not enough coins'>>\
                     <<include 'not enough coins'>>
                 <</dialog>>
             <<else>>
-                <<set $backpack.coin -= 100>>
-                <<set $keywords.ebike = true>>
+                <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 100>>
+                <<set $players[$activePlayer].characters[$activeCharacter].keywords.ebike = true>>
             <</if>>
         <</link>>
     <</nobr>>
     [[Nevermind.->f4]]
-<<elseif $keywords.shine == true>>
+<<elseif $players[$activePlayer].characters[$activeCharacter].keywords.shine == true>>
     "You already tackled the Forge School challenge and won?!" she says.
 
     "Matiu seems kinda scary. I don't know how you were able to work up the courage to even try!"
@@ -52,13 +52,13 @@ She seems friendly.
 
     <<nobr>>
         <<link 'Sure!'>>
-            <<if $backpack.coin < 100>>
+            <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 100>>
                 <<dialog 'not enough coins'>>\
                     <<include 'not enough coins'>>
                 <</dialog>>
             <<else>>
-                <<set $backpack.coin -= 100>>
-                <<set $keywords.ebike = true>>
+                <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 100>>
+                <<set $players[$activePlayer].characters[$activeCharacter].keywords.ebike = true>>
             <</if>>
         <</link>>
     <</nobr>>
@@ -70,13 +70,13 @@ She seems friendly.
 
     <<nobr>>
         <<link 'Alright, I guess.'>>
-            <<if $backpack.coin < 1000>>
+            <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 1000>>
                 <<dialog 'not enough coins'>>\
                     <<include 'not enough coins'>>
                 <</dialog>>
             <<else>>
-                <<set $backpack.coin -= 1000>>
-                <<set $keywords.ebike = true>>
+                <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 1000>>
+                <<set $players[$activePlayer].characters[$activeCharacter].keywords.ebike = true>>
             <</if>>
         <</link>>
     <</nobr>>

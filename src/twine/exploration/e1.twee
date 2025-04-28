@@ -4,7 +4,7 @@
 [[Go to the Wave School->e1: wave school]]
 
 :: e1: wave school [blue-urf]
-<<if not $keywords.has('paddle')>>\
+<<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>>\
 A large group of people seems to be standing in line, waiting to get in.
 
 Thankfully, you don't have to wait long before a figure steps out of the building and addresses the crowd.
@@ -25,6 +25,6 @@ How are you supposed to complete the Mergimal Challenge if all the schools keep 
 
 You decide to go talk to Rhia to see what is going on.
 
-<span id='response-1'><<link 'What is going on?'>><<replace '#response-1'>><<say $player.name $player.image>>What is going on?<</say>><</replace>><</link>></span>
+<span id='response-1'><<link 'What is going on?'>><<replace '#response-1'>><<say $activePlayer $player.image>>What is going on?<</say>><</replace>><</link>></span>
 
 [TODO finish this encounter]

@@ -7,8 +7,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'skip count', 
         number: '6', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -18,8 +16,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'draw a diagram', 
         number: '55', 
         rarity: 'uncommon', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -29,8 +25,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'make a model', 
         number: '84', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -40,8 +34,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: '?', 
         number: '?', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -51,8 +43,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'check a chart', 
         number: '8', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.',
         tamedPassageText: 'This cute little bird is called Boxin, after the box-like marks on their bodies. They love to sing and dance.'
     },
@@ -62,8 +52,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'repeated addition', 
         number: '7', 
         rarity: 'uncommon', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -73,8 +61,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'skip count', 
         number: '7', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'This Mergimal seems determined to swim back into the water. They are waving their large horn around, keeping their distance.',
         tamedPassageText: 'You finally caught this tough Mergimal! Their name is Corwhal, because of their long coral-textured horn.'
     },
@@ -84,19 +70,15 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'find a familiar fact', 
         number: '1', 
         rarity: 'rare', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
     flameberry: {
         name: 'flameberry', 
-        type: '?', 
-        strategy: '?', 
+        type: 'forge', 
+        strategy: 'split a set', 
         number: '4', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -106,19 +88,15 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'draw a diagram', 
         number: '4', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'A dragon-fly the size of a toaster whizzes by your ear. They seem to have taken an interest in your backpack.',
         tamedPassageText: 'Stronger than they look, Floraphor joins your crew. Just make sure to tell them stories and invite them to parties, or they\'ll get a bit annoyed.'
     },
     gearquin: {
         name: 'gearquin', 
-        type: '?', 
-        strategy: '?', 
+        type: 'spark', 
+        strategy: 'repeated addition', 
         number: '5', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -128,19 +106,15 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'draw a diagram', 
         number: '11', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'A small rodent scurries toward you. They seem to be holding a bag full of shiny rocks.',
         tamedPassageText: 'You have tamed Gemble! They love to collect pretty looking rocks. No one is sure what they do with them though.'
     },
     glowbee: {
         name: 'glowbee', 
         type: 'forge', 
-        strategy: '?', 
+        strategy: 'identity property', 
         number: '1', 
         rarity: 'rare', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -150,8 +124,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'skip count', 
         number: '8', 
         rarity: 'uncommon', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -161,8 +133,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: '?', 
         number: '6', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -172,8 +142,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'arrange an array', 
         number: '7', 
         rarity: 'uncommon', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -183,8 +151,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'skip count', 
         number: '2', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'When you pull up the line, a funny-looking crab Mergimal has grabbed onto the bait.',
         tamedPassageText: 'You\'ve seen these mischevious Mergimals around before. They are named Krustwo and love to interrupt beach picnics with their sharp claws.'
     },
@@ -194,19 +160,15 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: '?', 
         number: '?', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
     melodrake: {
         name: 'melodrake', 
         type: 'root', 
-        strategy: 'skip count', 
+        strategy: 'double', 
         number: '2', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -216,8 +178,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'arrange an array', 
         number: '12', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -227,8 +187,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'skip count', 
         number: '10', 
         rarity: 'uncommon', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -238,8 +196,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'cute cup', 
         number: '6', 
         rarity: 'rare', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -249,8 +205,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'make a model', 
         number: '4', 
         rarity: 'uncommon', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -260,8 +214,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'find a familiar fact', 
         number: '1/2', 
         rarity: 'rare', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -271,8 +223,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: '?', 
         number: '11', 
         rarity: 'rare', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -282,8 +232,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'count a crest', 
         number: '9', 
         rarity: 'uncommon', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'A tiny snail with wings hangs from the line as you reel it in.',
         tamedPassageText: 'This Mergimal is quite small, but they seem quite active. Their name is Tidefly.'
     },
@@ -293,8 +241,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'label a line', 
         number: '3', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -304,8 +250,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'apply an algorithm', 
         number: '3', 
         rarity: 'uncommon', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'You\'re looking around in the grass and bump into a prickly bush. Surprisingly, it starts to move. That\'s no bush: that\'s a Mergimal!',
         tamedPassageText: 'This Mergimal is named Treethorn. They are covered in berries (yum!) and thorns (ouch!).'
     },
@@ -315,8 +259,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: '?', 
         number: '?', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -326,8 +268,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: '?',
         number: '?', 
         rarity: 'common', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'What a cool Mergimal.',
         tamedPassageText: 'You tamed them.'
     },
@@ -337,8 +277,6 @@ The noises in the grass turned out to be a grey bird. They seem to be looking fo
         strategy: 'repeated addition', 
         number: '6', 
         rarity: 'uncommon', 
-        seen: false, 
-        tamed: false,
         strayPassageText: 'You\'re looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.',
         tamedPassageText: 'This Mergimal is named Zipper. They\'re cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.'
     }

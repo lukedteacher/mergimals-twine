@@ -13,7 +13,7 @@ Do Worksheet 84.1
 <<nobr>>
     <<set $tamedPassage = 'tamed: bakewing'>>
     <<link 'Throw a mergiball!'>>
-        <<if $backpack.mergiball < 1>>
+        <<if $players[$activePlayer].characters[$activeCharacter].backpack.mergiball < 1>>
             <<dialog>>
                 <<include 'no mergiballs'>>
             <</dialog>>
@@ -30,4 +30,4 @@ Do Worksheet 84.1
 <<card 'bakewing'>>
 This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, which they use to make pizza. Yum!
 
-<<link 'You tamed them.' 'volcano'>><<set $mergimals.bakewing.tamed = true>><<set $tamedPassage = ''>><</link>>
+<<link 'You tamed them.' 'volcano'>><<set $players[$activePlayer].characters[$activeCharacter].mergipedia.bakewing = 'tamed'>><<set $tamedPassage = ''>><</link>>

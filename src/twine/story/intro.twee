@@ -1,5 +1,5 @@
 :: intro
-Greetings, $activeCharacter.name!
+Greetings, $activeCharacter!
 
 Today is the first day of your Mergimals journey!
 
@@ -8,13 +8,13 @@ Today is the first day of your Mergimals journey!
 :: start: part 1 [story]
 
 Professor Tamarack's office is on the Eastern edge of town. It's the biggest building in the village and what mysteries fill all three floors are as good as anyone's guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
-<<tam>>$activeCharacter.name!
+<<tam>>$activeCharacter!
 Finally, you’re here!
 <</tam>>\
 <div id='response'>\
   <<link 'Say: Were you waiting for me?'>>
     <<replace '#response'>>\
-      <<say $activeCharacter.name $player.image>>Were you waiting for me?<</say>>\
+      <<say $activeCharacter $player.image>>Were you waiting for me?<</say>>\
       <<tam>>No, I wasn’t waiting at the window all morning for you.
         <<cont keypress append>>I have, um, lots and lots of work to do to keep me busy.
           <<cont keypress append>>I’m, like, super duper busy.
@@ -32,7 +32,7 @@ Finally, you’re here!
   <</link>>
   <<link 'Say: Let\'s go!'>>
     <<replace '#response'>>\
-      <<say $activeCharacter.name $player.image>>Let's go!<</say>>\
+      <<say $activeCharacter $player.image>>Let's go!<</say>>\
       <<tam>>You’ve been waiting 10 years for this, how exciting!<</tam>>\
       <<link 'Follow the professor inside the Lab.' 'start: part 2'>><</link>>
     <</replace>>
@@ -44,7 +44,15 @@ You enter.
 
 It's time to pick a Mergimal!
 
-<div style='display: flex; gap: 1rem;'><<card 'melodrake' true>><<set $mergimals.melodrake.seen = true>><<card 'scorchilla' true>><<set $mergimals.scorchilla.seen = true>><<card 'penguwaiian' true>><<set $mergimals.penguwaiian.seen = true>></div>
+<div style='display: flex; gap: 1rem;'>\
+  <<card 'melodrake' true>>\
+  <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.melodrake = 'seen'>>\
+  <<card 'scorchilla' true>>\
+  <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.scorchilla = 'seen'>>\
+  <<card 'penguwaiian' true>>\
+  <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.penguwaiian = 'seen'>>\
+</div>\
+
 [[Ask if there are any others.->start: part 2b]]
 
 :: start: part 2b
@@ -56,7 +64,7 @@ So make a choice.
 
 :: start: part 3
 <<tam>>Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.<</tam>>\
-You got 5 mergiballs.<<set $backpack.mergiball += 5>>
+You got 5 mergiballs.<<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 5>>
 
 They have been added to your backpack.
 
