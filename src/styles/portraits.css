@@ -1,0 +1,10 @@
+.portrait {
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    border: 3px solid transparent;
+}
+
+.selected {
+    border: 3px solid var(--green) !important;
+}
+

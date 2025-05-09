@@ -39,6 +39,8 @@ window.Character = class Character {
 		// set data properties to defaults
         this.name = props.name;
         this.pronouns = 'they';
+		this.portraitNumber = props.portraitNumber;
+		this.portrait = 'images/characters/portrait_' + props.portraitNumber + '.webp';
         this.version = props.version | 'fusion';
         this.difficulty = props.difficulty | 'normal';
 		this.lastPassage = ''
@@ -60,7 +62,7 @@ window.Character = class Character {
 		mergimals.forEach(mergimal => {
 			this.mergipedia[mergimal] = 'unknown';
 		});
-
+		console.log(this.portrait);
 		// clone the given config object's own properties into our own properties.
 		//
 		// NOTE: use the SugarCube built-in `clone()` function to make deep
@@ -107,17 +109,22 @@ Macro.add('newplayer', {
 
 Macro.add('newcharacter', {
     handler: function() {
-        let playerName = this.args[0];
+        const playerName = this.args[0];
         if (!playerName) throw new Error('no player name specified');
         if (!State.variables.players[playerName]) throw new Error('player does not exist: create one first')
-        let characterName = this.args[1];
+		const characterName = this.args[1];
         if (!characterName) throw new Error('no character name specified');
         if (State.variables.players[playerName].characters[characterName]) {
             throw new Error('character already created');
         }
-		let characterStats = this.args[2];
+		const characterPortraitNumber = this.args[2];
+		console.log('port');
+		console.log(characterPortraitNumber);
+		const characterStats = this.args[3];
+		console.log('stats');
+		console.log(characterStats);
 		if (!characterStats) console.log('no stats entered; using default');
-        State.variables.players[playerName].characters[characterName] = new Character({name: characterName, stats: characterStats});
+        State.variables.players[playerName].characters[characterName] = new Character({name: characterName, portraitNumber: characterPortraitNumber, stats: characterStats});
 		console.log(characterName + ' successfully created');
     }
 });

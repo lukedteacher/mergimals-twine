@@ -1822,7 +1822,18 @@ a.ui-button:active,
     width: 100%;
     grid-area: 1 / 1 / span 10 / span 10;
 }
-/* twine-user-stylesheet #9: "root.css" */
+/* twine-user-stylesheet #9: "portraits.css" */
+.portrait {
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    border: 3px solid transparent;
+}
+
+.selected {
+    border: 3px solid var(--green) !important;
+}
+
+/* twine-user-stylesheet #10: "root.css" */
 /* customizer variables */
 :root {
     --text-font: lexend;
@@ -1842,7 +1853,7 @@ a.ui-button:active,
     --violet: hsl(270, 100%, 30%);
     --magenta: hsl(300, 100%, 30%);
   }
-/* twine-user-stylesheet #10: "shake-macro-set.css" */
+/* twine-user-stylesheet #11: "shake-macro-set.css" */
 /*! <<shake>> macro set for SugarCube 2.x */
 @-webkit-keyframes shakeanim {
 	0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
@@ -1902,7 +1913,7 @@ a.ui-button:active,
 	     -o-transform-origin: 50% 50%;
 	        transform-origin: 50% 50%;
 }
-/* twine-user-stylesheet #11: "speech.css" */
+/* twine-user-stylesheet #12: "speech.css" */
 .say {
     border: 1px solid #eee;
     overflow: none;
@@ -1933,7 +1944,7 @@ a.ui-button:active,
     padding: 0.6rem;
     margin: 0;
 }
-/* twine-user-stylesheet #12: "utility-classes.css" */
+/* twine-user-stylesheet #13: "utility-classes.css" */
 /* utility classes */
 
 .text-darkest {
@@ -21380,6 +21391,8 @@ window.Character = class Character {
 		// set data properties to defaults
         this.name = props.name;
         this.pronouns = 'they';
+		this.portraitNumber = props.portraitNumber;
+		this.portrait = 'images/characters/portrait_' + props.portraitNumber + '.webp';
         this.version = props.version | 'fusion';
         this.difficulty = props.difficulty | 'normal';
 		this.lastPassage = ''
@@ -21401,7 +21414,7 @@ window.Character = class Character {
 		mergimals.forEach(mergimal => {
 			this.mergipedia[mergimal] = 'unknown';
 		});
-
+		console.log(this.portrait);
 		// clone the given config object's own properties into our own properties.
 		//
 		// NOTE: use the SugarCube built-in `clone()` function to make deep
@@ -21448,17 +21461,22 @@ Macro.add('newplayer', {
 
 Macro.add('newcharacter', {
     handler: function() {
-        let playerName = this.args[0];
+        const playerName = this.args[0];
         if (!playerName) throw new Error('no player name specified');
         if (!State.variables.players[playerName]) throw new Error('player does not exist: create one first')
-        let characterName = this.args[1];
+		const characterName = this.args[1];
         if (!characterName) throw new Error('no character name specified');
         if (State.variables.players[playerName].characters[characterName]) {
             throw new Error('character already created');
         }
-		let characterStats = this.args[2];
+		const characterPortraitNumber = this.args[2];
+		console.log('port');
+		console.log(characterPortraitNumber);
+		const characterStats = this.args[3];
+		console.log('stats');
+		console.log(characterStats);
 		if (!characterStats) console.log('no stats entered; using default');
-        State.variables.players[playerName].characters[characterName] = new Character({name: characterName, stats: characterStats});
+        State.variables.players[playerName].characters[characterName] = new Character({name: characterName, portraitNumber: characterPortraitNumber, stats: characterStats});
 		console.log(characterName + ' successfully created');
     }
 });
@@ -22566,10 +22584,25 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 &lt;&lt;/for&gt;&gt;
 
 &lt;&lt;widget &#39;tam&#39; container&gt;&gt;
-  &lt;&lt;say &#39;Prof. Tamarack&#39; &#39;images/characters/tam.png&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+  &lt;&lt;say &#39;Prof. Tamarack&#39; &#39;images/characters/proftam.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 &lt;&lt;widget &#39;rhia&#39; container&gt;&gt;
-  &lt;&lt;say &#39;Rhia (Wave School Leader)&#39; &#39;images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+  &lt;&lt;say &#39;Rhia (Wave University Leader)&#39; &#39;images/characters/rhia.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &#39;matiu&#39; container&gt;&gt;
+  &lt;&lt;say &#39;Matiu (Forge Workshop Leader)&#39; &#39;images/characters/matiu.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &#39;zahara&#39; container&gt;&gt;
+  &lt;&lt;say &#39;Zahara (Bloom Conservatory Leader)&#39; &#39;images/characters/zahara.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &#39;bijili&#39; container&gt;&gt;
+  &lt;&lt;say &#39;Bijili (Deep Institute Leader)&#39; &#39;images/characters/bijili.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &#39;axel&#39; container&gt;&gt;
+  &lt;&lt;say &#39;Axel (Spark Prep Leader)&#39; &#39;images/characters/axel.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &#39;grace&#39; container&gt;&gt;
+  &lt;&lt;say &#39;Grace (Veil Grove Leader)&#39; &#39;images/characters/grace.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &#39;skipDifferenceChallenge&#39;&gt;&gt;
@@ -22585,7 +22618,7 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 
 &lt;&lt;newplayer &#39;luke&#39;&gt;&gt;
 &lt;&lt;set _defaultStats = {attention: &#39;d4&#39;, grit: &#39;d8&#39;, memory: &#39;d6&#39;, empathy: &#39;d10&#39;} &gt;&gt;
-&lt;&lt;newcharacter &#39;luke&#39; &#39;foo&#39; _defaultStats&gt;&gt;
+&lt;&lt;newcharacter &#39;luke&#39; &#39;foo&#39; 2 _defaultStats&gt;&gt;
 
 &lt;&lt;set $position = [3,2]&gt;&gt;
 &lt;&lt;set $explored = [
@@ -23647,20 +23680,37 @@ $mergimalEncountered.tamedPassageText&lt;br /&gt;&lt;br /&gt;
     &lt;&lt;include &#39;character creation: name&#39;&gt;&gt;\
 &lt;/div&gt;\
 
-&lt;&lt;link &#39;fast version&#39; &#39;character creation: fast&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="character creation: fast" tags="" position="1100,1975" size="100,100">name: &lt;&lt;textbox &#39;_newCharacterName&#39; &#39;&#39;&gt;&gt;
+&lt;&lt;link &#39;fast version&#39; &#39;character creation: fast&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="character creation: fast" tags="nobr" position="1100,1975" size="100,100">name: &lt;&lt;textbox &#39;_newCharacterName&#39; &#39;&#39;&gt;&gt;&lt;br /&gt;
 pronouns: &lt;&lt;listbox &#39;_newCharacterPronouns&#39;&gt;&gt;
     &lt;&lt;option &#39;they&#39;&gt;&gt;
     &lt;&lt;option &#39;she&#39;&gt;&gt;
     &lt;&lt;option &#39;he&#39;&gt;&gt;
-&lt;&lt;/listbox&gt;&gt;
+&lt;&lt;/listbox&gt;&gt;&lt;br /&gt;
+portrait:&lt;br /&gt;&lt;&lt;set _newCharacterPortraitNumber = 0&gt;&gt;
+&lt;img data-number=&#39;1&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_1.webp&#39;&gt;
+&lt;img data-number=&#39;2&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_2.webp&#39;&gt;
+&lt;img data-number=&#39;3&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_3.webp&#39;&gt;
+&lt;img data-number=&#39;9&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_9.webp&#39;&gt;&lt;br /&gt;
+&lt;img data-number=&#39;5&#39; lass=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_5.webp&#39;&gt;
+&lt;img data-number=&#39;6&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_6.webp&#39;&gt;
+&lt;img data-number=&#39;7&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_7.webp&#39;&gt;
+&lt;img data-number=&#39;8&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_8.webp&#39;&gt;&lt;br /&gt;
+&lt;&lt;script&gt;&gt;
+  $(function() {
+    $(&#39;.portrait&#39;).click( function () {
+        $(this).toggleClass(&#39;selected&#39;).siblings().removeClass(&#39;selected&#39;);
+        State.temporary.newCharacterPortraitNumber = $(this).attr(&#39;data-number&#39;);
+    });
+  });
+&lt;&lt;/script&gt;&gt;
 &lt;&lt;set _newCharacterStats = {attention: &#39;&#39;, grit: &#39;&#39;, memory: &#39;&#39;, empathy: &#39;&#39;}&gt;&gt;
-attention: &lt;&lt;textbox &#39;_newCharacterStats.attention&#39; &#39;d6&#39;&gt;&gt;
-grit: &lt;&lt;textbox &#39;_newCharacterStats.grit&#39; &#39;d6&#39;&gt;&gt;
-memory: &lt;&lt;textbox &#39;_newCharacterStats.memory&#39; &#39;d6&#39;&gt;&gt;
-empathy: &lt;&lt;textbox &#39;_newCharacterStats.empathy&#39; &#39;d6&#39;&gt;&gt;
+attention: &lt;&lt;textbox &#39;_newCharacterStats.attention&#39; &#39;d6&#39;&gt;&gt;&lt;br /&gt;
+grit: &lt;&lt;textbox &#39;_newCharacterStats.grit&#39; &#39;d6&#39;&gt;&gt;&lt;br /&gt;
+memory: &lt;&lt;textbox &#39;_newCharacterStats.memory&#39; &#39;d6&#39;&gt;&gt;&lt;br /&gt;
+empathy: &lt;&lt;textbox &#39;_newCharacterStats.empathy&#39; &#39;d6&#39;&gt;&gt;&lt;br /&gt;
 
 &lt;&lt;button &#39;submit&#39; &#39;main menu&#39;&gt;&gt;
-    &lt;&lt;newcharacter $activePlayer _newCharacterName _newCharacterStats&gt;&gt;\
+    &lt;&lt;newcharacter $activePlayer _newCharacterName _newCharacterPortraitNumber _newCharacterStats&gt;&gt;\
 &lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="character creation: name" tags="" position="1225,1975" size="100,100">What is the new character&#39;s name?
 &lt;&lt;textbox &#39;_newCharacterName&#39; &#39;&#39;&gt;&gt;
 &lt;&lt;link &#39;create&#39;&gt;&gt;
@@ -23849,7 +23899,7 @@ Finally, you’re here!
 &lt;div id=&#39;response&#39;&gt;\
   &lt;&lt;link &#39;Say: Were you waiting for me?&#39;&gt;&gt;
     &lt;&lt;replace &#39;#response&#39;&gt;&gt;\
-      &lt;&lt;say $activeCharacter $player.image&gt;&gt;Were you waiting for me?&lt;&lt;/say&gt;&gt;\
+      &lt;&lt;say $activeCharacter $players[$activePlayer].characters[$activeCharacter].portrait&gt;&gt;Were you waiting for me?&lt;&lt;/say&gt;&gt;\
       &lt;&lt;tam&gt;&gt;No, I wasn’t waiting at the window all morning for you.
         &lt;&lt;cont keypress append&gt;&gt;I have, um, lots and lots of work to do to keep me busy.
           &lt;&lt;cont keypress append&gt;&gt;I’m, like, super duper busy.
@@ -23867,7 +23917,7 @@ Finally, you’re here!
   &lt;&lt;/link&gt;&gt;
   &lt;&lt;link &#39;Say: Let\&#39;s go!&#39;&gt;&gt;
     &lt;&lt;replace &#39;#response&#39;&gt;&gt;\
-      &lt;&lt;say $activeCharacter $player.image&gt;&gt;Let&#39;s go!&lt;&lt;/say&gt;&gt;\
+      &lt;&lt;say $activeCharacter $players[$activePlayer].characters[$activeCharacter].portrait&gt;&gt;Let&#39;s go!&lt;&lt;/say&gt;&gt;\
       &lt;&lt;tam&gt;&gt;You’ve been waiting 10 years for this, how exciting!&lt;&lt;/tam&gt;&gt;\
       &lt;&lt;link &#39;Follow the professor inside the Lab.&#39; &#39;start: part 2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
     &lt;&lt;/replace&gt;&gt;

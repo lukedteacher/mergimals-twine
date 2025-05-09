@@ -9,10 +9,25 @@
 <</for>>
 
 <<widget 'tam' container>>
-  <<say 'Prof. Tamarack' 'images/characters/tam.png'>>_contents<</say>>
+  <<say 'Prof. Tamarack' 'images/characters/proftam.webp'>>_contents<</say>>
 <</widget>>
 <<widget 'rhia' container>>
-  <<say 'Rhia (Wave School Leader)' 'images/characters/rhia.webp'>>_contents<</say>>
+  <<say 'Rhia (Wave University Leader)' 'images/characters/rhia.webp'>>_contents<</say>>
+<</widget>>
+<<widget 'matiu' container>>
+  <<say 'Matiu (Forge Workshop Leader)' 'images/characters/matiu.webp'>>_contents<</say>>
+<</widget>>
+<<widget 'zahara' container>>
+  <<say 'Zahara (Bloom Conservatory Leader)' 'images/characters/zahara.webp'>>_contents<</say>>
+<</widget>>
+<<widget 'bijili' container>>
+  <<say 'Bijili (Deep Institute Leader)' 'images/characters/bijili.webp'>>_contents<</say>>
+<</widget>>
+<<widget 'axel' container>>
+  <<say 'Axel (Spark Prep Leader)' 'images/characters/axel.webp'>>_contents<</say>>
+<</widget>>
+<<widget 'grace' container>>
+  <<say 'Grace (Veil Grove Leader)' 'images/characters/grace.webp'>>_contents<</say>>
 <</widget>>
 
 <<widget 'skipDifferenceChallenge'>>
@@ -28,7 +43,7 @@
 
 <<newplayer 'luke'>>
 <<set _defaultStats = {attention: 'd4', grit: 'd8', memory: 'd6', empathy: 'd10'} >>
-<<newcharacter 'luke' 'foo' _defaultStats>>
+<<newcharacter 'luke' 'foo' 2 _defaultStats>>
 
 <<set $position = [3,2]>>
 <<set $explored = [

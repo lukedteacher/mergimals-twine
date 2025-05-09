@@ -14,7 +14,7 @@ Finally, you’re here!
 <div id='response'>\
   <<link 'Say: Were you waiting for me?'>>
     <<replace '#response'>>\
-      <<say $activeCharacter $player.image>>Were you waiting for me?<</say>>\
+      <<say $activeCharacter $players[$activePlayer].characters[$activeCharacter].portrait>>Were you waiting for me?<</say>>\
       <<tam>>No, I wasn’t waiting at the window all morning for you.
         <<cont keypress append>>I have, um, lots and lots of work to do to keep me busy.
           <<cont keypress append>>I’m, like, super duper busy.
@@ -32,7 +32,7 @@ Finally, you’re here!
   <</link>>
   <<link 'Say: Let\'s go!'>>
     <<replace '#response'>>\
-      <<say $activeCharacter $player.image>>Let's go!<</say>>\
+      <<say $activeCharacter $players[$activePlayer].characters[$activeCharacter].portrait>>Let's go!<</say>>\
       <<tam>>You’ve been waiting 10 years for this, how exciting!<</tam>>\
       <<link 'Follow the professor inside the Lab.' 'start: part 2'>><</link>>
     <</replace>>

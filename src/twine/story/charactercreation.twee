@@ -6,21 +6,38 @@
 
 <<link 'fast version' 'character creation: fast'>><</link>>
 
-:: character creation: fast
-name: <<textbox '_newCharacterName' ''>>
+:: character creation: fast [nobr]
+name: <<textbox '_newCharacterName' ''>><br />
 pronouns: <<listbox '_newCharacterPronouns'>>
     <<option 'they'>>
     <<option 'she'>>
     <<option 'he'>>
-<</listbox>>
+<</listbox>><br />
+portrait:<br /><<set _newCharacterPortraitNumber = 0>>
+<img data-number='1' class='portrait selectable' src='images/characters/portrait_1.webp'>
+<img data-number='2' class='portrait selectable' src='images/characters/portrait_2.webp'>
+<img data-number='3' class='portrait selectable' src='images/characters/portrait_3.webp'>
+<img data-number='9' class='portrait selectable' src='images/characters/portrait_9.webp'><br />
+<img data-number='5' lass='portrait selectable' src='images/characters/portrait_5.webp'>
+<img data-number='6' class='portrait selectable' src='images/characters/portrait_6.webp'>
+<img data-number='7' class='portrait selectable' src='images/characters/portrait_7.webp'>
+<img data-number='8' class='portrait selectable' src='images/characters/portrait_8.webp'><br />
+<<script>>
+  $(function() {
+    $('.portrait').click( function () {
+        $(this).toggleClass('selected').siblings().removeClass('selected');
+        State.temporary.newCharacterPortraitNumber = $(this).attr('data-number');
+    });
+  });
+<</script>>
 <<set _newCharacterStats = {attention: '', grit: '', memory: '', empathy: ''}>>
-attention: <<textbox '_newCharacterStats.attention' 'd6'>>
-grit: <<textbox '_newCharacterStats.grit' 'd6'>>
-memory: <<textbox '_newCharacterStats.memory' 'd6'>>
-empathy: <<textbox '_newCharacterStats.empathy' 'd6'>>
+attention: <<textbox '_newCharacterStats.attention' 'd6'>><br />
+grit: <<textbox '_newCharacterStats.grit' 'd6'>><br />
+memory: <<textbox '_newCharacterStats.memory' 'd6'>><br />
+empathy: <<textbox '_newCharacterStats.empathy' 'd6'>><br />
 
 <<button 'submit' 'main menu'>>
-    <<newcharacter $activePlayer _newCharacterName _newCharacterStats>>\
+    <<newcharacter $activePlayer _newCharacterName _newCharacterPortraitNumber _newCharacterStats>>\
 <</button>>
 
 :: character creation: name
