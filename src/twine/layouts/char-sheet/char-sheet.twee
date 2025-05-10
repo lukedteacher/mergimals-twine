@@ -1,5 +1,9 @@
 :: character sheet [nobr]
-<div>Player Name: $activePlayer</div><div>Character Name: $activeCharacter</div>
+<<set _portraitURL = $players[$activePlayer].characters[$activeCharacter].portrait>>
+<div style='display: flex;'>
+	<<print '<img class="portrait" src="' + _portraitURL + '" />'>>
+	<h2 style='margin-left: 1rem;'>$activeCharacter</h2>
+</div>
 <<script>>
 	$( function() {
 		$( "#tabs" ).tabs({

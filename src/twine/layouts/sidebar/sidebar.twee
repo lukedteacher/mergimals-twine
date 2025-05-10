@@ -13,15 +13,21 @@
         <</button>>
     <</dialog>>
 <</button>><br /><br />
-<<button 'character'>>
-    <<popup 'character sheet' 'character sheet' 'dialog-char-sheet'>>
-<</button>><br /><br />
-<<button 'backpack'>>
-    <<popup 'backpack items' 'backpack items'>>
-<</button>><br /><br />
-<<button 'keywords'>>
-    <<popup 'backpack keywords' 'keywords'>>
-<</button>><br /><br />
-<<button 'mergipedia'>>
-    <<popup 'mergipedia' 'mergipedia'>>
-<</button>><br /><br />
+<div id='sidebar-char'>
+    <h2 style='margin: 0;'>$activeCharacter</h2>
+    <<set _portraitURL = $players[$activePlayer].characters[$activeCharacter].portrait>>
+    <<print '<img class="portrait" src="' + _portraitURL + '" />'>>
+</div><br />
+<<script>>
+  $(function() {
+    $('#sidebar-char').click( function () {
+        Dialog
+            .create('character information', 'dialog-char-sheet')
+            .wikiPassage('character sheet')
+            .open();
+    });
+  });
+<</script>>
+<<button 'swap character'>>
+    <<popup 'character swap' 'character swap' 'dialog-char-swap'>>
+<</button>>

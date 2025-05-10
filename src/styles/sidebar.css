@@ -1,0 +1,17 @@
+#sidebar-char {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.char-swap-div {
+    border: 3px solid transparent;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+}
+
+.dialog-char-swap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

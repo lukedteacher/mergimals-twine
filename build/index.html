@@ -1846,6 +1846,8 @@ a.ui-button:active,
     box-sizing: border-box;
     border-radius: 0.5rem;
     border: 3px solid transparent;
+    width: 96px;
+    height: 64px;
 }
 
 .selected {
@@ -1932,7 +1934,25 @@ a.ui-button:active,
 	     -o-transform-origin: 50% 50%;
 	        transform-origin: 50% 50%;
 }
-/* twine-user-stylesheet #12: "speech.css" */
+/* twine-user-stylesheet #12: "sidebar.css" */
+#sidebar-char {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.char-swap-div {
+    border: 3px solid transparent;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+}
+
+.dialog-char-swap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+/* twine-user-stylesheet #13: "speech.css" */
 .say {
     border: 1px solid #eee;
     overflow: none;
@@ -1963,7 +1983,7 @@ a.ui-button:active,
     padding: 0.6rem;
     margin: 0;
 }
-/* twine-user-stylesheet #13: "utility-classes.css" */
+/* twine-user-stylesheet #14: "utility-classes.css" */
 /* utility classes */
 
 .text-darkest {
