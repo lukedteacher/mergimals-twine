@@ -1,0 +1,79 @@
+:: asil [c5 contest]
+<<if $asilCode != 404>>\
+        Sorry, come back when you know the code.
+        [[turn back.->221]]
+<<else>>\
+    The source of the hushing sound comes into view. You see a short, older lady with what could only be described as a witch's hat. She is looking left and right and shushing into the forest. A [add mergimal description] is sitting on a giant mushroom by the witch's side, looking pained.
+
+    [[Ask what she is shushing.->asil: shush]]
+    [[Leave her alone.->221]]
+<</if>>
+
+:: asil: shush [c5 contest]
+"I need to keep the forest quiet. My Mergimal is very sensitive to sound and everything is being way too loud!" Her voice is louder than anything else in the forest.
+
+"Can you help me? If you could find the source of all this racket, my mergimal would be so grateful. No matter what I do, they are still so distressed!" The mergimal winces and tries to cover their ears, but their arms are too short.
+
+[[Try to think of a solution.->asil: worksheet]]
+[[Leave her alone.->221]]
+
+:: asil: worksheet [c5 contest]
+Something seems off about this whole thing. You think you can help, but need to gather your thoughts.
+
+Do worksheet 'The Loud Witch'.
+ --- this should be a stand alone worksheet (problem)  - wait on shushing solution
+
+Enter the code:  <<numberbox '$witchCode' 0>>
+<<link 'See if you have the solution. - code is 1 for now'>>
+    <<if $witchCode != 1>>
+        <<dialog 'incorrect'>>\
+            <<include 'incorrect'>>
+        <</dialog>>
+    <<else>>
+        <<dialog 'correct'>>\
+            <<include 'correct'>>
+            <<onclose>>
+                <<goto 'asil: answer'>>
+        <</dialog>>
+    <</if>>
+<</link>>
+[[Leave her alone for now and continue exploring.->221]]
+
+:: asil: answer [c5 contest]
+As you continue to observe the witch and her mergimal, you notice that every time the witch sushes the forest, her mergimal winces particularly hard. When she stops shushing, the mergimal relaxes a little and looks at you with desperate eyes.
+
+<<linkreplace 'Hmm...' t8n>>\
+    "Excuse me, ma'am? Can I ask you something?" The witch looks at you with a confused expression. "Do you think maybe your shushing is actually the loud noise that your mergimal is reacting to?"
+
+    The witch looks at you with a blank stare. "I don't think so. I...." She pauses and turns to her mergimal. "Am I the loud one, my dear?"
+
+    The mergimal nods their head slowly, looking back at the witch with sad but caring eyes.
+
+    [[Say something to help the situation.->asil: help]]
+    [[Continue watching.->asil: watch]]
+<</linkreplace>>
+
+:: asil: help [c5 contest]
+"Ms. Witch? If I may...I think that sometimes our own anxiety can make it hard to see how other people are feeling. It seems like you care so much about your mergimal and you're just trying to help them in the way that works best for you."
+
+"But it's not helping, is it?" she says and lowers her eyes.
+
+The mergimal perks up and nuzzles their nose into the witch's armpit.
+
+[[Smile at them.->asil: end]]
+
+:: asil: watch [c5 contest]
+The witch looks around the forest, noticing how quiet it really is. "It's me. Hi. I'm the problem, it's me."
+
+The mergimal perks up and nuzzles their nose into the witch's armpit.
+
+[[Smile at them.->asil: end]]
+
+:: asil: end [c5 contest]
+You take a last look at the witch and her mergimal, who seems quite happy now.
+
+You turn around and head back to the path, thinking about how maybe you also have blind spots that come from your own anxiety. Sometimes stopping and listening to the world around you is the best way to hear yourself.
+
+You feel a little more confident in your ability to help others...and yourself. You gain 1 charm and 1 challenge coin.
+
+[[Continue exploring.->221]]

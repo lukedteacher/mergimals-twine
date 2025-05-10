@@ -94,9 +94,9 @@ Roll ATTENTION x GRIT.
 :: 226 [forest encounter]
 A little person with a long beard and pointy hat sits on a mushroom, drinking tea. A tiny pig-like Mergimal sits next to them with a cup of their own.
 
-[expand this encounter]
+<<numberbox "$asilCode" 0 autofocus>>
+[[What's the code?->asil]]
 
-[[Try your luck.->227]]
 [[Nevermind.->224]]
 
 :: 228 [transition]
