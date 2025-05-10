@@ -1,174 +1,175 @@
 :: cheats [nobr]
 <<link 'log variables'>>
     <<script>>
+        console.log('---- CHEATS MENU LOG VARIABLES ----');
         console.log(State.variables);
         console.log(State.temporary);
     <</script>>
 <</link>>
 <h2>items</h2>
 <div style='display: grid; grid-template: repeat(6, 1fr) / repeat(5, 1fr); gap: 0.3rem;'>
-  <div>
-    coins
-  </div>
-  <div>
-    <<link '=0'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin = 0>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '-1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+10'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 10>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    mergiballs
-  </div>
-  <div>
-    <<link '=0'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball = 0>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '-1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball -= 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+10'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 10>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
     <div>
-    charms
-  </div>
-  <div>
-    <<link '=0'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm = 0>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '-1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm -= 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm += 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+10'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm += 10>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
+        coins
+    </div>
     <div>
-    bandages
-  </div>
-  <div>
-    <<link '=0'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage = 0>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '-1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage -= 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage += 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+10'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage += 10>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
+        <<link '=0'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin = 0>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
     <div>
-    tools
-  </div>
-  <div>
-    <<link '=0'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool = 0>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '-1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool -= 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+10'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 10>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
+        <<link '-1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
     <div>
-    batteries
-  </div>
-  <div>
-    <<link '=0'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery = 0>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '-1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery -= 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+1'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery += 1>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
-  <div>
-    <<link '+10'>>
-      <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery += 10>>
-      <<redo 'backpack'>>
-    <</link>>
-  </div>
+        <<link '+1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '+10'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 10>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        mergiballs
+    </div>
+    <div>
+        <<link '=0'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball = 0>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '-1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball -= 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '+1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '+10'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 10>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+        <div>
+        charms
+    </div>
+    <div>
+        <<link '=0'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm = 0>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '-1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm -= 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '+1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm += 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '+10'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm += 10>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+        <div>
+        bandages
+    </div>
+    <div>
+        <<link '=0'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage = 0>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '-1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage -= 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '+1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage += 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '+10'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage += 10>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+        <div>
+        tools
+    </div>
+    <div>
+        <<link '=0'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool = 0>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '-1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool -= 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '+1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '+10'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 10>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+        <div>
+        batteries
+    </div>
+    <div>
+        <<link '=0'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery = 0>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '-1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery -= 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '+1'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery += 1>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
+    <div>
+        <<link '+10'>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery += 10>>
+        <<redo 'backpack'>>
+        <</link>>
+    </div>
 </div>
 <h2>injuries</h2>
 <<link 'ouch'>><<set $players[$activePlayer].characters[$activeCharacter].injuries ++>><<redo 'injuries'>><</link>>

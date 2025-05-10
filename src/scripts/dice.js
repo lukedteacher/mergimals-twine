@@ -62,7 +62,6 @@
     function newResult($target) {
         const diceType = $target.attr('data-dice');
         if (!diceType) throw new Error('dice type undefined in newResult');
-        console.log(diceType);
         const result = randResult(diceType);
         const polymathString = `${result}_on_${diceType}`;
         $target

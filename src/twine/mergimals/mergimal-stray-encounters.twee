@@ -35,9 +35,6 @@ Go to a store or something, dude.
 <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball -->>
 <<redo 'backpack'>>
 You throw the mergiball and it lands near the Mergimal.<br /><br />
-<<script>>
-    console.log(State.getVar('$mergimalEncountered'))
-<</script>>
 Target: $mergimalEncountered.name<br /><br />
 <<dice 'mergiball' 'd10'>><br />
 
@@ -54,11 +51,6 @@ Target: $mergimalEncountered.name<br /><br />
 
 <<button 'See what happens'>>
     <<set _roll to 0>>
-    <<script>>
-        let roll = $('#mergiball').attr('data-result');
-        console.log(roll);
-        State.setVar('_roll', roll);
-    <</script>>
     <<if  _roll < $mergimalEncountered.number>>
         <<dialog>>
             <<include 'tame attempt failed'>>

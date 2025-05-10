@@ -1,33 +1,19 @@
 :: main menu [nobr]
-
 Choose player: 
-<<listbox '_selectedPlayer'>>
+<<listbox '$activePlayer'>>
   <<optionsfrom Object.keys($players)>>
 <</listbox>><br /><br />
 Choose character: 
 <<do tag 'character-selector'>>
-    <<set _selectedPlayersCharacters = Object.keys($players[_selectedPlayer].characters)>>
-    <<if _selectedPlayersCharacters == 0>>
-        <<listbox '_selectedCharacter'>>
-            <<option 'none'>>
-        <</listbox>>
-    <<else>>
-        <<listbox '_selectedCharacter'>>
-            <<optionsfrom _selectedPlayersCharacters>>
-        <</listbox>>
-    <</if>>
-    <<button '+' 'character creation'>>
-        <<set $activePlayer = _selectedPlayer>>
-    <</button>><br /><br />
+    <<listbox '$activeCharacter'>>
+        <<optionsfrom Object.keys($players[$activePlayer].characters)>>
+    <</listbox>>
+    <<button '+' 'character creation: fast'>><</button>><br /><br />
 <</do>><<button 'CONTINUE'>>
-    <<if _selectedCharacter == 'none'>>
-        <<dialog 'error'>>
-            create a character first!<br /><br />
-            <<button 'whoops'>>
-                <<run Dialog.close()>>
-            <</button>>
-        <</dialog>>
-    <<elseif $players[_selectedPlayer].characters[_selectedCharacter].lastPassage == ''>>
+    <<if $players[$activePlayer].characters[$activeCharacter].lastPassage == ''>>
+        <<script>>
+            console.log(State.variables);
+        <</script>>
         <<dialog 'error'>>
             you haven't explored anything yet.<br /><br />
             <<button 'whoops'>>
@@ -35,29 +21,13 @@ Choose character:
             <</button>>
         <</dialog>>
     <<else>>
-        <<set $activePlayer = _selectedPlayer>>
         <<script>>
             console.log(State.variables);
-            console.log(State.temporary);
         <</script>>
-        <<set $activeCharacter = _selectedCharacter>>
-        <<goto $players[_selectedPlayer].characters[_selectedCharacter].lastPassage>>
+        <<goto $players[$activePlayer].characters[$activeCharacter].lastPassage>>
     <</if>>
 <</button>>
-<<button 'NEW GAME'>>
-    <<if _selectedCharacter == 'none'>>
-        <<dialog 'error'>>
-            create a character first!<br /><br />
-            <<button 'whoops'>>
-                <<run Dialog.close()>>
-            <</button>>
-        <</dialog>>
-    <<else>>
-        <<set $activePlayer = _selectedPlayer>>
-        <<set $activeCharacter = _selectedCharacter>>
-        <<goto 'intro'>>
-    <</if>>
-<</button>>
+<<button 'NEW GAME' 'intro'>><</button>>
 
 <<done>>
     <<script>>
@@ -69,16 +39,3 @@ Choose character:
         });
     <</script>>
 <</done>>
-
-:: demos
-!!!!DEMO:
-<<link 'dice roll' 'dice roll'>><</link>>
-
-:: debug
-!!!!DEBUG:
-<<link 'jump to exploring' 'b3'>>
-    <<set $activePlayer = _selectedPlayer>>
-    <<set $activeCharacter = _selectedCharacter>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin = 10>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball = 10>>
-<</link>>

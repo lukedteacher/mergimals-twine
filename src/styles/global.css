@@ -75,3 +75,22 @@ body a:hover {
 .droppable-active {
   border: 2px solid purple;
 }
+
+.alert {
+  border: 2px solid var(--red);
+  border-radius: 0.4rem;
+  padding: 1rem;
+}
+
+.warning {
+  border: 2px solid var(--yellow);
+  border-radius: 0.4rem;
+  padding: 1rem;
+}
+
+.alert:before {
+  content: '';
+  background-image: url('images/svg/alert.svg');
+  size: 100rem;
+
+}

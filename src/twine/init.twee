@@ -39,11 +39,12 @@
 	[[Tell them your answer.->dontay: contest end]]
 <</widget>>
 
-<<set $sidebar to false>>
-
 <<newplayer 'luke'>>
 <<set _defaultStats = {attention: 'd4', grit: 'd8', memory: 'd6', empathy: 'd10'} >>
 <<newcharacter 'luke' 'foo' 2 _defaultStats>>
+
+<<set $activePlayer = 'luke'>>
+<<set $activeCharacter = 'foo'>>
 
 <<set $position = [3,2]>>
 <<set $explored = [

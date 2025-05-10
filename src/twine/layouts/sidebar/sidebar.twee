@@ -1,13 +1,10 @@
 :: sidebar [nobr]
 <<button 'main menu'>>
     <<dialog>>
-        are you sure you want to return to the menu?<br />
-        the last passage will be saved.
+        are you sure you want to return to the menu?<br /><br />
+        the last passage will be saved.<br /><br />
         <<button 'yes'>>
             <<set $players[$activePlayer].characters[$activeCharacter].lastPassage = State.passage>>
-            <<script>>
-                State.setVar('$activeCharacter.lastPassage', State.passage);
-            <</script>>
             <<run Dialog.close()>>
             <<goto 'main menu'>>
         <</button>>

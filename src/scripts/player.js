@@ -62,7 +62,6 @@ window.Character = class Character {
 		mergimals.forEach(mergimal => {
 			this.mergipedia[mergimal] = 'unknown';
 		});
-		console.log(this.portrait);
 		// clone the given config object's own properties into our own properties.
 		//
 		// NOTE: use the SugarCube built-in `clone()` function to make deep
@@ -118,11 +117,7 @@ Macro.add('newcharacter', {
             throw new Error('character already created');
         }
 		const characterPortraitNumber = this.args[2];
-		console.log('port');
-		console.log(characterPortraitNumber);
 		const characterStats = this.args[3];
-		console.log('stats');
-		console.log(characterStats);
 		if (!characterStats) console.log('no stats entered; using default');
         State.variables.players[playerName].characters[characterName] = new Character({name: characterName, portraitNumber: characterPortraitNumber, stats: characterStats});
 		console.log(characterName + ' successfully created');
