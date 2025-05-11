@@ -43,7 +43,7 @@ window.Character = class Character {
 		this.portrait = 'images/characters/portrait_' + props.portraitNumber + '.webp';
         this.version = props.version | 'fusion';
         this.difficulty = props.difficulty | 'normal';
-		this.lastPassage = ''
+		this.lastPassage = 'start'
 		this.stats = props.stats | {attention: 'd4', grit: 'd4', memory: 'd4', empathy: 'd4'};
 		this.energy = 4;
 		this.injuries = 0;
@@ -90,6 +90,40 @@ window.Character = class Character {
 		});
 		return Serial.createReviver(`new ${this.constructor.name}($ReviveData$)`, ownData);
 	}
+
+	createCharacterBox($output, character, selectable = false) {
+		const $characterBox = $(document.createElement('div'))
+			.addClass('char-info-box')
+			.attr('data-name', character.name);
+		
+		const $characterLabel = $(document.createElement('h3'))
+			.addClass('char-info-label')
+			.text(character.name)
+			.appendTo($characterBox);
+
+		const $characterPortrait = $(document.createElement('img'))
+			.addClass('char-info-portrait')
+			.attr('src', character.portrait)
+			.appendTo($characterBox);
+		
+		if (selectable) {
+			$characterBox.addClass('selectable');
+			$characterBox.click(() => {
+				$characterBox.toggleClass('selected').siblings().removeClass('selected');
+				State.temporary.newActiveCharacter = character.name;
+			});
+			if (State.variables.activeCharacter == character.name) {
+				$characterBox.addClass('selected');
+			}
+		}
+		
+		if ($output) {
+            if (!($output instanceof $)) {
+                $output = $($output);
+            }
+            $characterBox.appendTo($output);
+        };
+	}
 };
 
 Macro.add('newplayer', {
@@ -122,4 +156,19 @@ Macro.add('newcharacter', {
         State.variables.players[playerName].characters[characterName] = new Character({name: characterName, portraitNumber: characterPortraitNumber, stats: characterStats});
 		console.log(characterName + ' successfully created');
     }
+});
+
+
+Macro.add('characterbox', {
+	handler: function() {
+		const characterName = this.args[0];
+		const activePlayer = State.variables.activePlayer;
+		const players = State.variables.players;
+		const character = players[activePlayer].characters[characterName];
+		if (!character) {
+			throw new Error('no character by that name defined');
+		}
+		const selectable = this.args[1];
+		character.createCharacterBox(this.output, character, selectable);
+	}
 });

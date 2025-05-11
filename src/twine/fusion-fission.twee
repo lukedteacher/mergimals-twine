@@ -20,7 +20,12 @@ MERGIMALS
   <</dialog>>
 <</link>>
 
-:: start [start]
+:: PassageDone
+<<if not tags().includes('util')>>
+  <<set $players[$activePlayer].characters[$activeCharacter].lastPassage = State.passage>>
+<</if>>
+
+:: start [start util]
 <div class='alert'>NOTE: THIS GAME IS STILL BEING DEVELOPED AND MAY REQUIRE YOU TO RESTART IF LARGE CHANGES ARE MADE.</div>
 <div class='warning'>NOTE #2: none of the assets in this game are final. AI was used to generate some of the art for prototyping and concept art purposes.</div>
 <<include 'main menu'>>

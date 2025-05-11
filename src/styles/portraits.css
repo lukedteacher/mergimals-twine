@@ -10,3 +10,21 @@
     border: 3px solid var(--green) !important;
 }
 
+.char-info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    border: 3px solid transparent;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.char-info-label {
+    margin-top: 0;
+}
+
+.char-swap-boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}

@@ -1,26 +1,20 @@
 :: sidebar [nobr]
-<<button 'main menu'>>
-    <<dialog>>
-        are you sure you want to return to the menu?<br /><br />
-        the last passage will be saved.<br /><br />
-        <<button 'yes'>>
-            <<set $players[$activePlayer].characters[$activeCharacter].lastPassage = State.passage>>
-            <<run Dialog.close()>>
-            <<goto 'main menu'>>
-        <</button>>
-        <<button 'no'>>
-            <<run Dialog.close()>>
-        <</button>>
-    <</dialog>>
+<<button 'main menu' 'main menu'>>
 <</button>><br /><br />
-<div id='sidebar-char'>
-    <h2 style='margin: 0;'>$activeCharacter</h2>
-    <<set _portraitURL = $players[$activePlayer].characters[$activeCharacter].portrait>>
-    <<print '<img class="portrait" src="' + _portraitURL + '" />'>>
-</div><br />
+<<do tag 'sidebar-char'>>
+  <div id='sidebar-char-box'>
+    <<characterbox $activeCharacter false>>
+    <div id='char-info-boxes'>
+      <h2 style='margin: 0;'>👤</h2>
+      <h2 style='margin: 0;'>🎒</h2>
+      <h2 style='margin: 0;'>📘</h2>
+      <h2 style='margin: 0;'>🗺️</h2>
+    </div>
+  </div>
+<</do>><br />
 <<script>>
   $(function() {
-    $('#sidebar-char').click( function () {
+    $('#sidebar-char-box').click( function () {
         Dialog
             .create('character information', 'dialog-char-sheet')
             .wikiPassage('character sheet')
@@ -28,6 +22,4 @@
     });
   });
 <</script>>
-<<button 'swap character'>>
-    <<popup 'character swap' 'character swap' 'dialog-char-swap'>>
-<</button>>
+<<button 'swap character' 'character swap'>><</button>>

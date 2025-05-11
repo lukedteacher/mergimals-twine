@@ -1,19 +1,8 @@
-:: main menu [nobr]
-Choose player: 
-<<listbox '$activePlayer'>>
-  <<optionsfrom Object.keys($players)>>
-<</listbox>><br /><br />
-Choose character: 
-<<do tag 'character-selector'>>
-    <<listbox '$activeCharacter'>>
-        <<optionsfrom Object.keys($players[$activePlayer].characters)>>
-    <</listbox>>
-    <<button '+' 'character creation: fast'>><</button>><br /><br />
-<</do>><<button 'CONTINUE'>>
-    <<if $players[$activePlayer].characters[$activeCharacter].lastPassage == ''>>
-        <<script>>
-            console.log(State.variables);
-        <</script>>
+:: main menu [nobr util]
+<<button 'CREATE CHARACTER' 'character creation: fast'>>
+<</button>>    
+@@#continue;<<button 'CONTINUE'>>
+    <<if $players[$activePlayer].characters[$activeCharacter].lastPassage == 'start'>>
         <<dialog 'error'>>
             you haven't explored anything yet.<br /><br />
             <<button 'whoops'>>
@@ -26,16 +15,13 @@ Choose character:
         <</script>>
         <<goto $players[$activePlayer].characters[$activeCharacter].lastPassage>>
     <</if>>
-<</button>>
+<</button>>@@
 <<button 'NEW GAME' 'intro'>><</button>>
 
 <<done>>
     <<script>>
-        $('#listbox--selectedplayer').on('change', function () {
-            $(document).trigger({
-                type   : ':redo',
-                detail : { tags : [ 'character-selector' ] }
-            });
-        });
+        if (State.variables.players[State.variables.activePlayer].characters[State.variables.activeCharacter].lastPassage == 'start') {
+            const $contButton = $('#continue').children('button').prop('disabled', true);
+        }
     <</script>>
 <</done>>

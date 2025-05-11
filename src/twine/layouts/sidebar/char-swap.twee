@@ -1,15 +1,15 @@
-:: character swap [nobr]
-<<for _name, _object range $players[$activePlayer].characters>>
-    <div class='char-swap-div selectable'>
-        _name<br />
-        <<set _portraitURL = _object.portrait>>
-        <<print '<img class="portrait" src="' + _portraitURL + '" />'>>
-    </div>
-<</for>>
-<<script>>
-  $(function() {
-    $('.char-swap-div').click( function () {
-        console.log('make this')
-    });
-  });
-<</script>>
+:: character swap [nobr util]
+<<set _newActiveCharacter = $activeCharacter>>
+<div class='char-swap-boxes'>
+  <<for _name, _object range $players[$activePlayer].characters>>
+    <<characterbox _name true>>
+  <</for>>
+</div><br />
+<<button 'cancel'>>
+  <<goto 'main menu'>>
+<</button>>
+<<button 'confirm'>>
+  <<set $activeCharacter = _newActiveCharacter>>
+  <<set _gotoPassage = $players[$activePlayer].characters[$activeCharacter].lastPassage>>
+  <<goto _gotoPassage>>
+<</button>>
