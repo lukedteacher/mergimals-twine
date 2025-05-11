@@ -6,11 +6,13 @@
 </div>
 <<script>>
 	$( function() {
-		$( "#tabs" ).tabs({
+		$( '#tabs' ).tabs({
 			classes: {
 				'ui-tabs': 'char-sheet-tabs'
 			}
 		});
+
+		$( '#tabs' ).tabs('option', 'active', State.variables.sheetPage);
 	} );
 <</script>>
 <div id='tabs' class='dialog-char-sheet-tabs'>

@@ -1,25 +1,30 @@
 :: sidebar [nobr]
-<<button 'main menu' 'main menu'>>
-<</button>><br /><br />
 <<do tag 'sidebar-char'>>
   <div id='sidebar-char-box'>
     <<characterbox $activeCharacter false>>
-    <div id='char-info-boxes'>
-      <h2 style='margin: 0;'>👤</h2>
-      <h2 style='margin: 0;'>🎒</h2>
-      <h2 style='margin: 0;'>📘</h2>
-      <h2 style='margin: 0;'>🗺️</h2>
+    <div id='char-sheet-button-boxes'>
+      <div data-page='0' class='char-sheet-button-box'>👤</div>
+      <div data-page='1' class='char-sheet-button-box'>🎒</div>
+      <div data-page='2' class='char-sheet-button-box'>📘</div>
+      <div data-page='3' class='char-sheet-button-box'>🗺️</div>
     </div>
   </div>
 <</do>><br />
 <<script>>
   $(function() {
-    $('#sidebar-char-box').click( function () {
-        Dialog
-            .create('character information', 'dialog-char-sheet')
-            .wikiPassage('character sheet')
-            .open();
+    $('#sidebar-char-box').click( function (event) {
+      const destination = Number(event.target.dataset.page);
+
+      if (isNaN(destination)) {
+        State.variables.sheetPage = 0;
+      } else {
+      State.variables.sheetPage = destination;
+      }
+
+      Dialog
+          .create('character information', 'dialog-char-sheet')
+          .wikiPassage('character sheet')
+          .open();
     });
   });
 <</script>>
-<<button 'swap character' 'character swap'>><</button>>

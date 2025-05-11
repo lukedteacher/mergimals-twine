@@ -96,7 +96,7 @@ window.Character = class Character {
 			.addClass('char-info-box')
 			.attr('data-name', character.name);
 		
-		const $characterLabel = $(document.createElement('h3'))
+		const $characterLabel = $(document.createElement('h2'))
 			.addClass('char-info-label')
 			.text(character.name)
 			.appendTo($characterBox);

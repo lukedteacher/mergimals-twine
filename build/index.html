@@ -406,10 +406,7 @@ body h3,
 body h4 {
     font-family: var(--title-font);
     font-weight: normal;
-}
-
-h4 {
-  margin-bottom: 0.3rem;
+    margin: 0;
 }
 
 body a,
@@ -1953,6 +1950,10 @@ a.ui-button:active,
 	        transform-origin: 50% 50%;
 }
 /* twine-user-stylesheet #12: "sidebar.css" */
+#story-title {
+    margin-top: 1rem;
+}
+
 #sidebar-char-box {
     display: flex;
     flex-direction: column;
@@ -1976,10 +1977,24 @@ a.ui-button:active,
     box-sizing: border-box;
 }
 
-#char-info-boxes {
+#char-sheet-button-boxes {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+}
+
+.char-sheet-button-box {
+    display: flex;
+    background-color: #bbb;
+    width: 2.2rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.char-sheet-button-box:hover {
+    background-color: #999;
 }
 /* twine-user-stylesheet #13: "speech.css" */
 .say {
@@ -21515,7 +21530,7 @@ window.Character = class Character {
 			.addClass('char-info-box')
 			.attr('data-name', character.name);
 		
-		const $characterLabel = $(document.createElement('h3'))
+		const $characterLabel = $(document.createElement('h2'))
 			.addClass('char-info-label')
 			.text(character.name)
 			.appendTo($characterBox);
@@ -22712,7 +22727,9 @@ Do Worksheet 84.1
 [[They got away: continue exploring.-&gt;volcano]]</tw-passagedata><tw-passagedata pid="119" name="tamed: bakewing" tags="mt-boom-boom tamed" position="1100,1475" size="100,100">&lt;&lt;card &#39;bakewing&#39;&gt;&gt;
 This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, which they use to make pizza. Yum!
 
-&lt;&lt;link &#39;You tamed them.&#39; &#39;volcano&#39;&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.bakewing = &#39;tamed&#39;&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="StoryCaption" tags="" position="1225,1475" size="100,100">&lt;&lt;include &#39;sidebar&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="StoryMenu" tags="" position="100,1600" size="100,100">&lt;&lt;link &#39;cheats&#39;&gt;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; &#39;volcano&#39;&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.bakewing = &#39;tamed&#39;&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="StoryCaption" tags="" position="1225,1475" size="100,100">&lt;&lt;include &#39;sidebar&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="StoryMenu" tags="" position="100,1600" size="100,100">&lt;&lt;link &#39;main menu&#39; &#39;main menu&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;change character&#39; &#39;change character&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;cheats&#39;&gt;&gt;
   &lt;&lt;dialog &#39;cheats&#39;&gt;&gt;\
     &lt;&lt;include &#39;cheats&#39;&gt;&gt;
   &lt;&lt;/dialog&gt;&gt;
@@ -22849,11 +22866,13 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 &lt;/div&gt;
 &lt;&lt;script&gt;&gt;
 	$( function() {
-		$( &quot;#tabs&quot; ).tabs({
+		$( &#39;#tabs&#39; ).tabs({
 			classes: {
 				&#39;ui-tabs&#39;: &#39;char-sheet-tabs&#39;
 			}
 		});
+
+		$( &#39;#tabs&#39; ).tabs(&#39;option&#39;, &#39;active&#39;, State.variables.sheetPage);
 	} );
 &lt;&lt;/script&gt;&gt;
 &lt;div id=&#39;tabs&#39; class=&#39;dialog-char-sheet-tabs&#39;&gt;
@@ -22981,32 +23000,25 @@ Found: ???
             console.log($(this).find(&#39;:selected&#39;).text());
         });
     &lt;&lt;/script&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="main menu" tags="nobr util" position="725,1850" size="100,100">&lt;&lt;button &#39;CREATE CHARACTER&#39; &#39;character creation: fast&#39;&gt;&gt;
-&lt;&lt;/button&gt;&gt;    
-@@#continue;&lt;&lt;button &#39;CONTINUE&#39;&gt;&gt;
-    &lt;&lt;if $players[$activePlayer].characters[$activeCharacter].lastPassage == &#39;start&#39;&gt;&gt;
-        &lt;&lt;dialog &#39;error&#39;&gt;&gt;
-            you haven&#39;t explored anything yet.&lt;br /&gt;&lt;br /&gt;
-            &lt;&lt;button &#39;whoops&#39;&gt;&gt;
-                &lt;&lt;run Dialog.close()&gt;&gt;
-            &lt;&lt;/button&gt;&gt;
-        &lt;&lt;/dialog&gt;&gt;
-    &lt;&lt;else&gt;&gt;
-        &lt;&lt;script&gt;&gt;
-            console.log(State.variables);
-        &lt;&lt;/script&gt;&gt;
-        &lt;&lt;goto $players[$activePlayer].characters[$activeCharacter].lastPassage&gt;&gt;
-    &lt;&lt;/if&gt;&gt;
-&lt;&lt;/button&gt;&gt;@@
-&lt;&lt;button &#39;NEW GAME&#39; &#39;intro&#39;&gt;&gt;&lt;&lt;/button&gt;&gt;
-
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="main menu" tags="nobr util" position="725,1850" size="100,100">&lt;div style=&#39;display: flex; flex-direction: column; align-items: center;&#39;&gt;
+  &lt;h1&gt;MERGIMALS&lt;/h1&gt;
+  &lt;h2&gt;fusion&lt;/h2&gt;
+  &lt;img style=&#39;width: 8rem; aspect-ratio: 1 / 1;&#39; src=&#39;images/logo/fusion.svg&#39;&gt;
+  &lt;div style=&#39;display: flex; gap: 2rem; margin-top: 2rem;&#39;&gt;
+    &lt;&lt;button &#39;CREATE CHARACTER&#39; &#39;character creation: fast&#39;&gt;&gt;&lt;&lt;/button&gt;&gt;    
+    @@#continue;&lt;&lt;button &#39;CONTINUE&#39;&gt;&gt;
+            &lt;&lt;goto $players[$activePlayer].characters[$activeCharacter].lastPassage&gt;&gt;
+    &lt;&lt;/button&gt;&gt;@@
+    &lt;&lt;button &#39;NEW GAME&#39; &#39;intro&#39;&gt;&gt;&lt;&lt;/button&gt;&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 &lt;&lt;done&gt;&gt;
     &lt;&lt;script&gt;&gt;
         if (State.variables.players[State.variables.activePlayer].characters[State.variables.activeCharacter].lastPassage == &#39;start&#39;) {
             const $contButton = $(&#39;#continue&#39;).children(&#39;button&#39;).prop(&#39;disabled&#39;, true);
         }
     &lt;&lt;/script&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="character swap" tags="nobr util" position="850,1850" size="100,100">&lt;&lt;set _newActiveCharacter = $activeCharacter&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="change character" tags="nobr util" position="850,1850" size="100,100">&lt;&lt;set _newActiveCharacter = $activeCharacter&gt;&gt;
 &lt;div class=&#39;char-swap-boxes&#39;&gt;
   &lt;&lt;for _name, _object range $players[$activePlayer].characters&gt;&gt;
     &lt;&lt;characterbox _name true&gt;&gt;
@@ -23019,30 +23031,35 @@ Found: ???
   &lt;&lt;set $activeCharacter = _newActiveCharacter&gt;&gt;
   &lt;&lt;set _gotoPassage = $players[$activePlayer].characters[$activeCharacter].lastPassage&gt;&gt;
   &lt;&lt;goto _gotoPassage&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="sidebar" tags="nobr" position="975,1850" size="100,100">&lt;&lt;button &#39;main menu&#39; &#39;main menu&#39;&gt;&gt;
-&lt;&lt;/button&gt;&gt;&lt;br /&gt;&lt;br /&gt;
-&lt;&lt;do tag &#39;sidebar-char&#39;&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="sidebar" tags="nobr" position="975,1850" size="100,100">&lt;&lt;do tag &#39;sidebar-char&#39;&gt;&gt;
   &lt;div id=&#39;sidebar-char-box&#39;&gt;
     &lt;&lt;characterbox $activeCharacter false&gt;&gt;
-    &lt;div id=&#39;char-info-boxes&#39;&gt;
-      &lt;h2 style=&#39;margin: 0;&#39;&gt;👤&lt;/h2&gt;
-      &lt;h2 style=&#39;margin: 0;&#39;&gt;🎒&lt;/h2&gt;
-      &lt;h2 style=&#39;margin: 0;&#39;&gt;📘&lt;/h2&gt;
-      &lt;h2 style=&#39;margin: 0;&#39;&gt;🗺️&lt;/h2&gt;
+    &lt;div id=&#39;char-sheet-button-boxes&#39;&gt;
+      &lt;div data-page=&#39;0&#39; class=&#39;char-sheet-button-box&#39;&gt;👤&lt;/div&gt;
+      &lt;div data-page=&#39;1&#39; class=&#39;char-sheet-button-box&#39;&gt;🎒&lt;/div&gt;
+      &lt;div data-page=&#39;2&#39; class=&#39;char-sheet-button-box&#39;&gt;📘&lt;/div&gt;
+      &lt;div data-page=&#39;3&#39; class=&#39;char-sheet-button-box&#39;&gt;🗺️&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;&lt;/do&gt;&gt;&lt;br /&gt;
 &lt;&lt;script&gt;&gt;
   $(function() {
-    $(&#39;#sidebar-char-box&#39;).click( function () {
-        Dialog
-            .create(&#39;character information&#39;, &#39;dialog-char-sheet&#39;)
-            .wikiPassage(&#39;character sheet&#39;)
-            .open();
+    $(&#39;#sidebar-char-box&#39;).click( function (event) {
+      const destination = Number(event.target.dataset.page);
+
+      if (isNaN(destination)) {
+        State.variables.sheetPage = 0;
+      } else {
+      State.variables.sheetPage = destination;
+      }
+
+      Dialog
+          .create(&#39;character information&#39;, &#39;dialog-char-sheet&#39;)
+          .wikiPassage(&#39;character sheet&#39;)
+          .open();
     });
   });
-&lt;&lt;/script&gt;&gt;
-&lt;&lt;button &#39;swap character&#39; &#39;character swap&#39;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="cheats" tags="nobr" position="1100,1850" size="100,100">&lt;&lt;link &#39;log variables&#39;&gt;&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="cheats" tags="nobr" position="1100,1850" size="100,100">&lt;&lt;link &#39;log variables&#39;&gt;&gt;
     &lt;&lt;script&gt;&gt;
         console.log(&#39;---- CHEATS MENU LOG VARIABLES ----&#39;);
         console.log(State.variables);
@@ -23782,38 +23799,44 @@ $mergimalEncountered.tamedPassageText&lt;br /&gt;&lt;br /&gt;
     &lt;&lt;include &#39;character creation: name&#39;&gt;&gt;\
 &lt;/div&gt;\
 
-&lt;&lt;link &#39;fast version&#39; &#39;character creation: fast&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="character creation: fast" tags="nobr" position="475,2100" size="100,100">name: &lt;&lt;textbox &#39;_newCharacterName&#39; &#39;&#39;&gt;&gt;&lt;br /&gt;
-pronouns: &lt;&lt;listbox &#39;_newCharacterPronouns&#39;&gt;&gt;
-    &lt;&lt;option &#39;they&#39;&gt;&gt;
-    &lt;&lt;option &#39;she&#39;&gt;&gt;
-    &lt;&lt;option &#39;he&#39;&gt;&gt;
-&lt;&lt;/listbox&gt;&gt;&lt;br /&gt;
-portrait:&lt;br /&gt;&lt;&lt;set _newCharacterPortraitNumber = 0&gt;&gt;
-&lt;img data-number=&#39;1&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_1.webp&#39;&gt;
-&lt;img data-number=&#39;2&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_2.webp&#39;&gt;
-&lt;img data-number=&#39;3&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_3.webp&#39;&gt;
-&lt;img data-number=&#39;9&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_9.webp&#39;&gt;&lt;br /&gt;
-&lt;img data-number=&#39;5&#39; lass=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_5.webp&#39;&gt;
-&lt;img data-number=&#39;6&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_6.webp&#39;&gt;
-&lt;img data-number=&#39;7&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_7.webp&#39;&gt;
-&lt;img data-number=&#39;8&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_8.webp&#39;&gt;&lt;br /&gt;
-&lt;&lt;script&gt;&gt;
-  $(function() {
-    $(&#39;.portrait&#39;).click( function () {
-        $(this).toggleClass(&#39;selected&#39;).siblings().removeClass(&#39;selected&#39;);
-        State.temporary.newCharacterPortraitNumber = $(this).attr(&#39;data-number&#39;);
-    });
-  });
-&lt;&lt;/script&gt;&gt;
-&lt;&lt;set _newCharacterStats = {attention: &#39;&#39;, grit: &#39;&#39;, memory: &#39;&#39;, empathy: &#39;&#39;}&gt;&gt;
-attention: &lt;&lt;textbox &#39;_newCharacterStats.attention&#39; &#39;d6&#39;&gt;&gt;&lt;br /&gt;
-grit: &lt;&lt;textbox &#39;_newCharacterStats.grit&#39; &#39;d6&#39;&gt;&gt;&lt;br /&gt;
-memory: &lt;&lt;textbox &#39;_newCharacterStats.memory&#39; &#39;d6&#39;&gt;&gt;&lt;br /&gt;
-empathy: &lt;&lt;textbox &#39;_newCharacterStats.empathy&#39; &#39;d6&#39;&gt;&gt;&lt;br /&gt;
-
-&lt;&lt;button &#39;submit&#39; &#39;main menu&#39;&gt;&gt;
+&lt;&lt;link &#39;fast version&#39; &#39;character creation: fast&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="character creation: fast" tags="nobr util" position="475,2100" size="100,100">&lt;h2 style=&#39;margin-bottom: 1rem;&#39;&gt;create a character&lt;/h2&gt;
+&lt;div style=&#39;display: flex; flex-direction: column; gap: 1rem;&#39;&gt;
+  &lt;div&gt;name: &lt;&lt;textbox &#39;_newCharacterName&#39; &#39;&#39;&gt;&gt;&lt;/div&gt;
+  &lt;div&gt;
+    pronouns: &lt;&lt;listbox &#39;_newCharacterPronouns&#39;&gt;&gt;
+      &lt;&lt;option &#39;they&#39;&gt;&gt;
+      &lt;&lt;option &#39;she&#39;&gt;&gt;
+      &lt;&lt;option &#39;he&#39;&gt;&gt;
+    &lt;&lt;/listbox&gt;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;portrait:&lt;&lt;set _newCharacterPortraitNumber = 0&gt;&gt;&lt;/div&gt;
+  &lt;div style=&#39;display: grid; grid: repeat(2, 1fr) / repeat(4, 1fr); gap: 0.5rem; width: min-content;&#39;&gt;
+    &lt;img data-number=&#39;1&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_1.webp&#39;&gt;
+    &lt;img data-number=&#39;2&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_2.webp&#39;&gt;
+    &lt;img data-number=&#39;3&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_3.webp&#39;&gt;
+    &lt;img data-number=&#39;9&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_9.webp&#39;&gt;
+    &lt;img data-number=&#39;5&#39; lass=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_5.webp&#39;&gt;
+    &lt;img data-number=&#39;6&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_6.webp&#39;&gt;
+    &lt;img data-number=&#39;7&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_7.webp&#39;&gt;
+    &lt;img data-number=&#39;8&#39; class=&#39;portrait selectable&#39; src=&#39;images/characters/portrait_8.webp&#39;&gt;
+  &lt;/div&gt;
+  &lt;&lt;set _newCharacterStats = {attention: &#39;&#39;, grit: &#39;&#39;, memory: &#39;&#39;, empathy: &#39;&#39;}&gt;&gt;
+  &lt;div&gt;attention: &lt;&lt;textbox &#39;_newCharacterStats.attention&#39; &#39;d6&#39;&gt;&gt;&lt;/div&gt;
+  &lt;div&gt;grit: &lt;&lt;textbox &#39;_newCharacterStats.grit&#39; &#39;d6&#39;&gt;&gt;&lt;/div&gt;
+  &lt;div&gt;memory: &lt;&lt;textbox &#39;_newCharacterStats.memory&#39; &#39;d6&#39;&gt;&gt;&lt;/div&gt;
+  &lt;div&gt;empathy: &lt;&lt;textbox &#39;_newCharacterStats.empathy&#39; &#39;d6&#39;&gt;&gt;&lt;/div&gt;
+  &lt;&lt;button &#39;submit&#39; &#39;main menu&#39;&gt;&gt;
     &lt;&lt;newcharacter $activePlayer _newCharacterName _newCharacterPortraitNumber _newCharacterStats&gt;&gt;\
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="character creation: name" tags="" position="600,2100" size="100,100">What is the new character&#39;s name?
+  &lt;&lt;/button&gt;&gt;
+&lt;/div&gt;
+&lt;&lt;script&gt;&gt;
+$(function() {
+  $(&#39;.portrait&#39;).click( function () {
+    $(this).toggleClass(&#39;selected&#39;).siblings().removeClass(&#39;selected&#39;);
+    State.temporary.newCharacterPortraitNumber = $(this).attr(&#39;data-number&#39;);
+  });
+});
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="character creation: name" tags="" position="600,2100" size="100,100">What is the new character&#39;s name?
 &lt;&lt;textbox &#39;_newCharacterName&#39; &#39;&#39;&gt;&gt;
 &lt;&lt;link &#39;create&#39;&gt;&gt;
     &lt;&lt;if _newCharacterName == &#39;&#39;&gt;&gt;

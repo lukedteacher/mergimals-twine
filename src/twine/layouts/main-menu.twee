@@ -1,23 +1,16 @@
 :: main menu [nobr util]
-<<button 'CREATE CHARACTER' 'character creation: fast'>>
-<</button>>    
-@@#continue;<<button 'CONTINUE'>>
-    <<if $players[$activePlayer].characters[$activeCharacter].lastPassage == 'start'>>
-        <<dialog 'error'>>
-            you haven't explored anything yet.<br /><br />
-            <<button 'whoops'>>
-                <<run Dialog.close()>>
-            <</button>>
-        <</dialog>>
-    <<else>>
-        <<script>>
-            console.log(State.variables);
-        <</script>>
-        <<goto $players[$activePlayer].characters[$activeCharacter].lastPassage>>
-    <</if>>
-<</button>>@@
-<<button 'NEW GAME' 'intro'>><</button>>
-
+<div style='display: flex; flex-direction: column; align-items: center;'>
+  <h1>MERGIMALS</h1>
+  <h2>fusion</h2>
+  <img style='width: 8rem; aspect-ratio: 1 / 1;' src='images/logo/fusion.svg'>
+  <div style='display: flex; gap: 2rem; margin-top: 2rem;'>
+    <<button 'CREATE CHARACTER' 'character creation: fast'>><</button>>    
+    @@#continue;<<button 'CONTINUE'>>
+            <<goto $players[$activePlayer].characters[$activeCharacter].lastPassage>>
+    <</button>>@@
+    <<button 'NEW GAME' 'intro'>><</button>>
+  </div>
+</div>
 <<done>>
     <<script>>
         if (State.variables.players[State.variables.activePlayer].characters[State.variables.activeCharacter].lastPassage == 'start') {

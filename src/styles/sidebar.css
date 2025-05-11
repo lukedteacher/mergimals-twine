@@ -1,3 +1,7 @@
+#story-title {
+    margin-top: 1rem;
+}
+
 #sidebar-char-box {
     display: flex;
     flex-direction: column;
@@ -21,8 +25,22 @@
     box-sizing: border-box;
 }
 
-#char-info-boxes {
+#char-sheet-button-boxes {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+}
+
+.char-sheet-button-box {
+    display: flex;
+    background-color: #bbb;
+    width: 2.2rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.char-sheet-button-box:hover {
+    background-color: #999;
 }

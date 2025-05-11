@@ -14,6 +14,8 @@ MERGIMALS
 <<include 'sidebar'>>
 
 :: StoryMenu
+<<link 'main menu' 'main menu'>><</link>>
+<<link 'change character' 'change character'>><</link>>
 <<link 'cheats'>>
   <<dialog 'cheats'>>\
     <<include 'cheats'>>

@@ -12,10 +12,7 @@ body h3,
 body h4 {
     font-family: var(--title-font);
     font-weight: normal;
-}
-
-h4 {
-  margin-bottom: 0.3rem;
+    margin: 0;
 }
 
 body a,
