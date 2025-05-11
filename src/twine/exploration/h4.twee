@@ -1,5 +1,11 @@
-:: h4 [h4 explore]
-<<map 'h4'>><<n>><<e>><</map>><<set $currentLocation = 'h4'>>\
-!!!!EXPLORE
-This is almost to Cedar Oasis!
-[[Swim down the river (requires KEYWORD PADDLE)->f4]]
+:: h4 [h4 raven-wing map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box' style='height: min-content;'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->h4: description]]</li>
+      <li>[[Swim down the river (requires KEYWORD PADDLE)->f4]]</li>
+    </ul>
+  </div>
+  <<map 'h4'>><<n>><<e>><</map>><<set $currentLocation = 'h4'>>
+</div>

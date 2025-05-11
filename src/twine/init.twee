@@ -1,4 +1,7 @@
 :: StoryInit
+<<script>>
+  Config.passages.nobr = true;
+<</script>>
 <<include 'mergimals data variable'>>
 <<include 'mergimals encounter table'>>
 

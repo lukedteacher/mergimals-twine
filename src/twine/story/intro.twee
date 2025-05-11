@@ -1,80 +1,75 @@
-:: intro
-Greetings, $activeCharacter!
-
-Today is the first day of your Mergimals journey!
-
-<<link 'Go see professor Tamrack' 'start: part 1'>><</link>>\
+:: intro [story]
+<p>Greetings, $activeCharacter!</p>
+<p>Today is the first day of your Mergimals journey!</p>
+<ul class='choices'>
+  <li>[[Go see professor Tamrack.->start: part 1]]</li>
+</ul>
 
 :: start: part 1 [story]
-
-Professor Tamarack's office is on the Eastern edge of town. It's the biggest building in the village and what mysteries fill all three floors are as good as anyone's guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.
-<<tam>>$activeCharacter!
+<p>Professor Tamarack's office is on the Eastern edge of town. It's the biggest building in the village and what mysteries fill all three floors are as good as anyone's guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.</p>
+<<tam>>$activeCharacter!<br />
 Finally, you’re here!
-<</tam>>\
-<div id='response'>\
+<</tam>>
+<div id='response'>
   <<link 'Say: Were you waiting for me?'>>
-    <<replace '#response'>>\
-      <<say $activeCharacter $players[$activePlayer].characters[$activeCharacter].portrait>>Were you waiting for me?<</say>>\
-      <<tam>>No, I wasn’t waiting at the window all morning for you.
-        <<cont keypress append>>I have, um, lots and lots of work to do to keep me busy.
-          <<cont keypress append>>I’m, like, super duper busy.
-            <<cont keypress append>>So, please… come inside and we'll get you set up.
-              <<cont keypress append>>You’ve been waiting 10 years for this, how exciting!
-                <<cont keypress>><<replace '#link'>><<link 'Follow the professor inside the Lab.' 'start: part 2'>><</link>><</replace>>\
-                <</cont>>\
-              <</cont>>\
-            <</cont>>\
-          <</cont>>\
-        <</cont>>\
-              <</tam>>\
+    <<replace '#response'>>
+      <<say $activeCharacter $players[$activePlayer].characters[$activeCharacter].portrait>>Were you waiting for me?<</say>>
+      <<tam>>No, I wasn’t waiting at the window all morning for you.<br />
+        <<cont keypress append>>I have, um, lots and lots of work to do to keep me busy.<br />
+          <<cont keypress append>>I’m, like, super duper busy.<br />
+            <<cont keypress append>>So, please… come inside and we'll get you set up.<br />
+              <<cont keypress append>>You’ve been waiting 10 years for this, how exciting!<br />
+                <<cont keypress>><<replace '#link'>><<link 'Follow the professor inside the Lab.' 'start: part 2'>><</link>><</replace>>
+                <</cont>>
+              <</cont>>
+            <</cont>>
+          <</cont>>
+        <</cont>>
+              <</tam>>
               @@#link;@@
     <</replace>>
   <</link>>
-  <<link 'Say: Let\'s go!'>>
-    <<replace '#response'>>\
-      <<say $activeCharacter $players[$activePlayer].characters[$activeCharacter].portrait>>Let's go!<</say>>\
-      <<tam>>You’ve been waiting 10 years for this, how exciting!<</tam>>\
-      <<link 'Follow the professor inside the Lab.' 'start: part 2'>><</link>>
-    <</replace>>
-  <</link>>
+  <ul class='choices'>
+    <li>
+      <<link 'Say: Let\'s go!'>>
+        <<replace '#response'>>
+          <<say $activeCharacter $players[$activePlayer].characters[$activeCharacter].portrait>>Let's go!<</say>>
+          <<tam>>You’ve been waiting 10 years for this, how exciting!<</tam>>
+          <<link 'Follow the professor inside the Lab.' 'start: part 2'>><</link>>
+        <</replace>>
+      <</link>>
+    </li>
+  </ul>
 </div>
 
 :: start: part 2 [story]
-You enter.
+<p>You enter.</p>
+<p>It's time to pick your first Mergimal!</p>
+<div style='display: flex; gap: 1rem; margin-bottom: 1rem;'>
+  <<card 'melodrake' true>>
+  <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.melodrake = 'seen'>>
+  <<card 'scorchilla' true>>
+  <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.scorchilla = 'seen'>>
+  <<card 'penguwaiian' true>>
+  <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.penguwaiian = 'seen'>>
+</div>
+<ul class='choices'>
+  <li>[[Ask if there are any others.->start: part 2b]]</li>
+</ul>
 
-It's time to pick a Mergimal!
+:: start: part 2b [story]
+<p>Maybe someday! But not right now.</p>
+<p>So make a choice.</p>
+<ul class='choices'>
+  <li>[[As you wish.->start: part 2]]</li>
+</ul>
 
-<div style='display: flex; gap: 1rem;'>\
-  <<card 'melodrake' true>>\
-  <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.melodrake = 'seen'>>\
-  <<card 'scorchilla' true>>\
-  <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.scorchilla = 'seen'>>\
-  <<card 'penguwaiian' true>>\
-  <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.penguwaiian = 'seen'>>\
-</div>\
-
-[[Ask if there are any others.->start: part 2b]]
-
-:: start: part 2b
-Maybe someday! But not right now.
-
-So make a choice.
-
-<<return 'As you wish.'>>
-
-:: start: part 3
-<<tam>>Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.<</tam>>\
-You got 5 mergiballs.<<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 5>>
-
-They have been added to your backpack.
-
-It's time to start your journey.
-
-[[Let's go!->start: part 4]]
-
-:: start: part 4
-<<tam>>Wait!
-
-Do you need me to show you how to catch Mergimals?<</tam>>\
-<<link 'Say: Yes, please. (TUTORIAL)' 'tutorial: part 1'>><</link>>
-<<link 'Say: No, thanks. I already know how.' 'b3'>><</link>>
+:: start: part 3 [story]
+<<tam>>Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.<</tam>>
+<p>You got 5 mergiballs.</p>
+<<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 5>>
+<p>They have been added to your backpack.</p>
+<p>It's time to start your journey.</p>
+<ul class='choices'>
+  <li>[[Let's go!->b3]]</li>
+</ul>

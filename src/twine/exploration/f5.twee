@@ -4,20 +4,27 @@
 [[Check the long grass.->f5: long grass]]
 
 :: f5: long grass
-Test two cards.
-
-You got...
-
-<<link '...zero correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
-<</link>>
-<<link '...one correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
-<</link>>
-<<link '...two correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
-<</link>>
-[[Continue exploring.->$currentLocation]]
+<p>The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!</p>
+<p style='font-weight: bold;'>Roll 1d20</p>
+<p>If you got...</p>
+<ul class='choices'>
+  <li>
+    <<link '1-12 (common)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-17 (uncommon)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-20 (rare)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+    <</link>>
+  </li>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>
 
 :: f4: trainer
 A trainer!

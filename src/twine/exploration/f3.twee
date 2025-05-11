@@ -1,5 +1,24 @@
-:: f3 [f3 explore]
-<<map 'f3'>><<e>><<s>><</map>><<set $currentLocation = 'f3'>>\
-!!!!EXPLORE
-Welcome to Raven Wing!
-[[Nothing yet->blah]]
+:: f3 [f3 raven-wing map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box' style='height: min-content;'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->f3: description]]</li>
+      <li>[[Nothing else yet->blah]]</li>
+    </ul>
+  </div>
+  <<map 'f3'>><<e>><<s>><</map>><<set $currentLocation = 'f3'>>
+</div>
+
+:: f3: description [f3 raven-wing description]
+<div class='flex-row flex items-center gap-lg'>
+  <img class='concept' src='images/story/raven-wing.png'>
+  <div>
+    <p>Raven Wing is located high in the mountains. It snows here year round!</p>
+    <p>It is the home of the Forge Workshop and their leader Matiu. People say he's quite intense and doesn't like to be interrupted when he's working.</p>
+    <p>Crossing all the way to the east side of town might be difficult, given all the snow.</p>
+    <ul class='choices'>
+      <li>[[Check out Raven Wing.->$currentLocation]]</li>
+    </ul>
+  </div>
+</div>

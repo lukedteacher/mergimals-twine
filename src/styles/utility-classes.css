@@ -1,41 +1,63 @@
 /* utility classes */
 
 .text-darkest {
-    color: #111;
+  color: #111;
 }
 
 .text-lg {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .text-xl {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .rounded {
-    border-radius: 0.4rem;
+  border-radius: 0.4rem;
 }
 
 .bg-white {
-    background-color: #fff;;
+  background-color: #fff;;
 }
 
 .bg-lightest {
-    background-color: #eee;
+  background-color: #eee;
 }
 
 .bg-lighter {
-    background-color: #ddd;
+  background-color: #ddd;
+}
+
+.gap-md {
+  gap: 1rem;
+}
+
+.gap-lg {
+  gap: 2rem;
 }
 
 .grid {
-    display: grid;
+  display: grid;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .flex-col {
-    flex-direction: column;
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.items-center {
+  align-items: center;
+  justify-items: center;
+}
+
+.content-center {
+  align-content: center;
+  justify-content: center;
 }

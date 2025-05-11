@@ -1,5 +1,20 @@
-:: g2 [g2 explore]
-<<map 'g2'>><<s>><</map>><<set $currentLocation = 'g2'>>\
-!!!!EXPLORE
-Oh dang what a cool castle! This must be The Forge Workshop.
-[[Nothing yet->blah]]
+:: g2 [g2 raven-wing forge-workshop map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box' style='height: min-content;'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->g2: description]]</li>
+      <li>[[Walk up to the large doors.->g2: forge workshop]]</li>
+    </ul>
+  </div>
+  <<map 'g2'>><<s>><</map>><<set $currentLocation = 'g2'>>
+</div>
+
+:: g2: forge workshop [g2 raven-wing forge-workshop]
+<p>This is the famous Forge Workshop, home of the Forge School Challenge.</p>
+<p>There's a sign on the door that says:</p>
+<p>"GO AWAY"</p>
+<ul class='choices'>
+  <li>[[Bummer. Guess this school is closed too.->$currentLocation]]</li>
+  <li>[[See if there's another way in.->g2: back door]]</li>
+</ul>

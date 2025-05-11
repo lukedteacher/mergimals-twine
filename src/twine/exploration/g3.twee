@@ -1,5 +1,11 @@
-:: g3 [g3 explore]
-<<map 'g3'>><<n>><<e>><<w>><</map>><<set $currentLocation = 'g3'>>\
-!!!!EXPLORE
-You're downtown now!
-[[Nothing yet->blah]]
+:: g3 [g3 raven-wing map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box' style='height: min-content;'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->g3: description]]</li>
+      <li>[[Nothing else yet->blah]]</li>
+    </ul>
+  </div>
+  <<map 'g3'>><<n>><<e>><<w>><</map>><<set $currentLocation = 'g3'>>
+</div>

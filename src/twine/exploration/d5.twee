@@ -1,24 +1,40 @@
 :: d5 [map littlemooseforest]
-<<map 'd5'>><<n>><<s>><</map>><<set $currentLocation = 'd5'>>\
-!!!!EXPLORE
-[[Check the long grass.->d5: long grass]]
-[[Approach the trainers.->d5: trainer]]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Check the long grass.->d5: long grass]]</li>
+      <li>[[Approach the trainer.->d5: trainer]]</li>
+    </ul>
+  </div>
+  <<map 'd5'>><<n>><<s>><</map>><<set $currentLocation = 'd5'>>
+</div>
 
 :: d5: long grass
-Test two cards.
-
-You got...
-
-<<link '...zero correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
-<</link>>
-<<link '...one correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
-<</link>>
-<<link '...two correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
-<</link>>
-[[Continue exploring.->$currentLocation]]
+<p>The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!</p>
+<p style='font-weight: bold;'>Roll 1d20</p>
+<p>If you got...</p>
+<ul class='choices'>
+  <li>
+    <<link '1-12 (common)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-17 (uncommon)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-20 (rare)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+    <</link>>
+  </li>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>
 
 :: d5: trainer
-This trainer is...
+This trainer is doing a cool dance or something?
+<ul class='choices'>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>

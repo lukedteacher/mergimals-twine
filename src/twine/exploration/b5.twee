@@ -1,81 +1,100 @@
-:: b5 [map]
-<<map 'b5'>><<n>><</map>><<set $currentLocation = 'b5'>>\
-!!!!EXPLORE
-[[Look around.->b5: description]]
-[[Dip your toe in the water.->b5: the sea]]
-[[Investigate the sand castle.->crabby critters]]
-[[Talk to the trainer.->dontay]]
-[[That lighthouse looks interesting.->404]]
-
-:: b5: description
-A serene beach stretches out before you. The white sand feels warm to the touch. The ocean waves crash against the shore.
-
-Someone seems to have built a sandcastle. You can see movement nearby.
-
-A Mergimal trainer is near the south end of the beach. You watch them skillfully cast their fishing line into the clear water.
-
-A large, imposing lighthouse stands on a small island just off the coast.
-
-[[Continue exploring.->b5]]
-
-:: b5: the sea [detail]
-The water is cool and inviting. You look out over the sea. You can see a boat off in the distance. This might be a good fishing spot.
-
-<div class='test'>\
-    TEST ATTENTION x 6.
-    <<link 'Success'>>
-        <<replace '.test'>>Something glints in the water to the Northwest. Perhaps you should look at the map more closely in that area.<</replace>>
-    <</link>>
-    <<link 'Failure'>>
-        <<replace '.test'>>Nothing to see here.<</replace>>
-    <</link>>
+:: b5 [b5 pretty-rock-bay map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around.->b5: description]]</li>
+      <li>[[Admire the water.->b5: the sea]]</li>
+      <li>[[Investigate the sand castle.->crabby critters]]</li>
+      <li>[[Talk to the trainer.->dontay]]</li>
+      <li>[[That lighthouse looks interesting.->404]]</li>
+    </ul>
+  </div>
+  <<map 'b5'>><<n>><</map>><<set $currentLocation = 'b5'>>
 </div>
-<<link 'Go fishing. (requires keyword: ROD)'>><<if $players[$activePlayer].characters[$activeCharacter].keywords.rusty == false>><<dialog 'no rod'>><<include 'no rod'>><</dialog>><<else>><<goto 'b5: fishing'>><</if>><</link>>
-<<link 'Ride your Mergimal out to sea (requires: keyword PADDLE)'>><<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>><<dialog 'no keyword paddle'>><<include 'no paddle'>><</dialog>><<else>><<goto 'b5: paddling to sea'>><</if>><</link>>
-[[See what else is around here: continue exploring Pretty Rock Bay.->b5]]
 
-:: crabby critters [worksheet]
-<<if $players[$activePlayer].characters[$activeCharacter].keywords.rusty == false>>\
-A group of crab-like Mergimals seems to be protecting a large sand castle. An old fishing pole sticks out of the center tower, holding a flag.
+:: b5: description [b5 pretty-rock-bay description]
+<p>A serene beach stretches out before you. The white sand feels warm to the touch. The ocean waves crash against the shore.</p>
+<p>Someone seems to have built a sandcastle. You can see movement nearby.</p>
+<p>A Mergimal trainer is near the south end of the beach. You watch them skillfully cast their fishing line into the clear water.</p>
+<p>A large, imposing lighthouse stands on a small island just off the coast.</p>
+<ul class='choices'>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>
 
-Maybe you can figure out some way to avoid the creatures and grab it?
-
-Do Worksheet 'Crabby Critters'.
-
-Enter the code:  <<numberbox '_$code' 0>>
-
-<<link 'See if you got past them.'>>
-    <<if _$code != 141>>
-        <<dialog 'incorrect'>>\
-            <<include 'incorrect'>>
+:: b5: the sea [b5 pretty-rock-bay sea]
+<p>The water is cool and inviting. You look out over the sea. You can see a boat off in the distance. This might be a good fishing spot.</p>
+<ul class='choices'>
+  <li>
+    <<link 'Go fishing. (requires keyword: ROD)'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].keywords.rusty == false>>
+        <<dialog 'no rod'>>
+          <<include 'no rod'>>
         <</dialog>>
-    <<else>>
-        <<dialog 'correct'>>\
+      <<else>>
+        <<goto 'b5: fishing'>>
+      <</if>>
+    <</link>>
+  </li>
+  <li>
+    <<link 'Ride your Mergimal out to sea (requires: keyword PADDLE)'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>>
+        <<dialog 'no keyword paddle'>>
+          <<include 'no paddle'>>
+        <</dialog>>
+      <<else>>
+        <<goto 'b5: paddling to sea'>>
+      <</if>>
+    <</link>>
+  </li>
+  <li>[[See what else is around here: continue exploring the bay.->b5]]</li>
+</ul>
+
+
+:: crabby critters [b5 pretty-rock-bay worksheet]
+<<if $players[$activePlayer].characters[$activeCharacter].keywords.rusty == false>>
+  <p>A group of crab-like Mergimals seems to be protecting a large sand castle. An old fishing pole sticks out of the center tower, holding a flag.</p>
+  <p>Maybe you can figure out some way to avoid the creatures and grab it?</p>
+  <p>Do Worksheet 'Crabby Critters'.</p>
+  <p>Enter the code:  <<numberbox '_$code' 0>></p>
+  <ul class='choices'>
+    <li>
+      <<link 'See if you got past them.'>>
+        <<if _$code != 141>>
+          <<dialog 'incorrect'>>
+            <<include 'incorrect'>>
+          <</dialog>>
+        <<else>>
+          <<dialog 'correct'>>
             <<include 'correct'>>
             <<onclose>>
-                <<goto 'rusty rod reward'>>
-        <</dialog>>
-    <</if>>
-<</link>>
-[[Leave them alone for now and continue exploring.->b5]]
-<<else>>\
-    (Keyword RUSTY detected)
-
-    Nothing to see here.
-
-    [[Continue exploring.->b5]]
+              <<goto 'rusty rod reward'>>
+          <</dialog>>
+        <</if>>
+      <</link>>
+    </li>
+    <li>[[Leave them alone for now and continue exploring.->b5]]</li>
+  </ul>
+<<else>>
+  <p>(Keyword RUSTY detected)</p>
+  <p>There are some Krustwos here, protecting a sad sand castle. You'd better stay away.</p>
+  <ul class='choices'>
+    <li>[[Continue exploring.->$currentLocation]]</li>
+  </ul>
 <</if>>
 
-:: rusty rod reward [reward]
-After a short while, you seem to find a pattern in the crabs' movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.
+:: rusty rod reward [b5 pretty-rock-bay reward]
+<p>After a short while, you seem to find a pattern in the crabs' movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.</p>
+<p>
+  Gain keyword RUSTY.
+  <<set $players[$activePlayer].characters[$activeCharacter].keywords.rusty = true>>
+  <<redo 'keywords'>>
+</p>
+<ul class='choices'>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>
 
-Gain keyword RUSTY.<<set $players[$activePlayer].characters[$activeCharacter].keywords.rusty = true>><<redo 'keywords'>>
-
-Gain Card I-20 (Rusty Rod).
-
-[[Continue exploring.->b5]]
-
-:: b5: fishing [stray]
+:: b5: fishing [b5 pretty-rock-bay fishing stray]
 
 You cast your rod into the clear, blue water. After only a short while, you feel something pulling your line.
 
@@ -99,15 +118,16 @@ You found a bottle floating in the water. It has a message inside! You unroll it
 
 Do Worksheet 'Message in a Botttle'.
 
-[[Decode the message later: continue exploring.->b5]]
+[[Decode the message later: continue exploring.->$currentLocation]]
 
 :: b5: paddling to sea [swim]
-You ride your Mergimal out to sea. The water is calm at first, but gets rougher as you go.
-
-Do Worksheet SKIP COUNT 4.
-
-<<link 'Failure: GAIN an INJURY' 'b3'>><<set $player.injuries ++>><<redo 'injuries'>><</link>>
-[[Success.->b3]]
+<p>(Keyword PADDLE detected)</p>
+<p>You ride your Mergimal out to sea. The water is calm at first, but gets rougher as you go.</p>
+<p>Skip count by d12, d12 times.</p>
+<ul class='choices'>
+  <li>[[Success: you made it!->b3]]</li>
+  <li>[[Failure: gain an injury.->b3]]</li>
+</ul>
 
 :: b5: strained line [encounter]
 You reel your line in and it nearly snaps.

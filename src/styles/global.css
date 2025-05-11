@@ -77,12 +77,14 @@ body a:hover {
   border: 2px solid var(--red);
   border-radius: 0.4rem;
   padding: 1rem;
+  margin-bottom: 2rem;
 }
 
 .warning {
   border: 2px solid var(--yellow);
   border-radius: 0.4rem;
   padding: 1rem;
+  margin-bottom: 2rem;
 }
 
 .alert:before {
@@ -90,4 +92,8 @@ body a:hover {
   background-image: url('images/svg/alert.svg');
   size: 100rem;
 
+}
+
+#passages {
+  max-width: 64rem;
 }

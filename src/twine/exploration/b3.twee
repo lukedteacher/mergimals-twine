@@ -1,60 +1,85 @@
-:: b3 [map]
-<<map 'b3'>><<s>><</map>><<set $currentLocation = 'b3'>>\
-!!!!EXPLORE
-[[Look around->b3: description]]
-[[Stop at home.->b3: home]]
-[[Visit the Mergimal Lab->b3: lab]]
-[[Go to the beach.->b3: beach]]
+:: b3 [b3 cascade-village map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->b3: description]]</li>
+      <li>[[Stop at home.->b3: home]]</li>
+      <li>[[Visit the Mergimal Lab->b3: lab]]</li>
+      <li>[[Go to the beach.->b3: beach]]</li>
+    </ul>
+  </div>
+  <<map 'b3'>><<s>><</map>><<set $currentLocation = 'b3'>>
+</div>
 
-:: b3: description
-<img class='concept' src='images/story/cascade-village.png'>
-Cascade Village rests quietly on the sandy shores of Ho’onui Peninsula, where five cozy homes overlook the sparkling waves. The Mergimal Research Center stands at the edge of the beach, its sleek design contrasting with the warm, rustic charm of the village.
+:: b3: description [b3 cascade-village description]
+<div class='flex-row flex items-center gap-lg'>
+  <img class='concept' src='images/story/cascade-village.png'>
+  <div>
+    <p>Cascade Village rests quietly on the sandy shores of Ho’onui Peninsula, where five cozy homes overlook the sparkling waves. The Mergimal Research Center stands at the edge of the beach, its sleek design contrasting with the warm, rustic charm of the village.</p>
+    <p>Life moves at a gentle pace here, with the ocean breeze carrying the sound of laughter and the faint scent of salt and fresh bread. It’s a peaceful place to live—but for those eager to explore, Cascade Village feels like the calm before an unforgettable adventure.</p>
+    <ul class='choices'>
+      <li>[[Keep exploring the village.->$currentLocation]]</li>
+    </ul>
+  </div>
+</div>
 
-Life moves at a gentle pace here, with the ocean breeze carrying the sound of laughter and the faint scent of salt and fresh bread. It’s a peaceful place to live—but for those eager to explore, Cascade Village feels like the calm before an unforgettable adventure.
+:: b3: home [b3 cascade-village home]
+<p>This is your home. The cozy warmth tempts you to stay, but you know that adventure calls.</p>
+<ul class='choices'>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>
 
-[[Keep exploring the village.->b3]]
+:: b3: lab [b3 cascade-village lab]
+<p>This is the world-famous Mergimal Research Center. It is also the home of your mentor, Professor Tamarack.</p>
+<p>If you want, you can see if he’s available to talk.</p>
+<ul class='choices'>
+  <li>
+    <<link 'Tell him about the delivery. (requires: keyword CLOSED)'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].keywords.closed == false>>
+        <<dialog 'no keyword CLOSED'>>
+          <<include 'no keyword'>>
+        <</dialog>>
+      <<else>>
+        <<goto 'tamarack: delivery'>>
+      <</if>>
+    <</link>>
+  </li>
+  <li>[[Keep exploring the village.->$currentLocation]]</li>
+</ul>
 
-:: b3: home
-This is your home. The cozy warmth tempts you to stay, but you know that adventure calls.
+:: b3: beach [b3 cascade-village beach]
+<p>The beach is small, but tidy. If you knew how to ride a Mergimal, you could go out on the water.</p>
+<ul class='choices'>
+  <li>
+    <<link 'Brave the waters (requires: keyword PADDLE)'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>>
+        <<dialog 'no keyword paddle'>>
+          <<include 'no paddle'>>
+        <</dialog>>
+      <<else>>
+        <<goto 'b3: out to sea'>>
+      <</if>>
+    <</link>>
+  </li>
+  <li>[[Keep exploring the village.->$currentLocation]]</li>
+</ul>
 
-<<linkreplace "Eat a home cooked meal." t8n>>\
-    <<if $rested is false>>You slurp down a bowl of hearty soup and feel yourself regain some strength.
-        <<set $rested to true>>\
-    <<else>>You aren't hungry right now. Come back if you need some rest.
-    <</if>>\
-<</linkreplace>>\
+:: b3: out to sea [b3 cascade-village paddle]
+<p>(Keyword PADDLE detected)</p>
+<p>The water is great.</p>
+<p>Skip count by d12, d12 times.</p>
+<ul class='choices'>
+  <li>[[Success.->b5]]</li>
+  <li>[[Failure.->404]]</li>
+</ul>
 
-[[Continue exploring.->b3]]
-
-:: b3: lab
-This is the world-famous Mergimal Research Center. It is also the home of your mentor, Professor Tamarack.
-
-If you want, you can see if he’s available to talk.
-
-<<link 'Tell him about the delivery. (requires: keyword CLOSED)'>><<if $players[$activePlayer].characters[$activeCharacter].keywords.closed == false>><<dialog 'no keyword CLOSED'>><<include 'no keyword'>><</dialog>><<else>><<goto 'tamarack: delivery'>><</if>><</link>>
-[[Keep exploring the village.->b3]]
-
-:: b3: beach
-The beach is small, but tidy. If you knew how to ride a Mergimal, you could go out on the water.
-
-<<link 'Brave the waters (requires: keyword PADDLE)'>><<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>><<dialog 'no keyword paddle'>><<include 'no paddle'>><</dialog>><<else>><<goto 'b3: out to sea'>><</if>><</link>>
-[[Keep exploring the village.->b3]]
-
-:: b3: out to sea
-(Keyword PADDLE detected)
-
-The water is great.
-
-Do Worksheet SKIP COUNT 8.
-
-[[Success.->b5]]
-[[Failure.->404]]
-
-:: tamarack: delivery
-<<tam>>Grace wasn't at the veil school?
-And it was closed?
-How odd!
+:: tamarack: delivery [b3 cascade-village lab]
+<<tam>>Grace wasn't at the Veil School?<br />
+And it was closed?<br />
+How odd!<br />
 Perhaps you'll have to start your Mergimal challenge in Blue Urf or Raven Wing instead.
 <</tam>>
-
-[[Okay.->b3]]
+<ul class='choices'>
+  <li>[[Okay.->$currentLocation]]</li>
+</ul>

@@ -4,7 +4,7 @@
   <h2>fusion</h2>
   <img style='width: 8rem; aspect-ratio: 1 / 1;' src='images/logo/fusion.svg'>
   <div style='display: flex; gap: 2rem; margin-top: 2rem;'>
-    <<button 'CREATE CHARACTER' 'character creation: fast'>><</button>>    
+    <<button 'CREATE CHARACTER' 'create a character'>><</button>>    
     @@#continue;<<button 'CONTINUE'>>
             <<goto $players[$activePlayer].characters[$activeCharacter].lastPassage>>
     <</button>>@@

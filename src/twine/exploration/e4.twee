@@ -1,24 +1,41 @@
-:: e4 [map]
-<<map 'e4'>><<n>><<e>><<w>><</map>><<set $currentLocation = 'e4'>>\
-!!!!EXPLORE
-[[Check the long grass.->e4: long grass]]
-[[Approach the trainers.->e4: trainer]]
+:: e4 [e4 map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box' style='height: min-content;'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->e4: description]]</li>
+      <li>[[Check the long grass.->e4: long grass]]</li>
+      <li>[[Approach the trainers.->e4: trainer]]</li>
+    </ul>
+  </div>
+  <<map 'e4'>><<n>><<e>><<w>><</map>><<set $currentLocation = 'e4'>>
+</div>
 
-:: e4: long grass
-Test two cards.
+:: e4: long grass [e4 long-grass stray]
+<p>The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!</p>
+<p style='font-weight: bold;'>Roll 1d20</p>
+<p>If you got...</p>
+<ul class='choices'>
+  <li>
+    <<link '1-12 (common)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-17 (uncommon)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-20 (rare)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+    <</link>>
+  </li>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>
 
-You got...
-
-<<link '...zero correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
-<</link>>
-<<link '...one correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
-<</link>>
-<<link '...two correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
-<</link>>
-[[Continue exploring.->$currentLocation]]
-
-:: e4: trainer
-Two trainers even!
+:: e4: trainer [e4 trainer]
+<p>More trainers!</p>
+<ul class='choices'>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>

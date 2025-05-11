@@ -1,7 +1,13 @@
 :: e1 [map]
-<<map 'e1'>><<s>><</map>><<set $currentLocation = 'e1'>>\
-!!!!EXPLORE
-[[Go to the Wave School->e1: wave school]]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Go to the Wave School->e1: wave school]]</li>
+    </ul>
+  </div>
+  <<map 'e1'>><<s>><</map>><<set $currentLocation = 'e1'>>
+</div>
 
 :: e1: wave school [blue-urf]
 <<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>>\

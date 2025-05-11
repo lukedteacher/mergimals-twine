@@ -5,19 +5,21 @@
 
 .map-grid {
     display: grid;
-    grid: repeat(4, 1rem) repeat(32, 1fr) repeat(4, 1rem) / repeat(4, 1rem) repeat(32, 1fr) repeat(4, 1rem);
+    grid: repeat(32, 1fr) / repeat(32, 1fr);
 }
 
 .map-img {
     width: 36rem;
-    grid-area: 5 / 5 / span 32 / span 32;
+    grid-area: 1 / 1 / span 32 / span 32;
 }
 
 .move-btn {
     background-repeat: no-repeat;
     background-position: center;
+    border: none;
     background-color: hsl(56, 100%, 50%);
-    border-radius: 0.5rem;
+    border-radius: 0.4rem;
+    background-size: 1.8rem;
 }
 
 .move-btn:hover {
@@ -25,22 +27,22 @@
 }
 
 .north {
-    grid-area: 1 / 19 / span 3 / span 4;
+    grid-area: 2 / 15 / span 2 / span 4;
     background-image: url('images/svg/north.svg');
 }
 
 .east {
-    grid-area: 19 / 38 / span 4 / span 3;
+    grid-area: 15 / 30 / span 4 / span 2;
     background-image: url('images/svg/east.svg');
 }
 
 .west {
-    grid-area: 19 / 1 / span 4 / span 3;
+    grid-area: 15 / 2 / span 4 / span 2;
     background-image: url('images/svg/west.svg');
 }
 
 .south {
-    grid-area: 38 / 19 / span 3 / span 4;
+    grid-area: 30 / 15 / span 2 / span 4;
     background-image: url('images/svg/south.svg');
 }
 
@@ -58,4 +60,15 @@
     height: 100%;
     width: 100%;
     grid-area: 1 / 1 / span 10 / span 10;
+}
+
+#explore-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.choices {
+  list-style: none;
+  padding: 0 !important;
+  margin: 0 !important;
 }

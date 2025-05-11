@@ -1,33 +1,43 @@
-:: b4 [map]
-<<map 'b4'>><<n>><<e>><<s>><</map>><<set $currentLocation = 'b4'>>\
-!!!!EXPLORE
-[[Look around->b4: description]]
-[[Check the long grass.->126]]
-[[Say 'hello' to the trainer.->bucky]]
+:: b4 [b4 route-001 map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box' style='height: min-content;'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->b4: description]]</li>
+      <li>[[Check the long grass.->b4: long grass]]</li>
+      <li>[[Say 'hello' to the trainer.->bucky]]</li>
+    </ul>
+  </div>
+  <<map 'b4'>><<n>><<e>><<s>><</map>><<set $currentLocation = 'b4'>>
+</div>
 
-:: b4: description
-Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South.
+:: b4: description [b4 route-001 description]
+<p>Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South.</p>
+<p>A Mergimal trainer is posed near an apple tree, looking hungry for a contest.</p>
+<p>You can hear cooing noises coming from the long grass.</p>
+<ul class='choices'>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>
 
-A Mergimal trainer is posed near an apple tree, looking hungry for a contest.
-
-You can hear cooing noises coming from the long grass.
-
-[[Continue exploring.->b4]]
-
-:: 126 [stray]
-The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!
-
-Test two cards.
-
-You got...
-
-<<link '...zero correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
-<</link>>
-<<link '...one correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
-<</link>>
-<<link '...two correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
-<</link>>
-[[Continue exploring.->$currentLocation]]
+:: b4: long grass [b4 route-001 long-grass stray]
+<p>The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!</p>
+<p style='font-weight: bold;'>Roll 1d20</p>
+<p>If you got...</p>
+<ul class='choices'>
+  <li>
+    <<link '1-12 (common)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-17 (uncommon)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-20 (rare)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+    <</link>>
+  </li>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>

@@ -1,26 +1,32 @@
-:: e2 [map]
-<<map 'e2'>><<n>><<w>><<s>><</map>><<set $currentLocation = 'e2'>>\
-!!!!EXPLORE
-[[Look around->e2: description]]
-[[Read the community bulletin board.->e2: bulletin board]]
-[[Buy something at the vending machine->e2: vending machine]]
+:: e2 [e2 blue-urf map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->e2: description]]</li>
+      <li>[[Read the community bulletin board.->e2: bulletin board]]</li>
+      <li>[[Buy something at the vending machine->e2: vending machine]]</li>
+    </ul>
+  </div>
+  <<map 'e2'>><<n>><<w>><<s>><</map>><<set $currentLocation = 'e2'>>
+</div>
 
-:: e2: description
-<img class='concept' src='images/story/blue-urf.png'>\
 
-Blue Urf is a bustling city that loves fashion and beach life.
-
-It is the home of the Wave School and its leader, Rhia, which is to the North.
-
-The path to the South leads out of the city and on [TODO name this]. There is a path to the west toward the beach.
-
-A Mergimal Challenge Vending machine is here, where you can spend your hard-earned challenge coins.
-
-A bunch of people seem to be waving fans and complaining about how their air conditioners are on the fritz.
-
-[[Continue exploring.->e2]]
+:: e2: description [e2 blue-urf description]
+<div class='flex-row flex items-center gap-lg'>
+  <img class='concept' src='images/story/blue-urf.png'>
+  <div>
+    <p>Blue Urf is a bustling city that loves fashion and beach life.</p>
+    <p>It is the home of the Wave School and its leader, Rhia, which is to the North.</p>
+    <p>The path to the South leads out of the city and on [TODO name this]. There is a path to the west toward the beach.</p>
+    <p>A Mergimal Challenge Vending machine is here, where you can spend your hard-earned challenge coins.</p>
+    <p>A bunch of people seem to be waving fans and complaining about how their air conditioners are on the fritz.</p>
+    <ul class='choices'>
+      <li>[[Keep exploring the city.->$currentLocation]]</li>
+    </ul>
+  </div>
+</div>
 
 :: e2: vending machine [vend blue-urf]
 <<include 'vending machine'>>
-
-[[Look around Blue Urf.->e2]]
+[[Look around Blue Urf.->$currentLocation]]

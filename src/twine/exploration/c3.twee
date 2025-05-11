@@ -1,19 +1,24 @@
-:: c3 [map]
-<<map 'c3'>><</map>><<set $currentLocation = 'c3'>>\
-!!!!EXPLORE
-[[Take in the view->c3: the view]]
-[[Rummage around in the long grass->c3: long grass]]
-[[Talk to the scientist.->c3: scientist]]
-[[Enter the cave->c2]]
-[[Climb back down.->c4]]
+:: c3 [c3 crystal-cavern-entrance map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Take in the view->c3: the view]]</li>
+      <li>[[Rummage around in the long grass->c3: long grass]]</li>
+      <li>[[Talk to the scientist.->c3: scientist]]</li>
+      <li>[[Enter the cave->c2]]</li>
+      <li>[[Climb back down.->c4]]</li>
+    </ul>
+  </div>
+  <<map 'c3'>><</map>><<set $currentLocation = 'c3'>>
+</div>
 
-:: c3: the view [c3 story]
-You look out over the cliff and take in the beauty.
-
-You can see Littlemoose from here, on the other side of a dense forest.
-
-To the West, you can see Blue Urf. You notice that the lights that usually dot the city don't seem to be working.
-
-Further in that direction, the peaks of Raven Wing mountain are barely visible.
-
-[[See what else is up here: Explore Crystal Caverns Entrance.->c3]]
+:: c3: the view [c3 crystal-cavern-entrance description]
+<p>You look out over the cliff and take in the beauty.</p>
+<p>You can see Littlemoose from here, a ways to the south. Some of it's tall buildings stick out among the dense forest.</p>
+<p>To the West, you can see Blue Urf. You notice that the lights that usually dot the city don't seem to be working.</p>
+<p>Further in that direction, the peaks of Raven Wing mountain are barely visible.</p>
+<ul class='choices'>
+<ul class='choices'>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>

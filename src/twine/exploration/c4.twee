@@ -1,49 +1,65 @@
-:: c4 [map]
-<<map 'c4'>><<w>><<e>><</map>><<set $currentLocation = 'c4'>>\
-!!!!EXPLORE
-[[Look around.->c4: description]]
-[[Check the long grass.->005]]
-[[Greet the trainer.->jessie]]
-[[Check out the cliff->932]]
-[[Go South into the dark forest.->214]]
+:: c4 [c4 route-002 map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around.->c4: description]]</li>
+      <li>[[Check the long grass.->005]]</li>
+      <li>[[Greet the trainer.->jessie]]</li>
+      <li>[[Investigate the cliff->932]]</li>
+      <li>[[Go South into the dark forest.->214]]</li>
+    </ul>
+  </div>
+  <<map 'c4'>><<w>><<e>><</map>><<set $currentLocation = 'c4'>>
+</div>
 
-:: c4: description
-Route 002 connects the Great River Road and Cascade Village. To the East, you can see the road get wider and more well-traveled.
+:: c4: description [c4 route-002 description]
+<p>Route 002 connects the Great River Road and Cascade Village. To the East, you can see the road get wider and more well-traveled.</p>
+<p>A bored looking Mergimal trainer eyes you with a yawn. Next to them, you can see a stretch of climbable rocks that lead up the cliff face. There is a small cave on an outcrop of rocks.</p>
+<p>A small pathway leads South into the forest. Maybe it's a shortcut to Littlemoose?</p>
+<ul class='choices'>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>
 
-A bored looking Mergimal trainer eyes you with a yawn. Next to them, you can see a stretch of climbable rocks that lead up the cliff face. There is a small cave on an outcrop of rocks.
+:: 005 [c4 route-002 stray long-grass]
+<p>The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!</p>
+<p style='font-weight: bold;'>Roll 1d20</p>
+<p>If you got...</p>
+<ul class='choices'>
+  <li>
+    <<link '1-12 (common)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-17 (uncommon)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-20 (rare)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+    <</link>>
+  </li>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>
 
-A small pathway leads South into the forest. Maybe it's a shortcut to Littlemoose?
+:: 932 [c4 route-002 cliff worksheet]
+<p>Parts of this cliff seem worn off into handholds. You can attempt to climb up it if you'd like. A small cave is visible about halfway up. It might be worth checking out.</p>
+<p>Do Worksheet 13.4.</p>
+<ul class='choices'>
+  <li>[[We scaled the cliff!->c3]]</li>
+  <li>[[Explore the cave.->345]]</li>
+  <li>[[Nevermind. Continue exploring.->$currentLocation]]</li>
+</ul>
 
-:: 005 [stray]
-You can tell this long grass is full of Mergimals. You just need to see which ones you can find!
-
-Test two cards.
-
-You got...
-
-<<link '...zero correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
-<</link>>
-<<link '...one correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
-<</link>>
-<<link '...two correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
-<</link>>
-[[Continue exploring.->$currentLocation]]
-
-:: 932 [worksheet]
-Parts of this cliff seem worn off into handholds. You can attempt to climb up it if you'd like. A small cave is visible about halfway up. It might be worth checking out.
-
-Do Worksheet 13.4.
-
-[[Maybe later: continue exploring.->c4]]
-[[We scaled the cliff!->c3]]
-[[Explore the cave.->345]]
-
-:: 345 [reward]
-This cave isn't very deep, but it was worth the climb! You find a few batteries in an old bird's nest. There's also a single challenge coin.
-
-<<link 'Gain 1 coin and 2 batteries. Return to the cliff.' '932'>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.coins += 1>><<set $players[$activePlayer].characters[$activeCharacter].backpack.batteries += 2>>
-<</link>>
+:: 345 [c4 route-002 reward]
+<p>This cave isn't very deep, but it was worth the climb! You find a few batteries in an old bird's nest. There's also a single challenge coin.</p>
+<ul class='choices'>
+  <li>
+    <<link 'Gain 1 coin and 2 batteries. Return to the cliff.' '932'>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 1>>
+      <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery += 2>>
+    <</link>>
+  </li>
+</ul>

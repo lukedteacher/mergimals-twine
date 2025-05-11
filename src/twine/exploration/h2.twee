@@ -1,5 +1,11 @@
-:: h2 [h2 explore]
-<<map 'h2'>><<s>><</map>><<set $currentLocation = 'h2'>>\
-!!!!EXPLORE
-There's a mysterious cave here!
-[[Nothing yet->blah]]
+:: h2 [h2 raven-wing map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box' style='height: min-content;'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->h2: description]]</li>
+      <li>[[Nothing else yet->blah]]</li>
+    </ul>
+  </div>
+  <<map 'h2'>><<s>><</map>><<set $currentLocation = 'h2'>>
+</div>

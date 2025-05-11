@@ -1,28 +1,32 @@
 :: f4 [map]
-<<map 'f4'>><<n>><<w>><</map>><<set $currentLocation = 'f4'>>\
-!!!!EXPLORE
-[[Talk to the merchant.->f4: merchant]]
-[[Check the long grass.->f4: long grass]]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Talk to the merchant.->f4: merchant]]</li>
+      <li>[[Check the long grass.->f4: long grass]]</li>
+    </ul>
+  </div>
+  <<map 'f4'>><<n>><<w>><</map>><<set $currentLocation = 'f4'>>
+</div>
 
 :: f4: merchant
-There's a merchant here!
-
-She seems friendly.
-
-"I wait here to collect the rafts that people use to float down the Great River."
-
-"We also have e-bikes in stock! They're available for the low price of 1,000 coins."
-
-[[That seems quite absurd. Try to haggle.->f4: haggle]]
-[[Another time.->f4]]
+<p>There's a merchant here!</p>
+<p>She seems friendly.</p>
+<p>"I wait here to collect the rafts that people use to float down the Great River."</p>
+<p>"We also have e-bikes in stock! They're available for the low price of 1,000 coins."</p>
+<ul class='choices'>
+  <li>[[That seems quite absurd. Try to haggle.->f4: haggle]]</li>
+  <li>[[Another time.->$currentLocation]]</li>
+</ul>
 
 :: f4: haggle
 <<if (($players[$activePlayer].characters[$activeCharacter].keywords.paddle == true) and ($players[$activePlayer].characters[$activeCharacter].keywords.shine == true))>>
-    "You've beaten Rhia *and* Matiu in the school challenge?"
-
-    You can have one for free!
-
-    <<link 'You get an ebike!' 'f4'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.ebike = true>><</link>>
+  <p>"You've beaten Rhia *and* Matiu in the school challenge?"</p>
+  <p>That's quite impressive. You can have an ebike for free!</p>
+  <<link 'You get an ebike!' $currentLocation>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.ebike = true>>
+  <</link>>
 <<elseif $players[$activePlayer].characters[$activeCharacter].keywords.paddle == true>>
     "You already tackled the Wave School challenge and won?!" she says.
 
@@ -84,17 +88,24 @@ She seems friendly.
 <</if>>
 
 :: f4: long grass
-Test two cards.
-
-You got...
-
-<<link '...zero correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
-<</link>>
-<<link '...one correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
-<</link>>
-<<link '...two correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
-<</link>>
-[[Continue exploring.->$currentLocation]]
+<p>The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!</p>
+<p style='font-weight: bold;'>Roll 1d20</p>
+<p>If you got...</p>
+<ul class='choices'>
+  <li>
+    <<link '1-12 (common)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-17 (uncommon)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+    <</link>>
+  </li>
+  <li>
+    <<link '1-20 (rare)' 'stray encounter'>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+    <</link>>
+  </li>
+  <li>[[Continue exploring.->$currentLocation]]</li>
+</ul>
