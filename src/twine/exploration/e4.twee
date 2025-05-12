@@ -8,7 +8,7 @@
       <li>[[Approach the trainers.->e4: trainer]]</li>
     </ul>
   </div>
-  <<map 'e4'>><<n>><<e>><<w>><</map>><<set $currentLocation = 'e4'>>
+  <<map 'e4'>><<n>><<e>><<w>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'e4'>>
 </div>
 
 :: e4: long grass [e4 long-grass stray]

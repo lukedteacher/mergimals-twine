@@ -8,7 +8,7 @@
       <li>[[Check out the well.->d3: well]]</li>
     </ul>
   </div>
-  <<map 'd3'>><<e>><</map>><<set $currentLocation = 'd3'>>
+  <<map 'd3'>><<e>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'd3'>>
 </div>
 
 :: d3: long grass [d3 mooberry-farm long-grass stray]

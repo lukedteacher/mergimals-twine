@@ -9,7 +9,7 @@
       <li>[[Check out Veil School->d6: veil school]]</li>
     </ul>
   </div>
-  <<map 'd6'>><<n>><</map>><<set $currentLocation = 'd6'>>
+  <<map 'd6'>><<n>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'd6'>>
 </div>
 
 :: d6: description

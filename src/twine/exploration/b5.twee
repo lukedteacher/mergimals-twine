@@ -10,7 +10,7 @@
       <li>[[That lighthouse looks interesting.->404]]</li>
     </ul>
   </div>
-  <<map 'b5'>><<n>><</map>><<set $currentLocation = 'b5'>>
+  <<map 'b5'>><<n>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'b5'>>
 </div>
 
 :: b5: description [b5 pretty-rock-bay description]

@@ -6,7 +6,7 @@
       <li>[[Go to the Wave School->e1: wave school]]</li>
     </ul>
   </div>
-  <<map 'e1'>><<s>><</map>><<set $currentLocation = 'e1'>>
+  <<map 'e1'>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'e1'>>
 </div>
 
 :: e1: wave school [blue-urf]

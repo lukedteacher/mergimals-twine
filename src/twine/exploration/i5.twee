@@ -1,5 +1,5 @@
 :: i5 [i5 explore]
-<<map 'i5'>><<n>><<e>><</map>><<set $currentLocation = 'i5'>>\
+<<map 'i5'>><<n>><<e>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'i5'>>\
 !!!!EXPLORE
 This is something cool probably
 [[Nothing yet->blah]]

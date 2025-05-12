@@ -57,6 +57,7 @@ window.Character = class Character {
 			rusty: false,
 			shine: false
 		};
+    this.worldMapPosition = 'b3';
 		this.mergipedia = {};
 		const mergimals = Object.keys(State.variables.mergimals);
 		mergimals.forEach(mergimal => {

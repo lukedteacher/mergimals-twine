@@ -1,5 +1,5 @@
 :: volcano [mt-boom-boom map]
-<<map 'volcano'>><<east 'volcano'>><<west 'f5'>><</map>><<set $currentLocation = 'volcano'>>\
+<<map 'volcano'>><<east 'volcano'>><<west 'f5'>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'volcano'>>\
 !!!!EXPLORE
 [[You see some sparks coming from behind a rock.->'stray: bakewing']]
 

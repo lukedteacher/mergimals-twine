@@ -1,5 +1,5 @@
 :: i4 [i4 explore]
-<<map 'i4'>><<n>><<e>><<w>><<s>><</map>><<set $currentLocation = 'i4'>>\
+<<map 'i4'>><<n>><<e>><<w>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'i4'>>\
 !!!!EXPLORE
 Welcome to Cedar Oasis!
 [[Nothing yet->blah]]

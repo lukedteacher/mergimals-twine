@@ -7,7 +7,7 @@
       <li>[[Nothing else yet->blah]]</li>
     </ul>
   </div>
-  <<map 'f3'>><<e>><<s>><</map>><<set $currentLocation = 'f3'>>
+  <<map 'f3'>><<e>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'f3'>>
 </div>
 
 :: f3: description [f3 raven-wing description]

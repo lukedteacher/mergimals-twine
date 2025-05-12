@@ -1,5 +1,5 @@
 :: j5 [j5 explore]
-<<map 'j5'>><<n>><<w>><</map>><<set $currentLocation = 'j5'>>\
+<<map 'j5'>><<n>><<w>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'j5'>>\
 !!!!EXPLORE
 This is something cool probably
 [[Nothing yet->blah]]

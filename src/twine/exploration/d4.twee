@@ -7,7 +7,7 @@
       <li>[[Approach the trainers.->d4: trainer]]</li>
     </ul>
   </div>
-  <<map 'd4'>><<e>><<w>><<s>><</map>><<set $currentLocation = 'd4'>>
+  <<map 'd4'>><<e>><<w>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'd4'>>
 </div>
 
 :: d4: long grass

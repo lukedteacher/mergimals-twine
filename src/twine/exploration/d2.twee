@@ -8,7 +8,7 @@
       <li>[[What are those surfing penguins doing?->d2: surfing contest]]</li>
     </ul>
   </div>
-  <<map 'd2'>><<e>><</map>><<set $currentLocation = 'd2'>>
+  <<map 'd2'>><<e>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'd2'>>
 </div>
 
 :: d2: fishing

@@ -1,2 +1,2 @@
-:: world map [nobr]
-<<worldmap>>
+:: world map [char-sheet world-map]
+<<worldmap true>>

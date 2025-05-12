@@ -1,5 +1,5 @@
 :: e3 [map]
-<<map 'e3'>><<n>><<w>><<s>><</map>><<set $currentLocation = 'e3'>>\
+<<map 'e3'>><<n>><<w>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'e3'>>\
 !!!!EXPLORE
 [[Check the long grass.->e3: long grass]]
 [[Approach the trainers.->e3: trainer]]

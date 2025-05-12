@@ -9,7 +9,7 @@
       <li>[[Go to the beach.->b3: beach]]</li>
     </ul>
   </div>
-  <<map 'b3'>><<s>><</map>><<set $currentLocation = 'b3'>>
+  <<map 'b3'>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'b3'>>
 </div>
 
 :: b3: description [b3 cascade-village description]

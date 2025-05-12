@@ -7,5 +7,5 @@
       <li>[[Swim down the river (requires KEYWORD PADDLE)->f4]]</li>
     </ul>
   </div>
-  <<map 'h4'>><<n>><<e>><</map>><<set $currentLocation = 'h4'>>
+  <<map 'h4'>><<n>><<e>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'h4'>>
 </div>

@@ -1,5 +1,5 @@
 :: f5 [map]
-<<map 'f5'>><<n>><<e>><</map>><<set $currentLocation = 'f5'>>\
+<<map 'f5'>><<n>><<e>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'f5'>>\
 !!!!EXPLORE
 [[Check the long grass.->f5: long grass]]
 

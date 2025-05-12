@@ -214,7 +214,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 .grayscale {
     filter: grayscale(0.75);
 }
-/* twine-user-stylesheet #2: "char-sheet.css" */
+/* twine-user-stylesheet #2: "character.css" */
 /* character sheet items
 including:
 stats
@@ -253,7 +253,7 @@ backpack  */
 /* dialog box */
 
 .dialog-char-sheet {
-    width: 40rem;
+    width: 39rem;
     aspect-ratio: 8.5 / 11;
 }
 
@@ -347,6 +347,13 @@ backpack  */
     padding: 0.4rem 0.6rem;
     text-transform: uppercase;
     border-radius: 0.2rem;
+}
+
+/* character swap stuff */
+.char-swap-div {
+    border: 3px solid transparent;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
 }
 /* twine-user-stylesheet #3: "dice.css" */
 .dice-box {
@@ -1776,13 +1783,7 @@ a.ui-button:active,
 .ui-widget-shadow {
 	box-shadow: 0px 0px 5px #666666;
 }
-/* twine-user-stylesheet #7: "keyword.css" */
-.keyword-span {
-    background-color: blue;
-    font-weight: bold;
-    padding: 0.3rem;
-}
-/* twine-user-stylesheet #8: "map.css" */
+/* twine-user-stylesheet #7: "map.css" */
 .map-container {
     display: flex;
     justify-content: center;
@@ -1847,6 +1848,16 @@ a.ui-button:active,
     grid-area: 1 / 1 / span 10 / span 10;
 }
 
+.position-marker {
+  background-color: blue;
+  width: 0.5rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 2rem;
+  align-self: center;
+  justify-self: center;
+  border: 2px solid red;
+}
+
 #explore-box {
   display: flex;
   flex-direction: column;
@@ -1857,7 +1868,7 @@ a.ui-button:active,
   padding: 0 !important;
   margin: 0 !important;
 }
-/* twine-user-stylesheet #9: "portraits.css" */
+/* twine-user-stylesheet #8: "portraits.css" */
 .portrait {
     box-sizing: border-box;
     border-radius: 0.5rem;
@@ -1888,7 +1899,7 @@ a.ui-button:active,
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
-/* twine-user-stylesheet #10: "root.css" */
+/* twine-user-stylesheet #9: "root.css" */
 /* customizer variables */
 :root {
     --text-font: lexend;
@@ -1908,7 +1919,7 @@ a.ui-button:active,
     --violet: hsl(270, 100%, 30%);
     --magenta: hsl(300, 100%, 30%);
   }
-/* twine-user-stylesheet #11: "shake-macro-set.css" */
+/* twine-user-stylesheet #10: "shake-macro-set.css" */
 /*! <<shake>> macro set for SugarCube 2.x */
 @-webkit-keyframes shakeanim {
 	0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
@@ -1968,7 +1979,7 @@ a.ui-button:active,
 	     -o-transform-origin: 50% 50%;
 	        transform-origin: 50% 50%;
 }
-/* twine-user-stylesheet #12: "sidebar.css" */
+/* twine-user-stylesheet #11: "sidebar.css" */
 #story-title {
     margin-top: 1rem;
 }
@@ -1990,12 +2001,6 @@ a.ui-button:active,
     gap: 0.5rem;
 }
 
-.char-swap-div {
-    border: 3px solid transparent;
-    border-radius: 0.5rem;
-    box-sizing: border-box;
-}
-
 #char-sheet-button-boxes {
     width: 100%;
     display: flex;
@@ -2015,7 +2020,7 @@ a.ui-button:active,
 .char-sheet-button-box:hover {
     background-color: #999;
 }
-/* twine-user-stylesheet #13: "speech.css" */
+/* twine-user-stylesheet #12: "speech.css" */
 .say {
     border: 1px solid #eee;
     overflow: none;
@@ -2046,7 +2051,7 @@ a.ui-button:active,
     padding: 0.6rem;
     margin: 0;
 }
-/* twine-user-stylesheet #14: "utility-classes.css" */
+/* twine-user-stylesheet #13: "utility-classes.css" */
 /* utility classes */
 
 .text-darkest {
@@ -21344,103 +21349,100 @@ var effectsEffectTransfer = effect;
 }());
 /* twine-user-script #7: "map.js" */
 (function () {
-    // v0.2
-    'use strict';
+  // v0.2
+  'use strict';
 
-    function createMap ($output, gridCoordinate) {
-        var $box = $(document.createElement('div'))
-            .addClass('map-container');
-         
-        var $mapGrid = $(document.createElement('div'))
-            .addClass('map-grid');
+  function createMap ($output, gridCoordinate) {
+    var $box = $(document.createElement('div'))
+      .addClass('map-container');
+      
+    var $mapGrid = $(document.createElement('div'))
+      .addClass('map-grid');
 
-        const src = 'images/maps/map - story - ' + gridCoordinate + '.webp';
+    const src = 'images/maps/map - story - ' + gridCoordinate + '.webp';
 
-        var $img = $(document.createElement('img'))
-            .attr('src', src)
-            .addClass('map-img');
+    var $img = $(document.createElement('img'))
+      .attr('src', src)
+      .addClass('map-img');
 
-        if ($img.attr('src') && $img.attr('src').trim()) {
-            $mapGrid.append($img);
-            $box.append($mapGrid);
-        };
+    if ($img.attr('src') && $img.attr('src').trim()) {
+      $mapGrid.append($img);
+      $box.append($mapGrid);
+    };
 
-        if ($output) {
-            if (!($output instanceof $)) {
-                $output = $($output);
-            }
-            $box.appendTo($output);
-        };
-        
-        return $mapGrid;
+    if ($output) {
+      if (!($output instanceof $)) {
+        $output = $($output);
+      }
+      $box.appendTo($output);
+    };
+    
+    return $mapGrid;
+  }
+
+  Macro.add('map', {
+    // map macro
+    tags: ['n', 'e', 'w', 's'], // TODO tags for clickable elements?
+    handler : function () {
+      // create map grid
+      const gridCoordinate = this.args[0];
+      if (!gridCoordinate) throw new Error('no grid coordinate for map macro');
+      // TODO clickable elements for map interactions
+      // create map in a grid attached to current output, using the coordinate as image name
+      const $mapGrid = createMap(this.output, gridCoordinate);
+      
+      const directions = this.payload.slice(1);
+      // create move buttons in grid based on direction tags passed
+      createMoveButtons($mapGrid, directions, gridCoordinate);
     }
+  });
 
-    Macro.add('map', {
-        // map macro
-        tags: ['n', 'e', 'w', 's'], // TODO tags for clickable elements?
-        handler : function () {
-            // create map grid
-            const gridCoordinate = this.args[0];
-            if (!gridCoordinate) throw new Error('no grid coordinate for map macro');
-            // TODO clickable elements for map interactions
-            // create map in a grid attached to current output, using the coordinate as image name
-            const $mapGrid = createMap(this.output, gridCoordinate);
-            
-            const directions = this.payload.slice(1);
-            // create move buttons in grid based on direction tags passed
-            createMoveButtons($mapGrid, directions, gridCoordinate);
-        }
+  function createMoveButtons ($mapGrid, directions, gridCoordinate) {
+    const longDirections = {n: 'north', e: 'east', w: 'west', s: 'south'};
+    directions.forEach(direction => {
+      // direction is an object, so get the name
+      const shortDirection = direction.name;
+      // map the name to a long direction
+      const longDirection = longDirections[shortDirection];
+
+      // create a button to move between map pages
+      var $button = $(document.createElement('button'))
+        .addClass('move-btn ' + longDirection);
+      
+      const destinationGridCoordinate = gridChange(gridCoordinate, longDirection);
+
+      $button.click(() => Engine.play(destinationGridCoordinate));
+      
+      if ($mapGrid) {
+        $button.appendTo($mapGrid);
+      };
     });
+  }
 
-    function createMoveButtons ($mapGrid, directions, gridCoordinate) {
-        const longDirections = {n: 'north', e: 'east', w: 'west', s: 'south'};
-        directions.forEach(direction => {
-            // direction is an object, so get the name
-            const shortDirection = direction.name;
-            // map the name to a long direction
-            const longDirection = longDirections[shortDirection];
-
-            // create a button to move between map pages
-            var $button = $(document.createElement('button'))
-                .addClass('move-btn ' + longDirection);
-            
-            const destinationGridCoordinate = gridChange(gridCoordinate, longDirection);
-
-            $button.click(() => Engine.play(destinationGridCoordinate));
-            
-            if ($mapGrid) {
-                $button.appendTo($mapGrid);
-            };
-        });
+  // either increment the letter or number based on the direction traveled
+  function gridChange (gridCoordinate, direction) {
+    let destinationGridCoordinate = '';
+    if (direction == 'north') {
+      destinationGridCoordinate = gridCoordinate.slice(0, 1) + ( Number(gridCoordinate.slice(1, 2)) - 1 );
+    } else if (direction == 'east') {
+      destinationGridCoordinate = nextLetter(gridCoordinate.slice(0, 1)) + gridCoordinate.slice(1, 2);
+    } else if (direction == 'west') {
+      destinationGridCoordinate = previousLetter(gridCoordinate.slice(0, 1)) + gridCoordinate.slice(1, 2);
+    } else if (direction == 'south') {
+      destinationGridCoordinate = gridCoordinate.slice(0, 1) + ( Number(gridCoordinate.slice(1, 2)) + 1 );
     }
+    return destinationGridCoordinate;
+  }
 
-    // either increment the letter or number based on the direction traveled
-    function gridChange (gridCoordinate, direction) {
-        let destinationGridCoordinate = '';
-        if (direction == 'north') {
-            destinationGridCoordinate = gridCoordinate.slice(0, 1) + ( Number(gridCoordinate.slice(1, 2)) - 1 );
-        } else if (direction == 'east') {
-            destinationGridCoordinate = nextLetter(gridCoordinate.slice(0, 1)) + gridCoordinate.slice(1, 2);
-        } else if (direction == 'west') {
-            destinationGridCoordinate = previousLetter(gridCoordinate.slice(0, 1)) + gridCoordinate.slice(1, 2);
-        } else if (direction == 'south') {
-            destinationGridCoordinate = gridCoordinate.slice(0, 1) + ( Number(gridCoordinate.slice(1, 2)) + 1 );
-        }
-        return destinationGridCoordinate;
-    }
+  function previousLetter (letter) {
+    if (letter === 'a') return 'z';
+    return String.fromCharCode(letter.charCodeAt(0) - 1);
+  }
 
-    function previousLetter (letter) {
-        if (letter === 'a') return 'z';
-        return String.fromCharCode(letter.charCodeAt(0) - 1);
-    }
-
-    function nextLetter (letter) {
-        if (letter === 'z') return 'a';
-        return String.fromCharCode(letter.charCodeAt(0) + 1);
-    }
-
-    setup.map = createMap;
-    setup.move = createMoveButtons;
+  function nextLetter (letter) {
+    if (letter === 'z') return 'a';
+    return String.fromCharCode(letter.charCodeAt(0) + 1);
+  }
 
 }());
 /* twine-user-script #8: "mergipedia.js" */
@@ -21532,6 +21534,7 @@ window.Character = class Character {
 			rusty: false,
 			shine: false
 		};
+    this.worldMapPosition = 'b3';
 		this.mergipedia = {};
 		const mergimals = Object.keys(State.variables.mergimals);
 		mergimals.forEach(mergimal => {
@@ -21848,46 +21851,65 @@ window.checkDraggables = function () {
 };
 /* twine-user-script #14: "world-map.js" */
 (function () {
-    // v0.2
-    'use strict';
+  // v0.2
+  'use strict';
 
-    function createWorldMap ($output) {
-        var $box = $(document.createElement('div'))
-            .addClass('world-map-container');
-         
-        var $mapGrid = $(document.createElement('div'))
-            .addClass('world-map-grid');
+  function createWorldMap ($output, showPositions = false) {
+    const $box = $(document.createElement('div'))
+      .addClass('world-map-container');
+      
+    const $mapGrid = $(document.createElement('div'))
+      .addClass('world-map-grid');
 
-        const src = 'images/maps/map - world.webp';
+    const src = 'images/maps/map - world.webp';
 
-        var $img = $(document.createElement('img'))
-            .attr('src', src)
-            .addClass('world-map-img');
+    const $img = $(document.createElement('img'))
+      .attr('src', src)
+      .addClass('world-map-img');
 
-        if ($img.attr('src') && $img.attr('src').trim()) {
-            $mapGrid.append($img);
-            $box.append($mapGrid);
-        };
+    if ($img.attr('src') && $img.attr('src').trim()) {
+      $mapGrid.append($img);
+      $box.append($mapGrid);
+    };
+    console.log(showPositions);
+    if (showPositions) {
+      const positions = getCharacterPositions();
 
-        if ($output) {
-            if (!($output instanceof $)) {
-                $output = $($output);
-            }
-            $box.appendTo($output);
-        };
+      positions.forEach(position => {
+        const positionMarker = $(document.createElement('div'))
+          .addClass('position-marker')
+          .attr('style', 'grid-area: ' + position.slice(1) + ' / ' + (position.charCodeAt(0) - 96));
         
-        return $mapGrid;
+        positionMarker.appendTo($mapGrid);
+      })
     }
 
-    Macro.add('worldmap', {
-        // map macro
-        handler : function () {
-            createWorldMap(this.output);
-        }
-    });
+    if ($output) {
+      if (!($output instanceof $)) {
+          $output = $($output);
+      }
+      $box.appendTo($output);
+    };
+      
+    return $mapGrid;
+  }
 
-    setup.worldmap = createWorldMap;
+  function getCharacterPositions () {
+    let positionArray = [];
+    Object.entries(State.variables.players).forEach(([_playerName, playerObject]) => {
+      Object.entries(playerObject.characters).forEach(([_characterName, characterObject]) => {
+        positionArray.push(characterObject.worldMapPosition);
+      })
+    })
+    return positionArray;
+  }
 
+  Macro.add('worldmap', {
+    // map macro
+    handler : function () {
+      createWorldMap(this.output, this.args[0]);
+    }
+  });
 }());</script><tw-passagedata pid="1" name="asil" tags="c5 contest" position="100,100" size="100,100">&lt;&lt;if $asilCode != 404&gt;&gt;\
         Sorry, come back when you know the code.
         [[turn back.-&gt;221]]
@@ -22122,7 +22144,7 @@ Now go ahead and make some more piles with that same amount of rocks in each one
       &lt;li&gt;[[Go to the beach.-&gt;b3: beach]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;b3&#39;&gt;&gt;
+  &lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;b3&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="24" name="b3: description" tags="b3 cascade-village description" position="475,350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;img class=&#39;concept&#39; src=&#39;images/story/cascade-village.png&#39;&gt;
   &lt;div&gt;
@@ -22186,7 +22208,7 @@ Perhaps you&#39;ll have to start your Mergimal challenge in Blue Urf or Raven Wi
       &lt;li&gt;[[Say &#39;hello&#39; to the trainer.-&gt;bucky]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;b4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;b4&#39;&gt;&gt;
+  &lt;&lt;map &#39;b4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;b4&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="31" name="b4: description" tags="b4 route-001 description" position="100,475" size="100,100">&lt;p&gt;Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South.&lt;/p&gt;
 &lt;p&gt;A Mergimal trainer is posed near an apple tree, looking hungry for a contest.&lt;/p&gt;
 &lt;p&gt;You can hear cooing noises coming from the long grass.&lt;/p&gt;
@@ -22223,7 +22245,7 @@ Perhaps you&#39;ll have to start your Mergimal challenge in Blue Urf or Raven Wi
       &lt;li&gt;[[That lighthouse looks interesting.-&gt;404]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;b5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;b5&#39;&gt;&gt;
+  &lt;&lt;map &#39;b5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;b5&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="b5: description" tags="b5 pretty-rock-bay description" position="475,475" size="100,100">&lt;p&gt;A serene beach stretches out before you. The white sand feels warm to the touch. The ocean waves crash against the shore.&lt;/p&gt;
 &lt;p&gt;Someone seems to have built a sandcastle. You can see movement nearby.&lt;/p&gt;
 &lt;p&gt;A Mergimal trainer is near the south end of the beach. You watch them skillfully cast their fishing line into the clear water.&lt;/p&gt;
@@ -22368,7 +22390,7 @@ You find a treasure chest with some strange symbols on it.
       &lt;li&gt;[[Climb back down.-&gt;c4]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;c3&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;c3&#39;&gt;&gt;
+  &lt;&lt;map &#39;c3&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;c3&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="49" name="c3: the view" tags="c3 crystal-cavern-entrance description" position="1100,600" size="100,100">&lt;p&gt;You look out over the cliff and take in the beauty.&lt;/p&gt;
 &lt;p&gt;You can see Littlemoose from here, a ways to the south. Some of it&#39;s tall buildings stick out among the dense forest.&lt;/p&gt;
 &lt;p&gt;To the West, you can see Blue Urf. You notice that the lights that usually dot the city don&#39;t seem to be working.&lt;/p&gt;
@@ -22387,7 +22409,7 @@ You find a treasure chest with some strange symbols on it.
       &lt;li&gt;[[Go South into the dark forest.-&gt;214]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;c4&#39;&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;c4&#39;&gt;&gt;
+  &lt;&lt;map &#39;c4&#39;&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;c4&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="51" name="c4: description" tags="c4 route-002 description" position="100,725" size="100,100">&lt;p&gt;Route 002 connects the Great River Road and Cascade Village. To the East, you can see the road get wider and more well-traveled.&lt;/p&gt;
 &lt;p&gt;A bored looking Mergimal trainer eyes you with a yawn. Next to them, you can see a stretch of climbable rocks that lead up the cliff face. There is a small cave on an outcrop of rocks.&lt;/p&gt;
 &lt;p&gt;A small pathway leads South into the forest. Maybe it&#39;s a shortcut to Littlemoose?&lt;/p&gt;
@@ -22505,7 +22527,7 @@ Roll ATTENTION x GRIT.
       &lt;li&gt;[[What are those surfing penguins doing?-&gt;d2: surfing contest]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;d2&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;d2&#39;&gt;&gt;
+  &lt;&lt;map &#39;d2&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;d2&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="71" name="d2: fishing" tags="" position="100,975" size="100,100">&lt;&lt;if not $players[$activePlayer].characters[$activeCharacter].keywords.rusty == true&gt;&gt;
   &lt;&lt;include &#39;no rod&#39;&gt;&gt;
 &lt;&lt;else&gt;&gt;
@@ -22524,7 +22546,7 @@ Roll ATTENTION x GRIT.
       &lt;li&gt;[[Check out the well.-&gt;d3: well]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;d3&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;d3&#39;&gt;&gt;
+  &lt;&lt;map &#39;d3&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;d3&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="73" name="d3: long grass" tags="d3 mooberry-farm long-grass stray" position="350,975" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
@@ -22556,7 +22578,7 @@ Roll ATTENTION x GRIT.
       &lt;li&gt;[[Approach the trainers.-&gt;d4: trainer]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;d4&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;d4&#39;&gt;&gt;
+  &lt;&lt;map &#39;d4&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;d4&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="76" name="d4: long grass" tags="" position="725,975" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
@@ -22588,7 +22610,7 @@ Roll ATTENTION x GRIT.
       &lt;li&gt;[[Approach the trainer.-&gt;d5: trainer]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;d5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;d5&#39;&gt;&gt;
+  &lt;&lt;map &#39;d5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;d5&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="79" name="d5: long grass" tags="" position="1100,975" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
@@ -22622,7 +22644,7 @@ Roll ATTENTION x GRIT.
       &lt;li&gt;[[Check out Veil School-&gt;d6: veil school]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;d6&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;d6&#39;&gt;&gt;
+  &lt;&lt;map &#39;d6&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;d6&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="82" name="d6: description" tags="" position="225,1100" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;img class=&#39;concept&#39; src=&#39;images/story/littlemoose.png&#39;&gt;
   &lt;div&gt;
@@ -22655,7 +22677,7 @@ Roll ATTENTION x GRIT.
       &lt;li&gt;[[Go to the Wave School-&gt;e1: wave school]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;e1&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;e1&#39;&gt;&gt;
+  &lt;&lt;map &#39;e1&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;e1&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="86" name="e1: wave school" tags="blue-urf" position="725,1100" size="100,100">&lt;&lt;if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false&gt;&gt;\
 A large group of people seems to be standing in line, waiting to get in.
 
@@ -22685,7 +22707,7 @@ You decide to go talk to Rhia to see what is going on.
       &lt;li&gt;[[Buy something at the vending machine-&gt;e2: vending machine]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;e2&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;e2&#39;&gt;&gt;
+  &lt;&lt;map &#39;e2&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;e2&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="89" name="e2: description" tags="e2 blue-urf description" position="1100,1100" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;img class=&#39;concept&#39; src=&#39;images/story/blue-urf.png&#39;&gt;
   &lt;div&gt;
@@ -22699,7 +22721,7 @@ You decide to go talk to Rhia to see what is going on.
     &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="90" name="e2: vending machine" tags="vend blue-urf" position="1225,1100" size="100,100">&lt;&lt;include &#39;vending machine&#39;&gt;&gt;
-[[Look around Blue Urf.-&gt;$currentLocation]]</tw-passagedata><tw-passagedata pid="91" name="e3" tags="map" position="100,1225" size="100,100">&lt;&lt;map &#39;e3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;e3&#39;&gt;&gt;\
+[[Look around Blue Urf.-&gt;$currentLocation]]</tw-passagedata><tw-passagedata pid="91" name="e3" tags="map" position="100,1225" size="100,100">&lt;&lt;map &#39;e3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;e3&#39;&gt;&gt;\
 !!!!EXPLORE
 [[Check the long grass.-&gt;e3: long grass]]
 [[Approach the trainers.-&gt;e3: trainer]]</tw-passagedata><tw-passagedata pid="92" name="e3: long grass" tags="" position="225,1225" size="100,100">Some mergimals are here probably.
@@ -22730,7 +22752,7 @@ You got...
       &lt;li&gt;[[Approach the trainers.-&gt;e4: trainer]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;e4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;e4&#39;&gt;&gt;
+  &lt;&lt;map &#39;e4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;e4&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="95" name="e4: long grass" tags="e4 long-grass stray" position="600,1225" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
@@ -22762,7 +22784,7 @@ You got...
       &lt;li&gt;[[Nothing else yet-&gt;blah]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;f3&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;f3&#39;&gt;&gt;
+  &lt;&lt;map &#39;f3&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;f3&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="98" name="f3: description" tags="f3 raven-wing description" position="975,1225" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;img class=&#39;concept&#39; src=&#39;images/story/raven-wing.png&#39;&gt;
   &lt;div&gt;
@@ -22781,7 +22803,7 @@ You got...
       &lt;li&gt;[[Check the long grass.-&gt;f4: long grass]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;f4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;f4&#39;&gt;&gt;
+  &lt;&lt;map &#39;f4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;f4&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="100" name="f4: merchant" tags="" position="1225,1225" size="100,100">&lt;p&gt;There&#39;s a merchant here!&lt;/p&gt;
 &lt;p&gt;She seems friendly.&lt;/p&gt;
 &lt;p&gt;&quot;I wait here to collect the rafts that people use to float down the Great River.&quot;&lt;/p&gt;
@@ -22873,7 +22895,7 @@ You got...
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$currentLocation]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="103" name="f5" tags="map" position="350,1350" size="100,100">&lt;&lt;map &#39;f5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;f5&#39;&gt;&gt;\
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="103" name="f5" tags="map" position="350,1350" size="100,100">&lt;&lt;map &#39;f5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;f5&#39;&gt;&gt;\
 !!!!EXPLORE
 [[Check the long grass.-&gt;f5: long grass]]</tw-passagedata><tw-passagedata pid="104" name="f5: long grass" tags="" position="475,1350" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
@@ -22905,7 +22927,7 @@ You got...
       &lt;li&gt;[[Walk up to the large doors.-&gt;g2: forge workshop]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;g2&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;g2&#39;&gt;&gt;
+  &lt;&lt;map &#39;g2&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;g2&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="107" name="g2: forge workshop" tags="g2 raven-wing forge-workshop" position="850,1350" size="100,100">&lt;p&gt;This is the famous Forge Workshop, home of the Forge School Challenge.&lt;/p&gt;
 &lt;p&gt;There&#39;s a sign on the door that says:&lt;/p&gt;
 &lt;p&gt;&quot;GO AWAY&quot;&lt;/p&gt;
@@ -22920,7 +22942,7 @@ You got...
       &lt;li&gt;[[Nothing else yet-&gt;blah]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;g3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;g3&#39;&gt;&gt;
+  &lt;&lt;map &#39;g3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;g3&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="109" name="h2" tags="h2 raven-wing map" position="1100,1350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39; style=&#39;height: min-content;&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
@@ -22929,7 +22951,7 @@ You got...
       &lt;li&gt;[[Nothing else yet-&gt;blah]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;h2&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;h2&#39;&gt;&gt;
+  &lt;&lt;map &#39;h2&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;h2&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="110" name="h3" tags="h3 raven-wing map" position="1225,1350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39; style=&#39;height: min-content;&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
@@ -22938,7 +22960,7 @@ You got...
       &lt;li&gt;[[Nothing else yet-&gt;blah]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;h3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;h3&#39;&gt;&gt;
+  &lt;&lt;map &#39;h3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;h3&#39;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="111" name="h4" tags="h4 raven-wing map" position="100,1475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39; style=&#39;height: min-content;&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
@@ -22947,29 +22969,29 @@ You got...
       &lt;li&gt;[[Swim down the river (requires KEYWORD PADDLE)-&gt;f4]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-  &lt;&lt;map &#39;h4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;h4&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="112" name="i3" tags="i3 explore" position="225,1475" size="100,100">&lt;&lt;map &#39;i3&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;i3&#39;&gt;&gt;\
+  &lt;&lt;map &#39;h4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;h4&#39;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="112" name="i3" tags="i3 explore" position="225,1475" size="100,100">&lt;&lt;map &#39;i3&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;i3&#39;&gt;&gt;\
 !!!!EXPLORE
 A random cave. or is it?
-[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="113" name="i4" tags="i4 explore" position="350,1475" size="100,100">&lt;&lt;map &#39;i4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;i4&#39;&gt;&gt;\
+[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="113" name="i4" tags="i4 explore" position="350,1475" size="100,100">&lt;&lt;map &#39;i4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;i4&#39;&gt;&gt;\
 !!!!EXPLORE
 Welcome to Cedar Oasis!
-[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="114" name="i5" tags="i5 explore" position="475,1475" size="100,100">&lt;&lt;map &#39;i5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;i5&#39;&gt;&gt;\
+[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="114" name="i5" tags="i5 explore" position="475,1475" size="100,100">&lt;&lt;map &#39;i5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;i5&#39;&gt;&gt;\
 !!!!EXPLORE
 This is something cool probably
-[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="115" name="j2" tags="j2 explore" position="600,1475" size="100,100">&lt;&lt;map &#39;j2&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;j2&#39;&gt;&gt;\
+[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="115" name="j2" tags="j2 explore" position="600,1475" size="100,100">&lt;&lt;map &#39;j2&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;j2&#39;&gt;&gt;\
 !!!!EXPLORE
 This is where you&#39;ll find Zahara!
-[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="116" name="j3" tags="j3 explore" position="725,1475" size="100,100">&lt;&lt;map &#39;j3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;j3&#39;&gt;&gt;\
+[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="116" name="j3" tags="j3 explore" position="725,1475" size="100,100">&lt;&lt;map &#39;j3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;j3&#39;&gt;&gt;\
 !!!!EXPLORE
 This is something cool probably
-[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="117" name="j4" tags="j4 explore" position="850,1475" size="100,100">&lt;&lt;map &#39;j4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;j4&#39;&gt;&gt;\
+[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="117" name="j4" tags="j4 explore" position="850,1475" size="100,100">&lt;&lt;map &#39;j4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;j4&#39;&gt;&gt;\
 !!!!EXPLORE
 This is something cool probably
-[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="118" name="j5" tags="j5 explore" position="975,1475" size="100,100">&lt;&lt;map &#39;j5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;j5&#39;&gt;&gt;\
+[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="118" name="j5" tags="j5 explore" position="975,1475" size="100,100">&lt;&lt;map &#39;j5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;j5&#39;&gt;&gt;\
 !!!!EXPLORE
 This is something cool probably
-[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="119" name="volcano" tags="mt-boom-boom map" position="1100,1475" size="100,100">&lt;&lt;map &#39;volcano&#39;&gt;&gt;&lt;&lt;east &#39;volcano&#39;&gt;&gt;&lt;&lt;west &#39;f5&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;volcano&#39;&gt;&gt;\
+[[Nothing yet-&gt;blah]]</tw-passagedata><tw-passagedata pid="119" name="volcano" tags="mt-boom-boom map" position="1100,1475" size="100,100">&lt;&lt;map &#39;volcano&#39;&gt;&gt;&lt;&lt;east &#39;volcano&#39;&gt;&gt;&lt;&lt;west &#39;f5&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;volcano&#39;&gt;&gt;\
 !!!!EXPLORE
 [[You see some sparks coming from behind a rock.-&gt;&#39;stray: bakewing&#39;]]</tw-passagedata><tw-passagedata pid="120" name="stray: bakewing" tags="mt-boom-boom stray rare" position="1225,1475" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/bakewing.png&#39; /&gt;
 
@@ -23566,7 +23588,7 @@ specific:
 
 &lt;&lt;button &#39;reroll&#39;&gt;&gt;
     &lt;&lt;roll &#39;#dice1&#39;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="world map" tags="nobr" position="350,1975" size="100,100">&lt;&lt;worldmap&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="vending machine" tags="" position="475,1975" size="100,100">&lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;\
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="world map" tags="char-sheet world-map" position="350,1975" size="100,100">&lt;&lt;worldmap true&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="vending machine" tags="" position="475,1975" size="100,100">&lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;\
   &lt;div style=&#39;background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;\
   &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\
   &lt;div style=&#39;grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;images/items/bandage.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;\

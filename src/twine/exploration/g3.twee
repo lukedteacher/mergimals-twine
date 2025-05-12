@@ -7,5 +7,5 @@
       <li>[[Nothing else yet->blah]]</li>
     </ul>
   </div>
-  <<map 'g3'>><<n>><<e>><<w>><</map>><<set $currentLocation = 'g3'>>
+  <<map 'g3'>><<n>><<e>><<w>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'g3'>>
 </div>

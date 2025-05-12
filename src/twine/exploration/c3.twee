@@ -10,7 +10,7 @@
       <li>[[Climb back down.->c4]]</li>
     </ul>
   </div>
-  <<map 'c3'>><</map>><<set $currentLocation = 'c3'>>
+  <<map 'c3'>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'c3'>>
 </div>
 
 :: c3: the view [c3 crystal-cavern-entrance description]

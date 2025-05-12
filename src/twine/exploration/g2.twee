@@ -7,7 +7,7 @@
       <li>[[Walk up to the large doors.->g2: forge workshop]]</li>
     </ul>
   </div>
-  <<map 'g2'>><<s>><</map>><<set $currentLocation = 'g2'>>
+  <<map 'g2'>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'g2'>>
 </div>
 
 :: g2: forge workshop [g2 raven-wing forge-workshop]

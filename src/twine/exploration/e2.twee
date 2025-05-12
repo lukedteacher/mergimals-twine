@@ -8,7 +8,7 @@
       <li>[[Buy something at the vending machine->e2: vending machine]]</li>
     </ul>
   </div>
-  <<map 'e2'>><<n>><<w>><<s>><</map>><<set $currentLocation = 'e2'>>
+  <<map 'e2'>><<n>><<w>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'e2'>>
 </div>
 
 

@@ -62,6 +62,16 @@
     grid-area: 1 / 1 / span 10 / span 10;
 }
 
+.position-marker {
+  background-color: blue;
+  width: 0.5rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 2rem;
+  align-self: center;
+  justify-self: center;
+  border: 2px solid red;
+}
+
 #explore-box {
   display: flex;
   flex-direction: column;
