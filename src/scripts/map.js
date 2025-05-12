@@ -1,5 +1,5 @@
 (function () {
-  // v0.2
+  // v1.2
   'use strict';
 
   function createMap ($output, gridCoordinate) {
@@ -61,7 +61,11 @@
       
       const destinationGridCoordinate = gridChange(gridCoordinate, longDirection);
 
-      $button.click(() => Engine.play(destinationGridCoordinate));
+      $button.click(() => {
+        Engine.play(destinationGridCoordinate)
+        console.log(destinationGridCoordinate);
+        State.variables.players[State.variables.activePlayer].characters[State.variables.activeCharacter].explore(destinationGridCoordinate);
+      });
       
       if ($mapGrid) {
         $button.appendTo($mapGrid);

@@ -25,9 +25,11 @@
   <div>grit: <<textbox '_newCharacterStats.grit' 'd6'>></div>
   <div>memory: <<textbox '_newCharacterStats.memory' 'd6'>></div>
   <div>empathy: <<textbox '_newCharacterStats.empathy' 'd6'>></div>
-  <<button 'submit' 'main menu'>>
-    <<newcharacter $activePlayer _newCharacterName _newCharacterPortraitNumber _newCharacterStats>>\
-  <</button>>
+  <div style='width: 12rem;'>
+    <<button 'submit' 'main menu'>>
+      <<newcharacter $activePlayer _newCharacterName _newCharacterPortraitNumber _newCharacterStats>>\
+    <</button>>
+  </div>
 </div>
 <<script>>
 $(function() {

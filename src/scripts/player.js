@@ -51,6 +51,17 @@ window.Character = class Character {
     this.journal = [];
 		this.keywords = [];
     this.worldMapPosition = 'b3';
+    this.explored = [
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,1,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0]];
 		this.mergipedia = {};
 		const mergimals = Object.keys(State.variables.mergimals);
 		mergimals.forEach(mergimal => {
@@ -84,6 +95,18 @@ window.Character = class Character {
 		});
 		return Serial.createReviver(`new ${this.constructor.name}($ReviveData$)`, ownData);
 	}
+
+  explore(mapCoordinate) {
+    const gridCoordinate = this.mapToGrid(mapCoordinate);
+    this.explored[gridCoordinate.row][gridCoordinate.column] = 1;
+  }
+
+  // convert map coordinate to array coordinate (e.g. b4 -> 1,3)
+  mapToGrid (mapCoordinate) {
+    const row = mapCoordinate.slice(1) - 1;
+    const column = mapCoordinate.charCodeAt(0) - 97;
+    return {row: row, column: column}
+  }
 
 	createCharacterBox($output, character, selectable = false) {
 		const $characterBox = $(document.createElement('div'))

@@ -46,6 +46,8 @@
     background-image: url('images/svg/south.svg');
 }
 
+/* world map stuff */
+
 .world-map-container {
     display: flex;
     justify-content: center;
@@ -64,13 +66,20 @@
 
 .position-marker {
   background-color: blue;
-  width: 0.5rem;
+  width: 0.75rem;
   aspect-ratio: 1 / 1;
   border-radius: 2rem;
   align-self: center;
   justify-self: center;
-  border: 2px solid red;
+  border: 1px solid cyan;
 }
+
+.world-map-fog {
+  background-color: #000;
+  opacity: 0.5;
+}
+
+/* general stuff */
 
 #explore-box {
   display: flex;

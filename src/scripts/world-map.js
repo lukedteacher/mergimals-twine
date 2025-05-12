@@ -19,14 +19,29 @@
       $mapGrid.append($img);
       $box.append($mapGrid);
     };
-    console.log(showPositions);
+
+    for (let row = 1; row < 11; row++) {
+      for (let column = 1; column < 11; column++) {
+        const character = State.variables.players[State.variables.activePlayer].characters[State.variables.activeCharacter];
+        if (character.explored[row-1][column-1] == 0) {
+          const $fogBox = $(document.createElement('div'))
+            .addClass('world-map-fog')
+            .attr('style', 'grid-area: ' + row + ' / ' + column)
+          
+          $fogBox.appendTo($mapGrid);
+        }
+      }
+    }
+    
     if (showPositions) {
       const positions = getCharacterPositions();
 
-      positions.forEach(position => {
+      // for each position in the position object, show a small div on the map
+      Object.entries(positions).forEach(([characterName, positionObject]) => {
         const positionMarker = $(document.createElement('div'))
           .addClass('position-marker')
-          .attr('style', 'grid-area: ' + position.slice(1) + ' / ' + (position.charCodeAt(0) - 96));
+          .attr('title', characterName)
+          .attr('style', 'grid-area: ' + positionObject.row + ' / ' + positionObject.column);
         
         positionMarker.appendTo($mapGrid);
       })
@@ -43,13 +58,16 @@
   }
 
   function getCharacterPositions () {
-    let positionArray = [];
+    let positionsObject = {};
     Object.entries(State.variables.players).forEach(([_playerName, playerObject]) => {
-      Object.entries(playerObject.characters).forEach(([_characterName, characterObject]) => {
-        positionArray.push(characterObject.worldMapPosition);
+      Object.entries(playerObject.characters).forEach(([characterName, characterObject]) => {
+        const position = characterObject.worldMapPosition;
+        const row = position.slice(1);
+        const column = position.charCodeAt(0) - 96;
+        positionsObject[characterName] = {row: row, column: column}
       })
     })
-    return positionArray;
+    return positionsObject;
   }
 
   Macro.add('worldmap', {

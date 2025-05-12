@@ -1,7 +1,16 @@
 :: f5 [map]
-<<map 'f5'>><<n>><<e>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'f5'>>\
-!!!!EXPLORE
-[[Check the long grass.->f5: long grass]]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+  This area is near Mount Boom-Boom, an active volcano. Better be careful!
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[See what the scientist is doing.->f5: scientist]]</li>
+      <li>[[Check the long grass.->f5: long grass]]</li>
+      <li>[[Do something dangerous.->f5: dangerous]]</li>
+    </ul>
+  </div>
+  <<map 'f5'>><<n>><<e>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'f5'>>
+</div>
 
 :: f5: long grass
 <p>The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!</p>
@@ -26,7 +35,9 @@
   <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
 
-:: f4: trainer
-A trainer!
-
-[[Another time.->f4]]
+:: f5: scientist
+<p>A scientist is learning stuff apparently!</p>
+<p>[TODO add stuff]</p>
+<ul class='choices'>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+</ul>

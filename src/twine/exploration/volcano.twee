@@ -1,9 +1,15 @@
-:: volcano [mt-boom-boom map]
-<<map 'volcano'>><<east 'volcano'>><<west 'f5'>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'volcano'>>\
-!!!!EXPLORE
-[[You see some sparks coming from behind a rock.->'stray: bakewing']]
+:: volcano [volcano mount-boom-boom]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[You see some sparks coming from behind a rock.->'stray: bakewing']]</li>
+    </ul>
+  </div>
+  <<map 'volcano'>><<east 'volcano'>><<west 'f5'>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'volcano'>>
+</div>
 
-:: stray: bakewing [mt-boom-boom stray rare]
+:: stray: bakewing [mount-boom-boom stray rare]
 <img class='mergimal-image' src='images/mergimals/bakewing.png' />
 
 You see a small, red Mergimal that is chewing on some branches.
