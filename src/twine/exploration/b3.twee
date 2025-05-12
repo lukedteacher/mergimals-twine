@@ -19,7 +19,7 @@
     <p>Cascade Village rests quietly on the sandy shores of Ho’onui Peninsula, where five cozy homes overlook the sparkling waves. The Mergimal Research Center stands at the edge of the beach, its sleek design contrasting with the warm, rustic charm of the village.</p>
     <p>Life moves at a gentle pace here, with the ocean breeze carrying the sound of laughter and the faint scent of salt and fresh bread. It’s a peaceful place to live—but for those eager to explore, Cascade Village feels like the calm before an unforgettable adventure.</p>
     <ul class='choices'>
-      <li>[[Keep exploring the village.->$currentLocation]]</li>
+      <li>[[Keep exploring the village.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
     </ul>
   </div>
 </div>
@@ -27,7 +27,7 @@
 :: b3: home [b3 cascade-village home]
 <p>This is your home. The cozy warmth tempts you to stay, but you know that adventure calls.</p>
 <ul class='choices'>
-  <li>[[Continue exploring.->$currentLocation]]</li>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
 
 :: b3: lab [b3 cascade-village lab]
@@ -36,7 +36,7 @@
 <ul class='choices'>
   <li>
     <<link 'Tell him about the delivery. (requires: keyword CLOSED)'>>
-      <<if $players[$activePlayer].characters[$activeCharacter].keywords.closed == false>>
+      <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('closed')>>
         <<dialog 'no keyword CLOSED'>>
           <<include 'no keyword'>>
         <</dialog>>
@@ -45,7 +45,7 @@
       <</if>>
     <</link>>
   </li>
-  <li>[[Keep exploring the village.->$currentLocation]]</li>
+  <li>[[Keep exploring the village.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
 
 :: b3: beach [b3 cascade-village beach]
@@ -53,7 +53,7 @@
 <ul class='choices'>
   <li>
     <<link 'Brave the waters (requires: keyword PADDLE)'>>
-      <<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>>
+      <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>>
         <<dialog 'no keyword paddle'>>
           <<include 'no paddle'>>
         <</dialog>>
@@ -62,7 +62,7 @@
       <</if>>
     <</link>>
   </li>
-  <li>[[Keep exploring the village.->$currentLocation]]</li>
+  <li>[[Keep exploring the village.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
 
 :: b3: out to sea [b3 cascade-village paddle]
@@ -81,5 +81,5 @@ How odd!<br />
 Perhaps you'll have to start your Mergimal challenge in Blue Urf or Raven Wing instead.
 <</tam>>
 <ul class='choices'>
-  <li>[[Okay.->$currentLocation]]</li>
+  <li>[[Okay.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>

@@ -20,28 +20,28 @@
     <p>The path to the north leads out of the town and into Littlemoose forest. A dirt path to the west is blocked by a heavy iron gate.</p>
     <p>A Mergimal Challenge Vending machine is here, where you can spend your hard-earned challenge coins.</p>
     <ul class='choices'>
-      <li>[[Keep exploring the village.->$currentLocation]]</li>
+      <li>[[Keep exploring the village.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
     </ul>
   </div>
 </div>
 
 :: d6: vending machine [vend littlemoose]
-<<include 'vending machine'>>
-[[Look around Littlemoose.->$currentLocation]]
+<<include 'littlemoose: vending machine'>>
+[[Look around Littlemoose.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
 
 :: d6: veil school
-<<if $players[$activePlayer].characters[$activeCharacter].keywords.closed == false>>\
+<<if not $players[$activePlayer].characters[$activeCharacter].keywords.includes('closed')>>\
     The school is closed?!?
 
     Oh dear.
 
-    GAIN keyword CLOSED.<<set $players[$activePlayer].characters[$activeCharacter].keywords.closed = true>><<redo 'keywords'>>
+    GAIN keyword CLOSED.<<set $players[$activePlayer].characters[$activeCharacter].keywords.push('closed')>>
 
-    [[Continue exploring.->$currentLocation]]
+    [[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
 <<else>>\
     (Keyword CLOSED detected)
 
     The school is dark. No one seems to be here.
 
-    [[Continue exploring.->$currentLocation]]
+    [[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
 <</if>>

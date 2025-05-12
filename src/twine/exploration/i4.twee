@@ -1,5 +1,25 @@
-:: i4 [i4 explore]
-<<map 'i4'>><<n>><<e>><<w>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'i4'>>\
-!!!!EXPLORE
-Welcome to Cedar Oasis!
-[[Nothing yet->blah]]
+:: i4 [i4 cedar-oasis map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <p>Welcome to Cedar Oasis!</p>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->i4: description]]</li>
+      <li>[[Try some street food.->i4: street food]]</li>
+    </ul>
+  </div>
+  <<map 'i4'>><<n>><<e>><<w>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'i4'>>
+</div>
+
+:: i4: description [i4 cedar-oasis description]
+<div class='flex-row flex items-center gap-lg'>
+  <img class='concept' src='images/story/cedar-oasis.png'>
+  <div>
+    <p>Cedar Oasis sits along the Great River in the southern end of the Shin Gobee Desert. The architecture is a mix of large glass domes and smaller, clay and stone buildings.</p>
+    <p>For an arid biome, there certainly are a lot of plants around. You wonder how they're able to supply water to everything.</p>
+    <p>A welcome sign explains that there are three main districts: The Market (south), The Archives (southeast), and The Canyon (east).</p>
+    <ul class='choices'>
+      <li>[[Keep exploring this amazing place.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+    </ul>
+  </div>
+</div>

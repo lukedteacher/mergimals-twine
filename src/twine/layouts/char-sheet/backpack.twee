@@ -34,44 +34,22 @@
 
 :: backpack keyword list [nobr]
 <div class='keyword-boxes char-sheet-boxes'>
-    <ul class='keywords-ul'>
-        <<set _keywordCount = 0>>
-        <<for _keyword, _boolean range $players[$activePlayer].characters[$activeCharacter].keywords>>
-            
-            <<if _boolean == true>>
-                <<set _keywordCount ++>>
-                <li class='keywords-li'>_keyword</li>
-            <</if>>
-        <</for>>
-        <<if _keywordCount == 0 >>
-            <li class='keywords-li'>no keywords found yet</li>
-        <</if>>
-    </ul>
+  <ul class='keywords-ul'>
+    <<set _keywordCount = 0>>
+    <<for _keyword range $players[$activePlayer].characters[$activeCharacter].keywords>>
+      <<set _keywordCount ++>>
+      <li class='keywords-li'>_keyword</li>
+    <</for>>
+    <<if _keywordCount == 0 >>
+      <li class='keywords-li'>no keywords found yet</li>
+    <</if>>
+  </ul>
 </div>
 
 :: no batteries
 You don't have any batteries!
 
 <<link 'Darnit.'>><<run Dialog.close()>><</link>>
-
-:: keywords [nobr]
-<<do tag 'keywords'>>
-    <details id='1' class='keywords-box'>
-        <summary>
-            <h2>keywords</h2>
-        </summary>
-        <<set _keywordCount = 0>>
-        <<for _keyword, _boolean range $players[$activePlayer].characters[$activeCharacter].keywords>>
-            <<if _boolean == true>>
-                <<set _keywordCount ++>>
-                <div class='item-listing'>_keyword</div>
-            <</if>>
-        <</for>>
-        <<if _keywordCount == 0 >>
-            no keywords found yet
-        <</if>>
-    </details>
-<</do>>
 
 :: no paddle
 You don't know how to swim with your Mergimal yet.

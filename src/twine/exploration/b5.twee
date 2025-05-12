@@ -19,7 +19,7 @@
 <p>A Mergimal trainer is near the south end of the beach. You watch them skillfully cast their fishing line into the clear water.</p>
 <p>A large, imposing lighthouse stands on a small island just off the coast.</p>
 <ul class='choices'>
-  <li>[[Continue exploring.->$currentLocation]]</li>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
 
 :: b5: the sea [b5 pretty-rock-bay sea]
@@ -27,7 +27,7 @@
 <ul class='choices'>
   <li>
     <<link 'Go fishing. (requires keyword: ROD)'>>
-      <<if $players[$activePlayer].characters[$activeCharacter].keywords.rusty == false>>
+      <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('rusty')>>
         <<dialog 'no rod'>>
           <<include 'no rod'>>
         <</dialog>>
@@ -38,7 +38,7 @@
   </li>
   <li>
     <<link 'Ride your Mergimal out to sea (requires: keyword PADDLE)'>>
-      <<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>>
+      <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>>
         <<dialog 'no keyword paddle'>>
           <<include 'no paddle'>>
         <</dialog>>
@@ -52,7 +52,7 @@
 
 
 :: crabby critters [b5 pretty-rock-bay worksheet]
-<<if $players[$activePlayer].characters[$activeCharacter].keywords.rusty == false>>
+<<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('rusty')>>
   <p>A group of crab-like Mergimals seems to be protecting a large sand castle. An old fishing pole sticks out of the center tower, holding a flag.</p>
   <p>Maybe you can figure out some way to avoid the creatures and grab it?</p>
   <p>Do Worksheet 'Crabby Critters'.</p>
@@ -79,7 +79,7 @@
   <p>(Keyword RUSTY detected)</p>
   <p>There are some Krustwos here, protecting a sad sand castle. You'd better stay away.</p>
   <ul class='choices'>
-    <li>[[Continue exploring.->$currentLocation]]</li>
+    <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
   </ul>
 <</if>>
 
@@ -87,11 +87,11 @@
 <p>After a short while, you seem to find a pattern in the crabs' movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.</p>
 <p>
   Gain keyword RUSTY.
-  <<set $players[$activePlayer].characters[$activeCharacter].keywords.rusty = true>>
+  <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('rusty')>>
   <<redo 'keywords'>>
 </p>
 <ul class='choices'>
-  <li>[[Continue exploring.->$currentLocation]]</li>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
 
 :: b5: fishing [b5 pretty-rock-bay fishing stray]
@@ -103,22 +103,22 @@ Test two cards.
 You got...
 
 <<link '...zero correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].common]>>
 <</link>>
 <<link '...one correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].uncommon]>>
 <</link>>
 <<link '...two correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].rare]>>
 <</link>>
-[[Continue exploring.->$currentLocation]]
+[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
 
 :: 131 [worksheet secret]
 You found a bottle floating in the water. It has a message inside! You unroll it and find a strange script.
 
 Do Worksheet 'Message in a Botttle'.
 
-[[Decode the message later: continue exploring.->$currentLocation]]
+[[Decode the message later: continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
 
 :: b5: paddling to sea [swim]
 <p>(Keyword PADDLE detected)</p>

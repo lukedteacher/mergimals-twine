@@ -15,6 +15,6 @@
 <p>There's a sign on the door that says:</p>
 <p>"GO AWAY"</p>
 <ul class='choices'>
-  <li>[[Bummer. Guess this school is closed too.->$currentLocation]]</li>
+  <li>[[Bummer. Guess this school is closed too.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
   <li>[[See if there's another way in.->g2: back door]]</li>
 </ul>

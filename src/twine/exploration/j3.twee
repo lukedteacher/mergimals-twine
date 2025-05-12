@@ -1,5 +1,12 @@
-:: j3 [j3 explore]
-<<map 'j3'>><<n>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'j3'>>\
-!!!!EXPLORE
-This is something cool probably
-[[Nothing yet->blah]]
+:: j3 [j3 shin-gobee-desert map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <p>It's really hot out here. Unless you have some water, you might want to come back later.</p>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->j3: description]]</li>
+      <li>[[Observe some interesting plants.->j3: funny looking plants]]</li>
+    </ul>
+  </div>
+  <<map 'j3'>><<n>><<w>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'j3'>>
+</div>

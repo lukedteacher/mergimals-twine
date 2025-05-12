@@ -1,5 +1,16 @@
 :: i5 [i5 explore]
-<<map 'i5'>><<n>><<e>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'i5'>>\
-!!!!EXPLORE
-This is something cool probably
-[[Nothing yet->blah]]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->i5: description]]</li>
+      <li>[[Buy something at the street market.->i5: street market]]</li>
+      <li>[[Go to the vending machine->i5: vending machine]]</li>
+    </ul>
+  </div>
+  <<map 'i5'>><<n>><<e>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'i5'>>
+</div>
+
+:: i5: vending machine [i5 cedar-oasis vending-machine]
+<<include 'cedar oasis: vending machine'>>
+[[Continue exploring the city.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]

@@ -12,19 +12,19 @@ Test two cards.
 You got...
 
 <<link '...zero correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].common]>>
 <</link>>
 <<link '...one correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].uncommon]>>
 <</link>>
 <<link '...two correct.' 'stray encounter'>>
-    <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+    <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].rare]>>
 <</link>>
-[[Continue exploring.->$currentLocation]]
+[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
 
 :: e3: trainer
 Probably there are trainers too.
 
 [TODO add stuff]
 
-[[Continue exploring.->$currentLocation]]
+[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]

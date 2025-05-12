@@ -21,12 +21,12 @@ GAIN 1 charm.<<set $players[$activePlayer].characters[$activeCharacter].backpack
 [[Get out of here while you still can.->c2]]
 
 :: c2: light it up
-<<if $players[$activePlayer].characters[$activeCharacter].keywords.flashlight == true && $players[$activePlayer].characters[$activeCharacter].keywords.shine == false>>\
+<<if $players[$activePlayer].characters[$activeCharacter].keywords.includes('flashlight') && !$players[$activePlayer].characters[$activeCharacter].keywords.includes('shine')>>
     You could go further if you used a battery to power your flashlight.
 
     <<link 'Turn on your flashlight.'>><<if $players[$activePlayer].characters[$activeCharacter].backpack.battery < 1>><<dialog 'no batteries'>><<include 'no batteries'>><</dialog>><<else>><<set $players[$activePlayer].characters[$activeCharacter].backpack.battery -->><<goto 'c2: lit'>><</if>><</link>>
     [[Nevermind.->c2]]
-<<elseif $players[$activePlayer].characters[$activeCharacter].keywords.shine == true>>
+<<elseif $players[$activePlayer].characters[$activeCharacter].keywords.includes('shine')>>
     <<goto 'c2: lit'>>
 <<else>>
     You don't have a source of light!
@@ -41,7 +41,7 @@ Eventually, you come to a large underground river.
 
 You could get to the other side, if you had a Wave Mergimal that knew how to PADDLE.
 
-<<link 'Swim to the other side (requires: keyword PADDLE)'>><<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>><<dialog 'no keyword paddle'>><<include 'no paddle'>><</dialog>><<else>><<goto 'c2: river crossed'>><</if>><</link>>
+<<link 'Swim to the other side (requires: keyword PADDLE)'>><<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>><<dialog 'no keyword paddle'>><<include 'no paddle'>><</dialog>><<else>><<goto 'c2: river crossed'>><</if>><</link>>
 [[Head back to the entrance of the cave.->c2]]
 
 :: c2: river crossed

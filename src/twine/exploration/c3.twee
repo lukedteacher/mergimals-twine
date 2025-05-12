@@ -20,5 +20,5 @@
 <p>Further in that direction, the peaks of Raven Wing mountain are barely visible.</p>
 <ul class='choices'>
 <ul class='choices'>
-  <li>[[Continue exploring.->$currentLocation]]</li>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>

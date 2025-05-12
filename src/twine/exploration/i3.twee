@@ -1,5 +1,12 @@
-:: i3 [i3 explore]
-<<map 'i3'>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'i3'>>\
-!!!!EXPLORE
-A random cave. or is it?
-[[Nothing yet->blah]]
+:: i3 [i3 shin-gobee-desert map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <p>It's really hot out here. Unless you have some water, you might want to come back later.</p>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->i3: description]]</li>
+      <li>[[Go inside the cave.->i3: cave]]</li>
+    </ul>
+  </div>
+  <<map 'i3'>><<e>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'i3'>>
+</div>

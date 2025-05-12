@@ -21,7 +21,7 @@ $mergimalEncountered.strayPassageText<br /><br />
     <</link>>
 </div>
 <<link 'Back away slowly and continue exploring.'>>
-    <<goto $currentLocation>>
+    <<goto $players[$activePlayer].characters[$activeCharacter].worldMapPosition>>
 <</link>>
 
 :: no mergiballs

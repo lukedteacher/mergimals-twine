@@ -1,5 +1,11 @@
-:: j5 [j5 explore]
-<<map 'j5'>><<n>><<w>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'j5'>>\
-!!!!EXPLORE
-This is something cool probably
-[[Nothing yet->blah]]
+:: j5 [j5 cedar-oasis map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->j5: description]]</li>
+      <li>[[Check out the enormous library.->j5: the archives]]</li>
+    </ul>
+  </div>
+  <<map 'j5'>><<n>><<w>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'j5'>>
+</div>

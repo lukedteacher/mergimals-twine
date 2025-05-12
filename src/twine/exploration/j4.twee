@@ -1,5 +1,29 @@
 :: j4 [j4 explore]
-<<map 'j4'>><<n>><<w>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'j4'>>\
-!!!!EXPLORE
-This is something cool probably
-[[Nothing yet->blah]]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->j4: description]]</li>
+      <li>[[Visit the Bloom School.->j4: bloom school]]</li>
+    </ul>
+  </div>
+  <<map 'j4'>><<n>><<w>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'j4'>>
+</div>
+
+:: j4: bloom school
+<<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('chop')>>
+  <p>The school is closed?!?!</p>
+  <p>A random person says that they're waiting for Zahara to return from a trip into the deep desert.</p>
+  <p>Maybe you'd better follow her out there and see if you can help.</p>
+  <ul class='choices'>
+    <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+  </ul>
+<<else>>
+  (Keyword chop detected)
+
+  You've solved the Bloom School challenge and helped to re-open the school. Zahara is greeting people as they approach the entrance, directing them inside to their classes.</p>
+  <ul class='choices'>
+    <li>[[Say hello to Zahara.->j4: zahara's thanks]]
+    <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+  </ul>
+<</if>>

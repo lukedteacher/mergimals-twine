@@ -1,5 +1,12 @@
-:: j2 [j2 explore]
-<<map 'j2'>><<n>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'j2'>>\
-!!!!EXPLORE
-This is where you'll find Zahara!
-[[Nothing yet->blah]]
+:: j2 [j2 shin-gobee-desert map]
+<div class='flex-row flex items-center gap-lg'>
+  <div class='explore-box'>
+    <p>Zahara is here!</p>
+    <h3>EXPLORE</h3>
+    <ul class='choices'>
+      <li>[[Look around->j3: description]]</li>
+      <li>[[Talk to Zahara.->j3: zahara]]</li>
+    </ul>
+  </div>
+  <<map 'j2'>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'j2'>>
+</div>

@@ -1,90 +1,357 @@
-:: vending machine
-<div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>\
-  <div style='background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;'></div>\
-  <div style='grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/battery.svg' style='height: 100%;' /></div>\
-  <div style='grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/bandage.svg' style='height: 100%;' /></div>\
-  <div style='grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/tool.svg' style='height: 100%;' /></div>\
-  <<if $players[$activePlayer].characters[$activeCharacter].keywords.flashlight == false>><div style='grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/flashlight.svg' style='height: 100%;' /></div><</if>>\
-  <div style='grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/mergiball.svg' style='height: 100%;' /></div>\
-  <div style='grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/charm.svg' style='height: 100%;' /></div>\
-</div>\
-<<button 'buy a mergiball 1c'>>
-  <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 1>>>
-    <<dialog 'not enough coins'>>
-      <<include 'not enough coins'>>
-    <</dialog>>
-  <<else>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -->>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball ++>>
-    <<redo 'backpack'>>
-  <</if>>
-<</button>>
-<<button 'buy a charm 2c'>>
-  <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 2>>>
-    <<dialog 'not enough coins'>>\
-      <<include 'not enough coins'>>
-    <</dialog>>
-  <<else>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 2>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm ++>>
-    <<redo 'backpack'>>
-  <</if>>
-<</button>>
-<<button 'buy a bandage 3c'>>
-  <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 3>>>
-    <<dialog 'not enough coins'>>\
-      <<include 'not enough coins'>>
-    <</dialog>>
-  <<else>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 3>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage ++>>
-    <<redo 'backpack'>>
-  <</if>>
-<</button>>
-<<button 'buy a tool 4c'>>
-  <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 4>>>
-    <<dialog 'not enough coins'>>\
-      <<include 'not enough coins'>>
-    <</dialog>>
-  <<else>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 4>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool ++>>
-    <<redo 'backpack'>>
-  <</if>>
-<</button>>
-<<button 'buy a battery 5c'>>
-  <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 5>>>
-    <<dialog 'not enough coins'>>\
-      <<include 'not enough coins'>>
-    <</dialog>>
-  <<else>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 5>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery ++>>
-    <<redo 'backpack'>>
-  <</if>>
-<</button>>
-<<button 'buy a flashlight 10c'>>
-  <<if $players[$activePlayer].characters[$activeCharacter].keywords.flashlight == true>>
-    <<dialog 'already purchased'>>\
-      <<include 'sold out'>>
-    <</dialog>>
-  <<elseif $players[$activePlayer].characters[$activeCharacter].backpack.coin < 10>>>
-    <<dialog 'not enough coins'>>\
-      <<include 'not enough coins'>>
-    <</dialog>>
-  <<else>>
-    <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 10>>
-    <<set $players[$activePlayer].characters[$activeCharacter].keywords.flashlight = true>>
-    <<redo 'keywords'>>
-  <</if>>
-<</button>>
-
 :: not enough coins
-You don't have enough coins to buy that!
-
-<<link 'Nevermind.'>><<run Dialog.close()>><</link>>
+<p>You don't have enough coins to buy that!</p>
+<ul class='choices'>
+  <li><<link 'Nevermind.'>><<run Dialog.close()>><</link>></li>
+</ul>
 
 :: sold out
-This machine doesn't seem to have any more of those.
+<p>This machine seems to be sold out of that item.</p>
+<ul class='choices'>
+  <li><<link 'Alright.'>><<run Dialog.close()>><</link>></li>
+</ul>
 
-<<link 'Alright.'>><<run Dialog.close()>><</link>>
+:: littlemoose: vending machine
+<div class='flex flex-row'>
+  <div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>
+    <div style='background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;'></div>
+    <div style='grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/battery.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/bandage.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/tool.svg' style='height: 100%;' /></div>
+    <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('flashlight')>><div style='grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/flashlight.svg' style='height: 100%;' /></div><</if>>
+    <div style='grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/mergiball.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/charm.svg' style='height: 100%;' /></div>
+  </div>
+  <div class='flex flex-col gap-md' style='align-self: center;'>
+    <<button 'buy a mergiball 1c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 1>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -->>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a charm 2c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 2>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 2>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a bandage 3c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 3>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 3>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a tool 4c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 4>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 4>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a battery 5c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 5>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 5>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a flashlight 10c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].keywords.includes('flashlight')>>
+        <<dialog 'already purchased'>>
+          <<include 'sold out'>>
+        <</dialog>>
+      <<elseif $players[$activePlayer].characters[$activeCharacter].backpack.coin < 10>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 10>>
+        <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('flashlight')>>
+        <<redo 'keywords'>>
+      <</if>>
+    <</button>>
+  </div>
+</div>
+
+:: blue urf: vending machine
+<div class='flex flex-row'>
+  <div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>
+    <div style='background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;'></div>
+    <div style='grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/battery.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/bandage.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/tool.svg' style='height: 100%;' /></div>
+    <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('intertube')>>
+      <div style='grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/intertube.svg' style='height: 100%;' /></div>
+    <</if>>
+    <div style='grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/mergiball.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/charm.svg' style='height: 100%;' /></div>
+  </div>
+  <div class='flex flex-col gap-md' style='align-self: center;'>
+    <<button 'buy a mergiball 1c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 1>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -->>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a charm 2c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 2>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 2>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a bandage 3c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 3>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 3>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a tool 4c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 4>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 4>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a battery 5c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 5>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 5>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy an intertube 10c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].keywords.includes('intertube')>>
+        <<dialog 'already purchased'>>
+          <<include 'sold out'>>
+        <</dialog>>
+      <<elseif $players[$activePlayer].characters[$activeCharacter].backpack.coin < 10>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 10>>
+        <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('intertube')>>
+        <<redo 'keywords'>>
+      <</if>>
+    <</button>>
+  </div>
+</div>
+
+:: raven wing: vending machine
+<div class='flex flex-row'>
+  <div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>
+    <div style='background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;'></div>
+    <div style='grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/battery.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/bandage.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/tool.svg' style='height: 100%;' /></div>
+    <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('saw')>>
+      <div style='grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/saw.svg' style='height: 100%;' /></div>
+    <</if>>
+    <div style='grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/mergiball.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/charm.svg' style='height: 100%;' /></div>
+  </div>
+  <div class='flex flex-col gap-md' style='align-self: center;'>
+    <<button 'buy a mergiball 1c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 1>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -->>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a charm 2c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 2>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 2>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a bandage 3c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 3>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 3>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a tool 4c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 4>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 4>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a battery 5c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 5>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 5>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy an electric saw 10c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].keywords.includes('saw')>>
+        <<dialog 'already purchased'>>
+          <<include 'sold out'>>
+        <</dialog>>
+      <<elseif $players[$activePlayer].characters[$activeCharacter].backpack.coin < 10>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 10>>
+        <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('saw')>>
+        <<redo 'keywords'>>
+      <</if>>
+    <</button>>
+  </div>
+</div>
+
+:: cedar oasis: vending machine
+<div class='flex flex-row'>
+  <div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>
+    <div style='background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;'></div>
+    <div style='grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/battery.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 3 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/bandage.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 4 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/tool.svg' style='height: 100%;' /></div>
+    <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('water bottle')>>
+      <div style='grid-area: 5 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/water-bottle.svg' style='height: 100%;' /></div>
+    <</if>>
+    <div style='grid-area: 5 / 3; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/mergiball.svg' style='height: 100%;' /></div>
+    <div style='grid-area: 7 / 2; width: 100%; height: 100%; display: flex; justify-content: center;'><img src='images/items/charm.svg' style='height: 100%;' /></div>
+  </div>
+  <div class='flex flex-col gap-md' style='align-self: center;'>
+    <<button 'buy a mergiball 1c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 1>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -->>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a charm 2c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 2>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 2>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.charm ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a bandage 3c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 3>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 3>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.bandage ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a tool 4c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 4>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 4>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.tool ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a battery 5c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 5>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 5>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery ++>>
+        <<redo 'backpack'>>
+      <</if>>
+    <</button>>
+    <<button 'buy a water bottle 10c'>>
+      <<if $players[$activePlayer].characters[$activeCharacter].keywords.includes('water bottle')>>
+        <<dialog 'already purchased'>>
+          <<include 'sold out'>>
+        <</dialog>>
+      <<elseif $players[$activePlayer].characters[$activeCharacter].backpack.coin < 10>>>
+        <<dialog 'not enough coins'>>
+          <<include 'not enough coins'>>
+        <</dialog>>
+      <<else>>
+        <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 10>>
+        <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('water bottle')>>
+        <<redo 'keywords'>>
+      <</if>>
+    <</button>>
+  </div>
+</div>

@@ -66,10 +66,19 @@ Finally, you’re here!
 
 :: start: part 3 [story]
 <<tam>>Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.<</tam>>
-<p>You got 5 mergiballs.</p>
+<div class='new-items'><strong>GAIN:</strong> 5 mergiballs.</div>
 <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 5>>
-<p>They have been added to your backpack.</p>
+<div class='journal'><strong>WRITE:</strong> "I was asked to make a delivery to the Veil School leader in Littlemoose."</div>
+<<set $players[$activePlayer].characters[$activeCharacter].journal.push('I was asked to make a delivery to the Veil School leader in Littlemoose.')>>
 <p>It's time to start your journey.</p>
 <ul class='choices'>
   <li>[[Let's go!->b3]]</li>
+  <li>[[Can you explain where Littlemoose is?->start: part 3b]]</li>
+</ul>
+
+:: start: part 3b [story]
+<<tam>>You'll find it to the south and east, just on the other side of Littlemoose Forest.<br />
+Make sure to use your map if you get lost.<</tam>>
+<ul class='choices'>
+  <li>[[Okay, I am ready!->b3]]</li>
 </ul>

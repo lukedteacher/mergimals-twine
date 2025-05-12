@@ -10,7 +10,7 @@
 </div>
 
 :: e1: wave school [blue-urf]
-<<if $players[$activePlayer].characters[$activeCharacter].keywords.paddle == false>>\
+<<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>>\
 A large group of people seems to be standing in line, waiting to get in.
 
 Thankfully, you don't have to wait long before a figure steps out of the building and addresses the crowd.

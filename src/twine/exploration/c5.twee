@@ -100,8 +100,8 @@ A little person with a long beard and pointy hat sits on a mushroom, drinking te
 [[Nevermind.->224]]
 
 :: 228 [transition]
-<<if $players[$activePlayer].characters[$activeCharacter].keywords.strength == false>>
-  You're not strong enough to move it and neither are your Mergimals.
+<<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('chop')>>
+  You don't have a Mergimal that could chop this tree down.
 
   <<return 'Go back.'>>
 <<else>>

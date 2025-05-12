@@ -12,13 +12,13 @@
 </div>
 
 :: d2: fishing
-<<if not $players[$activePlayer].characters[$activeCharacter].keywords.rusty == true>>
+<<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('rusty')>>
   <<include 'no rod'>>
 <<else>>
   <p>(Keyword RUSTY detected)</p>
   <p>Fishing is fun!</p>
   <p>Too bad nothing is biting.</p>
   <ul class='choices'>
-    <li>[[Continue exploring.->$currentLocation]]</li>
+    <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
   </ul>
 <</if>>

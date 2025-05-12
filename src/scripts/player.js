@@ -48,15 +48,8 @@ window.Character = class Character {
 		this.energy = 4;
 		this.injuries = 0;
 		this.backpack = {coin: 0, mergiball: 0, charm: 0, bandage: 0, tool: 0, battery: 0};
-		this.keywords = {
-			closed: false,
-			discount: false,
-			ebike: false,
-			flashlight: false,
-			paddle: false,
-			rusty: false,
-			shine: false
-		};
+    this.journal = [];
+		this.keywords = [];
     this.worldMapPosition = 'b3';
 		this.mergipedia = {};
 		const mergimals = Object.keys(State.variables.mergimals);

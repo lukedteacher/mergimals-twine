@@ -22,11 +22,11 @@
     <p>A Mergimal Challenge Vending machine is here, where you can spend your hard-earned challenge coins.</p>
     <p>A bunch of people seem to be waving fans and complaining about how their air conditioners are on the fritz.</p>
     <ul class='choices'>
-      <li>[[Keep exploring the city.->$currentLocation]]</li>
+      <li>[[Keep exploring the city.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
     </ul>
   </div>
 </div>
 
 :: e2: vending machine [vend blue-urf]
-<<include 'vending machine'>>
-[[Look around Blue Urf.->$currentLocation]]
+<<include 'blue urf: vending machine'>>
+[[Look around Blue Urf.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]

@@ -5,6 +5,7 @@
     <ul class='choices'>
       <li>[[Talk to the merchant.->f4: merchant]]</li>
       <li>[[Check the long grass.->f4: long grass]]</li>
+      <li>[[Examine the river.->f4: river]]</li>
     </ul>
   </div>
   <<map 'f4'>><<n>><<w>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'f4'>>
@@ -17,17 +18,17 @@
 <p>"We also have e-bikes in stock! They're available for the low price of 1,000 coins."</p>
 <ul class='choices'>
   <li>[[That seems quite absurd. Try to haggle.->f4: haggle]]</li>
-  <li>[[Another time.->$currentLocation]]</li>
+  <li>[[Another time.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
 
 :: f4: haggle
-<<if (($players[$activePlayer].characters[$activeCharacter].keywords.paddle == true) and ($players[$activePlayer].characters[$activeCharacter].keywords.shine == true))>>
+<<if $players[$activePlayer].characters[$activeCharacter].keywords.include('paddle') && $players[$activePlayer].characters[$activeCharacter].keywords.includes('shine')>>
   <p>"You've beaten Rhia *and* Matiu in the school challenge?"</p>
   <p>That's quite impressive. You can have an ebike for free!</p>
-  <<link 'You get an ebike!' $currentLocation>>
-    <<set $players[$activePlayer].characters[$activeCharacter].keywords.ebike = true>>
+  <<link 'You get an ebike!' $players[$activePlayer].characters[$activeCharacter].worldMapPosition>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('ebike')>>
   <</link>>
-<<elseif $players[$activePlayer].characters[$activeCharacter].keywords.paddle == true>>
+<<elseif $players[$activePlayer].characters[$activeCharacter].keywords.include('paddle')>>
     "You already tackled the Wave School challenge and won?!" she says.
 
     "Rhia is so impressive. Don't you think? I wish I had half of her fashion sense."
@@ -42,12 +43,12 @@
                 <</dialog>>
             <<else>>
                 <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 100>>
-                <<set $players[$activePlayer].characters[$activeCharacter].keywords.ebike = true>>
+                <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('ebike')>>
             <</if>>
         <</link>>
     <</nobr>>
     [[Nevermind.->f4]]
-<<elseif $players[$activePlayer].characters[$activeCharacter].keywords.shine == true>>
+<<elseif $players[$activePlayer].characters[$activeCharacter].keywords.includes('shine')>>
     "You already tackled the Forge School challenge and won?!" she says.
 
     "Matiu seems kinda scary. I don't know how you were able to work up the courage to even try!"
@@ -62,7 +63,7 @@
                 <</dialog>>
             <<else>>
                 <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 100>>
-                <<set $players[$activePlayer].characters[$activeCharacter].keywords.ebike = true>>
+                <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('ebike')>>
             <</if>>
         <</link>>
     <</nobr>>
@@ -80,7 +81,7 @@
                 <</dialog>>
             <<else>>
                 <<set $players[$activePlayer].characters[$activeCharacter].backpack.coin -= 1000>>
-                <<set $players[$activePlayer].characters[$activeCharacter].keywords.ebike = true>>
+                <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('ebike')>>
             <</if>>
         <</link>>
     <</nobr>>
@@ -94,18 +95,35 @@
 <ul class='choices'>
   <li>
     <<link '1-12 (common)' 'stray encounter'>>
-      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].common]>>
     <</link>>
   </li>
   <li>
     <<link '1-17 (uncommon)' 'stray encounter'>>
-      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].uncommon]>>
     <</link>>
   </li>
   <li>
     <<link '1-20 (rare)' 'stray encounter'>>
-      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].rare]>>
     <</link>>
   </li>
-  <li>[[Continue exploring.->$currentLocation]]</li>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+</ul>
+
+:: f4: river [f4 paddle]
+<p>If you had a Mergimal who could paddle, you might be able to swim upstream to Cedar Oasis. It might be a tough ride though.</p>
+<ul class='choices'>
+  <li>
+    <<link 'Dive in and start swimming (requires: keyword PADDLE)'>>
+      <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>>
+        <<dialog 'no keyword paddle'>>
+          <<include 'no paddle'>>
+        <</dialog>>
+      <<else>>
+        <<goto 'h4'>>
+      <</if>>
+    <</link>>
+  </li>
+  <li>[[Come back another day.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>

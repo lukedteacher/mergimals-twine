@@ -18,7 +18,7 @@
     <p>It is the home of the Forge Workshop and their leader Matiu. People say he's quite intense and doesn't like to be interrupted when he's working.</p>
     <p>Crossing all the way to the east side of town might be difficult, given all the snow.</p>
     <ul class='choices'>
-      <li>[[Check out Raven Wing.->$currentLocation]]</li>
+      <li>[[Check out Raven Wing.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
     </ul>
   </div>
 </div>

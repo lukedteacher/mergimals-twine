@@ -18,7 +18,7 @@
 <p>A bored looking Mergimal trainer eyes you with a yawn. Next to them, you can see a stretch of climbable rocks that lead up the cliff face. There is a small cave on an outcrop of rocks.</p>
 <p>A small pathway leads South into the forest. Maybe it's a shortcut to Littlemoose?</p>
 <ul class='choices'>
-  <li>[[Continue exploring.->$currentLocation]]</li>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
 
 :: 005 [c4 route-002 stray long-grass]
@@ -28,20 +28,20 @@
 <ul class='choices'>
   <li>
     <<link '1-12 (common)' 'stray encounter'>>
-      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].common]>>
     <</link>>
   </li>
   <li>
     <<link '1-17 (uncommon)' 'stray encounter'>>
-      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].uncommon]>>
     <</link>>
   </li>
   <li>
     <<link '1-20 (rare)' 'stray encounter'>>
-      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].rare]>>
     <</link>>
   </li>
-  <li>[[Continue exploring.->$currentLocation]]</li>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
 
 :: 932 [c4 route-002 cliff worksheet]
@@ -50,7 +50,7 @@
 <ul class='choices'>
   <li>[[We scaled the cliff!->c3]]</li>
   <li>[[Explore the cave.->345]]</li>
-  <li>[[Nevermind. Continue exploring.->$currentLocation]]</li>
+  <li>[[Nevermind. Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
 
 :: 345 [c4 route-002 reward]

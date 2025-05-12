@@ -179,26 +179,60 @@ Enter grid coords: <<textbox '$_destination' ''>> <<button 'go'>><<run Dialog.cl
 <h2>keywords</h2>
 CLOSED
 <<link '+'>>
-    <<set $players[$activePlayer].characters[$activeCharacter].keywords.closed = true>>
-    <<redo 'keywords'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('closed')>>
 <</link>> 
 <<link 'x'>>
-    <<set $players[$activePlayer].characters[$activeCharacter].keywords.closed = false>>
-    <<redo 'keywords'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.delete('closed')>>
 <</link>><br />
 FLASHLIGHT
 <<link '+'>>
-    <<set $players[$activePlayer].characters[$activeCharacter].keywords.flashlight = true>>
-    <<redo 'keywords'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('flashlight')>>
 <</link>> 
 <<link 'x'>>
-    <<set $players[$activePlayer].characters[$activeCharacter].keywords.flashlight = false>>
-    <<redo 'keywords'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.delete('flashlight')>>
 <</link>><br />
-DISCOUNT <<link '+'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.discount = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.discount = false>><<redo 'keywords'>><</link>><br />
-PADDLE <<link '+'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.paddle = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.paddle = false>><<redo 'keywords'>><</link>><br />
-RUSTY <<link '+'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.rusty = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.rusty = false>><<redo 'keywords'>><</link>><br />
-SHINE <<link '+'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.shine = true>><<redo 'keywords'>><</link>> <<link 'x'>><<set $players[$activePlayer].characters[$activeCharacter].keywords.shine = false>><<redo 'keywords'>><</link>><br />
+PADDLE
+<<link '+'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('paddle')>>
+<</link>> 
+<<link 'x'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.delete('paddle')>>
+<</link>><br />
+RUSTY 
+<<link '+'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('rusty')>>
+<</link>> 
+<<link 'x'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.delete('rusty')>>
+<</link>><br />
+SHINE 
+<<link '+'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('shine')>>
+<</link>> 
+<<link 'x'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.delete('shine')>>
+<</link>><br />
+CHOP 
+<<link '+'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('chop')>>
+<</link>> 
+<<link 'x'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.delete('chop')>>
+<</link>><br />
+SAW 
+<<link '+'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('saw')>>
+<</link>> 
+<<link 'x'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.delete('saw')>>
+<</link>><br />
+EBIKE 
+<<link '+'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('ebike')>>
+<</link>> 
+<<link 'x'>>
+    <<set $players[$activePlayer].characters[$activeCharacter].keywords.delete('ebike')>>
+<</link>><br />
 <h2>mergimals</h2>
 ALL
 SEEN 

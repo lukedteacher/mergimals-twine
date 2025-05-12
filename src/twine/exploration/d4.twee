@@ -17,24 +17,24 @@
 <ul class='choices'>
   <li>
     <<link '1-12 (common)' 'stray encounter'>>
-      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].common]>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].common]>>
     <</link>>
   </li>
   <li>
     <<link '1-17 (uncommon)' 'stray encounter'>>
-      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].uncommon]>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].uncommon]>>
     <</link>>
   </li>
   <li>
     <<link '1-20 (rare)' 'stray encounter'>>
-      <<set $mergimalEncountered = $mergimals[$encounterTable[$currentLocation].rare]>>
+      <<set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].rare]>>
     <</link>>
   </li>
-  <li>[[Continue exploring.->$currentLocation]]</li>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
 
 :: d4: trainer
 Two trainers even!
 <ul class='choices'>
-  <li>[[Continue exploring.->$currentLocation]]</li>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
