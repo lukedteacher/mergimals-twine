@@ -1,67 +1,86 @@
 :: jessie [c4 trainer]
-There is a Mergimal Trainer standing near the base of the cliff, playing with a fidget spinner. They yawn and roll their eyes as you approach.
-
-<<say 'Jessie' 'images/characters/player.png'>>I suppose you want to have a contest?<</say>>
-
-[[Absolutely!->jessie: start]]
-[[Ask them what's new.->404]]
-[[Maybe another time: continue exploring Route 002->c4]]
+<p>There is a Mergimal Trainer standing near the base of the cliff, playing with a fidget spinner. They yawn and roll their eyes as you approach.</p>
+<<say 'Jessie' 'images/characters/portrait_0.webp'>>I suppose you want to have a contest?<</say>>
+<ul class='choices'>
+  <li>[[Absolutely!->jessie: start]]</li>
+  <li>[[Ask them what's new.->404]]</li>
+  <li>[[Maybe another time: continue exploring.->c4]]</li>
+</ul>
 
 :: jessie: start [c4 trainer contest]
-"I was afraid you'd say that. Listen, there's not a ton to do around here, but there are a ton of rocks. Big ones, little ones, heavy metal or punk ones...get it? Because they're types of rock."
+<<say 'Jessie' 'images/characters/portrait_0.webp'>>I was afraid you'd say that.<br />
+Listen, there's not a ton to do around here, but there are a ton of rocks.<br />
+Big ones, little ones, heavy metal or punk ones...get it? Because they're types of rock.<</say>>
+<ul class='choices'>
+  <li><<link 'Oh...yeah, that\'s hilarious.' 'jessie: start 2'>><</link>></li>
+</ul>
 
-<<linkreplace 'Oh...yeah, that\'s hilarious.' t8n>>
-	Jessie yawns again. "Yeah, yeah.... Not the best joke. I told you, I'm bored, okay?" Jessie shakes themself awake and puts the fidget spinner in their pocket.
-    
-    "Well, you're going to stack some rocks. It's called nature art. If your art is artsy enough to make me feel it in my heart, you win. I can't join you in lifting any rocks because I'm far too artsy for that kind of labor."
+:: jessie: start 2
+<p>Jessie yawns again.</p>
+<<say 'Jessie' 'images/characters/portrait_0.webp'>>Yeah, yeah.... Not the best joke. I told you, I'm bored, okay?<</say>>
+<p>Jessie shakes themself awake and puts the fidget spinner in their pocket.</p>
+<<say 'Jessie' 'images/characters/portrait_0.webp'>>Well, you're going to stack some rocks. It's called nature art.<br />
+If your art is artsy enough to make me feel it in my heart, you win.<br />
+I can't join you in lifting any rocks because I'm far too artsy for that kind of labor.<</say>>
+<ul class='choices'>
+  <li><<link 'Get started.' 'jessie: start 3'>><</link>></li>
+</ul>
 
-	<<linkreplace 'Get started.' t8n>>
-    	"How many rocks are you putting in your stack?
-        
-		<<numberbox '$rockPileNumber' 0 autofocus>>
-		[[Tell them the number.->jessie: stacking]]
-	<</linkreplace>>
-<</linkreplace>>
+:: jessie: start 3
+<<say 'Jessie' 'images/characters/portrait_0.webp'>>How many rocks are you putting in your stack?<</say>>
+<<numberbox '$rocksPerPile' 0 autofocus>>
+<ul class='choices'>
+  <li><<link 'Tell them how many rocks in each pile.' 'jessie: stacking'>><</link>></li>
+</ul>
 
 :: jessie: stacking [c4 trainer contest]
-<<if $rockPileNumber > 99>>
-	<<set $rockPileNumber = 75>>
-    "Whoa, it's about to fall! You better stop right there...you're at $rockPileNumber now. Good."
-<<elseif $rockPileNumber < 6>>
-	<<set $rockPileNumber = 8>>
-	"Hey, you should really keep going. That few is not so artsy! A bit more...yeah, $rockPileNumber should do the trick."
+<<if $rocksPerPile > 20>>
+	<<set $rocksPerPile = 14>>
+    <<say 'Jessie' 'images/characters/portrait_0.webp'>>Whoa, it's about to fall! You better stop right there...<br />
+    You're at $rocksPerPile now. Good.<</say>>
+<<elseif $rocksPerPile < 4>>
+	<<set $rocksPerPile = 6>>
+	<<say 'Jessie' 'images/characters/portrait_0.webp'>>Hey, you should really keep going. You need more rocks for it to be real art.<br />
+  A bit more...<br />
+  Yeah, $rocksPerPile rocks should do the trick.<</say>>
 <<else>>
-	"Hey, that's a nice stack! Now there are... $rockPileNumber rocks on the pile, right?
+	<<say 'Jessie' 'images/characters/portrait_0.webp'>>Hey, that's a nice stack! Now there are... $rocksPerPile rocks on the pile, right?<</say>>
 <</if>>
-
-Now go ahead and make some more piles with that same amount of rocks in each one. Remember to make it really artsy looking, or I might fall asleep on you."
-
-"So how many piles of $rockPileNumber are you making?
-
-<<numberbox '$rockPileAmount' 0 autofocus>>
-[[Tell them the number.->jessie: answer]]
+<p>Jessie blinks their eyes slowly and holds back a yawn.</p>
+<<say 'Jessie' 'images/characters/portrait_0.webp'>>Now make some more piles with $rocksPerPile rocks in each one.<br />
+Remember to make it really artsy looking, or I might fall asleep on you.<</say>>
+<<numberbox '$rockPiles' 0 autofocus>>
+<ul class='choices'>
+  <li><<link 'Tell them how many piles.' 'jessie: answer'>><</link>></li>
+</ul>
 
 :: jessie: answer [c4 trainer contest]
-<<if $rockPileAmount > 99>>
-	You ran out of rocks after 45 piles...
-    <<set $rockPileAmount to 45>>
+<<if $rockPiles > 20>>
+  <p>You ran out of rocks after 19 piles...</p>
+    <<set $rockPiles to 19>>
 <</if>>
-	"Nice work! You made $rockPileAmount piles with $rockPileNumber in each one. How did you even have the energy to do that? That's a lot of rocks!"
-
-"Umm, help me out...I'll be able to tell you how artsy your work is once you tell me how many total rocks you used."
-
-<<numberbox '$rockPileAnswer' 0 autofocus>>
-[[Tell them the number.->jessie: end]]
+<<say 'Jessie' 'images/characters/portrait_0.webp'>>Nice work! You made $rockPiles piles with $rocksPerPile in each one.<br />
+How did you even have the energy to do that? That's a lot of rocks!<</say>>
+<p>The trainer scratches their head and looks slightly confused.</p>
+<<say 'Jessie' 'images/characters/portrait_0.webp'>>Umm, help me out...<br />
+How many rocks did you use in total?<</say>>
+<<numberbox '$totalRocks' 0 autofocus>>
+<ul class='choices'>
+  <li><<link 'Tell them how many total rocks.' 'jessie: end'>><</link>></li>
+</ul>
 
 :: jessie: end [c4 trainer contest]
-<<if $rockPileAnswer == $rockPileNumber * $rockPileAmount>>
-    "That's right! Nice work. Here, take this fidget spinner. I have a few of them and they're great for when you're really bored, like I am."
-
-    [[Say thanks and continue exploring.->c4]]
+<<if $totalRocks == $rocksPerPile * $rockPiles>>
+  <<say 'Jessie' 'images/characters/portrait_0.webp'>>That's right! Nice work. Here, take this fidget spinner. I have a few of them and they're great for when you're really bored, like I am.<</say>>
+  <<writeentry 'I got a fidget spinner from Jessie for stacking rocks.'>>
+  <ul class='choices'>
+    <li><<link 'Say thanks and continue exploring.' $players[$activePlayer].characters[$activeCharacter].worldMapPosition>><</link>></li>
+  </ul>
 <<else>>
-    "Hmm...not quite. Do you want to try again? We're mupliplying $rockPileNumber by $rockPileAmount.
-
-    <<numberbox '$rockPileAnswer' 0 autofocus>>
-    [[Tell them the number.->jessie: end]]
-    [[Give up for now: Keep exploring Route 102.->c4]]
+    <<say 'Jessie' 'images/characters/portrait_0.webp'>>Hmm...not quite. Do you want to try again? We're mupliplying $rocksPerPile by $rockPiles.<</say>>
+    <<numberbox '$totalRocks' 0 autofocus>>
+    <ul class='choices'>
+      <li><<link 'Try again.' 'jessie: end'>><</link>></li>
+      <li><<link 'Give up for now. Keep exploring Route 002.' $players[$activePlayer].characters[$activeCharacter].worldMapPosition>><</link>></li>
+    </ul>
 <</if>>

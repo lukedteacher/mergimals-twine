@@ -5,136 +5,148 @@ injuries
 backpack  */
 
 .char-sheet-box {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .char-sheet-header-box {
-    background-color: #eee;
-    border-radius: 0.4rem;
-    color: black;
-    display: inline-block;
-    margin-bottom: -0.4rem;
+  background-color: #eee;
+  border-radius: 0.4rem;
+  color: black;
+  display: inline-block;
+  margin-bottom: -0.4rem;
+  margin-left: 1rem;
 }
 
 .char-sheet-header-box h2 {
-    margin: 0;
-    padding-top: 0.5rem;
-    padding-bottom: 0.8rem;
-    padding-left: 1.4rem;
-    padding-right: 1.4rem;
+  margin: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.8rem;
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
 }
 
 .char-sheet-boxes {
-    justify-content: space-evenly;
-    border-radius: 0.4rem;
-    padding: 1rem;
-    position: relative;
-    z-index: 100;
-    width: min-content;
+  justify-content: space-evenly;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  position: relative;
+  z-index: 100;
+  width: min-content;
 }
 
 /* dialog box */
 
 .dialog-char-sheet {
-    width: 39rem;
-    aspect-ratio: 8.5 / 11;
+  width: 39rem;
+  aspect-ratio: 8.5 / 11;
 }
 
 /* stats stuff */
 
 .stat-boxes {
-    gap: 1.4rem;
-    background-color: #ddd;
-    display: grid;
-    grid-template: 1fr / repeat(4, 1fr);
-    flex-shrink: 1;
+  gap: 1.4rem;
+  background-color: #ddd;
+  display: grid;
+  grid-template: 1fr / repeat(4, 1fr);
+  flex-shrink: 1;
 }
 
 .stat-box {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .stat-label-box {
-    color: #111;
-    margin-top: -0.7rem;
-    margin-bottom: -0.5rem;
+  color: #111;
+  margin-top: -0.7rem;
+  margin-bottom: -0.5rem;
 }
 
 .stat-img {
-    height: 3.3rem;
-    aspect-ratio: square;
+  height: 3.3rem;
+  aspect-ratio: square;
 }
 
 /* injury stuff */
 
 .injury-boxes {
-    background-color: #ddd;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
+  background-color: #ddd;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 .injury-tracker {
-    height: 2rem;
-    aspect-ratio: 1 / 1;
-    border: 3px solid black;
-    border-radius: 4rem;
+  height: 2rem;
+  aspect-ratio: 1 / 1;
+  border: 3px solid black;
+  border-radius: 4rem;
 }
 
 .injured {
-    background-image: url('images/svg/injured.svg');
+  background-image: url('images/svg/injured.svg');
 }
 
 /* backpack stuff */
 
 .item-boxes {
-    gap: 1rem;
-    background-color: #ddd;
-    display: grid;
-    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+  gap: 1rem;
+  background-color: #ddd;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(3, 1fr);
 }
 
 .item-box {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .item-label-box {
-    color: #111;
-    margin-top: 0;
+  color: #111;
+  margin-top: 0;
 }
 
 .backpack-item-img {
-    height: 2.5rem;
-    aspect-ratio: 1 / 1;
+  height: 2.5rem;
+  aspect-ratio: 1 / 1;
 }
 
 .keyword-boxes {
-    background-color: #eee;
-    color: #111;
+  background-color: #eee;
+  color: #111;
 }
 
 .keywords-ul {
-    list-style-type: none;
-    width: max-content;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  width: max-content;
+  margin: 0;
+  padding: 0;
 }
 
 .keywords-li {
-    padding: 0.4rem 0.6rem;
-    text-transform: uppercase;
-    border-radius: 0.2rem;
+  padding: 0.4rem 0.6rem;
+  text-transform: uppercase;
+  border-radius: 0.2rem;
 }
 
 /* character swap stuff */
 .char-swap-div {
-    border: 3px solid transparent;
-    border-radius: 0.5rem;
-    box-sizing: border-box;
+  border: 3px solid transparent;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+}
+
+/* journal stuff */
+.journal-boxes {
+  background-color: #eee;
+  color: #111;
+  width: 90%;
+}
+
+.journal-box {
+  border-bottom: 1px solid var(--darkest);
 }

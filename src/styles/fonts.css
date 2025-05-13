@@ -1,21 +1,31 @@
 /* main body font */
 @font-face {
-    font-family: 'lexend';
-    src: url('assets/fonts/lexend.ttf') format('truetype');
+  font-family: 'lexend';
+  src: url('assets/fonts/lexend.ttf') format('truetype');
 }
 
 /* main title font */
 @font-face {
-    font-family: 'pineapple';
-    src: url('assets/fonts/pineappledemo.ttf') format('truetype');
+  font-family: 'pineapple';
+  src: url('assets/fonts/pineapple-demo.ttf') format('truetype');
 }
 
 /* dice font */
 @font-face {
-    font-family: 'polymath';
-    src: url('assets/fonts/polymath.otf') format('opentype')
+  font-family: 'polymath';
+  src: url('assets/fonts/polymath.otf') format('opentype')
 }
 
 .dice {
-    font-family: 'polymath'; 
+  font-family: 'polymath'; 
+}
+
+/* handwriting font */
+@font-face {
+  font-family: 'lambelo';
+  src: url('assets/fonts/lambelo-demo.otf') format('opentype')
+}
+
+.handwritten {
+  font-family: 'lambelo'; 
 }

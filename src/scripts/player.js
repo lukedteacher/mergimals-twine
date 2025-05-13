@@ -46,6 +46,7 @@ window.Character = class Character {
     this.difficulty = props.difficulty | 'normal';
 		this.lastPassage = 'start'
 		this.stats = props.stats | {attention: 'd4', grit: 'd4', memory: 'd4', empathy: 'd4'};
+    this.starter = '';
 		this.energy = 4;
 		this.injuries = 0;
 		this.backpack = {coin: 0, mergiball: 0, charm: 0, bandage: 0, tool: 0, battery: 0};

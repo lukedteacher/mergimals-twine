@@ -83,7 +83,4 @@
         }
     });
 
-    setup.mergimal = createMergimal;
-    setup.card = createCard;
-
 }());

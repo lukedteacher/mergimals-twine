@@ -44,8 +44,9 @@
 
 <<newplayer 'luke'>>
 <<set _defaultStats = {attention: 'd4', grit: 'd8', memory: 'd6', empathy: 'd10'} >>
+<<newcharacter 'luke' 'Player' 'violet' 1 _defaultStats>>
 <<newcharacter 'luke' 'Flow' 'red' 2 _defaultStats>>
-<<newcharacter 'luke' 'BOB' 'orange' 1 _defaultStats>>
+<<newcharacter 'luke' 'BOB' 'orange' 3 _defaultStats>>
 
 <<set $activePlayer = 'luke'>>
 <<set $activeCharacter = 'Flow'>>

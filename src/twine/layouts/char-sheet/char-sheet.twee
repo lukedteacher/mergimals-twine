@@ -1,6 +1,6 @@
 :: character sheet
 <<set _portraitURL = $players[$activePlayer].characters[$activeCharacter].portrait>>
-<div style='display: flex;'>
+<div style='display: flex; align-items: center;'>
 	<<print '<img class="portrait" src="' + _portraitURL + '" />'>>
 	<h2 style='margin-left: 1rem;'>$activeCharacter</h2>
 </div>
@@ -31,6 +31,7 @@
 		<<include 'backpack keywords'>>
 	</div>
 	<div id='dialog-char-sheet--mergipedia'>
+    <<include 'journal'>>
 		<<include 'mergipedia'>>		
 	</div>
 	<div id='dialog-char-sheet--world-map'>

@@ -65,19 +65,31 @@ Finally, you’re here!
 </ul>
 
 :: start: part 3 [story]
-<<tam>>Wow, that Mergimal looks strong!<br />
-Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.<</tam>>
+<<set _starter = $players[$activePlayer].characters[$activeCharacter].starter>>
+<<tam>>So, you chose the <span class='text-red'>$mergimals[_starter].type</span> Mergimal _starter?<br />
+They seem quite strong.<</tam>>
+<<set _starterEntry = 'I chose a ' + _starter + ' as my first Mergimal.'>>
+<<writeentry _starterEntry>>
+<<tam>>You are now ready to set out and take on the Mergimal School Challenge!<br />
+Your first stop is in Littlemoose, at the Veil School.<</tam>>
+<ul class='choices'>
+  <li>[[I understand.->start: part 4]]</li>
+</ul>
+
+:: start: part 4 [story]
+<<tam>>Since you're already headed towards Littlemoose, will you do me a favor?<br />
+I owe the Veil School leader, Grace, some Mergiballs. Can you give them these?<</tam>>
 <div class='new-items'><strong>GAIN:</strong> 5 mergiballs.</div>
+<<writeentry 'I was asked to make a delivery to the Veil School leader.'>>
 <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 5>>
-<div class='journal'><strong>WRITE:</strong> "I was asked to make a delivery to the Veil School leader in Littlemoose."</div>
-<<set $players[$activePlayer].characters[$activeCharacter].journal.push('I was asked to make a delivery to the Veil School leader in Littlemoose.')>>
+<<tam>>I am sure Grace wouldn't mind if you used a few on your way there.<</tam>>
 <p>It's time to start your journey.</p>
 <ul class='choices'>
   <li>[[Let's go!->b3]]</li>
-  <li>[[Can you explain where Littlemoose is?->start: part 3b]]</li>
+  <li>[[Can you explain where Littlemoose is?->start: part 4b]]</li>
 </ul>
 
-:: start: part 3b [story]
+:: start: part 4b [story]
 <<tam>>You'll find it to the south and east, just on the other side of Littlemoose Forest.<br />
 Make sure to use your map if you get lost.<</tam>>
 <ul class='choices'>

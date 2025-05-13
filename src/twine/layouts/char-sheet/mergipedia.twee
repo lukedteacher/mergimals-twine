@@ -47,6 +47,7 @@ _$start through <<-_$start + 6>><br />
       <li><<return 'Inspect another.'>></li>
       <li>
         <<link 'Choose this one.' 'start: part 3'>>
+          <<set $players[$activePlayer].characters[$activeCharacter].starter = 'melodrake'>>
           <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.melodrake = 'tamed'>>
         <</link>>
       </li>
@@ -68,6 +69,7 @@ _$start through <<-_$start + 6>><br />
       <li><<return 'Inspect another.'>></li>
       <li>
         <<link 'Choose this one.' 'start: part 3'>>
+          <<set $players[$activePlayer].characters[$activeCharacter].starter = 'scorchilla'>>
           <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.scorchilla= 'tamed'>>
         <</link>>
       </li>
@@ -89,6 +91,7 @@ _$start through <<-_$start + 6>><br />
       <li><<return 'Inspect another.'>></li>
       <li>
         <<link 'Choose this one.' 'start: part 3'>>
+          <<set $players[$activePlayer].characters[$activeCharacter].starter = 'penguwaiian'>>
           <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.penguwaiian= 'tamed'>>
         <</link>>
       </li>

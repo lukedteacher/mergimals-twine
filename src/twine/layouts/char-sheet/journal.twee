@@ -1,0 +1,23 @@
+::journal [util char-sheet]
+<div class='char-sheet-box'>
+	<div class='char-sheet-header-box'>
+		<h2>journal</h2>
+	</div>
+	<<include 'journal entries'>>
+</div>
+
+:: journal entries [util char-sheet]
+<<set _journal = $players[$activePlayer].characters[$activeCharacter].journal>>
+<div class='journal-boxes char-sheet-boxes'>
+  <<if _journal == ''>>
+    <div class='journal-box'>
+      There's nothing here.
+    </div>
+  <<else>>
+    <<for _entry range _journal>>
+      <div class='journal-box handwritten' style='font-size: 1.2rem;'>
+        _entry
+      </div>
+    <</for>>
+  <</if>>
+</div>

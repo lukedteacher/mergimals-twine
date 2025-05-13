@@ -3,6 +3,7 @@
     overflow: none;
     display: grid;
     grid: 2rem auto / 8rem auto;
+    margin-bottom: 1rem;
 }
 
 .portrait-box {

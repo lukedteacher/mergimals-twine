@@ -87,11 +87,15 @@ body a:hover {
   margin-bottom: 2rem;
 }
 
-.journal {
+.journal-entry-box {
   border: 2px solid var(--green);
   border-radius: 0.4rem;
   padding: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.journal-verb-span {
+  font-weight: bold;
 }
 
 .new-items {
