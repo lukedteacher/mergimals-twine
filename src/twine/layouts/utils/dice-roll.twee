@@ -1,6 +1,6 @@
 :: dice roll
 
-<<dice 'dice1' 'd8'>>\
+<<dice 'dice1' 'd8'>>
 
 <<button 'reroll'>>
     <<roll '#dice1'>>

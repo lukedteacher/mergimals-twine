@@ -10,15 +10,15 @@
 </div>
 
 :: e1: wave school [blue-urf]
-<<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>>\
+<<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>>
 A large group of people seems to be standing in line, waiting to get in.
 
 Thankfully, you don't have to wait long before a figure steps out of the building and addresses the crowd.
 <<rhia>>Hello, everyone.
 <<cont keypress append>>I know that many of you are here to complete your Wave School challenge.
 <<cont keypress append>>Unfortunately, I am going to have to close the school until further notice.
-<<cont keypress>><<replace '#response-1'>><<link 'Oh f***. Not this again.' 'e2: wave school closed'>><</link>><</replace>><</cont>>\
-<</cont>><</cont>><</rhia>>\
+<<cont keypress>><<replace '#response-1'>><<link 'Oh f***. Not this again.' 'e2: wave school closed'>><</link>><</replace>><</cont>>
+<</cont>><</cont>><</rhia>>
 <span id='response-1'></span>
 <<else>>
 You've already done this challenge!

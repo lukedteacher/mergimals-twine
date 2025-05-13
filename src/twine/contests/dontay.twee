@@ -1,51 +1,43 @@
 :: dontay [b5 trainer]
-<<if previous() is "dontay: biting">>\
-	Dontay turns back to the water and casts their line again.
-    
-<<else>>\
-	A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.
-
-	"Woah! I almost had that one. It would have been an easy catch if you didn't scare it off the hook. Oh, well.
-	My name is Dontay, and this is my favorite fishing spot."
-
+<<if previous() is "dontay: biting">>
+	<p>Dontay turns back to the water and casts their line again.</p>
+<<else>>
+	<p>A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.</p>
+  <p>"Woah! I almost had that one. It would have been an easy catch if you didn't scare it off the hook. Oh, well.
+	My name is Dontay, and this is my favorite fishing spot."</p>
 	[[Ask them how the fish are biting.->dontay: biting]]
-<</if>>\
+<</if>>
 [[Challenge them to a contest.->dontay: contest]]
 [[Leave them alone for now and continue exploring.->b5]]
 
 :: dontay: biting [b5 trainer contest]
-"Oh, I'm catching all sorts of fish! That's why they call it 'catching' not 'fishing'!
-
-Dontay holds their hands out to measure the air. "The last one was this big." They pull their hands even further apart. "No wait, THIS big!" The hands move another six inches apart. "Ok, fine, this big."
-
-They beam with pride, looking at you for a reaction.
-
+<p>"Oh, I'm catching all sorts of fish! That's why they call it 'catching' not 'fishing'!</p>
+<p>Dontay holds their hands out to measure the air. "The last one was this big." They pull their hands even further apart. "No wait, THIS big!"</p>
+<p>The hands move another six inches apart. "Ok, fine, this big."</p>
+<p>They beam with pride, looking at you for a reaction.</p>
 [[Erm...cool story.->dontay]]
 
 :: dontay: contest [b5 trainer contest]
-"Well, if you insist.... Do you like skipping rocks? Personally, I love it. Step back and watch this."
-Dontay pulls three flat, triangular stones from their pocket and chucks one after the other into the waves.\
-
-<<set $skip = []>>\
-<<for _i to 0; _i < 6; _i++>>\
-    <<run $skip.push(random(6, 19))>>\
-<</for>>\
-<<set $skipDontay = $skip[0] + $skip[1] + $skip[2]>>\
-<<set $skipPlayer = $skip[3] + $skip[4] + $skip[5]>>\
-<<set $skipWinner = "tie">>\
-<<if $skipDontay > $skipPlayer>>\
-	<<set $skipWinner = "dontay">>\
-<<elseif $skipDontay < $skipPlayer>>\
-	<<set $skipWinner = "player">>\
-<</if>>\
-
-The first one skips $skip[0] times.
-The second one skips $skip[1] times.
-The third one skips $skip[2] times.
-
-"See that? That was like a million skips!" Dontay hands you three stones. "Think you can get more than me?"
-
-<<linkreplace 'Take your turn.' t8n>>\
+<p>"Well, if you insist.... Do you like skipping rocks?"</p>
+<p>He continues without waiting for a response, "Personally, I love it. Step back and watch this."</p>
+<p>Dontay pulls three flat, triangular stones from their pocket and chucks one after the other into the waves.</p>
+<<set $skip = []>>
+<<for _i to 0; _i < 6; _i++>>
+    <<run $skip.push(random(6, 19))>>
+<</for>>
+<<set $skipDontay = $skip[0] + $skip[1] + $skip[2]>>
+<<set $skipPlayer = $skip[3] + $skip[4] + $skip[5]>>
+<<set $skipWinner = "tie">>
+<<if $skipDontay > $skipPlayer>>
+	<<set $skipWinner = "dontay">>
+<<elseif $skipDontay < $skipPlayer>>
+	<<set $skipWinner = "player">>
+<</if>>
+<p>The first one skips $skip[0] times.<br />
+The second one skips $skip[1] times.<br />
+The third one skips $skip[2] times.</p>
+<p>"See that? That was like a million skips!" Dontay hands you three stones. "Think you can get more than me?"</p>
+<<linkreplace 'Take your turn.' t8n>>
 	You crouch into your best skipping pose and let one rip.
 	Your first one skips $skip[3] times.
 	Your second one skips $skip[4] times.
@@ -59,39 +51,39 @@ The third one skips $skip[2] times.
 <</linkreplace>>
 
 :: dontay: lost [b5 trainer contest]
-<<if $skipWinner is "player">>\
+<<if $skipWinner is "player">>
 	"Wait, did you not count my skips? I was joking. You actually won.... But I'll give you another shot."
-<<elseif $skipWinner is "dontay">>\
+<<elseif $skipWinner is "dontay">>
 	"Sure, you lost, but I'll give you a chance to feel good about yourself."
-<<else>>\
+<<else>>
 	"I was kidding! We actually tied with $skipPlayer each. What a coincidence, huh? But here's the real challenge..."
-<</if>>\
+<</if>>
 <<skipDifferenceChallenge>>
 
 :: dontay: won [b5 trainer contest]
-<<if $skipWinner is "dontay">>\
+<<if $skipWinner is "dontay">>
 	"Did you not count my skips? Of course I won.... But I'll give you another shot."
-<<elseif $skipWinner is "player">>\
+<<elseif $skipWinner is "player">>
 	Ok, fine. I was just kidding.... You did win. But I have another challenge for you."
-<<else>>\
+<<else>>
 	"No way! I was kidding! We actually tied with $skipPlayer each. What a coincidence, huh? But here's the real challenge..."
-<</if>>\
+<</if>>
 <<skipDifferenceChallenge>>
 
 :: dontay: tie [b5 trainer contest]
-<<if $skipWinner is "player">>\
+<<if $skipWinner is "player">>
 	"Nope! And I was kidding.... You actually won. But I'll give you another shot."
-<<elseif $skipWinner is 'dontay'>>\
+<<elseif $skipWinner is 'dontay'>>
 	"Nope! I did actually win, but I'll give you another chance to feel good about yourself."
-<<else>>\
+<<else>>
 	"Ah, my mistake. You're right, we tied with $skipPlayer each. What a coincidence, huh? Now here's the real challenge..."
-<</if>>\
+<</if>>
 <<skipDifferenceChallenge>>
 
 :: dontay: contest end [b5 trainer contest]
-<<if $skipGuess == $skip[0] * 6>>\
+<<if $skipGuess == $skip[0] * 6>>
 	"That's correct! Well, I'm impressed. Here, take this skipping stone. It's a perfect one- I've been holding onto it for a special ocassion."
-<<else>>\
+<<else>>
 	"Hmm, not quite. Remember, we're multiplying $skip[0] by 6." 
     <<numberbox '$skipGuess' 0 "dontay: contest end" autofocus>>
 	[[Tell them your answer.->dontay: contest end]]

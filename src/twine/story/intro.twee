@@ -6,7 +6,7 @@
 </ul>
 
 :: start: part 1 [story]
-<p>Professor Tamarack's office is on the Eastern edge of town. It's the biggest building in the village and what mysteries fill all three floors are as good as anyone's guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.</p>
+<p>Professor Tamarack's office is on the Northeastern edge of town, inside the Mergimal Lab. It's the biggest building in the village and what mysteries fill all three floors are as good as anyone's guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.</p>
 <<tam>>$activeCharacter!<br />
 Finally, you’re here!
 <</tam>>
@@ -65,7 +65,8 @@ Finally, you’re here!
 </ul>
 
 :: start: part 3 [story]
-<<tam>>Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.<</tam>>
+<<tam>>Wow, that Mergimal looks strong!<br />
+Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.<</tam>>
 <div class='new-items'><strong>GAIN:</strong> 5 mergiballs.</div>
 <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 5>>
 <div class='journal'><strong>WRITE:</strong> "I was asked to make a delivery to the Veil School leader in Littlemoose."</div>

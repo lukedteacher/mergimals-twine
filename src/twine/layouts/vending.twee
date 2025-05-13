@@ -1,15 +1,3 @@
-:: not enough coins
-<p>You don't have enough coins to buy that!</p>
-<ul class='choices'>
-  <li><<link 'Nevermind.'>><<run Dialog.close()>><</link>></li>
-</ul>
-
-:: sold out
-<p>This machine seems to be sold out of that item.</p>
-<ul class='choices'>
-  <li><<link 'Alright.'>><<run Dialog.close()>><</link>></li>
-</ul>
-
 :: littlemoose: vending machine
 <div class='flex flex-row'>
   <div id='vending-machine' style='display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;'>

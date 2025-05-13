@@ -1,4 +1,4 @@
-:: cheats [nobr]
+:: cheats
 <<link 'log variables'>>
     <<script>>
         console.log('---- CHEATS MENU LOG VARIABLES ----');

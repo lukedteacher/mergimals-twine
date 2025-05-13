@@ -1,0 +1,46 @@
+:: no batteries [dialog]
+<p>You don't have any batteries!</p>
+<ul class='choices'><li><<link 'Darn.'>><<run Dialog.close()>><</link>></li></ul>
+
+:: no paddle [dialog]
+<p>You don't know how to swim with your Mergimal yet.</p>
+<ul class='choices'><li><<link 'Oh well.'>><<run Dialog.close()>><</link>></li></ul>
+
+:: no rod [dialog]
+<p>You don't have a fishing rod.</p>
+<ul class='choices'><li><<link 'Dangit.'>><<run Dialog.close()>><</link>></li></ul>
+
+:: no keyword [dialog]
+<p>You don't have that keyword!</p>
+<ul class='choices'><li><<link 'It was worth a try.'>><<run Dialog.close()>><</link>></li></ul>
+
+:: incorrect [dialog]
+<p>Not quite!</p>
+<ul class='choices'><li><<link 'Try again.'>><<run Dialog.close()>><</link>></li></ul>
+
+:: correct [dialog]
+<p>Nice!</p>
+<ul class='choices'><li><<link 'Continue on your way.'>><<run Dialog.close()>><</link>></li></ul>
+
+:: not enough coins [dialog vending-machine]
+<p>You don't have enough coins to buy that!</p>
+<ul class='choices'><li><<link 'Nevermind.'>><<run Dialog.close()>><</link>></li></ul>
+
+:: sold out [dialog vending-machine]
+<p>This machine seems to be sold out of that item.</p>
+<ul class='choices'><li><<link 'Alright.'>><<run Dialog.close()>><</link>></li></ul>
+
+:: no mergiballs [dialog stray]
+<p>You don't have any mergiballs!</p>
+<p>Go get some at a vending machine or find them through exploration.</p>
+<ul class='choices'><li><<link 'Okay.'>><<run Dialog.close()>><</link>></li></ul>
+
+:: tame attempt failed [dialog tame]
+<p>The Mergimal doesn't seem very friendly.</p>
+<p>Try throwing another Mergiball or using a different strategy.</p>
+<ul class='choices'><li><<link 'Darnit.'>><<run Dialog.close()>><</link>></li></ul>
+
+:: tame attempt succeeded [dialog tame]
+<p>The Mergimal loves playing with the mergiball!</p>
+<p>They want to be your friend.</p>
+<ul class='choices'><li><<link 'Sweet!'>><<run Dialog.close()>><<goto 'tamed encounter'>><</link>></li></ul>

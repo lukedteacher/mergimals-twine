@@ -9,6 +9,17 @@
       <<option 'he'>>
     <</listbox>>
   </div>
+  <div>color:<<set _newCharacterColor = ''>></div>
+  <div style='display: grid; grid: repeat(2, 1fr) / repeat(4, 1fr); gap: 0.5rem; width: min-content;'>
+    <div data-color='red' class='char-color bg-red selectable'></div>
+    <div data-color='orange' class='char-color bg-orange selectable'></div>
+    <div data-color='yellow' class='char-color bg-yellow selectable'></div>
+    <div data-color='green' class='char-color bg-green selectable'></div>
+    <div data-color='cyan' class='char-color bg-cyan selectable'></div>
+    <div data-color='indigo' class='char-color bg-indigo selectable'></div>
+    <div data-color='violet' class='char-color bg-violet selectable'></div>
+    <div data-color='magenta' class='char-color bg-magenta selectable'></div>
+  </div>
   <div>portrait:<<set _newCharacterPortraitNumber = 0>></div>
   <div style='display: grid; grid: repeat(2, 1fr) / repeat(4, 1fr); gap: 0.5rem; width: min-content;'>
     <img data-number='1' class='portrait selectable' src='images/characters/portrait_1.webp'>
@@ -26,8 +37,15 @@
   <div>memory: <<textbox '_newCharacterStats.memory' 'd6'>></div>
   <div>empathy: <<textbox '_newCharacterStats.empathy' 'd6'>></div>
   <div style='width: 12rem;'>
-    <<button 'submit' 'main menu'>>
-      <<newcharacter $activePlayer _newCharacterName _newCharacterPortraitNumber _newCharacterStats>>\
+    <<button 'submit'>>
+      <<if _newCharacterName == ''>>
+        <<dialog 'error'>>
+          <<include 'no character name'>>
+        <</dialog>>
+      <<else>>
+        <<newcharacter $activePlayer _newCharacterName _newCharacterColor _newCharacterPortraitNumber _newCharacterStats>>
+        <<goto 'main menu'>>
+      <</if>>
     <</button>>
   </div>
 </div>
@@ -37,5 +55,15 @@ $(function() {
     $(this).toggleClass('selected').siblings().removeClass('selected');
     State.temporary.newCharacterPortraitNumber = $(this).attr('data-number');
   });
+  $('.char-color').click( function () {
+    $(this).toggleClass('selected').siblings().removeClass('selected');
+    State.temporary.newCharacterColor = $(this).attr('data-color');
+  });
 });
 <</script>>
+
+:: no character name [util dialog]
+<p>Please enter a character name.</p>
+<<button 'Okay'>>
+  <<run Dialog.close()>>
+<</button>>

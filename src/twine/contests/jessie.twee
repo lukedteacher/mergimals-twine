@@ -1,7 +1,7 @@
 :: jessie [c4 trainer]
 There is a Mergimal Trainer standing near the base of the cliff, playing with a fidget spinner. They yawn and roll their eyes as you approach.
 
-<<say 'Jessie' 'images/characters/player.png'>>I suppose you want to have a contest?<</say>>\
+<<say 'Jessie' 'images/characters/player.png'>>I suppose you want to have a contest?<</say>>
 
 [[Absolutely!->jessie: start]]
 [[Ask them what's new.->404]]
@@ -10,12 +10,12 @@ There is a Mergimal Trainer standing near the base of the cliff, playing with a 
 :: jessie: start [c4 trainer contest]
 "I was afraid you'd say that. Listen, there's not a ton to do around here, but there are a ton of rocks. Big ones, little ones, heavy metal or punk ones...get it? Because they're types of rock."
 
-<<linkreplace 'Oh...yeah, that\'s hilarious.' t8n>>\
+<<linkreplace 'Oh...yeah, that\'s hilarious.' t8n>>
 	Jessie yawns again. "Yeah, yeah.... Not the best joke. I told you, I'm bored, okay?" Jessie shakes themself awake and puts the fidget spinner in their pocket.
     
     "Well, you're going to stack some rocks. It's called nature art. If your art is artsy enough to make me feel it in my heart, you win. I can't join you in lifting any rocks because I'm far too artsy for that kind of labor."
 
-	<<linkreplace 'Get started.' t8n>>\
+	<<linkreplace 'Get started.' t8n>>
     	"How many rocks are you putting in your stack?
         
 		<<numberbox '$rockPileNumber' 0 autofocus>>
@@ -24,15 +24,15 @@ There is a Mergimal Trainer standing near the base of the cliff, playing with a 
 <</linkreplace>>
 
 :: jessie: stacking [c4 trainer contest]
-<<if $rockPileNumber > 99>>\
-	<<set $rockPileNumber = 75>>\
+<<if $rockPileNumber > 99>>
+	<<set $rockPileNumber = 75>>
     "Whoa, it's about to fall! You better stop right there...you're at $rockPileNumber now. Good."
-<<elseif $rockPileNumber < 6>>\
-	<<set $rockPileNumber = 8>>\
+<<elseif $rockPileNumber < 6>>
+	<<set $rockPileNumber = 8>>
 	"Hey, you should really keep going. That few is not so artsy! A bit more...yeah, $rockPileNumber should do the trick."
-<<else>>\
+<<else>>
 	"Hey, that's a nice stack! Now there are... $rockPileNumber rocks on the pile, right?
-<</if>>\
+<</if>>
 
 Now go ahead and make some more piles with that same amount of rocks in each one. Remember to make it really artsy looking, or I might fall asleep on you."
 
@@ -42,10 +42,10 @@ Now go ahead and make some more piles with that same amount of rocks in each one
 [[Tell them the number.->jessie: answer]]
 
 :: jessie: answer [c4 trainer contest]
-<<if $rockPileAmount > 99>>\
+<<if $rockPileAmount > 99>>
 	You ran out of rocks after 45 piles...
     <<set $rockPileAmount to 45>>
-<</if>>\
+<</if>>
 	"Nice work! You made $rockPileAmount piles with $rockPileNumber in each one. How did you even have the energy to do that? That's a lot of rocks!"
 
 "Umm, help me out...I'll be able to tell you how artsy your work is once you tell me how many total rocks you used."
@@ -54,11 +54,11 @@ Now go ahead and make some more piles with that same amount of rocks in each one
 [[Tell them the number.->jessie: end]]
 
 :: jessie: end [c4 trainer contest]
-<<if $rockPileAnswer == $rockPileNumber * $rockPileAmount>>\
+<<if $rockPileAnswer == $rockPileNumber * $rockPileAmount>>
     "That's right! Nice work. Here, take this fidget spinner. I have a few of them and they're great for when you're really bored, like I am."
 
     [[Say thanks and continue exploring.->c4]]
-<<else>>\
+<<else>>
     "Hmm...not quite. Do you want to try again? We're mupliplying $rockPileNumber by $rockPileAmount.
 
     <<numberbox '$rockPileAnswer' 0 autofocus>>

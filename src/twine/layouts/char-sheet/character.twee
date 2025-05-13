@@ -1,4 +1,4 @@
-:: stats [nobr]
+:: stats
 <<do tag 'stats'>>
 	<div class='char-sheet-box'>
 		<div class='char-sheet-header-box'>
@@ -8,7 +8,7 @@
 	</div>
 <</do>>
 
-:: stat boxes [nobr]
+:: stat boxes
 <div class='stat-boxes char-sheet-boxes'>
     <<for _stat, _value range $players[$activePlayer].characters[$activeCharacter].stats>>
         <div class='stat-box'>
@@ -22,7 +22,7 @@
     <</for>>
 </div>
 
-:: injuries [nobr]
+:: injuries
 <<do tag 'injuries'>>
     <div class='char-sheet-box'>
         <div class='char-sheet-header-box'>
@@ -32,7 +32,7 @@
     </div>
 <</do>>
 
-:: injury boxes [nobr]
+:: injury boxes
 <div class='injury-boxes char-sheet-boxes'>
 	<<if $players[$activePlayer].characters[$activeCharacter].injuries > 4>>
 		<<set $players[$activePlayer].characters[$activeCharacter].injuries = 4>>

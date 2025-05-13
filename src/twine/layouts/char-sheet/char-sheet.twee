@@ -1,4 +1,4 @@
-:: character sheet [nobr]
+:: character sheet
 <<set _portraitURL = $players[$activePlayer].characters[$activeCharacter].portrait>>
 <div style='display: flex;'>
 	<<print '<img class="portrait" src="' + _portraitURL + '" />'>>

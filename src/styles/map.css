@@ -65,13 +65,21 @@
 }
 
 .position-marker {
-  background-color: blue;
   width: 0.75rem;
   aspect-ratio: 1 / 1;
   border-radius: 2rem;
   align-self: center;
   justify-self: center;
-  border: 1px solid cyan;
+  border: 1px solid var(--darkest);
+}
+
+.quest-marker {
+  width: 0.75rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 2rem;
+  align-self: center;
+  justify-self: center;
+  border: 1px solid var(--red)
 }
 
 .world-map-fog {

@@ -1,9 +1,0 @@
-:: testing listbox stuff
-
-<<done>>
-    <<script>>
-        $('.macro-listbox').on('change', function () {
-            console.log($(this).find(':selected').text());
-        });
-    <</script>>
-<</done>>

@@ -38,7 +38,7 @@
     <<nobr>>
         <<link 'Sure!'>>
             <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 100>>
-                <<dialog 'not enough coins'>>\
+                <<dialog 'not enough coins'>>
                     <<include 'not enough coins'>>
                 <</dialog>>
             <<else>>
@@ -58,7 +58,7 @@
     <<nobr>>
         <<link 'Sure!'>>
             <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 100>>
-                <<dialog 'not enough coins'>>\
+                <<dialog 'not enough coins'>>
                     <<include 'not enough coins'>>
                 <</dialog>>
             <<else>>
@@ -76,7 +76,7 @@
     <<nobr>>
         <<link 'Alright, I guess.'>>
             <<if $players[$activePlayer].characters[$activeCharacter].backpack.coin < 1000>>
-                <<dialog 'not enough coins'>>\
+                <<dialog 'not enough coins'>>
                     <<include 'not enough coins'>>
                 <</dialog>>
             <<else>>

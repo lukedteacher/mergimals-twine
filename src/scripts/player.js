@@ -37,12 +37,13 @@ window.Player = class Player {
 window.Character = class Character {
 	constructor(props) {
 		// set data properties to defaults
-        this.name = props.name;
-        this.pronouns = 'they';
+    this.name = props.name;
+    this.pronouns = 'they';
+    this.color = props.color;
 		this.portraitNumber = props.portraitNumber;
 		this.portrait = 'images/characters/portrait_' + props.portraitNumber + '.webp';
-        this.version = props.version | 'fusion';
-        this.difficulty = props.difficulty | 'normal';
+    this.version = props.version | 'fusion' | 'fission';
+    this.difficulty = props.difficulty | 'normal';
 		this.lastPassage = 'start'
 		this.stats = props.stats | {attention: 'd4', grit: 'd4', memory: 'd4', empathy: 'd4'};
 		this.energy = 4;
@@ -118,9 +119,9 @@ window.Character = class Character {
 			.text(character.name)
 			.appendTo($characterBox);
 
-		const $characterPortrait = $(document.createElement('img'))
-			.addClass('char-info-portrait')
-			.attr('src', character.portrait)
+		const $characterPortrait = $(document.createElement('div'))
+			.addClass('char-info-portrait bg-' + character.color + '-lt')
+			.attr('style', 'background-image: url("' + character.portrait + '")')
 			.appendTo($characterBox);
 		
 		if (selectable) {
@@ -158,21 +159,22 @@ Macro.add('newplayer', {
 });
 
 Macro.add('newcharacter', {
-    handler: function() {
-        const playerName = this.args[0];
-        if (!playerName) throw new Error('no player name specified');
-        if (!State.variables.players[playerName]) throw new Error('player does not exist: create one first')
-		const characterName = this.args[1];
-        if (!characterName) throw new Error('no character name specified');
-        if (State.variables.players[playerName].characters[characterName]) {
-            throw new Error('character already created');
-        }
-		const characterPortraitNumber = this.args[2];
-		const characterStats = this.args[3];
-		if (!characterStats) console.log('no stats entered; using default');
-        State.variables.players[playerName].characters[characterName] = new Character({name: characterName, portraitNumber: characterPortraitNumber, stats: characterStats});
-		console.log(characterName + ' successfully created');
-    }
+  handler: function() {
+  const playerName = this.args[0];
+  if (!playerName) throw new Error('no player name specified');
+  if (!State.variables.players[playerName]) throw new Error('player does not exist: create one first')
+  const characterName = this.args[1];
+  if (!characterName) throw new Error('no character name specified');
+  if (State.variables.players[playerName].characters[characterName]) {
+    throw new Error('character already created');
+  }
+  const characterColor = this.args[2];
+  const characterPortraitNumber = this.args[3];
+  const characterStats = this.args[4];
+  if (!characterStats) console.log('no stats entered; using default');
+  State.variables.players[playerName].characters[characterName] = new Character({name: characterName, color: characterColor, portraitNumber: characterPortraitNumber, stats: characterStats});
+  console.log(characterName + ' successfully created');
+  }
 });
 
 

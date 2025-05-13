@@ -1,4 +1,4 @@
-:: backpack items [nobr]
+:: backpack items
 <<do tag 'backpack-items'>>
 	<div class='char-sheet-box'>
 		<div class='char-sheet-header-box'>
@@ -8,7 +8,7 @@
 	</div>
 <</do>>
 
-:: backpack item boxes [nobr]
+:: backpack item boxes
 <div class='item-boxes char-sheet-boxes'>
 	<<for _item, _quantity range $players[$activePlayer].characters[$activeCharacter].backpack>>
 		<div class='item-box'>
@@ -22,7 +22,7 @@
 	<</for>>
 </div>
 
-:: backpack keywords [nobr]
+:: backpack keywords
 <<do tag 'backpack-keywords'>>
 	<div class='char-sheet-box'>
 		<div class='char-sheet-header-box'>
@@ -32,7 +32,7 @@
 	</div>
 <</do>>
 
-:: backpack keyword list [nobr]
+:: backpack keyword list
 <div class='keyword-boxes char-sheet-boxes'>
   <ul class='keywords-ul'>
     <<set _keywordCount = 0>>
@@ -45,23 +45,3 @@
     <</if>>
   </ul>
 </div>
-
-:: no batteries
-You don't have any batteries!
-
-<<link 'Darnit.'>><<run Dialog.close()>><</link>>
-
-:: no paddle
-You don't know how to swim with your Mergimal yet.
-
-<<link 'Oh well.'>><<run Dialog.close()>><</link>>
-
-:: no rod
-You don't have a fishing rod.
-
-<<link 'Dangit.'>><<run Dialog.close()>><</link>>
-
-:: no keyword
-You don't have that keyword!
-
-<<link 'It was worth a try.'>><<run Dialog.close()>><</link>>

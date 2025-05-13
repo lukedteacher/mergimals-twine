@@ -1,4 +1,4 @@
-:: main menu [nobr util]
+:: main menu [util]
 <div style='display: flex; flex-direction: column; align-items: center;'>
   <h1>MERGIMALS</h1>
   <h2>fusion</h2>

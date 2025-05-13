@@ -61,3 +61,72 @@
   align-content: center;
   justify-content: center;
 }
+
+.bg-red {
+  background-color: var(--red);
+}
+
+.bg-red-lt {
+  background-color: var(--red-lt);
+}
+
+.bg-orange {
+  background-color: var(--orange);
+}
+
+.bg-orange-lt {
+  background-color: var(--orange-lt);
+}
+
+.bg-yellow {
+  background-color: var(--yellow);
+}
+
+.bg-yellow-lt {
+  background-color: var(--yellow-lt);
+}
+
+.bg-green {
+  background-color: var(--green);
+}
+
+.bg-green-lt {
+  background-color: var(--green-lt);
+}
+
+.bg-cyan {
+  background-color: var(--cyan);
+}
+
+.bg-cyan-lt {
+  background-color: var(--cyan-lt);
+}
+
+.bg-indigo {
+  background-color: var(--indigo);
+}
+
+.bg-indigo-lt {
+  background-color: var(--indigo-lt);
+}
+
+.bg-violet {
+  background-color: var(--violet);
+}
+
+.bg-violet-lt {
+  background-color: var(--violet-lt);
+}
+
+.bg-magenta {
+  background-color: var(--magenta);
+}
+
+.bg-magenta-lt {
+  background-color: var(--magenta-lt);
+}
+
+.align-center-box {
+  align-self: center;
+  justify-self: center;
+}

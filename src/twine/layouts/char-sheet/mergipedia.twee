@@ -1,4 +1,4 @@
-:: mergipedia [nobr]
+:: mergipedia [mergipedia util]
 <<set _$start = 0>>
 <<do tag 'mergipedia'>>
     <div style='display: grid; grid: repeat(2, 1fr) / repeat(3, 1fr); gap: 1rem;'>
@@ -33,38 +33,65 @@ _$start through <<-_$start + 6>><br />
     <<redo 'mergipedia'>>
 <</button>>
 
-:: melodrake
-<<card 'melodrake'>>
-Name: Melodrake
-Type: Root
-Number: 2
-Strategy: Produce a pair.
-Description: This Mergimal is can play music with their body.
-Found: ???
-
-<<return 'Inspect another.'>>
-<<link 'Choose this one.' 'start: part 3'>><<set $players[$activePlayer].characters[$activeCharacter].mergipedia.melodrake = 'tamed'>><</link>>
+:: melodrake [mergimal card inspect]
+<div class='flex flex-row gap-lg'>
+  <div><<card 'melodrake'>></div>
+  <div class='align-center-box'>
+    <p><strong>name:</strong> melodrake<br />
+    <strong>type:</strong> root<br />
+    <strong>number:</strong> 2<br />
+    <strong>strategy:</strong> produce a pair.<br />
+    <strong>description:</strong> This Mergimal is can play music with their body.<br />
+    <strong>found:</strong> ???</p>
+    <ul class='choices'>
+      <li><<return 'Inspect another.'>></li>
+      <li>
+        <<link 'Choose this one.' 'start: part 3'>>
+          <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.melodrake = 'tamed'>>
+        <</link>>
+      </li>
+    </ul>
+  </div>
+</div>
 
 :: scorchilla
-<<card 'scorchilla'>>
-Name: Scorchilla
-Type: Forge
-Number: 4
-Strategy: Establish equal groups.
-Description: This Mergimal dances like no one's watching.
-Found: ???
-
-<<return 'Inspect another.'>>
-<<link 'Choose this one.' 'start: part 3'>><<set $players[$activePlayer].characters[$activeCharacter].mergipedia.scorchilla = 'tamed'>><</link>>
+<div class='flex flex-row gap-lg'>
+  <div><<card 'scorchilla'>></div>
+  <div class='align-center-box'>
+    <p><strong>name:</strong> scorchilla<br />
+    <strong>type:</strong> forge<br />
+    <strong>number:</strong> 4<br />
+    <strong>strategy:</strong> split a set<br />
+    <strong>description:</strong> This Mergimal dances like no one's watching.<br />
+    <strong>found:</strong> ???</p>
+    <ul class='choices'>
+      <li><<return 'Inspect another.'>></li>
+      <li>
+        <<link 'Choose this one.' 'start: part 3'>>
+          <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.scorchilla= 'tamed'>>
+        <</link>>
+      </li>
+    </ul>
+  </div>
+</div>
 
 :: penguwaiian
-<<card 'penguwaiian'>>
-Name: Penguwaiian
-Type: Wave
-Number: 10
-Strategy: Skip count.
-Description: This Mergimal loves to eat pineapple and surf.
-Found: ???
-
-<<return 'Inspect another.'>>
-<<link 'Choose this one.' 'start: part 3'>><<set $players[$activePlayer].characters[$activeCharacter].mergipedia.penguwaiian = 'tamed'>><</link>>
+<div class='flex flex-row gap-lg'>
+  <div><<card 'penguwaiian'>></div>
+  <div class='align-center-box'>
+    <p><strong>name:</strong> penguwaiian<br />
+    <strong>type:</strong> wave<br />
+    <strong>number:</strong> 10<br />
+    <strong>strategy:</strong> count a crest<br />
+    <strong>description:</strong> This Mergimal loves to eat pineapple pizza and surf.<br />
+    <strong>found:</strong> ???</p>
+    <ul class='choices'>
+      <li><<return 'Inspect another.'>></li>
+      <li>
+        <<link 'Choose this one.' 'start: part 3'>>
+          <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.penguwaiian= 'tamed'>>
+        <</link>>
+      </li>
+    </ul>
+  </div>
+</div>

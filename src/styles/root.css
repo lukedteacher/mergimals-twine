@@ -9,11 +9,20 @@
     --accent-color: hsl(37, 100.0%, 58.0%);
     --accent-text: hsl(36, 55.6%, 1.8%);
     --red: hsl(26, 100%, 42%);
+    --red-lt: hsl(26, 100%, 60%);
     --orange: hsl(41, 100%, 45%);
+    --orange-lt: hsl(41, 100%, 70%);
     --yellow: hsl(56, 85%, 60%);
+    --yellow-lt: hsl(56, 85%, 80%);
     --green: hsl(164, 100%, 31%);
+    --green-lt: hsl(164, 100%, 80%);
     --cyan: hsl(202, 77%, 63%);
+    --cyan-lt: hsl(202, 77%, 80%);
     --indigo: hsl(222, 100%, 35%);
+    --indigo-lt: hsl(222, 100%, 70%);
     --violet: hsl(270, 100%, 30%);
+    --violet-lt: hsl(270, 100%, 70%);
     --magenta: hsl(300, 100%, 30%);
+    --magenta-lt: hsl(300, 100%, 80%);
+    --darkest: hsl(0, 0%, 0%);
   }

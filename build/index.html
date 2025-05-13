@@ -1865,13 +1865,21 @@ a.ui-button:active,
 }
 
 .position-marker {
-  background-color: blue;
   width: 0.75rem;
   aspect-ratio: 1 / 1;
   border-radius: 2rem;
   align-self: center;
   justify-self: center;
-  border: 1px solid cyan;
+  border: 1px solid var(--darkest);
+}
+
+.quest-marker {
+  width: 0.75rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 2rem;
+  align-self: center;
+  justify-self: center;
+  border: 1px solid var(--red)
 }
 
 .world-map-fog {
@@ -1893,34 +1901,47 @@ a.ui-button:active,
 }
 /* twine-user-stylesheet #8: "portraits.css" */
 .portrait {
-    box-sizing: border-box;
-    border-radius: 0.5rem;
-    border: 3px solid transparent;
-    width: 96px;
-    height: 64px;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  border: 3px solid transparent;
+  width: 96px;
+  height: 64px;
 }
 
 .selected {
-    border: 3px solid var(--green) !important;
+  border: 3px solid var(--background-text) !important;
 }
 
 .char-info-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    border: 3px solid transparent;
-    border-radius: 0.5rem;
-    padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  border-radius: 0.5rem;
+  padding: 1rem;
 }
 
 .char-info-label {
-    margin-top: 0;
+  margin-top: 0;
+}
+
+.char-info-portrait {
+  width: 96px;
+  height: 64px;
+  border-radius: 0.4rem;
 }
 
 .char-swap-boxes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.char-color {
+  width: 4rem;
+  height: 2rem;
+  border: 3px solid transparent;
+  border-radius: 0.4rem;
 }
 /* twine-user-stylesheet #9: "root.css" */
 /* customizer variables */
@@ -1934,13 +1955,22 @@ a.ui-button:active,
     --accent-color: hsl(37, 100.0%, 58.0%);
     --accent-text: hsl(36, 55.6%, 1.8%);
     --red: hsl(26, 100%, 42%);
+    --red-lt: hsl(26, 100%, 60%);
     --orange: hsl(41, 100%, 45%);
+    --orange-lt: hsl(41, 100%, 70%);
     --yellow: hsl(56, 85%, 60%);
+    --yellow-lt: hsl(56, 85%, 80%);
     --green: hsl(164, 100%, 31%);
+    --green-lt: hsl(164, 100%, 80%);
     --cyan: hsl(202, 77%, 63%);
+    --cyan-lt: hsl(202, 77%, 80%);
     --indigo: hsl(222, 100%, 35%);
+    --indigo-lt: hsl(222, 100%, 70%);
     --violet: hsl(270, 100%, 30%);
+    --violet-lt: hsl(270, 100%, 70%);
     --magenta: hsl(300, 100%, 30%);
+    --magenta-lt: hsl(300, 100%, 80%);
+    --darkest: hsl(0, 0%, 0%);
   }
 /* twine-user-stylesheet #10: "shake-macro-set.css" */
 /*! <<shake>> macro set for SugarCube 2.x */
@@ -2137,6 +2167,75 @@ a.ui-button:active,
 .content-center {
   align-content: center;
   justify-content: center;
+}
+
+.bg-red {
+  background-color: var(--red);
+}
+
+.bg-red-lt {
+  background-color: var(--red-lt);
+}
+
+.bg-orange {
+  background-color: var(--orange);
+}
+
+.bg-orange-lt {
+  background-color: var(--orange-lt);
+}
+
+.bg-yellow {
+  background-color: var(--yellow);
+}
+
+.bg-yellow-lt {
+  background-color: var(--yellow-lt);
+}
+
+.bg-green {
+  background-color: var(--green);
+}
+
+.bg-green-lt {
+  background-color: var(--green-lt);
+}
+
+.bg-cyan {
+  background-color: var(--cyan);
+}
+
+.bg-cyan-lt {
+  background-color: var(--cyan-lt);
+}
+
+.bg-indigo {
+  background-color: var(--indigo);
+}
+
+.bg-indigo-lt {
+  background-color: var(--indigo-lt);
+}
+
+.bg-violet {
+  background-color: var(--violet);
+}
+
+.bg-violet-lt {
+  background-color: var(--violet-lt);
+}
+
+.bg-magenta {
+  background-color: var(--magenta);
+}
+
+.bg-magenta-lt {
+  background-color: var(--magenta-lt);
+}
+
+.align-center-box {
+  align-self: center;
+  justify-self: center;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "card.js" */
 (function () {
     // v0.3
@@ -21541,12 +21640,13 @@ window.Player = class Player {
 window.Character = class Character {
 	constructor(props) {
 		// set data properties to defaults
-        this.name = props.name;
-        this.pronouns = 'they';
+    this.name = props.name;
+    this.pronouns = 'they';
+    this.color = props.color;
 		this.portraitNumber = props.portraitNumber;
 		this.portrait = 'images/characters/portrait_' + props.portraitNumber + '.webp';
-        this.version = props.version | 'fusion';
-        this.difficulty = props.difficulty | 'normal';
+    this.version = props.version | 'fusion' | 'fission';
+    this.difficulty = props.difficulty | 'normal';
 		this.lastPassage = 'start'
 		this.stats = props.stats | {attention: 'd4', grit: 'd4', memory: 'd4', empathy: 'd4'};
 		this.energy = 4;
@@ -21622,9 +21722,9 @@ window.Character = class Character {
 			.text(character.name)
 			.appendTo($characterBox);
 
-		const $characterPortrait = $(document.createElement('img'))
-			.addClass('char-info-portrait')
-			.attr('src', character.portrait)
+		const $characterPortrait = $(document.createElement('div'))
+			.addClass('char-info-portrait bg-' + character.color + '-lt')
+			.attr('style', 'background-image: url("' + character.portrait + '")')
 			.appendTo($characterBox);
 		
 		if (selectable) {
@@ -21662,21 +21762,22 @@ Macro.add('newplayer', {
 });
 
 Macro.add('newcharacter', {
-    handler: function() {
-        const playerName = this.args[0];
-        if (!playerName) throw new Error('no player name specified');
-        if (!State.variables.players[playerName]) throw new Error('player does not exist: create one first')
-		const characterName = this.args[1];
-        if (!characterName) throw new Error('no character name specified');
-        if (State.variables.players[playerName].characters[characterName]) {
-            throw new Error('character already created');
-        }
-		const characterPortraitNumber = this.args[2];
-		const characterStats = this.args[3];
-		if (!characterStats) console.log('no stats entered; using default');
-        State.variables.players[playerName].characters[characterName] = new Character({name: characterName, portraitNumber: characterPortraitNumber, stats: characterStats});
-		console.log(characterName + ' successfully created');
-    }
+  handler: function() {
+  const playerName = this.args[0];
+  if (!playerName) throw new Error('no player name specified');
+  if (!State.variables.players[playerName]) throw new Error('player does not exist: create one first')
+  const characterName = this.args[1];
+  if (!characterName) throw new Error('no character name specified');
+  if (State.variables.players[playerName].characters[characterName]) {
+    throw new Error('character already created');
+  }
+  const characterColor = this.args[2];
+  const characterPortraitNumber = this.args[3];
+  const characterStats = this.args[4];
+  if (!characterStats) console.log('no stats entered; using default');
+  State.variables.players[playerName].characters[characterName] = new Character({name: characterName, color: characterColor, portraitNumber: characterPortraitNumber, stats: characterStats});
+  console.log(characterName + ' successfully created');
+  }
 });
 
 
@@ -21897,7 +21998,7 @@ window.checkDraggables = function () {
   // v0.2
   'use strict';
 
-  function createWorldMap ($output, showPositions = false) {
+  function createWorldMap ($output) {
     const $box = $(document.createElement('div'))
       .addClass('world-map-container');
       
@@ -21915,32 +22016,40 @@ window.checkDraggables = function () {
       $box.append($mapGrid);
     };
 
+    const activePlayersCharacters = State.variables.players[State.variables.activePlayer].characters;
+
+    // create a variable for each characters position
+    let characterPositions = {}
+    Object.entries(activePlayersCharacters).forEach(([characterName, characterObject]) => {
+      characterPositions[characterName] = mapToGrid(characterObject);
+    });
+
+    const activeCharacterName = State.variables.players[State.variables.activePlayer].characters[State.variables.activeCharacter].name;
+
+    // cycle through each row and column of the world map to add markers and fog
     for (let row = 1; row < 11; row++) {
       for (let column = 1; column < 11; column++) {
-        const character = State.variables.players[State.variables.activePlayer].characters[State.variables.activeCharacter];
-        if (character.explored[row-1][column-1] == 0) {
-          const $fogBox = $(document.createElement('div'))
+        // if the active character has not explored this cell, add a fog div
+        if (activePlayersCharacters[activeCharacterName].explored[row - 1][column - 1] == 0) {
+          $(document.createElement('div'))
             .addClass('world-map-fog')
             .attr('style', 'grid-area: ' + row + ' / ' + column)
-          
-          $fogBox.appendTo($mapGrid);
-        }
-      }
-    }
-    
-    if (showPositions) {
-      const positions = getCharacterPositions();
+            .appendTo($mapGrid);
+        };
 
-      // for each position in the position object, show a small div on the map
-      Object.entries(positions).forEach(([characterName, positionObject]) => {
-        const positionMarker = $(document.createElement('div'))
-          .addClass('position-marker')
-          .attr('title', characterName)
-          .attr('style', 'grid-area: ' + positionObject.row + ' / ' + positionObject.column);
-        
-        positionMarker.appendTo($mapGrid);
-      })
-    }
+        // add a position marker for each character
+        Object.entries(characterPositions).forEach(([characterName, positionObject]) => {
+          if (positionObject.row == row && positionObject.column == column) {
+            const positionMarker = $(document.createElement('div'))
+              .addClass('position-marker bg-' + activePlayersCharacters[characterName].color)
+              .attr('title', characterName)
+              .attr('style', 'grid-area: ' + positionObject.row + ' / ' + positionObject.column);
+            
+            positionMarker.appendTo($mapGrid);
+          }
+        });
+      };
+    };
 
     if ($output) {
       if (!($output instanceof $)) {
@@ -21952,29 +22061,23 @@ window.checkDraggables = function () {
     return $mapGrid;
   }
 
-  function getCharacterPositions () {
-    let positionsObject = {};
-    Object.entries(State.variables.players).forEach(([_playerName, playerObject]) => {
-      Object.entries(playerObject.characters).forEach(([characterName, characterObject]) => {
-        const position = characterObject.worldMapPosition;
-        const row = position.slice(1);
-        const column = position.charCodeAt(0) - 96;
-        positionsObject[characterName] = {row: row, column: column}
-      })
-    })
-    return positionsObject;
+  function mapToGrid (characterObject) {
+    const position = characterObject.worldMapPosition;
+    const row = Number(position.slice(1));
+    const column = position.charCodeAt(0) - 96;
+    return {row: row, column: column}
   }
 
   Macro.add('worldmap', {
     // map macro
     handler : function () {
-      createWorldMap(this.output, this.args[0]);
+      createWorldMap(this.output);
     }
   });
-}());</script><tw-passagedata pid="1" name="asil" tags="c5 contest" position="100,100" size="100,100">&lt;&lt;if $asilCode != 404&gt;&gt;\
+}());</script><tw-passagedata pid="1" name="asil" tags="c5 contest" position="100,100" size="100,100">&lt;&lt;if $asilCode != 404&gt;&gt;
         Sorry, come back when you know the code.
         [[turn back.-&gt;221]]
-&lt;&lt;else&gt;&gt;\
+&lt;&lt;else&gt;&gt;
     The source of the hushing sound comes into view. You see a short, older lady with what could only be described as a witch&#39;s hat. She is looking left and right and shushing into the forest. A [add mergimal description] is sitting on a giant mushroom by the witch&#39;s side, looking pained.
 
     [[Ask what she is shushing.-&gt;asil: shush]]
@@ -21992,11 +22095,11 @@ Do worksheet &#39;The Loud Witch&#39;.
 Enter the code:  &lt;&lt;numberbox &#39;$witchCode&#39; 0&gt;&gt;
 &lt;&lt;link &#39;See if you have the solution. - code is 1 for now&#39;&gt;&gt;
     &lt;&lt;if $witchCode != 1&gt;&gt;
-        &lt;&lt;dialog &#39;incorrect&#39;&gt;&gt;\
+        &lt;&lt;dialog &#39;incorrect&#39;&gt;&gt;
             &lt;&lt;include &#39;incorrect&#39;&gt;&gt;
         &lt;&lt;/dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;
-        &lt;&lt;dialog &#39;correct&#39;&gt;&gt;\
+        &lt;&lt;dialog &#39;correct&#39;&gt;&gt;
             &lt;&lt;include &#39;correct&#39;&gt;&gt;
             &lt;&lt;onclose&gt;&gt;
                 &lt;&lt;goto &#39;asil: answer&#39;&gt;&gt;
@@ -22005,7 +22108,7 @@ Enter the code:  &lt;&lt;numberbox &#39;$witchCode&#39; 0&gt;&gt;
 &lt;&lt;/link&gt;&gt;
 [[Leave her alone for now and continue exploring.-&gt;221]]</tw-passagedata><tw-passagedata pid="4" name="asil: answer" tags="c5 contest" position="475,100" size="100,100">As you continue to observe the witch and her mergimal, you notice that every time the witch sushes the forest, her mergimal winces particularly hard. When she stops shushing, the mergimal relaxes a little and looks at you with desperate eyes.
 
-&lt;&lt;linkreplace &#39;Hmm...&#39; t8n&gt;&gt;\
+&lt;&lt;linkreplace &#39;Hmm...&#39; t8n&gt;&gt;
     &quot;Excuse me, ma&#39;am? Can I ask you something?&quot; The witch looks at you with a confused expression. &quot;Do you think maybe your shushing is actually the loud noise that your mergimal is reacting to?&quot;
 
     The witch looks at you with a blank stare. &quot;I don&#39;t think so. I....&quot; She pauses and turns to her mergimal. &quot;Am I the loud one, my dear?&quot;
@@ -22032,15 +22135,15 @@ You feel a little more confident in your ability to help others...and yourself. 
 
 [[Continue exploring.-&gt;221]]</tw-passagedata><tw-passagedata pid="8" name="bucky" tags="b4 trainer" position="975,100" size="100,100">&quot;Hey, you!&quot; a friendly voice calls. The trainer is standing near the tree, balancing a stack of apples on their head. &quot;Are you ready to have a contest?&quot;
 
-&lt;&lt;linkreplace &#39;Ask about the contest.&#39; t8n&gt;&gt;\
+&lt;&lt;linkreplace &#39;Ask about the contest.&#39; t8n&gt;&gt;
     &quot;It&#39;s an apple balancing contest, of course! Think you can balance more apples on your head than I can?&quot;
 
     [[Umm, sure.-&gt;bucky: apples]]
     [[Another time: Continue exploring Route 001.-&gt;b4]]
-&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="bucky: apples" tags="b4 trainer contest" position="1100,100" size="100,100">&lt;&lt;set $appleNumber1 to random(4, 10)&gt;&gt;\
-&lt;&lt;set $appleNumber2 to random(4, 10)&gt;&gt;\
-&lt;&lt;set $appleNumber3 to random(3, 5)&gt;&gt;\
-&lt;&lt;set $appleAnswer = ($appleNumber1 + $appleNumber2) * $appleNumber3&gt;&gt;\
+&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="bucky: apples" tags="b4 trainer contest" position="1100,100" size="100,100">&lt;&lt;set $appleNumber1 to random(4, 10)&gt;&gt;
+&lt;&lt;set $appleNumber2 to random(4, 10)&gt;&gt;
+&lt;&lt;set $appleNumber3 to random(3, 5)&gt;&gt;
+&lt;&lt;set $appleAnswer = ($appleNumber1 + $appleNumber2) * $appleNumber3&gt;&gt;
 &quot;Listen close, my friend.&quot; The trainer points to the apples on their head.
 
 &quot;I have $appleNumber1 apples on my head.&quot; Their arms move in a flash as they pick more apples from the tree.
@@ -22052,58 +22155,50 @@ You feel a little more confident in your ability to help others...and yourself. 
 &quot;Here is your challenge. How many little friends do I have on my head right now?&quot;
 
 &lt;&lt;numberbox &quot;$appleGuess&quot; 0 autofocus&gt;&gt;
-[[Give your answer.-&gt;bucky: apple result]]</tw-passagedata><tw-passagedata pid="10" name="bucky: apple result" tags="b4 trainer contest" position="1225,100" size="100,100">&lt;&lt;if $appleAnswer == $appleGuess&gt;&gt;\
+[[Give your answer.-&gt;bucky: apple result]]</tw-passagedata><tw-passagedata pid="10" name="bucky: apple result" tags="b4 trainer contest" position="1225,100" size="100,100">&lt;&lt;if $appleAnswer == $appleGuess&gt;&gt;
 	&quot;Correct! You win!&quot; With a shake of their head all the apples come tumbling down.
 
     They catch one in their hand and toss it your way. You put it away and now you have $appleNumber3 little friends in your bag, quietly munching away on the apple.
-&lt;&lt;else&gt;&gt;\
+&lt;&lt;else&gt;&gt;
     &quot;So close! But not the right answer. Try again.&quot;
 
     Hint: The problem is ($appleNumber1 + $appleNumber2) and multiply by $appleNumber3.
     &lt;&lt;numberbox &quot;$appleGuess&quot; 0 autofocus&gt;&gt;
     [[Give your answer.-&gt;bucky: apple result]]
 &lt;&lt;/if&gt;&gt;
-[[Continue exploring.-&gt;b4]]</tw-passagedata><tw-passagedata pid="11" name="dontay" tags="b5 trainer" position="100,225" size="100,100">&lt;&lt;if previous() is &quot;dontay: biting&quot;&gt;&gt;\
-	Dontay turns back to the water and casts their line again.
-    
-&lt;&lt;else&gt;&gt;\
-	A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.
-
-	&quot;Woah! I almost had that one. It would have been an easy catch if you didn&#39;t scare it off the hook. Oh, well.
-	My name is Dontay, and this is my favorite fishing spot.&quot;
-
+[[Continue exploring.-&gt;b4]]</tw-passagedata><tw-passagedata pid="11" name="dontay" tags="b5 trainer" position="100,225" size="100,100">&lt;&lt;if previous() is &quot;dontay: biting&quot;&gt;&gt;
+	&lt;p&gt;Dontay turns back to the water and casts their line again.&lt;/p&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;p&gt;A serious-looking Mergimal trainer is standing on the beach. They have a fishing rod.&lt;/p&gt;
+  &lt;p&gt;&quot;Woah! I almost had that one. It would have been an easy catch if you didn&#39;t scare it off the hook. Oh, well.
+	My name is Dontay, and this is my favorite fishing spot.&quot;&lt;/p&gt;
 	[[Ask them how the fish are biting.-&gt;dontay: biting]]
-&lt;&lt;/if&gt;&gt;\
+&lt;&lt;/if&gt;&gt;
 [[Challenge them to a contest.-&gt;dontay: contest]]
-[[Leave them alone for now and continue exploring.-&gt;b5]]</tw-passagedata><tw-passagedata pid="12" name="dontay: biting" tags="b5 trainer contest" position="225,225" size="100,100">&quot;Oh, I&#39;m catching all sorts of fish! That&#39;s why they call it &#39;catching&#39; not &#39;fishing&#39;!
-
-Dontay holds their hands out to measure the air. &quot;The last one was this big.&quot; They pull their hands even further apart. &quot;No wait, THIS big!&quot; The hands move another six inches apart. &quot;Ok, fine, this big.&quot;
-
-They beam with pride, looking at you for a reaction.
-
-[[Erm...cool story.-&gt;dontay]]</tw-passagedata><tw-passagedata pid="13" name="dontay: contest" tags="b5 trainer contest" position="350,225" size="100,100">&quot;Well, if you insist.... Do you like skipping rocks? Personally, I love it. Step back and watch this.&quot;
-Dontay pulls three flat, triangular stones from their pocket and chucks one after the other into the waves.\
-
-&lt;&lt;set $skip = []&gt;&gt;\
-&lt;&lt;for _i to 0; _i &lt; 6; _i++&gt;&gt;\
-    &lt;&lt;run $skip.push(random(6, 19))&gt;&gt;\
-&lt;&lt;/for&gt;&gt;\
-&lt;&lt;set $skipDontay = $skip[0] + $skip[1] + $skip[2]&gt;&gt;\
-&lt;&lt;set $skipPlayer = $skip[3] + $skip[4] + $skip[5]&gt;&gt;\
-&lt;&lt;set $skipWinner = &quot;tie&quot;&gt;&gt;\
-&lt;&lt;if $skipDontay &gt; $skipPlayer&gt;&gt;\
-	&lt;&lt;set $skipWinner = &quot;dontay&quot;&gt;&gt;\
-&lt;&lt;elseif $skipDontay &lt; $skipPlayer&gt;&gt;\
-	&lt;&lt;set $skipWinner = &quot;player&quot;&gt;&gt;\
-&lt;&lt;/if&gt;&gt;\
-
-The first one skips $skip[0] times.
-The second one skips $skip[1] times.
-The third one skips $skip[2] times.
-
-&quot;See that? That was like a million skips!&quot; Dontay hands you three stones. &quot;Think you can get more than me?&quot;
-
-&lt;&lt;linkreplace &#39;Take your turn.&#39; t8n&gt;&gt;\
+[[Leave them alone for now and continue exploring.-&gt;b5]]</tw-passagedata><tw-passagedata pid="12" name="dontay: biting" tags="b5 trainer contest" position="225,225" size="100,100">&lt;p&gt;&quot;Oh, I&#39;m catching all sorts of fish! That&#39;s why they call it &#39;catching&#39; not &#39;fishing&#39;!&lt;/p&gt;
+&lt;p&gt;Dontay holds their hands out to measure the air. &quot;The last one was this big.&quot; They pull their hands even further apart. &quot;No wait, THIS big!&quot;&lt;/p&gt;
+&lt;p&gt;The hands move another six inches apart. &quot;Ok, fine, this big.&quot;&lt;/p&gt;
+&lt;p&gt;They beam with pride, looking at you for a reaction.&lt;/p&gt;
+[[Erm...cool story.-&gt;dontay]]</tw-passagedata><tw-passagedata pid="13" name="dontay: contest" tags="b5 trainer contest" position="350,225" size="100,100">&lt;p&gt;&quot;Well, if you insist.... Do you like skipping rocks?&quot;&lt;/p&gt;
+&lt;p&gt;He continues without waiting for a response, &quot;Personally, I love it. Step back and watch this.&quot;&lt;/p&gt;
+&lt;p&gt;Dontay pulls three flat, triangular stones from their pocket and chucks one after the other into the waves.&lt;/p&gt;
+&lt;&lt;set $skip = []&gt;&gt;
+&lt;&lt;for _i to 0; _i &lt; 6; _i++&gt;&gt;
+    &lt;&lt;run $skip.push(random(6, 19))&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;&lt;set $skipDontay = $skip[0] + $skip[1] + $skip[2]&gt;&gt;
+&lt;&lt;set $skipPlayer = $skip[3] + $skip[4] + $skip[5]&gt;&gt;
+&lt;&lt;set $skipWinner = &quot;tie&quot;&gt;&gt;
+&lt;&lt;if $skipDontay &gt; $skipPlayer&gt;&gt;
+	&lt;&lt;set $skipWinner = &quot;dontay&quot;&gt;&gt;
+&lt;&lt;elseif $skipDontay &lt; $skipPlayer&gt;&gt;
+	&lt;&lt;set $skipWinner = &quot;player&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;p&gt;The first one skips $skip[0] times.&lt;br /&gt;
+The second one skips $skip[1] times.&lt;br /&gt;
+The third one skips $skip[2] times.&lt;/p&gt;
+&lt;p&gt;&quot;See that? That was like a million skips!&quot; Dontay hands you three stones. &quot;Think you can get more than me?&quot;&lt;/p&gt;
+&lt;&lt;linkreplace &#39;Take your turn.&#39; t8n&gt;&gt;
 	You crouch into your best skipping pose and let one rip.
 	Your first one skips $skip[3] times.
 	Your second one skips $skip[4] times.
@@ -22114,82 +22209,82 @@ The third one skips $skip[2] times.
 	[[You sure did.-&gt;dontay: lost]]
 	[[Huh? No way. I won!-&gt;dontay: won]]
 	[[Actually, it was a tie.-&gt;dontay: tie]]
-&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="dontay: lost" tags="b5 trainer contest" position="475,225" size="100,100">&lt;&lt;if $skipWinner is &quot;player&quot;&gt;&gt;\
+&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="dontay: lost" tags="b5 trainer contest" position="475,225" size="100,100">&lt;&lt;if $skipWinner is &quot;player&quot;&gt;&gt;
 	&quot;Wait, did you not count my skips? I was joking. You actually won.... But I&#39;ll give you another shot.&quot;
-&lt;&lt;elseif $skipWinner is &quot;dontay&quot;&gt;&gt;\
+&lt;&lt;elseif $skipWinner is &quot;dontay&quot;&gt;&gt;
 	&quot;Sure, you lost, but I&#39;ll give you a chance to feel good about yourself.&quot;
-&lt;&lt;else&gt;&gt;\
+&lt;&lt;else&gt;&gt;
 	&quot;I was kidding! We actually tied with $skipPlayer each. What a coincidence, huh? But here&#39;s the real challenge...&quot;
-&lt;&lt;/if&gt;&gt;\
-&lt;&lt;skipDifferenceChallenge&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="dontay: won" tags="b5 trainer contest" position="600,225" size="100,100">&lt;&lt;if $skipWinner is &quot;dontay&quot;&gt;&gt;\
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;skipDifferenceChallenge&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="dontay: won" tags="b5 trainer contest" position="600,225" size="100,100">&lt;&lt;if $skipWinner is &quot;dontay&quot;&gt;&gt;
 	&quot;Did you not count my skips? Of course I won.... But I&#39;ll give you another shot.&quot;
-&lt;&lt;elseif $skipWinner is &quot;player&quot;&gt;&gt;\
+&lt;&lt;elseif $skipWinner is &quot;player&quot;&gt;&gt;
 	Ok, fine. I was just kidding.... You did win. But I have another challenge for you.&quot;
-&lt;&lt;else&gt;&gt;\
+&lt;&lt;else&gt;&gt;
 	&quot;No way! I was kidding! We actually tied with $skipPlayer each. What a coincidence, huh? But here&#39;s the real challenge...&quot;
-&lt;&lt;/if&gt;&gt;\
-&lt;&lt;skipDifferenceChallenge&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="dontay: tie" tags="b5 trainer contest" position="725,225" size="100,100">&lt;&lt;if $skipWinner is &quot;player&quot;&gt;&gt;\
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;skipDifferenceChallenge&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="dontay: tie" tags="b5 trainer contest" position="725,225" size="100,100">&lt;&lt;if $skipWinner is &quot;player&quot;&gt;&gt;
 	&quot;Nope! And I was kidding.... You actually won. But I&#39;ll give you another shot.&quot;
-&lt;&lt;elseif $skipWinner is &#39;dontay&#39;&gt;&gt;\
+&lt;&lt;elseif $skipWinner is &#39;dontay&#39;&gt;&gt;
 	&quot;Nope! I did actually win, but I&#39;ll give you another chance to feel good about yourself.&quot;
-&lt;&lt;else&gt;&gt;\
+&lt;&lt;else&gt;&gt;
 	&quot;Ah, my mistake. You&#39;re right, we tied with $skipPlayer each. What a coincidence, huh? Now here&#39;s the real challenge...&quot;
-&lt;&lt;/if&gt;&gt;\
-&lt;&lt;skipDifferenceChallenge&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="dontay: contest end" tags="b5 trainer contest" position="850,225" size="100,100">&lt;&lt;if $skipGuess == $skip[0] * 6&gt;&gt;\
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;skipDifferenceChallenge&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="dontay: contest end" tags="b5 trainer contest" position="850,225" size="100,100">&lt;&lt;if $skipGuess == $skip[0] * 6&gt;&gt;
 	&quot;That&#39;s correct! Well, I&#39;m impressed. Here, take this skipping stone. It&#39;s a perfect one- I&#39;ve been holding onto it for a special ocassion.&quot;
-&lt;&lt;else&gt;&gt;\
+&lt;&lt;else&gt;&gt;
 	&quot;Hmm, not quite. Remember, we&#39;re multiplying $skip[0] by 6.&quot; 
     &lt;&lt;numberbox &#39;$skipGuess&#39; 0 &quot;dontay: contest end&quot; autofocus&gt;&gt;
 	[[Tell them your answer.-&gt;dontay: contest end]]
 &lt;&lt;/if&gt;&gt;
     [[Thank them and continue exploring.-&gt;b5]]</tw-passagedata><tw-passagedata pid="18" name="jessie" tags="c4 trainer" position="975,225" size="100,100">There is a Mergimal Trainer standing near the base of the cliff, playing with a fidget spinner. They yawn and roll their eyes as you approach.
 
-&lt;&lt;say &#39;Jessie&#39; &#39;images/characters/player.png&#39;&gt;&gt;I suppose you want to have a contest?&lt;&lt;/say&gt;&gt;\
+&lt;&lt;say &#39;Jessie&#39; &#39;images/characters/player.png&#39;&gt;&gt;I suppose you want to have a contest?&lt;&lt;/say&gt;&gt;
 
 [[Absolutely!-&gt;jessie: start]]
 [[Ask them what&#39;s new.-&gt;404]]
 [[Maybe another time: continue exploring Route 002-&gt;c4]]</tw-passagedata><tw-passagedata pid="19" name="jessie: start" tags="c4 trainer contest" position="1100,225" size="100,100">&quot;I was afraid you&#39;d say that. Listen, there&#39;s not a ton to do around here, but there are a ton of rocks. Big ones, little ones, heavy metal or punk ones...get it? Because they&#39;re types of rock.&quot;
 
-&lt;&lt;linkreplace &#39;Oh...yeah, that\&#39;s hilarious.&#39; t8n&gt;&gt;\
+&lt;&lt;linkreplace &#39;Oh...yeah, that\&#39;s hilarious.&#39; t8n&gt;&gt;
 	Jessie yawns again. &quot;Yeah, yeah.... Not the best joke. I told you, I&#39;m bored, okay?&quot; Jessie shakes themself awake and puts the fidget spinner in their pocket.
     
     &quot;Well, you&#39;re going to stack some rocks. It&#39;s called nature art. If your art is artsy enough to make me feel it in my heart, you win. I can&#39;t join you in lifting any rocks because I&#39;m far too artsy for that kind of labor.&quot;
 
-	&lt;&lt;linkreplace &#39;Get started.&#39; t8n&gt;&gt;\
+	&lt;&lt;linkreplace &#39;Get started.&#39; t8n&gt;&gt;
     	&quot;How many rocks are you putting in your stack?
         
 		&lt;&lt;numberbox &#39;$rockPileNumber&#39; 0 autofocus&gt;&gt;
 		[[Tell them the number.-&gt;jessie: stacking]]
 	&lt;&lt;/linkreplace&gt;&gt;
-&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="jessie: stacking" tags="c4 trainer contest" position="1225,225" size="100,100">&lt;&lt;if $rockPileNumber &gt; 99&gt;&gt;\
-	&lt;&lt;set $rockPileNumber = 75&gt;&gt;\
+&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="jessie: stacking" tags="c4 trainer contest" position="1225,225" size="100,100">&lt;&lt;if $rockPileNumber &gt; 99&gt;&gt;
+	&lt;&lt;set $rockPileNumber = 75&gt;&gt;
     &quot;Whoa, it&#39;s about to fall! You better stop right there...you&#39;re at $rockPileNumber now. Good.&quot;
-&lt;&lt;elseif $rockPileNumber &lt; 6&gt;&gt;\
-	&lt;&lt;set $rockPileNumber = 8&gt;&gt;\
+&lt;&lt;elseif $rockPileNumber &lt; 6&gt;&gt;
+	&lt;&lt;set $rockPileNumber = 8&gt;&gt;
 	&quot;Hey, you should really keep going. That few is not so artsy! A bit more...yeah, $rockPileNumber should do the trick.&quot;
-&lt;&lt;else&gt;&gt;\
+&lt;&lt;else&gt;&gt;
 	&quot;Hey, that&#39;s a nice stack! Now there are... $rockPileNumber rocks on the pile, right?
-&lt;&lt;/if&gt;&gt;\
+&lt;&lt;/if&gt;&gt;
 
 Now go ahead and make some more piles with that same amount of rocks in each one. Remember to make it really artsy looking, or I might fall asleep on you.&quot;
 
 &quot;So how many piles of $rockPileNumber are you making?
 
 &lt;&lt;numberbox &#39;$rockPileAmount&#39; 0 autofocus&gt;&gt;
-[[Tell them the number.-&gt;jessie: answer]]</tw-passagedata><tw-passagedata pid="21" name="jessie: answer" tags="c4 trainer contest" position="100,350" size="100,100">&lt;&lt;if $rockPileAmount &gt; 99&gt;&gt;\
+[[Tell them the number.-&gt;jessie: answer]]</tw-passagedata><tw-passagedata pid="21" name="jessie: answer" tags="c4 trainer contest" position="100,350" size="100,100">&lt;&lt;if $rockPileAmount &gt; 99&gt;&gt;
 	You ran out of rocks after 45 piles...
     &lt;&lt;set $rockPileAmount to 45&gt;&gt;
-&lt;&lt;/if&gt;&gt;\
+&lt;&lt;/if&gt;&gt;
 	&quot;Nice work! You made $rockPileAmount piles with $rockPileNumber in each one. How did you even have the energy to do that? That&#39;s a lot of rocks!&quot;
 
 &quot;Umm, help me out...I&#39;ll be able to tell you how artsy your work is once you tell me how many total rocks you used.&quot;
 
 &lt;&lt;numberbox &#39;$rockPileAnswer&#39; 0 autofocus&gt;&gt;
-[[Tell them the number.-&gt;jessie: end]]</tw-passagedata><tw-passagedata pid="22" name="jessie: end" tags="c4 trainer contest" position="225,350" size="100,100">&lt;&lt;if $rockPileAnswer == $rockPileNumber * $rockPileAmount&gt;&gt;\
+[[Tell them the number.-&gt;jessie: end]]</tw-passagedata><tw-passagedata pid="22" name="jessie: end" tags="c4 trainer contest" position="225,350" size="100,100">&lt;&lt;if $rockPileAnswer == $rockPileNumber * $rockPileAmount&gt;&gt;
     &quot;That&#39;s right! Nice work. Here, take this fidget spinner. I have a few of them and they&#39;re great for when you&#39;re really bored, like I am.&quot;
 
     [[Say thanks and continue exploring.-&gt;c4]]
-&lt;&lt;else&gt;&gt;\
+&lt;&lt;else&gt;&gt;
     &quot;Hmm...not quite. Do you want to try again? We&#39;re mupliplying $rockPileNumber by $rockPileAmount.
 
     &lt;&lt;numberbox &#39;$rockPileAnswer&#39; 0 autofocus&gt;&gt;
@@ -22717,7 +22812,7 @@ Roll ATTENTION x GRIT.
     &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="83" name="d6: vending machine" tags="vend littlemoose" position="350,1100" size="100,100">&lt;&lt;include &#39;littlemoose: vending machine&#39;&gt;&gt;
-[[Look around Littlemoose.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="84" name="d6: veil school" tags="" position="475,1100" size="100,100">&lt;&lt;if not $players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;closed&#39;)&gt;&gt;\
+[[Look around Littlemoose.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="84" name="d6: veil school" tags="" position="475,1100" size="100,100">&lt;&lt;if not $players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;closed&#39;)&gt;&gt;
     The school is closed?!?
 
     Oh dear.
@@ -22725,7 +22820,7 @@ Roll ATTENTION x GRIT.
     GAIN keyword CLOSED.&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].keywords.push(&#39;closed&#39;)&gt;&gt;
 
     [[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
-&lt;&lt;else&gt;&gt;\
+&lt;&lt;else&gt;&gt;
     (Keyword CLOSED detected)
 
     The school is dark. No one seems to be here.
@@ -22739,15 +22834,15 @@ Roll ATTENTION x GRIT.
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;e1&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;e1&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="86" name="e1: wave school" tags="blue-urf" position="725,1100" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;paddle&#39;)&gt;&gt;\
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="86" name="e1: wave school" tags="blue-urf" position="725,1100" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;paddle&#39;)&gt;&gt;
 A large group of people seems to be standing in line, waiting to get in.
 
 Thankfully, you don&#39;t have to wait long before a figure steps out of the building and addresses the crowd.
 &lt;&lt;rhia&gt;&gt;Hello, everyone.
 &lt;&lt;cont keypress append&gt;&gt;I know that many of you are here to complete your Wave School challenge.
 &lt;&lt;cont keypress append&gt;&gt;Unfortunately, I am going to have to close the school until further notice.
-&lt;&lt;cont keypress&gt;&gt;&lt;&lt;replace &#39;#response-1&#39;&gt;&gt;&lt;&lt;link &#39;Oh f***. Not this again.&#39; &#39;e2: wave school closed&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/cont&gt;&gt;\
-&lt;&lt;/cont&gt;&gt;&lt;&lt;/cont&gt;&gt;&lt;&lt;/rhia&gt;&gt;\
+&lt;&lt;cont keypress&gt;&gt;&lt;&lt;replace &#39;#response-1&#39;&gt;&gt;&lt;&lt;link &#39;Oh f***. Not this again.&#39; &#39;e2: wave school closed&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/cont&gt;&gt;
+&lt;&lt;/cont&gt;&gt;&lt;&lt;/cont&gt;&gt;&lt;&lt;/rhia&gt;&gt;
 &lt;span id=&#39;response-1&#39;&gt;&lt;/span&gt;
 &lt;&lt;else&gt;&gt;
 You&#39;ve already done this challenge!
@@ -22900,7 +22995,7 @@ You decide to go talk to Rhia to see what is going on.
     &lt;&lt;nobr&gt;&gt;
         &lt;&lt;link &#39;Sure!&#39;&gt;&gt;
             &lt;&lt;if $players[$activePlayer].characters[$activeCharacter].backpack.coin &lt; 100&gt;&gt;
-                &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
+                &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
                     &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
                 &lt;&lt;/dialog&gt;&gt;
             &lt;&lt;else&gt;&gt;
@@ -22920,7 +23015,7 @@ You decide to go talk to Rhia to see what is going on.
     &lt;&lt;nobr&gt;&gt;
         &lt;&lt;link &#39;Sure!&#39;&gt;&gt;
             &lt;&lt;if $players[$activePlayer].characters[$activeCharacter].backpack.coin &lt; 100&gt;&gt;
-                &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
+                &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
                     &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
                 &lt;&lt;/dialog&gt;&gt;
             &lt;&lt;else&gt;&gt;
@@ -22938,7 +23033,7 @@ You decide to go talk to Rhia to see what is going on.
     &lt;&lt;nobr&gt;&gt;
         &lt;&lt;link &#39;Alright, I guess.&#39;&gt;&gt;
             &lt;&lt;if $players[$activePlayer].characters[$activeCharacter].backpack.coin &lt; 1000&gt;&gt;
-                &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;\
+                &lt;&lt;dialog &#39;not enough coins&#39;&gt;&gt;
                     &lt;&lt;include &#39;not enough coins&#39;&gt;&gt;
                 &lt;&lt;/dialog&gt;&gt;
             &lt;&lt;else&gt;&gt;
@@ -23197,7 +23292,7 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 &lt;&lt;link &#39;You tamed them.&#39; &#39;volcano&#39;&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.bakewing = &#39;tamed&#39;&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="StoryCaption" tags="" position="850,1600" size="100,100">&lt;&lt;include &#39;sidebar&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="StoryMenu" tags="" position="975,1600" size="100,100">&lt;&lt;link &#39;main menu&#39; &#39;main menu&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;change character&#39; &#39;change character&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;cheats&#39;&gt;&gt;
-  &lt;&lt;dialog &#39;cheats&#39;&gt;&gt;\
+  &lt;&lt;dialog &#39;cheats&#39;&gt;&gt;
     &lt;&lt;include &#39;cheats&#39;&gt;&gt;
   &lt;&lt;/dialog&gt;&gt;
 &lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="PassageDone" tags="" position="1100,1600" size="100,100">&lt;&lt;if not tags().includes(&#39;util&#39;)&gt;&gt;
@@ -23249,31 +23344,18 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 
 &lt;&lt;newplayer &#39;luke&#39;&gt;&gt;
 &lt;&lt;set _defaultStats = {attention: &#39;d4&#39;, grit: &#39;d8&#39;, memory: &#39;d6&#39;, empathy: &#39;d10&#39;} &gt;&gt;
-&lt;&lt;newcharacter &#39;luke&#39; &#39;foo&#39; 2 _defaultStats&gt;&gt;
+&lt;&lt;newcharacter &#39;luke&#39; &#39;Flow&#39; &#39;red&#39; 2 _defaultStats&gt;&gt;
+&lt;&lt;newcharacter &#39;luke&#39; &#39;BOB&#39; &#39;orange&#39; 1 _defaultStats&gt;&gt;
 
 &lt;&lt;set $activePlayer = &#39;luke&#39;&gt;&gt;
-&lt;&lt;set $activeCharacter = &#39;foo&#39;&gt;&gt;
-
-&lt;&lt;set $position = [3,2]&gt;&gt;
-&lt;&lt;set $explored = [
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0]]
-&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="backpack items" tags="nobr" position="225,1725" size="100,100">&lt;&lt;do tag &#39;backpack-items&#39;&gt;&gt;
+&lt;&lt;set $activeCharacter = &#39;Flow&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="backpack items" tags="" position="225,1725" size="100,100">&lt;&lt;do tag &#39;backpack-items&#39;&gt;&gt;
 	&lt;div class=&#39;char-sheet-box&#39;&gt;
 		&lt;div class=&#39;char-sheet-header-box&#39;&gt;
 			&lt;h2&gt;items&lt;/h2&gt;
 		&lt;/div&gt;
 		&lt;&lt;include &#39;backpack item boxes&#39;&gt;&gt;
 	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="backpack item boxes" tags="nobr" position="350,1725" size="100,100">&lt;div class=&#39;item-boxes char-sheet-boxes&#39;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="backpack item boxes" tags="" position="350,1725" size="100,100">&lt;div class=&#39;item-boxes char-sheet-boxes&#39;&gt;
 	&lt;&lt;for _item, _quantity range $players[$activePlayer].characters[$activeCharacter].backpack&gt;&gt;
 		&lt;div class=&#39;item-box&#39;&gt;
 			&lt;div class=&#39;item-img-box&#39;&gt;
@@ -23284,14 +23366,14 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 			&lt;/div&gt;
 		&lt;/div&gt;
 	&lt;&lt;/for&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="134" name="backpack keywords" tags="nobr" position="475,1725" size="100,100">&lt;&lt;do tag &#39;backpack-keywords&#39;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="134" name="backpack keywords" tags="" position="475,1725" size="100,100">&lt;&lt;do tag &#39;backpack-keywords&#39;&gt;&gt;
 	&lt;div class=&#39;char-sheet-box&#39;&gt;
 		&lt;div class=&#39;char-sheet-header-box&#39;&gt;
 			&lt;h2&gt;keywords&lt;/h2&gt;
 		&lt;/div&gt;
 		&lt;&lt;include &#39;backpack keyword list&#39;&gt;&gt;
 	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="backpack keyword list" tags="nobr" position="600,1725" size="100,100">&lt;div class=&#39;keyword-boxes char-sheet-boxes&#39;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="backpack keyword list" tags="" position="600,1725" size="100,100">&lt;div class=&#39;keyword-boxes char-sheet-boxes&#39;&gt;
   &lt;ul class=&#39;keywords-ul&#39;&gt;
     &lt;&lt;set _keywordCount = 0&gt;&gt;
     &lt;&lt;for _keyword range $players[$activePlayer].characters[$activeCharacter].keywords&gt;&gt;
@@ -23302,15 +23384,7 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
       &lt;li class=&#39;keywords-li&#39;&gt;no keywords found yet&lt;/li&gt;
     &lt;&lt;/if&gt;&gt;
   &lt;/ul&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="136" name="no batteries" tags="" position="725,1725" size="100,100">You don&#39;t have any batteries!
-
-&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="no paddle" tags="" position="850,1725" size="100,100">You don&#39;t know how to swim with your Mergimal yet.
-
-&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="no rod" tags="" position="975,1725" size="100,100">You don&#39;t have a fishing rod.
-
-&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="no keyword" tags="" position="1100,1725" size="100,100">You don&#39;t have that keyword!
-
-&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="character sheet" tags="nobr" position="1225,1725" size="100,100">&lt;&lt;set _portraitURL = $players[$activePlayer].characters[$activeCharacter].portrait&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="136" name="character sheet" tags="" position="725,1725" size="100,100">&lt;&lt;set _portraitURL = $players[$activePlayer].characters[$activeCharacter].portrait&gt;&gt;
 &lt;div style=&#39;display: flex;&#39;&gt;
 	&lt;&lt;print &#39;&lt;img class=&quot;portrait&quot; src=&quot;&#39; + _portraitURL + &#39;&quot; /&gt;&#39;&gt;&gt;
 	&lt;h2 style=&#39;margin-left: 1rem;&#39;&gt;$activeCharacter&lt;/h2&gt;
@@ -23347,14 +23421,14 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 	&lt;div id=&#39;dialog-char-sheet--world-map&#39;&gt;
 		&lt;&lt;include &#39;world map&#39;&gt;&gt;		
 	&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="141" name="stats" tags="nobr" position="100,1850" size="100,100">&lt;&lt;do tag &#39;stats&#39;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="137" name="stats" tags="" position="850,1725" size="100,100">&lt;&lt;do tag &#39;stats&#39;&gt;&gt;
 	&lt;div class=&#39;char-sheet-box&#39;&gt;
 		&lt;div class=&#39;char-sheet-header-box&#39;&gt;
 			&lt;h2&gt;stats&lt;/h2&gt;
 		&lt;/div&gt;
 		&lt;&lt;include &#39;stat boxes&#39;&gt;&gt;
 	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="stat boxes" tags="nobr" position="225,1850" size="100,100">&lt;div class=&#39;stat-boxes char-sheet-boxes&#39;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="stat boxes" tags="" position="975,1725" size="100,100">&lt;div class=&#39;stat-boxes char-sheet-boxes&#39;&gt;
     &lt;&lt;for _stat, _value range $players[$activePlayer].characters[$activeCharacter].stats&gt;&gt;
         &lt;div class=&#39;stat-box&#39;&gt;
             &lt;div class=&#39;stat-img-box&#39;&gt;
@@ -23365,14 +23439,14 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;&lt;/for&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="143" name="injuries" tags="nobr" position="350,1850" size="100,100">&lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="139" name="injuries" tags="" position="1100,1725" size="100,100">&lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
     &lt;div class=&#39;char-sheet-box&#39;&gt;
         &lt;div class=&#39;char-sheet-header-box&#39;&gt;
             &lt;h2&gt;injuries&lt;/h2&gt;
         &lt;/div&gt;
 		&lt;&lt;include &#39;injury boxes&#39;&gt;&gt;
     &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="injury boxes" tags="nobr" position="475,1850" size="100,100">&lt;div class=&#39;injury-boxes char-sheet-boxes&#39;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="injury boxes" tags="" position="1225,1725" size="100,100">&lt;div class=&#39;injury-boxes char-sheet-boxes&#39;&gt;
 	&lt;&lt;if $players[$activePlayer].characters[$activeCharacter].injuries &gt; 4&gt;&gt;
 		&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].injuries = 4&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
@@ -23382,7 +23456,7 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 	&lt;&lt;for _count range (4 - $players[$activePlayer].characters[$activeCharacter].injuries)&gt;&gt;
 		&lt;div class=&#39;injury-tracker&#39;&gt;&lt;/div&gt;
 	&lt;&lt;/for&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="145" name="mergipedia" tags="nobr" position="600,1850" size="100,100">&lt;&lt;set _$start = 0&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="141" name="mergipedia" tags="mergipedia util" position="100,1850" size="100,100">&lt;&lt;set _$start = 0&gt;&gt;
 &lt;&lt;do tag &#39;mergipedia&#39;&gt;&gt;
     &lt;div style=&#39;display: grid; grid: repeat(2, 1fr) / repeat(3, 1fr); gap: 1rem;&#39;&gt;
         &lt;&lt;set _$temp to Object.fromEntries(Object.entries($mergimals).slice(_$start, _$start + 6))&gt;&gt;
@@ -23414,44 +23488,75 @@ _$start through &lt;&lt;-_$start + 6&gt;&gt;&lt;br /&gt;
         &lt;&lt;set _$start = Object.entries($mergimals).length - 6&gt;&gt;
     &lt;&lt;/if&gt;&gt;
     &lt;&lt;redo &#39;mergipedia&#39;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="melodrake" tags="" position="725,1850" size="100,100">&lt;&lt;card &#39;melodrake&#39;&gt;&gt;
-Name: Melodrake
-Type: Root
-Number: 2
-Strategy: Produce a pair.
-Description: This Mergimal is can play music with their body.
-Found: ???
-
-&lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
-&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.melodrake = &#39;tamed&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="scorchilla" tags="" position="850,1850" size="100,100">&lt;&lt;card &#39;scorchilla&#39;&gt;&gt;
-Name: Scorchilla
-Type: Forge
-Number: 4
-Strategy: Establish equal groups.
-Description: This Mergimal dances like no one&#39;s watching.
-Found: ???
-
-&lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
-&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.scorchilla = &#39;tamed&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="penguwaiian" tags="" position="975,1850" size="100,100">&lt;&lt;card &#39;penguwaiian&#39;&gt;&gt;
-Name: Penguwaiian
-Type: Wave
-Number: 10
-Strategy: Skip count.
-Description: This Mergimal loves to eat pineapple and surf.
-Found: ???
-
-&lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;
-&lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.penguwaiian = &#39;tamed&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="incorrect" tags="" position="1100,1850" size="100,100">Not quite!
-
-&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="correct" tags="" position="1225,1850" size="100,100">Nice!
-
-&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="testing listbox stuff" tags="" position="100,1975" size="100,100">&lt;&lt;done&gt;&gt;
-    &lt;&lt;script&gt;&gt;
-        $(&#39;.macro-listbox&#39;).on(&#39;change&#39;, function () {
-            console.log($(this).find(&#39;:selected&#39;).text());
-        });
-    &lt;&lt;/script&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="main menu" tags="nobr util" position="225,1975" size="100,100">&lt;div style=&#39;display: flex; flex-direction: column; align-items: center;&#39;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="melodrake" tags="mergimal card inspect" position="225,1850" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
+  &lt;div&gt;&lt;&lt;card &#39;melodrake&#39;&gt;&gt;&lt;/div&gt;
+  &lt;div class=&#39;align-center-box&#39;&gt;
+    &lt;p&gt;&lt;strong&gt;name:&lt;/strong&gt; melodrake&lt;br /&gt;
+    &lt;strong&gt;type:&lt;/strong&gt; root&lt;br /&gt;
+    &lt;strong&gt;number:&lt;/strong&gt; 2&lt;br /&gt;
+    &lt;strong&gt;strategy:&lt;/strong&gt; produce a pair.&lt;br /&gt;
+    &lt;strong&gt;description:&lt;/strong&gt; This Mergimal is can play music with their body.&lt;br /&gt;
+    &lt;strong&gt;found:&lt;/strong&gt; ???&lt;/p&gt;
+    &lt;ul class=&#39;choices&#39;&gt;
+      &lt;li&gt;&lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;
+          &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.melodrake = &#39;tamed&#39;&gt;&gt;
+        &lt;&lt;/link&gt;&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="143" name="scorchilla" tags="" position="350,1850" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
+  &lt;div&gt;&lt;&lt;card &#39;scorchilla&#39;&gt;&gt;&lt;/div&gt;
+  &lt;div class=&#39;align-center-box&#39;&gt;
+    &lt;p&gt;&lt;strong&gt;name:&lt;/strong&gt; scorchilla&lt;br /&gt;
+    &lt;strong&gt;type:&lt;/strong&gt; forge&lt;br /&gt;
+    &lt;strong&gt;number:&lt;/strong&gt; 4&lt;br /&gt;
+    &lt;strong&gt;strategy:&lt;/strong&gt; split a set&lt;br /&gt;
+    &lt;strong&gt;description:&lt;/strong&gt; This Mergimal dances like no one&#39;s watching.&lt;br /&gt;
+    &lt;strong&gt;found:&lt;/strong&gt; ???&lt;/p&gt;
+    &lt;ul class=&#39;choices&#39;&gt;
+      &lt;li&gt;&lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;
+          &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.scorchilla= &#39;tamed&#39;&gt;&gt;
+        &lt;&lt;/link&gt;&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="144" name="penguwaiian" tags="" position="475,1850" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
+  &lt;div&gt;&lt;&lt;card &#39;penguwaiian&#39;&gt;&gt;&lt;/div&gt;
+  &lt;div class=&#39;align-center-box&#39;&gt;
+    &lt;p&gt;&lt;strong&gt;name:&lt;/strong&gt; penguwaiian&lt;br /&gt;
+    &lt;strong&gt;type:&lt;/strong&gt; wave&lt;br /&gt;
+    &lt;strong&gt;number:&lt;/strong&gt; 10&lt;br /&gt;
+    &lt;strong&gt;strategy:&lt;/strong&gt; count a crest&lt;br /&gt;
+    &lt;strong&gt;description:&lt;/strong&gt; This Mergimal loves to eat pineapple pizza and surf.&lt;br /&gt;
+    &lt;strong&gt;found:&lt;/strong&gt; ???&lt;/p&gt;
+    &lt;ul class=&#39;choices&#39;&gt;
+      &lt;li&gt;&lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;&lt;link &#39;Choose this one.&#39; &#39;start: part 3&#39;&gt;&gt;
+          &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.penguwaiian= &#39;tamed&#39;&gt;&gt;
+        &lt;&lt;/link&gt;&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="145" name="no batteries" tags="dialog" position="600,1850" size="100,100">&lt;p&gt;You don&#39;t have any batteries!&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Darn.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="146" name="no paddle" tags="dialog" position="725,1850" size="100,100">&lt;p&gt;You don&#39;t know how to swim with your Mergimal yet.&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="147" name="no rod" tags="dialog" position="850,1850" size="100,100">&lt;p&gt;You don&#39;t have a fishing rod.&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="148" name="no keyword" tags="dialog" position="975,1850" size="100,100">&lt;p&gt;You don&#39;t have that keyword!&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="149" name="incorrect" tags="dialog" position="1100,1850" size="100,100">&lt;p&gt;Not quite!&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="150" name="correct" tags="dialog" position="1225,1850" size="100,100">&lt;p&gt;Nice!&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="151" name="not enough coins" tags="dialog vending-machine" position="100,1975" size="100,100">&lt;p&gt;You don&#39;t have enough coins to buy that!&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="152" name="sold out" tags="dialog vending-machine" position="225,1975" size="100,100">&lt;p&gt;This machine seems to be sold out of that item.&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Alright.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="153" name="no mergiballs" tags="dialog stray" position="350,1975" size="100,100">&lt;p&gt;You don&#39;t have any mergiballs!&lt;/p&gt;
+&lt;p&gt;Go get some at a vending machine or find them through exploration.&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Okay.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="154" name="tame attempt failed" tags="dialog tame" position="475,1975" size="100,100">&lt;p&gt;The Mergimal doesn&#39;t seem very friendly.&lt;/p&gt;
+&lt;p&gt;Try throwing another Mergiball or using a different strategy.&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="155" name="tame attempt succeeded" tags="dialog tame" position="600,1975" size="100,100">&lt;p&gt;The Mergimal loves playing with the mergiball!&lt;/p&gt;
+&lt;p&gt;They want to be your friend.&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Sweet!&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;goto &#39;tamed encounter&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="156" name="main menu" tags="util" position="725,1975" size="100,100">&lt;div style=&#39;display: flex; flex-direction: column; align-items: center;&#39;&gt;
   &lt;h1&gt;MERGIMALS&lt;/h1&gt;
   &lt;h2&gt;fusion&lt;/h2&gt;
   &lt;img style=&#39;width: 8rem; aspect-ratio: 1 / 1;&#39; src=&#39;images/logo/fusion.svg&#39;&gt;
@@ -23469,7 +23574,7 @@ Found: ???
             const $contButton = $(&#39;#continue&#39;).children(&#39;button&#39;).prop(&#39;disabled&#39;, true);
         }
     &lt;&lt;/script&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="change character" tags="nobr util" position="350,1975" size="100,100">&lt;&lt;set _newActiveCharacter = $activeCharacter&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="change character" tags="util" position="850,1975" size="100,100">&lt;&lt;set _newActiveCharacter = $activeCharacter&gt;&gt;
 &lt;div class=&#39;char-swap-boxes&#39;&gt;
   &lt;&lt;for _name, _object range $players[$activePlayer].characters&gt;&gt;
     &lt;&lt;characterbox _name true&gt;&gt;
@@ -23482,7 +23587,7 @@ Found: ???
   &lt;&lt;set $activeCharacter = _newActiveCharacter&gt;&gt;
   &lt;&lt;set _gotoPassage = $players[$activePlayer].characters[$activeCharacter].lastPassage&gt;&gt;
   &lt;&lt;goto _gotoPassage&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="sidebar" tags="nobr" position="475,1975" size="100,100">&lt;&lt;do tag &#39;sidebar-char&#39;&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="sidebar" tags="util" position="975,1975" size="100,100">&lt;&lt;do tag &#39;sidebar-char&#39;&gt;&gt;
   &lt;div id=&#39;sidebar-char-box&#39;&gt;
     &lt;&lt;characterbox $activeCharacter false&gt;&gt;
     &lt;div id=&#39;char-sheet-button-boxes&#39;&gt;
@@ -23510,7 +23615,7 @@ Found: ???
           .open();
     });
   });
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="cheats" tags="nobr" position="600,1975" size="100,100">&lt;&lt;link &#39;log variables&#39;&gt;&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="cheats" tags="" position="1100,1975" size="100,100">&lt;&lt;link &#39;log variables&#39;&gt;&gt;
     &lt;&lt;script&gt;&gt;
         console.log(&#39;---- CHEATS MENU LOG VARIABLES ----&#39;);
         console.log(State.variables);
@@ -23777,17 +23882,11 @@ specific:
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;button &#39;tamed&#39;&gt;&gt;
     &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia[_mergimalToChange] = &#39;tamed&#39;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="dice roll" tags="" position="725,1975" size="100,100">&lt;&lt;dice &#39;dice1&#39; &#39;d8&#39;&gt;&gt;\
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="dice roll" tags="" position="1225,1975" size="100,100">&lt;&lt;dice &#39;dice1&#39; &#39;d8&#39;&gt;&gt;
 
 &lt;&lt;button &#39;reroll&#39;&gt;&gt;
     &lt;&lt;roll &#39;#dice1&#39;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="world map" tags="char-sheet world-map" position="850,1975" size="100,100">&lt;&lt;worldmap true&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="not enough coins" tags="" position="975,1975" size="100,100">&lt;p&gt;You don&#39;t have enough coins to buy that!&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;
-  &lt;li&gt;&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="159" name="sold out" tags="" position="1100,1975" size="100,100">&lt;p&gt;This machine seems to be sold out of that item.&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;
-  &lt;li&gt;&lt;&lt;link &#39;Alright.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="160" name="littlemoose: vending machine" tags="" position="1225,1975" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="world map" tags="char-sheet world-map" position="100,2100" size="100,100">&lt;&lt;worldmap&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="littlemoose: vending machine" tags="" position="225,2100" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
   &lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;
     &lt;div style=&#39;background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;
     &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;
@@ -23869,7 +23968,7 @@ specific:
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="161" name="blue urf: vending machine" tags="" position="100,2100" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="163" name="blue urf: vending machine" tags="" position="350,2100" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
   &lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;
     &lt;div style=&#39;background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;
     &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;
@@ -23953,7 +24052,7 @@ specific:
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="162" name="raven wing: vending machine" tags="" position="225,2100" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="164" name="raven wing: vending machine" tags="" position="475,2100" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
   &lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;
     &lt;div style=&#39;background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;
     &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;
@@ -24037,7 +24136,7 @@ specific:
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="163" name="cedar oasis: vending machine" tags="" position="350,2100" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="165" name="cedar oasis: vending machine" tags="" position="600,2100" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
   &lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;
     &lt;div style=&#39;background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;
     &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;
@@ -24121,81 +24220,92 @@ specific:
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="164" name="stray encounter" tags="nobr" position="475,2100" size="100,100">&lt;&lt;print &quot;&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/&quot; + $mergimalEncountered.name + &quot;.png&#39; /&gt;&quot;&gt;&gt;
-$mergimalEncountered.strayPassageText&lt;br /&gt;&lt;br /&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="166" name="stray encounter" tags="stray" position="725,2100" size="100,100">&lt;&lt;print &quot;&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/&quot; + $mergimalEncountered.name + &quot;.png&#39; /&gt;&quot;&gt;&gt;
+&lt;p&gt;$mergimalEncountered.strayPassageText&lt;/p&gt;
 &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia[$mergimalEncountered.name] = &#39;seen&#39;&gt;&gt;
-
-&#39;&#39;Do Worksheet $mergimalEncountered.number&#39;&#39;&lt;br /&gt;&lt;br /&gt;
-
-&lt;div id=&#39;stray-encounter-choices&#39;&gt;
-    &lt;&lt;link &#39;I am finished.&#39;&gt;&gt;
-        &lt;&lt;replace &#39;#stray-encounter-choices&#39;&gt;&gt;
-            &lt;&lt;link &#39;Throw a mergiball!&#39;&gt;&gt;
-                &lt;&lt;if $players[$activePlayer].characters[$activeCharacter].backpack.mergiball &lt; 1&gt;&gt;
-                    &lt;&lt;dialog&gt;&gt;
-                        &lt;&lt;include &#39;no mergiballs&#39;&gt;&gt;
-                    &lt;&lt;/dialog&gt;&gt;
-                &lt;&lt;else&gt;&gt;
-                    &lt;&lt;goto &#39;tame attempt&#39;&gt;&gt;
-                &lt;&lt;/if&gt;&gt;
-            &lt;&lt;/link&gt;&gt;
-        &lt;&lt;/replace&gt;&gt;
+&lt;p&gt;Do &lt;strong&gt;Worksheet $mergimalEncountered.number&lt;/strong&gt;&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;
+  &lt;li&gt;
+    &lt;&lt;link &#39;Throw a mergiball!&#39;&gt;&gt;
+      &lt;&lt;if $players[$activePlayer].characters[$activeCharacter].backpack.mergiball &lt; 1&gt;&gt;
+        &lt;&lt;dialog&gt;&gt;
+          &lt;&lt;include &#39;no mergiballs&#39;&gt;&gt;
+        &lt;&lt;/dialog&gt;&gt;
+      &lt;&lt;else&gt;&gt;
+        &lt;&lt;goto &#39;tame attempt&#39;&gt;&gt;
+      &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
-&lt;/div&gt;
-&lt;&lt;link &#39;Back away slowly and continue exploring.&#39;&gt;&gt;
-    &lt;&lt;goto $players[$activePlayer].characters[$activeCharacter].worldMapPosition&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="no mergiballs" tags="" position="600,2100" size="100,100">You don&#39;t have any mergiballs!
-
-Go to a store or something, dude.
-
-&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="166" name="tame attempt" tags="nobr" position="725,2100" size="100,100">&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball --&gt;&gt;
-&lt;&lt;redo &#39;backpack&#39;&gt;&gt;
-You throw the mergiball and it lands near the Mergimal.&lt;br /&gt;&lt;br /&gt;
-Target: $mergimalEncountered.name&lt;br /&gt;&lt;br /&gt;
-&lt;&lt;dice &#39;mergiball&#39; &#39;d10&#39;&gt;&gt;&lt;br /&gt;
-
-&lt;&lt;button &#39;reroll&#39;&gt;&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;&lt;link &#39;Back away slowly and continue exploring.&#39;&gt;&gt;
+      &lt;&lt;goto $players[$activePlayer].characters[$activeCharacter].worldMapPosition&gt;&gt;
+    &lt;&lt;/link&gt;&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="167" name="tame attempt" tags="tame" position="850,2100" size="100,100">&lt;&lt;set _target = 10&gt;&gt;
+&lt;&lt;set _result = 0&gt;&gt;
+&lt;&lt;script&gt;&gt;
+  const rarity = State.variables.mergimalEncountered.rarity;
+  let target = 10;
+  if (rarity == &#39;common&#39;) {
+    target = 2;
+  } else if (rarity == &#39;uncommon&#39;) {
+    target = 5;
+  } else {
+    target = 8;
+  }
+  State.temporary.target = target;
+&lt;&lt;/script&gt;&gt;
+&lt;p&gt;You throw the mergiball and it lands near the $mergimalEncountered.name.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Target:&lt;/strong&gt; _target&lt;/p&gt;
+&lt;p&gt;&lt;&lt;dice &#39;mergiball&#39; &#39;d10&#39;&gt;&gt;&lt;/p&gt;
+&lt;div class=&#39;flex gap-md&#39;&gt;
+  &lt;&lt;button &#39;reroll&#39;&gt;&gt;
     &lt;&lt;if $players[$activePlayer].characters[$activeCharacter].backpack.mergiball &lt; 1&gt;&gt;
-        &lt;&lt;dialog&gt;&gt;
-            &lt;&lt;include &#39;no mergiballs&#39;&gt;&gt;
-        &lt;&lt;/dialog&gt;&gt;
+      &lt;&lt;dialog&gt;&gt;
+        &lt;&lt;include &#39;no mergiballs&#39;&gt;&gt;
+      &lt;&lt;/dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;
-        &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball --&gt;&gt;
-        &lt;&lt;roll &#39;mergiball&#39;&gt;&gt;
+      &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball --&gt;&gt;
+      &lt;&lt;roll &#39;mergiball&#39;&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
-&lt;&lt;button &#39;See what happens&#39;&gt;&gt;
-    &lt;&lt;set _roll to 0&gt;&gt;
-    &lt;&lt;if  _roll &lt; $mergimalEncountered.number&gt;&gt;
-        &lt;&lt;dialog&gt;&gt;
-            &lt;&lt;include &#39;tame attempt failed&#39;&gt;&gt;
-        &lt;&lt;/dialog&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
+  &lt;&lt;button &#39;see what happens&#39;&gt;&gt;
+    &lt;&lt;script&gt;&gt;
+      State.temporary.result = Number($(&#39;#mergiball&#39;).attr(&#39;data-result&#39;));
+    &lt;&lt;/script&gt;&gt;
+    &lt;&lt;if _result &lt; _target&gt;&gt;
+      &lt;&lt;dialog&gt;&gt;
+        &lt;&lt;include &#39;tame attempt failed&#39;&gt;&gt;
+      &lt;&lt;/dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;
-        &lt;&lt;dialog&gt;&gt;
-            &lt;&lt;include &#39;tame attempt succeeded&#39;&gt;&gt;
-        &lt;&lt;/dialog&gt;&gt;
+      &lt;&lt;dialog&gt;&gt;
+        &lt;&lt;include &#39;tame attempt succeeded&#39;&gt;&gt;
+      &lt;&lt;/dialog&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-
+  &lt;&lt;/button&gt;&gt;
+&lt;/div&gt;
 &lt;&lt;done&gt;&gt;
-    &lt;&lt;roll &#39;mergiball&#39;&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="tame attempt failed" tags="" position="850,2100" size="100,100">The Mergimal doesn&#39;t seem very friendly.
-
-Solve some more problems or try throwing another Mergiball!
-
-&lt;&lt;button &#39;Okay&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="tame attempt succeeded" tags="" position="975,2100" size="100,100">The Mergimal loves playing with the mergiball!
-
-They want to be your friend.
-
-&lt;&lt;button &#39;okay&#39; &#39;tamed encounter&#39;&gt;&gt;
-    &lt;&lt;run Dialog.close()&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="tamed encounter" tags="nobr" position="1100,2100" size="100,100">&lt;&lt;card $mergimalEncountered.name&gt;&gt;&lt;br /&gt;
-$mergimalEncountered.tamedPassageText&lt;br /&gt;&lt;br /&gt;
-&lt;&lt;link &#39;You tamed them.&#39; b4&gt;&gt;
-    &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia[$mergimalEncountered.name] = &#39;tamed&#39;&gt;&gt;
-    &lt;&lt;unset $mergimalEncountered&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="mergimals data variable" tags="" position="1225,2100" size="100,100">The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
+  &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball --&gt;&gt;
+  &lt;&lt;roll &#39;mergiball&#39;&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="tamed encounter" tags="tamed" position="975,2100" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
+  &lt;div&gt;&lt;&lt;card $mergimalEncountered.name&gt;&gt;&lt;/div&gt;
+  &lt;div class=&#39;align-center-box&#39;&gt;
+    &lt;p&gt;&lt;strong&gt;name:&lt;/strong&gt; $mergimalEncountered.name&lt;br /&gt;
+    &lt;strong&gt;type:&lt;/strong&gt; $mergimalEncountered.type&lt;br /&gt;
+    &lt;strong&gt;number:&lt;/strong&gt; $mergimalEncountered.number&lt;br /&gt;
+    &lt;strong&gt;strategy:&lt;/strong&gt; $mergimalEncountered.strategy&lt;br /&gt;
+    &lt;strong&gt;description:&lt;/strong&gt; $mergimalEncountered.tamedPassageText&lt;/p&gt;
+    &lt;ul class=&#39;choices&#39;&gt;
+      &lt;li&gt;
+        &lt;&lt;link &#39;You tamed them!&#39;&gt;&gt;
+          &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia[$mergimalEncountered.name] = &#39;tamed&#39;&gt;&gt;
+          &lt;&lt;unset $mergimalEncountered&gt;&gt;
+          &lt;&lt;goto $players[$activePlayer].characters[$activeCharacter].worldMapPosition&gt;&gt;
+        &lt;&lt;/link&gt;&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="169" name="mergimals data variable" tags="" position="1100,2100" size="100,100">The noises in the grass turned out to be a grey bird. They seem to be looking for bugs.
 &lt;&lt;set $mergimals to {
     algelly: {
         name: &#39;algelly&#39;, 
@@ -24476,7 +24586,7 @@ $mergimalEncountered.tamedPassageText&lt;br /&gt;&lt;br /&gt;
         strayPassageText: &#39;You\&#39;re looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.&#39;,
         tamedPassageText: &#39;This Mergimal is named Zipper. They\&#39;re cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.&#39;
     }
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="mergimals encounter table" tags="" position="100,2225" size="100,100">&lt;&lt;set $encounterTable = {
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="mergimals encounter table" tags="" position="1225,2100" size="100,100">&lt;&lt;set $encounterTable = {
     b4 : {
         name: &#39;route 001&#39;,
         common: &#39;boxin&#39;,
@@ -24537,7 +24647,7 @@ $mergimalEncountered.tamedPassageText&lt;br /&gt;&lt;br /&gt;
         uncommon: &#39;gemble&#39;,
         rare: &#39;flameberry&#39;
     }
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="create a character" tags="util" position="225,2225" size="100,100">&lt;h2 style=&#39;margin-bottom: 1rem;&#39;&gt;create a character&lt;/h2&gt;
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="create a character" tags="util" position="100,2225" size="100,100">&lt;h2 style=&#39;margin-bottom: 1rem;&#39;&gt;create a character&lt;/h2&gt;
 &lt;div style=&#39;display: flex; flex-direction: column; gap: 1rem;&#39;&gt;
   &lt;div&gt;name: &lt;&lt;textbox &#39;_newCharacterName&#39; &#39;&#39;&gt;&gt;&lt;/div&gt;
   &lt;div&gt;
@@ -24546,6 +24656,17 @@ $mergimalEncountered.tamedPassageText&lt;br /&gt;&lt;br /&gt;
       &lt;&lt;option &#39;she&#39;&gt;&gt;
       &lt;&lt;option &#39;he&#39;&gt;&gt;
     &lt;&lt;/listbox&gt;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;color:&lt;&lt;set _newCharacterColor = &#39;&#39;&gt;&gt;&lt;/div&gt;
+  &lt;div style=&#39;display: grid; grid: repeat(2, 1fr) / repeat(4, 1fr); gap: 0.5rem; width: min-content;&#39;&gt;
+    &lt;div data-color=&#39;red&#39; class=&#39;char-color bg-red selectable&#39;&gt;&lt;/div&gt;
+    &lt;div data-color=&#39;orange&#39; class=&#39;char-color bg-orange selectable&#39;&gt;&lt;/div&gt;
+    &lt;div data-color=&#39;yellow&#39; class=&#39;char-color bg-yellow selectable&#39;&gt;&lt;/div&gt;
+    &lt;div data-color=&#39;green&#39; class=&#39;char-color bg-green selectable&#39;&gt;&lt;/div&gt;
+    &lt;div data-color=&#39;cyan&#39; class=&#39;char-color bg-cyan selectable&#39;&gt;&lt;/div&gt;
+    &lt;div data-color=&#39;indigo&#39; class=&#39;char-color bg-indigo selectable&#39;&gt;&lt;/div&gt;
+    &lt;div data-color=&#39;violet&#39; class=&#39;char-color bg-violet selectable&#39;&gt;&lt;/div&gt;
+    &lt;div data-color=&#39;magenta&#39; class=&#39;char-color bg-magenta selectable&#39;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;portrait:&lt;&lt;set _newCharacterPortraitNumber = 0&gt;&gt;&lt;/div&gt;
   &lt;div style=&#39;display: grid; grid: repeat(2, 1fr) / repeat(4, 1fr); gap: 0.5rem; width: min-content;&#39;&gt;
@@ -24564,8 +24685,15 @@ $mergimalEncountered.tamedPassageText&lt;br /&gt;&lt;br /&gt;
   &lt;div&gt;memory: &lt;&lt;textbox &#39;_newCharacterStats.memory&#39; &#39;d6&#39;&gt;&gt;&lt;/div&gt;
   &lt;div&gt;empathy: &lt;&lt;textbox &#39;_newCharacterStats.empathy&#39; &#39;d6&#39;&gt;&gt;&lt;/div&gt;
   &lt;div style=&#39;width: 12rem;&#39;&gt;
-    &lt;&lt;button &#39;submit&#39; &#39;main menu&#39;&gt;&gt;
-      &lt;&lt;newcharacter $activePlayer _newCharacterName _newCharacterPortraitNumber _newCharacterStats&gt;&gt;\
+    &lt;&lt;button &#39;submit&#39;&gt;&gt;
+      &lt;&lt;if _newCharacterName == &#39;&#39;&gt;&gt;
+        &lt;&lt;dialog &#39;error&#39;&gt;&gt;
+          &lt;&lt;include &#39;no character name&#39;&gt;&gt;
+        &lt;&lt;/dialog&gt;&gt;
+      &lt;&lt;else&gt;&gt;
+        &lt;&lt;newcharacter $activePlayer _newCharacterName _newCharacterColor _newCharacterPortraitNumber _newCharacterStats&gt;&gt;
+        &lt;&lt;goto &#39;main menu&#39;&gt;&gt;
+      &lt;&lt;/if&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -24575,12 +24703,19 @@ $(function() {
     $(this).toggleClass(&#39;selected&#39;).siblings().removeClass(&#39;selected&#39;);
     State.temporary.newCharacterPortraitNumber = $(this).attr(&#39;data-number&#39;);
   });
+  $(&#39;.char-color&#39;).click( function () {
+    $(this).toggleClass(&#39;selected&#39;).siblings().removeClass(&#39;selected&#39;);
+    State.temporary.newCharacterColor = $(this).attr(&#39;data-color&#39;);
+  });
 });
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="173" name="intro" tags="story" position="350,2225" size="100,100">&lt;p&gt;Greetings, $activeCharacter!&lt;/p&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="no character name" tags="util dialog" position="225,2225" size="100,100">&lt;p&gt;Please enter a character name.&lt;/p&gt;
+&lt;&lt;button &#39;Okay&#39;&gt;&gt;
+  &lt;&lt;run Dialog.close()&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="173" name="intro" tags="story" position="350,2225" size="100,100">&lt;p&gt;Greetings, $activeCharacter!&lt;/p&gt;
 &lt;p&gt;Today is the first day of your Mergimals journey!&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Go see professor Tamrack.-&gt;start: part 1]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="174" name="start: part 1" tags="story" position="475,2225" size="100,100">&lt;p&gt;Professor Tamarack&#39;s office is on the Eastern edge of town. It&#39;s the biggest building in the village and what mysteries fill all three floors are as good as anyone&#39;s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="174" name="start: part 1" tags="story" position="475,2225" size="100,100">&lt;p&gt;Professor Tamarack&#39;s office is on the Northeastern edge of town, inside the Mergimal Lab. It&#39;s the biggest building in the village and what mysteries fill all three floors are as good as anyone&#39;s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.&lt;/p&gt;
 &lt;&lt;tam&gt;&gt;$activeCharacter!&lt;br /&gt;
 Finally, you’re here!
 &lt;&lt;/tam&gt;&gt;
@@ -24630,7 +24765,8 @@ Finally, you’re here!
 &lt;p&gt;So make a choice.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[As you wish.-&gt;start: part 2]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="177" name="start: part 3" tags="story" position="850,2225" size="100,100">&lt;&lt;tam&gt;&gt;Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.&lt;&lt;/tam&gt;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="177" name="start: part 3" tags="story" position="850,2225" size="100,100">&lt;&lt;tam&gt;&gt;Wow, that Mergimal looks strong!&lt;br /&gt;
+Here are five mergiballs. Deliver them to Grace, the Veil School leader in Littlemoose.&lt;&lt;/tam&gt;&gt;
 &lt;div class=&#39;new-items&#39;&gt;&lt;strong&gt;GAIN:&lt;/strong&gt; 5 mergiballs.&lt;/div&gt;
 &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 5&gt;&gt;
 &lt;div class=&#39;journal&#39;&gt;&lt;strong&gt;WRITE:&lt;/strong&gt; &quot;I was asked to make a delivery to the Veil School leader in Littlemoose.&quot;&lt;/div&gt;

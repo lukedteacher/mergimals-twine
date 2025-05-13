@@ -17,7 +17,7 @@ MERGIMALS
 <<link 'main menu' 'main menu'>><</link>>
 <<link 'change character' 'change character'>><</link>>
 <<link 'cheats'>>
-  <<dialog 'cheats'>>\
+  <<dialog 'cheats'>>
     <<include 'cheats'>>
   <</dialog>>
 <</link>>

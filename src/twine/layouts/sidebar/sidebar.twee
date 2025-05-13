@@ -1,4 +1,4 @@
-:: sidebar [nobr]
+:: sidebar [util]
 <<do tag 'sidebar-char'>>
   <div id='sidebar-char-box'>
     <<characterbox $activeCharacter false>>

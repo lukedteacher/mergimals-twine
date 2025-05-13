@@ -30,7 +30,7 @@
 [[Look around Littlemoose.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
 
 :: d6: veil school
-<<if not $players[$activePlayer].characters[$activeCharacter].keywords.includes('closed')>>\
+<<if not $players[$activePlayer].characters[$activeCharacter].keywords.includes('closed')>>
     The school is closed?!?
 
     Oh dear.
@@ -38,7 +38,7 @@
     GAIN keyword CLOSED.<<set $players[$activePlayer].characters[$activeCharacter].keywords.push('closed')>>
 
     [[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
-<<else>>\
+<<else>>
     (Keyword CLOSED detected)
 
     The school is dark. No one seems to be here.

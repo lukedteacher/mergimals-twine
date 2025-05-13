@@ -1,4 +1,4 @@
-:: change character [nobr util]
+:: change character [util]
 <<set _newActiveCharacter = $activeCharacter>>
 <div class='char-swap-boxes'>
   <<for _name, _object range $players[$activePlayer].characters>>

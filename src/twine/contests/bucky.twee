@@ -1,7 +1,7 @@
 :: bucky [b4 trainer]
 "Hey, you!" a friendly voice calls. The trainer is standing near the tree, balancing a stack of apples on their head. "Are you ready to have a contest?"
 
-<<linkreplace 'Ask about the contest.' t8n>>\
+<<linkreplace 'Ask about the contest.' t8n>>
     "It's an apple balancing contest, of course! Think you can balance more apples on your head than I can?"
 
     [[Umm, sure.->bucky: apples]]
@@ -10,10 +10,10 @@
 
 
 :: bucky: apples [b4 trainer contest]
-<<set $appleNumber1 to random(4, 10)>>\
-<<set $appleNumber2 to random(4, 10)>>\
-<<set $appleNumber3 to random(3, 5)>>\
-<<set $appleAnswer = ($appleNumber1 + $appleNumber2) * $appleNumber3>>\
+<<set $appleNumber1 to random(4, 10)>>
+<<set $appleNumber2 to random(4, 10)>>
+<<set $appleNumber3 to random(3, 5)>>
+<<set $appleAnswer = ($appleNumber1 + $appleNumber2) * $appleNumber3>>
 "Listen close, my friend." The trainer points to the apples on their head.
 
 "I have $appleNumber1 apples on my head." Their arms move in a flash as they pick more apples from the tree.
@@ -28,11 +28,11 @@
 [[Give your answer.->bucky: apple result]]
 
 :: bucky: apple result [b4 trainer contest]
-<<if $appleAnswer == $appleGuess>>\
+<<if $appleAnswer == $appleGuess>>
 	"Correct! You win!" With a shake of their head all the apples come tumbling down.
 
     They catch one in their hand and toss it your way. You put it away and now you have $appleNumber3 little friends in your bag, quietly munching away on the apple.
-<<else>>\
+<<else>>
     "So close! But not the right answer. Try again."
 
     Hint: The problem is ($appleNumber1 + $appleNumber2) and multiply by $appleNumber3.
