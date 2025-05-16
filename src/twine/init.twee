@@ -4,12 +4,7 @@
 <</script>>
 <<include 'mergimals data variable'>>
 <<include 'mergimals encounter table'>>
-
-<<mergimal 'unknown' 'unknown' 'unknown' '?'>>
-
-<<for _name, _stats range $mergimals>>
-  <<mergimal _name _stats.type _stats.strategy _stats.number>>
-<</for>>
+<<include 'mergimals math facts'>>
 
 <<widget 'tam' container>>
   <<say 'Prof. Tamarack' 'images/characters/proftam.webp'>>_contents<</say>>
@@ -45,8 +40,10 @@
 <<newplayer 'luke'>>
 <<set _defaultStats = {attention: 'd4', grit: 'd8', memory: 'd6', empathy: 'd10'} >>
 <<newcharacter 'luke' 'Player' 'violet' 1 _defaultStats>>
-<<newcharacter 'luke' 'Flow' 'red' 2 _defaultStats>>
+<<newcharacter 'luke' 'Flow' 'cyan' 9 _defaultStats>>
 <<newcharacter 'luke' 'BOB' 'orange' 3 _defaultStats>>
 
 <<set $activePlayer = 'luke'>>
 <<set $activeCharacter = 'Flow'>>
+
+<<setupfacts>>

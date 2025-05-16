@@ -1,0 +1,12 @@
+/* general stuff */
+
+#explore-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.choices {
+  list-style: none;
+  padding: 0 !important;
+  margin: 0 !important;
+}

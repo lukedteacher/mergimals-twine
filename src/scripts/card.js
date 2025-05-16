@@ -2,22 +2,10 @@
     // v0.3
     'use strict';
 
-    let mergimals = new Map();
-
-    const artDir = 'images/mergimals/';
-
-    function createMergimal (name, type, strategy, number) {
-        mergimals.set(name, {type: type, strategy: strategy, number: number, image: artDir + name + '.png'});
-    }
-
-    Macro.add('mergimal', {
-        handler : function () {
-            createMergimal(this.args[0], this.args[1], this.args[2], this.args[3]);
-        }
-    });
-
     function createCard ($output, name, selectable = false, size = 'large', partial = false) {
-        
+        const mergimals = State.variables.mergimals;
+        const artDir = 'images/mergimals/'
+
         const $cardBox = $(document.createElement('div'))
             .addClass('card-box card-' + size);
         
@@ -31,7 +19,7 @@
             .appendTo($cardBox);
 
         const $cardType = $(document.createElement('div'))
-            .addClass('card-type ' + mergimals.get(name).type)
+            .addClass('card-type ' + mergimals[name].type)
             .appendTo($cardHeader);
         
         const $cardTitle = $(document.createElement('div'))
@@ -41,12 +29,12 @@
 
         const $cardImage = $(document.createElement('img'))
             .addClass('card-img')
-            .attr('src', mergimals.get(name).image)
+            .attr('src', artDir + mergimals[name].name + '.png')
             .appendTo($cardBox);
 
         const $cardText = $(document.createElement('div'))
             .addClass('card-text')
-            .text(mergimals.get(name).strategy)
+            .text(mergimals[name].strategy)
             .appendTo($cardBox);
 
         const $cardFooter = $(document.createElement('div'))
@@ -55,7 +43,7 @@
         
         const $cardNumber = $(document.createElement('div'))
             .addClass('card-number')
-            .text(mergimals.get(name).number)
+            .text(mergimals[name].number)
             .appendTo($cardFooter);
 
         if (partial == true) {

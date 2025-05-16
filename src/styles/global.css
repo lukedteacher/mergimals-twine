@@ -6,6 +6,10 @@ body {
   box-sizing: border-box;
 }
 
+div {
+  box-sizing: border-box;
+}
+
 body h1,
 body h2,
 body h3,

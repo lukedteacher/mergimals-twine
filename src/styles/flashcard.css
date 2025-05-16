@@ -1,0 +1,147 @@
+/* container for the card */
+.flashcard-box {
+  aspect-ratio: 63 / 88;
+  perspective: 1024px; /* remove this if you don't want the 3d effect */
+  cursor: pointer;
+  user-select: none;
+}
+
+.flashcard-md {
+  width: 12rem;
+}
+
+.flashcard-lg {
+  width: 16rem;
+}
+
+/* this container is needed to position the front and back side */
+.flashcard-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+}
+
+/* position the front and back side */
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-backface-visibility: hidden; /* safari */
+  backface-visibility: hidden;
+}
+
+/* front side styling */
+.flashcard-front {
+  background-color: #eee;
+  color: #111;
+  font-size: 2rem;
+  gap: 1rem;
+}
+
+/* back side styling */
+.flashcard-back {
+  background-color: #ccc;
+  color: #111;
+  font-size: 3rem;
+  transform: rotateY(180deg);
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+/* models */
+
+/* objects */
+.object-circle {
+  aspect-ratio: 1 / 1;
+  background-color: var(--orange);
+  border-radius: 10rem;
+}
+
+.object-triangle {
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-bottom: 10px solid var(--green);
+}
+
+.object-rectangle {
+  aspect-ratio: 89 / 55;
+  background-color: var(--magenta);
+}
+
+.object-square {
+  aspect-ratio: 1 / 1;
+  background-color: var(--cyan);
+}
+
+.object-large {
+  width: 0.7rem;
+}
+
+.object-medium {
+  width: 0.5rem;
+}
+
+.object-small {
+  width: 0.25rem;
+}
+
+/* equal groups */
+.equal-groups-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  flex-wrap: wrap;
+}
+
+.equal-groups-group {
+  border: 2px solid #111;
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  aspect-ratio: 1 / 1;
+  padding: 0.25rem;
+}
+
+.group-large {
+  width: 4rem;
+  border-radius: 4rem;
+  gap: 0.3rem;
+}
+
+.group-medium {
+  width: 3rem;
+  border-radius: 3rem;
+  gap: 0.2rem;
+}
+
+.group-small {
+  width: 2rem;
+  border-radius: 2rem;
+  gap: 0.1rem;
+}
+
+/* array */
+.array-box {
+  display: grid;
+  width: min-content;
+}
+
+.array-cell {
+  width: 1rem;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

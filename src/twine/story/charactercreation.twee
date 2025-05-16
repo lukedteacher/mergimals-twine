@@ -26,7 +26,7 @@
     <img data-number='2' class='portrait selectable' src='images/characters/portrait_2.webp'>
     <img data-number='3' class='portrait selectable' src='images/characters/portrait_3.webp'>
     <img data-number='9' class='portrait selectable' src='images/characters/portrait_9.webp'>
-    <img data-number='5' lass='portrait selectable' src='images/characters/portrait_5.webp'>
+    <img data-number='5' class='portrait selectable' src='images/characters/portrait_5.webp'>
     <img data-number='6' class='portrait selectable' src='images/characters/portrait_6.webp'>
     <img data-number='7' class='portrait selectable' src='images/characters/portrait_7.webp'>
     <img data-number='8' class='portrait selectable' src='images/characters/portrait_8.webp'>

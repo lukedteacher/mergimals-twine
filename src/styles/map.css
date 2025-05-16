@@ -1,3 +1,5 @@
+/* explore map */
+
 .map-container {
     display: flex;
     justify-content: center;
@@ -12,6 +14,8 @@
     width: 36rem;
     grid-area: 1 / 1 / span 32 / span 32;
 }
+
+/* move buttons */
 
 .move-btn {
     background-repeat: no-repeat;
@@ -64,6 +68,8 @@
     grid-area: 1 / 1 / span 10 / span 10;
 }
 
+/* markers and fog */
+
 .position-marker {
   width: 0.75rem;
   aspect-ratio: 1 / 1;
@@ -85,17 +91,4 @@
 .world-map-fog {
   background-color: #000;
   opacity: 0.5;
-}
-
-/* general stuff */
-
-#explore-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.choices {
-  list-style: none;
-  padding: 0 !important;
-  margin: 0 !important;
 }

@@ -5,11 +5,11 @@
         <<set _$temp to Object.fromEntries(Object.entries($mergimals).slice(_$start, _$start + 6))>>
         <<for _mergimal, _object range _$temp>>
             <<if $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] == 'tamed'>>
-                <<card _mergimal false 'medium'>>
+                <<card _mergimal false 'small'>>
             <<elseif $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] == 'seen'>>
-                <<card _mergimal false 'medium' true>>
+                <<card _mergimal false 'small' true>>
             <<else>>
-                <<card 'unknown' false 'medium'>>
+                <<card 'unknown' false 'small'>>
             <</if>>
         <</for>>
     </div>

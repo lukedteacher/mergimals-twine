@@ -175,7 +175,7 @@
 <<link 'ouch'>><<set $players[$activePlayer].characters[$activeCharacter].injuries ++>><<redo 'injuries'>><</link>>
 <<link 'ahhh...'>><<set $players[$activePlayer].characters[$activeCharacter].injuries -->><<redo 'injuries'>><</link>>
 <h2>teleport</h2>
-Enter grid coords: <<textbox '$_destination' ''>> <<button 'go'>><<run Dialog.close();>><<goto $_destination>><</button>>
+Enter grid coords: <<textbox '_destination' ''>> <<button 'go'>><<run Dialog.close();>><<goto _destination>><</button>>
 <h2>keywords</h2>
 CLOSED
 <<link '+'>>
