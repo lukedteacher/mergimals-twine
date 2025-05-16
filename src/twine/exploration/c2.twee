@@ -1,52 +1,75 @@
 :: c2 [c2 crystal-cavern]
-This cave is quite dark. It probably wouldn't be a good idea to explore further without a source of light.
-
-[[Try your luck in the darkness.->c2: dark]]
-[[Shine a light on the situation. (requires keyword SHINE)->c2: light it up]]
-[[Come back another time.->c3]]
+<p>This cave is quite dark. It might not be a good idea to explore further without a source of light.</p>
+<ul class='choices'>
+  <li>[[Try your luck in the darkness.->c2: dark]]</li>
+  <li>[[Shine a light on the situation. (requires keyword SHINE)->c2: light it up]]</li>
+  <li>[[Come back another time.->c3]]</li>
+</ul>
 
 :: c2: dark [c2 crystal-cavern]
-You stumble around, trying to feel your way through the darkness. Your hand touches something squishy and warm and you recoil in surprise.
-
-Test ATTENTION x 9
-
-[[success->c2: dark result]]
-[[failure->c2: dark result]]
+<p>You stumble around, trying to feel your way through the darkness. Your hand touches something squishy and warm and you recoil in surprise.</p>
+<p>Test ATTENTION x 9</p>
+<ul class='choices'>
+  <li>[[success->c2: dark result]]</li>
+  <li>[[failure->c2: dark result]]</li>
+</ul>
 
 :: c2: dark result
-Whatever it was seems to be gone now. You were able to find something in the dark though.
-
-GAIN 1 charm.<<set $players[$activePlayer].characters[$activeCharacter].backpack.charm ++>>
-
-[[Get out of here while you still can.->c2]]
+<p>Whatever it was seems to be gone now. You were able to find something in the dark though.</p>
+<div class='new-items'><strong>GAIN:</strong> 1 charm.</div>
+<<set $players[$activePlayer].characters[$activeCharacter].backpack.charm += 1>>
+<ul class='choices'>
+  <li>[[Get out of here while you still can.->c2]]</li>
+</ul>
 
 :: c2: light it up
 <<if $players[$activePlayer].characters[$activeCharacter].keywords.includes('flashlight') && !$players[$activePlayer].characters[$activeCharacter].keywords.includes('shine')>>
-    You could go further if you used a battery to power your flashlight.
-
-    <<link 'Turn on your flashlight.'>><<if $players[$activePlayer].characters[$activeCharacter].backpack.battery < 1>><<dialog 'no batteries'>><<include 'no batteries'>><</dialog>><<else>><<set $players[$activePlayer].characters[$activeCharacter].backpack.battery -->><<goto 'c2: lit'>><</if>><</link>>
-    [[Nevermind.->c2]]
+  <p>You could go further if you used a battery to power your flashlight.</p>
+  <ul class='choices'>
+    <li>
+      <<link 'Turn on your flashlight.'>>
+        <<if $players[$activePlayer].characters[$activeCharacter].backpack.battery < 1>>
+          <<dialog 'no batteries'>><
+            <include 'no batteries'>>
+          <</dialog>>
+        <<else>>
+          <<set $players[$activePlayer].characters[$activeCharacter].backpack.battery -->>
+          <<goto 'c2: lit'>>
+        <</if>>
+      <</link>>
+    </li>
+    <li>[[Nevermind.->c2]]</li>
+  </ul>
 <<elseif $players[$activePlayer].characters[$activeCharacter].keywords.includes('shine')>>
-    <<goto 'c2: lit'>>
+  <<goto 'c2: lit'>>
 <<else>>
-    You don't have a source of light!
-
-    [[Oh well.->c2]]
+  <ul class='choices'>
+    <li>[[Oh well.->c2]]</li>
+  </ul>
 <</if>>
 
 :: c2: lit
-It's quite spooky, even with a source of light. You follow the path deeper into the cave.
-
-Eventually, you come to a large underground river.
-
-You could get to the other side, if you had a Wave Mergimal that knew how to PADDLE.
-
-<<link 'Swim to the other side (requires: keyword PADDLE)'>><<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>><<dialog 'no keyword paddle'>><<include 'no paddle'>><</dialog>><<else>><<goto 'c2: river crossed'>><</if>><</link>>
-[[Head back to the entrance of the cave.->c2]]
+<p>It's quite spooky, even with a source of light. You follow the path deeper into the cave.</p>
+<p>Eventually, you come to a large underground river.</p>
+<p>You could get to the other side, if you had a Wave Mergimal that knew how to PADDLE.</p>
+<ul class='choices'>
+  <li>
+    <<link 'Swim to the other side (requires: keyword PADDLE)'>>
+      <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>>
+        <<dialog 'no keyword paddle'>>
+          <<include 'no paddle'>>
+        <</dialog>>
+      <<else>>
+      <<goto 'c2: river crossed'>>
+      <</if>>
+    <</link>>
+  </li>
+  <li>[[Head back to the entrance of the cave.->c2]]</li>
+</ul>
 
 :: c2: river crossed
-What a trip!
-
-You find a treasure chest with some strange symbols on it.
-
-[[Leave.->c2]]
+<p>What a trip!</p>
+<p>You find a treasure chest with some strange symbols on it.</p>
+<ul class='choices'>
+  <li>[[Cool!->c2]]</li>
+</ul>

@@ -80,8 +80,8 @@ Your first stop is in Littlemoose, at the Veil School.<</tam>>
 <<tam>>Since you're already headed towards Littlemoose, will you do me a favor?<br />
 I owe the Veil School leader, Grace, some Mergiballs. Can you give them these?<</tam>>
 <div class='new-items'><strong>GAIN:</strong> 5 mergiballs.</div>
-<<writeentry 'I was asked to make a delivery to the Veil School leader.'>>
 <<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 5>>
+<<writeentry 'I was asked to make a delivery to the Veil School leader.'>>
 <<tam>>I am sure Grace wouldn't mind if you used a few on your way there.<</tam>>
 <p>It's time to start your journey.</p>
 <ul class='choices'>

@@ -1,113 +1,121 @@
 :: 214 [forest]
-This forest seems quite dark, even in the middle of the day. You follow the path deeper into the woods until you come to a split.
-
-[[Go East.->215]]
-[[Go West.->216]]
-[[Leave the forest->c4]]
+<p>This forest seems quite dark, even in the middle of the day. You follow the path deeper into the woods until you come to a split.</p>
+<ul class='choices'>
+  <li>[[Go East.->215]]</li>
+  <li>[[Go West.->216]]</li>
+  <li>[[Leave the forest->c4]]</li>
+</ul>
 
 :: 215 [forest]
-The leaves of the trees crunch underfoot as you make your way further into the forest. You have the feeling that you're being watched. Up ahead, a small path splits of to the right, headed South.
-
-[[Continue going East.->217]]
-[[Follow the small path South.->218]]
+<p>The leaves of the trees crunch underfoot as you make your way further into the forest.</p>
+<p>You have the eerie feeling that you're being watched.</p>
+<p>Up ahead, a small path splits of to the right, headed South.</p>
+<ul class='choices'>
+  <li>[[Continue on the path Southward.->217]]</li>
+  <li>[[Follow the small path West.->218]]</li>
+</ul>
 
 :: 216 [forest]
-You walk a ways until the path fades into the ground. The branches are thick and it would be impossible to go on.
+<p>You walk a ways until the path fades into the ground. The branches are thick and it would be impossible to go on.</p>
+<ul class='choices'>
+  <li>[[Turn around and go back to the entrance.->214]]</li>
+</ul>
 
-[[Turn around and go back to the entrance.->214]]
 
 :: 223 [forest check]
-Time passes.
-
-The path leads to a bramble of thorns and mushrooms. You have no choice but to turn around. The day grows longer and the forest gets darker.
-
-Roll EMPATHY x GRIT.
-
-If you roll...
-
-[[12 or lower, you get lost on your way back to the path. Time passes.->222]]
-[[...above 30, you find your way back to the path quickly.->222]]
+<p>The path leads to a bramble of thorns and mushrooms. You have no choice but to turn around. The day grows longer and the forest gets darker.</p>
+<p>Roll EMPATHY x GRIT.</p>
+<ul class='choices'>
+  <li>[[12 or lower, you get lost on your way back to the path.->214]]</li>
+  <li>[[...above 30, you find your way back to the path quickly.->222]]</li>
+</ul>
 
 :: 224 [forest]
-The sound of music greets your ears. At first, you're excited, but soon the song seems to shift and echo. Where are you?
-
-The path splits again.
-
-[[Go East.->225]]
-[[Go North.->226]]
+<p>The sound of music greets your ears. At first, you're excited, but soon the song seems to shift and echo.</p>
+<p>Where are you?</p>
+<p>The path ahead splits again.</p>
+<ul class='choices'>
+  <li>[[Go East.->225]]</li>
+  <li>[[Go North.->226]]</li>
+</ul>
 
 :: 218 [forest]
-The path seems to double back on itself and you feel like you're going in circles. It ends abruptly, at the base of a large tree with a large crevice. Inside the hole, you find some charms and trainer coins.
-
-<<link 'GAIN 3 challenge coins and a charm' '219'>><<set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 3>><<set $players[$activePlayer].characters[$activeCharacter].backpack.charm ++>><</link>>
-
-:: 219 [forest check]
-Now if only you could remember your way back.
-
-Roll ATTENION x MEMORY
-
-If you rolled...
-
-[[...lower than 25, you feel confused and lost.->214]]
-[[...25 or higher, you find your way back to the path with ease.->217]]
+<p>The path seems to double back on itself and you feel like you're going in circles. It ends abruptly, at the base of an imposing tree with a large crevice. Inside the hole, you find some charms and trainer coins.</p>
+<div class='new-items'><strong>GAIN:</strong> 3 coins and 1 tool.</div>
+<<set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 3>>
+<<set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 1>>
+<p>Now if only you could remember your way back...</p>
+<p>Test ATTENTION x MEMORY</p>
+<ul class='choices'>
+  <li>[[success: you find your way back to the path->217]]</li>
+  <li>[[failure: you feel confused and lost->214]]</li>
+</ul>
 
 :: 221 [forest]
-A little bit of light shines through the canopy. You hope this is the right way.
-
-[[Go West.->223]]
-[[Go East.->222]]
+<p>A little bit of light shines through the canopy. You hope this is the right way.</p>
+<ul class='choices'>
+  <li>[[Go West.->223]]</li>
+  <li>[[Go East.->222]]</li>
+</ul>
 
 :: 217 [forest]
-A Four Way Intersection
-
-[[Go West.->220]]
-[[Go South.->220]]
-[[Go North.->221]]
+<p>The tree branches seem to reach down toward the path like arms.</p>
+<p>You come to a four way intersection.</p>
+<ul class='choices'>
+  <li>[[Go back the way you came, to the North.->215]]</li>
+  <li>[[Go West.->220]]</li>
+  <li>[[Go South.->220]]</li>
+  <li>[[Go East.->221]]</li>
+</ul>
 
 :: 229 [forest]
-Your compass seems to fail you here. Which way do you go?
-
-[[Go left.->228]]
-[[Go straight.->404]]
-[[Go right.->404]]
+<p>Your compass seems to fail you here. Which way do you go?</p>
+<ul class='choices'>
+  <li>[[Go left.->228]]</li>
+  <li>[[Go straight.->214]]</li>
+  <li>[[Go right.->217]]</li>
+</ul>
 
 :: 220 [forest]
-This path looks familiar, you think. You come to a split.
-
-[[Go East.->224]]
-[[Go West.->217]]
+<p>This path looks familiar, you think. You come to a split.</p>
+<ul class='choices'>
+  <li>[[Go East.->224]]</li>
+  <li>[[Go West.->217]]</li>
+</ul>
 
 :: 225 [forest]
-You know you're close, but the path ahead has been blocked. If you had a mergimal who was strong enough, they could move it out of the way.
-
-[[(requires keyword STRENGTH) Have your Mergimal move the fallen tree.->228]]
-[[Turn around.->224]]
+<p>You know you're close, but the path ahead has been blocked. If you had a ROOT Mergimal and knew how to CHOP, you could clear the path.
+<ul class='choices'>
+  <li>[[(requires keyword CHOP) Have your Mergimal chop the fallen tree.->228]]</li>
+  <li>[[Turn around.->224]]</li>
+</ul>
 
 :: 222 [forest test]
-The birds have stopped chirping. Even the sound of your footsteps seems muted. A crack of a twig behind you startles you.
-
-Roll ATTENTION x GRIT.
-
-[[roll ≤ 30: You trip and fall into a pile of thorns. Gain an injury.->229]]
-[[roll > 30: You keep yourself steady and don't let the spooky sounds frighten you.->229]]
+<p>The birds have stopped chirping. Even the sound of your footsteps seems muted. A crack of a twig behind you startles you.</p>
+<p>Roll ATTENTION x GRIT.</p>
+<ul class='choices'>
+  <li>[[roll ≤ 30: You trip and fall into a pile of thorns. Gain an injury.->229]]</li>
+  <li>[[roll > 30: You keep yourself steady and don't let the spooky sounds frighten you.->229]]</li>
+</ul>
 
 :: 226 [forest encounter]
-A little person with a long beard and pointy hat sits on a mushroom, drinking tea. A tiny pig-like Mergimal sits next to them with a cup of their own.
-
+<p>A little person with a long beard and pointy hat sits on a mushroom, drinking tea. A tiny pig-like Mergimal sits next to them with a cup of their own.</p>
 <<numberbox "$asilCode" 0 autofocus>>
-[[What's the code?->asil]]
-
-[[Nevermind.->224]]
+<ul class='choices'>
+  <li>[[What's the code?->asil]]</li>
+  <li>[[Nevermind.->224]]</li>
+</ul>
 
 :: 228 [transition]
 <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('chop')>>
-  You don't have a Mergimal that could chop this tree down.
-
-  <<return 'Go back.'>>
+  <p>You don't have a Mergimal that could chop this tree down.</p>
+  <ul class='choices'>
+    <li><<return 'Go back.'>></li>
+  </ul>
 <<else>>
-  Your Mergimal moves the tree. What strength!
-
-  You finally made it to Littlemoose.
-
-  [[Explore Littlemoose.->d6]]
+  <p>Your Mergimal chops the tree.</p>
+  <p>You continue along the path and emerge in Littlemoose!</p>
+  <ul class='choices'>
+    <li>[[Explore Littlemoose.->d6]]</li>
+  </ul>
 <</if>>
