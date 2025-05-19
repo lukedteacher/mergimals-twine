@@ -11,13 +11,12 @@
 
 :: e1: wave school [blue-urf]
 <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>>
-A large group of people seems to be standing in line, waiting to get in.
-
-Thankfully, you don't have to wait long before a figure steps out of the building and addresses the crowd.
+<p>A large group of people seems to be standing in line, waiting to get in.</p>
+<p>Thankfully, you don't have to wait long before a figure steps out of the building and addresses the crowd.</p>
 <<rhia>>Hello, everyone.
 <<cont keypress append>>I know that many of you are here to complete your Wave School challenge.
 <<cont keypress append>>Unfortunately, I am going to have to close the school until further notice.
-<<cont keypress>><<replace '#response-1'>><<link 'Oh f***. Not this again.' 'e2: wave school closed'>><</link>><</replace>><</cont>>
+<<cont keypress>><<replace '#response-1'>><<link 'Good grief. Not this again.' 'e2: wave school closed'>><</link>><</replace>><</cont>>
 <</cont>><</cont>><</rhia>>
 <span id='response-1'></span>
 <<else>>
@@ -25,12 +24,9 @@ You've already done this challenge!
 <</if>>
 
 :: e2: wave school closed
-First Veil School and now this?!
-
-How are you supposed to complete the Mergimal Challenge if all the schools keep closing?
-
-You decide to go talk to Rhia to see what is going on.
-
+<p>First Veil School and now this?!</p>
+<p>How are you supposed to complete the Mergimal Challenge if all the schools keep closing?</p>
+<p>You decide to go talk to Rhia to see what is going on.</p>
 <span id='response-1'><<link 'What is going on?'>><<replace '#response-1'>><<say $activePlayer $player.image>>What is going on?<</say>><</replace>><</link>></span>
 
 [TODO finish this encounter]

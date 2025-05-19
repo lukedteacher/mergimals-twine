@@ -28,7 +28,7 @@ I can't join you in lifting any rocks because I'm far too artsy for that kind of
 
 :: jessie: start 3
 <<say 'Jessie' 'images/characters/portrait_0.webp'>>How many rocks are you putting in your stack?<</say>>
-<<numberbox '$rocksPerPile' 0 autofocus>>
+<p><<numberbox '$rocksPerPile' 0 autofocus>></p>
 <ul class='choices'>
   <li><<link 'Tell them how many rocks in each pile.' 'jessie: stacking'>><</link>></li>
 </ul>
@@ -49,7 +49,7 @@ I can't join you in lifting any rocks because I'm far too artsy for that kind of
 <p>Jessie blinks their eyes slowly and holds back a yawn.</p>
 <<say 'Jessie' 'images/characters/portrait_0.webp'>>Now make some more piles with $rocksPerPile rocks in each one.<br />
 Remember to make it really artsy looking, or I might fall asleep on you.<</say>>
-<<numberbox '$rockPiles' 0 autofocus>>
+<p><<numberbox '$rockPiles' 0 autofocus>></p>
 <ul class='choices'>
   <li><<link 'Tell them how many piles.' 'jessie: answer'>><</link>></li>
 </ul>
@@ -64,7 +64,7 @@ How did you even have the energy to do that? That's a lot of rocks!<</say>>
 <p>The trainer scratches their head and looks slightly confused.</p>
 <<say 'Jessie' 'images/characters/portrait_0.webp'>>Umm, help me out...<br />
 How many rocks did you use in total?<</say>>
-<<numberbox '$totalRocks' 0 autofocus>>
+<p><<numberbox '$totalRocks' 0 autofocus>></p>
 <ul class='choices'>
   <li><<link 'Tell them how many total rocks.' 'jessie: end'>><</link>></li>
 </ul>

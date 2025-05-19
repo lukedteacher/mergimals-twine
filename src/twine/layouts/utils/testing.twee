@@ -1,5 +1,4 @@
 :: dice roll
-
 <<dice 'dice1' 'd8'>>
 
 <<button 'reroll'>>
@@ -15,7 +14,7 @@
   <<flashcard 9 3 'equal groups' 'circle'>>
   <<flashcard 12 6 'equal groups' 'circle'>>
   <<flashcard 10 9 'equal groups' 'rectangle'>>
-  <<flashcard 12 2 'equal groups' 'triangle'>>
+  <<flashcard 6 2 'array' 'square'>>
 </div>
 
 :: card test

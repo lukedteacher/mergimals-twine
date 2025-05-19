@@ -28,15 +28,6 @@
   <<say 'Grace (Veil Grove Leader)' 'images/characters/grace.webp'>>_contents<</say>>
 <</widget>>
 
-<<widget 'skipDifferenceChallenge'>>
-	"The first stone I threw skipped $skip[0] times, right? Imagine that all of our skips skipped that many times.
-  
-	"How many skips would that be in total for all six of our throws?"
-
-	<<numberbox '$skipGuess' 0 "dontay: contest end" autofocus>>
-	[[Tell them your answer.->dontay: contest end]]
-<</widget>>
-
 <<newplayer 'luke'>>
 <<set _defaultStats = {attention: 'd4', grit: 'd8', memory: 'd6', empathy: 'd10'} >>
 <<newcharacter 'luke' 'Player' 'violet' 1 _defaultStats>>

@@ -1,12 +1,12 @@
 :: asil [c5 contest]
 <<if $asilCode != 404>>
-        Sorry, come back when you know the code.
-        [[turn back.->221]]
+  Sorry, come back when you know the code.
+  [[turn back.->221]]
 <<else>>
-    The source of the hushing sound comes into view. You see a short, older lady with what could only be described as a witch's hat. She is looking left and right and shushing into the forest. A [add mergimal description] is sitting on a giant mushroom by the witch's side, looking pained.
+  The source of the hushing sound comes into view. You see a short, older lady with what could only be described as a witch's hat. She is looking left and right and shushing into the forest. A [add mergimal description] is sitting on a giant mushroom by the witch's side, looking pained.
 
-    [[Ask what she is shushing.->asil: shush]]
-    [[Leave her alone.->221]]
+  [[Ask what she is shushing.->asil: shush]]
+  [[Leave her alone.->221]]
 <</if>>
 
 :: asil: shush [c5 contest]
@@ -25,17 +25,17 @@ Do worksheet 'The Loud Witch'.
 
 Enter the code:  <<numberbox '$witchCode' 0>>
 <<link 'See if you have the solution. - code is 1 for now'>>
-    <<if $witchCode != 1>>
-        <<dialog 'incorrect'>>
-            <<include 'incorrect'>>
-        <</dialog>>
-    <<else>>
-        <<dialog 'correct'>>
-            <<include 'correct'>>
-            <<onclose>>
-                <<goto 'asil: answer'>>
-        <</dialog>>
-    <</if>>
+  <<if $witchCode != 1>>
+    <<dialog 'incorrect'>>
+      <<include 'incorrect'>>
+    <</dialog>>
+  <<else>>
+    <<dialog 'correct'>>
+      <<include 'correct'>>
+      <<onclose>>
+        <<goto 'asil: answer'>>
+    <</dialog>>
+  <</if>>
 <</link>>
 [[Leave her alone for now and continue exploring.->221]]
 
@@ -43,14 +43,14 @@ Enter the code:  <<numberbox '$witchCode' 0>>
 As you continue to observe the witch and her mergimal, you notice that every time the witch sushes the forest, her mergimal winces particularly hard. When she stops shushing, the mergimal relaxes a little and looks at you with desperate eyes.
 
 <<linkreplace 'Hmm...' t8n>>
-    "Excuse me, ma'am? Can I ask you something?" The witch looks at you with a confused expression. "Do you think maybe your shushing is actually the loud noise that your mergimal is reacting to?"
+  "Excuse me, ma'am? Can I ask you something?" The witch looks at you with a confused expression. "Do you think maybe your shushing is actually the loud noise that your mergimal is reacting to?"
 
-    The witch looks at you with a blank stare. "I don't think so. I...." She pauses and turns to her mergimal. "Am I the loud one, my dear?"
+  The witch looks at you with a blank stare. "I don't think so. I...." She pauses and turns to her mergimal. "Am I the loud one, my dear?"
 
-    The mergimal nods their head slowly, looking back at the witch with sad but caring eyes.
+  The mergimal nods their head slowly, looking back at the witch with sad but caring eyes.
 
-    [[Say something to help the situation.->asil: help]]
-    [[Continue watching.->asil: watch]]
+  [[Say something to help the situation.->asil: help]]
+  [[Continue watching.->asil: watch]]
 <</linkreplace>>
 
 :: asil: help [c5 contest]
