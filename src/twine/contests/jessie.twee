@@ -16,11 +16,8 @@ Big ones, little ones, heavy metal or punk ones...get it? Because they're types 
 </ul>
 
 :: jessie: start 2
-<p>Jessie yawns again.</p>
-<<say 'Jessie' 'images/characters/portrait_0.webp'>>Yeah, yeah.... Not the best joke. I told you, I'm bored, okay?<</say>>
-<p>Jessie shakes themself awake and puts the fidget spinner in their pocket.</p>
-<<say 'Jessie' 'images/characters/portrait_0.webp'>>Well, you're going to stack some rocks. It's called nature art.<br />
-If your art is artsy enough to make me feel it in my heart, you win.<br />
+<<say 'Jessie' 'images/characters/portrait_0.webp'>>Yeah, yeah.... Not the best joke. I told you, I'm bored, okay?
+Well, you're going to stack some rocks. It's called nature art. If your art is artsy enough to make me feel it in my heart, you win.<br />
 I can't join you in lifting any rocks because I'm far too artsy for that kind of labor.<</say>>
 <ul class='choices'>
   <li><<link 'Get started.' 'jessie: start 3'>><</link>></li>
@@ -37,18 +34,21 @@ I can't join you in lifting any rocks because I'm far too artsy for that kind of
 <<if $rocksPerPile > 20>>
 	<<set $rocksPerPile = 14>>
     <<say 'Jessie' 'images/characters/portrait_0.webp'>>Whoa, it's about to fall! You better stop right there...<br />
-    You're at $rocksPerPile now. Good.<</say>>
+    You're at $rocksPerPile now. Good.
+    Now make some more piles with $rocksPerPile rocks in each one.<br />
+  Remember to make it really artsy looking, or I might fall asleep on you.<</say>>
 <<elseif $rocksPerPile < 4>>
 	<<set $rocksPerPile = 6>>
 	<<say 'Jessie' 'images/characters/portrait_0.webp'>>Hey, you should really keep going. You need more rocks for it to be real art.<br />
   A bit more...<br />
-  Yeah, $rocksPerPile rocks should do the trick.<</say>>
+  Yeah, $rocksPerPile rocks should do the trick.
+  Now make some more piles with $rocksPerPile rocks in each one.<br />
+  Remember to make it really artsy looking, or I might fall asleep on you.<</say>>
 <<else>>
-	<<say 'Jessie' 'images/characters/portrait_0.webp'>>Hey, that's a nice stack! Now there are... $rocksPerPile rocks on the pile, right?<</say>>
+	<<say 'Jessie' 'images/characters/portrait_0.webp'>>Hey, that's a nice stack! Now there are... $rocksPerPile rocks on the pile, right?
+  Now make some more piles with $rocksPerPile rocks in each one.<br />
+  Remember to make it really artsy looking, or I might fall asleep on you.<</say>>
 <</if>>
-<p>Jessie blinks their eyes slowly and holds back a yawn.</p>
-<<say 'Jessie' 'images/characters/portrait_0.webp'>>Now make some more piles with $rocksPerPile rocks in each one.<br />
-Remember to make it really artsy looking, or I might fall asleep on you.<</say>>
 <p><<numberbox '$rockPiles' 0 autofocus>></p>
 <ul class='choices'>
   <li><<link 'Tell them how many piles.' 'jessie: answer'>><</link>></li>
@@ -60,9 +60,8 @@ Remember to make it really artsy looking, or I might fall asleep on you.<</say>>
     <<set $rockPiles to 19>>
 <</if>>
 <<say 'Jessie' 'images/characters/portrait_0.webp'>>Nice work! You made $rockPiles piles with $rocksPerPile in each one.<br />
-How did you even have the energy to do that? That's a lot of rocks!<</say>>
-<p>The trainer scratches their head and looks slightly confused.</p>
-<<say 'Jessie' 'images/characters/portrait_0.webp'>>Umm, help me out...<br />
+How did you even have the energy to do that? That's a lot of rocks!
+But, umm, help me out...<br />
 How many rocks did you use in total?<</say>>
 <p><<numberbox '$totalRocks' 0 autofocus>></p>
 <ul class='choices'>

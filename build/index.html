@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="138" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "card.css" */
+	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="145" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "card.css" */
 .card-box {
   aspect-ratio: 63 / 88;
   display: flex;
@@ -22687,11 +22687,8 @@ Listen, there&#39;s not a ton to do around here, but there are a ton of rocks.&l
 Big ones, little ones, heavy metal or punk ones...get it? Because they&#39;re types of rock.&lt;&lt;/say&gt;&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;&lt;&lt;link &#39;Oh...yeah, that\&#39;s hilarious.&#39; &#39;jessie: start 2&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="27" name="jessie: start 2" tags="" position="850,350" size="100,100">&lt;p&gt;Jessie yawns again.&lt;/p&gt;
-&lt;&lt;say &#39;Jessie&#39; &#39;images/characters/portrait_0.webp&#39;&gt;&gt;Yeah, yeah.... Not the best joke. I told you, I&#39;m bored, okay?&lt;&lt;/say&gt;&gt;
-&lt;p&gt;Jessie shakes themself awake and puts the fidget spinner in their pocket.&lt;/p&gt;
-&lt;&lt;say &#39;Jessie&#39; &#39;images/characters/portrait_0.webp&#39;&gt;&gt;Well, you&#39;re going to stack some rocks. It&#39;s called nature art.&lt;br /&gt;
-If your art is artsy enough to make me feel it in my heart, you win.&lt;br /&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="27" name="jessie: start 2" tags="" position="850,350" size="100,100">&lt;&lt;say &#39;Jessie&#39; &#39;images/characters/portrait_0.webp&#39;&gt;&gt;Yeah, yeah.... Not the best joke. I told you, I&#39;m bored, okay?
+Well, you&#39;re going to stack some rocks. It&#39;s called nature art. If your art is artsy enough to make me feel it in my heart, you win.&lt;br /&gt;
 I can&#39;t join you in lifting any rocks because I&#39;m far too artsy for that kind of labor.&lt;&lt;/say&gt;&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;&lt;&lt;link &#39;Get started.&#39; &#39;jessie: start 3&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;
@@ -22702,18 +22699,21 @@ I can&#39;t join you in lifting any rocks because I&#39;m far too artsy for that
 &lt;/ul&gt;</tw-passagedata><tw-passagedata pid="29" name="jessie: stacking" tags="c4 trainer contest" position="1100,350" size="100,100">&lt;&lt;if $rocksPerPile &gt; 20&gt;&gt;
 	&lt;&lt;set $rocksPerPile = 14&gt;&gt;
     &lt;&lt;say &#39;Jessie&#39; &#39;images/characters/portrait_0.webp&#39;&gt;&gt;Whoa, it&#39;s about to fall! You better stop right there...&lt;br /&gt;
-    You&#39;re at $rocksPerPile now. Good.&lt;&lt;/say&gt;&gt;
+    You&#39;re at $rocksPerPile now. Good.
+    Now make some more piles with $rocksPerPile rocks in each one.&lt;br /&gt;
+  Remember to make it really artsy looking, or I might fall asleep on you.&lt;&lt;/say&gt;&gt;
 &lt;&lt;elseif $rocksPerPile &lt; 4&gt;&gt;
 	&lt;&lt;set $rocksPerPile = 6&gt;&gt;
 	&lt;&lt;say &#39;Jessie&#39; &#39;images/characters/portrait_0.webp&#39;&gt;&gt;Hey, you should really keep going. You need more rocks for it to be real art.&lt;br /&gt;
   A bit more...&lt;br /&gt;
-  Yeah, $rocksPerPile rocks should do the trick.&lt;&lt;/say&gt;&gt;
+  Yeah, $rocksPerPile rocks should do the trick.
+  Now make some more piles with $rocksPerPile rocks in each one.&lt;br /&gt;
+  Remember to make it really artsy looking, or I might fall asleep on you.&lt;&lt;/say&gt;&gt;
 &lt;&lt;else&gt;&gt;
-	&lt;&lt;say &#39;Jessie&#39; &#39;images/characters/portrait_0.webp&#39;&gt;&gt;Hey, that&#39;s a nice stack! Now there are... $rocksPerPile rocks on the pile, right?&lt;&lt;/say&gt;&gt;
+	&lt;&lt;say &#39;Jessie&#39; &#39;images/characters/portrait_0.webp&#39;&gt;&gt;Hey, that&#39;s a nice stack! Now there are... $rocksPerPile rocks on the pile, right?
+  Now make some more piles with $rocksPerPile rocks in each one.&lt;br /&gt;
+  Remember to make it really artsy looking, or I might fall asleep on you.&lt;&lt;/say&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;p&gt;Jessie blinks their eyes slowly and holds back a yawn.&lt;/p&gt;
-&lt;&lt;say &#39;Jessie&#39; &#39;images/characters/portrait_0.webp&#39;&gt;&gt;Now make some more piles with $rocksPerPile rocks in each one.&lt;br /&gt;
-Remember to make it really artsy looking, or I might fall asleep on you.&lt;&lt;/say&gt;&gt;
 &lt;p&gt;&lt;&lt;numberbox &#39;$rockPiles&#39; 0 autofocus&gt;&gt;&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;&lt;&lt;link &#39;Tell them how many piles.&#39; &#39;jessie: answer&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;
@@ -22722,9 +22722,8 @@ Remember to make it really artsy looking, or I might fall asleep on you.&lt;&lt;
     &lt;&lt;set $rockPiles to 19&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;say &#39;Jessie&#39; &#39;images/characters/portrait_0.webp&#39;&gt;&gt;Nice work! You made $rockPiles piles with $rocksPerPile in each one.&lt;br /&gt;
-How did you even have the energy to do that? That&#39;s a lot of rocks!&lt;&lt;/say&gt;&gt;
-&lt;p&gt;The trainer scratches their head and looks slightly confused.&lt;/p&gt;
-&lt;&lt;say &#39;Jessie&#39; &#39;images/characters/portrait_0.webp&#39;&gt;&gt;Umm, help me out...&lt;br /&gt;
+How did you even have the energy to do that? That&#39;s a lot of rocks!
+But, umm, help me out...&lt;br /&gt;
 How many rocks did you use in total?&lt;&lt;/say&gt;&gt;
 &lt;p&gt;&lt;&lt;numberbox &#39;$totalRocks&#39; 0 autofocus&gt;&gt;&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -22742,7 +22741,32 @@ How many rocks did you use in total?&lt;&lt;/say&gt;&gt;
       &lt;li&gt;&lt;&lt;link &#39;Try again.&#39; &#39;jessie: end&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;
       &lt;li&gt;&lt;&lt;link &#39;Give up for now. Keep exploring Route 002.&#39; $players[$activePlayer].characters[$activeCharacter].worldMapPosition&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;
     &lt;/ul&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="b3" tags="b3 cascade-village map" position="225,475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="zahara" tags="" position="225,475" size="100,100">You spot a lone figure crouched beside a cactus in the blazing sun. There are several other big, beautiful cacti surrounding her.
+As you approach, Zahara looks up and says, &quot;Oh, welcome to my cactus garden. I call it &quot;The Factor Patch&quot;.
+
+Want to hear a cactus joke?
+
+&lt;&lt;linkreplace [[How unbecoming of you. This is a serious matter!-&gt;zahara: cacti]]
+
+&#39;I have no choice, do I?&#39; t8n&gt;&gt;&quot;Nope! Here it is: How did the cactus get an A+ on their test?&quot;
+
+    &lt;&lt;linkreplace &#39;Umm...I dunno, why?&#39; t8n&gt;&gt;
+
+        &quot;Because they were a really sharp student!&quot;
+    
+        &lt;&lt;linkreplace &#39;I didn\&#39;t think a cactus could go to school...&#39; t8n&gt;&gt;
+
+            &quot;Ah. Well, I guess you have a POINT there. But really, there&#39;s no need to NEEDLE me about it!&quot;
+        
+            [[Wait for her to stop lauging.-&gt;zahara: cacti]]
+        &lt;&lt;/linkreplace&gt;&gt;
+    &lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="zahara: cacti" tags="" position="350,475" size="100,100">&quot;I take you came from Bloom School? That gardener told you where I was, didn&#39;t he?
+Well, as long as you&#39;re here, I could use some help with my cacti.
+They&#39;re actually &#39;Cactori&#39;...Factor cacti. They can only grow with the power of factors.
+Can you pick a cactus and guide the factor tree until it blooms?
+
+[[Ask how it works.-&gt;zahara: lesson]]</tw-passagedata><tw-passagedata pid="34" name="b3" tags="b3 cascade-village map" position="475,475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -22753,7 +22777,7 @@ How many rocks did you use in total?&lt;&lt;/say&gt;&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;b3&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;b3&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="33" name="b3: description" tags="b3 cascade-village description" position="350,475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="35" name="b3: description" tags="b3 cascade-village description" position="600,475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;img class=&#39;concept&#39; src=&#39;images/story/cascade-village.png&#39;&gt;
   &lt;div&gt;
     &lt;p&gt;Cascade Village rests quietly on the sandy shores of Ho’onui Peninsula, where five cozy homes overlook the sparkling waves. The Mergimal Research Center stands at the edge of the beach, its sleek design contrasting with the warm, rustic charm of the village.&lt;/p&gt;
@@ -22762,10 +22786,10 @@ How many rocks did you use in total?&lt;&lt;/say&gt;&gt;
       &lt;li&gt;[[Keep exploring the village.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="b3: home" tags="b3 cascade-village home" position="475,475" size="100,100">&lt;p&gt;This is your home. The cozy warmth tempts you to stay, but you know that adventure calls.&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="b3: home" tags="b3 cascade-village home" position="725,475" size="100,100">&lt;p&gt;This is your home. The cozy warmth tempts you to stay, but you know that adventure calls.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="35" name="b3: lab" tags="b3 cascade-village lab" position="600,475" size="100,100">&lt;p&gt;This is the world-famous Mergimal Research Center. It is also the home of your mentor, Professor Tamarack.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="37" name="b3: lab" tags="b3 cascade-village lab" position="850,475" size="100,100">&lt;p&gt;This is the world-famous Mergimal Research Center. It is also the home of your mentor, Professor Tamarack.&lt;/p&gt;
 &lt;p&gt;If you want, you can see if he’s available to talk.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;
@@ -22780,7 +22804,7 @@ How many rocks did you use in total?&lt;&lt;/say&gt;&gt;
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Keep exploring the village.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="36" name="b3: beach" tags="b3 cascade-village beach" position="725,475" size="100,100">&lt;p&gt;The beach is small, but tidy. If you knew how to ride a Mergimal, you could go out on the water.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="38" name="b3: beach" tags="b3 cascade-village beach" position="975,475" size="100,100">&lt;p&gt;The beach is small, but tidy. If you knew how to ride a Mergimal, you could go out on the water.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;
     &lt;&lt;link &#39;Brave the waters (requires: keyword PADDLE)&#39;&gt;&gt;
@@ -22794,20 +22818,20 @@ How many rocks did you use in total?&lt;&lt;/say&gt;&gt;
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Keep exploring the village.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="37" name="b3: out to sea" tags="b3 cascade-village paddle" position="850,475" size="100,100">&lt;p&gt;(Keyword PADDLE detected)&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="39" name="b3: out to sea" tags="b3 cascade-village paddle" position="1100,475" size="100,100">&lt;p&gt;(Keyword PADDLE detected)&lt;/p&gt;
 &lt;p&gt;The water is great.&lt;/p&gt;
 &lt;p&gt;Skip count by d12, d12 times.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Success.-&gt;b5]]&lt;/li&gt;
   &lt;li&gt;[[Failure.-&gt;404]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="38" name="tamarack: delivery" tags="b3 cascade-village lab" position="975,475" size="100,100">&lt;&lt;tam&gt;&gt;Grace wasn&#39;t at the Veil School?&lt;br /&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="40" name="tamarack: delivery" tags="b3 cascade-village lab" position="1225,475" size="100,100">&lt;&lt;tam&gt;&gt;Grace wasn&#39;t at the Veil School?&lt;br /&gt;
 And it was closed?&lt;br /&gt;
 How odd!&lt;br /&gt;
 Perhaps you&#39;ll have to start your Mergimal challenge in Blue Urf or Raven Wing instead.
 &lt;&lt;/tam&gt;&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Okay.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="39" name="b4" tags="b4 route-001 map" position="1100,475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="41" name="b4" tags="b4 route-001 map" position="100,600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39; style=&#39;height: min-content;&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -22817,12 +22841,12 @@ Perhaps you&#39;ll have to start your Mergimal challenge in Blue Urf or Raven Wi
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;b4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;b4&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="40" name="b4: description" tags="b4 route-001 description" position="1225,475" size="100,100">&lt;p&gt;Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South.&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="42" name="b4: description" tags="b4 route-001 description" position="225,600" size="100,100">&lt;p&gt;Route 001 leads out of Cascade Village and towards the Great River Road to the East. A small, sandy path leads to the South.&lt;/p&gt;
 &lt;p&gt;A Mergimal trainer is posed near an apple tree, looking hungry for a contest.&lt;/p&gt;
 &lt;p&gt;You can hear cooing noises coming from the long grass.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="41" name="b4: long grass" tags="b4 route-001 long-grass stray" position="100,600" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="43" name="b4: long grass" tags="b4 route-001 long-grass stray" position="350,600" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -22842,7 +22866,7 @@ Perhaps you&#39;ll have to start your Mergimal challenge in Blue Urf or Raven Wi
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="42" name="b5" tags="b5 pretty-rock-bay map" position="225,600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="44" name="b5" tags="b5 pretty-rock-bay map" position="475,600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -22854,13 +22878,13 @@ Perhaps you&#39;ll have to start your Mergimal challenge in Blue Urf or Raven Wi
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;b5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;b5&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="b5: description" tags="b5 pretty-rock-bay description" position="350,600" size="100,100">&lt;p&gt;A serene beach stretches out before you. The white sand feels warm to the touch. The ocean waves crash against the shore.&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="b5: description" tags="b5 pretty-rock-bay description" position="600,600" size="100,100">&lt;p&gt;A serene beach stretches out before you. The white sand feels warm to the touch. The ocean waves crash against the shore.&lt;/p&gt;
 &lt;p&gt;Someone seems to have built a sandcastle. You can see movement nearby.&lt;/p&gt;
 &lt;p&gt;A Mergimal trainer is near the south end of the beach. You watch them skillfully cast their fishing line into the clear water.&lt;/p&gt;
 &lt;p&gt;A large, imposing lighthouse stands on a small island just off the coast.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="44" name="b5: the sea" tags="b5 pretty-rock-bay sea" position="475,600" size="100,100">&lt;p&gt;The water is cool and inviting. You look out over the sea. You can see a boat off in the distance. This might be a good fishing spot.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="46" name="b5: the sea" tags="b5 pretty-rock-bay sea" position="725,600" size="100,100">&lt;p&gt;The water is cool and inviting. You look out over the sea. You can see a boat off in the distance. This might be a good fishing spot.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;
     &lt;&lt;link &#39;Go fishing. (requires keyword: ROD)&#39;&gt;&gt;
@@ -22885,7 +22909,7 @@ Perhaps you&#39;ll have to start your Mergimal challenge in Blue Urf or Raven Wi
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[See what else is around here: continue exploring the bay.-&gt;b5]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="45" name="crabby critters" tags="b5 pretty-rock-bay worksheet" position="600,600" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;rusty&#39;)&gt;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="47" name="crabby critters" tags="b5 pretty-rock-bay worksheet" position="850,600" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;rusty&#39;)&gt;&gt;
   &lt;p&gt;A group of crab-like Mergimals seems to be protecting a large sand castle. An old fishing pole sticks out of the center tower, holding a flag.&lt;/p&gt;
   &lt;p&gt;Maybe you can figure out some way to avoid the creatures and grab it?&lt;/p&gt;
   &lt;p&gt;Do Worksheet &#39;Crabby Critters&#39;.&lt;/p&gt;
@@ -22914,7 +22938,7 @@ Perhaps you&#39;ll have to start your Mergimal challenge in Blue Urf or Raven Wi
   &lt;ul class=&#39;choices&#39;&gt;
     &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
   &lt;/ul&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="rusty rod reward" tags="b5 pretty-rock-bay reward" position="725,600" size="100,100">&lt;p&gt;After a short while, you seem to find a pattern in the crabs&#39; movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.&lt;/p&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="rusty rod reward" tags="b5 pretty-rock-bay reward" position="975,600" size="100,100">&lt;p&gt;After a short while, you seem to find a pattern in the crabs&#39; movements. You wait for an opening and dash to the castle, attempting to grab the fishing rod.&lt;/p&gt;
 &lt;p&gt;
   Gain keyword RUSTY.
   &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].keywords.push(&#39;rusty&#39;)&gt;&gt;
@@ -22922,7 +22946,7 @@ Perhaps you&#39;ll have to start your Mergimal challenge in Blue Urf or Raven Wi
 &lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="47" name="b5: fishing" tags="b5 pretty-rock-bay fishing stray" position="850,600" size="100,100">You cast your rod into the clear, blue water. After only a short while, you feel something pulling your line.
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="49" name="b5: fishing" tags="b5 pretty-rock-bay fishing stray" position="1100,600" size="100,100">You cast your rod into the clear, blue water. After only a short while, you feel something pulling your line.
 
 Test two cards.
 
@@ -22937,37 +22961,37 @@ You got...
 &lt;&lt;link &#39;...two correct.&#39; &#39;stray encounter&#39;&gt;&gt;
     &lt;&lt;set $mergimalEncountered = $mergimals[$encounterTable[$players[$activePlayer].characters[$activeCharacter].worldMapPosition].rare]&gt;&gt;
 &lt;&lt;/link&gt;&gt;
-[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="48" name="131" tags="worksheet secret" position="975,600" size="100,100">You found a bottle floating in the water. It has a message inside! You unroll it and find a strange script.
+[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="50" name="131" tags="worksheet secret" position="1225,600" size="100,100">You found a bottle floating in the water. It has a message inside! You unroll it and find a strange script.
 
 Do Worksheet &#39;Message in a Botttle&#39;.
 
-[[Decode the message later: continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="49" name="b5: paddling to sea" tags="swim" position="1100,600" size="100,100">&lt;p&gt;(Keyword PADDLE detected)&lt;/p&gt;
+[[Decode the message later: continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="51" name="b5: paddling to sea" tags="swim" position="100,725" size="100,100">&lt;p&gt;(Keyword PADDLE detected)&lt;/p&gt;
 &lt;p&gt;You ride your Mergimal out to sea. The water is calm at first, but gets rougher as you go.&lt;/p&gt;
 &lt;p&gt;Skip count by d12, d12 times.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Success: you made it!-&gt;b3]]&lt;/li&gt;
   &lt;li&gt;[[Failure: gain an injury.-&gt;b3]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="50" name="b5: strained line" tags="encounter" position="1225,600" size="100,100">You reel your line in and it nearly snaps.
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="52" name="b5: strained line" tags="encounter" position="225,725" size="100,100">You reel your line in and it nearly snaps.
 
 &lt;strong&gt;Test&lt;/strong&gt; GRIT x 7.
 
 [[Failure: Gain TIRED.-&gt;stray: corwhal]]
-[[Success: +2 to TAME.-&gt;stray: corwhal]]</tw-passagedata><tw-passagedata pid="51" name="c2" tags="c2 crystal-cavern" position="100,725" size="100,100">&lt;p&gt;This cave is quite dark. It might not be a good idea to explore further without a source of light.&lt;/p&gt;
+[[Success: +2 to TAME.-&gt;stray: corwhal]]</tw-passagedata><tw-passagedata pid="53" name="c2" tags="c2 crystal-cavern" position="350,725" size="100,100">&lt;p&gt;This cave is quite dark. It might not be a good idea to explore further without a source of light.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Try your luck in the darkness.-&gt;c2: dark]]&lt;/li&gt;
   &lt;li&gt;[[Shine a light on the situation. (requires keyword SHINE)-&gt;c2: light it up]]&lt;/li&gt;
   &lt;li&gt;[[Come back another time.-&gt;c3]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="52" name="c2: dark" tags="c2 crystal-cavern" position="225,725" size="100,100">&lt;p&gt;You stumble around, trying to feel your way through the darkness. Your hand touches something squishy and warm and you recoil in surprise.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="54" name="c2: dark" tags="c2 crystal-cavern" position="475,725" size="100,100">&lt;p&gt;You stumble around, trying to feel your way through the darkness. Your hand touches something squishy and warm and you recoil in surprise.&lt;/p&gt;
 &lt;p&gt;Test ATTENTION x 9&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[success-&gt;c2: dark result]]&lt;/li&gt;
   &lt;li&gt;[[failure-&gt;c2: dark result]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="53" name="c2: dark result" tags="" position="350,725" size="100,100">&lt;p&gt;Whatever it was seems to be gone now. You were able to find something in the dark though.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="55" name="c2: dark result" tags="" position="600,725" size="100,100">&lt;p&gt;Whatever it was seems to be gone now. You were able to find something in the dark though.&lt;/p&gt;
 &lt;div class=&#39;new-items&#39;&gt;&lt;strong&gt;GAIN:&lt;/strong&gt; 1 charm.&lt;/div&gt;
 &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.charm += 1&gt;&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Get out of here while you still can.-&gt;c2]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="54" name="c2: light it up" tags="" position="475,725" size="100,100">&lt;&lt;if $players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;flashlight&#39;) &amp;&amp; !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;shine&#39;)&gt;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="56" name="c2: light it up" tags="" position="725,725" size="100,100">&lt;&lt;if $players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;flashlight&#39;) &amp;&amp; !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;shine&#39;)&gt;&gt;
   &lt;p&gt;You could go further if you used a battery to power your flashlight.&lt;/p&gt;
   &lt;ul class=&#39;choices&#39;&gt;
     &lt;li&gt;
@@ -22990,7 +23014,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
   &lt;ul class=&#39;choices&#39;&gt;
     &lt;li&gt;[[Oh well.-&gt;c2]]&lt;/li&gt;
   &lt;/ul&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="c2: lit" tags="" position="600,725" size="100,100">&lt;p&gt;It&#39;s quite spooky, even with a source of light. You follow the path deeper into the cave.&lt;/p&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="c2: lit" tags="" position="850,725" size="100,100">&lt;p&gt;It&#39;s quite spooky, even with a source of light. You follow the path deeper into the cave.&lt;/p&gt;
 &lt;p&gt;Eventually, you come to a large underground river.&lt;/p&gt;
 &lt;p&gt;You could get to the other side, if you had a Wave Mergimal that knew how to PADDLE.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -23006,11 +23030,11 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Head back to the entrance of the cave.-&gt;c2]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="56" name="c2: river crossed" tags="" position="725,725" size="100,100">&lt;p&gt;What a trip!&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="58" name="c2: river crossed" tags="" position="975,725" size="100,100">&lt;p&gt;What a trip!&lt;/p&gt;
 &lt;p&gt;You find a treasure chest with some strange symbols on it.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Cool!-&gt;c2]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="57" name="c3" tags="c3 crystal-cavern-entrance map" position="850,725" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="59" name="c3" tags="c3 crystal-cavern-entrance map" position="1100,725" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23022,14 +23046,14 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;c3&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;c3&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="58" name="c3: the view" tags="c3 crystal-cavern-entrance description" position="975,725" size="100,100">&lt;p&gt;You look out over the cliff and take in the beauty.&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="60" name="c3: the view" tags="c3 crystal-cavern-entrance description" position="1225,725" size="100,100">&lt;p&gt;You look out over the cliff and take in the beauty.&lt;/p&gt;
 &lt;p&gt;You can see Littlemoose from here, a ways to the south. Some of it&#39;s tall buildings stick out among the dense forest.&lt;/p&gt;
 &lt;p&gt;To the West, you can see Blue Urf. You notice that the lights that usually dot the city don&#39;t seem to be working.&lt;/p&gt;
 &lt;p&gt;Further in that direction, the peaks of Raven Wing mountain are barely visible.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="59" name="c4" tags="c4 route-002 map" position="1100,725" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="61" name="c4" tags="c4 route-002 map" position="100,850" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23041,12 +23065,12 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;c4&#39;&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;c4&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="60" name="c4: description" tags="c4 route-002 description" position="1225,725" size="100,100">&lt;p&gt;Route 002 connects the Great River Road and Cascade Village. To the East, you can see the road get wider and more well-traveled.&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="62" name="c4: description" tags="c4 route-002 description" position="225,850" size="100,100">&lt;p&gt;Route 002 connects the Great River Road and Cascade Village. To the East, you can see the road get wider and more well-traveled.&lt;/p&gt;
 &lt;p&gt;A bored looking Mergimal trainer eyes you with a yawn. Next to them, you can see a stretch of climbable rocks that lead up the cliff face. There is a small cave on an outcrop of rocks.&lt;/p&gt;
 &lt;p&gt;A small pathway leads South into the forest. Maybe it&#39;s a shortcut to Littlemoose?&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="61" name="005" tags="c4 route-002 stray long-grass" position="100,850" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="63" name="005" tags="c4 route-002 stray long-grass" position="350,850" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -23066,13 +23090,13 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="62" name="932" tags="c4 route-002 cliff worksheet" position="225,850" size="100,100">&lt;p&gt;Parts of this cliff seem worn off into handholds. You can attempt to climb up it if you&#39;d like. A small cave is visible about halfway up. It might be worth checking out.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="64" name="932" tags="c4 route-002 cliff worksheet" position="475,850" size="100,100">&lt;p&gt;Parts of this cliff seem worn off into handholds. You can attempt to climb up it if you&#39;d like. A small cave is visible about halfway up. It might be worth checking out.&lt;/p&gt;
 &lt;p&gt;Do Worksheet 13.4.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[We scaled the cliff!-&gt;c3]]&lt;/li&gt;
   &lt;li&gt;[[Explore the cave.-&gt;345]]&lt;/li&gt;
   &lt;li&gt;[[Nevermind. Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="63" name="345" tags="c4 route-002 reward" position="350,850" size="100,100">&lt;p&gt;This cave isn&#39;t very deep, but it was worth the climb! You find a few batteries in an old bird&#39;s nest. There&#39;s also a single challenge coin.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="65" name="345" tags="c4 route-002 reward" position="600,850" size="100,100">&lt;p&gt;This cave isn&#39;t very deep, but it was worth the climb! You find a few batteries in an old bird&#39;s nest. There&#39;s also a single challenge coin.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;
     &lt;&lt;link &#39;Gain 1 coin and 2 batteries. Return to the cliff.&#39; &#39;932&#39;&gt;&gt;
@@ -23080,32 +23104,32 @@ Do Worksheet &#39;Message in a Botttle&#39;.
       &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.battery += 2&gt;&gt;
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="64" name="214" tags="forest" position="475,850" size="100,100">&lt;p&gt;This forest seems quite dark, even in the middle of the day. You follow the path deeper into the woods until you come to a split.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="66" name="214" tags="forest" position="725,850" size="100,100">&lt;p&gt;This forest seems quite dark, even in the middle of the day. You follow the path deeper into the woods until you come to a split.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Go East.-&gt;215]]&lt;/li&gt;
   &lt;li&gt;[[Go West.-&gt;216]]&lt;/li&gt;
   &lt;li&gt;[[Leave the forest-&gt;c4]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="65" name="215" tags="forest" position="600,850" size="100,100">&lt;p&gt;The leaves of the trees crunch underfoot as you make your way further into the forest.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="67" name="215" tags="forest" position="850,850" size="100,100">&lt;p&gt;The leaves of the trees crunch underfoot as you make your way further into the forest.&lt;/p&gt;
 &lt;p&gt;You have the eerie feeling that you&#39;re being watched.&lt;/p&gt;
 &lt;p&gt;Up ahead, a small path splits of to the right, headed South.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue on the path Southward.-&gt;217]]&lt;/li&gt;
   &lt;li&gt;[[Follow the small path West.-&gt;218]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="66" name="216" tags="forest" position="725,850" size="100,100">&lt;p&gt;You walk a ways until the path fades into the ground. The branches are thick and it would be impossible to go on.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="68" name="216" tags="forest" position="975,850" size="100,100">&lt;p&gt;You walk a ways until the path fades into the ground. The branches are thick and it would be impossible to go on.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Turn around and go back to the entrance.-&gt;214]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="67" name="223" tags="forest check" position="850,850" size="100,100">&lt;p&gt;The path leads to a bramble of thorns and mushrooms. You have no choice but to turn around. The day grows longer and the forest gets darker.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="69" name="223" tags="forest check" position="1100,850" size="100,100">&lt;p&gt;The path leads to a bramble of thorns and mushrooms. You have no choice but to turn around. The day grows longer and the forest gets darker.&lt;/p&gt;
 &lt;p&gt;Roll EMPATHY x GRIT.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[12 or lower, you get lost on your way back to the path.-&gt;214]]&lt;/li&gt;
   &lt;li&gt;[[...above 30, you find your way back to the path quickly.-&gt;222]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="68" name="224" tags="forest" position="975,850" size="100,100">&lt;p&gt;The sound of music greets your ears. At first, you&#39;re excited, but soon the song seems to shift and echo.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="70" name="224" tags="forest" position="1225,850" size="100,100">&lt;p&gt;The sound of music greets your ears. At first, you&#39;re excited, but soon the song seems to shift and echo.&lt;/p&gt;
 &lt;p&gt;Where are you?&lt;/p&gt;
 &lt;p&gt;The path ahead splits again.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Go East.-&gt;225]]&lt;/li&gt;
   &lt;li&gt;[[Go North.-&gt;226]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="69" name="218" tags="forest" position="1100,850" size="100,100">&lt;p&gt;The path seems to double back on itself and you feel like you&#39;re going in circles. It ends abruptly, at the base of an imposing tree with a large crevice. Inside the hole, you find some charms and trainer coins.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="71" name="218" tags="forest" position="100,975" size="100,100">&lt;p&gt;The path seems to double back on itself and you feel like you&#39;re going in circles. It ends abruptly, at the base of an imposing tree with a large crevice. Inside the hole, you find some charms and trainer coins.&lt;/p&gt;
 &lt;div class=&#39;new-items&#39;&gt;&lt;strong&gt;GAIN:&lt;/strong&gt; 3 coins and 1 tool.&lt;/div&gt;
 &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 3&gt;&gt;
 &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 1&gt;&gt;
@@ -23114,41 +23138,41 @@ Do Worksheet &#39;Message in a Botttle&#39;.
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[success: you find your way back to the path-&gt;217]]&lt;/li&gt;
   &lt;li&gt;[[failure: you feel confused and lost-&gt;214]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="70" name="221" tags="forest" position="1225,850" size="100,100">&lt;p&gt;A little bit of light shines through the canopy. You hope this is the right way.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="72" name="221" tags="forest" position="225,975" size="100,100">&lt;p&gt;A little bit of light shines through the canopy. You hope this is the right way.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Go West.-&gt;223]]&lt;/li&gt;
   &lt;li&gt;[[Go East.-&gt;222]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="71" name="217" tags="forest" position="100,975" size="100,100">&lt;p&gt;The tree branches seem to reach down toward the path like arms.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="73" name="217" tags="forest" position="350,975" size="100,100">&lt;p&gt;The tree branches seem to reach down toward the path like arms.&lt;/p&gt;
 &lt;p&gt;You come to a four way intersection.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Go back the way you came, to the North.-&gt;215]]&lt;/li&gt;
   &lt;li&gt;[[Go West.-&gt;220]]&lt;/li&gt;
   &lt;li&gt;[[Go South.-&gt;220]]&lt;/li&gt;
   &lt;li&gt;[[Go East.-&gt;221]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="72" name="229" tags="forest" position="225,975" size="100,100">&lt;p&gt;Your compass seems to fail you here. Which way do you go?&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="74" name="229" tags="forest" position="475,975" size="100,100">&lt;p&gt;Your compass seems to fail you here. Which way do you go?&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Go left.-&gt;228]]&lt;/li&gt;
   &lt;li&gt;[[Go straight.-&gt;214]]&lt;/li&gt;
   &lt;li&gt;[[Go right.-&gt;217]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="73" name="220" tags="forest" position="350,975" size="100,100">&lt;p&gt;This path looks familiar, you think. You come to a split.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="75" name="220" tags="forest" position="600,975" size="100,100">&lt;p&gt;This path looks familiar, you think. You come to a split.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Go East.-&gt;224]]&lt;/li&gt;
   &lt;li&gt;[[Go West.-&gt;217]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="74" name="225" tags="forest" position="475,975" size="100,100">&lt;p&gt;You know you&#39;re close, but the path ahead has been blocked. If you had a ROOT Mergimal and knew how to CHOP, you could clear the path.
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="76" name="225" tags="forest" position="725,975" size="100,100">&lt;p&gt;You know you&#39;re close, but the path ahead has been blocked. If you had a ROOT Mergimal and knew how to CHOP, you could clear the path.
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[(requires keyword CHOP) Have your Mergimal chop the fallen tree.-&gt;228]]&lt;/li&gt;
   &lt;li&gt;[[Turn around.-&gt;224]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="75" name="222" tags="forest test" position="600,975" size="100,100">&lt;p&gt;The birds have stopped chirping. Even the sound of your footsteps seems muted. A crack of a twig behind you startles you.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="77" name="222" tags="forest test" position="850,975" size="100,100">&lt;p&gt;The birds have stopped chirping. Even the sound of your footsteps seems muted. A crack of a twig behind you startles you.&lt;/p&gt;
 &lt;p&gt;Roll ATTENTION x GRIT.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[roll ≤ 30: You trip and fall into a pile of thorns. Gain an injury.-&gt;229]]&lt;/li&gt;
   &lt;li&gt;[[roll &gt; 30: You keep yourself steady and don&#39;t let the spooky sounds frighten you.-&gt;229]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="76" name="226" tags="forest encounter" position="725,975" size="100,100">&lt;p&gt;A little person with a long beard and pointy hat sits on a mushroom, drinking tea. A tiny pig-like Mergimal sits next to them with a cup of their own.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="78" name="226" tags="forest encounter" position="975,975" size="100,100">&lt;p&gt;A little person with a long beard and pointy hat sits on a mushroom, drinking tea. A tiny pig-like Mergimal sits next to them with a cup of their own.&lt;/p&gt;
 &lt;&lt;numberbox &quot;$asilCode&quot; 0 autofocus&gt;&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[What&#39;s the code?-&gt;asil]]&lt;/li&gt;
   &lt;li&gt;[[Nevermind.-&gt;224]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="77" name="228" tags="transition" position="850,975" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;chop&#39;)&gt;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="79" name="228" tags="transition" position="1100,975" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;chop&#39;)&gt;&gt;
   &lt;p&gt;You don&#39;t have a Mergimal that could chop this tree down.&lt;/p&gt;
   &lt;ul class=&#39;choices&#39;&gt;
     &lt;li&gt;&lt;&lt;return &#39;Go back.&#39;&gt;&gt;&lt;/li&gt;
@@ -23159,7 +23183,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
   &lt;ul class=&#39;choices&#39;&gt;
     &lt;li&gt;[[Explore Littlemoose.-&gt;d6]]&lt;/li&gt;
   &lt;/ul&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="d2" tags="map" position="975,975" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="d2" tags="map" position="1225,975" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23169,7 +23193,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;d2&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;d2&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="79" name="d2: fishing" tags="" position="1100,975" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;rusty&#39;)&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="81" name="d2: fishing" tags="" position="100,1100" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;rusty&#39;)&gt;&gt;
   &lt;&lt;include &#39;no rod&#39;&gt;&gt;
 &lt;&lt;else&gt;&gt;
   &lt;p&gt;(Keyword RUSTY detected)&lt;/p&gt;
@@ -23178,7 +23202,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
   &lt;ul class=&#39;choices&#39;&gt;
     &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
   &lt;/ul&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="d3" tags="d3 mooberry-farm map" position="1225,975" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="d3" tags="d3 mooberry-farm map" position="225,1100" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23188,7 +23212,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;d3&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;d3&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="81" name="d3: long grass" tags="d3 mooberry-farm long-grass stray" position="100,1100" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="83" name="d3: long grass" tags="d3 mooberry-farm long-grass stray" position="350,1100" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -23208,10 +23232,10 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="82" name="d3: scientist" tags="d3 mooberry-farm scientist" position="225,1100" size="100,100">&lt;p&gt;There&#39;s a scientist here for some reason!&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="84" name="d3: scientist" tags="d3 mooberry-farm scientist" position="475,1100" size="100,100">&lt;p&gt;There&#39;s a scientist here for some reason!&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="83" name="d4" tags="d4 route-003 map" position="350,1100" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="85" name="d4" tags="d4 route-003 map" position="600,1100" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23220,7 +23244,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;d4&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;d4&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="84" name="d4: long grass" tags="" position="475,1100" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="86" name="d4: long grass" tags="" position="725,1100" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -23240,10 +23264,10 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="85" name="d4: trainer" tags="" position="600,1100" size="100,100">Two trainers even!
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="87" name="d4: trainer" tags="" position="850,1100" size="100,100">Two trainers even!
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="86" name="d5" tags="map littlemooseforest" position="725,1100" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="88" name="d5" tags="map littlemooseforest" position="975,1100" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23252,7 +23276,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;d5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;d5&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="87" name="d5: long grass" tags="" position="850,1100" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="89" name="d5: long grass" tags="" position="1100,1100" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -23272,10 +23296,10 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="88" name="d5: trainer" tags="" position="975,1100" size="100,100">This trainer is doing a cool dance or something?
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="90" name="d5: trainer" tags="" position="1225,1100" size="100,100">This trainer is doing a cool dance or something?
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="89" name="d6" tags="map littlemoose" position="1100,1100" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="91" name="d6" tags="map littlemoose" position="100,1225" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23286,7 +23310,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;d6&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;d6&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="90" name="d6: description" tags="" position="1225,1100" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="92" name="d6: description" tags="" position="225,1225" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;img class=&#39;concept&#39; src=&#39;images/story/littlemoose.png&#39;&gt;
   &lt;div&gt;
     &lt;p&gt;Littlemoose is a sleepy town, nestled in a tall forest. It is the home of the Veil School and its leader, Grace.&lt;/p&gt;
@@ -23296,8 +23320,8 @@ Do Worksheet &#39;Message in a Botttle&#39;.
       &lt;li&gt;[[Keep exploring the village.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="91" name="d6: vending machine" tags="vend littlemoose" position="100,1225" size="100,100">&lt;&lt;include &#39;littlemoose: vending machine&#39;&gt;&gt;
-[[Look around Littlemoose.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="92" name="d6: veil school" tags="" position="225,1225" size="100,100">&lt;&lt;if not $players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;closed&#39;)&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="93" name="d6: vending machine" tags="vend littlemoose" position="350,1225" size="100,100">&lt;&lt;include &#39;littlemoose: vending machine&#39;&gt;&gt;
+[[Look around Littlemoose.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="94" name="d6: veil school" tags="" position="475,1225" size="100,100">&lt;&lt;if not $players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;closed&#39;)&gt;&gt;
     The school is closed?!?
 
     Oh dear.
@@ -23311,7 +23335,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     The school is dark. No one seems to be here.
 
     [[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="e1" tags="map" position="350,1225" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="e1" tags="map" position="600,1225" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23319,7 +23343,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;e1&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;e1&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="94" name="e1: wave school" tags="blue-urf" position="475,1225" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;paddle&#39;)&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="96" name="e1: wave school" tags="blue-urf" position="725,1225" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;paddle&#39;)&gt;&gt;
 &lt;p&gt;A large group of people seems to be standing in line, waiting to get in.&lt;/p&gt;
 &lt;p&gt;Thankfully, you don&#39;t have to wait long before a figure steps out of the building and addresses the crowd.&lt;/p&gt;
 &lt;&lt;rhia&gt;&gt;Hello, everyone.
@@ -23330,12 +23354,12 @@ Do Worksheet &#39;Message in a Botttle&#39;.
 &lt;span id=&#39;response-1&#39;&gt;&lt;/span&gt;
 &lt;&lt;else&gt;&gt;
 You&#39;ve already done this challenge!
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="e2: wave school closed" tags="" position="600,1225" size="100,100">&lt;p&gt;First Veil School and now this?!&lt;/p&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="e2: wave school closed" tags="" position="850,1225" size="100,100">&lt;p&gt;First Veil School and now this?!&lt;/p&gt;
 &lt;p&gt;How are you supposed to complete the Mergimal Challenge if all the schools keep closing?&lt;/p&gt;
 &lt;p&gt;You decide to go talk to Rhia to see what is going on.&lt;/p&gt;
 &lt;span id=&#39;response-1&#39;&gt;&lt;&lt;link &#39;What is going on?&#39;&gt;&gt;&lt;&lt;replace &#39;#response-1&#39;&gt;&gt;&lt;&lt;say $activePlayer $player.image&gt;&gt;What is going on?&lt;&lt;/say&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
 
-[TODO finish this encounter]</tw-passagedata><tw-passagedata pid="96" name="e2" tags="e2 blue-urf map" position="725,1225" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+[TODO finish this encounter]</tw-passagedata><tw-passagedata pid="98" name="e2" tags="e2 blue-urf map" position="975,1225" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23345,7 +23369,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;e2&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;e2&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="97" name="e2: description" tags="e2 blue-urf description" position="850,1225" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="99" name="e2: description" tags="e2 blue-urf description" position="1100,1225" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;img class=&#39;concept&#39; src=&#39;images/story/blue-urf.png&#39;&gt;
   &lt;div&gt;
     &lt;p&gt;Blue Urf is a bustling city that loves fashion and beach life.&lt;/p&gt;
@@ -23357,8 +23381,8 @@ You&#39;ve already done this challenge!
       &lt;li&gt;[[Keep exploring the city.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="98" name="e2: vending machine" tags="vend blue-urf" position="975,1225" size="100,100">&lt;&lt;include &#39;blue urf: vending machine&#39;&gt;&gt;
-[[Look around Blue Urf.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="99" name="e3" tags="e3 map" position="1100,1225" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="100" name="e2: vending machine" tags="vend blue-urf" position="1225,1225" size="100,100">&lt;&lt;include &#39;blue urf: vending machine&#39;&gt;&gt;
+[[Look around Blue Urf.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="101" name="e3" tags="e3 map" position="100,1350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23367,7 +23391,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;e3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;e3&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="100" name="e3: long grass" tags="" position="1225,1225" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="102" name="e3: long grass" tags="" position="225,1350" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -23387,11 +23411,11 @@ You&#39;ve already done this challenge!
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="101" name="e3: explorer" tags="e3 explorer" position="100,1350" size="100,100">&lt;p&gt;This is an explorer!&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="103" name="e3: explorer" tags="e3 explorer" position="350,1350" size="100,100">&lt;p&gt;This is an explorer!&lt;/p&gt;
 &lt;p&gt;[TODO add stuff]&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="102" name="e4" tags="e4 map" position="225,1350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="104" name="e4" tags="e4 map" position="475,1350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39; style=&#39;height: min-content;&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23401,7 +23425,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;e4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;e4&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="103" name="e4: long grass" tags="e4 long-grass stray" position="350,1350" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="105" name="e4: long grass" tags="e4 long-grass stray" position="600,1350" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -23421,10 +23445,10 @@ You&#39;ve already done this challenge!
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="104" name="e4: trainer" tags="e4 trainer" position="475,1350" size="100,100">&lt;p&gt;More trainers!&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="106" name="e4: trainer" tags="e4 trainer" position="725,1350" size="100,100">&lt;p&gt;More trainers!&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="105" name="f3" tags="f3 raven-wing map" position="600,1350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="107" name="f3" tags="f3 raven-wing map" position="850,1350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39; style=&#39;height: min-content;&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23433,7 +23457,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;f3&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;f3&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="106" name="f3: description" tags="f3 raven-wing description" position="725,1350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="108" name="f3: description" tags="f3 raven-wing description" position="975,1350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;img class=&#39;concept&#39; src=&#39;images/story/raven-wing.png&#39;&gt;
   &lt;div&gt;
     &lt;p&gt;Raven Wing is located high in the mountains. It snows here year round!&lt;/p&gt;
@@ -23443,7 +23467,7 @@ You&#39;ve already done this challenge!
       &lt;li&gt;[[Check out Raven Wing.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="107" name="f4" tags="map" position="850,1350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="109" name="f4" tags="map" position="1100,1350" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23453,14 +23477,14 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;f4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;f4&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="108" name="f4: merchant" tags="" position="975,1350" size="100,100">&lt;p&gt;There&#39;s a merchant here!&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="110" name="f4: merchant" tags="" position="1225,1350" size="100,100">&lt;p&gt;There&#39;s a merchant here!&lt;/p&gt;
 &lt;p&gt;She seems friendly.&lt;/p&gt;
 &lt;p&gt;&quot;I wait here to collect the rafts that people use to float down the Great River.&quot;&lt;/p&gt;
 &lt;p&gt;&quot;We also have e-bikes in stock! They&#39;re available for the low price of 1,000 coins.&quot;&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[That seems quite absurd. Try to haggle.-&gt;f4: haggle]]&lt;/li&gt;
   &lt;li&gt;[[Another time.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="109" name="f4: haggle" tags="" position="1100,1350" size="100,100">&lt;&lt;if $players[$activePlayer].characters[$activeCharacter].keywords.include(&#39;paddle&#39;) &amp;&amp; $players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;shine&#39;)&gt;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="111" name="f4: haggle" tags="" position="100,1475" size="100,100">&lt;&lt;if $players[$activePlayer].characters[$activeCharacter].keywords.include(&#39;paddle&#39;) &amp;&amp; $players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;shine&#39;)&gt;&gt;
   &lt;p&gt;&quot;You&#39;ve beaten Rhia *and* Matiu in the school challenge?&quot;&lt;/p&gt;
   &lt;p&gt;That&#39;s quite impressive. You can have an ebike for free!&lt;/p&gt;
   &lt;&lt;link &#39;You get an ebike!&#39; $players[$activePlayer].characters[$activeCharacter].worldMapPosition&gt;&gt;
@@ -23524,7 +23548,7 @@ You&#39;ve already done this challenge!
         &lt;&lt;/link&gt;&gt;
     &lt;&lt;/nobr&gt;&gt;
     [[Nevermind.-&gt;f4]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="f4: long grass" tags="" position="1225,1350" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="f4: long grass" tags="" position="225,1475" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -23544,7 +23568,7 @@ You&#39;ve already done this challenge!
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="111" name="f4: river" tags="f4 paddle" position="100,1475" size="100,100">&lt;p&gt;If you had a Mergimal who could paddle, you might be able to swim upstream to Cedar Oasis. It might be a tough ride though.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="113" name="f4: river" tags="f4 paddle" position="350,1475" size="100,100">&lt;p&gt;If you had a Mergimal who could paddle, you might be able to swim upstream to Cedar Oasis. It might be a tough ride though.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;
     &lt;&lt;link &#39;Dive in and start swimming (requires: keyword PADDLE)&#39;&gt;&gt;
@@ -23558,7 +23582,7 @@ You&#39;ve already done this challenge!
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Come back another day.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="112" name="f5" tags="map" position="225,1475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="114" name="f5" tags="map" position="475,1475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
   This area is near Mount Boom-Boom, an active volcano. Better be careful!
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
@@ -23569,7 +23593,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;f5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;f5&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="113" name="f5: long grass" tags="" position="350,1475" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="115" name="f5: long grass" tags="" position="600,1475" size="100,100">&lt;p&gt;The noises you heard before are even louder now. You can tell this long grass is full of Mergimals. You just need to see which ones you can find!&lt;/p&gt;
 &lt;p style=&#39;font-weight: bold;&#39;&gt;Roll 1d20&lt;/p&gt;
 &lt;p&gt;If you got...&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -23589,11 +23613,11 @@ You&#39;ve already done this challenge!
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="114" name="f5: scientist" tags="" position="475,1475" size="100,100">&lt;p&gt;A scientist is learning stuff apparently!&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="116" name="f5: scientist" tags="" position="725,1475" size="100,100">&lt;p&gt;A scientist is learning stuff apparently!&lt;/p&gt;
 &lt;p&gt;[TODO add stuff]&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="115" name="g2" tags="g2 raven-wing forge-workshop map" position="600,1475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="117" name="g2" tags="g2 raven-wing forge-workshop map" position="850,1475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39; style=&#39;height: min-content;&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23602,13 +23626,13 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;g2&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;g2&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="116" name="g2: forge workshop" tags="g2 raven-wing forge-workshop" position="725,1475" size="100,100">&lt;p&gt;This is the famous Forge Workshop, home of the Forge School Challenge.&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="118" name="g2: forge workshop" tags="g2 raven-wing forge-workshop" position="975,1475" size="100,100">&lt;p&gt;This is the famous Forge Workshop, home of the Forge School Challenge.&lt;/p&gt;
 &lt;p&gt;There&#39;s a sign on the door that says:&lt;/p&gt;
 &lt;p&gt;&quot;GO AWAY&quot;&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Bummer. Guess this school is closed too.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
   &lt;li&gt;[[See if there&#39;s another way in.-&gt;g2: back door]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="117" name="g3" tags="g3 raven-wing map" position="850,1475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="119" name="g3" tags="g3 raven-wing map" position="1100,1475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39; style=&#39;height: min-content;&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23617,8 +23641,8 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;g3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;g3&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="118" name="g3: vending machine" tags="g3 raven-wing vending-machine" position="975,1475" size="100,100">&lt;&lt;include &#39;raven wing: vending machine&#39;&gt;&gt;
-[[Return to the map.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="119" name="h2" tags="h2 raven-wing map" position="1100,1475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="120" name="g3: vending machine" tags="g3 raven-wing vending-machine" position="1225,1475" size="100,100">&lt;&lt;include &#39;raven wing: vending machine&#39;&gt;&gt;
+[[Return to the map.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="121" name="h2" tags="h2 raven-wing map" position="100,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39; style=&#39;height: min-content;&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23627,7 +23651,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;h2&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;h2&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="120" name="h3" tags="h3 raven-wing map" position="1225,1475" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="122" name="h3" tags="h3 raven-wing map" position="225,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39; style=&#39;height: min-content;&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23636,7 +23660,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;h3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;h3&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="121" name="h4" tags="h4 raven-wing map" position="100,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="123" name="h4" tags="h4 raven-wing map" position="350,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39; style=&#39;height: min-content;&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23645,17 +23669,18 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;h4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;h4&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="122" name="i3" tags="i3 shin-gobee-desert map" position="225,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="124" name="i3" tags="i3 shin-gobee-desert map" position="475,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;p&gt;It&#39;s really hot out here. Unless you have some water, you might want to come back later.&lt;/p&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
+      &lt;li&gt;[[keep going-&gt;j2]]&lt;/li&gt;
       &lt;li&gt;[[Look around-&gt;i3: description]]&lt;/li&gt;
       &lt;li&gt;[[Go inside the cave.-&gt;i3: cave]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;i3&#39;&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;i3&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="123" name="i4" tags="i4 cedar-oasis map" position="350,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="125" name="i4" tags="i4 cedar-oasis map" position="600,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;p&gt;Welcome to Cedar Oasis!&lt;/p&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
@@ -23665,7 +23690,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;i4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;i4&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="124" name="i4: description" tags="i4 cedar-oasis description" position="475,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="126" name="i4: description" tags="i4 cedar-oasis description" position="725,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;img class=&#39;concept&#39; src=&#39;images/story/cedar-oasis.png&#39;&gt;
   &lt;div&gt;
     &lt;p&gt;Cedar Oasis sits along the Great River in the southern end of the Shin Gobee Desert. The architecture is a mix of large glass domes and smaller, clay and stone buildings.&lt;/p&gt;
@@ -23675,7 +23700,7 @@ You&#39;ve already done this challenge!
       &lt;li&gt;[[Keep exploring this amazing place.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="125" name="i5" tags="i5 explore" position="600,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="127" name="i5" tags="i5 explore" position="850,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23685,8 +23710,8 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;i5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;e&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;i5&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="126" name="i5: vending machine" tags="i5 cedar-oasis vending-machine" position="725,1600" size="100,100">&lt;&lt;include &#39;cedar oasis: vending machine&#39;&gt;&gt;
-[[Continue exploring the city.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="127" name="j2" tags="j2 shin-gobee-desert map" position="850,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="128" name="i5: vending machine" tags="i5 cedar-oasis vending-machine" position="975,1600" size="100,100">&lt;&lt;include &#39;cedar oasis: vending machine&#39;&gt;&gt;
+[[Continue exploring the city.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="129" name="j2" tags="j2 shin-gobee-desert map" position="1100,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;p&gt;Zahara is here!&lt;/p&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
@@ -23696,7 +23721,45 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;j2&#39;&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;j2&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="128" name="j3" tags="j3 shin-gobee-desert map" position="975,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="130" name="j2: explore" tags="j2 explore" position="1225,1600" size="100,100">&lt;&lt;map &#39;j2&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $currentLocation = &#39;j2&#39;&gt;&gt;\
+After plodding for hours through the sun-baked desert, you spot an inviting oasis on the horizon....Or is it just a mirage?
+
+[[Approach the oasis.-&gt;j2: description]]
+[[Turn back. It&#39;s probably a mirage.-&gt;404]]
+
+!!!!EXPLORE
+
+
+[[Leave the area.-&gt;404]]</tw-passagedata><tw-passagedata pid="131" name="j2: description" tags="" position="100,1725" size="100,100">&lt;img class=&#39;concept&#39; src=&#39;images/story/cactuspatch.png&#39;&gt;
+It seems real enough once you get closer. It&#39;s a small pond surrounded by various sized cacti. A hooded figure is crounched near one of them.
+
+[[Approach the hooded figure.-&gt;j2: zahara]]
+[[Leave the area.-&gt;404]]</tw-passagedata><tw-passagedata pid="132" name="j2: zahara" tags="" position="225,1725" size="100,100"></tw-passagedata><tw-passagedata pid="133" name="oasis: zahara" tags="" position="350,1725" size="100,100">You spot a lone figure crouched beside a cactus in the blazing sun. There are several other big, beautiful cacti surrounding her.
+As you approach, Zahara looks up and says, &quot;Oh, welcome to my cactus garden. I call it &quot;The Factor Patch&quot;.
+
+Want to hear a cactus joke?
+
+&lt;&lt;linkreplace [[How unbecoming of you. This is a serious matter!-&gt;zahara: cacti]]
+
+&#39;I have no choice, do I?&#39; t8n&gt;&gt;&quot;Nope! Here it is: How did the cactus get an A+ on their test?&quot;
+
+    &lt;&lt;linkreplace &#39;Umm...I dunno, why?&#39; t8n&gt;&gt;
+
+        &quot;Because they were a really sharp student!&quot;
+    
+        &lt;&lt;linkreplace &#39;I didn\&#39;t think a cactus could go to school...&#39; t8n&gt;&gt;
+
+            &quot;Ah. Well, I guess you have a POINT there. But really, there&#39;s no need to NEEDLE me about it!&quot;
+        
+            [[Wait for her to stop lauging.-&gt;zahara: cacti]]
+        &lt;&lt;/linkreplace&gt;&gt;
+    &lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="zahara: cacti" tags="" position="475,1725" size="100,100">&quot;I take you came from Bloom School? That gardener told you where I was, didn&#39;t he?
+Well, as long as you&#39;re here, I could use some help with my cacti.
+They&#39;re actually &#39;Cactori&#39;...Factor cacti. They can only grow with the power of factors.
+Can you pick a cactus and guide the factor tree until it blooms?
+
+[[Ask how it works.-&gt;zahara: lesson]]</tw-passagedata><tw-passagedata pid="135" name="j3" tags="j3 shin-gobee-desert map" position="600,1725" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;p&gt;It&#39;s really hot out here. Unless you have some water, you might want to come back later.&lt;/p&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
@@ -23706,7 +23769,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;j3&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;j3&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="129" name="j4" tags="j4 explore" position="1100,1600" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="136" name="j4" tags="j4 explore" position="725,1725" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23715,7 +23778,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;j4&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;s&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;j4&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="130" name="j4: bloom school" tags="" position="1225,1600" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;chop&#39;)&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="137" name="j4: bloom school" tags="" position="850,1725" size="100,100">&lt;&lt;if !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;chop&#39;)&gt;&gt;
   &lt;p&gt;The school is closed?!?!&lt;/p&gt;
   &lt;p&gt;A random person says that they&#39;re waiting for Zahara to return from a trip into the deep desert.&lt;/p&gt;
   &lt;p&gt;Maybe you&#39;d better follow her out there and see if you can help.&lt;/p&gt;
@@ -23730,7 +23793,7 @@ You&#39;ve already done this challenge!
     &lt;li&gt;[[Say hello to Zahara.-&gt;j4: zahara&#39;s thanks]]
     &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
   &lt;/ul&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="j5" tags="j5 cedar-oasis map" position="100,1725" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="j5" tags="j5 cedar-oasis map" position="975,1725" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23739,7 +23802,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;j5&#39;&gt;&gt;&lt;&lt;n&gt;&gt;&lt;&lt;w&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;j5&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="132" name="volcano" tags="volcano mount-boom-boom" position="225,1725" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="139" name="volcano" tags="volcano mount-boom-boom" position="1100,1725" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
     &lt;ul class=&#39;choices&#39;&gt;
@@ -23747,7 +23810,7 @@ You&#39;ve already done this challenge!
     &lt;/ul&gt;
   &lt;/div&gt;
   &lt;&lt;map &#39;volcano&#39;&gt;&gt;&lt;&lt;east &#39;volcano&#39;&gt;&gt;&lt;&lt;west &#39;f5&#39;&gt;&gt;&lt;&lt;/map&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = &#39;volcano&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="133" name="stray: bakewing" tags="mount-boom-boom stray rare" position="350,1725" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/bakewing.png&#39; /&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="140" name="stray: bakewing" tags="mount-boom-boom stray rare" position="1225,1725" size="100,100">&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/bakewing.png&#39; /&gt;
 
 You see a small, red Mergimal that is chewing on some branches.
 
@@ -23767,26 +23830,29 @@ Do Worksheet 84.1
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[They got away: continue exploring.-&gt;volcano]]</tw-passagedata><tw-passagedata pid="134" name="tamed: bakewing" tags="mt-boom-boom tamed" position="475,1725" size="100,100">&lt;&lt;card &#39;bakewing&#39;&gt;&gt;
+[[They got away: continue exploring.-&gt;volcano]]</tw-passagedata><tw-passagedata pid="141" name="tamed: bakewing" tags="mt-boom-boom tamed" position="100,1850" size="100,100">&lt;&lt;card &#39;bakewing&#39;&gt;&gt;
 This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, which they use to make pizza. Yum!
 
-&lt;&lt;link &#39;You tamed them.&#39; &#39;volcano&#39;&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.bakewing = &#39;tamed&#39;&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="StoryCaption" tags="" position="600,1725" size="100,100">&lt;&lt;include &#39;sidebar&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="StoryMenu" tags="" position="725,1725" size="100,100">&lt;&lt;link &#39;main menu&#39; &#39;main menu&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &#39;You tamed them.&#39; &#39;volcano&#39;&gt;&gt;&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.bakewing = &#39;tamed&#39;&gt;&gt;&lt;&lt;set $tamedPassage = &#39;&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="StoryCaption" tags="" position="225,1850" size="100,100">&lt;&lt;include &#39;sidebar&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="StoryMenu" tags="" position="350,1850" size="100,100">&lt;&lt;link &#39;main menu&#39; &#39;main menu&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;change character&#39; &#39;change character&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &#39;cheats&#39;&gt;&gt;
   &lt;&lt;dialog &#39;cheats&#39;&gt;&gt;
     &lt;&lt;include &#39;cheats&#39;&gt;&gt;
   &lt;&lt;/dialog&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="PassageDone" tags="" position="850,1725" size="100,100">&lt;&lt;if not tags().includes(&#39;util&#39;)&gt;&gt;
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="PassageDone" tags="" position="475,1850" size="100,100">&lt;&lt;if not tags().includes(&#39;util&#39;)&gt;&gt;
   &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].lastPassage = State.passage&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="start" tags="start util" position="975,1725" size="100,100">&lt;div class=&#39;alert&#39;&gt;NOTE: THIS GAME IS STILL BEING DEVELOPED AND MAY REQUIRE YOU TO RESTART IF LARGE CHANGES ARE MADE.&lt;/div&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="start" tags="start util" position="600,1850" size="100,100">&lt;div class=&#39;alert&#39;&gt;NOTE: THIS GAME IS STILL BEING DEVELOPED AND MAY REQUIRE YOU TO RESTART IF LARGE CHANGES ARE MADE.&lt;/div&gt;
 &lt;div class=&#39;warning&#39;&gt;NOTE #2: none of the assets in this game are final. AI was used to generate some of the art for prototyping and concept art purposes.&lt;/div&gt;
-&lt;&lt;include &#39;main menu&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="StoryInit" tags="" position="1100,1725" size="100,100">&lt;&lt;script&gt;&gt;
+&lt;&lt;include &#39;main menu&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="StoryInit" tags="" position="725,1850" size="100,100">&lt;&lt;script&gt;&gt;
   Config.passages.nobr = true;
 &lt;&lt;/script&gt;&gt;
 &lt;&lt;include &#39;mergimals data variable&#39;&gt;&gt;
 &lt;&lt;include &#39;mergimals encounter table&#39;&gt;&gt;
 &lt;&lt;include &#39;mergimals math facts&#39;&gt;&gt;
 
+&lt;&lt;widget &#39;asil&#39; container&gt;&gt;
+  &lt;&lt;say &#39;Asil (Forest Witch)&#39; &#39;images/characters/asil.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 &lt;&lt;widget &#39;tam&#39; container&gt;&gt;
   &lt;&lt;say &#39;Prof. Tamarack&#39; &#39;images/characters/proftam.webp&#39;&gt;&gt;_contents&lt;&lt;/say&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
@@ -23818,14 +23884,14 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 &lt;&lt;set $activePlayer = &#39;luke&#39;&gt;&gt;
 &lt;&lt;set $activeCharacter = &#39;Flow&#39;&gt;&gt;
 
-&lt;&lt;setupfacts&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="backpack items" tags="" position="1225,1725" size="100,100">&lt;&lt;do tag &#39;backpack-items&#39;&gt;&gt;
+&lt;&lt;setupfacts&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="backpack items" tags="" position="850,1850" size="100,100">&lt;&lt;do tag &#39;backpack-items&#39;&gt;&gt;
 	&lt;div class=&#39;char-sheet-box&#39;&gt;
 		&lt;div class=&#39;char-sheet-header-box&#39;&gt;
 			&lt;h2&gt;items&lt;/h2&gt;
 		&lt;/div&gt;
 		&lt;&lt;include &#39;backpack item boxes&#39;&gt;&gt;
 	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="backpack item boxes" tags="" position="100,1850" size="100,100">&lt;div class=&#39;item-boxes char-sheet-boxes&#39;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="backpack item boxes" tags="" position="975,1850" size="100,100">&lt;div class=&#39;item-boxes char-sheet-boxes&#39;&gt;
 	&lt;&lt;for _item, _quantity range $players[$activePlayer].characters[$activeCharacter].backpack&gt;&gt;
 		&lt;div class=&#39;item-box&#39;&gt;
 			&lt;div class=&#39;item-img-box&#39;&gt;
@@ -23836,14 +23902,14 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 			&lt;/div&gt;
 		&lt;/div&gt;
 	&lt;&lt;/for&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="142" name="backpack keywords" tags="" position="225,1850" size="100,100">&lt;&lt;do tag &#39;backpack-keywords&#39;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="149" name="backpack keywords" tags="" position="1100,1850" size="100,100">&lt;&lt;do tag &#39;backpack-keywords&#39;&gt;&gt;
 	&lt;div class=&#39;char-sheet-box&#39;&gt;
 		&lt;div class=&#39;char-sheet-header-box&#39;&gt;
 			&lt;h2&gt;keywords&lt;/h2&gt;
 		&lt;/div&gt;
 		&lt;&lt;include &#39;backpack keyword list&#39;&gt;&gt;
 	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="backpack keyword list" tags="" position="350,1850" size="100,100">&lt;div class=&#39;keyword-boxes char-sheet-boxes&#39;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="backpack keyword list" tags="" position="1225,1850" size="100,100">&lt;div class=&#39;keyword-boxes char-sheet-boxes&#39;&gt;
   &lt;ul class=&#39;keywords-ul&#39;&gt;
     &lt;&lt;set _keywordCount = 0&gt;&gt;
     &lt;&lt;for _keyword range $players[$activePlayer].characters[$activeCharacter].keywords&gt;&gt;
@@ -23854,7 +23920,7 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
       &lt;li class=&#39;keywords-li&#39;&gt;no keywords found yet&lt;/li&gt;
     &lt;&lt;/if&gt;&gt;
   &lt;/ul&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="144" name="character sheet" tags="" position="475,1850" size="100,100">&lt;&lt;set _portraitURL = $players[$activePlayer].characters[$activeCharacter].portrait&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="151" name="character sheet" tags="" position="100,1975" size="100,100">&lt;&lt;set _portraitURL = $players[$activePlayer].characters[$activeCharacter].portrait&gt;&gt;
 &lt;div style=&#39;display: flex; align-items: center;&#39;&gt;
 	&lt;&lt;print &#39;&lt;img class=&quot;portrait&quot; src=&quot;&#39; + _portraitURL + &#39;&quot; /&gt;&#39;&gt;&gt;
 	&lt;h2 style=&#39;margin-left: 1rem;&#39;&gt;$activeCharacter&lt;/h2&gt;
@@ -23892,14 +23958,14 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 	&lt;div id=&#39;dialog-char-sheet--world-map&#39;&gt;
 		&lt;&lt;include &#39;world map&#39;&gt;&gt;		
 	&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="145" name="stats" tags="" position="600,1850" size="100,100">&lt;&lt;do tag &#39;stats&#39;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="152" name="stats" tags="" position="225,1975" size="100,100">&lt;&lt;do tag &#39;stats&#39;&gt;&gt;
 	&lt;div class=&#39;char-sheet-box&#39;&gt;
 		&lt;div class=&#39;char-sheet-header-box&#39;&gt;
 			&lt;h2&gt;stats&lt;/h2&gt;
 		&lt;/div&gt;
 		&lt;&lt;include &#39;stat boxes&#39;&gt;&gt;
 	&lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="stat boxes" tags="" position="725,1850" size="100,100">&lt;div class=&#39;stat-boxes char-sheet-boxes&#39;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="stat boxes" tags="" position="350,1975" size="100,100">&lt;div class=&#39;stat-boxes char-sheet-boxes&#39;&gt;
     &lt;&lt;for _stat, _value range $players[$activePlayer].characters[$activeCharacter].stats&gt;&gt;
         &lt;div class=&#39;stat-box&#39;&gt;
             &lt;div class=&#39;stat-img-box&#39;&gt;
@@ -23910,14 +23976,14 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;&lt;/for&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="147" name="injuries" tags="" position="850,1850" size="100,100">&lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="154" name="injuries" tags="" position="475,1975" size="100,100">&lt;&lt;do tag &#39;injuries&#39;&gt;&gt;
     &lt;div class=&#39;char-sheet-box&#39;&gt;
         &lt;div class=&#39;char-sheet-header-box&#39;&gt;
             &lt;h2&gt;injuries&lt;/h2&gt;
         &lt;/div&gt;
 		&lt;&lt;include &#39;injury boxes&#39;&gt;&gt;
     &lt;/div&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="injury boxes" tags="" position="975,1850" size="100,100">&lt;div class=&#39;injury-boxes char-sheet-boxes&#39;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="injury boxes" tags="" position="600,1975" size="100,100">&lt;div class=&#39;injury-boxes char-sheet-boxes&#39;&gt;
 	&lt;&lt;if $players[$activePlayer].characters[$activeCharacter].injuries &gt; 4&gt;&gt;
 		&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].injuries = 4&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
@@ -23927,12 +23993,12 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
 	&lt;&lt;for _count range (4 - $players[$activePlayer].characters[$activeCharacter].injuries)&gt;&gt;
 		&lt;div class=&#39;injury-tracker&#39;&gt;&lt;/div&gt;
 	&lt;&lt;/for&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="149" name="journal" tags="util char-sheet" position="1100,1850" size="100,100">&lt;div class=&#39;char-sheet-box&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="156" name="journal" tags="util char-sheet" position="725,1975" size="100,100">&lt;div class=&#39;char-sheet-box&#39;&gt;
 	&lt;div class=&#39;char-sheet-header-box&#39;&gt;
 		&lt;h2&gt;journal&lt;/h2&gt;
 	&lt;/div&gt;
 	&lt;&lt;include &#39;journal entries&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="150" name="journal entries" tags="util char-sheet" position="1225,1850" size="100,100">&lt;&lt;set _journal = $players[$activePlayer].characters[$activeCharacter].journal&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="157" name="journal entries" tags="util char-sheet" position="850,1975" size="100,100">&lt;&lt;set _journal = $players[$activePlayer].characters[$activeCharacter].journal&gt;&gt;
 &lt;div class=&#39;journal-boxes char-sheet-boxes&#39;&gt;
   &lt;&lt;if _journal == &#39;&#39;&gt;&gt;
     &lt;div class=&#39;journal-box&#39;&gt;
@@ -23945,7 +24011,7 @@ This fiesty Mergimal eats trees whole to fuel the fire in their oven belly, whic
       &lt;/div&gt;
     &lt;&lt;/for&gt;&gt;
   &lt;&lt;/if&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="151" name="mergipedia" tags="mergipedia util" position="100,1975" size="100,100">&lt;&lt;set _$start = 0&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="158" name="mergipedia" tags="mergipedia util" position="975,1975" size="100,100">&lt;&lt;set _$start = 0&gt;&gt;
 &lt;&lt;do tag &#39;mergipedia&#39;&gt;&gt;
     &lt;div style=&#39;display: grid; grid: repeat(2, 1fr) / repeat(3, 1fr); gap: 1rem;&#39;&gt;
         &lt;&lt;set _$temp to Object.fromEntries(Object.entries($mergimals).slice(_$start, _$start + 6))&gt;&gt;
@@ -23977,7 +24043,7 @@ _$start through &lt;&lt;-_$start + 6&gt;&gt;&lt;br /&gt;
         &lt;&lt;set _$start = Object.entries($mergimals).length - 6&gt;&gt;
     &lt;&lt;/if&gt;&gt;
     &lt;&lt;redo &#39;mergipedia&#39;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="melodrake" tags="mergimal card inspect" position="225,1975" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="melodrake" tags="mergimal card inspect" position="1100,1975" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
   &lt;div&gt;&lt;&lt;card &#39;melodrake&#39;&gt;&gt;&lt;/div&gt;
   &lt;div class=&#39;align-center-box&#39;&gt;
     &lt;p&gt;&lt;strong&gt;name:&lt;/strong&gt; melodrake&lt;br /&gt;
@@ -23996,7 +24062,7 @@ _$start through &lt;&lt;-_$start + 6&gt;&gt;&lt;br /&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="153" name="scorchilla" tags="" position="350,1975" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="160" name="scorchilla" tags="" position="1225,1975" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
   &lt;div&gt;&lt;&lt;card &#39;scorchilla&#39;&gt;&gt;&lt;/div&gt;
   &lt;div class=&#39;align-center-box&#39;&gt;
     &lt;p&gt;&lt;strong&gt;name:&lt;/strong&gt; scorchilla&lt;br /&gt;
@@ -24015,7 +24081,7 @@ _$start through &lt;&lt;-_$start + 6&gt;&gt;&lt;br /&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="154" name="penguwaiian" tags="" position="475,1975" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="161" name="penguwaiian" tags="" position="100,2100" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
   &lt;div&gt;&lt;&lt;card &#39;penguwaiian&#39;&gt;&gt;&lt;/div&gt;
   &lt;div class=&#39;align-center-box&#39;&gt;
     &lt;p&gt;&lt;strong&gt;name:&lt;/strong&gt; penguwaiian&lt;br /&gt;
@@ -24034,21 +24100,21 @@ _$start through &lt;&lt;-_$start + 6&gt;&gt;&lt;br /&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="155" name="no batteries" tags="dialog" position="600,1975" size="100,100">&lt;p&gt;You don&#39;t have any batteries!&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Darn.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="156" name="no paddle" tags="dialog" position="725,1975" size="100,100">&lt;p&gt;You don&#39;t know how to swim with your Mergimal yet.&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="157" name="no rod" tags="dialog" position="850,1975" size="100,100">&lt;p&gt;You don&#39;t have a fishing rod.&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="158" name="no keyword" tags="dialog" position="975,1975" size="100,100">&lt;p&gt;You don&#39;t have that keyword!&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="159" name="incorrect" tags="dialog" position="1100,1975" size="100,100">&lt;p&gt;Not quite!&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="160" name="correct" tags="dialog" position="1225,1975" size="100,100">&lt;p&gt;Nice!&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="161" name="not enough coins" tags="dialog vending-machine" position="100,2100" size="100,100">&lt;p&gt;You don&#39;t have enough coins to buy that!&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="162" name="sold out" tags="dialog vending-machine" position="225,2100" size="100,100">&lt;p&gt;This machine seems to be sold out of that item.&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Alright.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="163" name="no mergiballs" tags="dialog stray" position="350,2100" size="100,100">&lt;p&gt;You don&#39;t have any mergiballs!&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="162" name="no batteries" tags="dialog" position="225,2100" size="100,100">&lt;p&gt;You don&#39;t have any batteries!&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Darn.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="163" name="no paddle" tags="dialog" position="350,2100" size="100,100">&lt;p&gt;You don&#39;t know how to swim with your Mergimal yet.&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Oh well.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="164" name="no rod" tags="dialog" position="475,2100" size="100,100">&lt;p&gt;You don&#39;t have a fishing rod.&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Dangit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="165" name="no keyword" tags="dialog" position="600,2100" size="100,100">&lt;p&gt;You don&#39;t have that keyword!&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;It was worth a try.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="166" name="incorrect" tags="dialog" position="725,2100" size="100,100">&lt;p&gt;Not quite!&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Try again.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="167" name="correct" tags="dialog" position="850,2100" size="100,100">&lt;p&gt;Nice!&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Continue on your way.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="168" name="not enough coins" tags="dialog vending-machine" position="975,2100" size="100,100">&lt;p&gt;You don&#39;t have enough coins to buy that!&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Nevermind.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="169" name="sold out" tags="dialog vending-machine" position="1100,2100" size="100,100">&lt;p&gt;This machine seems to be sold out of that item.&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Alright.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="170" name="no mergiballs" tags="dialog stray" position="1225,2100" size="100,100">&lt;p&gt;You don&#39;t have any mergiballs!&lt;/p&gt;
 &lt;p&gt;Go get some at a vending machine or find them through exploration.&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Okay.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="164" name="tame attempt failed" tags="dialog tame" position="475,2100" size="100,100">&lt;p&gt;The Mergimal doesn&#39;t seem very friendly.&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Okay.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="171" name="tame attempt failed" tags="dialog tame" position="100,2225" size="100,100">&lt;p&gt;The Mergimal doesn&#39;t seem very friendly.&lt;/p&gt;
 &lt;p&gt;Try throwing another Mergiball or using a different strategy.&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="165" name="tame attempt succeeded" tags="dialog tame" position="600,2100" size="100,100">&lt;p&gt;The Mergimal loves playing with the mergiball!&lt;/p&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Darnit.&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="172" name="tame attempt succeeded" tags="dialog tame" position="225,2225" size="100,100">&lt;p&gt;The Mergimal loves playing with the mergiball!&lt;/p&gt;
 &lt;p&gt;They want to be your friend.&lt;/p&gt;
-&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Sweet!&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;goto &#39;tamed encounter&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="166" name="main menu" tags="util" position="725,2100" size="100,100">&lt;div style=&#39;display: flex; flex-direction: column; align-items: center;&#39;&gt;
+&lt;ul class=&#39;choices&#39;&gt;&lt;li&gt;&lt;&lt;link &#39;Sweet!&#39;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;goto &#39;tamed encounter&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/li&gt;&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="173" name="main menu" tags="util" position="350,2225" size="100,100">&lt;div style=&#39;display: flex; flex-direction: column; align-items: center;&#39;&gt;
   &lt;h1&gt;MERGIMALS&lt;/h1&gt;
   &lt;h2&gt;fusion&lt;/h2&gt;
   &lt;img style=&#39;width: 8rem; aspect-ratio: 1 / 1;&#39; src=&#39;images/logo/fusion.svg&#39;&gt;
@@ -24066,7 +24132,7 @@ _$start through &lt;&lt;-_$start + 6&gt;&gt;&lt;br /&gt;
             const $contButton = $(&#39;#continue&#39;).children(&#39;button&#39;).prop(&#39;disabled&#39;, true);
         }
     &lt;&lt;/script&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="change character" tags="util" position="850,2100" size="100,100">&lt;&lt;set _newActiveCharacter = $activeCharacter&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="174" name="change character" tags="util" position="475,2225" size="100,100">&lt;&lt;set _newActiveCharacter = $activeCharacter&gt;&gt;
 &lt;div class=&#39;char-swap-boxes&#39;&gt;
   &lt;&lt;for _name, _object range $players[$activePlayer].characters&gt;&gt;
     &lt;&lt;characterbox _name true&gt;&gt;
@@ -24079,7 +24145,7 @@ _$start through &lt;&lt;-_$start + 6&gt;&gt;&lt;br /&gt;
   &lt;&lt;set $activeCharacter = _newActiveCharacter&gt;&gt;
   &lt;&lt;set _gotoPassage = $players[$activePlayer].characters[$activeCharacter].lastPassage&gt;&gt;
   &lt;&lt;goto _gotoPassage&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="sidebar" tags="util" position="975,2100" size="100,100">&lt;&lt;do tag &#39;sidebar-char&#39;&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="175" name="sidebar" tags="util" position="600,2225" size="100,100">&lt;&lt;do tag &#39;sidebar-char&#39;&gt;&gt;
   &lt;div id=&#39;sidebar-char-box&#39;&gt;
     &lt;&lt;characterbox $activeCharacter false&gt;&gt;
     &lt;div id=&#39;char-sheet-button-boxes&#39;&gt;
@@ -24107,7 +24173,7 @@ _$start through &lt;&lt;-_$start + 6&gt;&gt;&lt;br /&gt;
           .open();
     });
   });
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="cheats" tags="" position="1100,2100" size="100,100">&lt;&lt;link &#39;log variables&#39;&gt;&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="176" name="cheats" tags="" position="725,2225" size="100,100">&lt;&lt;link &#39;log variables&#39;&gt;&gt;
     &lt;&lt;script&gt;&gt;
         console.log(&#39;---- CHEATS MENU LOG VARIABLES ----&#39;);
         console.log(State.variables);
@@ -24374,11 +24440,11 @@ specific:
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;button &#39;tamed&#39;&gt;&gt;
     &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia[_mergimalToChange] = &#39;tamed&#39;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="dice roll" tags="" position="1225,2100" size="100,100">&lt;&lt;dice &#39;dice1&#39; &#39;d8&#39;&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="177" name="dice roll" tags="" position="850,2225" size="100,100">&lt;&lt;dice &#39;dice1&#39; &#39;d8&#39;&gt;&gt;
 
 &lt;&lt;button &#39;reroll&#39;&gt;&gt;
     &lt;&lt;roll &#39;#dice1&#39;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="flashcard test" tags="" position="100,2225" size="100,100">&lt;div style=&#39;display: grid; grid: repeat(3, 1fr) / repeat(3, 1fr); gap: 1rem; width: min-content;&#39;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="178" name="flashcard test" tags="" position="975,2225" size="100,100">&lt;div style=&#39;display: grid; grid: repeat(3, 1fr) / repeat(3, 1fr); gap: 1rem; width: min-content;&#39;&gt;
   &lt;&lt;flashcard 2 3 &#39;equal groups&#39; &#39;circle&#39;&gt;&gt;
   &lt;&lt;flashcard 5 4 &#39;equal groups&#39; &#39;circle&#39;&gt;&gt;
   &lt;&lt;flashcard 6 6 &#39;equal groups&#39; &#39;circle&#39;&gt;&gt;
@@ -24387,9 +24453,9 @@ specific:
   &lt;&lt;flashcard 12 6 &#39;equal groups&#39; &#39;circle&#39;&gt;&gt;
   &lt;&lt;flashcard 10 9 &#39;equal groups&#39; &#39;rectangle&#39;&gt;&gt;
   &lt;&lt;flashcard 6 2 &#39;array&#39; &#39;square&#39;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="172" name="card test" tags="" position="225,2225" size="100,100">&lt;&lt;card &#39;algelly&#39; false &#39;large&#39;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="179" name="card test" tags="" position="1100,2225" size="100,100">&lt;&lt;card &#39;algelly&#39; false &#39;large&#39;&gt;&gt;
 &lt;&lt;card &#39;algelly&#39; false &#39;medium&#39;&gt;&gt;
-&lt;&lt;card &#39;algelly&#39; false &#39;small&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="173" name="world map" tags="char-sheet world-map" position="350,2225" size="100,100">&lt;&lt;worldmap&gt;&gt;</tw-passagedata><tw-passagedata pid="174" name="littlemoose: vending machine" tags="" position="475,2225" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
+&lt;&lt;card &#39;algelly&#39; false &#39;small&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="world map" tags="char-sheet world-map" position="1225,2225" size="100,100">&lt;&lt;worldmap&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="littlemoose: vending machine" tags="" position="100,2350" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
   &lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;
     &lt;div style=&#39;background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;
     &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;
@@ -24471,7 +24537,7 @@ specific:
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="175" name="blue urf: vending machine" tags="" position="600,2225" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="182" name="blue urf: vending machine" tags="" position="225,2350" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
   &lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;
     &lt;div style=&#39;background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;
     &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;
@@ -24555,7 +24621,7 @@ specific:
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="176" name="raven wing: vending machine" tags="" position="725,2225" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="183" name="raven wing: vending machine" tags="" position="350,2350" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
   &lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;
     &lt;div style=&#39;background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;
     &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;
@@ -24639,7 +24705,7 @@ specific:
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="177" name="cedar oasis: vending machine" tags="" position="850,2225" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="184" name="cedar oasis: vending machine" tags="" position="475,2350" size="100,100">&lt;div class=&#39;flex flex-row&#39;&gt;
   &lt;div id=&#39;vending-machine&#39; style=&#39;display: grid; grid-template-columns: 39px 85px 85px 85px; grid-template-rows: 33px repeat(6, 51px) 93px;&#39;&gt;
     &lt;div style=&#39;background-image: url(images/story/vendingmachine.webp); grid-area: 1 / 1 / -1 / -1; width: 100%; height: 100%;&#39;&gt;&lt;/div&gt;
     &lt;div style=&#39;grid-area: 2 / 2; width: 100%; height: 100%; display: flex; justify-content: center;&#39;&gt;&lt;img src=&#39;images/items/battery.svg&#39; style=&#39;height: 100%;&#39; /&gt;&lt;/div&gt;
@@ -24723,7 +24789,7 @@ specific:
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="178" name="stray encounter" tags="stray" position="975,2225" size="100,100">&lt;&lt;print &quot;&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/&quot; + $mergimalEncountered.name + &quot;.png&#39; /&gt;&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="185" name="stray encounter" tags="stray" position="600,2350" size="100,100">&lt;&lt;print &quot;&lt;img class=&#39;mergimal-image&#39; src=&#39;images/mergimals/&quot; + $mergimalEncountered.name + &quot;.png&#39; /&gt;&quot;&gt;&gt;
 &lt;p&gt;$mergimalEncountered.strayPassageText&lt;/p&gt;
 &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia[$mergimalEncountered.name] = &#39;seen&#39;&gt;&gt;
 &lt;p&gt;Do &lt;strong&gt;Worksheet $mergimalEncountered.number&lt;/strong&gt;&lt;/p&gt;
@@ -24744,7 +24810,7 @@ specific:
       &lt;&lt;goto $players[$activePlayer].characters[$activeCharacter].worldMapPosition&gt;&gt;
     &lt;&lt;/link&gt;&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="179" name="tame attempt" tags="tame" position="1100,2225" size="100,100">&lt;&lt;set _target = 10&gt;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="186" name="tame attempt" tags="tame" position="725,2350" size="100,100">&lt;&lt;set _target = 10&gt;&gt;
 &lt;&lt;set _result = 0&gt;&gt;
 &lt;&lt;script&gt;&gt;
   const rarity = State.variables.mergimalEncountered.rarity;
@@ -24790,7 +24856,7 @@ specific:
 &lt;&lt;done&gt;&gt;
   &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball --&gt;&gt;
   &lt;&lt;roll &#39;mergiball&#39;&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="tamed encounter" tags="tamed" position="1225,2225" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="187" name="tamed encounter" tags="tamed" position="850,2350" size="100,100">&lt;div class=&#39;flex flex-row gap-lg&#39;&gt;
   &lt;div&gt;&lt;&lt;card $mergimalEncountered.name&gt;&gt;&lt;/div&gt;
   &lt;div class=&#39;align-center-box&#39;&gt;
     &lt;p&gt;&lt;strong&gt;name:&lt;/strong&gt; $mergimalEncountered.name&lt;br /&gt;
@@ -24808,7 +24874,7 @@ specific:
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="181" name="mergimals data variable" tags="" position="100,2350" size="100,100">&lt;&lt;set $mergimals to {
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="188" name="mergimals data variable" tags="" position="975,2350" size="100,100">&lt;&lt;set $mergimals to {
   unknown: {
     name: &#39;unknown&#39;, 
     type: &#39;unknown&#39;, 
@@ -25097,7 +25163,7 @@ specific:
     strayPassageText: &#39;You\&#39;re looking around in the grass and suddenly feel your hair stand on end. A cat-like Mergimal stares at you with curiosity.&#39;,
     tamedPassageText: &#39;This Mergimal is named Zipper. They\&#39;re cute and furry and like to be pet. However, when you pet them you can feel the hair all over your body stand up due to static electricity.&#39;
   }
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="182" name="mergimals encounter table" tags="" position="225,2350" size="100,100">&lt;&lt;set $encounterTable = {
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="189" name="mergimals encounter table" tags="" position="1100,2350" size="100,100">&lt;&lt;set $encounterTable = {
     b4 : {
         name: &#39;route 001&#39;,
         common: &#39;boxin&#39;,
@@ -25158,7 +25224,7 @@ specific:
         uncommon: &#39;gemble&#39;,
         rare: &#39;flameberry&#39;
     }
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="mergimals math facts" tags="" position="350,2350" size="100,100">&lt;&lt;set $facts = {
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="190" name="mergimals math facts" tags="" position="1225,2350" size="100,100">&lt;&lt;set $facts = {
   &#39;0 x 0&#39; : {
     factor1: 0,
     factor2: 0,
@@ -25234,7 +25300,7 @@ specific:
     factor2: 1,
     product: 1
   }
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="create a character" tags="util" position="475,2350" size="100,100">&lt;h2 style=&#39;margin-bottom: 1rem;&#39;&gt;create a character&lt;/h2&gt;
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="191" name="create a character" tags="util" position="100,2475" size="100,100">&lt;h2 style=&#39;margin-bottom: 1rem;&#39;&gt;create a character&lt;/h2&gt;
 &lt;div style=&#39;display: flex; flex-direction: column; gap: 1rem;&#39;&gt;
   &lt;div&gt;name: &lt;&lt;textbox &#39;_newCharacterName&#39; &#39;&#39;&gt;&gt;&lt;/div&gt;
   &lt;div&gt;
@@ -25296,10 +25362,10 @@ $(function() {
     State.temporary.newCharacterColor = $(this).attr(&#39;data-color&#39;);
   });
 });
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="no character name" tags="util dialog" position="600,2350" size="100,100">&lt;p&gt;Please enter a character name.&lt;/p&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="192" name="no character name" tags="util dialog" position="225,2475" size="100,100">&lt;p&gt;Please enter a character name.&lt;/p&gt;
 &lt;&lt;button &#39;Okay&#39;&gt;&gt;
   &lt;&lt;run Dialog.close()&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="186" name="gaia force: blue urf" tags="" position="725,2350" size="100,100">&lt;p&gt;shatter your chains,&lt;br /&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="193" name="gaia force: blue urf" tags="" position="350,2475" size="100,100">&lt;p&gt;shatter your chains,&lt;br /&gt;
 throw off the reins!&lt;br /&gt;
 to shield our planet from desecration,&lt;br /&gt;
 to bring together people from every nation,&lt;br /&gt;
@@ -25308,11 +25374,11 @@ to ignite the old world in a cleansing flame&lt;br /&gt;
 murray&lt;br /&gt;
 berta&lt;br /&gt;
 gaia force turns the tide&lt;br /&gt;
-give up now, or be pushed aside&lt;/p&gt;</tw-passagedata><tw-passagedata pid="187" name="intro" tags="story" position="850,2350" size="100,100">&lt;p&gt;Greetings, $activeCharacter!&lt;/p&gt;
+give up now, or be pushed aside&lt;/p&gt;</tw-passagedata><tw-passagedata pid="194" name="intro" tags="story" position="475,2475" size="100,100">&lt;p&gt;Greetings, $activeCharacter!&lt;/p&gt;
 &lt;p&gt;Today is the first day of your Mergimals journey!&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Go see professor Tamrack.-&gt;start: part 1]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="188" name="start: part 1" tags="story" position="975,2350" size="100,100">&lt;p&gt;Professor Tamarack&#39;s office is on the Northeastern edge of town, inside the Mergimal Lab. It&#39;s the biggest building in the village and what mysteries fill all three floors are as good as anyone&#39;s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="195" name="start: part 1" tags="story" position="600,2475" size="100,100">&lt;p&gt;Professor Tamarack&#39;s office is on the Northeastern edge of town, inside the Mergimal Lab. It&#39;s the biggest building in the village and what mysteries fill all three floors are as good as anyone&#39;s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.&lt;/p&gt;
 &lt;&lt;tam&gt;&gt;$activeCharacter!&lt;br /&gt;
 Finally, you’re here!
 &lt;&lt;/tam&gt;&gt;
@@ -25346,7 +25412,7 @@ Finally, you’re here!
       &lt;&lt;/link&gt;&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="189" name="start: part 2" tags="story" position="1100,2350" size="100,100">&lt;p&gt;You enter.&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="196" name="start: part 2" tags="story" position="725,2475" size="100,100">&lt;p&gt;You enter.&lt;/p&gt;
 &lt;p&gt;It&#39;s time to pick your first Mergimal!&lt;/p&gt;
 &lt;div style=&#39;display: flex; gap: 1rem; margin-bottom: 1rem;&#39;&gt;
   &lt;&lt;card &#39;melodrake&#39; true&gt;&gt;
@@ -25358,11 +25424,11 @@ Finally, you’re here!
 &lt;/div&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Ask if there are any others.-&gt;start: part 2b]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="190" name="start: part 2b" tags="story" position="1225,2350" size="100,100">&lt;p&gt;Maybe someday! But not right now.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="197" name="start: part 2b" tags="story" position="850,2475" size="100,100">&lt;p&gt;Maybe someday! But not right now.&lt;/p&gt;
 &lt;p&gt;So make a choice.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[As you wish.-&gt;start: part 2]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="191" name="start: part 3" tags="story" position="100,2475" size="100,100">&lt;&lt;set _starter = $players[$activePlayer].characters[$activeCharacter].starter&gt;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="198" name="start: part 3" tags="story" position="975,2475" size="100,100">&lt;&lt;set _starter = $players[$activePlayer].characters[$activeCharacter].starter&gt;&gt;
 &lt;&lt;tam&gt;&gt;So, you chose the &lt;span class=&#39;text-red&#39;&gt;$mergimals[_starter].type&lt;/span&gt; Mergimal _starter?&lt;br /&gt;
 They seem quite strong.&lt;&lt;/tam&gt;&gt;
 &lt;&lt;set _starterEntry = &#39;I chose a &#39; + _starter + &#39; as my first Mergimal.&#39;&gt;&gt;
@@ -25371,7 +25437,7 @@ They seem quite strong.&lt;&lt;/tam&gt;&gt;
 Your first stop is in Littlemoose, at the Veil School.&lt;&lt;/tam&gt;&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[I understand.-&gt;start: part 4]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="192" name="start: part 4" tags="story" position="225,2475" size="100,100">&lt;&lt;tam&gt;&gt;Since you&#39;re already headed towards Littlemoose, will you do me a favor?&lt;br /&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="199" name="start: part 4" tags="story" position="1100,2475" size="100,100">&lt;&lt;tam&gt;&gt;Since you&#39;re already headed towards Littlemoose, will you do me a favor?&lt;br /&gt;
 I owe the Veil School leader, Grace, some Mergiballs. Can you give them these?&lt;&lt;/tam&gt;&gt;
 &lt;div class=&#39;new-items&#39;&gt;&lt;strong&gt;GAIN:&lt;/strong&gt; 5 mergiballs.&lt;/div&gt;
 &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 5&gt;&gt;
@@ -25381,7 +25447,7 @@ I owe the Veil School leader, Grace, some Mergiballs. Can you give them these?&l
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Let&#39;s go!-&gt;b3]]&lt;/li&gt;
   &lt;li&gt;[[Can you explain where Littlemoose is?-&gt;start: part 4b]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="193" name="start: part 4b" tags="story" position="350,2475" size="100,100">&lt;&lt;tam&gt;&gt;You&#39;ll find it to the south and east, just on the other side of Littlemoose Forest.&lt;br /&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="200" name="start: part 4b" tags="story" position="1225,2475" size="100,100">&lt;&lt;tam&gt;&gt;You&#39;ll find it to the south and east, just on the other side of Littlemoose Forest.&lt;br /&gt;
 Make sure to use your map if you get lost.&lt;&lt;/tam&gt;&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Okay, I am ready!-&gt;b3]]&lt;/li&gt;

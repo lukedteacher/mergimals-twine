@@ -1,36 +1,4 @@
-:: j2 [j2 shin-gobee-desert map]
-<div class='flex-row flex items-center gap-lg'>
-  <div class='explore-box'>
-    <p>Zahara is here!</p>
-    <h3>EXPLORE</h3>
-    <ul class='choices'>
-      <li>[[Look around->j3: description]]</li>
-      <li>[[Talk to Zahara.->j3: zahara]]</li>
-    </ul>
-  </div>
-  <<map 'j2'>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'j2'>>
-</div>
-:: j2: explore [j2 explore]
-<<map 'j2'>><<n>><<s>><</map>><<set $currentLocation = 'j2'>>\
-After plodding for hours through the sun-baked desert, you spot an inviting oasis on the horizon....Or is it just a mirage?
-
-[[Approach the oasis.->j2: description]]
-[[Turn back. It's probably a mirage.->404]]
-
-!!!!EXPLORE
-
-
-[[Leave the area.->404]]
-
-:: j2: description
-<img class='concept' src='images/story/cactuspatch.png'>
-It seems real enough once you get closer. It's a small pond surrounded by various sized cacti. A hooded figure is crounched near one of them.
-
-[[Approach the hooded figure.->j2: zahara]]
-[[Leave the area.->404]]
-
-:: j2: zahara
-:: oasis: zahara
+:: zahara
 You spot a lone figure crouched beside a cactus in the blazing sun. There are several other big, beautiful cacti surrounding her.
 As you approach, Zahara looks up and says, "Oh, welcome to my cactus garden. I call it "The Factor Patch".
 
@@ -60,6 +28,3 @@ They're actually 'Cactori'...Factor cacti. They can only grow with the power of 
 Can you pick a cactus and guide the factor tree until it blooms?
 
 [[Ask how it works.->zahara: lesson]]
-
-
-

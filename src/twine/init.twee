@@ -6,6 +6,9 @@
 <<include 'mergimals encounter table'>>
 <<include 'mergimals math facts'>>
 
+<<widget 'asil' container>>
+  <<say 'Asil (Forest Witch)' 'images/characters/asil.webp'>>_contents<</say>>
+<</widget>>
 <<widget 'tam' container>>
   <<say 'Prof. Tamarack' 'images/characters/proftam.webp'>>_contents<</say>>
 <</widget>>
