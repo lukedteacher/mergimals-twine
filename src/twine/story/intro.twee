@@ -6,7 +6,8 @@
 </ul>
 
 :: start: part 1 [story]
-<p>Professor Tamarack's office is on the Northeastern edge of town, inside the Mergimal Lab. It's the biggest building in the village and what mysteries fill all three floors are as good as anyone's guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.</p>
+<p>Professor Tamarack's office is on the Northeastern edge of town, inside the Mergimal Lab. It's the biggest building in the village and what mysteries fill all three floors are as good as anyone's guess.</p>
+<p>As you walk towards the front door, the professor steps out of it and greets you with a warm smile.</p>
 <<tam>>$activeCharacter!<br />
 Finally, you’re here!
 <</tam>>
@@ -43,8 +44,9 @@ Finally, you’re here!
 </div>
 
 :: start: part 2 [story]
-<p>You enter.</p>
-<p>It's time to pick your first Mergimal!</p>
+<p>You follow Professor Tamarack inside. He leads you to a small room with three small creatures sitting on a podium.</p>
+<p>"It's time to pick your first Mergimal!" he says.</p>
+<p>(Click on a Mergimal card to learn more and make your selection.)</p>
 <div style='display: flex; gap: 1rem; margin-bottom: 1rem;'>
   <<card 'melodrake' true>>
   <<set $players[$activePlayer].characters[$activeCharacter].mergipedia.melodrake = 'seen'>>
@@ -68,24 +70,42 @@ Finally, you’re here!
 <<set _starter = $players[$activePlayer].characters[$activeCharacter].starter>>
 <<tam>>So, you chose the <span class='text-red'>$mergimals[_starter].type</span> Mergimal _starter?<br />
 They seem quite strong.<</tam>>
-<<set _starterEntry = 'I chose a ' + _starter + ' as my first Mergimal.'>>
+<<set _starterEntry = 'I chose ' + _starter + ' as my first Mergimal.'>>
 <<writeentry _starterEntry>>
-<<tam>>You are now ready to set out and take on the Mergimal School Challenge!<br />
-Your first stop is in Littlemoose, at the Veil School.<</tam>>
+<<tam>>My life's work has been to study Mergimals and learn more about their fantastic powers!<br />
+However--to be honest--the life of an adventurer doesn't suit me. I prefer the comfort and safety of my lab.<br />
+That's where you come in! I need you to go out and gather data on Mergimals using my newest invention: the Mergipedia.<</tam>>
 <ul class='choices'>
-  <li>[[I understand.->start: part 4]]</li>
+  <li>[[I'll do it!->start: part 4]]</li>
+  <li>[[What does it do?->start: part 3b]]</li>
+</ul>
+
+:: start: part 3b [story]
+<<tam>>I'm glad you asked!<br />
+The Mergipedia uses state-of-the-art neo-silicon quantum crystal technology to scan any Mergimals you encounter and catalogue their data.<br />
+The better you get to know the Mergimal, the more complete the information! But... err... there are still some bugs I have to work out so you'll have to come back later for an update.<</tam>>
+<ul class='choices'>
+  <li>[[I can't wait!->start: part 4]]</li>
+  <li>[[Have you tried overclocking the CPU and routing the data thru the memory bus? (requires: KEYWORD SCIENTIST)->start: part 3c]]</li>
+</ul>
+
+:: start: part 3c [story scientist]
+<<tam>>Wow! Your knowledge of Mergimal science is quite impressive. I did try using the memory bus, but overclocking at the same time might prevent the sync issues I was having...<</tam>>
+<p>Professor Tamarack begins digging thru a pile of parts on a nearby table. After some quick adjustments to the device, he seems satisfied.</p>
+<<tam>>I still haven't figured out everything, but this is a great start. Here are some extra parts that you might find useful.<</tam>>
+<div class='new-items'><strong>GAIN:</strong> 2 tools.</div>
+<<set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 2>>
+<<writeentry 'I helped Prof. Tamarack fix a bug with the Mergipedia.'>>
+<ul class='choices'>
+  <li>[[Thanks!->start: part 4]]</li>
 </ul>
 
 :: start: part 4 [story]
-<<tam>>Since you're already headed towards Littlemoose, will you do me a favor?<br />
-I owe the Veil School leader, Grace, some Mergiballs. Can you give them these?<</tam>>
-<div class='new-items'><strong>GAIN:</strong> 5 mergiballs.</div>
-<<set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 5>>
-<<writeentry 'I was asked to make a delivery to the Veil School leader.'>>
-<<tam>>I am sure Grace wouldn't mind if you used a few on your way there.<</tam>>
-<p>It's time to start your journey.</p>
+<<writeentry 'I got a Mergipedia from Prof. Tamarack.'>>
+<<tam>>You are now ready to set out and take on the Mergimal School Challenge!<br />
+Your first stop is in Littlemoose, at the Veil School.<</tam>>
 <ul class='choices'>
-  <li>[[Let's go!->b3]]</li>
+  <li>[[I understand.->start: part 5]]</li>
   <li>[[Can you explain where Littlemoose is?->start: part 4b]]</li>
 </ul>
 
@@ -93,5 +113,14 @@ I owe the Veil School leader, Grace, some Mergiballs. Can you give them these?<<
 <<tam>>You'll find it to the south and east, just on the other side of Littlemoose Forest.<br />
 Make sure to use your map if you get lost.<</tam>>
 <ul class='choices'>
-  <li>[[Okay, I am ready!->b3]]</li>
+  <li>[[Okay, I am ready!->start: part 5]]</li>
+</ul>
+
+:: start: part 5 [story]
+<<writeentry 'I need to go to Littlemoose to begin the Mergimal Challenge.'>>
+<<tam>>Well, feel free to stop by again later if you need any pointers.<br />
+I would love to see your progress with gathering data with the Mergipedia too!<</tam>>
+<p>It's time to start your journey.</p>
+<ul class='choices'>
+  <li>[[Let's go!->b3]]</li>
 </ul>

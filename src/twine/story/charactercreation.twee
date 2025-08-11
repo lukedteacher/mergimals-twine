@@ -48,6 +48,8 @@
         <<goto 'main menu'>>
       <</if>>
     <</button>>
+    <<button 'cancel' 'main menu'>>
+    <</button>>
   </div>
 </div>
 <<script>>

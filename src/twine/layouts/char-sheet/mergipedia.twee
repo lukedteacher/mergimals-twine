@@ -41,7 +41,7 @@ _$start through <<-_$start + 6>><br />
     <strong>type:</strong> root<br />
     <strong>number:</strong> 2<br />
     <strong>strategy:</strong> produce a pair.<br />
-    <strong>description:</strong> This Mergimal is can play music with their body.<br />
+    <strong>description:</strong> This Mergimal can play music with their body.<br />
     <strong>found:</strong> ???</p>
     <ul class='choices'>
       <li><<return 'Inspect another.'>></li>

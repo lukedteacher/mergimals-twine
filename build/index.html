@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="145" creator="Twine (Twee 3) Language" creator-version="1.1.3" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "card.css" */
+	<!-- UUID://90E729E4-A877-4D86-B308-9E22C917BB4A// --><tw-storydata name="MERGIMALS" startnode="145" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="90E729E4-A877-4D86-B308-9E22C917BB4A" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "card.css" */
 .card-box {
   aspect-ratio: 63 / 88;
   display: flex;
@@ -24050,7 +24050,7 @@ _$start through &lt;&lt;-_$start + 6&gt;&gt;&lt;br /&gt;
     &lt;strong&gt;type:&lt;/strong&gt; root&lt;br /&gt;
     &lt;strong&gt;number:&lt;/strong&gt; 2&lt;br /&gt;
     &lt;strong&gt;strategy:&lt;/strong&gt; produce a pair.&lt;br /&gt;
-    &lt;strong&gt;description:&lt;/strong&gt; This Mergimal is can play music with their body.&lt;br /&gt;
+    &lt;strong&gt;description:&lt;/strong&gt; This Mergimal can play music with their body.&lt;br /&gt;
     &lt;strong&gt;found:&lt;/strong&gt; ???&lt;/p&gt;
     &lt;ul class=&#39;choices&#39;&gt;
       &lt;li&gt;&lt;&lt;return &#39;Inspect another.&#39;&gt;&gt;&lt;/li&gt;
@@ -25349,6 +25349,8 @@ specific:
         &lt;&lt;goto &#39;main menu&#39;&gt;&gt;
       &lt;&lt;/if&gt;&gt;
     &lt;&lt;/button&gt;&gt;
+    &lt;&lt;button &#39;cancel&#39; &#39;main menu&#39;&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;&lt;script&gt;&gt;
@@ -25378,7 +25380,8 @@ give up now, or be pushed aside&lt;/p&gt;</tw-passagedata><tw-passagedata pid="1
 &lt;p&gt;Today is the first day of your Mergimals journey!&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Go see professor Tamrack.-&gt;start: part 1]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="195" name="start: part 1" tags="story" position="600,2475" size="100,100">&lt;p&gt;Professor Tamarack&#39;s office is on the Northeastern edge of town, inside the Mergimal Lab. It&#39;s the biggest building in the village and what mysteries fill all three floors are as good as anyone&#39;s guess. As you walk towards the front door, the professor steps out of it and greets you with a warm smile.&lt;/p&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="195" name="start: part 1" tags="story" position="600,2475" size="100,100">&lt;p&gt;Professor Tamarack&#39;s office is on the Northeastern edge of town, inside the Mergimal Lab. It&#39;s the biggest building in the village and what mysteries fill all three floors are as good as anyone&#39;s guess.&lt;/p&gt;
+&lt;p&gt;As you walk towards the front door, the professor steps out of it and greets you with a warm smile.&lt;/p&gt;
 &lt;&lt;tam&gt;&gt;$activeCharacter!&lt;br /&gt;
 Finally, you’re here!
 &lt;&lt;/tam&gt;&gt;
@@ -25412,8 +25415,9 @@ Finally, you’re here!
       &lt;&lt;/link&gt;&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="196" name="start: part 2" tags="story" position="725,2475" size="100,100">&lt;p&gt;You enter.&lt;/p&gt;
-&lt;p&gt;It&#39;s time to pick your first Mergimal!&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="196" name="start: part 2" tags="story" position="725,2475" size="100,100">&lt;p&gt;You follow Professor Tamarack inside. He leads you to a small room with three small creatures sitting on a podium.&lt;/p&gt;
+&lt;p&gt;&quot;It&#39;s time to pick your first Mergimal!&quot; he says.&lt;/p&gt;
+&lt;p&gt;(Click on a Mergimal card to learn more and make your selection.)&lt;/p&gt;
 &lt;div style=&#39;display: flex; gap: 1rem; margin-bottom: 1rem;&#39;&gt;
   &lt;&lt;card &#39;melodrake&#39; true&gt;&gt;
   &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].mergipedia.melodrake = &#39;seen&#39;&gt;&gt;
@@ -25431,26 +25435,44 @@ Finally, you’re here!
 &lt;/ul&gt;</tw-passagedata><tw-passagedata pid="198" name="start: part 3" tags="story" position="975,2475" size="100,100">&lt;&lt;set _starter = $players[$activePlayer].characters[$activeCharacter].starter&gt;&gt;
 &lt;&lt;tam&gt;&gt;So, you chose the &lt;span class=&#39;text-red&#39;&gt;$mergimals[_starter].type&lt;/span&gt; Mergimal _starter?&lt;br /&gt;
 They seem quite strong.&lt;&lt;/tam&gt;&gt;
-&lt;&lt;set _starterEntry = &#39;I chose a &#39; + _starter + &#39; as my first Mergimal.&#39;&gt;&gt;
+&lt;&lt;set _starterEntry = &#39;I chose &#39; + _starter + &#39; as my first Mergimal.&#39;&gt;&gt;
 &lt;&lt;writeentry _starterEntry&gt;&gt;
+&lt;&lt;tam&gt;&gt;My life&#39;s work has been to study Mergimals and learn more about their fantastic powers!&lt;br /&gt;
+However--to be honest--the life of an adventurer doesn&#39;t suit me. I prefer the comfort and safety of my lab.&lt;br /&gt;
+That&#39;s where you come in! I need you to go out and gather data on Mergimals using my newest invention: the Mergipedia.&lt;&lt;/tam&gt;&gt;
+&lt;ul class=&#39;choices&#39;&gt;
+  &lt;li&gt;[[I&#39;ll do it!-&gt;start: part 4]]&lt;/li&gt;
+  &lt;li&gt;[[What does it do?-&gt;start: part 3b]]&lt;/li&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="199" name="start: part 3b" tags="story" position="1100,2475" size="100,100">&lt;&lt;tam&gt;&gt;I&#39;m glad you asked!&lt;br /&gt;
+The Mergipedia uses state-of-the-art neo-silicon quantum crystal technology to scan any Mergimals you encounter and catalogue their data.&lt;br /&gt;
+The better you get to know the Mergimal, the more complete the information! But... err... there are still some bugs I have to work out so you&#39;ll have to come back later for an update.&lt;&lt;/tam&gt;&gt;
+&lt;ul class=&#39;choices&#39;&gt;
+  &lt;li&gt;[[I can&#39;t wait!-&gt;start: part 4]]&lt;/li&gt;
+  &lt;li&gt;[[Have you tried overclocking the CPU and routing the data thru the memory bus? (requires: KEYWORD SCIENTIST)-&gt;start: part 3c]]&lt;/li&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="200" name="start: part 3c" tags="story scientist" position="1225,2475" size="100,100">&lt;&lt;tam&gt;&gt;Wow! Your knowledge of Mergimal science is quite impressive. I did try using the memory bus, but overclocking at the same time might prevent the sync issues I was having...&lt;&lt;/tam&gt;&gt;
+&lt;p&gt;Professor Tamarack begins digging thru a pile of parts on a nearby table. After some quick adjustments to the device, he seems satisfied.&lt;/p&gt;
+&lt;&lt;tam&gt;&gt;I still haven&#39;t figured out everything, but this is a great start. Here are some extra parts that you might find useful.&lt;&lt;/tam&gt;&gt;
+&lt;div class=&#39;new-items&#39;&gt;&lt;strong&gt;GAIN:&lt;/strong&gt; 2 tools.&lt;/div&gt;
+&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 2&gt;&gt;
+&lt;&lt;writeentry &#39;I helped Prof. Tamarack fix a bug with the Mergipedia.&#39;&gt;&gt;
+&lt;ul class=&#39;choices&#39;&gt;
+  &lt;li&gt;[[Thanks!-&gt;start: part 4]]&lt;/li&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="201" name="start: part 4" tags="story" position="100,2600" size="100,100">&lt;&lt;writeentry &#39;I got a Mergipedia from Prof. Tamarack.&#39;&gt;&gt;
 &lt;&lt;tam&gt;&gt;You are now ready to set out and take on the Mergimal School Challenge!&lt;br /&gt;
 Your first stop is in Littlemoose, at the Veil School.&lt;&lt;/tam&gt;&gt;
 &lt;ul class=&#39;choices&#39;&gt;
-  &lt;li&gt;[[I understand.-&gt;start: part 4]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="199" name="start: part 4" tags="story" position="1100,2475" size="100,100">&lt;&lt;tam&gt;&gt;Since you&#39;re already headed towards Littlemoose, will you do me a favor?&lt;br /&gt;
-I owe the Veil School leader, Grace, some Mergiballs. Can you give them these?&lt;&lt;/tam&gt;&gt;
-&lt;div class=&#39;new-items&#39;&gt;&lt;strong&gt;GAIN:&lt;/strong&gt; 5 mergiballs.&lt;/div&gt;
-&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.mergiball += 5&gt;&gt;
-&lt;&lt;writeentry &#39;I was asked to make a delivery to the Veil School leader.&#39;&gt;&gt;
-&lt;&lt;tam&gt;&gt;I am sure Grace wouldn&#39;t mind if you used a few on your way there.&lt;&lt;/tam&gt;&gt;
+  &lt;li&gt;[[I understand.-&gt;start: part 5]]&lt;/li&gt;
+  &lt;li&gt;[[Can you explain where Littlemoose is?-&gt;start: part 4b]]&lt;/li&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="202" name="start: part 4b" tags="story" position="225,2600" size="100,100">&lt;&lt;tam&gt;&gt;You&#39;ll find it to the south and east, just on the other side of Littlemoose Forest.&lt;br /&gt;
+Make sure to use your map if you get lost.&lt;&lt;/tam&gt;&gt;
+&lt;ul class=&#39;choices&#39;&gt;
+  &lt;li&gt;[[Okay, I am ready!-&gt;start: part 5]]&lt;/li&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="203" name="start: part 5" tags="story" position="350,2600" size="100,100">&lt;&lt;writeentry &#39;I need to go to Littlemoose to begin the Mergimal Challenge.&#39;&gt;&gt;
+&lt;&lt;tam&gt;&gt;Well, feel free to stop by again later if you need any pointers.&lt;br /&gt;
+I would love to see your progress with gathering data with the Mergipedia too!&lt;&lt;/tam&gt;&gt;
 &lt;p&gt;It&#39;s time to start your journey.&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Let&#39;s go!-&gt;b3]]&lt;/li&gt;
-  &lt;li&gt;[[Can you explain where Littlemoose is?-&gt;start: part 4b]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="200" name="start: part 4b" tags="story" position="1225,2475" size="100,100">&lt;&lt;tam&gt;&gt;You&#39;ll find it to the south and east, just on the other side of Littlemoose Forest.&lt;br /&gt;
-Make sure to use your map if you get lost.&lt;&lt;/tam&gt;&gt;
-&lt;ul class=&#39;choices&#39;&gt;
-  &lt;li&gt;[[Okay, I am ready!-&gt;b3]]&lt;/li&gt;
 &lt;/ul&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
