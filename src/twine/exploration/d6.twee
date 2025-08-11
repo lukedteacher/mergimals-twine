@@ -27,21 +27,27 @@
 
 :: d6: vending machine [vend littlemoose]
 <<include 'littlemoose: vending machine'>>
-[[Look around Littlemoose.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
+<ul class='choices'>
+  <li>[[Look around Littlemoose.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+</ul>
 
 :: d6: veil school
 <<if not $players[$activePlayer].characters[$activeCharacter].keywords.includes('closed')>>
-    The school is closed?!?
-
-    Oh dear.
-
-    GAIN keyword CLOSED.<<set $players[$activePlayer].characters[$activeCharacter].keywords.push('closed')>>
-
-    [[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
+  <p>As you approach the building, something doesn't seem right.</p>
+  <p>There are no lights on inside and a hastily written sign is taped across the front doors.</p>
+  <p>You step closer for a better look.</p>
+  <p>The sign says: "temporarily closed. went to help blue urf. - grace"</p>
+  <p>Oh dear. Perhaps a local would be able to offer an explanation?</p>
+  <p>GAIN keyword CLOSED.</p>
+  <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('closed')>>
+  <ul class='choices'>
+    <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+  </ul>
 <<else>>
-    (Keyword CLOSED detected)
-
-    The school is dark. No one seems to be here.
-
-    [[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
+  <p>(Keyword CLOSED detected)</p>
+  <p>The school is still dark. No one seems to be here.</p>
+  <p>You'll have to return once it has re-opened.</p>
+  <ul class='choices'>
+    <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+  </ul>
 <</if>>

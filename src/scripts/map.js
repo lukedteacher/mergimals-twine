@@ -13,6 +13,7 @@
 
     var $img = $(document.createElement('img'))
       .attr('src', src)
+      .attr('usemap', '#grass')
       .addClass('map-img');
 
     if ($img.attr('src') && $img.attr('src').trim()) {

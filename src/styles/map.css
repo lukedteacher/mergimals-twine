@@ -1,71 +1,71 @@
 /* explore map */
 
 .map-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .map-grid {
-    display: grid;
-    grid: repeat(32, 1fr) / repeat(32, 1fr);
+  display: grid;
+  grid: repeat(32, 1fr) / repeat(32, 1fr);
 }
 
 .map-img {
-    width: 36rem;
-    grid-area: 1 / 1 / span 32 / span 32;
+  width: 36rem;
+  grid-area: 1 / 1 / span 32 / span 32;
 }
 
 /* move buttons */
 
 .move-btn {
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-    background-color: hsl(56, 100%, 50%);
-    border-radius: 0.4rem;
-    background-size: 1.8rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: hsl(56, 100%, 50%);
+  border-radius: 0.4rem;
+  background-size: 1.8rem;
 }
 
 .move-btn:hover {
-    background-color: hsl(60, 100%, 81%);
+  background-color: hsl(60, 100%, 81%);
 }
 
 .north {
-    grid-area: 2 / 15 / span 2 / span 4;
-    background-image: url('images/svg/north.svg');
+  grid-area: 2 / 15 / span 2 / span 4;
+  background-image: url('images/svg/north.svg');
 }
 
 .east {
-    grid-area: 15 / 30 / span 4 / span 2;
-    background-image: url('images/svg/east.svg');
+  grid-area: 15 / 30 / span 4 / span 2;
+  background-image: url('images/svg/east.svg');
 }
 
 .west {
-    grid-area: 15 / 2 / span 4 / span 2;
-    background-image: url('images/svg/west.svg');
+  grid-area: 15 / 2 / span 4 / span 2;
+  background-image: url('images/svg/west.svg');
 }
 
 .south {
-    grid-area: 30 / 15 / span 2 / span 4;
-    background-image: url('images/svg/south.svg');
+  grid-area: 30 / 15 / span 2 / span 4;
+  background-image: url('images/svg/south.svg');
 }
 
 /* world map stuff */
 
 .world-map-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .world-map-grid {
-    display: grid;
-    grid: repeat(10, 1fr) / repeat(10, 1fr);
+  display: grid;
+  grid: repeat(10, 1fr) / repeat(10, 1fr);
 }
 
 .world-map-img {
-    height: 100%;
-    width: 100%;
-    grid-area: 1 / 1 / span 10 / span 10;
+  height: 100%;
+  width: 100%;
+  grid-area: 1 / 1 / span 10 / span 10;
 }
 
 /* markers and fog */

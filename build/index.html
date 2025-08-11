@@ -1996,71 +1996,71 @@ a.ui-button:active,
 /* explore map */
 
 .map-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .map-grid {
-    display: grid;
-    grid: repeat(32, 1fr) / repeat(32, 1fr);
+  display: grid;
+  grid: repeat(32, 1fr) / repeat(32, 1fr);
 }
 
 .map-img {
-    width: 36rem;
-    grid-area: 1 / 1 / span 32 / span 32;
+  width: 36rem;
+  grid-area: 1 / 1 / span 32 / span 32;
 }
 
 /* move buttons */
 
 .move-btn {
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-    background-color: hsl(56, 100%, 50%);
-    border-radius: 0.4rem;
-    background-size: 1.8rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: hsl(56, 100%, 50%);
+  border-radius: 0.4rem;
+  background-size: 1.8rem;
 }
 
 .move-btn:hover {
-    background-color: hsl(60, 100%, 81%);
+  background-color: hsl(60, 100%, 81%);
 }
 
 .north {
-    grid-area: 2 / 15 / span 2 / span 4;
-    background-image: url('images/svg/north.svg');
+  grid-area: 2 / 15 / span 2 / span 4;
+  background-image: url('images/svg/north.svg');
 }
 
 .east {
-    grid-area: 15 / 30 / span 4 / span 2;
-    background-image: url('images/svg/east.svg');
+  grid-area: 15 / 30 / span 4 / span 2;
+  background-image: url('images/svg/east.svg');
 }
 
 .west {
-    grid-area: 15 / 2 / span 4 / span 2;
-    background-image: url('images/svg/west.svg');
+  grid-area: 15 / 2 / span 4 / span 2;
+  background-image: url('images/svg/west.svg');
 }
 
 .south {
-    grid-area: 30 / 15 / span 2 / span 4;
-    background-image: url('images/svg/south.svg');
+  grid-area: 30 / 15 / span 2 / span 4;
+  background-image: url('images/svg/south.svg');
 }
 
 /* world map stuff */
 
 .world-map-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .world-map-grid {
-    display: grid;
-    grid: repeat(10, 1fr) / repeat(10, 1fr);
+  display: grid;
+  grid: repeat(10, 1fr) / repeat(10, 1fr);
 }
 
 .world-map-img {
-    height: 100%;
-    width: 100%;
-    grid-area: 1 / 1 / span 10 / span 10;
+  height: 100%;
+  width: 100%;
+  grid-area: 1 / 1 / span 10 / span 10;
 }
 
 /* markers and fog */
@@ -21869,6 +21869,7 @@ var effectsEffectTransfer = effect;
 
     var $img = $(document.createElement('img'))
       .attr('src', src)
+      .attr('usemap', '#grass')
       .addClass('map-img');
 
     if ($img.attr('src') && $img.attr('src').trim()) {
@@ -23321,20 +23322,26 @@ Do Worksheet &#39;Message in a Botttle&#39;.
     &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="93" name="d6: vending machine" tags="vend littlemoose" position="350,1225" size="100,100">&lt;&lt;include &#39;littlemoose: vending machine&#39;&gt;&gt;
-[[Look around Littlemoose.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</tw-passagedata><tw-passagedata pid="94" name="d6: veil school" tags="" position="475,1225" size="100,100">&lt;&lt;if not $players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;closed&#39;)&gt;&gt;
-    The school is closed?!?
-
-    Oh dear.
-
-    GAIN keyword CLOSED.&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].keywords.push(&#39;closed&#39;)&gt;&gt;
-
-    [[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
+&lt;ul class=&#39;choices&#39;&gt;
+  &lt;li&gt;[[Look around Littlemoose.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="94" name="d6: veil school" tags="" position="475,1225" size="100,100">&lt;&lt;if not $players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;closed&#39;)&gt;&gt;
+  &lt;p&gt;As you approach the building, something doesn&#39;t seem right.&lt;/p&gt;
+  &lt;p&gt;There are no lights on inside and a hastily written sign is taped across the front doors.&lt;/p&gt;
+  &lt;p&gt;You step closer for a better look.&lt;/p&gt;
+  &lt;p&gt;The sign says: &quot;temporarily closed. went to help blue urf. - grace&quot;&lt;/p&gt;
+  &lt;p&gt;Oh dear. Perhaps a local would be able to offer an explanation?&lt;/p&gt;
+  &lt;p&gt;GAIN keyword CLOSED.&lt;/p&gt;
+  &lt;&lt;set $players[$activePlayer].characters[$activeCharacter].keywords.push(&#39;closed&#39;)&gt;&gt;
+  &lt;ul class=&#39;choices&#39;&gt;
+    &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
+  &lt;/ul&gt;
 &lt;&lt;else&gt;&gt;
-    (Keyword CLOSED detected)
-
-    The school is dark. No one seems to be here.
-
-    [[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
+  &lt;p&gt;(Keyword CLOSED detected)&lt;/p&gt;
+  &lt;p&gt;The school is still dark. No one seems to be here.&lt;/p&gt;
+  &lt;p&gt;You&#39;ll have to return once it has re-opened.&lt;/p&gt;
+  &lt;ul class=&#39;choices&#39;&gt;
+    &lt;li&gt;[[Continue exploring.-&gt;$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]&lt;/li&gt;
+  &lt;/ul&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="e1" tags="map" position="600,1225" size="100,100">&lt;div class=&#39;flex-row flex items-center gap-lg&#39;&gt;
   &lt;div class=&#39;explore-box&#39;&gt;
     &lt;h3&gt;EXPLORE&lt;/h3&gt;
