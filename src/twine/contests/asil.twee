@@ -70,10 +70,11 @@ The mergimal perks up and nuzzles their nose into the witch's armpit.
 [[Smile at them.->asil: end]]
 
 :: asil: end [c5 contest]
-You take a last look at the witch and her mergimal, who seems quite happy now.
-
-You turn around and head back to the path, thinking about how maybe you also have blind spots that come from your own anxiety. Sometimes stopping and listening to the world around you is the best way to hear yourself.
-
-You feel a little more confident in your ability to help others...and yourself. You gain 1 charm and 1 challenge coin.
-
-[[Continue exploring.->221]]
+<p>You take a last look at the witch and her mergimal, who seems quite happy now.</p>
+<p>You turn around and head back to the path, thinking about how maybe you also have blind spots that come from your own anxiety. Sometimes stopping and listening to the world around you is the best way to hear yourself.</p>
+<p>You feel a little more confident in your ability to help others...and yourself. You gain 1 charm and 1 challenge coin.</p>
+<<gainItem 'charm'>>
+<<gainItem 'coin'>>
+<ul class='choices'>
+  <li>[[Continue exploring.->221]]</li>
+</ul>

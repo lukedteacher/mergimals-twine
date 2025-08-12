@@ -667,13 +667,16 @@ body a:hover {
 
 .alert {
   border: 2px solid var(--red);
+  background-color: var(--red);
   border-radius: 0.4rem;
   padding: 1rem;
   margin-bottom: 2rem;
 }
 
 .warning {
+  color: var(--background-color);
   border: 2px solid var(--yellow);
+  background-color: var(--yellow);
   border-radius: 0.4rem;
   padding: 1rem;
   margin-bottom: 2rem;
@@ -681,6 +684,7 @@ body a:hover {
 
 .journal-entry-box {
   border: 2px solid var(--green);
+  background-color: var(--green);
   border-radius: 0.4rem;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -690,18 +694,33 @@ body a:hover {
   font-weight: bold;
 }
 
-.new-items {
+.gain-notification-box {
+  display: flex;
+  flex-direction: row;
   border: 2px solid var(--indigo);
+  background-color: var(--indigo);
   border-radius: 0.4rem;
   padding: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  align-items: center;
 }
 
-.alert:before {
-  content: '';
-  background-image: url('images/svg/alert.svg');
-  size: 100rem;
+.gain-icon {
+  display: flex;
+  height: 1rem;
+  aspect-ratio: 1 / 1;
+}
 
+.gain-icon-path {
+  stroke: var(--background-text);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.gain-verb-span {
+  display: flex;
+  font-weight: bold;
 }
 
 #passages {
@@ -2376,6 +2395,10 @@ a.ui-button:active,
   justify-content: center;
 }
 
+.middle {
+  vertical-align: middle;
+}
+
 .bg-red {
   background-color: var(--red);
 }
@@ -2978,15 +3001,87 @@ Macro.add('dialogclose', {
   })
 
 }());
-/* twine-user-script #6: "journal.js" */
+/* twine-user-script #6: "gain.js" */
+(function () {
+  // v1.0
+  'use strict';
+
+  function gainItem ($output, item, quantity) {
+    const activePlayer = State.variables.activePlayer
+    if (!activePlayer) throw new Error('no active player found');
+    const activeCharacter = State.variables.activeCharacter
+    if (!activeCharacter) throw new Error('no active character found');
+    const backpack = State.variables.players[activePlayer].characters[activeCharacter].backpack;
+    if (!backpack) throw new Error('no backpack found');
+
+    // add the item to the current stock of items
+    backpack[item] += quantity;
+
+    // create the element to display the item gain notification
+    const $gainBox = $(document.createElement('div'))
+      .addClass('gain-notification-box');
+    
+    const $gainIcon = $(document.createElementNS('http://www.w3.org/2000/svg', 'svg'))
+      .addClass('gain-icon')
+      .attr('viewBox', '0 0 100 100')
+      .appendTo($gainBox);
+    
+    const $gainIconPath = $(document.createElementNS('http://www.w3.org/2000/svg', 'path'))
+      .attr('stroke-width', '2')
+      .attr('stroke', 'white')
+      .attr('d', 'M22 15V16L14 18.5L7 16.6V18H1V7H9L15.2 9.3C16.2 9.7 17 10.8 17 12H19C20.7 12 22 13.3 22 15M5 16V9H3V16H5M19.9 14.6C19.7 14.2 19.4 14 19 14H13.6C13.1 14 12.5 13.9 12 13.8L9.7 13L10.3 11.1L12.7 11.9C13 11.9 15 12 15 12C15 11.6 14.8 11.3 14.4 11.2L8.6 9H7V14.5L14 16.4L19.9 14.6Z')
+      .appendTo($gainIcon);
+    
+    const $gainSpan = $(document.createElement('span'))
+      .addClass('gain-verb-span')
+      .text(' GAIN: ')
+      .appendTo($gainBox);
+    
+    const $notificationSpan = $(document.createElement('span'))
+      .addClass('gain-notification-span')
+      .text(' ' + quantity + ' ' + item + '.')
+      .appendTo($gainBox);
+    
+    // safety check for output being valid
+    if ($output) {
+      if (!($output instanceof $)) {
+        $output = $($output);
+      }
+      $gainBox.appendTo($output);
+    };
+  }
+
+  Macro.add('gainItem', {
+    handler : function () {
+      // check if an item name was provided
+      if (!this.args[0]) throw new Error('no item provided for gain item macro');
+      const item = this.args[0];
+
+      // set quantity of item to 1 as default
+      let quantity = 1;
+      if (this.args[1]) quantity = this.args[1];
+
+      gainItem(this.output, item, quantity);
+    }
+  });
+}());
+/* twine-user-script #7: "journal.js" */
 (function () {
   // v1.0
   'use strict';
 
   function writeEntry ($output, entry) {
-    const journal = State.variables.players[State.variables.activePlayer].characters[State.variables.activeCharacter].journal;
+    const activePlayer = State.variables.activePlayer
+    if (!activePlayer) throw new Error('no active player found');
+    const activeCharacter = State.variables.activeCharacter
+    if (!activeCharacter) throw new Error('no active character found');
+    const journal = State.variables.players[activePlayer].characters[activeCharacter].journal;
     if (!journal) throw new Error('no journal found');
+
+    // add the entry to the journal variable
     journal.push(entry);
+
+    // create the element to display the journal notification
     const $entryBox = $(document.createElement('div'))
       .addClass('journal-entry-box');
     
@@ -3000,6 +3095,7 @@ Macro.add('dialogclose', {
       .text('"' + entry + '"')
       .appendTo($entryBox);
     
+    // safety check for output being valid
     if ($output) {
       if (!($output instanceof $)) {
         $output = $($output);
@@ -3014,7 +3110,7 @@ Macro.add('dialogclose', {
     }
   });
 }());
-/* twine-user-script #7: "jquery-ui.js" */
+/* twine-user-script #8: "jquery-ui.js" */
 /*! jQuery UI - v1.14.1 - 2025-04-04
 * https://jqueryui.com
 * Includes: widget.js, position.js, data.js, disable-selection.js, focusable.js, form-reset-mixin.js, jquery-patch.js, keycode.js, labels.js, scroll-parent.js, tabbable.js, unique-id.js, widgets/draggable.js, widgets/droppable.js, widgets/resizable.js, widgets/selectable.js, widgets/sortable.js, widgets/accordion.js, widgets/autocomplete.js, widgets/button.js, widgets/checkboxradio.js, widgets/controlgroup.js, widgets/datepicker.js, widgets/dialog.js, widgets/menu.js, widgets/mouse.js, widgets/progressbar.js, widgets/selectmenu.js, widgets/slider.js, widgets/spinner.js, widgets/tabs.js, widgets/tooltip.js, effect.js, effects/effect-blind.js, effects/effect-bounce.js, effects/effect-clip.js, effects/effect-drop.js, effects/effect-explode.js, effects/effect-fade.js, effects/effect-fold.js, effects/effect-highlight.js, effects/effect-puff.js, effects/effect-pulsate.js, effects/effect-scale.js, effects/effect-shake.js, effects/effect-size.js, effects/effect-slide.js, effects/effect-transfer.js
@@ -21824,7 +21920,7 @@ var effectsEffectTransfer = effect;
 
 
 } );
-/* twine-user-script #8: "keyword.js" */
+/* twine-user-script #9: "keyword.js" */
 (function () {
     // v0.1
     'use strict';
@@ -21853,7 +21949,7 @@ var effectsEffectTransfer = effect;
     setup.keyword = createKeyword;
 
 }());
-/* twine-user-script #9: "map.js" */
+/* twine-user-script #10: "map.js" */
 (function () {
   // v1.2
   'use strict';
@@ -21919,8 +22015,7 @@ var effectsEffectTransfer = effect;
       const destinationGridCoordinate = gridChange(gridCoordinate, longDirection);
 
       $button.click(() => {
-        Engine.play(destinationGridCoordinate)
-        console.log(destinationGridCoordinate);
+        Engine.play(destinationGridCoordinate);
         State.variables.players[State.variables.activePlayer].characters[State.variables.activeCharacter].explore(destinationGridCoordinate);
       });
       
@@ -21956,7 +22051,7 @@ var effectsEffectTransfer = effect;
   }
 
 }());
-/* twine-user-script #10: "mergipedia.js" */
+/* twine-user-script #11: "mergipedia.js" */
 (function () {
     // v0.1
     'use strict';
@@ -21985,7 +22080,7 @@ var effectsEffectTransfer = effect;
     setup.keyword = createKeyword;
 
 }());
-/* twine-user-script #11: "player.js" */
+/* twine-user-script #12: "player.js" */
 window.Player = class Player {
 	constructor(props) {
 		// set data properties to defaults
@@ -22180,7 +22275,7 @@ Macro.add('characterbox', {
 		character.createCharacterBox(this.output, character, selectable);
 	}
 });
-/* twine-user-script #12: "settings.js" */
+/* twine-user-script #13: "settings.js" */
 Setting.addList('version', {
     label   : 'choose a game version',
     list    : ['fusion', 'fission']
@@ -22191,7 +22286,7 @@ Setting.addList('difficulty', {
 	list    : ['easy', 'normal', 'hard'],
 	default : 'normal'
 });
-/* twine-user-script #13: "shake-macro-set.min.js" */
+/* twine-user-script #14: "shake-macro-set.min.js" */
 /*! <<shake>> macro set for SugarCube 2.x */
 !(function () {
     Macro.add('shake', {
@@ -22266,7 +22361,7 @@ Setting.addList('difficulty', {
         },
     });
 })();
-/* twine-user-script #14: "speech.js" */
+/* twine-user-script #15: "speech.js" */
 (function () {
     // v1.1.1
     'use strict';
@@ -22361,7 +22456,7 @@ Setting.addList('difficulty', {
         });
     });
 }());
-/* twine-user-script #15: "stats.js" */
+/* twine-user-script #16: "stats.js" */
 window.checkDraggables = function () {
     // finds all draggables with data-stat attribute
     let $statDraggables = $('.draggable[data-stat]');
@@ -22379,7 +22474,7 @@ window.checkDraggables = function () {
         return true;
     };
 };
-/* twine-user-script #16: "world-map.js" */
+/* twine-user-script #17: "world-map.js" */
 (function () {
   // v0.2
   'use strict';
@@ -22513,13 +22608,14 @@ The mergimal perks up and nuzzles their nose into the witch&#39;s armpit.
 
 The mergimal perks up and nuzzles their nose into the witch&#39;s armpit.
 
-[[Smile at them.-&gt;asil: end]]</tw-passagedata><tw-passagedata pid="7" name="asil: end" tags="c5 contest" position="850,100" size="100,100">You take a last look at the witch and her mergimal, who seems quite happy now.
-
-You turn around and head back to the path, thinking about how maybe you also have blind spots that come from your own anxiety. Sometimes stopping and listening to the world around you is the best way to hear yourself.
-
-You feel a little more confident in your ability to help others...and yourself. You gain 1 charm and 1 challenge coin.
-
-[[Continue exploring.-&gt;221]]</tw-passagedata><tw-passagedata pid="8" name="bucky" tags="b4 trainer" position="975,100" size="100,100">&lt;p&gt;&quot;Hey, you!&quot; a friendly voice calls. The trainer is standing near the tree, balancing a stack of apples on their head. &quot;Are you ready to have a contest?&quot;&lt;/p&gt;
+[[Smile at them.-&gt;asil: end]]</tw-passagedata><tw-passagedata pid="7" name="asil: end" tags="c5 contest" position="850,100" size="100,100">&lt;p&gt;You take a last look at the witch and her mergimal, who seems quite happy now.&lt;/p&gt;
+&lt;p&gt;You turn around and head back to the path, thinking about how maybe you also have blind spots that come from your own anxiety. Sometimes stopping and listening to the world around you is the best way to hear yourself.&lt;/p&gt;
+&lt;p&gt;You feel a little more confident in your ability to help others...and yourself. You gain 1 charm and 1 challenge coin.&lt;/p&gt;
+&lt;&lt;gainItem &#39;charm&#39;&gt;&gt;
+&lt;&lt;gainItem &#39;coin&#39;&gt;&gt;
+&lt;ul class=&#39;choices&#39;&gt;
+  &lt;li&gt;[[Continue exploring.-&gt;221]]&lt;/li&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="8" name="bucky" tags="b4 trainer" position="975,100" size="100,100">&lt;p&gt;&quot;Hey, you!&quot; a friendly voice calls. The trainer is standing near the tree, balancing a stack of apples on their head. &quot;Are you ready to have a contest?&quot;&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Ask what kind of contest.-&gt;bucky: ask]]&lt;/li&gt;
   &lt;li&gt;[[Umm, sure...-&gt;bucky: apples]]&lt;/li&gt;
@@ -23020,8 +23116,7 @@ Do Worksheet &#39;Message in a Botttle&#39;.
   &lt;li&gt;[[success-&gt;c2: dark result]]&lt;/li&gt;
   &lt;li&gt;[[failure-&gt;c2: dark result]]&lt;/li&gt;
 &lt;/ul&gt;</tw-passagedata><tw-passagedata pid="58" name="c2: dark result" tags="" position="975,725" size="100,100">&lt;p&gt;Whatever it was seems to be gone now. You were able to find something in the dark though.&lt;/p&gt;
-&lt;div class=&#39;new-items&#39;&gt;&lt;strong&gt;GAIN:&lt;/strong&gt; 1 charm.&lt;/div&gt;
-&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.charm += 1&gt;&gt;
+&lt;&lt;gainItem &#39;charm&#39;&gt;&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Get out of here while you still can.-&gt;c2]]&lt;/li&gt;
 &lt;/ul&gt;</tw-passagedata><tw-passagedata pid="59" name="c2: light it up" tags="" position="1100,725" size="100,100">&lt;&lt;if $players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;flashlight&#39;) &amp;&amp; !$players[$activePlayer].characters[$activeCharacter].keywords.includes(&#39;shine&#39;)&gt;&gt;
@@ -23163,9 +23258,8 @@ Do Worksheet &#39;Message in a Botttle&#39;.
   &lt;li&gt;[[Go East.-&gt;225]]&lt;/li&gt;
   &lt;li&gt;[[Go North.-&gt;226]]&lt;/li&gt;
 &lt;/ul&gt;</tw-passagedata><tw-passagedata pid="74" name="218" tags="forest" position="475,975" size="100,100">&lt;p&gt;The path seems to double back on itself and you feel like you&#39;re going in circles. It ends abruptly, at the base of an imposing tree with a large crevice. Inside the hole, you find some charms and trainer coins.&lt;/p&gt;
-&lt;div class=&#39;new-items&#39;&gt;&lt;strong&gt;GAIN:&lt;/strong&gt; 3 coins and 1 tool.&lt;/div&gt;
-&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 3&gt;&gt;
-&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 1&gt;&gt;
+&lt;&lt;gainItem &#39;coin&#39; 3&gt;&gt;
+&lt;&lt;gainItem &#39;tool&#39;&gt;&gt;
 &lt;p&gt;Now if only you could remember your way back...&lt;/p&gt;
 &lt;p&gt;Test ATTENTION x MEMORY&lt;/p&gt;
 &lt;ul class=&#39;choices&#39;&gt;
@@ -25515,12 +25609,12 @@ The better you get to know the Mergimal, the more complete the information! But.
 &lt;/ul&gt;</tw-passagedata><tw-passagedata pid="207" name="start: part 3c" tags="story scientist" position="850,2600" size="100,100">&lt;&lt;tam&gt;&gt;Wow! Your knowledge of Mergimal science is quite impressive. I did try using the memory bus, but overclocking at the same time might prevent the sync issues I was having...&lt;&lt;/tam&gt;&gt;
 &lt;p&gt;Professor Tamarack begins digging thru a pile of parts on a nearby table. After some quick adjustments to the device, he seems satisfied.&lt;/p&gt;
 &lt;&lt;tam&gt;&gt;I still haven&#39;t figured out everything, but this is a great start. Here are some extra parts that you might find useful.&lt;&lt;/tam&gt;&gt;
-&lt;div class=&#39;new-items&#39;&gt;&lt;strong&gt;GAIN:&lt;/strong&gt; 2 tools.&lt;/div&gt;
-&lt;&lt;set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 2&gt;&gt;
+&lt;&lt;gainItem &#39;tool&#39; 2&gt;&gt;
 &lt;&lt;writeentry &#39;I helped Prof. Tamarack fix a bug with the Mergipedia.&#39;&gt;&gt;
 &lt;ul class=&#39;choices&#39;&gt;
   &lt;li&gt;[[Thanks!-&gt;start: part 4]]&lt;/li&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="208" name="start: part 4" tags="story" position="975,2600" size="100,100">&lt;&lt;writeentry &#39;I got a Mergipedia from Prof. Tamarack.&#39;&gt;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="208" name="start: part 4" tags="story" position="975,2600" size="100,100">&lt;p&gt;You take the device and admire its sleek curves.&lt;/p&gt;
+&lt;&lt;writeentry &#39;I got a Mergipedia from Prof. Tamarack.&#39;&gt;&gt;
 &lt;&lt;tam&gt;&gt;You are now ready to set out and take on the Mergimal School Challenge!&lt;br /&gt;
 Your first stop is in Littlemoose, at the Veil School.&lt;&lt;/tam&gt;&gt;
 &lt;ul class=&#39;choices&#39;&gt;

@@ -93,14 +93,14 @@ The better you get to know the Mergimal, the more complete the information! But.
 <<tam>>Wow! Your knowledge of Mergimal science is quite impressive. I did try using the memory bus, but overclocking at the same time might prevent the sync issues I was having...<</tam>>
 <p>Professor Tamarack begins digging thru a pile of parts on a nearby table. After some quick adjustments to the device, he seems satisfied.</p>
 <<tam>>I still haven't figured out everything, but this is a great start. Here are some extra parts that you might find useful.<</tam>>
-<div class='new-items'><strong>GAIN:</strong> 2 tools.</div>
-<<set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 2>>
+<<gainItem 'tool' 2>>
 <<writeentry 'I helped Prof. Tamarack fix a bug with the Mergipedia.'>>
 <ul class='choices'>
   <li>[[Thanks!->start: part 4]]</li>
 </ul>
 
 :: start: part 4 [story]
+<p>You take the device and admire its sleek curves.</p>
 <<writeentry 'I got a Mergipedia from Prof. Tamarack.'>>
 <<tam>>You are now ready to set out and take on the Mergimal School Challenge!<br />
 Your first stop is in Littlemoose, at the Veil School.<</tam>>

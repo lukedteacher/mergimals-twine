@@ -41,9 +41,8 @@
 
 :: 218 [forest]
 <p>The path seems to double back on itself and you feel like you're going in circles. It ends abruptly, at the base of an imposing tree with a large crevice. Inside the hole, you find some charms and trainer coins.</p>
-<div class='new-items'><strong>GAIN:</strong> 3 coins and 1 tool.</div>
-<<set $players[$activePlayer].characters[$activeCharacter].backpack.coin += 3>>
-<<set $players[$activePlayer].characters[$activeCharacter].backpack.tool += 1>>
+<<gainItem 'coin' 3>>
+<<gainItem 'tool'>>
 <p>Now if only you could remember your way back...</p>
 <p>Test ATTENTION x MEMORY</p>
 <ul class='choices'>

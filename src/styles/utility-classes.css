@@ -66,6 +66,10 @@
   justify-content: center;
 }
 
+.middle {
+  vertical-align: middle;
+}
+
 .bg-red {
   background-color: var(--red);
 }

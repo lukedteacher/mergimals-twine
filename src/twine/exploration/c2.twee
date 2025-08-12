@@ -16,8 +16,7 @@
 
 :: c2: dark result
 <p>Whatever it was seems to be gone now. You were able to find something in the dark though.</p>
-<div class='new-items'><strong>GAIN:</strong> 1 charm.</div>
-<<set $players[$activePlayer].characters[$activeCharacter].backpack.charm += 1>>
+<<gainItem 'charm'>>
 <ul class='choices'>
   <li>[[Get out of here while you still can.->c2]]</li>
 </ul>

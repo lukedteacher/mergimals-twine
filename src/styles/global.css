@@ -79,13 +79,16 @@ body a:hover {
 
 .alert {
   border: 2px solid var(--red);
+  background-color: var(--red);
   border-radius: 0.4rem;
   padding: 1rem;
   margin-bottom: 2rem;
 }
 
 .warning {
+  color: var(--background-color);
   border: 2px solid var(--yellow);
+  background-color: var(--yellow);
   border-radius: 0.4rem;
   padding: 1rem;
   margin-bottom: 2rem;
@@ -93,6 +96,7 @@ body a:hover {
 
 .journal-entry-box {
   border: 2px solid var(--green);
+  background-color: var(--green);
   border-radius: 0.4rem;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -102,18 +106,33 @@ body a:hover {
   font-weight: bold;
 }
 
-.new-items {
+.gain-notification-box {
+  display: flex;
+  flex-direction: row;
   border: 2px solid var(--indigo);
+  background-color: var(--indigo);
   border-radius: 0.4rem;
   padding: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  align-items: center;
 }
 
-.alert:before {
-  content: '';
-  background-image: url('images/svg/alert.svg');
-  size: 100rem;
+.gain-icon {
+  display: flex;
+  height: 1rem;
+  aspect-ratio: 1 / 1;
+}
 
+.gain-icon-path {
+  stroke: var(--background-text);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.gain-verb-span {
+  display: flex;
+  font-weight: bold;
 }
 
 #passages {

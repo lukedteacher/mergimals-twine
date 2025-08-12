@@ -63,8 +63,7 @@
       const destinationGridCoordinate = gridChange(gridCoordinate, longDirection);
 
       $button.click(() => {
-        Engine.play(destinationGridCoordinate)
-        console.log(destinationGridCoordinate);
+        Engine.play(destinationGridCoordinate);
         State.variables.players[State.variables.activePlayer].characters[State.variables.activeCharacter].explore(destinationGridCoordinate);
       });
       
