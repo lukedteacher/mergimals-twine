@@ -7,6 +7,7 @@
       <li>[[Admire the water.->b5: the sea]]</li>
       <li>[[Investigate the sand castle.->crabby critters]]</li>
       <li>[[Talk to the trainer.->dontay]]</li>
+      <li>[[Talk to the person near the tide pools.->lani]]</li>
       <li>[[That lighthouse looks interesting.->404]]</li>
     </ul>
   </div>
@@ -17,6 +18,7 @@
 <p>A serene beach stretches out before you. The white sand feels warm to the touch. The ocean waves crash against the shore.</p>
 <p>Someone seems to have built a sandcastle. You can see movement nearby.</p>
 <p>A Mergimal trainer is near the south end of the beach. You watch them skillfully cast their fishing line into the clear water.</p>
+<p>There is a young person near the tide pools, carefully observing the Mergimals that live there.</p>
 <p>A large, imposing lighthouse stands on a small island just off the coast.</p>
 <ul class='choices'>
   <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
@@ -33,17 +35,6 @@
         <</dialog>>
       <<else>>
         <<goto 'b5: fishing'>>
-      <</if>>
-    <</link>>
-  </li>
-  <li>
-    <<link 'Ride your Mergimal out to sea (requires: keyword PADDLE)'>>
-      <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>>
-        <<dialog 'no keyword paddle'>>
-          <<include 'no paddle'>>
-        <</dialog>>
-      <<else>>
-        <<goto 'b5: paddling to sea'>>
       <</if>>
     <</link>>
   </li>
@@ -136,3 +127,46 @@ You reel your line in and it nearly snaps.
 
 [[Failure: Gain TIRED.->stray: corwhal]]
 [[Success: +2 to TAME.->stray: corwhal]]
+
+:: lani [b5 pretty-rock-bay lani]
+<p>On your next step forward, you feel your foot hit water.</p>
+<p>“Oh hey — don’t step there, that’s my research site…”</p>
+<p>A young person in a white lab coat stands amongst the tide pools, holding a tape recorder.</p>
+<p>“Well, it’s technically a puddle, but it’s very important data.</p>
+<p>You live here in the village, right? I’ve seen you around. I’m Lani, I just moved here from Little Moose to study with Professor Tamarack.</p>
+<p>I was hoping the professor would teach me to ride a mergimal out to sea, but he said he was, um, like, super duper busy and stuff.</p>
+<p>If you figure out how to get out there, I'll watch your technique!</p>
+<ul class='choices'>
+  <li>[[Ask about the recorder.->lani: recorder]]</li>
+  <li>
+    <<link 'Ride your Mergimal out to sea (requires: keyword PADDLE)'>>
+      <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>>
+        <<dialog 'no keyword paddle'>>
+          <<include 'no paddle'>>
+        <</dialog>>
+      <<else>>
+        <<goto 'b5: paddling to sea'>>
+      <</if>>
+    <</link>>
+  </li>
+  <li>[[Keep exploring the beach.->b5]]</li>
+</ul>
+
+:: lani: recorder [b5 pretty-rock-bay lani recorder]
+<p>“Oh, this? It’s a waterproof tape recorder. I’m recording my observations.</p>
+<p>Ever since I was a kid, words on a page never really looked right to me. And writing them is even trickier.</p>
+<p>But it hasn’t stopped me. I take all the notes I need on this thing...and it’s waterproof!</p>
+<ul class='choices'>
+  <li>
+    <<link 'Ride your Mergimal out to sea (requires: keyword PADDLE)'>>
+      <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('paddle')>>
+        <<dialog 'no keyword paddle'>>
+          <<include 'no paddle'>>
+        <</dialog>>
+      <<else>>
+        <<goto 'b5: paddling to sea'>>
+      <</if>>
+    <</link>>
+  </li>
+  <li>[[Keep exploring the beach.->b5]]</li>
+</ul>

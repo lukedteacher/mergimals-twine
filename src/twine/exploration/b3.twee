@@ -35,9 +35,9 @@
 <p>If you want, you can see if he’s available to talk.</p>
 <ul class='choices'>
   <li>
-    <<link 'Tell him about the delivery. (requires: keyword CLOSED)'>>
-      <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('closed')>>
-        <<dialog 'no keyword CLOSED'>>
+    <<link 'Tell him about the delivery. (requires: keyword DELIVERY)'>>
+      <<if !$players[$activePlayer].characters[$activeCharacter].keywords.includes('delivery')>>
+        <<dialog 'no keyword DELIVERY'>>
           <<include 'no keyword'>>
         <</dialog>>
       <<else>>
@@ -78,8 +78,14 @@
 <<tam>>Grace wasn't at the Veil School?<br />
 And it was closed?<br />
 How odd!<br />
-Perhaps you'll have to start your Mergimal challenge in Blue Urf or Raven Wing instead.
+Perhaps you'll have to start your Mergimal challenge in Blue Urf or Raven Wing instead.<br />
+<p>Oh, and you have a delivery for me?</p>
+<p>Excellent! I’ve been waiting for these Mergiballs.</p>
+<p>As long as you're here, I'd love to give you some tips on how to use these things out in the wild.</p>
 <</tam>>
 <ul class='choices'>
-  <li>[[Okay.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+  <li>[[Sure, tell me more.->tamarack: tips]]</li>
+  <li>[[Nah, I’m good. Thanks.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
 </ul>
+
+:: tamarack: tips [b3 cascade-village lab]
