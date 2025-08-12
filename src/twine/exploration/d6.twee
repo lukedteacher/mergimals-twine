@@ -5,7 +5,7 @@
     <ul class='choices'>
       <li>[[Look around->d6: description]]</li>
       <li>[[Visit the Mergimal Challenge Vending Machine.->d6: vending machine]]</li>
-      <li>[[Talk to the dude standing there.->d6: rando]]</li>
+      <li>[[Talk to the big fellow near the vending machine.->hank]]</li>
       <li>[[Check out Veil School->d6: veil school]]</li>
     </ul>
   </div>
@@ -18,7 +18,7 @@
   <div>
     <p>Littlemoose is a sleepy town, nestled in a tall forest. It is the home of the Veil School and its leader, Grace.</p>
     <p>The path to the north leads out of the town and into Littlemoose forest. A dirt path to the west is blocked by a heavy iron gate.</p>
-    <p>A Mergimal Challenge Vending machine is here, where you can spend your hard-earned challenge coins.</p>
+    <p>A Mergimal Challenge Vending machine is here, where you can spend your hard-earned challenge coins. A big guy is pounding on the side of the machine.</p>
     <ul class='choices'>
       <li>[[Keep exploring the village.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
     </ul>
@@ -51,3 +51,39 @@
     <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
   </ul>
 <</if>>
+
+:: hank
+<p>Oh, hey there! Don’t worry, I’m not here to swipe anything. You just have to be careful with this contraption—itll gobble your coins faster than a penguwaiian downs a pineapple.</p>
+<p>So… what brings you to Little Moose?</p>
+<ul class='choices'>
+  <li>[[I’m looking for Grace->hank: grace]]</li>
+</ul>
+
+:: hank: grace
+<p>Hey, same here! But you’re a bit late—apparently we just missed her. There's a note on the door, if you haven't noticed already.</p>
+<p>But...I could use a hand, if you don't mind. My legs are jelly from hiking here all the way from Raven Wing, and I still need to get these Mergiballs to Professor Tamarack in Cascade Village.</p>
+<p>I’ll make it worth your while if you deliver them for me. Apparently the professor *never* leaves town. Something about being really, really busy with lots of things all the time.</p>
+<ul class='choices'>
+  <li>[[I’ll do it->hank: accept]]</li>
+  <li>[[But I just came from there!->hank: lani]]</li>
+</ul>
+
+:: hank: accept
+<p>Perfect! Here are the mergiballs. But watch your grip, they’re a bit bouncy.</p>
+<p>I’ll keep sniffing around for clues about Grace’s whereabouts.</p>
+<p>Safe travels!</p>
+<p>GAIN keyword DELIVERY.</p>
+  <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('delivery')>>
+<ul class=’choices’>
+  <li>[[Continue exploring->d6]]</li>
+</ul>
+
+:: hank: lani
+<p>Ah, then you’ve probably met my old pal Lani. They work with Professor Tamarack now.</p>
+<p>Tell ’em Hank says hi. And remind them they still owe me for fixing their “waterproof” recorder… the one that somehow got wet *inside* the waterproof case.</p> 
+<p>Anyway, here are the mergiballs for delivery. Thanks for the help and safe travels!</p>
+<p>GAIN keyword DELIVERY.</p>
+  <<set $players[$activePlayer].characters[$activeCharacter].keywords.push('delivery')>>
+<ul class=’choices’>
+  <li>[[Continue exploring->d6]]</li>
+</ul>
