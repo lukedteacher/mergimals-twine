@@ -40,4 +40,6 @@
 <<set $activePlayer = 'luke'>>
 <<set $activeCharacter = 'Flow'>>
 
+<<set $stamps = ['veil', 'wave', 'forge', 'bloom', 'spark', 'orbit']>>
+
 <<setupfacts>>

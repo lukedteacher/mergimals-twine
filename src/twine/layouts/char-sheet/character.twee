@@ -44,3 +44,99 @@
 		<div class='injury-tracker'></div>
 	<</for>>
 </div>
+
+:: backpack items
+<<do tag 'backpack-items'>>
+	<div class='char-sheet-box'>
+		<div class='char-sheet-header-box'>
+			<h2>items</h2>
+		</div>
+		<<include 'backpack item boxes'>>
+	</div>
+<</do>>
+
+:: backpack item boxes
+<div class='item-boxes char-sheet-boxes'>
+	<<for _item, _quantity range $players[$activePlayer].characters[$activeCharacter].backpack>>
+		<div class='item-box'>
+			<div class='item-img-box'>
+				<<print '<img class="backpack-item-img" title="' + _item + '" src="images/items/' + _item + '.svg">'>>
+			</div>
+			<div class='item-label-box'>
+				_quantity
+			</div>
+		</div>
+	<</for>>
+</div>
+
+:: keywords
+<<do tag 'backpack-keywords'>>
+	<div class='char-sheet-box'>
+		<div class='char-sheet-header-box'>
+			<h2>keywords</h2>
+		</div>
+		<<include 'keyword list'>>
+	</div>
+<</do>>
+
+:: keyword list
+<div class='keyword-boxes char-sheet-boxes'>
+  <ul class='keywords-ul'>
+    <<set _keywordCount = 0>>
+    <<for _keyword range $players[$activePlayer].characters[$activeCharacter].keywords>>
+      <<set _keywordCount ++>>
+      <li class='keywords-li'>_keyword</li>
+    <</for>>
+    <<if _keywordCount == 0 >>
+      <li class='keywords-li'>no keywords found yet</li>
+    <</if>>
+  </ul>
+</div>
+
+::journal [util char-sheet]
+<div class='char-sheet-box'>
+	<div class='char-sheet-header-box'>
+		<h2>journal</h2>
+	</div>
+	<<include 'journal entries'>>
+</div>
+
+:: journal entries [util char-sheet]
+<<set _journal = $players[$activePlayer].characters[$activeCharacter].journal>>
+<div class='journal-boxes char-sheet-boxes'>
+  <<if _journal == ''>>
+    <div class='journal-box'>
+      There's nothing here.
+    </div>
+  <<else>>
+    <<for _entry range _journal>>
+      <div class='journal-box handwritten' style='font-size: 1.2rem;'>
+        _entry
+      </div>
+    <</for>>
+  <</if>>
+</div>
+
+:: stamps [util char-sheet]
+<div class='char-sheet-box'>
+	<div class='char-sheet-header-box'>
+		<h2>stamps</h2>
+	</div>
+	<<include 'stamps box'>>
+</div>
+
+:: stamps box [util char-sheet]
+<<set _stamps = $players[$activePlayer].characters[$activeCharacter].stamps>>
+<div class='stamps-boxes char-sheet-boxes'>
+  <<for _stamp range $stamps>>
+    <div class='stamp-box'>
+      <div class='stamp-square'>
+        <<if _stamps.includes(_stamp)>>
+          <<print '<img class="stamp-img" title="' + _stamp + '" src="images/stamps/' + _stamp + '-earned.svg">'>>
+        <<else>>
+          <<print '<img class="stamp-img" title="' + _stamp + '" src="images/stamps/' + _stamp + '-missing.svg">'>>
+        <</if>>
+      </div>
+    </div>
+  <</for>>
+</div>

@@ -38,7 +38,6 @@ backpack  */
 
 .dialog-char-sheet {
   width: 39rem;
-  aspect-ratio: 8.5 / 11;
 }
 
 /* stats stuff */
@@ -115,14 +114,16 @@ backpack  */
   aspect-ratio: 1 / 1;
 }
 
+/* keyword stuff */
+
 .keyword-boxes {
-  background-color: #eee;
   color: #111;
+  background-color: #eee;
 }
 
 .keywords-ul {
   list-style-type: none;
-  width: max-content;
+  width: 12rem;
   margin: 0;
   padding: 0;
 }
@@ -133,20 +134,44 @@ backpack  */
   border-radius: 0.2rem;
 }
 
-/* character swap stuff */
-.char-swap-div {
-  border: 3px solid transparent;
-  border-radius: 0.5rem;
-  box-sizing: border-box;
-}
-
 /* journal stuff */
 .journal-boxes {
-  background-color: #eee;
   color: #111;
+  background-color: #eee;
   width: 90%;
 }
 
 .journal-box {
   border-bottom: 1px solid var(--darkest);
+}
+
+/* stamp stuff */
+.stamps-boxes {
+  color: #111;
+  background-color: #eee;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-content: space-around;
+  row-gap: 1rem;
+  width: 100%;
+}
+
+.stamp-box {
+  justify-items: center;
+}
+
+.stamp-square {
+  height: 4rem;
+  width: 4rem;
+  aspect-ratio: 1 / 1;
+  border: 3px solid black;
+  text-align: center;
+  align-content: center;
+}
+
+/* character swap stuff */
+.char-swap-div {
+  border: 3px solid transparent;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
 }

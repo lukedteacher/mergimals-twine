@@ -17,12 +17,13 @@
 <</script>>
 <div id='tabs' class='dialog-char-sheet-tabs'>
 	<ul>
-		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--character'>👤</a></h2></li>
-		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--backpack'>🎒</a></h2></li>
-		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--journal'>📘</a></h2></li>
-    <li><h2 style='margin: 0;'><a href='#dialog-char-sheet--keywords'>🗝️</a></h2></li>
-		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--world-map'>🗺️</a></h2></li>
-    <li><h2 style='margin: 0;'><a href='#dialog-char-sheet--mergipedia'>📊</a></h2></li>
+		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--character' title='character'>👤</a></h2></li>
+		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--backpack' title='backpack'>🎒</a></h2></li>
+		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--journal' title='journal'>📘</a></h2></li>
+    <li><h2 style='margin: 0;'><a href='#dialog-char-sheet--keywords' title='keywords'>🗝️</a></h2></li>
+    <li><h2 style='margin: 0;'><a href='#dialog-char-sheet--stamps' title='stamps'>🏷️</a></h2></li>
+		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--world-map' title='world map'>🗺️</a></h2></li>
+    <li><h2 style='margin: 0;'><a href='#dialog-char-sheet--mergipedia' title='mergipedia'>📊</a></h2></li>
 	</ul>
 	<div id='dialog-char-sheet--character'>
 		<<include 'stats'>>
@@ -35,7 +36,10 @@
     <<include 'journal'>>
 	</div>
   <div id='dialog-char-sheet--keywords'>
-    <<include 'backpack keywords'>>
+    <<include 'keywords'>>
+	</div>
+  <div id='dialog-char-sheet--stamps'>
+    <<include 'stamps'>>
 	</div>
 	<div id='dialog-char-sheet--world-map'>
 		<<include 'world map'>>		

@@ -51,6 +51,7 @@ window.Character = class Character {
 		this.injuries = 0;
 		this.backpack = {coin: 0, mergiball: 0, charm: 0, bandage: 0, tool: 0, battery: 0};
     this.journal = [];
+    this.stamps = [];
 		this.keywords = [];
     this.worldMapPosition = 'b3';
     this.explored = [
