@@ -28,7 +28,7 @@ _$start through <<-_$start + 6>><br />
 <<button '>'>>
     <<set _$start += 6>>
     <<if _$start > Object.entries($mergimals).length - 6>>
-        <<set _$start = Object.entries($mergimals).length - 6>>
+        <<set _$start = Object.entries($mergimals).length - (Object.entries($mergimals).length % 6)>>
     <</if>>
     <<redo 'mergipedia'>>
 <</button>>

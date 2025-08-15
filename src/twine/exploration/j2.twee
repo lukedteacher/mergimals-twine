@@ -1,65 +1,74 @@
 :: j2 [j2 shin-gobee-desert map]
 <div class='flex-row flex items-center gap-lg'>
   <div class='explore-box'>
-    <p>Zahara is here!</p>
     <h3>EXPLORE</h3>
     <ul class='choices'>
-      <li>[[Look around->j3: description]]</li>
-      <li>[[Talk to Zahara.->j3: zahara]]</li>
+      <li>[[Look around->j2: description]]</li>
+      <li>[[Approach the oasis.->j2: oasis]]</li>
     </ul>
   </div>
   <<map 'j2'>><<s>><</map>><<set $players[$activePlayer].characters[$activeCharacter].worldMapPosition = 'j2'>>
 </div>
-:: j2: explore [j2 explore]
-<<map 'j2'>><<n>><<s>><</map>><<set $currentLocation = 'j2'>>\
-After plodding for hours through the sun-baked desert, you spot an inviting oasis on the horizon....Or is it just a mirage?
 
-[[Approach the oasis.->j2: description]]
-[[Turn back. It's probably a mirage.->404]]
-
-!!!!EXPLORE
-
-
-[[Leave the area.->404]]
-
-:: j2: description
+:: j2: description [j2 explore]
 <img class='concept' src='images/story/cactuspatch.png'>
-It seems real enough once you get closer. It's a small pond surrounded by various sized cacti. A hooded figure is crounched near one of them.
+<p>After plodding for hours through the sun-baked desert for what seems like hours, you come to a wide open area spotted with cacti.</p>
+<p>As the path comes to an end, you spot an inviting oasis on the horizon... or is it just a mirage?</p>
+<ul class='choices'>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+</ul>
 
-[[Approach the hooded figure.->j2: zahara]]
-[[Leave the area.->404]]
+:: j2: oasis
+<p>It seems real enough once you get closer. The small pond is surrounded by cacti of various sizes. A hooded figure is crounched near one of them.</p>
+<ul class='choices'>
+  <li>[[Approach the hooded figure.->j2: zahara]]</li>
+  <li>[[Continue exploring.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+</ul>
 
 :: j2: zahara
-:: oasis: zahara
-You spot a lone figure crouched beside a cactus in the blazing sun. There are several other big, beautiful cacti surrounding her.
-As you approach, Zahara looks up and says, "Oh, welcome to my cactus garden. I call it "The Factor Patch".
+<p>You spot a lone figure crouched in a grove of cacti in the blazing sun. They are wearing a golden scarf and loose grey clothing.</p>
+<p>As you step closer, they reach up and pull down their hood, revealing flowing, white hair and a deep brown complexion.</p>
+<p>You recognize the person as Zahara, the head teacher of the Bloom School. Her hands move quickly as she hums to herself, engrossed in some task.</p>
+<p>Without turning from the cactus she's currently focused on, Zahara says, "Greetings. Welcome to my cactus garden. I call it "The Factor Patch".</p>
+<p>"Want to hear a cactus joke?"</p>
+<ul class='choices'>
+  <li>[[I have no choice, do I?->zahara: joke]]</li>
+  <li>[[Isn't it a little hot for jokes?->zahara: grandma]]</li>
+</ul>
 
-Want to hear a cactus joke?
+:: zahara: joke [j2 zahara]
+<p>"You always have a choice. It's just that you've already made your choice by coming here." she turns and flashes a sly smirk.</p>
+<p>"How did the cactus get an A+ on their test?"</p>
+<p>She doesn't even give you a chance to respond before the punchline.</p>
+<p>"Because they were a really sharp student!"</p>
+<ul class='choices'>
+  <li>[[Do cacti even go to school?->zahara: joke 2]]</li>
+  <li>[[Laugh politely.->zahara: grandma]]</li>
+</ul>
 
-<<linkreplace [[How unbecoming of you. This is a serious matter!->zahara: cacti]]
+:: zahara: joke 2
+<p>"Ah. Well, I guess you have a POINT there. But really, there's no need to NEEDLE me about it!"</p>
+<p>She bursts into a laughter. Even her chuckles have a strange musical quality.</p>
+<ul class='choices'>
+  <li>[[Wait for her to stop laughing.->zahara: grandma]]</li>
+</ul>
 
-'I have no choice, do I?' t8n>>"Nope! Here it is: How did the cactus get an A+ on their test?"
+:: zahara: grandma
+<p>Zahara stands up and begins petting her scarf.</p>
+<p>Suddenly, it moves, and you realize that it's actually a Mergimal! The enormous Tubra slithers down her body and nuzzles her feet.</p>
+<p>"This is Grandma. She's very friendly."</p>
+<p>"What brings you out to the deep desert?"</p>
+<ul class='choices'>
+  <li>[[I am trying to complete the Mergimal School Challenge.->zahara: cactori]]</li>
+  <li>[[I am looking for Grace, the Veil School leader->zahara: grace]]</li>
+  <li>[[I was just wandering and heard you humming.->zahara: music]]</li>
+</ul>
 
-    <<linkreplace 'Umm...I dunno, why?' t8n>>
-
-        "Because they were a really sharp student!"
-    
-        <<linkreplace 'I didn\'t think a cactus could go to school...' t8n>>
-
-            "Ah. Well, I guess you have a POINT there. But really, there's no need to NEEDLE me about it!"
-        
-            [[Wait for her to stop lauging.->zahara: cacti]]
-        <</linkreplace>>
-    <</linkreplace>>
-<</linkreplace>>
-
-:: zahara: cacti
-"I take you came from Bloom School? That gardener told you where I was, didn't he?
-Well, as long as you're here, I could use some help with my cacti.
-They're actually 'Cactori'...Factor cacti. They can only grow with the power of factors.
-Can you pick a cactus and guide the factor tree until it blooms?
-
-[[Ask how it works.->zahara: lesson]]
-
-
-
+:: zahara: cactori
+<p>"You walked here straight from the Consevatory? That gardener told you where I was, didn't he?"</p>
+<p>"Well, as long as you're here, I could use some help with my cacti.</p>
+<p>They're actually 'Cactori'...Factor cacti. They can only grow with the power of factors.</p>
+<p>Can you pick a cactus and guide the factor tree until it blooms?</p>
+<ul class='choices'>
+  <li>[[Ask how it works.->zahara: lesson]]</li>
+</ul>

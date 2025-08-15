@@ -13,4 +13,6 @@
 
 :: i5: vending machine [i5 cedar-oasis vending-machine]
 <<include 'cedar oasis: vending machine'>>
-[[Continue exploring the city.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]
+<ul class='choices'>
+  <li>[[Continue exploring the city.->$players[$activePlayer].characters[$activeCharacter].worldMapPosition]]</li>
+</ul>

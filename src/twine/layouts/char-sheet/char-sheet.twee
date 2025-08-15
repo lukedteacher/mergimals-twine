@@ -19,8 +19,10 @@
 	<ul>
 		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--character'>👤</a></h2></li>
 		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--backpack'>🎒</a></h2></li>
-		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--mergipedia'>📘</a></h2></li>
+		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--journal'>📘</a></h2></li>
+    <li><h2 style='margin: 0;'><a href='#dialog-char-sheet--keywords'>🗝️</a></h2></li>
 		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--world-map'>🗺️</a></h2></li>
+    <li><h2 style='margin: 0;'><a href='#dialog-char-sheet--mergipedia'>📊</a></h2></li>
 	</ul>
 	<div id='dialog-char-sheet--character'>
 		<<include 'stats'>>
@@ -28,13 +30,17 @@
 	</div>
 	<div id='dialog-char-sheet--backpack'>
 		<<include 'backpack items'>>
-		<<include 'backpack keywords'>>
 	</div>
-	<div id='dialog-char-sheet--mergipedia'>
+  <div id='dialog-char-sheet--journal'>
     <<include 'journal'>>
-		<<include 'mergipedia'>>		
+	</div>
+  <div id='dialog-char-sheet--keywords'>
+    <<include 'backpack keywords'>>
 	</div>
 	<div id='dialog-char-sheet--world-map'>
 		<<include 'world map'>>		
+	</div>
+	<div id='dialog-char-sheet--mergipedia'>
+		<<include 'mergipedia'>>		
 	</div>
 </div>

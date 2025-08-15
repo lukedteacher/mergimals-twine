@@ -6,7 +6,11 @@
       <div data-page='0' class='char-sheet-button-box'>👤</div>
       <div data-page='1' class='char-sheet-button-box'>🎒</div>
       <div data-page='2' class='char-sheet-button-box'>📘</div>
-      <div data-page='3' class='char-sheet-button-box'>🗺️</div>
+    </div>
+    <div id='char-sheet-button-boxes'>
+      <div data-page='3' class='char-sheet-button-box'>🗝️</div>
+      <div data-page='4' class='char-sheet-button-box'>🗺️</div>
+      <div data-page='5' class='char-sheet-button-box'>📊</div>
     </div>
   </div>
 <</do>><br />
