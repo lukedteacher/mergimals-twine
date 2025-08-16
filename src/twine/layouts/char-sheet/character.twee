@@ -140,3 +140,37 @@
     </div>
   <</for>>
 </div>
+
+:: flash cards [flash-cards char-sheet util]
+<<set _flashcardStart = 0>>
+<<do tag 'flash-cards'>>
+  <div style='display: grid; grid: repeat(3, 1fr) / repeat(4, 1fr); gap: 0.5rem;'>
+    <<set _flashcards = $players[$activePlayer].characters[$activeCharacter].flashcards>>
+    <<for _mergimal, _object range _flashcards>>
+      <<if $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] == 'tamed'>>
+        <<card _mergimal false 'small'>>
+      <<elseif $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] == 'seen'>>
+        <<card _mergimal false 'small' true>>
+      <<else>>
+        <<card 'unknown' false 'small'>>
+      <</if>>
+    <</for>>
+  </div>
+  <div style='display: flex; justify-content: space-between; margin: 1rem;'>
+    <<button '<'>>
+      <<set _flashcardStart -= 6>>
+      <<if _flashcardStart < 0>>
+        <<set _flashcardStart = 0>>
+      <</if>>
+      <<redo 'mergipedia'>>
+    <</button>>
+    _flashcardStart through <<-_flashcardStart + 6>><br />
+    <<button '>'>>
+      <<set _flashcardStart += 6>>
+      <<if _flashcardStart > Object.entries($mergimals).length - 6>>
+        <<set _flashcardStart = Object.entries($mergimals).length - (Object.entries($mergimals).length % 6)>>
+      <</if>>
+      <<redo 'mergipedia'>>
+    <</button>>
+  </div>
+<</do>>

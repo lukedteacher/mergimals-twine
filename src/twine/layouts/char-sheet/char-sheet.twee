@@ -24,6 +24,7 @@
     <li><h2 style='margin: 0;'><a href='#dialog-char-sheet--stamps' title='stamps'>🏷️</a></h2></li>
 		<li><h2 style='margin: 0;'><a href='#dialog-char-sheet--world-map' title='world map'>🗺️</a></h2></li>
     <li><h2 style='margin: 0;'><a href='#dialog-char-sheet--mergipedia' title='mergipedia'>📊</a></h2></li>
+    <li><h2 style='margin: 0;'><a href='#dialog-char-sheet--flashcards' title='flashcards'>🗃️</a></h2></li>
 	</ul>
 	<div id='dialog-char-sheet--character'>
 		<<include 'stats'>>
@@ -46,5 +47,8 @@
 	</div>
 	<div id='dialog-char-sheet--mergipedia'>
 		<<include 'mergipedia'>>		
+	</div>
+  <div id='dialog-char-sheet--flashcards'>
+		<<include 'flash cards'>>		
 	</div>
 </div>

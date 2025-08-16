@@ -1,37 +1,36 @@
 :: mergipedia [mergipedia util]
-<<set _$start = 0>>
+<<set _mergipediaStart = 0>>
 <<do tag 'mergipedia'>>
-    <div style='display: grid; grid: repeat(2, 1fr) / repeat(3, 1fr); gap: 1rem;'>
-        <<set _$temp to Object.fromEntries(Object.entries($mergimals).slice(_$start, _$start + 6))>>
-        <<for _mergimal, _object range _$temp>>
-            <<if $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] == 'tamed'>>
-                <<card _mergimal false 'small'>>
-            <<elseif $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] == 'seen'>>
-                <<card _mergimal false 'small' true>>
-            <<else>>
-                <<card 'unknown' false 'small'>>
-            <</if>>
-        <</for>>
-    </div>
-_$start through <<-_$start + 6>><br />
+  <div style='display: grid; grid: repeat(2, 1fr) / repeat(3, 1fr); gap: 1rem;'>
+    <<set _mergipedia to Object.fromEntries(Object.entries($mergimals).slice(_mergipediaStart, _mergipediaStart + 6))>>
+    <<for _mergimal, _object range _mergipedia>>
+      <<if $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] == 'tamed'>>
+        <<card _mergimal false 'small'>>
+      <<elseif $players[$activePlayer].characters[$activeCharacter].mergipedia[_object.name] == 'seen'>>
+        <<card _mergimal false 'small' true>>
+      <<else>>
+        <<card 'unknown' false 'small'>>
+      <</if>>
+    <</for>>
+  </div>
+  <div style='display: flex; justify-content: space-between; margin: 1rem;'>
+    <<button '<'>>
+      <<set _mergipediaStart -= 6>>
+      <<if _mergipediaStart < 0>>
+        <<set _mergipediaStart = 0>>
+      <</if>>
+      <<redo 'mergipedia'>>
+    <</button>>
+    _mergipediaStart through <<-_mergipediaStart + 6>><br />
+    <<button '>'>>
+      <<set _mergipediaStart += 6>>
+      <<if _mergipediaStart > Object.entries($mergimals).length - 6>>
+        <<set _mergipediaStart = Object.entries($mergimals).length - (Object.entries($mergimals).length % 6)>>
+      <</if>>
+      <<redo 'mergipedia'>>
+    <</button>>
+  </div>
 <</do>>
-<<button 'Done.'>>
-    <<run Dialog.close()>>
-<</button>> 
-<<button '<'>>
-    <<set _$start -= 6>>
-    <<if _$start < 0>>
-        <<set _$start = 0>>
-    <</if>>
-    <<redo 'mergipedia'>>
-<</button>> 
-<<button '>'>>
-    <<set _$start += 6>>
-    <<if _$start > Object.entries($mergimals).length - 6>>
-        <<set _$start = Object.entries($mergimals).length - (Object.entries($mergimals).length % 6)>>
-    <</if>>
-    <<redo 'mergipedia'>>
-<</button>>
 
 :: melodrake [mergimal card inspect]
 <div class='flex flex-row gap-lg'>

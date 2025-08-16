@@ -70,6 +70,7 @@ window.Character = class Character {
 		mergimals.forEach(mergimal => {
 			this.mergipedia[mergimal] = 'unknown';
 		});
+    this.flashcards = {};
 		// clone the given config object's own properties into our own properties.
 		//
 		// NOTE: use the SugarCube built-in `clone()` function to make deep
